@@ -1,0 +1,23 @@
+{
+  "dataset_version": "global_foodnutrigpt_v8_single_stage_v2_complete_test",
+  "split_sha256": "66afdf0d7bf8f354f55ee724a7271fb488003668610e3e1920a9e74a772266a1",
+  "test_protocol": "complete 187-axis leave-one-mask-family-out profile-axis panel",
+  "profile_axis_cells": 19690,
+  "foodnutrigpt_unified_all_axis": {
+    "output_dir": "output/global_foodnutrigpt_v8_single_stage_v2_all_axis_loss",
+    "config_sha256": "709bd0441b15e2d508ff0692c7fb08652c0ffb8e7ee39ec491f5465fca46fcb8",
+    "checkpoint_sha256": "a956ac14a40cdd6b4e57b15875a96338095c3010e9613ab80ea8668b12a4bd11",
+    "prediction_sha256": "cb307ac7a1ef3d01f21c18bb552fcc0f6dc5d396d4ed7f0a56ac06157abf2a65",
+    "macro_axis_log_mae": 0.08719714075937372,
+    "macro_axis_log_rmse": 0.2529836444768671,
+    "macro_axis_raw_mae_g_per_100g": 0.5492055296326763
+  },
+  "random_forest": {
+    "output_dir": "output/global_foodnutrigpt_v8_single_stage_v2_rf_baseline_v2",
+    "manifest_sha256": "80072489308d9de2a6aabe632a913b62ec927c3a0eede70ce9da1fce0c868cf9",
+    "prediction_sha256": "a22a08538a0317904567e37067fcda6831c2d3f970bf225b985c9dd7c9d82000",
+    "macro_axis_log_mae": 0.07708409915694782,
+    "macro_axis_log_rmse": 0.221852568977068,
+    "macro_axis_raw_mae_g_per_100g": 0.4377030610329658
+  }
+}

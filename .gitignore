@@ -1,0 +1,32 @@
+# Local environments and editor state
+.DS_Store
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Source data, derived matrices, cached embeddings, checkpoints, and reports
+data/*
+!data/README.md
+output/
+outputs/
+reports/
+tmp/
+foodb_2020_04_07_csv/
+deploy/
+web/
+
+# Large generated artifacts
+*.pt
+*.pth
+*.npy
+*.npz
+*.pdf
+
+# Keep the experiment protocol and ledger, not caches or checkpoints.
+experiments/*
+!experiments/foodnutrigpt_v8_v2/
+experiments/foodnutrigpt_v8_v2/*
+!experiments/foodnutrigpt_v8_v2/*.md
+!experiments/foodnutrigpt_v8_v2/*.csv
+!experiments/foodnutrigpt_v8_v2/*.json
