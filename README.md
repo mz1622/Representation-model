@@ -20,6 +20,12 @@ as a baseline, but it is not the final source-free benchmark. V9 will use source
 only in a training-only source-axis calibration branch and will emit a
 source-free prediction at inference.
 
+The first V9 run is validation-only: it has evaluated all 187 targets without a
+source input and has not opened test. Its source-free Random Forest baseline is
+currently stronger than the V9 Transformer on that panel. The full protocol and
+metrics are recorded in
+[experiments/foodnutrigpt_v9_source_calibrated_validation/](experiments/foodnutrigpt_v9_source_calibrated_validation/).
+
 Read [AGENTS.md](AGENTS.md) for data rules, audit criteria, the V9 plan,
 expected outcomes, and fine-tuning tasks.
 

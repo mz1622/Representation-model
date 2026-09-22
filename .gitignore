@@ -32,3 +32,5 @@ experiments/foodnutrigpt_v8_v2/*
 !experiments/foodnutrigpt_v8_v2/*.md
 !experiments/foodnutrigpt_v8_v2/*.csv
 !experiments/foodnutrigpt_v8_v2/*.json
+!experiments/foodnutrigpt_v9_source_calibrated_validation/
+!experiments/foodnutrigpt_v9_source_calibrated_validation/*.md

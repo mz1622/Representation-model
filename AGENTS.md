@@ -11,7 +11,8 @@ The current immutable baseline is
 **source-native baseline**, not the final scientific benchmark. It preserves raw
 source observations and places a source embedding in the training Transformer.
 Do not modify its data, split, masks, normalizer, checkpoints, or reported
-results. New work must use a separately versioned V9 dataset and output folder.
+results. New work must use a separately versioned V9 experiment and output
+folder; V9 currently reuses the immutable V8 corpus and grouped split.
 
 ## Current Data Composition
 
@@ -114,6 +115,12 @@ Fine-tuning tasks, after the composition benchmark is frozen:
 
 V9 may reduce source-expression noise but is not guaranteed to outperform RF or
 XGBoost. Claims require predeclared metrics and replicated uncertainty estimates.
+
+The first V9 validation-only run uses the source-free base head and a
+source-calibrated training residual. It scores all 187 axes on a complete
+validation mask panel and does **not** open test. Its source-free RF baseline
+currently performs better on this validation protocol; see
+`experiments/foodnutrigpt_v9_source_calibrated_validation/`.
 
 ## Audit and Release
 
