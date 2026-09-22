@@ -22,6 +22,8 @@ web/
 *.npy
 *.npz
 *.pdf
+report_*.tex
+notebooks/*.tex
 
 # Keep the experiment protocol and ledger, not caches or checkpoints.
 experiments/*
