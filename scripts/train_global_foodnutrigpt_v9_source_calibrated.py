@@ -377,8 +377,17 @@ def main() -> None:
     parser.add_argument("--learning-rate", type=float, default=Config.learning_rate)
     parser.add_argument("--patience", type=int, default=Config.patience)
     parser.add_argument("--text-only-probability", type=float, default=Config.text_only_probability)
+    parser.add_argument("--mask-ratio", type=float, default=Config.mask_ratio)
+    parser.add_argument("--zero-only-family-mask-ratio", type=float, default=Config.zero_only_family_mask_ratio)
+    parser.add_argument("--amount-loss-weight", type=float, default=Config.amount_loss_weight)
     parser.add_argument("--source-calibrated-loss-weight", type=float, default=Config.source_calibrated_loss_weight)
     parser.add_argument("--source-residual-l2", type=float, default=Config.source_residual_l2)
+    parser.add_argument("--axis-residual-rank", type=int, default=Config.axis_residual_rank)
+    parser.add_argument("--d-model", type=int, default=Config.d_model)
+    parser.add_argument("--n-heads", type=int, default=Config.n_heads)
+    parser.add_argument("--n-layers", type=int, default=Config.n_layers)
+    parser.add_argument("--feedforward-dim", type=int, default=Config.feedforward_dim)
+    parser.add_argument("--dropout", type=float, default=Config.dropout)
     parser.add_argument("--skip-test", action="store_true", help="Do not open the frozen V8 complete test panel.")
     args = parser.parse_args()
 
@@ -397,13 +406,29 @@ def main() -> None:
     config = Config(
         epochs=args.epochs, batch_size=args.batch_size, learning_rate=args.learning_rate,
         patience=args.patience, text_only_probability=args.text_only_probability,
+        mask_ratio=args.mask_ratio, zero_only_family_mask_ratio=args.zero_only_family_mask_ratio,
+        amount_loss_weight=args.amount_loss_weight,
         source_calibrated_loss_weight=args.source_calibrated_loss_weight,
-        source_residual_l2=args.source_residual_l2,
+        source_residual_l2=args.source_residual_l2, axis_residual_rank=args.axis_residual_rank,
+        d_model=args.d_model, n_heads=args.n_heads, n_layers=args.n_layers,
+        feedforward_dim=args.feedforward_dim, dropout=args.dropout,
     )
-    if not 0.0 <= config.text_only_probability <= 1.0:
-        raise ValueError("--text-only-probability must be in [0, 1].")
+    for option, value in {
+        "--text-only-probability": config.text_only_probability,
+        "--mask-ratio": config.mask_ratio,
+        "--zero-only-family-mask-ratio": config.zero_only_family_mask_ratio,
+        "--dropout": config.dropout,
+    }.items():
+        if not 0.0 <= value <= 1.0:
+            raise ValueError(f"{option} must be in [0, 1].")
+    if config.amount_loss_weight < 0.0:
+        raise ValueError("--amount-loss-weight must be non-negative.")
     if config.source_calibrated_loss_weight < 0.0 or config.source_residual_l2 < 0.0:
         raise ValueError("Source calibration weights must be non-negative.")
+    if config.axis_residual_rank < 1 or config.n_layers < 1 or config.feedforward_dim < 1:
+        raise ValueError("Model rank, layer count, and feed-forward dimension must be positive.")
+    if config.d_model < 1 or config.n_heads < 1 or config.d_model % config.n_heads:
+        raise ValueError("--d-model must be positive and divisible by --n-heads.")
 
     v8.set_seed(config.seed)
     corpus = SourceEqualizedCorpus(data_dir, split_dir)

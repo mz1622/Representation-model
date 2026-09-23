@@ -44,23 +44,36 @@ def stable_rng(axis_index: int) -> np.random.Generator:
     return np.random.default_rng(int.from_bytes(digest[:8], "big"))
 
 
-def load_cached_embeddings(corpus: v9.SourceEqualizedCorpus, transformer_output: Path) -> np.ndarray:
+def load_cached_embeddings(
+    corpus: v9.SourceEqualizedCorpus,
+    transformer_output: Path,
+    *,
+    include_complete_test: bool = False,
+) -> np.ndarray:
     cache_dir = transformer_output / "text_cache"
-    ids_path = cache_dir / "train_validation_profile_ids.csv"
-    matrix_path = cache_dir / "train_validation_embeddings.npy"
-    if not ids_path.exists() or not matrix_path.exists():
-        raise FileNotFoundError(f"Missing V9 frozen text cache: {matrix_path}")
-    ids = pd.read_csv(ids_path)["profile_id"].tolist()
-    matrix = np.load(matrix_path).astype(np.float32)
-    if len(ids) != len(matrix):
-        raise ValueError("V9 text cache has mismatched profile IDs and embeddings.")
-    expected_positions = corpus.positions("train") + corpus.positions("validation")
-    expected_ids = {corpus.profiles.iloc[position].profile_id for position in expected_positions}
-    if set(ids) != expected_ids:
-        raise ValueError("V9 text cache does not exactly cover train plus validation profiles.")
-    text = np.zeros((len(corpus.profiles), matrix.shape[1]), dtype=np.float32)
-    for profile_id, embedding in zip(ids, matrix):
-        text[corpus.profile_index[profile_id]] = embedding
+    cache_specs = [("train_validation", corpus.positions("train") + corpus.positions("validation"))]
+    if include_complete_test:
+        cache_specs.append(("complete_test_after_selection", corpus.positions("test_complete_axis_panel")))
+    text: np.ndarray | None = None
+    for cache_name, positions in cache_specs:
+        ids_path = cache_dir / f"{cache_name}_profile_ids.csv"
+        matrix_path = cache_dir / f"{cache_name}_embeddings.npy"
+        if not ids_path.exists() or not matrix_path.exists():
+            raise FileNotFoundError(f"Missing V9 frozen text cache: {matrix_path}")
+        ids = pd.read_csv(ids_path)["profile_id"].tolist()
+        matrix = np.load(matrix_path).astype(np.float32)
+        if len(ids) != len(matrix):
+            raise ValueError(f"V9 text cache has mismatched profile IDs and embeddings: {cache_name}")
+        expected_ids = {corpus.profiles.iloc[position].profile_id for position in positions}
+        if set(ids) != expected_ids:
+            raise ValueError(f"V9 text cache does not exactly cover its partition: {cache_name}")
+        if text is None:
+            text = np.zeros((len(corpus.profiles), matrix.shape[1]), dtype=np.float32)
+        elif matrix.shape[1] != text.shape[1]:
+            raise ValueError("V9 cached text embedding dimensions disagree across partitions.")
+        for profile_id, embedding in zip(ids, matrix):
+            text[corpus.profile_index[profile_id]] = embedding
+    assert text is not None
     return text
 
 
@@ -83,13 +96,13 @@ def build_dense_profile_cells(corpus: v9.SourceEqualizedCorpus, data_dir: Path) 
     return values, observed
 
 
-def complete_validation_jobs(
-    corpus: v9.SourceEqualizedCorpus, config: v9.Config,
+def complete_partition_jobs(
+    corpus: v9.SourceEqualizedCorpus, config: v9.Config, partition: str,
 ) -> tuple[dict[int, np.ndarray], dict[int, np.ndarray]]:
-    """Return exactly the V9 complete-validation profile/axis mask jobs."""
-    validation_positions = corpus.positions("validation")
+    """Return the V9 complete-panel profile/axis jobs for one fixed partition."""
+    positions = corpus.positions(partition)
     evaluation_axes = corpus.axes.loc[corpus.axes["loss_eligible"], "axis_index"].to_numpy(dtype=np.int64)
-    dataset = v9.complete_panel_dataset(corpus, validation_positions, config)
+    dataset = v9.complete_panel_dataset(corpus, positions, config)
     jobs: dict[int, set[int]] = {int(axis): set() for axis in evaluation_axes}
     # Chemical-family membership is corpus-global.  Precompute it once rather
     # than scanning every token for every validation food-family mask.
@@ -116,7 +129,7 @@ def complete_validation_jobs(
     hidden = {axis: family_columns[axis_family[axis]] for axis in jobs_array}
     missing = [axis for axis, rows in jobs_array.items() if not len(rows)]
     if missing:
-        raise ValueError(f"The V9 complete validation panel omitted masked axes: {missing[:5]}")
+        raise ValueError(f"The V9 complete {partition} panel omitted masked axes: {missing[:5]}")
     return jobs_array, hidden
 
 
@@ -163,7 +176,7 @@ def main() -> None:
     text_pca[validation_rows] = pca.transform(text[validation_rows]).astype(np.float32)
     values, observed = build_dense_profile_cells(corpus, data_dir)
     base = np.concatenate([text_pca, values, observed], axis=1).astype(np.float32)
-    jobs, hidden_by_axis = complete_validation_jobs(corpus, config)
+    jobs, hidden_by_axis = complete_partition_jobs(corpus, config, "validation")
     loss_axes = corpus.axes[corpus.axes["loss_eligible"]].copy()
     if set(loss_axes["axis_index"]) != set(jobs):
         raise ValueError("RF loss axes do not match the V9 complete validation panel.")

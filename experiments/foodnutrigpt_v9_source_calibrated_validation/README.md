@@ -2,9 +2,10 @@
 
 ## Scope
 
-This is a validation-only V9 experiment. It reuses the immutable V8/V2 corpus
-and grouped split rather than rebuilding or pooling any source-native values.
-The frozen complete test panel was not loaded, encoded, or scored.
+This V9 baseline reuses the immutable V8/V2 corpus and grouped split rather
+than rebuilding or pooling any source-native values. The checkpoint was selected
+on validation only; its complete-test result was run once afterwards and is a
+baseline reference, not an input to later model selection.
 
 | Item | Value |
 | --- | ---: |
@@ -13,7 +14,7 @@ The frozen complete test panel was not loaded, encoded, or scored.
 | Active axes | 252 |
 | Masked-loss axes | 187 (142 nutrition, 45 food-metabolome) |
 | Source-free validation candidate cells | 268,842 |
-| Test opened | No |
+| Complete test | 659 profiles, 19,690 profile-axis masks, 187 axes |
 
 ## V9 model
 
@@ -55,7 +56,7 @@ family for each target axis. This run uses 20 trees, depth 12, 0.35 feature
 subsampling, minimum leaf size 5, and a deterministic cap of 5,000 train
 profiles per axis; all sparse axes retain their complete training support.
 
-## Results
+## Validation Results
 
 | Method | Macro log-MAE | Macro log-RMSE | Macro raw MAE (g/100 g) |
 | --- | ---: | ---: | ---: |
@@ -71,9 +72,26 @@ profiles per axis; all sparse axes retain their complete training support.
 
 RF is lower by 17.5% in macro log-MAE relative to V9
 (`(0.07572 - 0.06258) / 0.07572`). This is a validation result only, not a
-claim about the untouched test panel. The experiment shows that removing source
-from the encoder and equalizing source-level supervision is feasible, but does
-not by itself surpass a strong tabular baseline.
+claim that would support later model selection. The experiment shows that
+removing source from the encoder and equalizing source-level supervision is
+feasible, but does not by itself surpass a strong tabular baseline.
+
+## One-Time Complete-Test Baseline
+
+The validation-selected checkpoint was then evaluated once. Both methods use
+the same 19,690 profile-axis jobs and 16,017 source-free candidate food-axis
+cells, cover all 187 axes, receive no source input, and use the same equal-source
+offline aggregation.
+
+| Method | Macro log-MAE | Macro log-RMSE | Macro raw MAE (g/100 g) |
+| --- | ---: | ---: | ---: |
+| FoodNutriGPT V9, source-free base | 0.09263 | 0.26664 | 0.60152 |
+| Random Forest, source-free | **0.07987** | **0.22497** | **0.46760** |
+
+On nutrition axes, V9 has log-MAE `0.10853` and RF `0.09201`; on food-metabolome
+axes, V9 has `0.04245` and RF `0.04158`. RF is lower by 13.8% relative to V9 on
+the overall complete-test macro log-MAE. No subsequent candidate may use this
+test result for selection; all optimization below returns to validation only.
 
 ## Reproduction
 
@@ -83,6 +101,8 @@ python scripts/evaluate_global_foodnutrigpt_v9_validation.py
 python scripts/evaluate_global_foodnutrigpt_v9_rf_baseline.py \
   --output-dir output/global_foodnutrigpt_v9_source_calibrated_rf20_max5000_validation \
   --trees 20 --max-train-rows-per-axis 5000
+python scripts/evaluate_global_foodnutrigpt_v9_complete_test.py
+python scripts/evaluate_global_foodnutrigpt_v9_complete_test_rf.py
 ```
 
 Generated artifacts are intentionally excluded from Git because they include
