@@ -43,6 +43,7 @@ MLP/Transformer 训练随机隐藏约 30% 已观测家族；树模型逐轴隐�
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/audit_foodnutrigpt_v9_r0_sources.py --output-dir reports/v9_r0_sources_v1
+.\.venv\Scripts\python.exe scripts/audit_foodnutrigpt_v9_r0_text.py --output-dir reports/v9_r0_text_v1
 .\.venv\Scripts\python.exe scripts/diagnose_foodnutrigpt_v9_r0.py --output-dir reports/v9_r0_diagnostics_v1
 .\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py --checkpoint output/v9_r0/name_mlp8_quarantined/best_model.pt --output-dir output/v9_r0/retrieval_name_mlp_v1
 .\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py --method ridge_to_text --output-dir output/v9_r0/retrieval_ridge_v1

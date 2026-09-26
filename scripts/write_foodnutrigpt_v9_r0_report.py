@@ -27,6 +27,7 @@ def main():
     support=pd.read_csv(ROOT/"reports/v9_r0_diagnostics_v1/support.csv")
     data=read(ROOT/"data/processed/foodnutrigpt_v9_r0_v1/manifest.json")
     reproducibility=read(analysis/"reproducibility.json")
+    text_audit=read(ROOT/"reports/v9_r0_text_v1/summary.json")
     summary={"version":"V9-R0","status":"exploration_complete_confirmation_incomplete","milestone_reached":False,
         "model_results":rows.to_dict("records"),"paired_intervals":intervals,"retrieval":retrieval,"source_probes":source,
         "sensitivity":sensitivity,"diagnostics":diagnostics,"complete_test_opened":False,
@@ -68,6 +69,8 @@ def main():
 隔离视图移除 {data['quarantine_cells']} 个疑似尺度冲突单元，其中训练 {data['training_quarantine_cells']} 个、验证 {data['quarantine_cells']-data['training_quarantine_cells']} 个，涉及 {data['quarantine_observations']} 条原始记录；所有标记来自 FooDB。规则只检查同档案同轴正值极值是否相差 10³/10⁶ 倍，不是完整错误检测器，也不判断哪条正确。含异常的视图另存；两视图使用相同的隔离训练尺度，避免敏感性分析同时改变标尺。
 
 名称仅取 `original_name`，重新生成固定 MiniLM revision 的缓存；原 384 维向量保留，本轮各模型共同使用仅在训练集拟合的 32 维 PCA（解释方差约54.52%）。这是一项容量限制，不能将本轮名称结果视为编码器能力上限。文本内容、训练划分、模型修订和缓存文件均有指纹。
+
+实际名称token长度审计：最长{text_audit['max_tokens']}，中位数{text_audit['median_tokens']}，超过缓存128-token上限的唯一名称{text_audit['truncated_at_128']}个。缓存与数值数据版本的关联通过检查点记录的两份manifest哈希联合验证。
 
 评价标签、家族遮蔽、查询轴、可见上下文和评分权重由统一模块拥有。Transformer 输入固定 252 轴网格，未观测与隐藏位置均采用同一遮蔽值；标签存在性不决定查询 token，避免旧可变 token 列表和256上限的影响。原训练集中有 {data['train_profiles_above_legacy_256_cap']} 个档案超过该上限。
 
