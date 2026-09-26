@@ -48,6 +48,7 @@ MLP/Transformer 训练随机隐藏约 30% 已观测家族；树模型逐轴隐�
 .\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py --checkpoint output/v9_r0/name_mlp8_quarantined/best_model.pt --output-dir output/v9_r0/retrieval_name_mlp_v1
 .\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py --method ridge_to_text --output-dir output/v9_r0/retrieval_ridge_v1
 .\.venv\Scripts\python.exe scripts/analyze_foodnutrigpt_v9_r0.py --output-dir reports/v9_r0_analysis_v1
+.\.venv\Scripts\python.exe scripts/uncertainty_foodnutrigpt_v9_r0.py --output-dir reports/v9_r0_axis_uncertainty_v1
 ```
 
 配对区间以整个名称候选组为抽样单位，组内所有营养轴一起重采样，再重新计算逐轴宏平均。它不包含训练种子方差，也不能补救错误标签。原始预测、疑似错误记录、逐组误差和检索排名只保存在本地忽略目录中。

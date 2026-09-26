@@ -1,62 +1,4 @@
-"""Publish the local R0 research record from completed numerical artifacts."""
-import json
-from pathlib import Path
-import sys
-import subprocess
-import pandas as pd
-ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/"src"))
-from foodcomp.research_r0 import write_json,digest
-
-def read(path):return json.loads(path.read_text(encoding="utf-8"))
-
-def main():
-    directory=ROOT/"experiments/foodnutrigpt_v9_research/r0"
-    destination=directory/"README.md"
-    if destination.exists():raise FileExistsError(destination)
-    analysis=ROOT/"reports/v9_r0_analysis_v1"
-    runs=read(analysis/"run_inventory.json")
-    if any(r["status"]!="complete" for r in runs):raise ValueError("All attempted model runs must finish or have an explicit failure report before closing this exploration.")
-    rows=pd.read_csv(analysis/"results.csv")
-    assert "rf200_quarantined_completion" in set(rows.run)
-    assert "v8_optimized20_quarantined" in set(rows.run)
-    intervals=read(analysis/"paired_intervals.json")
-    sensitivity=read(analysis/"sensitivity.json")
-    diagnostics=read(ROOT/"reports/v9_r0_diagnostics_v1/diagnostics.json")
-    retrieval={name:read(ROOT/f"output/v9_r0/{name}/metrics.json") for name in ["retrieval_name_mlp_v1","retrieval_ridge_v1"]}
-    source=read(ROOT/"reports/v9_r0_sources_v1/source_probes.json")
-    support=pd.read_csv(ROOT/"reports/v9_r0_diagnostics_v1/support.csv")
-    data=read(ROOT/"data/processed/foodnutrigpt_v9_r0_v1/manifest.json")
-    reproducibility=read(analysis/"reproducibility.json")
-    text_audit=read(ROOT/"reports/v9_r0_text_v1/summary.json")
-    report_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
-    records=rows.to_dict("records")
-    for record in records:
-        # Tree/direct regression models have no presence head: this diagnostic is not applicable.
-        # Do not suppress a nonfinite primary/error metric; strict JSON still rejects those.
-        if "presence_brier" in record and pd.isna(record["presence_brier"]):record["presence_brier"]=None
-    summary={"version":"V9-R0","status":"exploration_complete_confirmation_incomplete","milestone_reached":False,
-        "model_results":records,"paired_intervals":intervals,"retrieval":retrieval,"source_probes":source,
-        "analysis_code_commit":reproducibility["code_commit"],"report_code_commit":report_commit,"report_generator_sha256":digest(Path(__file__)),
-        "sensitivity":sensitivity,"diagnostics":diagnostics,"complete_test_opened":False,
-        "api_checks":read(ROOT/"reports/v9_r0_api_checks.json"),
-        "model_artifact_hashes":{str(f.relative_to(ROOT)):digest(f) for pattern in ["output/v9_r0/*/*.pt","output/v9_r0/*/ridge.npz"] for f in ROOT.glob(pattern)}}
-    write_json(directory/"results_summary.json",summary)
-    table="| 配置 | 任务 | 视图 | 142轴主指标↓ | 原log-MAE↓ | 正值误差↓ | 显式零误差↓ |\n|---|---|---|---:|---:|---:|---:|\n"
-    for r in rows.to_dict("records"):
-        table+=f"| {r['run']} | {r['mode']} | {r['view']} | {r['scaled_log_mae']:.6f} | {r['log_mae']:.6f} | {r['positive_scaled_log_mae']:.6f} | {r['zero_scaled_log_mae']:.6f} |\n"
-    ci="| 与 XGB300 比较的补全模型 | 主指标相对改善 | 食品组配对95%区间 |\n|---|---:|---:|\n"
-    for name,result in intervals.items():
-        x=result['scaled_log_mae'];lo,hi=x['relative_improvement_95_interval']
-        ci+=f"| {name} | {100*x['relative_improvement']:.2f}% | [{100*lo:.2f}%, {100*hi:.2f}%] |\n"
-    retr="| 检索基线 | 可见营养保留比例 | Recall@1 | Recall@5 | Recall@10 | MRR |\n|---|---:|---:|---:|---:|---:|\n"
-    for name,result in retrieval.items():
-        for m in result["metrics"]:
-            retr+=f"| {name} | {m['visible_fraction']:.0%} | {m['recall_at_1']:.4%} | {m['recall_at_5']:.4%} | {m['recall_at_10']:.4%} | {m['mrr']:.6f} |\n"
-    seconds=sum(r['elapsed_seconds'] for r in runs)
-    costs="| 运行 | 分钟 | 验证选择epoch |\n|---|---:|---:|\n"
-    for r in runs:costs+=f"| {Path(r['directory']).name} | {r['elapsed_seconds']/60:.2f} | {r.get('best_epoch','—')} |\n"
-    text=f"""# V9-R0：共同协议与第一轮探索记录
+# V9-R0：共同协议与第一轮探索记录
 
 **版本决定：探索完成，确认未完成；保持“研究中”。没有达到超越充分调参 RF/XGBoost 的里程碑。**
 
@@ -70,17 +12,17 @@ def main():
 
 ## 2. 父版本、改动与控制
 
-父提交为 `1289d38129dffb7d3490239fb516328fa5c905e3`。冻结 V8 包的 10 个文件 SHA256 已在构建时和真实推理验收时复核一致。新视图为 `foodnutrigpt_v9_r0_v1`，只含 64,700 个训练档案和 11,175 个验证档案，共 {data['source_tokens']:,} 条原始观测、{data['canonical_cells']:,} 个档案×营养单元。训练与验证的完全同名候选组隔离通过。
+父提交为 `1289d38129dffb7d3490239fb516328fa5c905e3`。冻结 V8 包的 10 个文件 SHA256 已在构建时和真实推理验收时复核一致。新视图为 `foodnutrigpt_v9_r0_v1`，只含 64,700 个训练档案和 11,175 个验证档案，共 2,221,276 条原始观测、2,153,204 个档案×营养单元。训练与验证的完全同名候选组隔离通过。
 
 档案内使用原始 g/100g 的中位数；原始观测保留，跨来源标签不自动合并。训练正值典型尺度由候选组内来源等权的加权中位数拟合，验证与测试不参与。评分先在候选组×轴×来源内取档案中位数，再计算来源误差并等权平均，最后按候选组及营养轴宏平均。
 
-隔离视图移除 {data['quarantine_cells']} 个疑似尺度冲突单元，其中训练 {data['training_quarantine_cells']} 个、验证 {data['quarantine_cells']-data['training_quarantine_cells']} 个，涉及 {data['quarantine_observations']} 条原始记录；所有标记来自 FooDB。规则只检查同档案同轴正值极值是否相差 10³/10⁶ 倍，不是完整错误检测器，也不判断哪条正确。含异常的视图另存；两视图使用相同的隔离训练尺度，避免敏感性分析同时改变标尺。
+隔离视图移除 64 个疑似尺度冲突单元，其中训练 53 个、验证 11 个，涉及 145 条原始记录；所有标记来自 FooDB。规则只检查同档案同轴正值极值是否相差 10³/10⁶ 倍，不是完整错误检测器，也不判断哪条正确。含异常的视图另存；两视图使用相同的隔离训练尺度，避免敏感性分析同时改变标尺。
 
 名称仅取 `original_name`，重新生成固定 MiniLM revision 的缓存；原 384 维向量保留，本轮各模型共同使用仅在训练集拟合的 32 维 PCA（解释方差约54.52%）。这是一项容量限制，不能将本轮名称结果视为编码器能力上限。文本内容、训练划分、模型修订和缓存文件均有指纹。
 
-实际名称token长度审计：最长{text_audit['max_tokens']}，中位数{text_audit['median_tokens']}，超过缓存128-token上限的唯一名称{text_audit['truncated_at_128']}个。缓存与数值数据版本的关联通过检查点记录的两份manifest哈希联合验证。
+实际名称token长度审计：最长54，中位数12.0，超过缓存128-token上限的唯一名称0个。缓存与数值数据版本的关联通过检查点记录的两份manifest哈希联合验证。
 
-评价标签、家族遮蔽、查询轴、可见上下文和评分权重由统一模块拥有。Transformer 输入固定 252 轴网格，未观测与隐藏位置均采用同一遮蔽值；标签存在性不决定查询 token，避免旧可变 token 列表和256上限的影响。原训练集中有 {data['train_profiles_above_legacy_256_cap']} 个档案超过该上限。
+评价标签、家族遮蔽、查询轴、可见上下文和评分权重由统一模块拥有。Transformer 输入固定 252 轴网格，未观测与隐藏位置均采用同一遮蔽值；标签存在性不决定查询 token，避免旧可变 token 列表和256上限的影响。原训练集中有 5 个档案超过该上限。
 
 **仍需控制的训练差异：** 树模型逐目标家族训练；神经网络随机遮蔽约30%已观测家族。两者评价完全相同，训练任务采样不完全相同。树模型按轴拟合，神经网络共享多轴目标，优化器及预算也不同。因此本轮是可比评价的起点，不是纯架构因果实验。V8 优化配置同时采用已有的20 epoch和amount=3，不能与V9的差异作单因素归因。
 
@@ -88,36 +30,85 @@ def main():
 
 实际执行命令和三类接口示例见 [REPRODUCE.md](REPRODUCE.md)。所有筛选训练使用 seed `20260922`；尚未运行确认种子 `20260923、20260924`。GPU为 RTX 5070 Ti 16 GB，Python3.10.19，PyTorch2.7.1+cu128；树模型使用全部合格训练行，没有历史每轴5000行上限。
 
-本轮实现的本地代码提交：`{reproducibility['code_commit']}`。运行期间使用的具体源码哈希另保存在各run manifest；报告在实现提交之后生成。
-报告生成器提交：`{report_commit}`。没有存在概率头的方法，其presence-Brier字段为不适用的null；主指标和误差中的非有限值仍会报错，未用null掩盖。
+本轮实现的本地代码提交：`cfefb32d884668c6c58203b516f66ece94ce2bd9`。运行期间使用的具体源码哈希另保存在各run manifest；报告在实现提交之后生成。
+报告生成器提交：`9e5a395446088412e1493c1e4eb5222c7a194a5e`。没有存在概率头的方法，其presence-Brier字段为不适用的null；主指标和误差中的非有限值仍会报错，未用null掩盖。
 
 本轮RF预算为1个配置（200树），XGBoost补全预算为2个配置（300树深6、600树深4），另有name-only配置。**这仍不是充分调参的最终强基线。** 本轮12个模型配置达到筛选候选上限，确认流程需在后续新版本登记预算。
 
-数据 manifest SHA256：`{digest(ROOT/'data/processed/foodnutrigpt_v9_r0_v1/manifest.json')}`。
-评分协议 SHA256：`{data['protocol_sha256']}`。
-验证任务清单 SHA256：`{data['artifact_hashes']['quarantined_validation_jobs.parquet']}`。
+数据 manifest SHA256：`48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923`。
+评分协议 SHA256：`66d69f1a30276a461e4c958103fe82ecb1f864b8093bfd26d90c591bab05d676`。
+验证任务清单 SHA256：`a295dd3bc361e704eab07fbf3a19cc05490a36855385b793a9b07584fe55a1e5`。
 
-父提交、未提交改动清单、代码哈希、实际依赖、所有运行配置和模型哈希保存在本地 `reports/v9_r0_analysis_v1/reproducibility.json`、`run_inventory.json` 及本目录 `results_summary.json`。数值预测、原始值和模型文件不进入公开实验文档。各运行耗时之和约 {seconds/3600:.2f} 小时；任务有并行，此数不是总墙钟时间或GPU小时。
+父提交、未提交改动清单、代码哈希、实际依赖、所有运行配置和模型哈希保存在本地 `reports/v9_r0_analysis_v1/reproducibility.json`、`run_inventory.json` 及本目录 `results_summary.json`。数值预测、原始值和模型文件不进入公开实验文档。各运行耗时之和约 1.26 小时；任务有并行，此数不是总墙钟时间或GPU小时。
 
-{costs}
+| 运行 | 分钟 | 验证选择epoch |
+|---|---:|---:|
+| median_inclusive | 0.02 | — |
+| median_quarantined | 0.02 | — |
+| mlp8_quarantined | 1.13 | 8 |
+| name_knn_quarantined | 0.15 | — |
+| name_mlp8_quarantined | 0.33 | 8 |
+| numeric_mlp8_quarantined | 1.09 | 8 |
+| rf200_quarantined_completion | 35.99 | — |
+| v8_optimized20_quarantined | 15.64 | 18 |
+| v9_8_quarantined | 6.70 | 8 |
+| xgb300_quarantined_completion | 4.55 | — |
+| xgb300_quarantined_name_only | 3.80 | — |
+| xgb600d4_quarantined_completion | 6.13 | — |
+
 
 ## 4. 完整结果与不确定性
 
 以下均为验证集单种子探索，越低越好；原始单位 MAE、45轴结果、187轴结果及全部逐轴指标另存机器可读文件。name-only MLP 不使用营养上下文，因此其 completion 分数与 name-only 相同；numeric MLP 的 name-only 行只是“空输入”对照，不表示它能理解名称。
 
-{table}
+| 配置 | 任务 | 视图 | 142轴主指标↓ | 原log-MAE↓ | 正值误差↓ | 显式零误差↓ |
+|---|---|---|---:|---:|---:|---:|
+| median_inclusive | completion | inclusive | 0.478441 | 0.182329 | 0.691477 | 0.388843 |
+| median_quarantined | completion | quarantined | 0.478360 | 0.182288 | 0.691349 | 0.388843 |
+| mlp8_quarantined | completion | quarantined | 0.253004 | 0.079994 | 0.351110 | 0.179839 |
+| mlp8_quarantined | name_only | quarantined | 0.491161 | 0.178283 | 0.578500 | 0.449446 |
+| name_knn_quarantined | name_only | quarantined | 0.261755 | 0.088908 | 0.337736 | 0.245147 |
+| name_mlp8_quarantined | completion | quarantined | 0.316214 | 0.111803 | 0.409852 | 0.282263 |
+| name_mlp8_quarantined | name_only | quarantined | 0.316214 | 0.111803 | 0.409852 | 0.282263 |
+| numeric_mlp8_quarantined | completion | quarantined | 0.263337 | 0.083319 | 0.363909 | 0.185042 |
+| numeric_mlp8_quarantined | name_only | quarantined | 0.645833 | 0.241423 | 0.719454 | 0.771560 |
+| rf200_quarantined_completion | completion | quarantined | 0.197477 | 0.058735 | 0.261034 | 0.174809 |
+| v8_optimized20_quarantined | completion | quarantined | 0.252575 | 0.077207 | 0.335814 | 0.190780 |
+| v8_optimized20_quarantined | name_only | quarantined | 0.456488 | 0.158816 | 0.505655 | 0.534383 |
+| v9_8_quarantined | completion | quarantined | 0.309307 | 0.101804 | 0.411591 | 0.217801 |
+| v9_8_quarantined | name_only | quarantined | 0.446288 | 0.161236 | 0.528949 | 0.535304 |
+| xgb300_quarantined_completion | completion | quarantined | 0.191561 | 0.057514 | 0.252084 | 0.158270 |
+| xgb300_quarantined_name_only | name_only | quarantined | 0.300093 | 0.105170 | 0.379913 | 0.302279 |
+| xgb600d4_quarantined_completion | completion | quarantined | 0.206917 | 0.062315 | 0.271165 | 0.172250 |
+
 
 配对重采样每次抽取整个食品候选组，组内全部营养轴一起保留，重新计算逐轴宏平均；1000次，seed20260922。正的相对改善表示优于XGB300。这些区间只反映给定模型的验证食品采样波动，**不包含训练种子波动、标签错误和调参选择偏差**，不能用于最终优越性声明。原log-MAE区间也已存入 `results_summary.json`。
 
-{ci}
+| 与 XGB300 比较的补全模型 | 主指标相对改善 | 食品组配对95%区间 |
+|---|---:|---:|
+| median_quarantined | -149.72% | [-159.13%, -139.97%] |
+| mlp8_quarantined | -32.07% | [-35.48%, -28.39%] |
+| name_mlp8_quarantined | -65.07% | [-69.03%, -60.57%] |
+| numeric_mlp8_quarantined | -37.47% | [-41.53%, -33.52%] |
+| rf200_quarantined_completion | -3.09% | [-4.59%, -1.27%] |
+| v8_optimized20_quarantined | -31.85% | [-35.30%, -28.22%] |
+| v9_8_quarantined | -61.47% | [-66.44%, -56.61%] |
+| xgb600d4_quarantined_completion | -8.02% | [-8.62%, -7.47%] |
+
 
 检索固定49,913个候选名称，包含验证未见名称的文本，但不使用候选真实营养档案。查询营养分支不接收名称。两种基线分别为“名称MLP预测营养后匹配”及“营养到名称PCA空间的Ridge映射”。仅对至少3个已观测营养轴的查询评分；完整输入10,479个档案，30%保留输入8,610个档案。因此两个保留比例的差异包含查询覆盖变化，不能直接当作缺失比例的纯因果效应。
 
-{retr}
+| 检索基线 | 可见营养保留比例 | Recall@1 | Recall@5 | Recall@10 | MRR |
+|---|---:|---:|---:|---:|---:|
+| retrieval_name_mlp_v1 | 30% | 0.1316% | 0.7670% | 1.3748% | 0.007254 |
+| retrieval_name_mlp_v1 | 100% | 0.2703% | 1.6644% | 3.0482% | 0.013934 |
+| retrieval_ridge_v1 | 30% | 0.0496% | 0.1270% | 0.2312% | 0.001648 |
+| retrieval_ridge_v1 | 100% | 0.2327% | 1.4363% | 2.3113% | 0.012307 |
+
 
 正确答案仅按完全相同原名匹配；尚无经核实的别名映射，语义等价名称可能被当作错误。营养本身也未必唯一识别食物名称。上述结果是严格原名检索的起点，不是开放名称生成能力的证明。
 
-逐轴支持数和显式零/正值支持保存在 `reports/v9_r0_diagnostics_v1/support.csv`；187个监督轴中，验证候选组支持少于30的轴有 {int((support.candidate_support<30).sum())} 个，最少 {int(support.candidate_support.min())} 个。分来源结果在 `reports/v9_r0_analysis_v1/source_metrics.csv`，各来源覆盖的轴不同，不能直接作来源质量排名。
+逐轴支持数和显式零/正值支持保存在 `reports/v9_r0_diagnostics_v1/support.csv`；187个监督轴中，验证候选组支持少于30的轴有 42 个，最少 4 个。分来源结果在 `reports/v9_r0_analysis_v1/source_metrics.csv`，各来源覆盖的轴不同，不能直接作来源质量排名。
 
 ## 5. 机制诊断与失败记录
 
@@ -158,8 +149,3 @@ R0科学冻结仍需原始FooDB证据或有充分依据的研究范围限定、�
 5. R3–R6按后续证据进入：混合缺失模式/名称任务比例，表征探针与少样本迁移，名称—营养对比学习，来源/类别留出。当前历史测试集继续关闭；最终泛化需另行登记独立来源或外部数据。
 
 机器可读汇总：[results_summary.json](results_summary.json)。冻结协议与运行命令：[REPRODUCE.md](REPRODUCE.md)。
-"""
-    destination.write_text(text,encoding="utf-8")
-    print(destination)
-
-if __name__=="__main__":main()

@@ -36,3 +36,33 @@ def paired_interval(baseline, candidate, axes, metric="scaled_log_mae", repeats=
         "relative_improvement_95_interval":np.quantile(relative,[.025,.975]).tolist(),
         "candidate_minus_baseline_95_interval":np.quantile(scores[:,1]-scores[:,0],[.025,.975]).tolist(),
         "scope":"validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"}
+
+
+def paired_axis_intervals(baseline, candidate, repeats=1000, seed=20260922):
+    keys=["exact_name_group_id","axis_index"]
+    joined=baseline[keys+["scaled_log_mae"]].merge(candidate[keys+["scaled_log_mae"]],on=keys,
+        suffixes=("_base","_candidate"),how="outer",validate="one_to_one",indicator=True)
+    if not joined._merge.eq("both").all():raise ValueError("Different per-axis bootstrap panels.")
+    values=joined[["scaled_log_mae_base","scaled_log_mae_candidate"]].to_numpy()
+    if not np.isfinite(values).all():raise ValueError("Nonfinite observed errors.")
+    groups,gi=np.unique(joined.exact_name_group_id,return_inverse=True)
+    axes,ai=np.unique(joined.axis_index,return_inverse=True)
+    shape=(len(groups),len(axes))
+    support=coo_matrix((np.ones(len(joined)),(gi,ai)),shape=shape).tocsr()
+    difference=coo_matrix((values[:,1]-values[:,0],(gi,ai)),shape=shape).tocsr()
+    rng=np.random.default_rng(seed);samples=[];valid=[]
+    for start in range(0,repeats,32):
+        w=rng.multinomial(len(groups),np.full(len(groups),1/len(groups)),size=min(32,repeats-start))
+        den=w@support;num=w@difference
+        samples.append(np.divide(num,den,out=np.zeros_like(num),where=den>0));valid.append(den>0)
+    samples=np.concatenate(samples);valid=np.concatenate(valid)
+    counts=np.asarray(support.sum(0)).ravel()
+    point=np.asarray(difference.sum(0)).ravel()/counts
+    rows=[]
+    for i,axis in enumerate(axes):
+        kept=samples[valid[:,i],i]
+        lo,hi=np.quantile(kept,[.025,.975])
+        rows.append({"axis_index":int(axis),"candidate_support":int(counts[i]),"candidate_minus_baseline":float(point[i]),
+            "difference_95_low":float(lo),"difference_95_high":float(hi),"valid_resamples":len(kept),
+            "resamples_without_axis_support":int(repeats-len(kept)),"sparse_support_below_30":bool(counts[i]<30)})
+    return pd.DataFrame(rows)

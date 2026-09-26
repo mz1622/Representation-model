@@ -1,0 +1,818 @@
+{
+  "version": "V9-R0",
+  "status": "exploration_complete_confirmation_incomplete",
+  "milestone_reached": false,
+  "model_results": [
+    {
+      "run": "median_inclusive",
+      "mode": "completion",
+      "view": "inclusive",
+      "elapsed_seconds": 1.2179999999998472,
+      "axes": 142,
+      "scaled_log_mae": 0.4784412118664404,
+      "log_mae": 0.1823289585754975,
+      "log_mse": 0.1963775804260732,
+      "raw_mae": 0.9811621714753016,
+      "positive_scaled_log_mae": 0.6914770570640351,
+      "zero_scaled_log_mae": 0.3888427920375354,
+      "log_rmse_root_mean_axis_mse": 0.4431451008711179,
+      "metabolome_scaled_log_mae": 0.7895948921987399,
+      "all_187_log_mae": 0.1503703558365747,
+      "presence_brier": null
+    },
+    {
+      "run": "median_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 1.344000000000051,
+      "axes": 142,
+      "scaled_log_mae": 0.4783603233921125,
+      "log_mae": 0.1822876253939806,
+      "log_mse": 0.1962337901027855,
+      "raw_mae": 0.9807849177900388,
+      "positive_scaled_log_mae": 0.6913494655705245,
+      "zero_scaled_log_mae": 0.3888427920375354,
+      "log_rmse_root_mean_axis_mse": 0.4429828327404861,
+      "metabolome_scaled_log_mae": 0.7895948921987399,
+      "all_187_log_mae": 0.1503389691425886,
+      "presence_brier": null
+    },
+    {
+      "run": "mlp8_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 67.86000000000013,
+      "axes": 142,
+      "scaled_log_mae": 0.2530042810077303,
+      "log_mae": 0.0799937163082675,
+      "log_mse": 0.0535489071431246,
+      "raw_mae": 0.4814737295962673,
+      "positive_scaled_log_mae": 0.3511101827933671,
+      "zero_scaled_log_mae": 0.17983938258527,
+      "log_rmse_root_mean_axis_mse": 0.2314063679830886,
+      "metabolome_scaled_log_mae": 0.6282693027482545,
+      "all_187_log_mae": 0.0687053508074689,
+      "presence_brier": null
+    },
+    {
+      "run": "mlp8_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 67.86000000000013,
+      "axes": 142,
+      "scaled_log_mae": 0.4911611429115414,
+      "log_mae": 0.1782829548946722,
+      "log_mse": 0.1832434355924465,
+      "raw_mae": 1.2992448294734014,
+      "positive_scaled_log_mae": 0.5784999293651704,
+      "zero_scaled_log_mae": 0.449446079589114,
+      "log_rmse_root_mean_axis_mse": 0.428069428472119,
+      "metabolome_scaled_log_mae": 0.9600411264922468,
+      "all_187_log_mae": 0.1498470238620711,
+      "presence_brier": null
+    },
+    {
+      "run": "name_knn_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 9.077999999999976,
+      "axes": 142,
+      "scaled_log_mae": 0.261754652962876,
+      "log_mae": 0.0889077748712783,
+      "log_mse": 0.0678924977943234,
+      "raw_mae": 0.5025593809030541,
+      "positive_scaled_log_mae": 0.3377364493909676,
+      "zero_scaled_log_mae": 0.2451469881718361,
+      "log_rmse_root_mean_axis_mse": 0.2605618886067636,
+      "metabolome_scaled_log_mae": 0.7005522877870433,
+      "all_187_log_mae": 0.0773113488179696,
+      "presence_brier": null
+    },
+    {
+      "run": "name_mlp8_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 19.5,
+      "axes": 142,
+      "scaled_log_mae": 0.3162139501274411,
+      "log_mae": 0.1118028231040977,
+      "log_mse": 0.0906205244699286,
+      "raw_mae": 0.6569534791110433,
+      "positive_scaled_log_mae": 0.40985210479846,
+      "zero_scaled_log_mae": 0.282262991472862,
+      "log_rmse_root_mean_axis_mse": 0.301032430927182,
+      "metabolome_scaled_log_mae": 0.6471969400121114,
+      "all_187_log_mae": 0.0948247832264936,
+      "presence_brier": null
+    },
+    {
+      "run": "name_mlp8_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 19.5,
+      "axes": 142,
+      "scaled_log_mae": 0.3162139501245801,
+      "log_mae": 0.1118028231004747,
+      "log_mse": 0.0906205244681531,
+      "raw_mae": 0.6569534790980691,
+      "positive_scaled_log_mae": 0.409852104795587,
+      "zero_scaled_log_mae": 0.2822629914795345,
+      "log_rmse_root_mean_axis_mse": 0.301032430924233,
+      "metabolome_scaled_log_mae": 0.6471969452002133,
+      "all_187_log_mae": 0.094824783227299,
+      "presence_brier": null
+    },
+    {
+      "run": "numeric_mlp8_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 65.25,
+      "axes": 142,
+      "scaled_log_mae": 0.2633374179770331,
+      "log_mae": 0.0833194526614947,
+      "log_mse": 0.055552871023788,
+      "raw_mae": 0.5019464981853144,
+      "positive_scaled_log_mae": 0.3639092688858622,
+      "zero_scaled_log_mae": 0.1850416654547749,
+      "log_rmse_root_mean_axis_mse": 0.235696565574868,
+      "metabolome_scaled_log_mae": 0.6491113199539386,
+      "all_187_log_mae": 0.0722630867208102,
+      "presence_brier": null
+    },
+    {
+      "run": "numeric_mlp8_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 65.25,
+      "axes": 142,
+      "scaled_log_mae": 0.6458330945709202,
+      "log_mae": 0.2414234523257493,
+      "log_mse": 0.3027787067899031,
+      "raw_mae": 1.3953949316892171,
+      "positive_scaled_log_mae": 0.7194542957950097,
+      "zero_scaled_log_mae": 0.7715603050741052,
+      "log_rmse_root_mean_axis_mse": 0.5502533114756358,
+      "metabolome_scaled_log_mae": 1.0304872379636545,
+      "all_187_log_mae": 0.1968799978065459,
+      "presence_brier": null
+    },
+    {
+      "run": "rf200_quarantined_completion",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 2159.672,
+      "axes": 142,
+      "scaled_log_mae": 0.1974774628190808,
+      "log_mae": 0.0587349757252516,
+      "log_mse": 0.0353111901399299,
+      "raw_mae": 0.3397461892779111,
+      "positive_scaled_log_mae": 0.2610342972880156,
+      "zero_scaled_log_mae": 0.1748092987260439,
+      "log_rmse_root_mean_axis_mse": 0.1879127194735096,
+      "metabolome_scaled_log_mae": 0.6594117754805349,
+      "all_187_log_mae": 0.0531402668172848,
+      "presence_brier": null
+    },
+    {
+      "run": "v8_optimized20_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 938.4850000000006,
+      "axes": 142,
+      "scaled_log_mae": 0.2525754952939051,
+      "log_mae": 0.0772074190585275,
+      "log_mse": 0.0506133541824849,
+      "raw_mae": 0.4990885672806245,
+      "positive_scaled_log_mae": 0.3358136988264559,
+      "zero_scaled_log_mae": 0.1907799750116252,
+      "log_rmse_root_mean_axis_mse": 0.2249741189170099,
+      "metabolome_scaled_log_mae": 0.7258790191193686,
+      "all_187_log_mae": 0.0683247020353209,
+      "presence_brier": 0.0659573674201965
+    },
+    {
+      "run": "v8_optimized20_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 938.4850000000006,
+      "axes": 142,
+      "scaled_log_mae": 0.4564884802603575,
+      "log_mae": 0.1588159451323784,
+      "log_mse": 0.1479590900328752,
+      "raw_mae": 0.928367254099141,
+      "positive_scaled_log_mae": 0.5056545746788137,
+      "zero_scaled_log_mae": 0.5343829587810682,
+      "log_rmse_root_mean_axis_mse": 0.3846545073606641,
+      "metabolome_scaled_log_mae": 0.9510578011650068,
+      "all_187_log_mae": 0.1345090042352345,
+      "presence_brier": 0.0969957411289215
+    },
+    {
+      "run": "v9_8_quarantined",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 401.90700000000015,
+      "axes": 142,
+      "scaled_log_mae": 0.3093066211612579,
+      "log_mae": 0.1018041228369385,
+      "log_mse": 0.0848408314493284,
+      "raw_mae": 0.6562737878544956,
+      "positive_scaled_log_mae": 0.4115910048814529,
+      "zero_scaled_log_mae": 0.2178007099889936,
+      "log_rmse_root_mean_axis_mse": 0.291274495020296,
+      "metabolome_scaled_log_mae": 0.8297294117702857,
+      "all_187_log_mae": 0.0884349994267506,
+      "presence_brier": 0.0718321725726127
+    },
+    {
+      "run": "v9_8_quarantined",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 401.90700000000015,
+      "axes": 142,
+      "scaled_log_mae": 0.4462876041764101,
+      "log_mae": 0.1612356592698598,
+      "log_mse": 0.1454545047558118,
+      "raw_mae": 0.9616596912562824,
+      "positive_scaled_log_mae": 0.5289491070799494,
+      "zero_scaled_log_mae": 0.5353039165607002,
+      "log_rmse_root_mean_axis_mse": 0.3813849823417432,
+      "metabolome_scaled_log_mae": 0.9079871276295642,
+      "all_187_log_mae": 0.1344155012445746,
+      "presence_brier": 0.0972476229071617
+    },
+    {
+      "run": "xgb300_quarantined_completion",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 273.21900000000005,
+      "axes": 142,
+      "scaled_log_mae": 0.1915614456002484,
+      "log_mae": 0.0575135519192501,
+      "log_mse": 0.0345808292346989,
+      "raw_mae": 0.3309385949033099,
+      "positive_scaled_log_mae": 0.252084368468823,
+      "zero_scaled_log_mae": 0.1582695956288425,
+      "log_rmse_root_mean_axis_mse": 0.1859592139010567,
+      "metabolome_scaled_log_mae": 0.6691435805334868,
+      "all_187_log_mae": 0.0522284835602747,
+      "presence_brier": null
+    },
+    {
+      "run": "xgb300_quarantined_name_only",
+      "mode": "name_only",
+      "view": "quarantined",
+      "elapsed_seconds": 228.203,
+      "axes": 142,
+      "scaled_log_mae": 0.3000926352879123,
+      "log_mae": 0.1051700710078628,
+      "log_mse": 0.0817582539151187,
+      "raw_mae": 0.6098740509448072,
+      "positive_scaled_log_mae": 0.3799133285653996,
+      "zero_scaled_log_mae": 0.302278885804222,
+      "log_rmse_root_mean_axis_mse": 0.2859340027263612,
+      "metabolome_scaled_log_mae": 0.7319241616488725,
+      "all_187_log_mae": 0.0904959643830751,
+      "presence_brier": null
+    },
+    {
+      "run": "xgb600d4_quarantined_completion",
+      "mode": "completion",
+      "view": "quarantined",
+      "elapsed_seconds": 367.9070000000006,
+      "axes": 142,
+      "scaled_log_mae": 0.2069166919845259,
+      "log_mae": 0.062314515808933,
+      "log_mse": 0.0381754121301103,
+      "raw_mae": 0.3609995490156716,
+      "positive_scaled_log_mae": 0.2711652212825804,
+      "zero_scaled_log_mae": 0.1722500650901407,
+      "log_rmse_root_mean_axis_mse": 0.1953852914886643,
+      "metabolome_scaled_log_mae": 0.6877723700824163,
+      "all_187_log_mae": 0.0560272268508381,
+      "presence_brier": null
+    }
+  ],
+  "paired_intervals": {
+    "median_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.4783603233921125,
+        "relative_improvement": -1.4971638833335894,
+        "relative_improvement_95_interval": [
+          -1.5912637428904868,
+          -1.3996902782762264
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.27368419151907647,
+          0.29855895720071973
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.1822876253939806,
+        "relative_improvement": -2.16947257317571,
+        "relative_improvement_95_interval": [
+          -2.360322541197442,
+          -2.0019477503317518
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.11914066512328446,
+          0.13052719246893008
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "mlp8_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.2530042810077303,
+        "relative_improvement": -0.32074739890876147,
+        "relative_improvement_95_interval": [
+          -0.3547782278413456,
+          -0.28389078818820973
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.055464608475759555,
+          0.06709661516159157
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.07999371630826754,
+        "relative_improvement": -0.39086725891281837,
+        "relative_improvement_95_interval": [
+          -0.4613646160355707,
+          -0.31959480719461236
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.018978905415246803,
+          0.025791699735362293
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "name_mlp8_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.3162139501274411,
+        "relative_improvement": -0.6507181240807622,
+        "relative_improvement_95_interval": [
+          -0.6903373420617039,
+          -0.6056805139710408
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.11847424642674673,
+          0.13033940549738002
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.11180282310409778,
+        "relative_improvement": -0.9439387652682365,
+        "relative_improvement_95_interval": [
+          -1.0337426379889898,
+          -0.8510494322729906
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.05086068432818018,
+          0.05738446165676242
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "numeric_mlp8_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.26333741797703314,
+        "relative_improvement": -0.37468903072785964,
+        "relative_improvement_95_interval": [
+          -0.41532568542246656,
+          -0.3352306597532018
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.06561810074125976,
+          0.07804198100672993
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.08331945266149472,
+        "relative_improvement": -0.44869252343302324,
+        "relative_improvement_95_interval": [
+          -0.526271485929883,
+          -0.36676428072518225
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.022441198206036326,
+          0.02891433431529403
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "rf200_quarantined_completion": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.19747746281908082,
+        "relative_improvement": -0.030883130999010966,
+        "relative_improvement_95_interval": [
+          -0.04594170370511032,
+          -0.012703564317226365
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.0024256040321585432,
+          0.008753108686018259
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.05873497572525168,
+        "relative_improvement": -0.021237147858932603,
+        "relative_improvement_95_interval": [
+          -0.056555719372429855,
+          0.014959115193221312
+        ],
+        "candidate_minus_baseline_95_interval": [
+          -0.0008976760177156541,
+          0.003209354072183699
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "v8_optimized20_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.2525754952939051,
+        "relative_improvement": -0.31850902723390995,
+        "relative_improvement_95_interval": [
+          -0.35301731866423813,
+          -0.28224644564236473
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.05475963552241527,
+          0.06679292897127584
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.07720741905852753,
+        "relative_improvement": -0.342421333443774,
+        "relative_improvement_95_interval": [
+          -0.40549954832898727,
+          -0.27932805888622797
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.01671086532619268,
+          0.022466863423209055
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "v9_8_quarantined": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.3093066211612579,
+        "relative_improvement": -0.6146600908761193,
+        "relative_improvement_95_interval": [
+          -0.6643720935810771,
+          -0.5661395953904648
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.11050064568616172,
+          0.12486666197859592
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.10180412283693853,
+        "relative_improvement": -0.7700892996466806,
+        "relative_improvement_95_interval": [
+          -0.8647968908178396,
+          -0.6722644439806842
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.04000781769253993,
+          0.048357153185856004
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    },
+    "xgb600d4_quarantined_completion": {
+      "scaled_log_mae": {
+        "metric": "scaled_log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.19156144560024843,
+        "candidate": 0.20691669198452595,
+        "relative_improvement": -0.08015833424185437,
+        "relative_improvement_95_interval": [
+          -0.08620445809846206,
+          -0.0747198565386044
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.014480716611045847,
+          0.016229808038713118
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      },
+      "log_mae": {
+        "metric": "log_mae",
+        "group_count": 7344,
+        "repeats": 1000,
+        "seed": 20260922,
+        "valid_resamples": 1000,
+        "resamples_without_all_axis_support": 0,
+        "baseline": 0.057513551919250165,
+        "candidate": 0.06231451580893309,
+        "relative_improvement": -0.08347535023438546,
+        "relative_improvement_95_interval": [
+          -0.09396765708802285,
+          -0.07285429272954498
+        ],
+        "candidate_minus_baseline_95_interval": [
+          0.004350289420142697,
+          0.005265379611208183
+        ],
+        "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+      }
+    }
+  },
+  "retrieval": {
+    "retrieval_name_mlp_v1": {
+      "metrics": [
+        {
+          "visible_fraction": 0.3,
+          "mrr": 0.007253828140896406,
+          "recall_at_1": 0.0013161969650046454,
+          "recall_at_5": 0.007670073294105502,
+          "recall_at_10": 0.013747806338391658
+        },
+        {
+          "visible_fraction": 1.0,
+          "mrr": 0.013933927155032439,
+          "recall_at_1": 0.0027033380347907853,
+          "recall_at_5": 0.01664416683457586,
+          "recall_at_10": 0.030482235207199948
+        }
+      ],
+      "candidate_count": 49913,
+      "query_profiles": {
+        "0.3": 8610,
+        "1.0": 10479
+      },
+      "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+      "checkpoint_sha256": "c9ad7adda8ac695bc94ce933171f719bc1964792254844dc085453c2ab908c16",
+      "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+      "elapsed_seconds": 2.9850000000001273,
+      "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+      "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+      "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+      "complete_test_opened": false,
+      "scientific_claim_allowed": false
+    },
+    "retrieval_ridge_v1": {
+      "metrics": [
+        {
+          "visible_fraction": 0.3,
+          "mrr": 0.001648481171004116,
+          "recall_at_1": 0.0004955094456488077,
+          "recall_at_5": 0.0012697429544750696,
+          "recall_at_10": 0.002312377413027769
+        },
+        {
+          "visible_fraction": 1.0,
+          "mrr": 0.012306743183345372,
+          "recall_at_1": 0.00232722143864598,
+          "recall_at_5": 0.014362952515279736,
+          "recall_at_10": 0.023112700651487676
+        }
+      ],
+      "candidate_count": 49913,
+      "query_profiles": {
+        "0.3": 8610,
+        "1.0": 10479
+      },
+      "method": "ridge_to_text",
+      "ridge_alpha": 1.0,
+      "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+      "checkpoint_sha256": null,
+      "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+      "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+      "elapsed_seconds": 46.25,
+      "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+      "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+      "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+      "complete_test_opened": false,
+      "scientific_claim_allowed": false
+    }
+  },
+  "source_probes": {
+    "results": [
+      {
+        "input": "name_only",
+        "accuracy": 0.3478299776286353,
+        "balanced_accuracy": 0.3492434310118726,
+        "max_iterations_used": 64
+      },
+      {
+        "input": "observedness_only",
+        "accuracy": 0.97834451901566,
+        "balanced_accuracy": 0.971709404358997,
+        "max_iterations_used": 81
+      }
+    ],
+    "balanced_chance": 0.041666666666666664,
+    "interpretation": "Predictability does not establish leakage: food geography, composition coverage and formatting are confounded.",
+    "complete_test_opened": false
+  },
+  "analysis_code_commit": "cfefb32d884668c6c58203b516f66ece94ce2bd9",
+  "report_code_commit": "9e5a395446088412e1493c1e4eb5222c7a194a5e",
+  "report_generator_sha256": "b82ff1d152b45e8525a7630c7d130dcdf281ab0df67036e1dd6e90607d8423bd",
+  "sensitivity": {
+    "matched_candidate_axis_mean_errors": {
+      "scaled_log_mae_inclusive": 0.4783900453608139,
+      "scaled_log_mae_quarantined": 0.4783603233921125
+    },
+    "interpretation": "Same scales and intersection of scored cells. Exclusion can change training medians and source support; not a causal estimate of corrected true labels."
+  },
+  "diagnostics": {
+    "scoring_rule": {
+      "xgb300_quarantined_completion": {
+        "raw_median_truth": {
+          "axes": 142,
+          "scaled_log_mae": 0.19156144560024843,
+          "log_mae": 0.057513551919250165,
+          "log_mse": 0.03458082923469896,
+          "raw_mae": 0.33093859490330996,
+          "positive_scaled_log_mae": 0.252084368468823,
+          "zero_scaled_log_mae": 0.15826959562884252,
+          "log_rmse_root_mean_axis_mse": 0.1859592139010567
+        },
+        "inverse_log_median_truth": {
+          "axes": 142,
+          "scaled_log_mae": 0.19156378045570124,
+          "log_mae": 0.057526853521156225,
+          "log_mse": 0.034592024009410506,
+          "raw_mae": 0.3309664057956276,
+          "positive_scaled_log_mae": 0.2520832329883733,
+          "zero_scaled_log_mae": 0.15826959562884252,
+          "log_rmse_root_mean_axis_mse": 0.1859893115461491
+        }
+      },
+      "v9_8_quarantined": {
+        "raw_median_truth": {
+          "axes": 142,
+          "scaled_log_mae": 0.3093066211612579,
+          "log_mae": 0.10180412283693853,
+          "log_mse": 0.08484083144932844,
+          "raw_mae": 0.6562737878544956,
+          "positive_scaled_log_mae": 0.4115910048814529,
+          "zero_scaled_log_mae": 0.21780070998899367,
+          "presence_brier": 0.07183217257261276,
+          "log_rmse_root_mean_axis_mse": 0.291274495020296
+        },
+        "inverse_log_median_truth": {
+          "axes": 142,
+          "scaled_log_mae": 0.3093038277714405,
+          "log_mae": 0.1018114866489688,
+          "log_mse": 0.08484136688147162,
+          "raw_mae": 0.6561434650256832,
+          "positive_scaled_log_mae": 0.4115841166773974,
+          "zero_scaled_log_mae": 0.21780070998899367,
+          "presence_brier": 0.07183217257261276,
+          "log_rmse_root_mean_axis_mse": 0.2912754141383574
+        },
+        "conditional_amount_without_probability_multiplication": {
+          "axes": 142,
+          "scaled_log_mae": 0.4245492024643067,
+          "log_mae": 0.1234637342304389,
+          "log_mse": 0.11767682013179902,
+          "raw_mae": 0.7221472938981551,
+          "positive_scaled_log_mae": 0.39263161442024347,
+          "zero_scaled_log_mae": 0.4848345302074588,
+          "presence_brier": 0.07183217257261276,
+          "log_rmse_root_mean_axis_mse": 0.34304055173083986
+        }
+      }
+    },
+    "nutrition_train_changed_aggregation_cells": 4194,
+    "nutrition_validation_changed_aggregation_cells": 700,
+    "interpretation": "Scoring sensitivity holds model predictions fixed, not retraining labels. Removing presence multiplication is a post-hoc diagnostic, not an accepted model or a comparison of training objectives.",
+    "complete_test_opened": false
+  },
+  "complete_test_opened": false,
+  "api_checks": {
+    "checkpoint_api_matches_saved_name_only_predictions": true,
+    "queries_previously_unobserved_supervised_axes": true,
+    "name_nutrition_fused_representation_shapes": [
+      192,
+      192,
+      192
+    ],
+    "nutrition_only_query_candidate_name_retrieval_works": true,
+    "all_10_frozen_release_hashes_unchanged": true,
+    "test_opened": false
+  },
+  "model_artifact_hashes": {
+    "output\\v9_r0\\mlp8_quarantined\\best_model.pt": "a3bb855bf9b2cbd7f2254b0ae89df1c08ed5ed2c3c3cf20c89fff0bf6549a150",
+    "output\\v9_r0\\name_mlp8_quarantined\\best_model.pt": "c9ad7adda8ac695bc94ce933171f719bc1964792254844dc085453c2ab908c16",
+    "output\\v9_r0\\numeric_mlp8_quarantined\\best_model.pt": "ecf4d0d41fe5eba6a919aecf67f380ec2e6ce9f8ba6cd8ee75e2b343642404b0",
+    "output\\v9_r0\\v8_optimized20_quarantined\\best_model.pt": "360bcacbfd6719182eacc1139b328cf9005c8ef4f7193edf8f1922bf2963b228",
+    "output\\v9_r0\\v9_8_quarantined\\best_model.pt": "6b2ab055c63b0d7bd2a336aa64c0f970ac079a24fc86b445f8e26bf7be3dbc6a",
+    "output\\v9_r0\\retrieval_ridge_v1\\ridge.npz": "1bf90a51909cba77c1641d473931c02a9402e27caad928e516b1fb9af52d579f"
+  }
+}
