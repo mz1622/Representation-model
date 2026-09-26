@@ -34,3 +34,12 @@ experiments/foodnutrigpt_v8_v2/*
 !experiments/foodnutrigpt_v8_v2/*.json
 !experiments/foodnutrigpt_v9_source_calibrated_validation/
 !experiments/foodnutrigpt_v9_source_calibrated_validation/*.md
+
+# Versioned research reports; numerical artifacts remain ignored.
+!experiments/foodnutrigpt_v9_research/
+experiments/foodnutrigpt_v9_research/*
+!experiments/foodnutrigpt_v9_research/*.md
+!experiments/foodnutrigpt_v9_research/r0/
+experiments/foodnutrigpt_v9_research/r0/*
+!experiments/foodnutrigpt_v9_research/r0/*.md
+!experiments/foodnutrigpt_v9_research/r0/*.json

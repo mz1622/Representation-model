@@ -1,0 +1,6 @@
+{
+  "action": "predict",
+  "food_name": "Apple, raw",
+  "observed_profile": {},
+  "target_axes": ["Protein, total", "Cholesterol"]
+}

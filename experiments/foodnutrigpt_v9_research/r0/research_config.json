@@ -1,0 +1,45 @@
+{
+  "version": "V9-R0",
+  "data_view": "foodnutrigpt_v9_r0_v1",
+  "default_view": "quarantined",
+  "status": "exploratory; confirmatory gate closed pending original FooDB evidence",
+  "seeds": [20260922, 20260923, 20260924],
+  "screening_seed": 20260922,
+  "budget": {"hours_per_round": [48, 72], "max_screening_candidates": 12},
+  "primary": {"axes": 142, "metric": "macro_axis_log1p_y_over_train_scale_MAE", "source_equal_within_food_candidate": true},
+  "success": {"relative_primary_improvement": 0.05, "max_legacy_nutrition_log_MAE_regression": 0.02, "confirmation_seed_count": 3, "paired_group_interval_supports_improvement": true},
+  "screening_candidates": [
+    {"id": "median", "method": "median", "views": ["inclusive", "quarantined"]},
+    {"id": "name_knn", "method": "name_knn", "k": 10},
+    {"id": "name_mlp8", "method": "name_mlp", "epochs": 8, "learning_rate": 0.001},
+    {"id": "numeric_mlp8", "method": "numeric_mlp", "epochs": 8, "learning_rate": 0.001},
+    {"id": "mlp8", "method": "mlp", "epochs": 8, "learning_rate": 0.001},
+    {"id": "rf200", "method": "rf", "trees": 200, "max_depth": 16, "leaf_size": 3, "row_cap": null},
+    {"id": "xgb300", "method": "xgb", "trees": 300, "max_depth": 6, "learning_rate": 0.05, "row_cap": null},
+    {"id": "xgb600d4", "method": "xgb", "trees": 600, "max_depth": 4, "learning_rate": 0.03, "row_cap": null},
+    {"id": "xgb300_name_only", "method": "xgb", "mode": "name_only", "trees": 300, "max_depth": 6, "row_cap": null},
+    {"id": "v9_8", "method": "v9", "epochs": 8, "amount_weight": 1, "source_weight": 1},
+    {"id": "v8_optimized20", "method": "v8_optimized", "epochs": 20, "amount_weight": 3, "source_unknown": true},
+    {"id": "ridge_to_text", "method": "ridge_to_text", "alpha": 1, "candidate_names": "train+validation original_name only"}
+  ],
+  "candidate_counting": "A sensitivity view or evaluation mode of the same fitted configuration is not a newly selected hyperparameter candidate. 12 model configurations including the retrieval ridge baseline; none confirmed.",
+  "historical_test_opened": false,
+  "pending_acceptance": [
+    "Original FooDB numeric source fields, conversion history and wet/dry basis evidence",
+    "Human review of near-name, translation, alias and source-republication candidates",
+    "Broader preregistered RF/XGBoost tuning on all eligible rows before any superiority claim",
+    "Identical training-panel ablation: denoising neural masks versus per-axis tree training",
+    "Checkpoint selection ablation: fixed-panel primary metric versus historical hurdle selection",
+    "Three seeds for any accepted improvement and independent source/external confirmation"
+  ],
+  "next_round": {
+    "version": "V9-R1",
+    "entry_gate": "Resolve or explicitly delimit label provenance, freeze corrected view if necessary, recalculate all baselines on any changed protocol.",
+    "sequence": [
+      {"factor": "epochs", "control": 8, "treatment": 20, "all_other_factors_fixed": true},
+      {"factor": "amount_weight", "control": 1, "treatments": [2, 3], "all_other_factors_fixed": true},
+      {"factor": "source_weight", "control": 1, "treatment": 0, "loss_scale": "(base + weight * calibrated)/(1 + weight)", "all_other_factors_fixed": true}
+    ],
+    "follow_up_only_if_supported": ["direct scaled-value regression", "mixed masking and name-only ratio", "representation probes", "contrastive retrieval", "source holdout and few-shot transfer"]
+  }
+}
