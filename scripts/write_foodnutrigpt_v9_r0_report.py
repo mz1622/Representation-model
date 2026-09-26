@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import sys
+import subprocess
 import pandas as pd
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"src"))
@@ -28,8 +29,15 @@ def main():
     data=read(ROOT/"data/processed/foodnutrigpt_v9_r0_v1/manifest.json")
     reproducibility=read(analysis/"reproducibility.json")
     text_audit=read(ROOT/"reports/v9_r0_text_v1/summary.json")
+    report_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+    records=rows.to_dict("records")
+    for record in records:
+        # Tree/direct regression models have no presence head: this diagnostic is not applicable.
+        # Do not suppress a nonfinite primary/error metric; strict JSON still rejects those.
+        if "presence_brier" in record and pd.isna(record["presence_brier"]):record["presence_brier"]=None
     summary={"version":"V9-R0","status":"exploration_complete_confirmation_incomplete","milestone_reached":False,
-        "model_results":rows.to_dict("records"),"paired_intervals":intervals,"retrieval":retrieval,"source_probes":source,
+        "model_results":records,"paired_intervals":intervals,"retrieval":retrieval,"source_probes":source,
+        "analysis_code_commit":reproducibility["code_commit"],"report_code_commit":report_commit,"report_generator_sha256":digest(Path(__file__)),
         "sensitivity":sensitivity,"diagnostics":diagnostics,"complete_test_opened":False,
         "api_checks":read(ROOT/"reports/v9_r0_api_checks.json"),
         "model_artifact_hashes":{str(f.relative_to(ROOT)):digest(f) for pattern in ["output/v9_r0/*/*.pt","output/v9_r0/*/ridge.npz"] for f in ROOT.glob(pattern)}}
@@ -81,6 +89,7 @@ def main():
 实际执行命令和三类接口示例见 [REPRODUCE.md](REPRODUCE.md)。所有筛选训练使用 seed `20260922`；尚未运行确认种子 `20260923、20260924`。GPU为 RTX 5070 Ti 16 GB，Python3.10.19，PyTorch2.7.1+cu128；树模型使用全部合格训练行，没有历史每轴5000行上限。
 
 本轮实现的本地代码提交：`{reproducibility['code_commit']}`。运行期间使用的具体源码哈希另保存在各run manifest；报告在实现提交之后生成。
+报告生成器提交：`{report_commit}`。没有存在概率头的方法，其presence-Brier字段为不适用的null；主指标和误差中的非有限值仍会报错，未用null掩盖。
 
 本轮RF预算为1个配置（200树），XGBoost补全预算为2个配置（300树深6、600树深4），另有name-only配置。**这仍不是充分调参的最终强基线。** 本轮12个模型配置达到筛选候选上限，确认流程需在后续新版本登记预算。
 
@@ -121,6 +130,8 @@ def main():
 - **原仓库测试。** 整体为128通过、1失败、10错误。未通过项来自缺失的历史分类JSON和历史轴registry夹具，未伪造数据以让测试变绿；详见本地测试日志。开发期间还修复了测试命令未设PYTHONPATH、示例营养名称未用规范名的问题。所有本轮模型训练均正常结束。
 
 所有epoch学习曲线保存在各运行的 `history.csv`；若安装matplotlib，分析脚本同时生成验证曲线图。包含/排除视图的中位数基线敏感性结果已保存，使用相同尺度并报告共同候选单元的误差；它不是“纠正后真实标签”的因果估计。异常尾部、零比例及单位/basis逐来源审计在 `unit_basis_audit.csv` 和数据视图审计文件中；泛化和数据可信性尚不能据此全部验收。
+
+![验证学习曲线](../../../reports/v9_r0_analysis_v1/validation_curves.png)
 
 ## 6. 因果分析
 
