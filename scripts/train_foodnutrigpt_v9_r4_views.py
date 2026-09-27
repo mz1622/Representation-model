@@ -23,6 +23,7 @@ from foodcomp.research_views import extra_view_masks, two_view_loss
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--consistency-weight",type=float,required=True)
+    p.add_argument("--consistency-centering",choices=["none","joint_batch"],default="none")
     p.add_argument("--view-drop-probability",type=float,default=.3)
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
@@ -60,6 +61,9 @@ def main():
         "view_assignment":"Independent NumPy SeedSequence([seed,epoch,4104]), float32 uniforms on all fixed task IDs by252 axes; same masks for both arms",
         "consistency_weighting":"q_task=sum_axis(target*cell_weight/train_axis_total); C=sum_task(q_task*0.5*||unit(hA)-unit(hB)||^2)/187; unbiased uniform-task minibatches",
         "data_limitation":"Immutable R0 quarantine view; FooDB raw provenance unresolved; conditional internal research only"}
+    if args.consistency_centering == "joint_batch":
+        manifest["protocol_change"] = "Only centre A/B representations by their shared unweighted minibatch mean before normalization in C; mean and both sides receive gradients. Original supervised head, inputs, model and inference unchanged. Same coefficient0.1 and task/mask/schedule as the origin-based reference. Gradient magnitude, clipping and batch-composition effects are part of this intervention; no collapse-prevention guarantee."
+        manifest["consistency_weighting"] = "Original q_task and T/(B*187) factor, but distance uses the jointly centred current minibatch. This estimates the random-minibatch regularizer, not an unbiased full-panel centred-distance objective."
     write_json(args.output_dir/"run_manifest.json",manifest)
     write_json(args.output_dir/"environment.json",{"python":sys.version,"platform":platform.platform(),
         "numpy":np.__version__,"torch":str(torch.__version__),"cuda":torch.version.cuda,
@@ -71,13 +75,13 @@ def main():
         b=panel.batch(np.random.default_rng(args.seed).choice(len(panel.rows),32,replace=False))
         drop=extra_view_masks(32,len(data.axes),args.view_drop_probability,args.seed,0)
         smoke=torch.optim.AdamW(model.parameters(),lr=.001)
-        model.eval();before=float(two_view_loss(model,b,drop,args.consistency_weight)[0].detach())
+        model.eval();before=float(two_view_loss(model,b,drop,args.consistency_weight,args.consistency_centering)[0].detach())
         model.train()
         for _ in range(50):
             smoke.zero_grad(set_to_none=True)
-            loss,_=two_view_loss(model,b,drop,args.consistency_weight)
+            loss,_=two_view_loss(model,b,drop,args.consistency_weight,args.consistency_centering)
             loss.backward();smoke.step()
-        model.eval();after=float(two_view_loss(model,b,drop,args.consistency_weight)[0].detach())
+        model.eval();after=float(two_view_loss(model,b,drop,args.consistency_weight,args.consistency_centering)[0].detach())
         if not after<before:raise AssertionError("Train-only two-view small batch failed to overfit.")
         manifest["overfit"]={"before":before,"after":after,"steps":50,"weights_and_rng_restored":True}
         model.load_state_dict(initial);torch.set_rng_state(cpu_rng)
@@ -97,19 +101,21 @@ def main():
             masks=extra_view_masks(len(panel.rows),len(data.axes),args.view_drop_probability,args.seed,epoch)
             mask_hash=fingerprint_array(masks)
             model.train();seen=0;visible=0;removed=0;steps=0;clipped=0;norm_total=0.
-            accum=np.zeros(5,np.float64)
+            accum=np.zeros(5,np.float64);centred_accum=np.zeros(2,np.float64)
             for offset in range(0,len(order),args.batch_size):
                 ix=order[offset:offset+args.batch_size];batch=panel.batch(ix)
                 opt.zero_grad(set_to_none=True)
-                loss,parts=two_view_loss(model,batch,masks[ix],args.consistency_weight)
+                loss,parts=two_view_loss(model,batch,masks[ix],args.consistency_weight,args.consistency_centering)
                 loss.backward()
                 norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
                 if not torch.isfinite(norm):raise FloatingPointError("Nonfinite gradient.")
                 opt.step()
                 stats=torch.stack([loss.detach(),parts["supervised"],parts["consistency"],
                     parts["mean_representation_norm"],parts["unit_batch_std"],
-                    parts["visible_cells"],parts["removed_visible_cells"],norm]).detach().cpu().numpy()
+                    parts["visible_cells"],parts["removed_visible_cells"],norm,
+                    parts["centred_representation_norm"],parts["centred_unit_batch_std"]]).detach().cpu().numpy()
                 accum+=stats[:5].astype(np.float64)*len(ix);seen+=len(ix)
+                centred_accum+=stats[8:10].astype(np.float64)*len(ix)
                 visible+=int(stats[5]);removed+=int(stats[6]);norm_total+=float(stats[7])
                 steps+=1;clipped+=int(stats[7]>1.)
             pred=evaluate(model,data,text,device)
@@ -118,6 +124,8 @@ def main():
             history.append({"epoch":epoch,"train_loss":means[0],"train_supervised_mae":means[1],
                 "train_consistency_unweighted_coefficient":means[2],
                 "mean_representation_norm":means[3],"mean_unit_batch_std":means[4],
+                "mean_centred_representation_norm":centred_accum[0]/seen,
+                "mean_centred_unit_batch_std":centred_accum[1]/seen,
                 "mean_preclip_gradient_norm":norm_total/steps,"gradient_clip_fraction":clipped/steps,
                 "training_tasks":seen,"visible_cells_A":visible,"removed_visible_cells_B":removed,
                 "view_mask_sha256":mask_hash,"validation_primary":primary,

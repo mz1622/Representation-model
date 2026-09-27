@@ -133,3 +133,45 @@ def test_nonfinite_and_invalid_masks_or_model_fail():
     with pytest.raises(FloatingPointError): weighted_consistency(torch.tensor([1.,float("inf")]),b)
     with pytest.raises(ValueError): two_view_loss(m,b,torch.zeros_like(b["masked"]),float("nan"))
     with pytest.raises(ValueError): two_view_loss(DenseModel(2,4,"mlp",width=12,query_residual=True),b,torch.zeros_like(b["masked"]),.1)
+
+
+def test_joint_batch_distance_and_gradient_are_common_translation_invariant():
+    torch.manual_seed(18)
+    a=torch.randn(7,5,dtype=torch.float64,requires_grad=True)
+    b=torch.randn(7,5,dtype=torch.float64,requires_grad=True)
+    shift=torch.randn(5,dtype=torch.float64)*10
+    d=representation_distance(a,b,"joint_batch")
+    shifted=representation_distance(a+shift,b+shift,"joint_batch")
+    torch.testing.assert_close(d,shifted,rtol=1e-12,atol=1e-12)
+    weights=torch.arange(1.,8.,dtype=torch.float64)
+    g=torch.autograd.grad((weights*d).sum(),(a,b),retain_graph=True)
+    s=torch.autograd.grad((weights*shifted).sum(),(a,b))
+    for x,y in zip(g,s):
+        torch.testing.assert_close(x,y,rtol=1e-11,atol=1e-11)
+        assert x.abs().sum()>0
+    torch.testing.assert_close((g[0]+g[1]).sum(0),torch.zeros(5,dtype=torch.float64),rtol=0,atol=1e-12)
+    assert torch.autograd.gradcheck(lambda x,y: representation_distance(x,y,"joint_batch"),(a,b))
+
+
+def test_joint_batch_supervision_and_predictions_unchanged_but_consistency_changes():
+    torch.manual_seed(9); model=DenseModel(2,4,"mlp",width=12); b=fixture()
+    drop=torch.ones_like(b["masked"])
+    prediction=model(b)["amount_normalized"].detach().clone()
+    raw,r=two_view_loss(model,b,drop,.1)
+    centred,c=two_view_loss(model,b,drop,.1,"joint_batch")
+    torch.testing.assert_close(r["supervised"],c["supervised"],rtol=0,atol=0)
+    torch.testing.assert_close(model(b)["amount_normalized"],prediction,rtol=0,atol=0)
+    assert not torch.equal(r["consistency"],c["consistency"])
+    torch.testing.assert_close(centred,c["supervised"]+.1*c["consistency"])
+    centred.backward()
+    assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in model.parameters())
+
+
+def test_centred_degenerate_inputs_remain_finite_without_claiming_collapse_prevention():
+    a=torch.full((4,3),2.,requires_grad=True)
+    distance=representation_distance(a,a,"joint_batch")
+    assert torch.equal(distance,torch.zeros(4))
+    distance.sum().backward()
+    assert torch.isfinite(a.grad).all()
+    with pytest.raises(ValueError): representation_distance(a,a,"invalid")
+    with pytest.raises(ValueError): representation_distance(a[:0],a[:0],"joint_batch")

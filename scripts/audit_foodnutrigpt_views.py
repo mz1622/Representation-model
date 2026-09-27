@@ -18,6 +18,8 @@ from audit_foodnutrigpt_v9_r3_control import load_snapshot
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--consistency-centering",choices=["none","joint_batch"],default="none")
+    p.add_argument("--compatibility-reference",choices=["original","raw_views"],default="original")
     p.add_argument("--output-dir",type=Path,required=True);args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     out=args.output_dir;out.mkdir(parents=True);torch.set_num_threads(1)
@@ -28,6 +30,9 @@ def main():
         parent=ROOT/"output/v9_r2/mlp60_mae_width512"
         old_neural=load_snapshot("views_old_neural",parent/"code_snapshot/research_neural.py")
         old_loss=load_snapshot("foodcomp.views_old_loss",parent/"code_snapshot/research_r1.py")
+        raw_parent=ROOT/"output/v9_r4/mlp60_views_weight01"
+        if args.compatibility_reference=="raw_views":
+            old_views=load_snapshot("foodcomp.views_old_raw",raw_parent/"code_snapshot/research_views.py")
         torch.manual_seed(20260922);old,old_config=old_neural.make_model(data,text.shape[1],"mlp",mlp_width=512)
         rng=torch.get_rng_state()
         torch.manual_seed(20260922);model,config=make_model(data,text.shape[1],"mlp",mlp_width=512)
@@ -45,8 +50,12 @@ def main():
             if not second["masked"][all_family].all():raise AssertionError("Target-family leakage.")
             if not second["masked"][b["masked"]].all():raise AssertionError("B revealed unavailable input.")
             opt_old.zero_grad(set_to_none=True);opt_new.zero_grad(set_to_none=True)
-            a=old_loss.model_loss(old,b,"mlp",old_config,"mae")
-            c,_=two_view_loss(model,b,masks[ids],0.)
+            if args.compatibility_reference=="raw_views":
+                a,_=old_views.two_view_loss(old,b,masks[ids],.1)
+                c,_=two_view_loss(model,b,masks[ids],.1)
+            else:
+                a=old_loss.model_loss(old,b,"mlp",old_config,"mae")
+                c,_=two_view_loss(model,b,masks[ids],0.)
             torch.testing.assert_close(a,c,rtol=0,atol=0)
             a.backward();c.backward()
             for x,y in zip(old.parameters(),model.parameters()):torch.testing.assert_close(x.grad,y.grad,rtol=0,atol=0)
@@ -66,7 +75,7 @@ def main():
                 torch.testing.assert_close(model.encode(a),model.encode(c),rtol=0,atol=0)
                 torch.testing.assert_close(model(a)["amount_normalized"],model(c)["amount_normalized"],rtol=0,atol=0)
         model.zero_grad(set_to_none=True)
-        loss,parts=two_view_loss(model,b,drop,.1);loss.backward()
+        loss,parts=two_view_loss(model,b,drop,.1,args.consistency_centering);loss.backward()
         if any(p.grad is None or not torch.isfinite(p.grad).all() for p in model.parameters()):raise FloatingPointError("Nonfinite consistency-model gradients.")
         if not parts["consistency"]>0:raise AssertionError("Vacuous consistency fixture.")
         count=sum(p.numel() for p in model.parameters())
@@ -75,7 +84,7 @@ def main():
         saved={"model_state":model.state_dict(),"kind":"mlp","config":asdict(config),"text_dim":text.shape[1],
             "data_root":str(data.root),"view":data.view,"name_cache":str(cache),
             "data_hash":digest(data.root/"manifest.json"),"name_cache_hash":digest(cache/"manifest.json"),
-            "args":{"mlp_width":512,"consistency_weight":.1,"view_drop_probability":.3}}
+            "args":{"mlp_width":512,"consistency_weight":.1,"view_drop_probability":.3,"consistency_centering":args.consistency_centering}}
         torch.save(saved,fixture);loaded=NutritionModel(fixture,device="cpu")
         with torch.no_grad():torch.testing.assert_close(model(b)["amount_normalized"],loaded.model(b)["amount_normalized"],rtol=0,atol=0)
         axes=data.axes.loc[data.axes.loss_eligible & data.axes.loss_group.eq("nutrition"),"axis_index"].to_numpy()
@@ -88,6 +97,7 @@ def main():
         ranking=loaded.retrieve_names(context,names,top_k=2)
         if len(ranking)!=2 or not all(np.isfinite(x["score"]) for x in ranking):raise AssertionError("Retrieval API failure.")
         result.update(status="complete",training_tasks_checked=768,optimizer_steps=3,parameter_count=count,
+            compatibility_reference=args.compatibility_reference,probe_centering=args.consistency_centering,
             initial_state_rng_losses_gradients_updates_equal_to_frozen_parent=True,
             full_target_family_hidden_in_both_views=True,hidden_values_targets_and_sources_do_not_change_encoding=True,
             positive_consistency_loss_and_finite_gradients=True,save_reload_bitwise_equal=True,three_api_methods_checked=True,
@@ -97,7 +107,9 @@ def main():
             frozen_parent_neural_sha256=digest(parent/"code_snapshot/research_neural.py"),
             frozen_parent_loss_sha256=digest(parent/"code_snapshot/research_r1.py"),
             code_sha256={file:digest(ROOT/file) for file in ["src/foodcomp/research_views.py","src/foodcomp/research_neural.py","src/foodcomp/research_inference.py","src/foodcomp/research_r1.py","scripts/train_foodnutrigpt_v9_r4_views.py"]},
-            scope="Real train-only768-task/three-stepCPU functional compatibility, not full CUDA trajectory or a trained experimental model. Zero-weight control matches original; nonzero-weight gradients are not asserted equal. Fixture is only for loading/APIs.")
+            scope="Real train-only768-task/three-stepCPU default-mode compatibility against selected frozen reference, not full CUDA trajectory or a trained experimental model. The centred mode is checked for finite gradients and isolation, not gradient equality with the raw mode. Fixture is only for loading/APIs.")
+        if args.compatibility_reference=="raw_views":
+            result["frozen_raw_views_sha256"]=digest(raw_parent/"code_snapshot/research_views.py")
     except Exception as error:
         result.update(status="failed",error_type=type(error).__name__,error=str(error));write_json(out/"verification.json",result);raise
     write_json(out/"verification.json",result)

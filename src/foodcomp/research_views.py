@@ -23,11 +23,17 @@ def subset_view(batch, extra_hidden):
     return {**batch, "masked": batch["masked"] | extra_hidden}
 
 
-def representation_distance(first, second):
-    if first.ndim != 2 or first.shape != second.shape or first.shape[1] == 0:
+def representation_distance(first, second, centering="none"):
+    if first.ndim != 2 or first.shape != second.shape or min(first.shape) == 0:
         raise ValueError("Matching nonempty batch-by-feature representations required.")
     if not torch.isfinite(first).all() or not torch.isfinite(second).all():
         raise FloatingPointError("Nonfinite representation.")
+    if centering not in {"none", "joint_batch"}:
+        raise ValueError("Unknown representation centering.")
+    if centering == "joint_batch":
+        centre = (first.mean(0) + second.mean(0)) / 2
+        first = first - centre
+        second = second - centre
     a = F.normalize(first, dim=1, eps=1e-12)
     b = F.normalize(second, dim=1, eps=1e-12)
     return .5 * (a-b).square().sum(1)
@@ -47,7 +53,7 @@ def weighted_consistency(distance, batch):
     return value
 
 
-def two_view_loss(model, batch, extra_hidden, coefficient):
+def two_view_loss(model, batch, extra_hidden, coefficient, centering="none"):
     if not np.isfinite(coefficient) or coefficient < 0:
         raise ValueError("Finite nonnegative consistency coefficient required.")
     if model.kind != "mlp" or any(hasattr(model, name) for name in ("name_head", "query_residual", "name_standardizer")):
@@ -56,18 +62,21 @@ def two_view_loss(model, batch, extra_hidden, coefficient):
     first_hidden = model.encode(batch)
     second_hidden = model.encode(second)
     supervised = panel_loss({"amount_normalized": model.head(first_hidden)}, batch, objective="mae")
-    consistency = weighted_consistency(representation_distance(first_hidden, second_hidden), batch)
+    consistency = weighted_consistency(representation_distance(first_hidden, second_hidden, centering), batch)
     # Keep both graphs even in the zero-weight control; do not skip B or detach
     # its representation. The supervised coefficient stays exactly one.
     value = supervised + coefficient * consistency
     if not torch.isfinite(value):
         raise FloatingPointError("Nonfinite two-view loss.")
     unit = F.normalize(first_hidden.detach(), dim=1, eps=1e-12)
+    centred = first_hidden.detach() - (first_hidden.detach().mean(0) + second_hidden.detach().mean(0)) / 2
     return value, {
         "supervised": supervised.detach(),
         "consistency": consistency.detach(),
         "mean_representation_norm": first_hidden.detach().norm(dim=1).mean(),
         "unit_batch_std": unit.std(dim=0, unbiased=False).mean(),
+        "centred_representation_norm": centred.norm(dim=1).mean(),
+        "centred_unit_batch_std": F.normalize(centred, dim=1, eps=1e-12).std(dim=0, unbiased=False).mean(),
         "visible_cells": (~batch["masked"]).sum(),
         "removed_visible_cells": ((~batch["masked"]) & second["masked"]).sum(),
     }
