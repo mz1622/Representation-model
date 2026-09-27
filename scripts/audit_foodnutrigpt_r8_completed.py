@@ -93,10 +93,18 @@ def main():
                     all19089_model_retrieval_ranks_reloaded_exact=True, checkpoint_sha256=m['checkpoint_hash'])
                 histories.append(h)
             else:
+                from foodcomp.research_tree_prediction import make_tree,parameter_record
+                registered=[c for c in frozen['registered_candidates'] if c['name']==m['configuration']['name']]
+                assert registered==[m['configuration']] and m['configuration']['active_dimensions']==dims
+                assert m['training_row_cap'] is None and m['input_slots']==632 and m['fit_n_jobs']==4
                 fits = read(run / 'axis_fitting_manifest.json')
                 assert [f['axis_index'] for f in fits] == data.targets.tolist()
+                assert sum(f['train_profiles'] for f in fits)==1828536
                 for f in fits:
                     axis = f['axis_index']; train = data.train[data.observed[data.train, axis]]
+                    expected_parameters=parameter_record(make_tree(m['configuration'],seed=m['seed'],axis=axis,n_jobs=4))
+                    assert f['fit_parameters']==expected_parameters,(axis,'fit_parameters')
+                    assert f['train_profiles']==len(train) and f['validation_jobs']==int(data.jobs.axis_index.eq(axis).sum())
                     weights = data.weights[train, axis]
                     assert f['train_rows_sha256'] == fingerprint_array(train)
                     assert f['training_features_sha256'] == fingerprint_array(data.dense_features(train, text, axis))
@@ -112,6 +120,10 @@ def main():
                 np.testing.assert_array_equal(scaled, np.log1p(raw / data.scale[axes]).astype(np.float32))
                 assert digest(run / 'candidate_scaled.npy') == m['candidate_vectors_sha256']
                 names = read(run / 'candidate_names.json'); lookup = {name: i for i, name in enumerate(names)}
+                expected_names,first=np.unique(data.profiles.original_name.astype(str).to_numpy(),return_index=True)
+                assert names==expected_names.tolist()
+                candidate_features=np.concatenate([text[first],np.zeros((len(first),504),np.float32)],axis=1)
+                assert fingerprint_array(candidate_features)==m['candidate_features_sha256']
                 columns = {int(axis): i for i, axis in enumerate(axes)}
                 prediction = frames['name_only']; prediction = prediction[prediction.axis_index.isin(axes)]
                 rows = [lookup[str(data.profiles.original_name.iloc[r])] for r in prediction.profile_index]
@@ -122,7 +134,13 @@ def main():
                 pd.testing.assert_frame_equal(ranks, pd.read_parquet(retrieval / 'ranks.parquet'), check_exact=True)
                 assert rs == read(retrieval / 'metrics.json')['metrics']
                 assert digest(retrieval / 'candidate_names.json') == digest(run / 'candidate_names.json')
+                metadata=read(retrieval/'metrics.json')
+                assert metadata['candidate_sha256']==digest(run/'candidate_names.json')=='e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f'
+                assert metadata['data_sha256']==m['data_hash'] and metadata['name_cache_sha256']==m['name_cache_hash']
+                assert not metadata['complete_test_opened']
                 record.update(all187_fit_rows_features_labels_weights_verified=True,
+                    all187_registered_fitting_parameters_and_counts_verified=True,total_training_target_cells=1828536,
+                    largest_axis_training_profiles=max(f['train_profiles'] for f in fits),name_candidate_features_without_nutrition_verified=True,
                     all317616_name_predictions_match_candidate_names_exact=True, all19089_saved_matrix_ranks_replayed_exact=True,
                     model_replay_scope='Runtime in-memory pickle checks were required for every axis. Full forests are discarded; this audit verifies saved data/receipts/matrix, not a second full refit.')
             records.append(record); manifests.append(m)
