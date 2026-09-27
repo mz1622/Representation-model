@@ -22,6 +22,11 @@ def main():
                 elapsed_seconds=manifest.get('elapsed_seconds'),epoch_completed=manifest.get('epoch_completed'),best_epoch=manifest.get('best_epoch'),checkpoint_sha256=manifest.get('checkpoint_hash'))
             if manifest['status']=='complete':
                 row.update(metrics=json.loads((path/'metrics.json').read_text()),metrics_sha256=digest(path/'metrics.json'))
+                if entry.get('kind')=='name_knn':
+                    row.update(nutrition_metrics=json.loads((path/'nutrition_metrics.json').read_text()),
+                        nutrition_metrics_sha256=digest(path/'nutrition_metrics.json'),
+                        batch_invariance_verified=manifest.get('all142_candidate_validation_neighbor_indices_distances_predictions_exact',False),
+                        candidate_vs_validation_mismatch_count=manifest.get('candidate_vs_original_validation_mismatches'))
                 if entry.get('retrieval_output_dir'):
                     retrieval=ROOT/entry['retrieval_output_dir']
                     row['capabilities']='Forward nutrition prediction and predicted-profile retrieval from the same nutrition-selected checkpoint; not a nutrition encoder.'
