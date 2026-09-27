@@ -103,7 +103,7 @@ def main():
                             "amount_normalized":u,"scale":scale,"raw_float64_diagnostic":diagnostic_raw64,
                             "is_scored_job":(int(rr[i]),int(a)) in targets,"loss_eligible":bool(data.axes.iloc[a].loss_eligible),
                             "axis_loss_group":str(data.axes.iloc[a].loss_group),
-                            "final_float32_representable":bool(np.isfinite(diagnostic_raw64) and diagnostic_raw64<=np.finfo(np.float32).max)})
+                            "final_float32_representable":bool(np.isfinite(diagnostic_raw64) and diagnostic_raw64<=float(np.finfo(np.float32).max))})
         if not offending:raise AssertionError("No overflow located after reproduced failure.")
         frame=pd.DataFrame(offending)
         frame.to_parquet(args.output_dir/"overflow_cells_private.parquet",index=False)

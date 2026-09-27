@@ -1,18 +1,24 @@
 {
   "version": "V9-R4",
-  "generated_utc": "2026-09-27T09:00:16.920547+00:00",
-  "status": "four registered budgets complete; R4 mechanism/representation research continues; no accepted neural improvement",
+  "generated_utc": "2026-09-27T09:46:18.596680+00:00",
+  "status": "six registered budgets resolved: four completed evaluations and two retained numerical training failures; this query/view branch archived, representation and transfer research continues",
+  "resolved_candidate_budgets": 6,
   "completed_candidate_budgets": 4,
+  "failed_candidate_budgets": 2,
   "new_training_trajectories_completed": 3,
-  "new_training_shared_wall_seconds": 1230.703,
+  "new_training_trajectories_failed": 2,
+  "new_training_shared_wall_seconds_including_failures": 1522.094,
   "accepted_neural_improvement": false,
   "current_decisions": {
-    "axis_query_residual": "Reject as a completion improvement; retain original linear-head parent.",
-    "view_consistency_weight01": "No supported completion gain; retain named single-seed name-only branch, without acceptance or transfer claim.",
-    "zero_consistency_replay": "Saved60-epoch histories, five model tensor states and two full prediction tables exactly match original parent; all retrieval differences are zero.",
-    "next_question": "Post-result train-only translation/readout-bias counterfactual to distinguish angular concentration from useful invariance; not yet implemented or a registered training candidate."
+    "axis_query_residual": "No supported completion improvement; retain original linear-head control.",
+    "view_consistency_weight01": "No supported completion gain; named single-seed name-only branch only.",
+    "translation_probe": "Prediction-preserving common translation changes unit-distance metric; residual differences remain after centring. Not proof of pure-offset learning, semantic collapse or transfer.",
+    "centered_views": "Both registered attempts failed and remain failed; no completed three-task scores or promotion of partial checkpoints.",
+    "stable_inverse": "Accepted shared engineering repair, not a model improvement: finite old predictions exactly preserved; recoverable intermediate overflow repaired; true return-dtype overflow still fails.",
+    "replay_audit": "First16 histories except wall time and partial best16 model bytes exact; completed-epoch exposure matches both original controls. Lost original failing states were not saved and are not claimed bitwise replayed.",
+    "next_question": "Audit caller/family query semantics versus all-axis decoding before any separately registered change; do not use label availability to construct queries. No further training candidate registered."
   },
-  "configuration_sha256": "7036497f8e5bf25f8dbae26a5f07395c3da4759548fee0524fd8473ba527d866",
+  "configuration_sha256": "539078fbc4f8358cc39a24f1440c22d6993b7886475f0add7643df8efdda9c6c",
   "runs": [
     {
       "registered_configuration": {
@@ -428,6 +434,78 @@
             "log_rmse_root_mean_axis_mse": 0.4240545613873213
           }
         }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_views_centered_weight01",
+        "parent": "output/v9_r4/mlp60_views_weight01",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "view_drop_probability": 0.3,
+        "consistency_weight": 0.1,
+        "consistency_centering": "joint_batch",
+        "single_factor": "Replace origin-based normalization with normalization after subtracting the shared unweighted mean of A/B representations in each training minibatch; differentiate through the mean. Original supervised head/input/loss unchanged. Batch composition and gradient scale effects are part of this intervention; no claim of unbiased full-panel centred-distance estimation or collapse prevention."
+      },
+      "local_output": "output\\v9_r4\\mlp60_views_centered_weight01",
+      "manifest_status": "failed",
+      "manifest_sha256": "3c2ccbd0781b90df2b875433d741c6e7f49eb335278c37999e85b7368a6c7fb4",
+      "code_commit": "36191e65a73a68a84eab20302a1908a97697dfc6",
+      "elapsed_seconds": 139.32800000000134,
+      "epoch_completed": 16,
+      "best_epoch": null,
+      "checkpoint_sha256": null,
+      "failure": {
+        "error_type": "FloatingPointError",
+        "error": "Nonfinite prediction."
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_views_centered_weight01_stable_inverse",
+        "parent": "output/v9_r4/mlp60_views_centered_weight01",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "view_drop_probability": 0.3,
+        "consistency_weight": 0.1,
+        "consistency_centering": "joint_batch",
+        "single_factor": "Same registered centred training, rerun from scratch after shared inverse-transform numerical repair. Preserve every finite old decoded value bitwise; recompute only overflowed entries in float64 and cast to original dtype, requiring final finite outputs. No clipping, dropped queries, metric changes or hyperparameter change. Keep original failed run. Verify first16 epoch histories and reference predictions exactly replay."
+      },
+      "local_output": "output\\v9_r4\\mlp60_views_centered_weight01_stable_inverse",
+      "manifest_status": "failed",
+      "manifest_sha256": "8b6c7ee21e9b67c2245b8ce81fcbc2a9635746957fd56239d67052116990c8d2",
+      "code_commit": "b92a1c0c837606cfbd4eb4edefae1056109f456a",
+      "elapsed_seconds": 152.06300000000192,
+      "epoch_completed": 17,
+      "best_epoch": null,
+      "checkpoint_sha256": null,
+      "failure": {
+        "error_type": "FloatingPointError",
+        "error": "Nonfinite prediction."
       }
     }
   ],
