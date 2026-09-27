@@ -1,8 +1,8 @@
 {
   "version": "V9-R3",
-  "generated_utc": "2026-09-27T04:35:04.027535+00:00",
+  "generated_utc": "2026-09-27T04:56:49.393377+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "4d1d0641e847aadac70abdfd43dba4d1ff433f4d10b33adfd8b99d3bdd1ee8ba",
+  "configuration_sha256": "5581c5a9d70388de536a930e6a5b77c0999eac15cd950ba6ad7f428c20ff1b48",
   "runs": [
     {
       "registered_configuration": {
@@ -216,12 +216,34 @@
       },
       "local_output": "output\\v9_r3\\mlp60_name_mix20",
       "manifest_status": "running",
-      "manifest_sha256": "63926042d657c3a5cf03c8ed503ed9a4fb6d8ac7c83ac2100c83fb2d8af6d6cf",
+      "manifest_sha256": "c3179d804399e3989ec8176e55c57b0e7c8f81e3b4608746a4740f539d73719e",
       "code_commit": "0ddb4fa736ad841ce5c19fcefb180c6905f25440",
-      "elapsed_seconds": null,
-      "epoch_completed": null,
+      "elapsed_seconds": 1341.8600000000006,
+      "epoch_completed": 24,
       "best_epoch": null,
       "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_mix10_separate_heads",
+        "parent": "output/v9_r3/mlp60_name_mix10",
+        "name_only_probability": 0.1,
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "separate",
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "single_factor": "shared linear output head -> separate completion/name-only heads, routed by visible numeric input only; cloned initial head, shared encoder and all task exposures unchanged",
+        "parameters_shared_control": 667900,
+        "parameters_candidate": 797176
+      },
+      "local_output": "output\\v9_r3\\mlp60_mix10_separate_heads",
+      "manifest_status": "not started; check active process queues separately"
     }
   ],
   "completed_retrieval_evaluations": [

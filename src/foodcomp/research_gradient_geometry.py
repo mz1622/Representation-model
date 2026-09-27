@@ -1,5 +1,6 @@
 """Finite, explicitly defined local gradient geometry; no optimization policy."""
 import torch
+import math
 
 
 def gradient_geometry(first,second):
@@ -10,6 +11,7 @@ def gradient_geometry(first,second):
         if not torch.isfinite(a).all() or not torch.isfinite(b).all():raise FloatingPointError("Nonfinite task gradient.")
         a=a.double();b=b.double()
         dot+=float((a*b).sum());norm_a+=float(a.square().sum());norm_b+=float(b.square().sum())
+    if not all(math.isfinite(value) for value in [dot,norm_a,norm_b]):raise FloatingPointError("Nonfinite gradient reduction.")
     norm_a=norm_a**.5;norm_b=norm_b**.5
     defined=norm_a>0 and norm_b>0
     return {"dot":dot,"completion_norm":norm_a,"name_only_norm":norm_b,"both_nonzero":defined,
