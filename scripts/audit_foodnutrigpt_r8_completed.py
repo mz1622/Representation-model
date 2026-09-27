@@ -25,10 +25,11 @@ def check_identity(run, manifest, frozen, contract_path, data):
     assert manifest['status'] == 'complete'
     assert not manifest.get('test_opened', manifest.get('complete_test_opened', True))
     assert manifest['code_commit'] == frozen['code_commit']
-    assert manifest['code_hashes'] == frozen['code_hashes']
+    hashes = {path.replace('\\', '/'): value for path, value in manifest['code_hashes'].items()}
+    assert hashes == frozen['code_hashes']
     assert manifest['execution_contract_sha256'] == digest(contract_path)
     assert manifest['data_hash'] == digest(data.root / 'manifest.json')
-    for path, expected in manifest['code_hashes'].items():
+    for path, expected in hashes.items():
         assert digest(run / 'code_snapshot' / Path(path).name) == expected
 
 
