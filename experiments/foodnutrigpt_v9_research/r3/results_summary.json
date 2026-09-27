@@ -1,6 +1,6 @@
 {
   "version": "V9-R3",
-  "generated_utc": "2026-09-27T03:35:27.842815+00:00",
+  "generated_utc": "2026-09-27T03:41:50.726067+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "d63e9a70bd86542da90c47e7f1d26d0ddb9a4d988281d6bf3b6e6d2667d0f683",
   "runs": [
@@ -118,7 +118,13 @@
         "single_factor": "10% Bernoulli fraction of existing family tasks hide all numeric context; no change in targets or weights"
       },
       "local_output": "output\\v9_r3\\mlp60_name_mix10",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "6deed1a1b5314451def66b27459d9149bfa2afd2da49b7bdd9ec775069032d7b",
+      "code_commit": "df926201e64d870b5d92a364966d227f6243f62b",
+      "elapsed_seconds": 277.3279999999977,
+      "epoch_completed": 5,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     },
     {
       "registered_configuration": {
