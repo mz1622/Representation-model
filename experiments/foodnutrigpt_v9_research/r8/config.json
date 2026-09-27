@@ -164,6 +164,9 @@
   "gap_diagnostic_plan": "experiments/foodnutrigpt_v9_research/r8/GAP_DIAGNOSTIC_PLAN.md",
   "gap32_diagnostic_summary": "reports/v9_r8_mlp32_xgb32_gap_v1/summary.json",
   "remaining_tree_postprocessing_queued": true,
+  "full_round_collection_queued_after_postprocessing": true,
+  "full_round_collection_output": "reports/v9_r8_round_complete_v1",
+  "full_round_report_and_decision_pending": true,
   "queued_postprocessing": [
     "Independent full187 fit and full three-task output audit for each of seven remaining trees",
     "Each tree vs matched-name-input MLP for completion, name-only and retrieval",
