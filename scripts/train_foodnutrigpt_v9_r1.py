@@ -16,7 +16,7 @@ from foodcomp.research_text import prepare_names
 from foodcomp.research_neural import make_model,evaluate
 from foodcomp.research_r1 import FamilyPanel,PANEL_VERSION,model_loss
 
-def main():
+def main(version="V9-R1",protocol_change=None):
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--kind",choices=["mlp","v9"],required=True)
     p.add_argument("--epochs",type=int,default=20);p.add_argument("--schedule-epochs",type=int,default=20)
@@ -41,12 +41,12 @@ def main():
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
-    manifest={"status":"running","version":"V9-R1","args":vars(args),"seed":args.seed,
+    manifest={"status":"running","version":version,"args":vars(args),"seed":args.seed,
         "code_commit":subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(),
         "code_hashes":{str(f.relative_to(ROOT)):digest(f) for f in files},
         "data_hash":digest(data.root/"manifest.json"),"panel_hash":digest(panel.root/"manifest.json"),
         "name_cache_hash":digest(cache/"manifest.json"),"test_opened":False,"confirmation_allowed":False,
-        "protocol_change":"R0->R1 aligns complete single-family training tasks and global axis/source loss weights; R0 architecture attribution is not allowed.",
+        "protocol_change":protocol_change or "R0->R1 aligns complete single-family training tasks and global axis/source loss weights; R0 architecture attribution is not allowed.",
         "selection":"fixed full validation nutrition primary metric; fixed learning-rate schedule horizon",
         "data_limitation":"R0 quarantine view retained; FooDB provenance remains unresolved; conditional benchmark research only"}
     write_json(args.output_dir/"run_manifest.json",manifest)
@@ -106,7 +106,7 @@ def main():
         write_json(args.output_dir/"metrics.json",results)
         manifest.update(status="complete",elapsed_seconds=time.monotonic()-start,best_epoch=selected["best_epoch"],checkpoint_hash=digest(args.output_dir/"best_model.pt"))
         write_json(args.output_dir/"run_manifest.json",manifest)
-        (args.output_dir/"README.md").write_text(f"# V9-R1 {args.kind}\n\nShared exhaustive family-task training; full-data source/axis weighting; fixed LR horizon.\n\nCompletion primary: {results['completion']['nutrition']['scaled_log_mae']:.8f}; name-only: {results['name_only']['nutrition']['scaled_log_mae']:.8f}.\n\nSingle-seed exploration; no causal claim versus R0 because training panel and loss estimator were aligned together. Every epoch and all configuration/code hashes are retained. Frozen test not evaluated.\n",encoding="utf-8")
+        (args.output_dir/"README.md").write_text(f"# {version} {args.kind}\n\nShared exhaustive family-task training; full-data source/axis weighting; fixed LR horizon.\n\nCompletion primary: {results['completion']['nutrition']['scaled_log_mae']:.8f}; name-only: {results['name_only']['nutrition']['scaled_log_mae']:.8f}.\n\nChange: {manifest['protocol_change']}\n\nSingle-seed exploration. Every epoch and all configuration/code hashes are retained. Frozen test not evaluated.\n",encoding="utf-8")
     except Exception as error:
         manifest.update(status="failed",error_type=type(error).__name__,error=str(error),elapsed_seconds=time.monotonic()-start)
         write_json(args.output_dir/"run_manifest.json",manifest);raise

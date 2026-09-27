@@ -1,0 +1,18 @@
+{
+  "version": "V9-R2",
+  "parent_completed_control": "output/v9_r1/mlp20_panel",
+  "r1_full_iteration_status": "still running; this independent probe uses only the completed MLP control",
+  "data_version": "foodnutrigpt_v9_r0_v1",
+  "view": "quarantined",
+  "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
+  "max_candidates": 12,
+  "max_hours": 72,
+  "registered_candidates": [
+    {"name": "mlp20_mae", "kind": "mlp", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "loss: SmoothL1(beta=1) -> MAE"}
+  ],
+  "confirmation_seeds": [20260922, 20260923, 20260924],
+  "primary_gain_vs_stronger_tuned_tree": 0.05,
+  "max_legacy_nutrition_log_mae_regression": 0.02,
+  "complete_test_opened": false,
+  "external_label_provenance_confirmed": false
+}
