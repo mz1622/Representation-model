@@ -12,12 +12,19 @@ from foodcomp.research_statistics import paired_interval,paired_axis_intervals
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--neural-dir",type=Path,required=True);p.add_argument("--tree-dir",type=Path,required=True)
+    p.add_argument("--tree-prediction-file",choices=["predictions.parquet","completion_predictions.parquet"],default="predictions.parquet")
+    p.add_argument("--local-case-dir",type=Path)
     p.add_argument("--output-dir",type=Path,required=True);args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
+    local_dir=(args.local_case_dir or ROOT/"data/local/research_diagnostics"/args.output_dir.name).resolve()
+    if not local_dir.is_relative_to((ROOT/"data/local/research_diagnostics").resolve()):
+        raise ValueError("Original numeric cases must stay under the ignored local data directory.")
+    if local_dir.exists():raise FileExistsError(local_dir)
     args.output_dir.mkdir(parents=True)
+    local_dir.mkdir(parents=True)
     data=ResearchData(ROOT/"data/processed"/VERSION)
     neural=pd.read_parquet(args.neural_dir/"completion_predictions.parquet")
-    tree=pd.read_parquet(args.tree_dir/"predictions.parquet")
+    tree=pd.read_parquet(args.tree_dir/args.tree_prediction_file)
     nn_score,nn_axes,nn_groups=score_predictions(data,neural)
     tree_score,tree_axes,tree_groups=score_predictions(data,tree)
     axes=data.axes.copy()
@@ -63,6 +70,49 @@ def main():
     scale=data.scale[cells.axis_index.to_numpy()]
     for name in ["neural","tree"]:cells[name+"_error"]=np.abs(np.log1p(cells[name]/scale)-np.log1p(cells.target/scale))
     cells["context_bin"]=pd.cut(cells.visible_axes,bins=[-1,0,4,14,39,np.inf],labels=["none","1_to_4","5_to_14","15_to_39","at_least_40"])
+    # All source-cell partitions keep the original source/group/axis denominator.
+    sources=cells.groupby(["exact_name_group_id","axis_index"]).source_key.transform("size")
+    axis_groups=cells.groupby("axis_index").exact_name_group_id.transform("nunique")
+    cells["macro_weight"]=1/(len(selected)*sources*axis_groups)
+    ratio=cells.target.to_numpy()/scale
+    cells["concentration_bin"]=np.select([ratio==0,ratio<.1,ratio<1,ratio<10],
+        ["explicit_zero","positive_below_0.1s","positive_0.1s_to_1s","positive_1s_to_10s"],default="positive_at_least_10s")
+    cells["label_stratum"]=np.where(cells.target>0,"positive","explicit_zero")
+    cells=cells.merge(axes[["axis_index","mask_family","support_bin","scale_bin"]],on="axis_index",validate="many_to_one")
+    scale=data.scale[cells.axis_index.to_numpy()]
+    for name in ["neural","tree"]:
+        signed=np.log1p(cells[name]/scale)-np.log1p(cells.target/scale)
+        cells[name+"_under_contribution"]=(-signed).clip(lower=0)*cells.macro_weight
+        cells[name+"_over_contribution"]=signed.clip(lower=0)*cells.macro_weight
+        cells[name+"_mae_contribution"]=cells[name+"_error"]*cells.macro_weight
+        np.testing.assert_allclose(cells[name+"_under_contribution"]+cells[name+"_over_contribution"],
+            cells[name+"_mae_contribution"],rtol=0,atol=1e-12)
+    contribution_columns=[name+"_"+direction+"_contribution" for name in ["neural","tree"] for direction in ["under","over","mae"]]
+    if not np.isfinite(cells[contribution_columns+["macro_weight"]].to_numpy()).all():
+        raise FloatingPointError("Nonfinite signed-error contribution.")
+    np.testing.assert_allclose(cells.macro_weight.sum(),1,rtol=0,atol=1e-12)
+    for name,score in [("neural",nn_score),("tree",tree_score)]:
+        np.testing.assert_allclose(cells[name+"_mae_contribution"].sum(),score["nutrition"]["scaled_log_mae"],rtol=0,atol=1e-12)
+    fixed=[]
+    for by in ["label_stratum","concentration_bin","mask_family","support_bin","scale_bin","source_key","context_bin","near_name_flag"]:
+        for label,g in cells.groupby(by,observed=True):
+            sums=g[contribution_columns].sum().to_dict()
+            fixed.append({"stratification":by,"stratum":str(label),"source_cells":len(g),
+                "candidate_groups":int(g.exact_name_group_id.nunique()),"supported_axes":int(g.axis_index.nunique()),
+                "macro_weight_mass":float(g.macro_weight.sum()),**sums,
+                **{direction+"_gap_contribution":sums["neural_"+direction+"_contribution"]-sums["tree_"+direction+"_contribution"]
+                   for direction in ["under","over","mae"]}})
+    fixed=pd.DataFrame(fixed)
+    for _,group in fixed.groupby("stratification"):
+        np.testing.assert_allclose(group.macro_weight_mass.sum(),1,rtol=0,atol=1e-12)
+        for column in contribution_columns:
+            np.testing.assert_allclose(group[column].sum(),cells[column].sum(),rtol=0,atol=1e-12)
+    fixed.to_csv(args.output_dir/"fixed_denominator_partitions.csv",index=False)
+    by_axis=cells.groupby("axis_index")[contribution_columns+["macro_weight"]].sum().reset_index()
+    for direction in ["under","over","mae"]:
+        by_axis[direction+"_gap_contribution"]=by_axis["neural_"+direction+"_contribution"]-by_axis["tree_"+direction+"_contribution"]
+    by_axis.merge(axes[["axis_index","canonical_name","mask_family","training_candidates"]],on="axis_index",validate="one_to_one").to_csv(
+        args.output_dir/"axis_signed_contributions.csv",index=False)
     grouped=[]
     for by in ["source_key","context_bin","near_name_flag"]:
         for label,g in cells.groupby(by,observed=True):
@@ -77,13 +127,15 @@ def main():
     joined["tree_error"]=np.abs(np.log1p(joined.tree/ss)-np.log1p(joined.target/ss))
     joined["gap"]=joined.neural_error-joined.tree_error
     cases=pd.concat([joined[joined.axis_index.isin(selected)].nsmallest(20,"gap"),joined[joined.axis_index.isin(selected)].nlargest(20,"gap")])
-    cases.merge(axes[["axis_index","canonical_name"]],on="axis_index").to_csv(args.output_dir/"local_success_failure_cases.csv",index=False)
+    cases.merge(axes[["axis_index","canonical_name"]],on="axis_index").to_csv(local_dir/"local_success_failure_cases.csv",index=False)
     summary={"neural":nn_score,"tree":tree_score,"neural_better_nutrition_axes":int(nutrition.primary_gap.lt(0).sum()),
         "primary_gap":float(nutrition.primary_gap.mean()),"paired_intervals":pair,
         "largest_gap_families":sorted([r for r in decomposition if r["stratification"]=="mask_family"],key=lambda r:r["macro_gap_contribution"],reverse=True),
         "data_hash":digest(data.root/"manifest.json"),"neural_prediction_hash":digest(args.neural_dir/"completion_predictions.parquet"),
-        "tree_prediction_hash":digest(args.tree_dir/"predictions.parquet"),"code_hash":digest(Path(__file__)),"complete_test_opened":False,
-        "interpretation":"Exploratory diagnosis only; bins do not change primary metric, training or model selection. Original-value cases stay in ignored local reports."}
+        "tree_prediction_hash":digest(args.tree_dir/args.tree_prediction_file),"code_hash":digest(Path(__file__)),"complete_test_opened":False,
+        "fixed_denominator_partitions_reconstruct_both_main_scores":True,"reconstruction_absolute_tolerance":1e-12,
+        "fixed_denominator_partitions":fixed.to_dict("records"),"local_cases_directory":str(local_dir),
+        "interpretation":"Exploratory diagnosis only; bins do not change primary metric, training or model selection. Signed and stratified contributions retain the full142-axis denominator. Conditional group means have different coverage and are not causal comparisons. Original-value cases stay in ignored local data; all40 are extremes, not representative examples."}
     write_json(args.output_dir/"summary.json",summary)
     print({k:summary[k] for k in ["neural_better_nutrition_axes","primary_gap","largest_gap_families"]})
 
