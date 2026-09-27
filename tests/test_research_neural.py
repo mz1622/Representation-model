@@ -69,9 +69,10 @@ def test_retrieval_interface_consumes_candidate_predictions_only():
     model.data=SimpleNamespace(axes=pd.DataFrame({"loss_group":["nutrition"]*2,"loss_eligible":[True]*2}),scale=np.ones(2))
     model.profile_arrays=lambda profile:(np.log1p([[profile["a"],0]]),np.array([[True,False]]))
     received=[]
-    def profiles(names):
+    def profiles(names,*,target_axes=None):
         received.extend(names)
-        return np.array([[2.,999.],[8.,0.]])
+        np.testing.assert_array_equal(target_axes,[0])
+        return np.array([[2.],[8.]])
     model.candidate_profiles=profiles
     results=model.retrieve_names({"a":2.},["pear","apple"],top_k=1)
     assert received==["apple","pear"]

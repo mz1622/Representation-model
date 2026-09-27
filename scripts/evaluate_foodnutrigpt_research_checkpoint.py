@@ -31,7 +31,8 @@ def main():
     write_json(args.output_dir/"evaluation_manifest.json",{"checkpoint":str(args.checkpoint),"checkpoint_hash":digest(args.checkpoint),
         "selection_budget_epochs":args.selection_budget_epochs,"best_epoch":saved["best_epoch"],
         "data_hash":saved["data_hash"],"name_cache_hash":saved["name_cache_hash"],"seed":saved["seed"],
-        "elapsed_seconds":time.monotonic()-start,"complete_test_opened":False})
+        "elapsed_seconds":time.monotonic()-start,"complete_test_opened":False,
+        "output_query_policy":model.output_query_policy})
     print({mode:score["nutrition"]["scaled_log_mae"] for mode,score in results.items()})
 
 if __name__=="__main__":main()

@@ -160,18 +160,49 @@ def loss(model,batch,kind,config):
     if not torch.isfinite(result):raise FloatingPointError("Nonfinite total loss.")
     return result
 
-def predictions_from_outputs(outputs,scale):
+OUTPUT_QUERY_POLICY = "caller_or_schema_axes_v1"
+
+
+def validate_query_axes(axes, axis_count):
+    indices=np.asarray(axes)
+    if indices.ndim!=1 or not len(indices) or indices.dtype.kind not in "iu":
+        raise ValueError("Requested axes must be a nonempty one-dimensional integer sequence.")
+    if (indices<0).any() or (indices>=axis_count).any() or len(np.unique(indices))!=len(indices):
+        raise ValueError("Requested axes must be unique and in range.")
+    return np.ascontiguousarray(indices,dtype=np.int64)
+
+
+def schema_query_axes(data, *, family=None, mode="completion"):
+    if mode not in {"completion","name_only"}:raise ValueError("Unknown prediction task.")
+    axes=validate_query_axes(data.targets,len(data.axes))
+    if mode=="name_only":
+        if family is not None:raise ValueError("Name-only queries cannot specify a masked family.")
+        return axes
+    if family is None:raise ValueError("Completion evaluation requires a caller-specified family.")
+    return validate_query_axes(axes[data.families[axes]==family],len(data.axes))
+
+
+def predictions_from_outputs(outputs,scale,*,target_axes=None):
     amount=outputs["amount_normalized"]
     if not torch.isfinite(amount).all():raise FloatingPointError("Nonfinite pre-inverse prediction.")
-    u=amount.clamp_min(0)
-    scale_tensor=torch.as_tensor(scale,device=u.device,dtype=u.dtype)
+    scale_tensor=torch.as_tensor(scale,device=amount.device,dtype=amount.dtype)
     if not torch.isfinite(scale_tensor).all() or not (scale_tensor>0).all():
         raise FloatingPointError("Invalid prediction scale.")
-    raw=torch.expm1(u)*scale_tensor
     probability=None
     if "positive_logit" in outputs:
         if not torch.isfinite(outputs["positive_logit"]).all():raise FloatingPointError("Nonfinite presence logit.")
         probability=torch.sigmoid(outputs["positive_logit"])
+    if target_axes is not None:
+        if amount.ndim!=2 or scale_tensor.ndim!=1 or len(scale_tensor)!=amount.shape[1]:
+            raise ValueError("Requested decoding requires batch-by-axis outputs and one scale per axis.")
+        if probability is not None and probability.shape!=amount.shape:raise ValueError("Presence shape mismatch.")
+        axes=validate_query_axes(target_axes,amount.shape[1])
+        index=torch.as_tensor(axes,device=amount.device)
+        amount=amount.index_select(1,index);scale_tensor=scale_tensor.index_select(0,index)
+        if probability is not None:probability=probability.index_select(1,index)
+    u=amount.clamp_min(0)
+    raw=torch.expm1(u)*scale_tensor
+    if probability is not None:
         raw=raw*probability
     invalid=~torch.isfinite(raw)
     if invalid.any():
@@ -185,7 +216,7 @@ def predictions_from_outputs(outputs,scale):
     return raw,probability
 
 @torch.no_grad()
-def predict_arrays(model,data,text,rows,device,*,family=None,mode="completion",batch_size=128):
+def predict_arrays(model,data,text,rows,device,*,family=None,mode="completion",batch_size=128,target_axes=None):
     values=data.values[rows]
     visible=data.observed[rows].copy()
     if family is not None:visible[:,data.families==family]=False
@@ -194,7 +225,7 @@ def predict_arrays(model,data,text,rows,device,*,family=None,mode="completion",b
     model.eval()
     for start in range(0,len(rows),batch_size):
         batch=batch_from_arrays(values[start:start+batch_size],visible[start:start+batch_size],text[rows[start:start+batch_size]],device)
-        raw,prob=predictions_from_outputs(model(batch),data.scale)
+        raw,prob=predictions_from_outputs(model(batch),data.scale,target_axes=target_axes)
         result.append(raw.cpu().numpy())
         if prob is not None:probabilities.append(prob.cpu().numpy())
     return np.concatenate(result),np.concatenate(probabilities) if probabilities else None
@@ -202,20 +233,27 @@ def predict_arrays(model,data,text,rows,device,*,family=None,mode="completion",b
 def evaluate(model,data,text,device,mode="completion"):
     pieces=[]
     if mode=="name_only":
-        raw,prob=predict_arrays(model,data,text,data.validation,device,mode=mode)
+        queries=schema_query_axes(data,mode=mode)
+        raw,prob=predict_arrays(model,data,text,data.validation,device,mode=mode,target_axes=queries)
         positions=np.searchsorted(data.validation,data.jobs.profile_index)
         axes=data.jobs.axis_index.to_numpy()
+        index=np.full(len(data.axes),-1,dtype=int);index[queries]=np.arange(len(queries));selected=index[axes]
+        if (selected<0).any():raise ValueError("Scoring axis is outside caller query set.")
         frame=data.jobs[["profile_index","axis_index"]].copy()
-        frame["prediction"]=raw[positions,axes]
-        if prob is not None:frame["positive_probability"]=prob[positions,axes]
+        frame["prediction"]=raw[positions,selected]
+        if prob is not None:frame["positive_probability"]=prob[positions,selected]
         return frame
+    if mode!="completion":raise ValueError("Unknown prediction task.")
     for family,jobs in data.jobs.groupby("mask_family"):
         rows=np.sort(jobs.profile_index.unique())
-        raw,prob=predict_arrays(model,data,text,rows,device,family=family)
+        queries=schema_query_axes(data,family=family)
+        raw,prob=predict_arrays(model,data,text,rows,device,family=family,target_axes=queries)
         position=np.searchsorted(rows,jobs.profile_index)
         axes=jobs.axis_index.to_numpy()
+        index=np.full(len(data.axes),-1,dtype=int);index[queries]=np.arange(len(queries));selected=index[axes]
+        if (selected<0).any():raise ValueError("Scoring axis is outside caller query set.")
         frame=jobs[["profile_index","axis_index"]].copy()
-        frame["prediction"]=raw[position,axes]
-        if prob is not None:frame["positive_probability"]=prob[position,axes]
+        frame["prediction"]=raw[position,selected]
+        if prob is not None:frame["positive_probability"]=prob[position,selected]
         pieces.append(frame)
     return pd.concat(pieces,ignore_index=True)

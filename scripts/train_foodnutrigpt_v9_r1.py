@@ -64,7 +64,9 @@ def main(version="V9-R1",protocol_change=None):
     if args.mlp_query_residual:files.append(ROOT/"src/foodcomp/research_query.py")
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
+    from foodcomp.research_neural import OUTPUT_QUERY_POLICY
     manifest={"status":"running","version":version,"args":vars(args),"seed":args.seed,
+        "output_query_policy":OUTPUT_QUERY_POLICY,
         "code_commit":subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(),
         "code_hashes":{str(f.relative_to(ROOT)):digest(f) for f in files},
         "data_hash":digest(data.root/"manifest.json"),"panel_hash":digest(panel.root/"manifest.json"),

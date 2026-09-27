@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"src"))
 from foodcomp.research_r0 import ResearchData, VERSION, digest, write_json, score_predictions
 from foodcomp.research_text import prepare_names
-from foodcomp.research_neural import make_model, evaluate
+from foodcomp.research_neural import make_model, evaluate, OUTPUT_QUERY_POLICY
 from foodcomp.research_r1 import FamilyPanel, PANEL_VERSION, fingerprint_array
 from foodcomp.research_views import extra_view_masks, two_view_loss
 
@@ -31,6 +31,7 @@ def main():
         mlp_task_heads="shared",mlp_text_conditioning="none",mlp_query_residual=False,
         name_only_probability=0.,epochs=60,schedule_epochs=60,batch_size=256,learning_rate=.001)
     args=p.parse_args()
+    args.output_query_policy=OUTPUT_QUERY_POLICY
     if not np.isfinite(args.consistency_weight) or args.consistency_weight<0:
         raise ValueError("Finite nonnegative consistency weight required.")
     if not np.isfinite(args.view_drop_probability) or not 0<=args.view_drop_probability<=1:

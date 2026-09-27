@@ -35,8 +35,8 @@ def main():
     # Candidate names may include unseen names; vectors use model predictions only.
     axes=np.flatnonzero(data.axes.loss_group.eq("nutrition")&data.axes.loss_eligible)
     if args.method=="name_predictions":
-        predicted=model.candidate_profiles(names)
-        candidate=torch.as_tensor(np.log1p(predicted[:,axes]/data.scale[axes]),dtype=torch.float32,device=device)
+        predicted=model.candidate_profiles(names,target_axes=axes)
+        candidate=torch.as_tensor(np.log1p(predicted/data.scale[axes]),dtype=torch.float32,device=device)
     else:
         # No query name feature: only values and the observedness mask enter this map.
         train=data.train[data.observed[data.train][:,axes].sum(1)>=3]
@@ -83,6 +83,8 @@ def main():
     scores=grouped.groupby("visible_fraction")[metrics].mean().reset_index().to_dict("records")
     write_json(args.output_dir/"metrics.json",{"metrics":scores,"candidate_count":len(names),"query_profiles":result.groupby("visible_fraction").size().to_dict(),
         "method":args.method,"ridge_alpha":1. if args.method=="ridge_to_text" else None,
+        "output_query_policy":model.output_query_policy if args.method=="name_predictions" else "ridge_has_no_nutrition_inverse",
+        "requested_candidate_nutrition_axes":axes.tolist(),
         "candidate_sha256":digest(args.output_dir/"candidate_names.json"),"checkpoint_sha256":digest(args.checkpoint) if args.checkpoint else None,
         "code_sha256":digest(Path(__file__)),
         "data_sha256":digest(data.root/"manifest.json"),"elapsed_seconds":time.monotonic()-started,

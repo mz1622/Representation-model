@@ -43,7 +43,9 @@ def main():
     device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight)
     model=model.to(device)
+    from foodcomp.research_neural import OUTPUT_QUERY_POLICY
     manifest={"status":"running","run_kind":"exploratory; not historical metric reproduction",
+        "output_query_policy":OUTPUT_QUERY_POLICY,
         "hypothesis":"Controlled neural model learns the shared raw-cell/axis-query contract.",
         "parent":"frozen V8/V9 architectures rebased onto the new R0 protocol",
         "causal_warning":"Protocol, input text and target transform differ from historical runs; do not attribute historical score differences to architecture.",

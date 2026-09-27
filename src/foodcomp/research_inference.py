@@ -5,12 +5,13 @@ import numpy as np
 import torch
 from .research_r0 import ResearchData, digest
 from .research_text import NameEncoder
-from .research_neural import make_model, batch_from_arrays, predictions_from_outputs
+from .research_neural import make_model, batch_from_arrays, predictions_from_outputs, OUTPUT_QUERY_POLICY
 
 
 class NutritionModel:
     def __init__(self, checkpoint, repo=None, device=None):
         self.repo = Path(repo) if repo else Path(__file__).resolve().parents[2]
+        self.output_query_policy = OUTPUT_QUERY_POLICY
         self.device = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
         saved = torch.load(checkpoint, map_location=self.device, weights_only=True)
         self.data = ResearchData(self.repo/"data/processed"/Path(saved["data_root"].replace("\\", "/")).name, saved["view"])
@@ -74,13 +75,14 @@ class NutritionModel:
     @torch.no_grad()
     def predict(self, food_name, observed_profile, target_axes):
         axes = self.axis_indices(target_axes)
+        if not len(axes):return {}
         if not self.data.axes.loss_eligible.iloc[axes].all():
             raise ValueError("Context-only axes have no validated supervised prediction head.")
         values,visible = self.profile_arrays(observed_profile)
         if visible[0,axes].any(): raise ValueError("Target axes must be withheld from observed_profile.")
         batch = batch_from_arrays(values,visible,self.name_features([food_name]),self.device)
-        raw,_ = predictions_from_outputs(self.model(batch),self.data.scale)
-        return {self.data.axes.canonical_name.iloc[a]: float(raw[0,a]) for a in axes}
+        raw,_ = predictions_from_outputs(self.model(batch),self.data.scale,target_axes=axes)
+        return {self.data.axes.canonical_name.iloc[a]: float(raw[0,i]) for i,a in enumerate(axes)}
 
     @torch.no_grad()
     def encode(self, food_name=None, observed_profile=None, modality="fused"):
@@ -109,15 +111,18 @@ class NutritionModel:
         return hidden.cpu().numpy()[0]
 
     @torch.no_grad()
-    def candidate_profiles(self, candidate_names, batch_size=256):
+    def candidate_profiles(self, candidate_names, batch_size=256, *, target_axes=None):
         """Only candidate text is used; no candidate measured nutrition is accessed."""
+        axes=None if target_axes is None else self.axis_indices(target_axes)
+        if axes is not None and (not len(axes) or not self.data.axes.loss_eligible.iloc[axes].all()):
+            raise ValueError("Candidate requests need nonempty supervised axes.")
         text = self.name_features(candidate_names)
         result=[]
         for start in range(0,len(text),batch_size):
             features = text[start:start+batch_size]
             values = np.zeros((len(features),len(self.data.axes)),np.float32)
             batch = batch_from_arrays(values,np.zeros_like(values,bool),features,self.device)
-            raw,_ = predictions_from_outputs(self.model(batch),self.data.scale)
+            raw,_ = predictions_from_outputs(self.model(batch),self.data.scale,target_axes=axes)
             result.append(raw.cpu().numpy())
         return np.concatenate(result)
 
@@ -129,7 +134,8 @@ class NutritionModel:
         nutrition = self.data.axes.loss_group.eq("nutrition").to_numpy() & self.data.axes.loss_eligible.to_numpy(bool)
         visible &= nutrition[None,:]
         if not visible.any(): raise ValueError("Retrieval baseline requires an observed supervised nutrition axis.")
-        candidate = np.log1p(self.candidate_profiles(names)/self.data.scale)
-        distance = ((candidate[:,visible[0]]-values[:,visible[0]])**2).mean(1)
+        axes=np.flatnonzero(visible[0])
+        candidate = np.log1p(self.candidate_profiles(names,target_axes=axes)/self.data.scale[axes])
+        distance = ((candidate-values[:,axes])**2).mean(1)
         order = np.argsort(distance,kind="stable")[:top_k]
         return [{"name":names[i],"score":-float(distance[i]),"score_type":"negative_scaled_log_mse; not probability"} for i in order]

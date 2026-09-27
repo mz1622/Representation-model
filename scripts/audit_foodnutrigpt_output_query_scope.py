@@ -15,11 +15,12 @@ from foodcomp.research_r0 import digest,write_json
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument("--output-dir",type=Path,required=True)
+    p.add_argument("--expected-api-policy",choices=["all_axis","caller_or_schema_axes_v1"],default="all_axis")
     args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True);torch.set_num_threads(4);started=time.monotonic()
     result={"status":"incomplete","post_result_diagnostic":True,"candidate_resumed":False,
-        "complete_test_opened":False,"script_sha256":digest(Path(__file__)),"cases":[]}
+        "complete_test_opened":False,"script_sha256":digest(Path(__file__)),"expected_api_policy":args.expected_api_policy,"cases":[]}
     try:
         wrapper=NutritionModel(ROOT/"output/v9_r4/mlp60_views_weight0/best_model.pt")
         data=wrapper.data
@@ -55,6 +56,9 @@ def main():
                         selected={k:v.index_select(1,index) for k,v in outputs.items()}
                         raw,_=predictions_from_outputs(selected,data.scale[axes])
                         if not torch.isfinite(raw).all():raise AssertionError("Invalid requested output.")
+                        if args.expected_api_policy=="caller_or_schema_axes_v1":
+                            current,_=predictions_from_outputs(outputs,data.scale,target_axes=axes)
+                            torch.testing.assert_close(current,raw,rtol=0,atol=0)
                     checked+=count;unlabelled+=missing
                     families.append({"family":str(family),"profiles":len(rows),"query_axes":len(axes),"requested_cells":count,"requested_cells_without_label":missing})
             # The current decoder already repairs the epoch17 intermediate
@@ -65,11 +69,19 @@ def main():
             context={int(a):float(data.raw[row,a]) for a in context_axes}
             name=str(data.profiles.iloc[row].original_name)
             api_failed=False
-            try:wrapper.predict(name,context,axes)
+            try:
+                prediction=wrapper.predict(name,context,axes)
+                if len(prediction)!=len(axes) or not np.isfinite(list(prediction.values())).all():raise AssertionError("Invalid requested API result.")
+                if args.expected_api_policy=="caller_or_schema_axes_v1":
+                    reversed_prediction=wrapper.predict(name,context,axes[::-1].copy())
+                    if prediction!=reversed_prediction:raise AssertionError("Request order changed values.")
+                    single=wrapper.predict(name,context,axes[:1])
+                    if single[next(iter(single))]!=prediction[next(iter(single))]:raise AssertionError("Request subset changed value.")
             except FloatingPointError as error:
                 if str(error)!="Nonfinite prediction.":raise
                 api_failed=True
-            if api_failed!=(epoch==18):raise AssertionError("Current API behavior differs from repaired17/unrepaired18 expectation.")
+            if api_failed!=(epoch==18 and args.expected_api_policy=="all_axis"):
+                raise AssertionError("API behavior differs from requested audited policy.")
             result["cases"].append({"diagnostic":dirname,"replayed_epoch":epoch,
                 "model_sha256":digest(folder/f"replayed_epoch{epoch}_diagnostic_not_candidate.pt"),
                 "all_logged_overflows_outside_schema_family_request":True,

@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.nn import functional as F
-from .research_neural import batch_from_arrays, predictions_from_outputs
+from .research_neural import batch_from_arrays, predictions_from_outputs, schema_query_axes
 from .research_r0 import cell_weights
 
 
@@ -40,6 +40,8 @@ def evaluate_dual_selection(model, data, text, device, *, amount_weight=1., batc
     pieces = []
     model.eval()
     for family, family_jobs in jobs.groupby("mask_family"):
+        queries=schema_query_axes(data,family=family)
+        query_index=np.full(len(data.axes),-1,dtype=int);query_index[queries]=np.arange(len(queries))
         family_rows = np.sort(family_jobs.profile_index.unique())
         for start in range(0, len(family_rows), batch_size):
             current = family_rows[start:start + batch_size]
@@ -50,11 +52,13 @@ def evaluate_dual_selection(model, data, text, device, *, amount_weight=1., batc
             outputs = model(batch)
             if "positive_logit" not in outputs:
                 raise ValueError("Hurdle selection requires a presence head.")
-            raw, probability = predictions_from_outputs(outputs, data.scale)
+            raw, probability = predictions_from_outputs(outputs, data.scale,target_axes=queries)
             p = np.searchsorted(current, current_jobs.profile_index)
             a = current_jobs.axis_index.to_numpy()
             pt = torch.as_tensor(p, device=device)
             at = torch.as_tensor(a, device=device)
+            qt = torch.as_tensor(query_index[a],device=device)
+            if (qt<0).any():raise ValueError("Selector scoring axis outside caller query set.")
             y = torch.as_tensor(data.values[current_jobs.profile_index, a], device=device, dtype=torch.float64)
             positive = (y > 0).double()
             amount = F.smooth_l1_loss(outputs["amount_normalized"][pt, at].double(), y, reduction="none") * positive
@@ -65,8 +69,8 @@ def evaluate_dual_selection(model, data, text, device, *, amount_weight=1., batc
             amount_sum += np.bincount(a, weights=amount.cpu().numpy()*w, minlength=len(data.axes))
             presence_sum += np.bincount(a, weights=presence.cpu().numpy()*w, minlength=len(data.axes))
             frame = current_jobs[keys].copy()
-            frame["prediction"] = raw[pt, at].cpu().numpy()
-            frame["positive_probability"] = probability[pt, at].cpu().numpy()
+            frame["prediction"] = raw[pt, qt].cpu().numpy()
+            frame["positive_probability"] = probability[pt, qt].cpu().numpy()
             pieces.append(frame)
     targets = data.targets
     presence = float((presence_sum[targets]/totals[targets]).mean())
