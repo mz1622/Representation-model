@@ -1,7 +1,7 @@
 {
   "version": "V9-R2",
   "parent_completed_control": "output/v9_r1/mlp20_panel",
-  "r1_full_iteration_status": "still running; this independent probe uses only the completed MLP control",
+  "r1_full_iteration_status": "R1 screening is now complete; this branch was registered from its completed MLP control and retains its original parent comparisons.",
   "data_version": "foodnutrigpt_v9_r0_v1",
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",

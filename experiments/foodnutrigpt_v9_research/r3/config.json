@@ -27,5 +27,5 @@
   "max_legacy_nutrition_log_mae_regression": 0.02,
   "complete_test_opened": false,
   "external_label_provenance_confirmed": false,
-  "parent_iteration_status": "Completed MLP parent and normalization rejection support this independent branch; R1/R2 V9 ablations are still running and are not declared complete."
+  "parent_iteration_status": "R1 screening is now complete and R2 remains in progress. This completed R3 branch retains its registered MLP parent and does not close the remaining R2 experiments."
 }
