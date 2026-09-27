@@ -1,6 +1,6 @@
 {
   "version": "V9-R1",
-  "generated_utc": "2026-09-27T02:19:20.008443+00:00",
+  "generated_utc": "2026-09-27T02:49:20.081352+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "e63877ba27c188b28b7a09dca9f8be326b271112a6cbd5d62cbb08f5bf0c9454",
   "runs": [
@@ -204,10 +204,10 @@
       },
       "local_output": "output\\v9_r1\\v9_20_a1_s1",
       "manifest_status": "running",
-      "manifest_sha256": "8d01c1abc899c6ec0724934cba1d8d4b74e3a1cfa1b6ba31f40b58150ae3bbfe",
+      "manifest_sha256": "f05e10509d60551a732cb8d7ec704af0e2c6ff3dcfe392e1886c7473a076623a",
       "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
-      "elapsed_seconds": 4555.172000000002,
-      "epoch_completed": 13,
+      "elapsed_seconds": 6378.094000000001,
+      "epoch_completed": 17,
       "best_epoch": null,
       "checkpoint_sha256": null,
       "completed_budget_evaluations": [
@@ -318,10 +318,10 @@
       },
       "local_output": "output\\v9_r1\\v9_20_a2_s1",
       "manifest_status": "running",
-      "manifest_sha256": "027520c1b605078b11d9eea222f901aa09e04ebfc615373a8c25830d196d826d",
+      "manifest_sha256": "3780f370b91e541f16d8d935cf88e88bf2d41299759e250fa7708b4cdc701060",
       "code_commit": "ed0d21711408446366afc6562614c9f70475714b",
-      "elapsed_seconds": 4100.359,
-      "epoch_completed": 11,
+      "elapsed_seconds": 5890.937000000002,
+      "epoch_completed": 15,
       "best_epoch": null,
       "checkpoint_sha256": null
     },
@@ -363,13 +363,48 @@
         "n_jobs": 6
       },
       "local_output": "output\\v9_r1\\rf400_unlimited_leaf1",
-      "manifest_status": "running",
-      "manifest_sha256": "cfbe6b8290c800cbd81b8309d7eb2459cb8aa6bad9612b3f6088bfe5c6d9ae58",
+      "manifest_status": "complete",
+      "manifest_sha256": "ab611451d819bdc9ad96dc20f9a7df01b5dc12fdeff01ddf9b4c9a57108af2d2",
       "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 5358.421999999999,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.18847983887811887,
+          "log_mae": 0.056019085430358655,
+          "log_mse": 0.03243858229858806,
+          "raw_mae": 0.3218300584893097,
+          "positive_scaled_log_mae": 0.24716623131112905,
+          "zero_scaled_log_mae": 0.16895501930657708,
+          "log_rmse_root_mean_axis_mse": 0.1801071411648857
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.676760982029761,
+          "log_mae": 0.03603808736680885,
+          "log_mse": 0.020305266652726014,
+          "raw_mae": 0.06522875005069496,
+          "positive_scaled_log_mae": 0.7764451594125047,
+          "zero_scaled_log_mae": 0.5925728951072681,
+          "log_rmse_root_mean_axis_mse": 0.14249654961691532
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.3059806487274445,
+          "log_mae": 0.05121082386426377,
+          "log_mse": 0.029518800458674728,
+          "raw_mae": 0.26008108052279805,
+          "positive_scaled_log_mae": 0.374532818287396,
+          "zero_scaled_log_mae": 0.2466600734475322,
+          "log_rmse_root_mean_axis_mse": 0.1718103619071758
+        }
+      }
     },
     {
       "registered_configuration": {
@@ -381,7 +416,13 @@
         "n_jobs": 6
       },
       "local_output": "output\\v9_r1\\rf400_depth24_leaf3",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "67a6e17519bf9dee495b053338e92423f9b2018418fff82df394341af1123359",
+      "code_commit": "16fa5a3330dc8cf9f91c1e14f9d6f27d0b80970d",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     },
     {
       "registered_configuration": {
