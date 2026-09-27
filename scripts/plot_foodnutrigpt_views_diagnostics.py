@@ -17,6 +17,11 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--control",type=Path,required=True)
     p.add_argument("--candidate",type=Path,required=True)
+    p.add_argument("--control-weight",type=float,default=0.)
+    p.add_argument("--control-label",default="Coefficient 0")
+    p.add_argument("--candidate-label",default="Coefficient 0.1")
+    p.add_argument("--title",default="Same views and supervision: adding representation consistency")
+    p.add_argument("--different-distance-definitions",action="store_true")
     p.add_argument("--output-dir",type=Path,required=True);args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     histories=[];receipts=[]
@@ -28,7 +33,7 @@ def main():
         ("gradient_clip_fraction","Batches exceeding clip norm1","Fraction"),
         ("mean_unit_batch_std","Within-batch unit representation spread","Mean feature population std"),
         ("mean_representation_norm","Representation amplitude","Mean L2 norm")]
-    for path,weight in [(args.control,0.),(args.candidate,.1)]:
+    for path,weight in [(args.control,args.control_weight),(args.candidate,.1)]:
         m=json.loads((path/"run_manifest.json").read_text())
         if m["status"]!="complete" or m["test_opened"] or m["args"]["consistency_weight"]!=weight:
             raise ValueError("Completed registered test-closed arms required.")
@@ -40,17 +45,20 @@ def main():
         np.testing.assert_array_equal(histories[0][field],histories[1][field])
     fig,axes=plt.subplots(2,4,figsize=(17,8),layout="constrained")
     for axis,(name,title,label) in zip(axes.ravel(),fields):
-        for history,text,color in zip(histories,["Coefficient 0","Coefficient 0.1"],["#167d9a","#bd7736"]):
+        for history,text,color in zip(histories,[args.control_label,args.candidate_label],["#167d9a","#bd7736"]):
             axis.plot(history.epoch,history[name],color=color,label=text,lw=1.8)
         axis.set(title=title,xlabel="Epoch",ylabel=label)
         axis.grid(alpha=.18)
     axes[0,0].legend(frameon=False)
-    fig.suptitle("Same views and supervision: adding representation consistency",fontsize=15)
-    fig.supxlabel("Single seed, train/validation only. Batch spread and clipping are descriptive diagnostics, not transfer or causal isolation of gradient scale.",fontsize=9)
+    fig.suptitle(args.title,fontsize=15)
+    footer="Single seed, train/validation only. Batch spread and clipping are descriptive, not transfer or isolated gradient-scale effects."
+    if args.different_distance_definitions:
+        footer+="\nC and total loss use different origins and are not the same metric; supervised MAE and validation remain comparable."
+    fig.supxlabel(footer,fontsize=9)
     args.output_dir.mkdir(parents=True)
     for extension in ["png","svg"]:fig.savefig(args.output_dir/f"diagnostics.{extension}",dpi=160)
     plt.close(fig)
-    (args.output_dir/"figure_manifest.json").write_text(json.dumps({"inputs":receipts,"script_sha256":sha(Path(__file__)),"complete_test_opened":False},indent=2)+"\n")
+    (args.output_dir/"figure_manifest.json").write_text(json.dumps({"inputs":receipts,"script_sha256":sha(Path(__file__)),"complete_test_opened":False,"different_distance_definitions":args.different_distance_definitions,"labels":[args.control_label,args.candidate_label]},indent=2)+"\n")
     print(args.output_dir)
 
 
