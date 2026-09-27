@@ -1,8 +1,8 @@
 {
   "version": "V9-R5",
-  "status": "All12R5budgets explored:10new runs+2reused. Strong nameKNN rejects general sparse neural superiority; retain full-input specialist pending3seed confirmation. Main completion goal unmet.",
+  "status": "All12 screening configurations and full-input specialist3seed conditional validation replication complete. Sparse superiority rejected; primary completion remains unmet.",
   "generated_utc": "2026-09-27T12:24:53.685639+00:00",
-  "config_sha256": "826d41dc832a13cbcb56ddb38adfbcbfaa6370aa6fab38c18eb2947ec63cd180",
+  "config_sha256": "f410e7a25e0aeb3d6cb811734deb3891bad670a947123055c2a0a3ddf6661ef8",
   "runs": [
     {
       "registered_configuration": {
@@ -1348,5 +1348,279 @@
   "retained_diagnostic_failures": [
     "v9_r5_knn_batch_diagnostic_v1 field examined all rather than changed neighbors; correctedv2",
     "v9_r5_knn_tree_completed_audit_v1 WindowsGBK JSONdecode failure; explicitUTF8v2passed; no refit"
-  ]
+  ],
+  "confirmation_update_utc": "2026-09-27T12:57:22.193518+00:00",
+  "screening_config_sha256_at_original_summary": "826d41dc832a13cbcb56ddb38adfbcbfaa6370aa6fab38c18eb2947ec63cd180",
+  "full_input_specialist_confirmation": {
+    "status": "complete",
+    "code_sha256": "3b51a6574a399707b133804c931a18f5a1fb1e9cb7c3e59ac6bf56e8c4ad205a",
+    "code_commit": "55ebdc40b90cfbd7b6c2e3b5d237ea89fc69f3c7",
+    "complete_test_opened": false,
+    "scientific_confirmation": false,
+    "completion_milestone_met": false,
+    "scope": "Conditional validation replication after seed22 model selection; no independent test, alias, label-validity or model-selection uncertainty claim.",
+    "seed22_compatibility": {
+      "all60_non_timing_history_columns_exact": true,
+      "all19089_ranks_and_metrics_exact": true,
+      "states": [
+        {
+          "file": "best_model.pt",
+          "model_tensors_exact": true,
+          "parent_file_sha256": "1daee3452c3a17ca898f59c53856c6d3979aa27a53bf6e58a7cef1265f3902be",
+          "replication_file_sha256": "3f77b19811d4e09d65031e21891bf2aefad82c06ea7ee15b27395557e9cbb76c"
+        },
+        {
+          "file": "latest_training_state.pt",
+          "model_tensors_exact": true,
+          "parent_file_sha256": "cd6b4edb55de68b332ae5bacfe2a00b5f655198944890c4686b18797146d609f",
+          "replication_file_sha256": "a1df6c55073bfab1af0af8b313a0a962d3dd623bcb7f87753a20ef92fca0db33"
+        },
+        {
+          "file": "best_through_epoch_008.pt",
+          "model_tensors_exact": true,
+          "parent_file_sha256": "e92abef3698c79fa8f33df2f99f479c49f6c430cc11a6aba802ba4cdae0a012d",
+          "replication_file_sha256": "ce71daeada2cbcbc220814f53f7c791d802e2dc41c0a859be9d28be8a6b227cf"
+        },
+        {
+          "file": "best_through_epoch_020.pt",
+          "model_tensors_exact": true,
+          "parent_file_sha256": "e9a8c717b376ac6c983c9c5bedb335c2faca958e73bc8e2ecaa76a0a5343855c",
+          "replication_file_sha256": "79850c73a735d6e9b2cbe83747e81c760378fabdade27bfa9062ab1d9cd96311"
+        },
+        {
+          "file": "best_through_epoch_060.pt",
+          "model_tensors_exact": true,
+          "parent_file_sha256": "1daee3452c3a17ca898f59c53856c6d3979aa27a53bf6e58a7cef1265f3902be",
+          "replication_file_sha256": "3f77b19811d4e09d65031e21891bf2aefad82c06ea7ee15b27395557e9cbb76c"
+        }
+      ],
+      "scope": "Model tensors compared exactly. Serialized checkpoint bytes differ due to registered arguments/output paths; no byte equality claim."
+    },
+    "records": [
+      {
+        "seed": 20260922,
+        "run": "output\\v9_r5_confirmation_v1\\contrastive_seed20260922",
+        "best_epoch": 59,
+        "selection_mean_mrr": 0.06657534809050869,
+        "elapsed_seconds": 72.59399999999732,
+        "checkpoint_sha256": "3f77b19811d4e09d65031e21891bf2aefad82c06ea7ee15b27395557e9cbb76c",
+        "manifest_sha256": "29a4bd95df47a3de69cecbc5de1abff11e3d4feea316bf885dda586c084a43da",
+        "ranks_sha256": "c8addaf96bde94825a0657d8568ed0ef29354a07ba598fc8f3a762b9586ddd53",
+        "metrics_sha256": "b8fa5fd749afd104fd5c0ac082db9448216ee891ce3288f77cbbc9173625b7db",
+        "all60_order_exposure_verified": true,
+        "all19089_ranks_metrics_public_loader_replay_exact": true,
+        "nutrition_api_name_independent": true
+      },
+      {
+        "seed": 20260923,
+        "run": "output\\v9_r5_confirmation_v1\\contrastive_seed20260923",
+        "best_epoch": 53,
+        "selection_mean_mrr": 0.0662137835923583,
+        "elapsed_seconds": 82.5940000000046,
+        "checkpoint_sha256": "7bb5ca9e469e3bd4462ba63c4f939889855068a01ee7848ac30137154bad4b10",
+        "manifest_sha256": "008c573ed17c7c93455dc7537ac48d7ca3d8c9aeeb313672fdb828396c4b8d68",
+        "ranks_sha256": "b77dfc5cb9a23e30db56f844a170c29dbcbccfa554960e896fad74283ac6e5ea",
+        "metrics_sha256": "594eefcbef3df4520aa2cf02c2081c3c5eceb8b05841cfac4f0ab9b650f69459",
+        "all60_order_exposure_verified": true,
+        "all19089_ranks_metrics_public_loader_replay_exact": true,
+        "nutrition_api_name_independent": true
+      },
+      {
+        "seed": 20260924,
+        "run": "output\\v9_r5_confirmation_v1\\contrastive_seed20260924",
+        "best_epoch": 59,
+        "selection_mean_mrr": 0.06728079896726158,
+        "elapsed_seconds": 82.86000000000058,
+        "checkpoint_sha256": "580d1c7675f5a4a6fba2afdb596d80cecb9b62d66fa9995134e9b7c90c76e7b4",
+        "manifest_sha256": "7fc13b4ea35592043de8088934eb872e10dede2952c81a875b3026eae16f1fcb",
+        "ranks_sha256": "ba9a9e08a764f083d5befb80e96b90c40b9e6f5d46ed4d8b077a120ba16aa0c7",
+        "metrics_sha256": "44972676a5fcb4f437b98605c0b987b0453e2527338bcf9e228fb015001b3b5b",
+        "all60_order_exposure_verified": true,
+        "all19089_ranks_metrics_public_loader_replay_exact": true,
+        "nutrition_api_name_independent": true
+      }
+    ],
+    "baseline": {
+      "directory": "output\\v9_r5\\retrieval_name_knn10_tree",
+      "ranks_sha256": "3c0023b45803ce029108f468b290b6265457fa9d4991158d2b153f1b6fa819d9",
+      "metrics_sha256": "fa10b35c409ec842af4ecaae130e64a0f22c207c8dfd5b9f74786a81581c5a3b"
+    },
+    "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+    "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+    "comparisons": {
+      "1.0": {
+        "mrr": {
+          "baseline": 0.06903340629778758,
+          "candidate": 0.13186137768843958,
+          "candidate_minus_baseline": 0.06282797139065203,
+          "difference_95_interval": [
+            0.057704710669305284,
+            0.06840687114326847
+          ],
+          "group_count": 7090,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.13177578093919165,
+            0.13063114906765286,
+            0.1331772030584743
+          ],
+          "seed_sample_sd": 0.0012751834509810009
+        },
+        "recall_at_1": {
+          "baseline": 0.01330400519399109,
+          "candidate": 0.055981709091723196,
+          "candidate_minus_baseline": 0.0426777038977321,
+          "difference_95_interval": [
+            0.038101960059999544,
+            0.047436348422772966
+          ],
+          "group_count": 7090,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.05482906843978776,
+            0.056270400967156964,
+            0.05684565786822486
+          ],
+          "seed_sample_sd": 0.001038828898292286
+        },
+        "recall_at_5": {
+          "baseline": 0.11680278505384287,
+          "candidate": 0.2003239608019983,
+          "candidate_minus_baseline": 0.08352117574815539,
+          "difference_95_interval": [
+            0.07422946790375763,
+            0.09295094372963102
+          ],
+          "group_count": 7090,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.2019559981961755,
+            0.19655635032574387,
+            0.2024595338840755
+          ],
+          "seed_sample_sd": 0.0032725454271612152
+        },
+        "recall_at_10": {
+          "baseline": 0.19219166274878546,
+          "candidate": 0.29819896599918766,
+          "candidate_minus_baseline": 0.10600730325040217,
+          "difference_95_interval": [
+            0.096399221900796,
+            0.11702925677793449
+          ],
+          "group_count": 7090,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.3018028650106023,
+            0.29437204359882174,
+            0.2984219893881389
+          ],
+          "seed_sample_sd": 0.0037204275678285256
+        }
+      },
+      "0.3": {
+        "mrr": {
+          "baseline": 0.034544746947938534,
+          "candidate": 0.0015185760783127807,
+          "candidate_minus_baseline": -0.033026170869625754,
+          "difference_95_interval": [
+            -0.035417088459754206,
+            -0.03070893644307382
+          ],
+          "group_count": 6458,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.0013749152418257291,
+            0.0017964181170637451,
+            0.0013843948760488682
+          ],
+          "seed_sample_sd": 0.00024066494289617756
+        },
+        "recall_at_1": {
+          "baseline": 0.0055099618044802305,
+          "candidate": 0.00041292453804067306,
+          "candidate_minus_baseline": -0.0050970372664395575,
+          "difference_95_interval": [
+            -0.006968101579436358,
+            -0.003534698565087231
+          ],
+          "group_count": 6458,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.0003096934035305048,
+            0.000774233508826262,
+            0.0001548467017652524
+          ],
+          "seed_sample_sd": 0.0003223391141941983
+        },
+        "recall_at_5": {
+          "baseline": 0.053570076735143315,
+          "candidate": 0.001230662596410506,
+          "candidate_minus_baseline": -0.05233941413873281,
+          "difference_95_interval": [
+            -0.0575506692818554,
+            -0.047157401672344376
+          ],
+          "group_count": 6458,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.0009047471574569748,
+            0.0016258903685351502,
+            0.001161350263239393
+          ],
+          "seed_sample_sd": 0.00036553390043640683
+        },
+        "recall_at_10": {
+          "baseline": 0.09557138432951379,
+          "candidate": 0.0022517905686069203,
+          "candidate_minus_baseline": -0.09331959376090686,
+          "difference_95_interval": [
+            -0.10005941934944722,
+            -0.08684162193317506
+          ],
+          "group_count": 6458,
+          "repeats": 1000,
+          "seed": 20260922,
+          "higher_is_better": true,
+          "scope": "Whole-food-group paired uncertainty conditional on these three fitted models; seed SD reported separately, not a seed bootstrap. Post-selection validation only.",
+          "seed_values": [
+            0.0022261056791871288,
+            0.0021678538247135335,
+            0.002361412201920099
+          ],
+          "seed_sample_sd": 9.93025503453459e-05
+        }
+      }
+    },
+    "selection_mean_mrr": {
+      "mean": 0.06668997688337619,
+      "seed_sample_sd": 0.0005426649727831083
+    },
+    "full_input_specialist_three_seed_validation_support": true,
+    "general_sparse_superiority": false,
+    "completion": "N/A: independent retrieval specialist",
+    "name_only_nutrition": "N/A: independent retrieval specialist",
+    "total_training_elapsed_seconds": 238.0480000000025
+  }
 }

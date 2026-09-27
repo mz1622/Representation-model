@@ -144,5 +144,15 @@
     "candidate_vectors_sha256": "7deb8b0ba5d377b1e5d1673b3de662aa784eb9c8d159795a3dd2181066ee9a2e",
     "batch_audit": "reports/v9_r5_knn_tree_completed_audit_v2/verification.json"
   },
+  "full_input_retrieval_specialist": {
+    "status":"Three fixed seeds support full-input superiority over corrected KNN on existing selected validation panel only; sparse superiority rejected",
+    "runs":["output/v9_r5_confirmation_v1/contrastive_seed20260922","output/v9_r5_confirmation_v1/contrastive_seed20260923","output/v9_r5_confirmation_v1/contrastive_seed20260924"],
+    "receipt":"reports/v9_r5_confirmation_v1/verification.json",
+    "report":"experiments/foodnutrigpt_v9_research/r5/CONFIRMATION_RESULTS.md",
+    "full_mrr_mean":0.13186137768843958,"full_mrr_seed_sd":0.0012751834509810009,
+    "full_r10_mean":0.29819896599918766,"full_r10_seed_sd":0.0037204275678285256,
+    "partial_mrr_mean":0.0015185760783127807,"partial_r10_mean":0.0022517905686069203,
+    "nutrition_completion_or_name_only_head":false,"scientific_confirmation":false,"complete_test_opened":false
+  },
   "old_auto_knn": "Historical scores retained at output/v9_r0/name_knn_quarantined; batch-dependent behavior documented in R5. Do not combine old nutrition scores with corrected retrieval."
 }
