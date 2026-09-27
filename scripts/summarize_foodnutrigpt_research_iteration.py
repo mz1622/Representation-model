@@ -32,11 +32,23 @@ def main():
                 record["metrics"]=json.loads((path/"metrics.json").read_text())
             elif m["status"]=="failed":
                 record["failure"]={k:m.get(k) for k in ["error_type","error"]}
+        budgets=[]
+        for budget in item.get("duration_checkpoints",[]):
+            evaluation=path/f"evaluation_through_{budget:03d}"
+            if (evaluation/"evaluation_manifest.json").exists():
+                receipt=json.loads((evaluation/"evaluation_manifest.json").read_text())
+                if receipt["selection_budget_epochs"]!=budget:raise ValueError("Mismatched duration-budget evaluation.")
+                budgets.append({"budget_epochs":budget,"evaluation_manifest":receipt,
+                    "metrics":json.loads((evaluation/"metrics.json").read_text())})
+        if budgets:record["completed_budget_evaluations"]=budgets
         runs.append(record)
+    retrieval=[]
+    for path in sorted((ROOT/f"output/v9_{args.version}").glob("retrieval_*/metrics.json")):
+        retrieval.append({"local_output":str(path.parent.relative_to(ROOT)),"metrics":json.loads(path.read_text()),"metrics_sha256":digest(path)})
     write_json(folder/"results_summary.json",{
         "version":config["version"],"generated_utc":datetime.now(timezone.utc).isoformat(),
         "status":"exploration in progress; no accepted improvement over stronger tree baseline",
-        "configuration_sha256":digest(folder/"config.json"),"runs":runs,
+        "configuration_sha256":digest(folder/"config.json"),"runs":runs,"completed_retrieval_evaluations":retrieval,
         "process_liveness":"Manifest status only. Check actual process/session before scheduling or declaring a live job.",
         "confirmation_seeds_completed":False,"complete_test_opened":False,
         "provenance_unresolved":True,"individual_predictions_included":False,
