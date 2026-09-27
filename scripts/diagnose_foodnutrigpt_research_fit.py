@@ -1,4 +1,4 @@
-"""Compare full training-panel and validation errors of saved MLPs without refitting."""
+"""Compare full training-panel and validation errors of saved dense MLPs without refitting."""
 import argparse
 import copy
 from pathlib import Path
@@ -26,7 +26,7 @@ def main():
     summaries=[];per_axis=[];data_hash=None
     for checkpoint in args.checkpoint:
         start=time.monotonic();wrapper=NutritionModel(checkpoint)
-        if wrapper.kind!="mlp":raise ValueError("This inexpensive diagnostic is restricted to MLP runs.")
+        if wrapper.kind not in {"mlp","name_mlp"}:raise ValueError("This diagnostic supports fused or name-only MLP runs.")
         actual_hash=digest(wrapper.data.root/"manifest.json")
         if data_hash is not None and actual_hash!=data_hash:raise ValueError("Diagnostic data views differ.")
         data_hash=actual_hash
@@ -46,7 +46,7 @@ def main():
         axis=training_axes[selected].merge(validation_axes[selected],on="axis_index",suffixes=("_train","_validation"),validate="one_to_one")
         axis=axis.merge(train.axes[["axis_index","canonical_name","loss_group"]],on="axis_index",validate="one_to_one")
         axis["run"]=checkpoint.parent.name;per_axis.append(axis)
-        record={"run":checkpoint.parent.name,"checkpoint_sha256":digest(checkpoint),"training":training,"validation":validation,
+        record={"run":checkpoint.parent.name,"kind":wrapper.kind,"checkpoint_sha256":digest(checkpoint),"training":training,"validation":validation,
             "training_job_count":len(train.jobs),"training_panel_sha256":panel_hash,"data_sha256":data_hash,
             "elapsed_seconds":time.monotonic()-start}
         summaries.append(record)
