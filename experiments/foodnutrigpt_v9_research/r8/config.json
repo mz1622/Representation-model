@@ -1,37 +1,142 @@
 {
   "version": "V9-R8",
-  "status": "conditionally_preregistered_not_running",
+  "status": "input_preflight_complete_formal_runners_pending",
   "start_gate": "R7 all registered tasks/audits/report complete and dimension screening criterion passed",
   "max_candidates": 12,
   "registered_candidates": 12,
   "data_version": "foodnutrigpt_v9_r0_v1",
   "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
   "name_cache_registry": "reports/v9_r7_name_cache_v1/verification.json",
-  "active_name_dimensions": [32, 128],
+  "active_name_dimensions": [
+    32,
+    128
+  ],
   "all_completion_methods_name_slots": 128,
   "numeric_value_and_visibility_slots": 504,
   "same_input_baselines_required": true,
   "seed": 20260922,
-  "confirmation_seeds": [20260922, 20260923, 20260924],
-  "mlp": {"width": 512, "parameters": 717052, "epochs": 60, "schedule_epochs": 60, "batch_size": 256, "learning_rate": 0.001, "objective": "mae", "metabolome_loss_weight": 1, "name_only_probability": 0, "context_dropout": "none", "normalization": "layer_norm", "task_heads": "shared"},
-  "candidates": [
-    {"name": "mlp512_name32", "kind": "mlp", "active_dimensions": 32},
-    {"name": "mlp512_name128", "kind": "mlp", "active_dimensions": 128},
-    {"name": "xgb800d10_name32", "kind": "xgb", "active_dimensions": 32, "trees": 800, "max_depth": 10},
-    {"name": "xgb800d6_name128", "kind": "xgb", "active_dimensions": 128, "trees": 800, "max_depth": 6},
-    {"name": "xgb800d10_name128", "kind": "xgb", "active_dimensions": 128, "trees": 800, "max_depth": 10},
-    {"name": "xgb800d14_name128", "kind": "xgb", "active_dimensions": 128, "trees": 800, "max_depth": 14},
-    {"name": "rf400leaf1half_name32", "kind": "rf", "active_dimensions": 32, "trees": 400, "leaf_size": 1, "max_features": 0.5},
-    {"name": "rf400leaf1half_name128", "kind": "rf", "active_dimensions": 128, "trees": 400, "leaf_size": 1, "max_features": 0.5},
-    {"name": "rf400leaf3half_name128", "kind": "rf", "active_dimensions": 128, "trees": 400, "leaf_size": 3, "max_features": 0.5},
-    {"name": "rf400leaf1all_name128", "kind": "rf", "active_dimensions": 128, "trees": 400, "leaf_size": 1, "max_features": 1.0},
-    {"name": "name_knn32", "reused_reference": "output/v9_r7/exact_name_knn32"},
-    {"name": "name_knn128", "reused_reference": "output/v9_r7/exact_name_knn128"}
+  "confirmation_seeds": [
+    20260922,
+    20260923,
+    20260924
   ],
-  "xgb_fixed": {"learning_rate": 0.03, "min_child_weight": 5, "subsample": 0.8, "colsample_bytree": 0.8, "reg_lambda": 1, "tree_method": "hist", "objective": "reg:squarederror"},
-  "rf_fixed": {"max_depth": null, "criterion": "squared_error"},
+  "mlp": {
+    "width": 512,
+    "parameters": 717052,
+    "epochs": 60,
+    "schedule_epochs": 60,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "objective": "mae",
+    "metabolome_loss_weight": 1,
+    "name_only_probability": 0,
+    "context_dropout": "none",
+    "normalization": "layer_norm",
+    "task_heads": "shared"
+  },
+  "candidates": [
+    {
+      "name": "mlp512_name32",
+      "kind": "mlp",
+      "active_dimensions": 32
+    },
+    {
+      "name": "mlp512_name128",
+      "kind": "mlp",
+      "active_dimensions": 128
+    },
+    {
+      "name": "xgb800d10_name32",
+      "kind": "xgb",
+      "active_dimensions": 32,
+      "trees": 800,
+      "max_depth": 10
+    },
+    {
+      "name": "xgb800d6_name128",
+      "kind": "xgb",
+      "active_dimensions": 128,
+      "trees": 800,
+      "max_depth": 6
+    },
+    {
+      "name": "xgb800d10_name128",
+      "kind": "xgb",
+      "active_dimensions": 128,
+      "trees": 800,
+      "max_depth": 10
+    },
+    {
+      "name": "xgb800d14_name128",
+      "kind": "xgb",
+      "active_dimensions": 128,
+      "trees": 800,
+      "max_depth": 14
+    },
+    {
+      "name": "rf400leaf1half_name32",
+      "kind": "rf",
+      "active_dimensions": 32,
+      "trees": 400,
+      "leaf_size": 1,
+      "max_features": 0.5
+    },
+    {
+      "name": "rf400leaf1half_name128",
+      "kind": "rf",
+      "active_dimensions": 128,
+      "trees": 400,
+      "leaf_size": 1,
+      "max_features": 0.5
+    },
+    {
+      "name": "rf400leaf3half_name128",
+      "kind": "rf",
+      "active_dimensions": 128,
+      "trees": 400,
+      "leaf_size": 3,
+      "max_features": 0.5
+    },
+    {
+      "name": "rf400leaf1all_name128",
+      "kind": "rf",
+      "active_dimensions": 128,
+      "trees": 400,
+      "leaf_size": 1,
+      "max_features": 1.0
+    },
+    {
+      "name": "name_knn32",
+      "reused_reference": "output/v9_r7/exact_name_knn32"
+    },
+    {
+      "name": "name_knn128",
+      "reused_reference": "output/v9_r7/exact_name_knn128"
+    }
+  ],
+  "xgb_fixed": {
+    "learning_rate": 0.03,
+    "min_child_weight": 5,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1,
+    "tree_method": "hist",
+    "objective": "reg:squarederror"
+  },
+  "rf_fixed": {
+    "max_depth": null,
+    "criterion": "squared_error"
+  },
   "selection": "Earliest strict minimum fixed142completion validation scaledlog MAE",
-  "neural_confirmation_gate": {"gain_vs_stronger_same_input_tree": 0.05, "max_legacy_log_regression": 0.02, "three_seeds_required": true},
+  "neural_confirmation_gate": {
+    "gain_vs_stronger_same_input_tree": 0.05,
+    "max_legacy_log_regression": 0.02,
+    "three_seeds_required": true
+  },
   "complete_test_opened": false,
-  "scientific_confirmation": false
+  "scientific_confirmation": false,
+  "r7_gate_passed": true,
+  "input_panels_receipt": "reports/v9_r8_input_panels_v2/verification.json",
+  "input_functional_receipt": "reports/v9_r8_input_functional_v2/verification.json",
+  "formal_training_started": false
 }

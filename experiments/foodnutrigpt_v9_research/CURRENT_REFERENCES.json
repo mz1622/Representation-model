@@ -145,14 +145,179 @@
     "batch_audit": "reports/v9_r5_knn_tree_completed_audit_v2/verification.json"
   },
   "full_input_retrieval_specialist": {
-    "status":"Three fixed seeds support full-input superiority over corrected KNN on existing selected validation panel only; sparse superiority rejected",
-    "runs":["output/v9_r5_confirmation_v1/contrastive_seed20260922","output/v9_r5_confirmation_v1/contrastive_seed20260923","output/v9_r5_confirmation_v1/contrastive_seed20260924"],
-    "receipt":"reports/v9_r5_confirmation_v1/verification.json",
-    "report":"experiments/foodnutrigpt_v9_research/r5/CONFIRMATION_RESULTS.md",
-    "full_mrr_mean":0.13186137768843958,"full_mrr_seed_sd":0.0012751834509810009,
-    "full_r10_mean":0.29819896599918766,"full_r10_seed_sd":0.0037204275678285256,
-    "partial_mrr_mean":0.0015185760783127807,"partial_r10_mean":0.0022517905686069203,
-    "nutrition_completion_or_name_only_head":false,"scientific_confirmation":false,"complete_test_opened":false
+    "status": "Three fixed seeds support full-input superiority over corrected KNN on existing selected validation panel only; sparse superiority rejected",
+    "runs": [
+      "output/v9_r5_confirmation_v1/contrastive_seed20260922",
+      "output/v9_r5_confirmation_v1/contrastive_seed20260923",
+      "output/v9_r5_confirmation_v1/contrastive_seed20260924"
+    ],
+    "receipt": "reports/v9_r5_confirmation_v1/verification.json",
+    "report": "experiments/foodnutrigpt_v9_research/r5/CONFIRMATION_RESULTS.md",
+    "full_mrr_mean": 0.13186137768843958,
+    "full_mrr_seed_sd": 0.0012751834509810009,
+    "full_r10_mean": 0.29819896599918766,
+    "full_r10_seed_sd": 0.0037204275678285256,
+    "partial_mrr_mean": 0.0015185760783127807,
+    "partial_r10_mean": 0.0022517905686069203,
+    "nutrition_completion_or_name_only_head": false,
+    "scientific_confirmation": false,
+    "complete_test_opened": false
   },
-  "old_auto_knn": "Historical scores retained at output/v9_r0/name_knn_quarantined; batch-dependent behavior documented in R5. Do not combine old nutrition scores with corrected retrieval."
+  "old_auto_knn": "Historical scores retained at output/v9_r0/name_knn_quarantined; batch-dependent behavior documented in R5. Do not combine old nutrition scores with corrected retrieval.",
+  "additional_name_input_protocols": {
+    "name": "r7_exact_common_pca",
+    "by_active_dimensions": {
+      "32": {
+        "directory": "output\\v9_r7\\exact_name_knn32",
+        "name_cache_sha256": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+        "predictions_sha256": "af41ba8ad7e6fc46d5b9e17813c7c385985bad3c59b17e7079421778497aef06",
+        "nutrition_metrics": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.26225993622384663,
+            "log_mae": 0.08908805509299526,
+            "log_mse": 0.0681757013730448,
+            "raw_mae": 0.5027824548575578,
+            "positive_scaled_log_mae": 0.3381071284698304,
+            "zero_scaled_log_mae": 0.2465783786429552,
+            "log_rmse_root_mean_axis_mse": 0.26110477087377165
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.7024500879122328,
+            "log_mae": 0.04082336538172365,
+            "log_mse": 0.021816078574561307,
+            "raw_mae": 0.07193906057899584,
+            "positive_scaled_log_mae": 0.7943389626571851,
+            "zero_scaled_log_mae": 0.6119737611831139,
+            "log_rmse_root_mean_axis_mse": 0.14770266949030172
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.3681880475927096,
+            "log_mae": 0.07747355756889246,
+            "log_mse": 0.05701964241084287,
+            "raw_mae": 0.3991035631862461,
+            "positive_scaled_log_mae": 0.44789553776625257,
+            "zero_scaled_log_mae": 0.31360356715623877,
+            "log_rmse_root_mean_axis_mse": 0.23878786068567823
+          }
+        },
+        "retrieval": {
+          "metrics": [
+            {
+              "visible_fraction": 0.3,
+              "mrr": 0.03451239658660142,
+              "recall_at_1": 0.005148652833694642,
+              "recall_at_5": 0.05479594645745157,
+              "recall_at_10": 0.09672241147930216
+            },
+            {
+              "visible_fraction": 1.0,
+              "mrr": 0.06887887468372955,
+              "recall_at_1": 0.013005126827411735,
+              "recall_at_5": 0.1175731524391609,
+              "recall_at_10": 0.1935715405108917
+            }
+          ],
+          "candidate_count": 49913,
+          "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+          "query_profiles": {
+            "0.3": 8610,
+            "1.0": 10479
+          },
+          "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+          "name_cache_sha256": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+          "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+          "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+          "method": "exact_pca32_name_knn_kd_tree",
+          "complete_test_opened": false,
+          "scientific_claim_allowed": false,
+          "elapsed_seconds": 600.1089999999967
+        },
+        "manifest_sha256": "9906043fca3e0be7ee2f57bd6277002449501a3361dc01d55d995c014b403dc0",
+        "scope": "R7 exact common PCA name-only reference. For new-input comparisons select matching view; old randomPCA32 default references remain historical."
+      },
+      "128": {
+        "directory": "output\\v9_r7\\exact_name_knn128",
+        "name_cache_sha256": "4132b3623da37df2f02aedc6dde7d06b5c1e87a6b65e71d87f58ebbed5d2f768",
+        "predictions_sha256": "6897eb0cd59e144eaacc2b78d5c775a7c7aa4536a91c994f7f9b6d4dca0c3168",
+        "nutrition_metrics": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.24423636381115754,
+            "log_mae": 0.08187406623142106,
+            "log_mse": 0.05950095555438195,
+            "raw_mae": 0.46713440433762365,
+            "positive_scaled_log_mae": 0.3151930257259974,
+            "zero_scaled_log_mae": 0.22496545027346024,
+            "log_rmse_root_mean_axis_mse": 0.24392817704066488
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.6909629939081215,
+            "log_mae": 0.04344657579066848,
+            "log_mse": 0.024770412845674588,
+            "raw_mae": 0.0763987958450408,
+            "positive_scaled_log_mae": 0.7925068277779888,
+            "zero_scaled_log_mae": 0.5531641336035675,
+            "log_rmse_root_mean_axis_mse": 0.15738619013647476
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.35173742452967827,
+            "log_mae": 0.07262680917348596,
+            "log_mse": 0.05114333832501387,
+            "raw_mae": 0.37310711887149417,
+            "positive_scaled_log_mae": 0.43005463584546055,
+            "zero_scaled_log_mae": 0.28516757561803613,
+            "log_rmse_root_mean_axis_mse": 0.22614892952435983
+          }
+        },
+        "retrieval": {
+          "metrics": [
+            {
+              "visible_fraction": 0.3,
+              "mrr": 0.04286735438174394,
+              "recall_at_1": 0.0058325590998245065,
+              "recall_at_5": 0.07232545335673239,
+              "recall_at_10": 0.1209180688895771
+            },
+            {
+              "visible_fraction": 1.0,
+              "mrr": 0.08805384598867774,
+              "recall_at_1": 0.01732117670763651,
+              "recall_at_5": 0.15871498293722755,
+              "recall_at_10": 0.24973975673955526
+            }
+          ],
+          "candidate_count": 49913,
+          "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+          "query_profiles": {
+            "0.3": 8610,
+            "1.0": 10479
+          },
+          "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+          "name_cache_sha256": "4132b3623da37df2f02aedc6dde7d06b5c1e87a6b65e71d87f58ebbed5d2f768",
+          "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+          "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+          "method": "exact_pca128_name_knn_kd_tree",
+          "complete_test_opened": false,
+          "scientific_claim_allowed": false,
+          "elapsed_seconds": 1902.327999999994
+        },
+        "manifest_sha256": "88c71c56e8bd85d46f3f1f05e1829ce4c1f22eebc43748a60424a6af4ff77e55",
+        "scope": "R7 exact common PCA name-only reference. For new-input comparisons select matching view; old randomPCA32 default references remain historical."
+      }
+    },
+    "completion_tree_baselines_recomputed": false,
+    "neural_superiority_claim": false,
+    "report": "experiments/foodnutrigpt_v9_research/r7/README.md"
+  }
 }
