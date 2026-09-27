@@ -41,3 +41,17 @@ R1的MLP20主指标0.222459，新增XGB500/深8为0.178131。MLP只在142个营�
 ```powershell
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_capacity.py --kind mlp --objective mae --mlp-width 512 --epochs 20 --schedule-epochs 20 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp20_mae_width512
 ```
+
+## 第三/四个候选预算：固定60轮日程内的20→60轮比较（启动前登记）
+
+宽度试验已完成：主指标0.202428，相对256宽度改善3.37%，食品组配对95%区间1.82%–4.88%；正值/零值均改善。仍落后XGB500d8约13.64%，完整检索Recall@10从0.3739%降至0.2574%。因此目前只将它作为补全分支，不称三个任务同时改善。
+
+两个MAE试验的最佳点都在第20轮。最小后续问题是：在固定架构和数值目标下，增加训练预算还能否缩小补全差距，还是加重过拟合/辅助任务退步？新运行从相同seed初始化MAE/512模型，使用预先固定的60轮cosine日程，在同一轨迹的前20轮和前60轮分别按主指标选择检查点。该内部比较只改变可用训练预算，数据、损失、宽度、优化器、batch、初始lr与日程始终一致。
+
+新60轮最终结果与旧20轮日程模型比较时，同时改变了时长和学习率日程，只是训练策略整体比较，不能归因为纯时长。不会在看到新前20轮结果后改变日程或停止规则。模型选择仍只用固定验证主指标；三个任务和所有失败结果都报告，不打开测试集。
+
+计数：已完成两个配置，加上新轨迹的两个预算检查点，共4个筛选候选，上限12。仍使用seed20260922，未获得三种子证据前不接受最终改进。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_duration.py --kind mlp --objective mae --mlp-width 512 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width512
+```

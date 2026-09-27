@@ -6,10 +6,12 @@
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
   "max_candidates": 12,
+  "registered_candidate_budgets_including_duration_checkpoints": 4,
   "max_hours": 72,
   "registered_candidates": [
     {"name": "mlp20_mae", "kind": "mlp", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "loss: SmoothL1(beta=1) -> MAE"},
-    {"name": "mlp20_mae_width512", "parent": "output/v9_r2/mlp20_mae", "kind": "mlp", "objective": "mae", "mlp_width": 512, "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "hidden width: 256 -> 512; initialized tensor shapes differ"}
+    {"name": "mlp20_mae_width512", "parent": "output/v9_r2/mlp20_mae", "kind": "mlp", "objective": "mae", "mlp_width": 512, "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "hidden width: 256 -> 512; initialized tensor shapes differ"},
+    {"name": "mlp60_mae_width512", "kind": "mlp", "objective": "mae", "mlp_width": 512, "epochs": 60, "schedule_epochs": 60, "duration_checkpoints": [20,60], "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "duration budget 20 vs 60 on SAME fixed 60-epoch schedule; earlier 20-epoch-schedule run is not the causal duration control"}
   ],
   "confirmation_seeds": [20260922, 20260923, 20260924],
   "primary_gain_vs_stronger_tuned_tree": 0.05,
