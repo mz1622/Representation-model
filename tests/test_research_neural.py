@@ -12,7 +12,7 @@ def tiny_data():
     return SimpleNamespace(axes=list(range(4)),profiles=pd.DataFrame({"source_index":[0,1]}),train=np.array([0,1]))
 
 
-@pytest.mark.parametrize("kind",["mlp","name_mlp","numeric_mlp","v9","v8_optimized"])
+@pytest.mark.parametrize("kind",["mlp","name_mlp","numeric_mlp","v9","v9_direct","v8_optimized"])
 def test_hidden_values_and_target_availability_do_not_change_prediction(kind):
     torch.set_num_threads(1)
     model,_=make_model(tiny_data(),3,kind);model.eval()
@@ -28,8 +28,9 @@ def test_hidden_values_and_target_availability_do_not_change_prediction(kind):
     assert x["amount_normalized"].shape==(1,4)
 
 
-def test_v9_source_does_not_enter_encoder():
-    model,_=make_model(tiny_data(),3,"v9");model.eval()
+@pytest.mark.parametrize("kind",["v9","v9_direct"])
+def test_v9_source_does_not_enter_encoder(kind):
+    model,_=make_model(tiny_data(),3,kind);model.eval()
     a=batch_from_arrays(np.ones((1,4)),np.ones((1,4),bool),np.ones((1,3)),"cpu")
     b=copy.deepcopy(a);b["source"][:]=1
     with torch.no_grad():
@@ -75,3 +76,43 @@ def test_retrieval_interface_consumes_candidate_predictions_only():
     assert received==["apple","pear"]
     assert results[0]["name"]=="apple"
     assert results[0]["score"]==pytest.approx(0)
+
+
+def test_direct_v9_matched_initialization_rng_and_checkpoint(tmp_path):
+    torch.set_num_threads(1)
+    torch.manual_seed(17);hurdle,_=make_model(tiny_data(),3,"v9")
+    torch.manual_seed(17);direct,_=make_model(tiny_data(),3,"v9_direct")
+    for key,value in hurdle.state_dict().items():
+        torch.testing.assert_close(value,direct.state_dict()[key],rtol=0,atol=0)
+    batch=batch_from_arrays(np.ones((2,4)),np.zeros((2,4),bool),np.ones((2,3)),"cpu")
+    hurdle.train();direct.train()
+    torch.manual_seed(41);a=hurdle(batch);rng_a=torch.get_rng_state()
+    torch.manual_seed(41);b=direct(batch);rng_b=torch.get_rng_state()
+    torch.testing.assert_close(a["amount_normalized"],b["amount_normalized"],rtol=0,atol=0)
+    torch.testing.assert_close(rng_a,rng_b,rtol=0,atol=0)
+    assert "positive_logit" not in b
+    assert all(not p.requires_grad for p in direct.presence_head.parameters())
+    assert not direct.source_presence_residual.weight.requires_grad
+    torch.save(direct.state_dict(),tmp_path/"direct.pt")
+    loaded,_=make_model(tiny_data(),3,"v9_direct")
+    loaded.load_state_dict(torch.load(tmp_path/"direct.pt",weights_only=True));loaded.eval();direct.eval()
+    with torch.no_grad():
+        torch.testing.assert_close(direct(batch)["amount_normalized"],loaded(batch)["amount_normalized"],rtol=0,atol=0)
+
+
+def test_direct_v9_supervises_explicit_zero_and_omits_missing():
+    from foodcomp.research_r1 import model_loss
+    model,config=make_model(tiny_data(),3,"v9_direct")
+    batch=batch_from_arrays(np.array([[0.,0.,1.,0.]]),np.zeros((1,4),bool),np.ones((1,3)),"cpu")
+    batch.update(target=torch.tensor([[True,False,True,False]]),positive=torch.tensor([[False,False,True,False]]),
+                 cell_weight=torch.ones((1,4)),axis_total=torch.ones(4),objective_multiplier=.5)
+    model.eval();outputs=model(batch);outputs["amount_normalized"].retain_grad()
+    from foodcomp.research_r1 import panel_loss
+    panel_loss(outputs,batch,objective="mae").backward()
+    assert outputs["amount_normalized"].grad[0,0]!=0
+    assert outputs["amount_normalized"].grad[0,1]==0
+    assert outputs["amount_normalized"].grad[0,3]==0
+    model.zero_grad();model_loss(model,batch,"v9_direct",config,objective="smooth_l1").backward()
+    assert model.source_amount_residual.weight.grad is not None
+    assert model.source_presence_residual.weight.grad is None
+    assert all(p.grad is None for p in model.presence_head.parameters())

@@ -112,7 +112,7 @@ def panel_loss(outputs,batch,amount_weight=1.,objective="hurdle"):
 def model_loss(model,batch,kind,config,objective="hurdle"):
     outputs=model(batch)
     value=panel_loss(outputs,batch,config.amount_loss_weight,objective)
-    if kind=="v9":
+    if kind in {"v9","v9_direct"}:
         calibrated=panel_loss(model.calibrated_outputs(outputs,batch),batch,config.amount_loss_weight,objective)
         weight=config.source_calibrated_loss_weight
         value=(value+weight*calibrated)/(1+weight)+config.source_residual_l2*model.source_residual_penalty()

@@ -18,7 +18,7 @@ from foodcomp.research_r1 import FamilyPanel,PANEL_VERSION,model_loss
 
 def main(version="V9-R1",protocol_change=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--kind",choices=["mlp","v9"],required=True)
+    p.add_argument("--kind",choices=["mlp","v9","v9_direct"],required=True)
     p.add_argument("--epochs",type=int,default=20);p.add_argument("--schedule-epochs",type=int,default=20)
     p.add_argument("--batch-size",type=int,default=256);p.add_argument("--learning-rate",type=float,default=.001)
     p.add_argument("--amount-weight",type=float,default=1);p.add_argument("--source-weight",type=float,default=1)
@@ -30,6 +30,7 @@ def main(version="V9-R1",protocol_change=None):
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     if not 0<args.epochs<=args.schedule_epochs:raise ValueError("Fixed schedule horizon must cover positive epochs.")
     if args.kind=="v9" and args.objective!="hurdle":raise ValueError("Direct-head Transformer is a separate R2 experiment.")
+    if args.kind=="v9_direct" and args.objective not in {"smooth_l1","mae"}:raise ValueError("Direct V9 requires an explicit regression objective.")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")

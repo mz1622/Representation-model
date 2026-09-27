@@ -55,3 +55,20 @@ R1的MLP20主指标0.222459，新增XGB500/深8为0.178131。MLP只在142个营�
 ```powershell
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_duration.py --kind mlp --objective mae --mlp-width 512 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width512
 ```
+
+## 第五/六个候选：V9输出目标设计（启动前登记）
+
+R0中对同一个已训练hurdle检查点直接去掉存在概率相乘，总体主误差恶化（0.3093→0.4245）；因此“只在推理时去掉概率”不能解决问题。R2的MLP损失对照也显示，零值与正值间存在明显取舍。本项检验：从训练开始使用直接数值目标，能否改善V9的补全误差。
+
+父控制固定为R1 `v9_20_a1_s1`，不根据尚未完成的amount/source消融结果更换父控制。保持相同V9编码器、数值头、192维/3层结构、来源残差与其正则化、同一输入与全部187监督轴、seed20260922、batch64、lr1e-4、20轮日程、验证选点。第5候选将hurdle改为直接SmoothL1回归；第6候选在直接头上只将SmoothL1改为MAE。
+
+直接回归设计包含三个相互关联的变化：零值也进入数值损失、不再训练存在分类BCE、推理不再乘存在概率。本轮只能评估整个输出设计，不能将收益归因于其中某一项。如果需要机制拆分，再单独登记消融。来源校准损失依旧除以1+source_weight，未暗中改变来源项的整体尺度。
+
+工程上保留原存在头的构造与前向调用顺序以匹配初始化和dropout随机数消耗，但其参数冻结、输出弃用，完全不进入损失和预测。对照检查须确认初始状态、数值头输出和随机数状态匹配；直接预测必须仍区分未观测与显式零，来源不得进入编码器。此实现只为严格对照，是否删除计算冗余不在本轮改变。
+
+两项进入顺序队列，等待当前MAE/512长训练成功完成后先跑直接SmoothL1，成功后跑直接MAE。检查点统一评价completion/name-only/固定名称检索；报告全量曲线、逐轴/来源、零值/正值与食品组区间。R2登记候选总数为6（含两个时长预算），未超过12。三种子确认和测试隔离要求不变。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_direct.py --kind v9_direct --objective smooth_l1 --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_direct_smoothl1_20
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_direct.py --kind v9_direct --objective mae --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_direct_mae_20
+```

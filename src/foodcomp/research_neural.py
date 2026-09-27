@@ -12,6 +12,30 @@ sys.path.insert(0, str(ROOT/"scripts"))
 import train_global_foodnutrigpt_v8_single_stage as legacy_v8
 import train_global_foodnutrigpt_v9_source_calibrated as legacy_v9
 
+class DirectSourceCalibratedModel(legacy_v9.SourceCalibratedFoodNutriGPT):
+    """Same V9 backbone/amount head; direct value prediction with no presence multiplier.
+
+    Keep construction and forward-call order of the inactive presence head so
+    matched-seed initialization and dropout RNG consumption remain comparable.
+    Inactive presence parameters are frozen and never enter a loss or prediction.
+    """
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.presence_head.requires_grad_(False)
+        self.source_presence_residual.requires_grad_(False)
+
+    def forward(self,batch):
+        outputs=super().forward(batch)
+        return {"amount_normalized":outputs["amount_normalized"]}
+
+    def calibrated_outputs(self,base,batch):
+        source=batch["source"].unsqueeze(1).expand_as(batch["axis"])
+        residual=self._centred_source_offsets(self.source_amount_residual)
+        return {"amount_normalized":base["amount_normalized"]+residual[source,batch["axis"]]}
+
+    def source_residual_penalty(self):
+        return self.source_amount_residual.weight[self.train_source_indices].square().mean()
+
 class DenseModel(nn.Module):
     def __init__(self, text_dim, axes, kind, width=256):
         super().__init__()
@@ -36,9 +60,10 @@ def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_
     if kind in {"mlp","name_mlp","numeric_mlp"}:
         return DenseModel(text_dim,len(data.axes),kind,mlp_width),config
     source_count=int(data.profiles.source_index.max())+1
-    if kind=="v9":
+    if kind in {"v9","v9_direct"}:
         sources=np.unique(data.profiles.iloc[data.train].source_index)
-        return legacy_v9.SourceCalibratedFoodNutriGPT(text_dim,len(data.axes),source_count,sources,config),config
+        cls=legacy_v9.SourceCalibratedFoodNutriGPT if kind=="v9" else DirectSourceCalibratedModel
+        return cls(text_dim,len(data.axes),source_count,sources,config),config
     if kind=="v8_optimized":
         v8config=legacy_v8.Config(amount_loss_weight=amount_weight,loss_mode="all_axis",source_dropout=1.,text_only_probability=0.)
         return legacy_v8.SourceAwareFoodNutriGPT(text_dim,len(data.axes),source_count,v8config),v8config
