@@ -23,6 +23,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--batch-size",type=int,default=256);p.add_argument("--learning-rate",type=float,default=.001)
     p.add_argument("--amount-weight",type=float,default=1);p.add_argument("--source-weight",type=float,default=1)
     p.add_argument("--objective",choices=["hurdle","smooth_l1","mae"],default="hurdle")
+    p.add_argument("--metabolome-loss-weight",type=float,default=1.,help="Training-only auxiliary coefficient; nutrition and187 denominator stay fixed.")
     p.add_argument("--mlp-width",type=int,default=256)
     p.add_argument("--mlp-normalization",choices=["layer_norm","none"],default="layer_norm")
     p.add_argument("--mlp-task-heads",choices=["shared","separate"],default="shared")
@@ -43,12 +44,16 @@ def main(version="V9-R1",protocol_change=None):
     if args.mlp_query_residual and (args.kind!="mlp" or args.mlp_task_heads!="shared"):raise ValueError("Axis-query residual requires shared-head MLP.")
     if args.dual_selection and args.kind!="v9":raise ValueError("Dual hurdle selection requires V9 hurdle outputs.")
     if not np.isfinite(args.name_only_probability) or not 0<=args.name_only_probability<=1:raise ValueError("Name-only task probability must be in [0,1].")
+    if not np.isfinite(args.metabolome_loss_weight) or not 0<args.metabolome_loss_weight<=1:raise ValueError("Metabolome weight must be in (0,1].")
+    if args.metabolome_loss_weight!=1 and (args.kind!="mlp" or args.objective!="mae"):raise ValueError("Auxiliary coefficient is registered only for MAE MLP.")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data=ResearchData(ROOT/"data/processed"/VERSION)
     text,cache=prepare_names(data,ROOT)
     panel=FamilyPanel(data,text,ROOT/"data/processed"/PANEL_VERSION,device)
+    from foodcomp.research_auxiliary import metabolome_axis_scale
+    axis_loss_scale=metabolome_axis_scale(data,args.metabolome_loss_weight,device)
     if digest(cache/"manifest.json")!=panel.manifest["name_cache_hash"]:raise ValueError("Text/task fingerprint mismatch.")
     model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight,mlp_width=args.mlp_width,mlp_normalization=args.mlp_normalization,mlp_task_heads=args.mlp_task_heads,mlp_text_conditioning=args.mlp_text_conditioning,mlp_query_residual=args.mlp_query_residual)
     name_statistics=None
@@ -62,6 +67,9 @@ def main(version="V9-R1",protocol_change=None):
     if args.name_only_probability>0:files.append(ROOT/"src/foodcomp/research_task_mix.py")
     if args.mlp_text_conditioning!="none":files.append(ROOT/"src/foodcomp/research_conditioning.py")
     if args.mlp_query_residual:files.append(ROOT/"src/foodcomp/research_query.py")
+    files.extend([ROOT/"src/foodcomp/research_auxiliary.py"])
+    entrypoint=Path(sys.argv[0]).resolve()
+    if entrypoint!=Path(__file__).resolve() and entrypoint.is_relative_to(ROOT):files.append(entrypoint)
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
     from foodcomp.research_neural import OUTPUT_QUERY_POLICY
@@ -92,15 +100,22 @@ def main(version="V9-R1",protocol_change=None):
             "scope":"Additional nonlinear residual readout; global clipping and weight decay can alter even the first parent update."}
         manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
     write_json(args.output_dir/"run_manifest.json",manifest)
+    if axis_loss_scale is not None:
+        manifest["axis_loss_intervention"]={"nutrition_coefficient":1.,"metabolome_coefficient":args.metabolome_loss_weight,
+            "denominator":187,"supervised_axes":187,"all_target_supervision_retained":True,
+            "axis_scale_sha256":fingerprint_array(axis_loss_scale.cpu().numpy()),
+            "scope":"Training objective only; source weights, nutrition coefficient, denominator and all evaluation metrics unchanged. Total gradient magnitude/direction and clipping can change."}
+        manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
+        write_json(args.output_dir/"run_manifest.json",manifest)
     try:
         # Verify overfitting, then restore both weights and RNG before all controlled arms.
         initial=copy.deepcopy(model.state_dict());cpu_rng=torch.get_rng_state();gpu_rng=torch.cuda.get_rng_state_all() if device.type=="cuda" else None
         b=panel.batch(np.random.default_rng(args.seed).choice(len(panel.rows),32,replace=False))
         smoke=torch.optim.AdamW(model.parameters(),lr=.001)
-        model.eval();before=float(model_loss(model,b,args.kind,config,args.objective).detach());model.train()
+        model.eval();before=float(model_loss(model,b,args.kind,config,args.objective,axis_loss_scale=axis_loss_scale).detach());model.train()
         for _ in range(50):
-            smoke.zero_grad(set_to_none=True);loss=model_loss(model,b,args.kind,config,args.objective);loss.backward();smoke.step()
-        model.eval();after=float(model_loss(model,b,args.kind,config,args.objective).detach())
+            smoke.zero_grad(set_to_none=True);loss=model_loss(model,b,args.kind,config,args.objective,axis_loss_scale=axis_loss_scale);loss.backward();smoke.step()
+        model.eval();after=float(model_loss(model,b,args.kind,config,args.objective,axis_loss_scale=axis_loss_scale).detach())
         if not after<before:raise AssertionError("Train-only small batch failed to overfit.")
         manifest["overfit"]={"before":before,"after":after,"steps":50,"weights_and_rng_restored":True}
         model.load_state_dict(initial);torch.set_rng_state(cpu_rng)
@@ -116,6 +131,7 @@ def main(version="V9-R1",protocol_change=None):
         for epoch in range(1,args.epochs+1):
             order=np.random.default_rng(args.seed+epoch).permutation(len(panel.rows));model.train();weighted=0.;seen=0
             name_only_cells=0
+            norm_sum=0.;clipped=0;steps=0
             if args.name_only_probability>0:
                 from foodcomp.research_task_mix import name_only_tasks,remove_numeric_context
                 name_tasks=name_only_tasks(len(panel.rows),args.name_only_probability,args.seed,epoch)
@@ -125,9 +141,10 @@ def main(version="V9-R1",protocol_change=None):
                     selected=torch.as_tensor(name_tasks[ix],device=device)
                     batch=remove_numeric_context(batch,selected)
                     name_only_cells+=int(batch["target"][selected].sum())
-                opt.zero_grad(set_to_none=True);loss=model_loss(model,batch,args.kind,config,args.objective);loss.backward()
+                opt.zero_grad(set_to_none=True);loss=model_loss(model,batch,args.kind,config,args.objective,axis_loss_scale=axis_loss_scale);loss.backward()
                 norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
                 if not torch.isfinite(norm):raise FloatingPointError("Nonfinite gradient.")
+                norm_sum+=float(norm);clipped+=int(norm>1);steps+=1
                 opt.step();weighted+=float(loss.detach())*len(ix);seen+=len(ix)
             selection={}
             if args.dual_selection:
@@ -138,6 +155,7 @@ def main(version="V9-R1",protocol_change=None):
             history.append({"epoch":epoch,"train_loss":weighted/seen,"validation_primary":primary,
                 "validation_legacy_log_mae":metrics["nutrition"]["log_mae"],"learning_rate":opt.param_groups[0]["lr"],
                 "training_tasks":seen,"elapsed_seconds":time.monotonic()-start})
+            history[-1].update(mean_preclip_gradient_norm=norm_sum/steps,gradient_clip_fraction=clipped/steps)
             if args.name_only_probability>0:
                 history[-1].update(name_only_tasks=int(name_tasks.sum()),name_only_target_cells=name_only_cells,
                                    name_only_task_mask_sha256=fingerprint_array(name_tasks))

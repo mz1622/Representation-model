@@ -96,7 +96,7 @@ class FamilyPanel:
             "positive":self.values[rows]>0,"cell_weight":self.weights[rows],"axis_total":self.axis_total,
             "objective_multiplier":len(self.rows)/(len(rows)*self.axis_count)}
 
-def panel_loss(outputs,batch,amount_weight=1.,objective="hurdle"):
+def panel_loss(outputs,batch,amount_weight=1.,objective="hurdle",*,axis_loss_scale=None):
     amount=F.smooth_l1_loss(outputs["amount_normalized"],batch["value"],reduction="none")
     if objective=="hurdle" and "positive_logit" in outputs:
         error=amount_weight*amount*batch["positive"]+F.binary_cross_entropy_with_logits(outputs["positive_logit"],batch["positive"].float(),reduction="none")
@@ -105,15 +105,19 @@ def panel_loss(outputs,batch,amount_weight=1.,objective="hurdle"):
     elif objective=="hurdle":error=amount  # direct regression MLP control
     else:raise ValueError(objective)
     weights=batch["cell_weight"]*batch["target"]/batch["axis_total"].clamp_min(1e-12)
+    if axis_loss_scale is not None:
+        if axis_loss_scale.shape!=batch["axis_total"].shape or not torch.isfinite(axis_loss_scale).all() or not (axis_loss_scale>0).all():
+            raise ValueError("Expected positive finite coefficients for the complete axis grid.")
+        weights=weights*axis_loss_scale
     value=(weights*error).sum()*batch["objective_multiplier"]
     if not torch.isfinite(value):raise FloatingPointError("Nonfinite panel loss.")
     return value
 
-def model_loss(model,batch,kind,config,objective="hurdle"):
+def model_loss(model,batch,kind,config,objective="hurdle",*,axis_loss_scale=None):
     outputs=model(batch)
-    value=panel_loss(outputs,batch,config.amount_loss_weight,objective)
+    value=panel_loss(outputs,batch,config.amount_loss_weight,objective,axis_loss_scale=axis_loss_scale)
     if kind in {"v9","v9_direct"}:
-        calibrated=panel_loss(model.calibrated_outputs(outputs,batch),batch,config.amount_loss_weight,objective)
+        calibrated=panel_loss(model.calibrated_outputs(outputs,batch),batch,config.amount_loss_weight,objective,axis_loss_scale=axis_loss_scale)
         weight=config.source_calibrated_loss_weight
         value=(value+weight*calibrated)/(1+weight)+config.source_residual_l2*model.source_residual_penalty()
     if not torch.isfinite(value):raise FloatingPointError("Nonfinite calibrated loss.")
