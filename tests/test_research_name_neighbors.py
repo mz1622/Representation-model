@@ -18,6 +18,15 @@ def test_missing_label_must_be_excluded_not_imputed():
     with pytest.raises(ValueError):ObservedAxisNeighbors(np.zeros((2,1)),np.array([0.,np.nan]),np.ones(2),1.)
 
 
+def test_tree_tied_neighbors_independent_of_query_batch_and_order():
+    x=np.zeros((20,32),dtype=np.float32);x[10:]=1.
+    model=ObservedAxisNeighbors(x,np.arange(20,dtype=np.float32)/20,np.ones(20),1.,n_jobs=1,backend='kd_tree')
+    queries=np.array([x[0],x[-1],np.full(32,.5)],dtype=np.float32)
+    whole=model.predict(queries)
+    np.testing.assert_array_equal(model.predict(queries[::-1])[::-1],whole)
+    np.testing.assert_array_equal(np.concatenate([model.predict(q[None]) for q in queries]),whole)
+
+
 def test_ranks_use_only_visible_values_and_keep_zero_observed():
     candidates=torch.tensor([[0.,8.],[1.,0.],[0.,9.]])
     query=torch.tensor([[0.,float('nan')],[99.,0.]])

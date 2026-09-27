@@ -40,7 +40,8 @@ def evaluate_candidates(data,names,candidate_scaled,axes,device):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output-dir',type=Path,required=True);args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output-dir',type=Path,required=True)
+    p.add_argument('--backend',choices=['auto','kd_tree'],default='auto');args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True);started=time.monotonic();torch.set_num_threads(4)
     files=[Path(__file__),ROOT/'src/foodcomp/research_name_neighbors.py',ROOT/'src/foodcomp/research_profile_retrieval.py',
@@ -48,7 +49,7 @@ def main():
     snap=args.output_dir/'code_snapshot';snap.mkdir()
     for f in files:shutil.copyfile(f,snap/f.name)
     manifest={'status':'running','kind':'name_knn','version':'V9-R5','code_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-        'code_hashes':{str(f.relative_to(ROOT)):digest(f) for f in files},'complete_test_opened':False,'neighbors':10,'n_jobs':8,
+        'code_hashes':{str(f.relative_to(ROOT)):digest(f) for f in files},'complete_test_opened':False,'neighbors':10,'n_jobs':8,'backend':args.backend,
         'selection':'none; fixed historical nameKNN','candidate_nutrition':'predicted from name features with training labels only; no measured candidate lookup'}
     write_json(args.output_dir/'run_manifest.json',manifest)
     try:
@@ -59,26 +60,37 @@ def main():
         reference=ROOT/'output/v9_r0/name_knn_quarantined';old=pd.read_parquet(reference/'predictions.parquet')
         predicted=np.empty((len(names),len(axes)),dtype=np.float64);axis_column={int(a):i for i,a in enumerate(axes)}
         axis_receipts=[];replayed=[];nameids={name:i for i,name in enumerate(names)}
+        probe=np.random.default_rng(20260922).choice(len(names),256,replace=False)
         with threadpool_limits(limits=8):
             for count,axis in enumerate(data.targets,1):
                 train=data.train[data.observed[data.train,axis]];jobs=data.jobs[data.jobs.axis_index.eq(axis)];rows=jobs.profile_index.to_numpy()
-                model=ObservedAxisNeighbors(text[train],data.values[train,axis],data.weights[train,axis],data.scale[axis],n_jobs=8)
-                value=model.predict(text[rows]);f=pd.DataFrame({'profile_index':rows,'axis_index':int(axis),'prediction':value})
-                pd.testing.assert_frame_equal(f.reset_index(drop=True),old[old.axis_index.eq(axis)].reset_index(drop=True),check_exact=True)
+                model=ObservedAxisNeighbors(text[train],data.values[train,axis],data.weights[train,axis],data.scale[axis],n_jobs=8,backend=args.backend)
+                value,val_indexes,val_distances=model.predict(text[rows],return_neighbors=True);f=pd.DataFrame({'profile_index':rows,'axis_index':int(axis),'prediction':value})
+                previous=old[old.axis_index.eq(axis)].reset_index(drop=True)
+                np.testing.assert_array_equal(f.profile_index,previous.profile_index)
+                old_delta=np.abs(value-previous.prediction.to_numpy())
+                if args.backend=='auto':pd.testing.assert_frame_equal(f.reset_index(drop=True),previous,check_exact=True)
+                else:np.testing.assert_array_equal(model.predict(text[rows[::-1]])[::-1],value)
                 replayed.append(f)
                 record={'axis_index':int(axis),'train_profiles':len(train),'train_rows_sha256':fingerprint_array(train),
-                    'training_values_sha256':fingerprint_array(data.values[train,axis]),'training_weights_sha256':fingerprint_array(data.weights[train,axis]),'historical_validation_exact':True}
+                    'training_values_sha256':fingerprint_array(data.values[train,axis]),'training_weights_sha256':fingerprint_array(data.weights[train,axis]),
+                    'historical_validation_exact':bool((old_delta==0).all()),'historical_mismatch_count':int(np.count_nonzero(old_delta)),
+                    'historical_max_raw_difference':float(old_delta.max()),'reverse_query_prediction_exact':args.backend=='kd_tree'}
                 if int(axis) in axis_column:
                     value_all,indexes,distances=model.predict(namespace.features,return_neighbors=True)
                     predicted[:,axis_column[int(axis)]]=value_all
                     ids=np.array([nameids[str(data.profiles.original_name.iloc[row])] for row in rows])
                     delta=np.abs(value_all[ids]-value)
+                    if args.backend=='kd_tree':
+                        np.testing.assert_array_equal(indexes[ids],val_indexes);np.testing.assert_array_equal(distances[ids],val_distances)
+                        np.testing.assert_array_equal(value_all[ids],value)
+                        np.testing.assert_array_equal(model.predict(namespace.features[probe]),value_all[probe])
                     record.update(candidate_predictions_sha256=fingerprint_array(value_all),neighbor_rows_sha256=fingerprint_array(train[indexes]),
                         candidate_vs_validation_mismatch_count=int(np.count_nonzero(delta)),candidate_vs_validation_max_raw_difference=float(delta.max()))
                 axis_receipts.append(record);write_json(args.output_dir/'axis_fitting_manifest.json',axis_receipts)
                 if count%20==0:print(f'nameKNN axis {count}/187; elapsed {time.monotonic()-started:.1f}s',flush=True)
         replay=pd.concat(replayed,ignore_index=True);scores,axis_scores,_=score_predictions(data,replay)
-        assert scores==json.loads((reference/'metrics.json').read_text())
+        if args.backend=='auto':assert scores==json.loads((reference/'metrics.json').read_text())
         replay.to_parquet(args.output_dir/'replayed_nutrition_predictions.parquet',index=False);axis_scores.to_csv(args.output_dir/'nutrition_axis_metrics.csv',index=False)
         write_json(args.output_dir/'nutrition_metrics.json',scores)
         np.save(args.output_dir/'candidate_predicted_raw.npy',predicted)
@@ -91,13 +103,17 @@ def main():
         mismatches=sum(x.get('candidate_vs_validation_mismatch_count',0) for x in axis_receipts)
         maxdiff=max(x.get('candidate_vs_validation_max_raw_difference',0.) for x in axis_receipts)
         write_json(args.output_dir/'metrics.json',{'metrics':metrics,'candidate_count':len(names),'query_profiles':ranks.groupby('visible_fraction').size().to_dict(),
-            'method':'name_knn_predicted_profiles','candidate_sha256':digest(args.output_dir/'candidate_names.json'),
+            'method':'name_knn_predicted_profiles_'+args.backend,'candidate_sha256':digest(args.output_dir/'candidate_names.json'),
             'data_sha256':digest(data.root/'manifest.json'),'name_cache_sha256':digest(cache/'manifest.json'),
             'scoring':SCORING,'correct_answers':CORRECT,'complete_test_opened':False,'elapsed_seconds':time.monotonic()-started,
             'scientific_claim_allowed':False,'candidate_vs_original_validation_mismatches':mismatches,'candidate_vs_original_validation_max_raw_difference':maxdiff})
         manifest.update(status='complete',elapsed_seconds=time.monotonic()-started,data_hash=digest(data.root/'manifest.json'),
             name_cache_hash=digest(cache/'manifest.json'),candidate_vectors_sha256=digest(args.output_dir/'candidate_scaled.npy'),
-            all187_axis_validation_predictions_and_scores_exact=True,all19089_ranks_reload_exact=True,
+            all187_axis_validation_predictions_and_scores_match_historical=args.backend=='auto',all19089_ranks_reload_exact=True,
+            all187_reverse_query_predictions_exact=args.backend=='kd_tree',all142_candidate_validation_neighbor_indices_distances_predictions_exact=args.backend=='kd_tree',
+            all142_candidate_fixed256_subbatch_predictions_exact=args.backend=='kd_tree',
+            historical_prediction_mismatch_count=sum(x['historical_mismatch_count'] for x in axis_receipts),
+            historical_max_raw_difference=max(x['historical_max_raw_difference'] for x in axis_receipts),
             candidate_vs_original_validation_mismatches=mismatches,candidate_vs_original_validation_max_raw_difference=maxdiff)
         write_json(args.output_dir/'run_manifest.json',manifest);print(metrics);print('Candidate versus historical validation',mismatches,maxdiff)
     except Exception as error:
