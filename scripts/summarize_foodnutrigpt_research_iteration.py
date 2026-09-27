@@ -11,7 +11,7 @@ from foodcomp.research_r0 import digest,write_json
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--version",choices=["r1","r2","r3","baseline_confirmation_v1"],required=True)
+    p.add_argument("--version",choices=["r1","r2","r3","r4","baseline_confirmation_v1"],required=True)
     args=p.parse_args()
     folder=ROOT/"experiments/foodnutrigpt_v9_research"/args.version
     config=json.loads((folder/"config.json").read_text())
