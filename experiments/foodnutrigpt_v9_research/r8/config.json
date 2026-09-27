@@ -147,5 +147,14 @@
   "mlp_stage_summary": "reports/v9_r8_mlp_stage_v2/summary.json",
   "mlp_stage_summary_sha256": "86d02dd8d35b643f10baa212c58ce8d3b9f38d8954bf59e1f44da9d09a0d2661",
   "mlp_completed_audit": "reports/v9_r8_mlp_completed_audit_v2/verification.json",
-  "model_improvement_accepted": false
+  "model_improvement_accepted": false,
+  "text_diagnostic_status": "complete_post_fit_no_model_selection",
+  "text_diagnostic_conditions": 10,
+  "text_diagnostic_summary": "reports/v9_r8_text_use_summary_v1/summary.json",
+  "completed_audited_tree_candidates": [
+    "xgb800d10_name32"
+  ],
+  "first_tree_stage_summary": "reports/v9_r8_xgb32_stage_v1/summary.json",
+  "remaining_tree_candidates": 7,
+  "final_tree_selected": false
 }
