@@ -1,0 +1,270 @@
+{
+  "version": "V9-R4",
+  "generated_utc": "2026-09-27T08:25:29.839873+00:00",
+  "status": "first registered readout experiment complete; R4 remains in progress; no accepted neural improvement",
+  "readout_decision": "Reject as a completion improvement; retain original linear-readout MLP512 parent. Further representation-objective experiments require new preregistration.",
+  "completed_candidate_budgets": 2,
+  "new_training_trajectories_completed": 1,
+  "new_training_shared_wall_seconds": 328.718,
+  "accepted_neural_improvement": false,
+  "configuration_sha256": "08d9bd6b050536f8c78e78735912923a5875b67e08dc385f4e0a86945e57f901",
+  "runs": [
+    {
+      "registered_configuration": {
+        "name": "mlp60_linear_reused_control",
+        "output_dir": "output/v9_r2/mlp60_mae_width512",
+        "reused_control": true,
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "checkpoint_sha256": "f77e8501427efe870ad8c035a7900833ce442d8c4f666124f7447ce847d338e6"
+      },
+      "local_output": "output\\v9_r2\\mlp60_mae_width512",
+      "manifest_status": "complete",
+      "manifest_sha256": "75e54b447d5146f8dfb0bd8fd8946522ea34b6b78ffe082cbdd41cc9cf3e895a",
+      "code_commit": "89877c9c0207c8e48de4ecd5c400ea5ff8c277f5",
+      "elapsed_seconds": 1884.219000000001,
+      "epoch_completed": 60,
+      "best_epoch": 58,
+      "checkpoint_sha256": "f77e8501427efe870ad8c035a7900833ce442d8c4f666124f7447ce847d338e6",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18449135754384371,
+            "log_mae": 0.05814825627429503,
+            "log_mse": 0.03813247411383595,
+            "raw_mae": 0.3586597053289985,
+            "positive_scaled_log_mae": 0.2821666350672073,
+            "zero_scaled_log_mae": 0.11381119461195682,
+            "log_rmse_root_mean_axis_mse": 0.19527538020404914
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5650996946990219,
+            "log_mae": 0.03282093187145539,
+            "log_mse": 0.018311707064047725,
+            "raw_mae": 0.06111006319211429,
+            "positive_scaled_log_mae": 0.7629709579425621,
+            "zero_scaled_log_mae": 0.16530594790934258,
+            "log_rmse_root_mean_axis_mse": 0.13532075622035122
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.2760815991052502,
+            "log_mae": 0.052053445589119715,
+            "log_mse": 0.03336277081308477,
+            "raw_mae": 0.2870568502693205,
+            "positive_scaled_log_mae": 0.3978682100906884,
+            "zero_scaled_log_mae": 0.12325697776118144,
+            "log_rmse_root_mean_axis_mse": 0.18265478590249085
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5598760676903538,
+            "log_mae": 0.20728471522879624,
+            "log_mse": 0.24370781747883982,
+            "raw_mae": 1.2240947664913353,
+            "positive_scaled_log_mae": 0.7052233573717843,
+            "zero_scaled_log_mae": 0.4585832285988239,
+            "log_rmse_root_mean_axis_mse": 0.49366771970510676
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0608042523722943,
+            "log_mae": 0.06517358757717448,
+            "log_mse": 0.03949096868690313,
+            "raw_mae": 0.10753356221398411,
+            "positive_scaled_log_mae": 1.2227492218917495,
+            "zero_scaled_log_mae": 0.4927226941058973,
+            "log_rmse_root_mean_axis_mse": 0.1987233471107588
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6804202832555267,
+            "log_mae": 0.17308685028589257,
+            "log_mse": 0.1945647255235609,
+            "raw_mae": 0.9554035676010639,
+            "positive_scaled_log_mae": 0.8297616670156264,
+            "zero_scaled_log_mae": 0.46484549741964803,
+            "log_rmse_root_mean_axis_mse": 0.4410949166829753
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_axis_query_residual",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": true,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 762365,
+        "single_factor": "Add a shared nonlinear axis-query residual readout, initialized at zero output; shared parent parameters and global CPU RNG match at initialization. Added capacity, clipping and optimization geometry are part of this architecture intervention.",
+        "query_head": {
+          "context_dim": 512,
+          "query_dim": 32,
+          "hidden_dim": 128,
+          "axes": 252,
+          "last_layer_initialization": "zero"
+        }
+      },
+      "local_output": "output\\v9_r4\\mlp60_axis_query_residual",
+      "manifest_status": "complete",
+      "manifest_sha256": "ccbba94586cfa1070703fdc606ee8417b7f3eb2496e9238c46da01ea2abc75de",
+      "code_commit": "fd21115dbcc7ce320d9ad7491f9475138a61c1ab",
+      "elapsed_seconds": 328.71800000000076,
+      "epoch_completed": 60,
+      "best_epoch": 54,
+      "checkpoint_sha256": "51364038c6d63a89ab3ce410c5d02f185bd20c9a0aabcbafce451434be45bb38",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18673748126883738,
+            "log_mae": 0.05914475574151873,
+            "log_mse": 0.0408299858705361,
+            "raw_mae": 0.363622819888895,
+            "positive_scaled_log_mae": 0.2860680034583179,
+            "zero_scaled_log_mae": 0.11555392182701538,
+            "log_rmse_root_mean_axis_mse": 0.2020643112242637
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.6128628541535066,
+            "log_mae": 0.03606754804847375,
+            "log_mse": 0.019983278371597503,
+            "raw_mae": 0.06934591957375344,
+            "positive_scaled_log_mae": 0.8011426642268109,
+            "zero_scaled_log_mae": 0.2473743675867158,
+            "log_rmse_root_mean_axis_mse": 0.14136222399070236
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.28928102019830326,
+            "log_mae": 0.053591416991855496,
+            "log_mse": 0.03581339850448135,
+            "raw_mae": 0.292807523021615,
+            "positive_scaled_log_mae": 0.4100164512368322,
+            "zero_scaled_log_mae": 0.13973400359358762,
+            "log_rmse_root_mean_axis_mse": 0.18924428262032475
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.552450653763502,
+            "log_mae": 0.20186798880544723,
+            "log_mse": 0.24038496715829039,
+            "raw_mae": 1.2896971998072904,
+            "positive_scaled_log_mae": 0.7112584074999232,
+            "zero_scaled_log_mae": 0.4254295323727346,
+            "log_rmse_root_mean_axis_mse": 0.49029069658549546
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0019585081524829,
+            "log_mae": 0.084550971895941,
+            "log_mse": 0.07636337253450819,
+            "raw_mae": 0.17733381400852635,
+            "positive_scaled_log_mae": 1.0862576056829414,
+            "zero_scaled_log_mae": 0.7682926870386895,
+            "log_rmse_root_mean_axis_mse": 0.27633923451893
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6606209930549679,
+            "log_mae": 0.1736366210999511,
+            "log_mse": 0.20091452994935882,
+            "raw_mae": 1.022016171139139,
+            "positive_scaled_log_mae": 0.8014988562605425,
+            "zero_scaled_log_mae": 0.4883215903292116,
+            "log_rmse_root_mean_axis_mse": 0.4482349048761808
+          }
+        }
+      }
+    }
+  ],
+  "completed_retrieval_evaluations": [
+    {
+      "local_output": "output\\v9_r4\\retrieval_mlp60_axis_query_residual",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0007254850496735014,
+            "recall_at_1": 0.0,
+            "recall_at_5": 0.0004645401052957572,
+            "recall_at_10": 0.0010839269123567668
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.0016854722963309133,
+            "recall_at_1": 0.0005171603196991067,
+            "recall_at_5": 0.001692524682651622,
+            "recall_at_10": 0.0029619181946403386
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "name_predictions",
+        "ridge_alpha": null,
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": "51364038c6d63a89ab3ce410c5d02f185bd20c9a0aabcbafce451434be45bb38",
+        "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 1.7190000000045984,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "080e6920c726f022fc279c624f1776e48964c0b314d5ddf4865894f2c693de86"
+    }
+  ],
+  "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
+  "confirmation_seeds_completed": false,
+  "complete_test_opened": false,
+  "provenance_unresolved": true,
+  "individual_predictions_included": false,
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+}
