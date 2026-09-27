@@ -152,10 +152,14 @@
   "text_diagnostic_conditions": 10,
   "text_diagnostic_summary": "reports/v9_r8_text_use_summary_v1/summary.json",
   "completed_audited_tree_candidates": [
-    "xgb800d10_name32"
+    "xgb800d10_name32",
+    "xgb800d10_name128"
   ],
   "first_tree_stage_summary": "reports/v9_r8_xgb32_stage_v1/summary.json",
-  "remaining_tree_candidates": 7,
+  "xgb128_stage_summary": "reports/v9_r8_xgb128d10_stage_v1/summary.json",
+  "xgb_dimension_stage_summary": "reports/v9_r8_xgb_dimension_stage_v1/summary.json",
+  "gap128_diagnostic_summary": "reports/v9_r8_mlp128_xgb128d10_gap_v1/summary.json",
+  "remaining_tree_candidates": 6,
   "final_tree_selected": false,
   "gap_diagnostic_plan": "experiments/foodnutrigpt_v9_research/r8/GAP_DIAGNOSTIC_PLAN.md",
   "gap32_diagnostic_summary": "reports/v9_r8_mlp32_xgb32_gap_v1/summary.json",
