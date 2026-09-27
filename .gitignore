@@ -55,3 +55,7 @@ experiments/foodnutrigpt_v9_research/r2/*
 experiments/foodnutrigpt_v9_research/r3/*
 !experiments/foodnutrigpt_v9_research/r3/*.md
 !experiments/foodnutrigpt_v9_research/r3/*.json
+!experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/
+experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*
+!experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*.md
+!experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*.json

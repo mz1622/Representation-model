@@ -1,0 +1,24 @@
+{
+  "version": "baseline-confirmation-v1",
+  "data_version": "foodnutrigpt_v9_r0_v1",
+  "view": "quarantined",
+  "scope": "Confirm fixed tree configurations selected by completed R1/R2 single-seed search. No hyperparameter selection using confirmation seeds.",
+  "registered_candidates": [
+    {"name": "rf_seed20260922", "method": "rf", "trees": 400, "max_depth": 0, "leaf_size": 1, "n_jobs": 6, "seed": 20260922},
+    {"name": "rf_seed20260923", "method": "rf", "trees": 400, "max_depth": 0, "leaf_size": 1, "n_jobs": 6, "seed": 20260923},
+    {"name": "rf_seed20260924", "method": "rf", "trees": 400, "max_depth": 0, "leaf_size": 1, "n_jobs": 6, "seed": 20260924},
+    {"name": "xgb_seed20260922", "method": "xgb", "trees": 800, "max_depth": 10, "learning_rate": 0.03, "xgb_objective": "reg:squarederror", "n_jobs": 4, "seed": 20260922},
+    {"name": "xgb_seed20260923", "method": "xgb", "trees": 800, "max_depth": 10, "learning_rate": 0.03, "xgb_objective": "reg:squarederror", "n_jobs": 4, "seed": 20260923},
+    {"name": "xgb_seed20260924", "method": "xgb", "trees": 800, "max_depth": 10, "learning_rate": 0.03, "xgb_objective": "reg:squarederror", "n_jobs": 4, "seed": 20260924}
+  ],
+  "unique_hyperparameter_configurations": 2,
+  "confirmation_replicates": 6,
+  "new_screening_hyperparameters": 0,
+  "max_hours": 72,
+  "seed22_replayed": "All three seeds use one frozen implementation; old exploratory seed22 remains historical, not mixed with changed source hashes.",
+  "selection_after_confirmation": "Stronger RF/XGB is the lower three-seed mean primary, never the best seed. All six results retained.",
+  "input_contract": "All eligible train rows; same raw-space canonical labels, train scales, original-name PCA32, family contexts and source weights; no row cap.",
+  "candidate_confirmation_runs": "Not yet registered: freeze a neural winner after exploration, then run its three seeds independently.",
+  "complete_test_opened": false,
+  "external_label_provenance_confirmed": false
+}
