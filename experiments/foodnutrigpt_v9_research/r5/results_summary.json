@@ -1,6 +1,6 @@
 {
   "version": "V9-R5",
-  "status": "exploration in progress; no accepted model; main completion goal still unmet",
+  "status": "First registered block exploration complete:7/12 budgets resolved,5new runs and2reused references. R5 research continues; confirmation and missing-context robustness incomplete.",
   "generated_utc": "2026-09-27T11:15:50.986267+00:00",
   "config_sha256": "a20156a30db6eadf83a091b9b556bfd6aba4e4e87241c0616a2d4765ff912805",
   "runs": [
@@ -402,5 +402,18 @@
     "complete_test_opened": false,
     "status": "complete",
     "selection_mean_mrr": 0.007007429368084302
+  },
+  "resolved_budgets": 7,
+  "new_completed_runs": 5,
+  "failed_runs": 0,
+  "new_fit_and_final_evaluation_seconds": 203.2980000000025,
+  "reference_replay_seconds": 35.578,
+  "remaining_candidate_budgets": 5,
+  "completed_runs_audit_sha256": "91103e33b875100c98a3fe7b0ab14a6a2a250350c45c95ce770147a36417107d",
+  "decisions": {
+    "contrastive_vs_mse": "retain single-seed full-input retrieval branch, not accepted arbitrary-missingness model",
+    "next_training": "Preregister isolated partial-view training; not yet implemented or launched",
+    "baseline_gap": "Strengthen old eight-epoch forward name-to-nutrition retrieval training budget before acceptance",
+    "completion_goal": "Unchanged and unmet; independent mapper has no nutrition completion/name-only head"
   }
 }
