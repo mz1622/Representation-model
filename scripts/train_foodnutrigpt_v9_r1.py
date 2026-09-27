@@ -26,6 +26,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--mlp-width",type=int,default=256)
     p.add_argument("--mlp-normalization",choices=["layer_norm","none"],default="layer_norm")
     p.add_argument("--mlp-task-heads",choices=["shared","separate"],default="shared")
+    p.add_argument("--mlp-text-conditioning",choices=["none","train_unique_name"],default="none")
     p.add_argument("--dual-selection",action="store_true",help="Retain both primary and fixed-panel source-free hurdle best checkpoints.")
     p.add_argument("--name-only-probability",type=float,default=0.,help="Fraction of family tasks with all numeric input hidden; supervision is unchanged.")
     p.add_argument("--seed",type=int,default=20260922)
@@ -37,6 +38,7 @@ def main(version="V9-R1",protocol_change=None):
     if args.kind=="v9_direct" and args.objective not in {"smooth_l1","mae"}:raise ValueError("Direct V9 requires an explicit regression objective.")
     if args.kind!="mlp" and args.mlp_normalization!="layer_norm":raise ValueError("MLP normalization is only configurable for MLP runs.")
     if args.kind!="mlp" and args.mlp_task_heads!="shared":raise ValueError("Separate task heads require MLP.")
+    if args.kind!="mlp" and args.mlp_text_conditioning!="none":raise ValueError("Name conditioning requires MLP.")
     if args.dual_selection and args.kind!="v9":raise ValueError("Dual hurdle selection requires V9 hurdle outputs.")
     if not np.isfinite(args.name_only_probability) or not 0<=args.name_only_probability<=1:raise ValueError("Name-only task probability must be in [0,1].")
     args.output_dir.mkdir(parents=True)
@@ -46,11 +48,17 @@ def main(version="V9-R1",protocol_change=None):
     text,cache=prepare_names(data,ROOT)
     panel=FamilyPanel(data,text,ROOT/"data/processed"/PANEL_VERSION,device)
     if digest(cache/"manifest.json")!=panel.manifest["name_cache_hash"]:raise ValueError("Text/task fingerprint mismatch.")
-    model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight,mlp_width=args.mlp_width,mlp_normalization=args.mlp_normalization,mlp_task_heads=args.mlp_task_heads)
+    model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight,mlp_width=args.mlp_width,mlp_normalization=args.mlp_normalization,mlp_task_heads=args.mlp_task_heads,mlp_text_conditioning=args.mlp_text_conditioning)
+    name_statistics=None
+    if args.mlp_text_conditioning=="train_unique_name":
+        from foodcomp.research_conditioning import fit_training_name_statistics
+        mean,std,name_statistics=fit_training_name_statistics(data,text)
+        model.name_standardizer.set_statistics(mean,std)
     model.to(device)
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
     if args.dual_selection:files.append(ROOT/"src/foodcomp/research_selection.py")
     if args.name_only_probability>0:files.append(ROOT/"src/foodcomp/research_task_mix.py")
+    if args.mlp_text_conditioning!="none":files.append(ROOT/"src/foodcomp/research_conditioning.py")
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
     manifest={"status":"running","version":version,"args":vars(args),"seed":args.seed,
@@ -67,6 +75,9 @@ def main(version="V9-R1",protocol_change=None):
         manifest["training_context_intervention"]="Bernoulli name-only assignment per original family-task ID per epoch. Independent NumPy SeedSequence(seed,epoch,3103); nested assignments across probabilities. Only the numeric visibility mask changes, never target labels/axes/weights or task count. Validation panel and inference stay fixed."
     if args.mlp_task_heads=="separate":
         manifest["task_head_intervention"]="Shared encoder with independent cloned-initialization linear heads. Any visible numeric input, including explicit zero, selects completion head; no visible numeric input selects name-only head. No target/source/assignment label enters routing."
+        manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
+    if name_statistics is not None:
+        manifest["internal_name_conditioning"]=name_statistics
         manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
     write_json(args.output_dir/"run_manifest.json",manifest)
     try:

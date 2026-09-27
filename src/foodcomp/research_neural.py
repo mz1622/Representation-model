@@ -38,12 +38,14 @@ class DirectSourceCalibratedModel(legacy_v9.SourceCalibratedFoodNutriGPT):
         return self.source_amount_residual.weight[self.train_source_indices].square().mean()
 
 class DenseModel(nn.Module):
-    def __init__(self, text_dim, axes, kind, width=256, normalization="layer_norm", task_heads="shared"):
+    def __init__(self, text_dim, axes, kind, width=256, normalization="layer_norm", task_heads="shared", text_conditioning="none"):
         super().__init__()
         if not isinstance(width,int) or width<1:raise ValueError("Positive integer MLP width required.")
         if normalization not in {"layer_norm","none"}:raise ValueError("Unknown MLP normalization.")
         if task_heads not in {"shared","separate"} or (task_heads=="separate" and kind!="mlp"):
             raise ValueError("Separate task heads require the fused MLP.")
+        if text_conditioning not in {"none","train_unique_name"} or (text_conditioning!="none" and kind!="mlp"):
+            raise ValueError("Name conditioning requires the fused MLP.")
         self.kind = kind
         size = text_dim if kind == "name_mlp" else axes*2 if kind == "numeric_mlp" else text_dim+axes*2
         self.encoder = nn.Sequential(nn.Linear(size,width),nn.GELU(),nn.LayerNorm(width) if normalization=="layer_norm" else nn.Identity(),
@@ -51,11 +53,15 @@ class DenseModel(nn.Module):
         self.head = nn.Linear(width, axes)
         # Clone exactly; no extra initialization draw changes the matched RNG stream.
         if task_heads=="separate":self.name_head=copy.deepcopy(self.head)
+        if text_conditioning=="train_unique_name":
+            from .research_conditioning import FrozenNameStandardizer
+            self.name_standardizer=FrozenNameStandardizer(text_dim)
 
     def encode(self, batch):
         numeric = torch.cat([torch.where(batch["masked"],0.,batch["value"]),
                              (~batch["masked"]).float()],1)
-        x = batch["text"] if self.kind == "name_mlp" else numeric if self.kind == "numeric_mlp" else torch.cat([batch["text"],numeric],1)
+        text = self.name_standardizer(batch["text"]) if hasattr(self,"name_standardizer") else batch["text"]
+        x = text if self.kind == "name_mlp" else numeric if self.kind == "numeric_mlp" else torch.cat([text,numeric],1)
         return self.encoder(x)
 
     def forward(self, batch):
@@ -66,11 +72,13 @@ class DenseModel(nn.Module):
             amount=torch.where(name_only[:,None],self.name_head(hidden),amount)
         return {"amount_normalized": amount}
 
-def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_width=256, mlp_normalization="layer_norm", mlp_task_heads="shared"):
+def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_width=256, mlp_normalization="layer_norm", mlp_task_heads="shared", mlp_text_conditioning="none"):
     config=legacy_v9.Config(amount_loss_weight=amount_weight, source_calibrated_loss_weight=source_weight)
     if mlp_task_heads!="shared" and kind!="mlp":raise ValueError("Separate task heads require the fused MLP.")
+    if mlp_text_conditioning not in {"none","train_unique_name"} or (mlp_text_conditioning!="none" and kind!="mlp"):
+        raise ValueError("Name conditioning requires the fused MLP.")
     if kind in {"mlp","name_mlp","numeric_mlp"}:
-        return DenseModel(text_dim,len(data.axes),kind,mlp_width,mlp_normalization,mlp_task_heads),config
+        return DenseModel(text_dim,len(data.axes),kind,mlp_width,mlp_normalization,mlp_task_heads,mlp_text_conditioning),config
     source_count=int(data.profiles.source_index.max())+1
     if kind in {"v9","v9_direct"}:
         sources=np.unique(data.profiles.iloc[data.train].source_index)

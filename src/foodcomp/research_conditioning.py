@@ -1,6 +1,42 @@
 """Training-only statistics for an optional internal name-input conditioning probe."""
 import hashlib
 import numpy as np
+import torch
+from torch import nn
+
+
+class FrozenNameStandardizer(nn.Module):
+    """Model-internal affine transform, fitted once and serialized with the model."""
+    def __init__(self, dimensions):
+        super().__init__()
+        self.register_buffer("mean", torch.zeros(dimensions))
+        self.register_buffer("std", torch.ones(dimensions))
+        self.register_buffer("fitted", torch.tensor(False))
+
+    def validate(self):
+        if not bool(self.fitted):
+            raise ValueError("Name conditioning statistics have not been fitted or loaded.")
+        if not torch.isfinite(self.mean).all() or not torch.isfinite(self.std).all() or (self.std <= 1e-8).any():
+            raise ValueError("Invalid saved name conditioning statistics.")
+
+    @torch.no_grad()
+    def set_statistics(self, mean, std):
+        if bool(self.fitted):
+            raise ValueError("Name conditioning statistics are already frozen.")
+        mean = torch.as_tensor(mean, dtype=self.mean.dtype, device=self.mean.device)
+        std = torch.as_tensor(std, dtype=self.std.dtype, device=self.std.device)
+        if mean.shape != self.mean.shape or std.shape != self.std.shape:
+            raise ValueError("Conditioning statistic shape mismatch.")
+        if not torch.isfinite(mean).all() or not torch.isfinite(std).all() or (std <= 1e-8).any():
+            raise ValueError("Invalid name conditioning statistics.")
+        self.mean.copy_(mean)
+        self.std.copy_(std)
+        self.fitted.fill_(True)
+
+    def forward(self, text):
+        if not bool(self.fitted):
+            raise ValueError("Name conditioning statistics have not been fitted or loaded.")
+        return (text-self.mean)/self.std
 
 
 def fit_training_name_statistics(data, text):

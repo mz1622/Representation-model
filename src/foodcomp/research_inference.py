@@ -25,8 +25,10 @@ class NutritionModel:
             source_weight=saved["config"].get("source_calibrated_loss_weight", 1.),
             mlp_width=saved.get("args",{}).get("mlp_width",256),
             mlp_normalization=saved.get("args",{}).get("mlp_normalization","layer_norm"),
-            mlp_task_heads=saved.get("args",{}).get("mlp_task_heads","shared"))
+            mlp_task_heads=saved.get("args",{}).get("mlp_task_heads","shared"),
+            mlp_text_conditioning=saved.get("args",{}).get("mlp_text_conditioning","none"))
         self.model.load_state_dict(saved["model_state"])
+        if hasattr(self.model,"name_standardizer"):self.model.name_standardizer.validate()
         self.model.to(self.device).eval()
         self.kind = saved["kind"]
         self.text_dim = saved["text_dim"]
