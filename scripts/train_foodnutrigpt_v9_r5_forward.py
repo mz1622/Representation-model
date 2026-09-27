@@ -21,13 +21,16 @@ from foodcomp.research_r1 import fingerprint_array
 from foodcomp.research_forward_loss import forward_loss
 
 
-def main():
+def main(version='V9-R5'):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--epochs',type=int,choices=[8,60],default=60)
     p.add_argument('--seed',type=int,choices=[20260922,20260923,20260924],default=20260922)
     p.add_argument('--objective',choices=['smooth_l1','mae'],default='smooth_l1')
+    p.add_argument('--name-variant-cache',type=Path)
     p.add_argument('--output-dir',type=Path,required=True);args=p.parse_args()
     if args.epochs==8 and args.seed!=20260922:raise ValueError('Only original seed registered for compatibility replay.')
     if args.epochs==8 and args.objective!='smooth_l1':raise ValueError('Only original loss registered for8-epoch replay.')
+    if args.name_variant_cache is not None and (version!='V9-R7' or args.epochs!=60 or args.objective!='mae'):raise ValueError('R7 name variants require registered60epoch MAE baseline.')
+    if version=='V9-R7' and args.name_variant_cache is None:raise ValueError('R7 requires explicit registered variant cache.')
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True);started=time.monotonic()
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
@@ -35,9 +38,12 @@ def main():
         ROOT/'src/foodcomp/research_text.py',ROOT/'src/foodcomp/research_inference.py',
         ROOT/'scripts/train_global_foodnutrigpt_v8_single_stage.py',ROOT/'scripts/train_global_foodnutrigpt_v9_source_calibrated.py',
         ROOT/'src/foodcomp/research_forward_loss.py']
+    if args.name_variant_cache is not None:files.append(ROOT/'src/foodcomp/research_name_projection.py')
+    entrypoint=Path(sys.argv[0]).resolve()
+    if entrypoint!=Path(__file__).resolve() and entrypoint.is_relative_to(ROOT):files.append(entrypoint)
     snapshot=args.output_dir/'code_snapshot';snapshot.mkdir()
     for f in files:shutil.copyfile(f,snapshot/f.name)
-    manifest={'status':'running','version':'V9-R5','kind':'name_mlp','seed':args.seed,'args':vars(args),
+    manifest={'status':'running','version':version,'kind':'name_mlp','seed':args.seed,'args':vars(args),
         'code_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'code_hashes':{str(f.relative_to(ROOT)):digest(f) for f in files},'complete_test_opened':False,
         'output_query_policy':OUTPUT_QUERY_POLICY,'confirmation_completed':False,
@@ -47,7 +53,20 @@ def main():
         'environment':{'python':platform.python_version(),'torch':torch.__version__,'numpy':np.__version__,'cuda':torch.version.cuda}}
     write_json(args.output_dir/'run_manifest.json',manifest)
     try:
-        data=ResearchData(ROOT/'data/processed'/VERSION,'quarantined');text,cache=prepare_names(data,ROOT)
+        data=ResearchData(ROOT/'data/processed'/VERSION,'quarantined')
+        if args.name_variant_cache is None:text,cache=prepare_names(data,ROOT)
+        else:
+            from foodcomp.research_name_projection import load_variant
+            registry=json.loads((ROOT/'reports/v9_r7_name_cache_v1/verification.json').read_text(encoding='utf-8'))
+            cache=args.name_variant_cache.resolve();registered={str((ROOT/path).resolve()):key for key,path in registry['paths'].items()}
+            if str(cache) not in registered:raise ValueError('Namecache not in frozen R7 registry.')
+            active=int(registered[str(cache)])
+            if digest(cache/'manifest.json')!=registry['manifest_sha256'][str(active)]:raise ValueError('Registered cache changed.')
+            text,_,variant=load_variant(cache,data_hash=digest(data.root/'manifest.json'),active_components=active)
+            if text.shape[1]!=128:raise ValueError('R7 matched baseline requires128input slots.')
+            manifest['name_input_intervention']={'active_components':active,'input_slots':128,'projection_kind':variant['projection_kind'],
+                'scope':'MatchedR7 pair has same128slot architecture/init; only32vs128active namescores. HistoricalR5model not matched capacity/init.'}
+            manifest['scope']='R7 name-compression control: same128slot network, labels,loss,order andschedule; onlyactive32vs128namescores change. No numericcontext.'
         device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         model,config=make_model(data,text.shape[1],'name_mlp');model=model.to(device)
         manifest['environment']['device']=torch.cuda.get_device_name() if device.type=='cuda' else 'cpu'
