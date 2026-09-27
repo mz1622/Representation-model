@@ -1,0 +1,335 @@
+{
+  "version": "V9-R1",
+  "generated_utc": "2026-09-27T01:56:38.395365+00:00",
+  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "configuration_sha256": "e63877ba27c188b28b7a09dca9f8be326b271112a6cbd5d62cbb08f5bf0c9454",
+  "runs": [
+    {
+      "registered_configuration": {
+        "name": "mlp20_panel",
+        "kind": "mlp",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "objective": "hurdle",
+        "duration_checkpoints": [
+          8,
+          20
+        ]
+      },
+      "local_output": "output\\v9_r1\\mlp20_panel",
+      "manifest_status": "complete",
+      "manifest_sha256": "b8219834528edbdd8208eb10f41586f8c2895711e2c3bbd32bb978790d29969c",
+      "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
+      "elapsed_seconds": 297.3120000000017,
+      "epoch_completed": 20,
+      "best_epoch": 20,
+      "checkpoint_sha256": "f3645751391483c1789b323744abe3169e90c9208be743db6837683aa2a008e7",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.22245859810175897,
+            "log_mae": 0.07159671737132256,
+            "log_mse": 0.045517184003383136,
+            "raw_mae": 0.43188930619121735,
+            "positive_scaled_log_mae": 0.29950792507799623,
+            "zero_scaled_log_mae": 0.16949228233791494,
+            "log_rmse_root_mean_axis_mse": 0.21334756619981193
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.6274359444438571,
+            "log_mae": 0.03222328636218309,
+            "log_mse": 0.017255678615396102,
+            "raw_mae": 0.05940443347926989,
+            "positive_scaled_log_mae": 0.7854370571423086,
+            "zero_scaled_log_mae": 0.41358442975441895,
+            "log_rmse_root_mean_axis_mse": 0.1313608717061367
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.31991303973488416,
+            "log_mae": 0.062121827556289005,
+            "log_mse": 0.03871628698488358,
+            "raw_mae": 0.3422539090145455,
+            "positive_scaled_log_mae": 0.41644274295443506,
+            "zero_scaled_log_mae": 0.21426658156816125,
+            "log_rmse_root_mean_axis_mse": 0.19676454707310354
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5664831682139824,
+            "log_mae": 0.19807325117904764,
+            "log_mse": 0.2151705614835607,
+            "raw_mae": 1.1837871158316922,
+            "positive_scaled_log_mae": 0.645266597078461,
+            "zero_scaled_log_mae": 0.530408616547401,
+            "log_rmse_root_mean_axis_mse": 0.46386480949039527
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0456332442857865,
+            "log_mae": 0.05501204576561844,
+            "log_mse": 0.029570317887152465,
+            "raw_mae": 0.09182689273963053,
+            "positive_scaled_log_mae": 1.1226166741696584,
+            "zero_scaled_log_mae": 0.8078914642889498,
+            "log_rmse_root_mean_axis_mse": 0.1719602218164203
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6817866624558604,
+            "log_mae": 0.16364675789774116,
+            "log_mse": 0.17050740125982608,
+            "raw_mae": 0.9210159391517844,
+            "positive_scaled_log_mae": 0.7601369364854336,
+            "zero_scaled_log_mae": 0.581307837139046,
+            "log_rmse_root_mean_axis_mse": 0.41292541851988973
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_20_a1_s1",
+        "kind": "v9",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 1,
+        "source_weight": 1,
+        "duration_checkpoints": [
+          8,
+          20
+        ]
+      },
+      "local_output": "output\\v9_r1\\v9_20_a1_s1",
+      "manifest_status": "running",
+      "manifest_sha256": "a54fca08110f46c5296c42d7a3479d8bdc815f080079b1d2f1ec0863cbc686ae",
+      "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
+      "elapsed_seconds": 3043.4530000000013,
+      "epoch_completed": 9,
+      "best_epoch": null,
+      "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_20_a2_s1",
+        "kind": "v9",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 2,
+        "source_weight": 1
+      },
+      "local_output": "output\\v9_r1\\v9_20_a2_s1",
+      "manifest_status": "running",
+      "manifest_sha256": "a6a5d0cbde6a7fa1d4dcde56f0684a5ff5318923b7567047247aeb5a62cf24ea",
+      "code_commit": "ed0d21711408446366afc6562614c9f70475714b",
+      "elapsed_seconds": 2969.125,
+      "epoch_completed": 8,
+      "best_epoch": null,
+      "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_20_a3_s1",
+        "kind": "v9",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 3,
+        "source_weight": 1
+      },
+      "local_output": "output\\v9_r1\\v9_20_a3_s1",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_20_a1_s0",
+        "kind": "v9",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 1,
+        "source_weight": 0
+      },
+      "local_output": "output\\v9_r1\\v9_20_a1_s0",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "rf400_unlimited_leaf1",
+        "method": "rf",
+        "trees": 400,
+        "max_depth": 0,
+        "leaf_size": 1,
+        "n_jobs": 6
+      },
+      "local_output": "output\\v9_r1\\rf400_unlimited_leaf1",
+      "manifest_status": "running",
+      "manifest_sha256": "cfbe6b8290c800cbd81b8309d7eb2459cb8aa6bad9612b3f6088bfe5c6d9ae58",
+      "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "rf400_depth24_leaf3",
+        "method": "rf",
+        "trees": 400,
+        "max_depth": 24,
+        "leaf_size": 3,
+        "n_jobs": 6
+      },
+      "local_output": "output\\v9_r1\\rf400_depth24_leaf3",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "xgb500d8",
+        "method": "xgb",
+        "trees": 500,
+        "max_depth": 8,
+        "learning_rate": 0.05,
+        "n_jobs": 4
+      },
+      "local_output": "output\\v9_r1\\xgb500d8",
+      "manifest_status": "complete",
+      "manifest_sha256": "c25a38597cffdb56742df594ae6f135b4b651a042a5d89d98829e2d5c4feeb83",
+      "code_commit": "7af5d767898352fb6006d91e67abcee11c39205b",
+      "elapsed_seconds": 889.4380000000019,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.17813130046905015,
+          "log_mae": 0.053435608512818325,
+          "log_mse": 0.03203275367294916,
+          "raw_mae": 0.30578827090594346,
+          "positive_scaled_log_mae": 0.23562420445478918,
+          "zero_scaled_log_mae": 0.14823529493745777,
+          "log_rmse_root_mean_axis_mse": 0.17897696408462505
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6730046301241407,
+          "log_mae": 0.03586934015715684,
+          "log_mse": 0.018905394307709582,
+          "raw_mae": 0.06366265292972864,
+          "positive_scaled_log_mae": 0.7660233688884232,
+          "zero_scaled_log_mae": 0.6264123108593151,
+          "log_rmse_root_mean_axis_mse": 0.13749688835646276
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.2972184653593126,
+          "log_mae": 0.04920843163578748,
+          "log_mse": 0.02887376345136744,
+          "raw_mae": 0.24752274786353887,
+          "positive_scaled_log_mae": 0.36326036701903264,
+          "zero_scaled_log_mae": 0.23594823868643752,
+          "log_rmse_root_mean_axis_mse": 0.16992281615888857
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "xgb1000d6",
+        "method": "xgb",
+        "trees": 1000,
+        "max_depth": 6,
+        "learning_rate": 0.03,
+        "n_jobs": 4
+      },
+      "local_output": "output\\v9_r1\\xgb1000d6",
+      "manifest_status": "complete",
+      "manifest_sha256": "6d17a96bbac9a34a3a7823d2e127dedeae9bde57b97abd558577200b4a85bd14",
+      "code_commit": "3a45000c8b0449dd04be38ff4c16a3030274558a",
+      "elapsed_seconds": 1078.280999999999,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.18243819780033035,
+          "log_mae": 0.05469396059181501,
+          "log_mse": 0.03290165870895176,
+          "raw_mae": 0.31342947928926257,
+          "positive_scaled_log_mae": 0.24058732874441516,
+          "zero_scaled_log_mae": 0.15141087833697517,
+          "log_rmse_root_mean_axis_mse": 0.18138814379377655
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6869053989431096,
+          "log_mae": 0.03629630543602703,
+          "log_mse": 0.018937324716722943,
+          "raw_mae": 0.06415757471078236,
+          "positive_scaled_log_mae": 0.7830555920132386,
+          "zero_scaled_log_mae": 0.6414687024965686,
+          "log_rmse_root_mean_axis_mse": 0.13761295257613995
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.3038340483427104,
+          "log_mae": 0.05026671737250774,
+          "log_mse": 0.029541257480875306,
+          "raw_mae": 0.25344426160994915,
+          "positive_scaled_log_mae": 0.3711278199053619,
+          "zero_scaled_log_mae": 0.2413031419402142,
+          "log_rmse_root_mean_axis_mse": 0.17187570357928808
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "xgb800d10",
+        "method": "xgb",
+        "trees": 800,
+        "max_depth": 10,
+        "learning_rate": 0.03,
+        "n_jobs": 4
+      },
+      "local_output": "output\\v9_r1\\xgb800d10",
+      "manifest_status": "running",
+      "manifest_sha256": "c3373c7512be2d1478e181b371b0e2990e6ac612f97c01fbee8a9188fae417ae",
+      "code_commit": "60f33f0d4faa49607334ffe51868fbecc50ea384",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
+    }
+  ],
+  "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
+  "confirmation_seeds_completed": false,
+  "complete_test_opened": false,
+  "provenance_unresolved": true,
+  "individual_predictions_included": false,
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+}

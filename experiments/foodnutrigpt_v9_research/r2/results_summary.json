@@ -1,0 +1,130 @@
+{
+  "version": "V9-R2",
+  "generated_utc": "2026-09-27T01:56:39.336241+00:00",
+  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "configuration_sha256": "c6dbd0b6eb7de1ab00af28f55acc026df363b8d549fd8621b4fe7ef9897b945b",
+  "runs": [
+    {
+      "registered_configuration": {
+        "name": "mlp20_mae",
+        "kind": "mlp",
+        "objective": "mae",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "learning_rate": 0.001,
+        "batch_size": 256,
+        "seed": 20260922,
+        "single_factor": "loss: SmoothL1(beta=1) -> MAE"
+      },
+      "local_output": "output\\v9_r2\\mlp20_mae",
+      "manifest_status": "complete",
+      "manifest_sha256": "96c50a093c3a513df6821765760ba11f4a3ca10f7c6ab838659408c0aa4adf0a",
+      "code_commit": "60f33f0d4faa49607334ffe51868fbecc50ea384",
+      "elapsed_seconds": 627.344000000001,
+      "epoch_completed": 20,
+      "best_epoch": 20,
+      "checkpoint_sha256": "e936f6a2d26116907d06bfca37123b31df6f68ccee96de3781195312765bb4a3",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.2094841609876546,
+            "log_mae": 0.06615238773230298,
+            "log_mse": 0.04577095233536058,
+            "raw_mae": 0.40636601664032856,
+            "positive_scaled_log_mae": 0.3243234460326213,
+            "zero_scaled_log_mae": 0.13101776140897556,
+            "log_rmse_root_mean_axis_mse": 0.21394146941479247
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5926619773314283,
+            "log_mae": 0.03474881785450333,
+            "log_mse": 0.01977450528720834,
+            "raw_mae": 0.06411755273048568,
+            "positive_scaled_log_mae": 0.8113779287541752,
+            "zero_scaled_log_mae": 0.27600962645218735,
+            "log_rmse_root_mean_axis_mse": 0.1406218520970633
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.30169272641797445,
+            "log_mae": 0.058595378938180065,
+            "log_mse": 0.039515122831794536,
+            "raw_mae": 0.3240067606192434,
+            "positive_scaled_log_mae": 0.44152907021695253,
+            "zero_scaled_log_mae": 0.15761390233406172,
+            "log_rmse_root_mean_axis_mse": 0.19878411111503488
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5234097499326229,
+            "log_mae": 0.19741816802679685,
+            "log_mse": 0.21711011386020967,
+            "raw_mae": 1.2825178395575987,
+            "positive_scaled_log_mae": 0.6504144250827756,
+            "zero_scaled_log_mae": 0.4941624163231011,
+            "log_rmse_root_mean_axis_mse": 0.46595076334330615
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0286584568401882,
+            "log_mae": 0.058813414205379694,
+            "log_mse": 0.03384325038551969,
+            "raw_mae": 0.09969780365653852,
+            "positive_scaled_log_mae": 1.1114707734637905,
+            "zero_scaled_log_mae": 0.8165711685682049,
+            "log_rmse_root_mean_axis_mse": 0.18396535104611328
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6449936633595772,
+            "log_mae": 0.16406408288260554,
+            "log_mse": 0.17300846222191532,
+            "raw_mae": 0.9978820020413007,
+            "positive_scaled_log_mae": 0.7613638137306132,
+            "zero_scaled_log_mae": 0.5533024833029722,
+            "log_rmse_root_mean_axis_mse": 0.41594285932314706
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp20_mae_width512",
+        "parent": "output/v9_r2/mlp20_mae",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "learning_rate": 0.001,
+        "batch_size": 256,
+        "seed": 20260922,
+        "single_factor": "hidden width: 256 -> 512; initialized tensor shapes differ"
+      },
+      "local_output": "output\\v9_r2\\mlp20_mae_width512",
+      "manifest_status": "running",
+      "manifest_sha256": "60af8a963fc0d2aa831a2223ec27a7a2c7f3d6009ddf9a4bcfa87e5cde7c35f7",
+      "code_commit": "5b652163c41e5b01107e760027ac8f297933487a",
+      "elapsed_seconds": 585.5159999999996,
+      "epoch_completed": 18,
+      "best_epoch": null,
+      "checkpoint_sha256": null
+    }
+  ],
+  "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
+  "confirmation_seeds_completed": false,
+  "complete_test_opened": false,
+  "provenance_unresolved": true,
+  "individual_predictions_included": false,
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+}
