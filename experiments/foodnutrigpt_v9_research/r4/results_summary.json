@@ -1,13 +1,8 @@
 {
   "version": "V9-R4",
-  "generated_utc": "2026-09-27T08:25:29.839873+00:00",
-  "status": "first registered readout experiment complete; R4 remains in progress; no accepted neural improvement",
-  "readout_decision": "Reject as a completion improvement; retain original linear-readout MLP512 parent. Further representation-objective experiments require new preregistration.",
-  "completed_candidate_budgets": 2,
-  "new_training_trajectories_completed": 1,
-  "new_training_shared_wall_seconds": 328.718,
-  "accepted_neural_improvement": false,
-  "configuration_sha256": "08d9bd6b050536f8c78e78735912923a5875b67e08dc385f4e0a86945e57f901",
+  "generated_utc": "2026-09-27T08:51:22.041493+00:00",
+  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "configuration_sha256": "7036497f8e5bf25f8dbae26a5f07395c3da4759548fee0524fd8473ba527d866",
   "runs": [
     {
       "registered_configuration": {
@@ -218,6 +213,134 @@
           }
         }
       }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_views_weight0",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "view_drop_probability": 0.3,
+        "consistency_weight": 0,
+        "single_factor": "Matched-computation control: original supervised view A plus an encoded subset view B and a zero-weight normalized-representation distance; same architecture and supervised objective as original parent. Full new trajectory, not substitution of an old checkpoint."
+      },
+      "local_output": "output\\v9_r4\\mlp60_views_weight0",
+      "manifest_status": "complete",
+      "manifest_sha256": "55ade6b2084b6e60c718dde8a30aeb29dde405feed47600012b24f3368d823b9",
+      "code_commit": "3c2ba73b1e4a906a5738068d1620d42e784e1a04",
+      "elapsed_seconds": 450.9689999999973,
+      "epoch_completed": 60,
+      "best_epoch": 58,
+      "checkpoint_sha256": "0fc9e0273624a63c75cfcdf372d7d1d3d3252d86cbbc05a2ef4799dcf0377357",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18449135754384371,
+            "log_mae": 0.05814825627429503,
+            "log_mse": 0.03813247411383595,
+            "raw_mae": 0.3586597053289985,
+            "positive_scaled_log_mae": 0.2821666350672073,
+            "zero_scaled_log_mae": 0.11381119461195682,
+            "log_rmse_root_mean_axis_mse": 0.19527538020404914
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5650996946990219,
+            "log_mae": 0.03282093187145539,
+            "log_mse": 0.018311707064047725,
+            "raw_mae": 0.06111006319211429,
+            "positive_scaled_log_mae": 0.7629709579425621,
+            "zero_scaled_log_mae": 0.16530594790934258,
+            "log_rmse_root_mean_axis_mse": 0.13532075622035122
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.2760815991052502,
+            "log_mae": 0.052053445589119715,
+            "log_mse": 0.03336277081308477,
+            "raw_mae": 0.2870568502693205,
+            "positive_scaled_log_mae": 0.3978682100906884,
+            "zero_scaled_log_mae": 0.12325697776118144,
+            "log_rmse_root_mean_axis_mse": 0.18265478590249085
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5598760676903538,
+            "log_mae": 0.20728471522879624,
+            "log_mse": 0.24370781747883982,
+            "raw_mae": 1.2240947664913353,
+            "positive_scaled_log_mae": 0.7052233573717843,
+            "zero_scaled_log_mae": 0.4585832285988239,
+            "log_rmse_root_mean_axis_mse": 0.49366771970510676
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0608042523722943,
+            "log_mae": 0.06517358757717448,
+            "log_mse": 0.03949096868690313,
+            "raw_mae": 0.10753356221398411,
+            "positive_scaled_log_mae": 1.2227492218917495,
+            "zero_scaled_log_mae": 0.4927226941058973,
+            "log_rmse_root_mean_axis_mse": 0.1987233471107588
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6804202832555267,
+            "log_mae": 0.17308685028589257,
+            "log_mse": 0.1945647255235609,
+            "raw_mae": 0.9554035676010639,
+            "positive_scaled_log_mae": 0.8297616670156264,
+            "zero_scaled_log_mae": 0.46484549741964803,
+            "log_rmse_root_mean_axis_mse": 0.4410949166829753
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_views_weight01",
+        "parent": "output/v9_r4/mlp60_views_weight0",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "view_drop_probability": 0.3,
+        "consistency_weight": 0.1,
+        "single_factor": "Consistency coefficient0 ->0.1 with the exact same two-view compute graph, task order and extra masks. L=original supervised MAE(A)+lambda*C(A,B), no rescaling of supervised loss, no regression label on B. Added gradient direction/magnitude and clipping are part of the intervention."
+      },
+      "local_output": "output\\v9_r4\\mlp60_views_weight01",
+      "manifest_status": "not started; check active process queues separately"
     }
   ],
   "completed_retrieval_evaluations": [
