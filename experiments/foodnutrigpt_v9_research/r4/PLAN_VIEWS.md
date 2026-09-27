@@ -35,3 +35,15 @@ view A是原始共同家族任务，完整目标家族（含关联context-only�
 每轮记录A的平均表示范数和单位化表示逐维batch标准差均值（任务数加权的batch诊断），并比较C曲线。它不是全数据表示协方差、不是坍塌的充分判据、不是迁移性能。训练后共同探针固定为8192个训练家族task ID（无放回，NumPy default_rng(20260925)），额外mask使用同一函数、seed20260922、epoch1001、p0.3，再按所选task ID索引；不重用训练60轮mask。报告这8192样本上的单位表示逐维总体标准差均值、均值中心平方距离、均值范数、零范数比例、A/B距离，以及用原q权重计算的距离。两个模型使用同一输入，指标只作机制诊断，不选择超参数或检查点。
 
 若主指标无支持收益或收益仅来自零值、正值退步，按现象决定拒绝/保留分支，不能仅凭C下降接受模型。任何被接受的改进需三个固定种子；超过较强树5%、配对区间支持改善且原营养log-MAE退步不超过2%的门槛不变。当前只是两个预登记候选，后续权重或扰动率不得在中途改动。历史测试始终关闭，FooDB原始证据限制不变。
+
+## 已执行命令（不改变登记设置）
+
+```powershell
+.\.venv\Scripts\python.exe scripts/audit_foodnutrigpt_views.py --output-dir reports/v9_r4_views_functional_audit_v1
+.\.venv\Scripts\python.exe -u scripts/train_foodnutrigpt_v9_r4_views.py --consistency-weight 0 --view-drop-probability 0.3 --seed 20260922 --output-dir output/v9_r4/mlp60_views_weight0
+.\.venv\Scripts\python.exe -u scripts/train_foodnutrigpt_v9_r4_views.py --consistency-weight 0.1 --view-drop-probability 0.3 --seed 20260922 --output-dir output/v9_r4/mlp60_views_weight01
+.\.venv\Scripts\python.exe scripts/audit_foodnutrigpt_views_zero_replay.py --output-dir reports/v9_r4_views_zero_replay_v1
+.\.venv\Scripts\python.exe scripts/diagnose_foodnutrigpt_view_geometry.py --checkpoint output/v9_r4/mlp60_views_weight0/best_model.pt output/v9_r4/mlp60_views_weight01/best_model.pt --output-dir reports/v9_r4_views_geometry_v1
+```
+
+这些目录现已存在，复跑必须使用新目录，程序拒绝覆盖。训练环境、完整hash/config和逐轮曲线在各run目录；所有比较、诊断及版本决定见 [README.md](README.md)。

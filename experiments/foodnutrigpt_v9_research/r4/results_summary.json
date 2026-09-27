@@ -1,7 +1,17 @@
 {
   "version": "V9-R4",
-  "generated_utc": "2026-09-27T08:55:42.318937+00:00",
-  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "generated_utc": "2026-09-27T09:00:16.920547+00:00",
+  "status": "four registered budgets complete; R4 mechanism/representation research continues; no accepted neural improvement",
+  "completed_candidate_budgets": 4,
+  "new_training_trajectories_completed": 3,
+  "new_training_shared_wall_seconds": 1230.703,
+  "accepted_neural_improvement": false,
+  "current_decisions": {
+    "axis_query_residual": "Reject as a completion improvement; retain original linear-head parent.",
+    "view_consistency_weight01": "No supported completion gain; retain named single-seed name-only branch, without acceptance or transfer claim.",
+    "zero_consistency_replay": "Saved60-epoch histories, five model tensor states and two full prediction tables exactly match original parent; all retrieval differences are zero.",
+    "next_question": "Post-result train-only translation/readout-bias counterfactual to distinguish angular concentration from useful invariance; not yet implemented or a registered training candidate."
+  },
   "configuration_sha256": "7036497f8e5bf25f8dbae26a5f07395c3da4759548fee0524fd8473ba527d866",
   "runs": [
     {
@@ -340,13 +350,85 @@
         "single_factor": "Consistency coefficient0 ->0.1 with the exact same two-view compute graph, task order and extra masks. L=original supervised MAE(A)+lambda*C(A,B), no rescaling of supervised loss, no regression label on B. Added gradient direction/magnitude and clipping are part of the intervention."
       },
       "local_output": "output\\v9_r4\\mlp60_views_weight01",
-      "manifest_status": "running",
-      "manifest_sha256": "adf386111ff2ec1798f7330a11a7b2209a8e4237b25c9e46cc3470c828dbfff6",
+      "manifest_status": "complete",
+      "manifest_sha256": "067129859a80df01e6d1ba22c56808056ef1d37086cf5cbc47d02112bdff3fbe",
       "code_commit": "70b9bc9a5f72689debec683be22fce9b20746d4b",
-      "elapsed_seconds": 255.86000000000058,
-      "epoch_completed": 34,
-      "best_epoch": null,
-      "checkpoint_sha256": null
+      "elapsed_seconds": 451.015999999996,
+      "epoch_completed": 60,
+      "best_epoch": 58,
+      "checkpoint_sha256": "9e7536eec40d6a951708c2427d839f797dda392aeeefb72773598152f42055f8",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18539522428437472,
+            "log_mae": 0.05751429068776041,
+            "log_mse": 0.036013542142771734,
+            "raw_mae": 0.35711877432951455,
+            "positive_scaled_log_mae": 0.283846108377086,
+            "zero_scaled_log_mae": 0.11442137617488088,
+            "log_rmse_root_mean_axis_mse": 0.18977234293429518
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5684604691529409,
+            "log_mae": 0.030923894241028656,
+            "log_mse": 0.01767360750478469,
+            "raw_mae": 0.05647731346612325,
+            "positive_scaled_log_mae": 0.7481320340648362,
+            "zero_scaled_log_mae": 0.2271779647440744,
+            "log_rmse_root_mean_axis_mse": 0.13294212088267846
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.27757670032226495,
+            "log_mae": 0.051115532184536204,
+            "log_mse": 0.031600188887641156,
+            "raw_mae": 0.284771898720677,
+            "positive_scaled_log_mae": 0.3955726680345659,
+            "zero_scaled_log_mae": 0.13510453739171518,
+            "log_rmse_root_mean_axis_mse": 0.17776441963351708
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5271665696051199,
+            "log_mae": 0.19798740596260336,
+            "log_mse": 0.22556304864125526,
+            "raw_mae": 1.2514715200221176,
+            "positive_scaled_log_mae": 0.6582388809411907,
+            "zero_scaled_log_mae": 0.4831098298810005,
+            "log_rmse_root_mean_axis_mse": 0.4749347835663916
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0440739865126927,
+            "log_mae": 0.061360715349628385,
+            "log_mse": 0.03548470613747379,
+            "raw_mae": 0.10125888700767652,
+            "positive_scaled_log_mae": 1.130078091800184,
+            "zero_scaled_log_mae": 0.6985977451715905,
+            "log_rmse_root_mean_axis_mse": 0.1883738467449072
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6515560549572095,
+            "log_mae": 0.1651093253338126,
+            "log_mse": 0.17982227103339343,
+            "raw_mae": 0.9746823837352199,
+            "positive_scaled_log_mae": 0.7717830760676864,
+            "zero_scaled_log_mae": 0.5226371989579727,
+            "log_rmse_root_mean_axis_mse": 0.4240545613873213
+          }
+        }
+      }
     }
   ],
   "completed_retrieval_evaluations": [
@@ -388,6 +470,84 @@
         "scientific_claim_allowed": false
       },
       "metrics_sha256": "080e6920c726f022fc279c624f1776e48964c0b314d5ddf4865894f2c693de86"
+    },
+    {
+      "local_output": "output\\v9_r4\\retrieval_mlp60_views_weight0",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0010594187052031033,
+            "recall_at_1": 0.0002322700526478786,
+            "recall_at_5": 0.001161350263239393,
+            "recall_at_10": 0.0015226592340249821
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.0011563391879842347,
+            "recall_at_1": 0.0,
+            "recall_at_5": 0.0008361877896433609,
+            "recall_at_10": 0.0027181140439250457
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "name_predictions",
+        "ridge_alpha": null,
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": "0fc9e0273624a63c75cfcdf372d7d1d3d3252d86cbbc05a2ef4799dcf0377357",
+        "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 1.625,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "955254c086ce0a1f2e85fc7d27a28365dd0f00fbd5f8f667f09af724b0729f2c"
+    },
+    {
+      "local_output": "output\\v9_r4\\retrieval_mlp60_views_weight01",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.001258454230742067,
+            "recall_at_1": 0.0,
+            "recall_at_5": 0.0013936203158872716,
+            "recall_at_10": 0.002709817280891917
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.001492613190893113,
+            "recall_at_1": 0.00016455101081335212,
+            "recall_at_5": 0.0013399153737658673,
+            "recall_at_10": 0.0028208744710860366
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "name_predictions",
+        "ridge_alpha": null,
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": "9e7536eec40d6a951708c2427d839f797dda392aeeefb72773598152f42055f8",
+        "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 1.625,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "bf1ae139781ca914f57c04836e9924397a30393fbd68b99576032c1b05b7a3c5"
     }
   ],
   "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
