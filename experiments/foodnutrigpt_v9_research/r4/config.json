@@ -4,7 +4,7 @@
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
   "max_candidates": 12,
-  "registered_candidate_budgets": 6,
+  "registered_candidate_budgets": 7,
   "max_hours": 72,
   "registered_candidates": [
     {
@@ -94,6 +94,19 @@
       "parameters": 667900, "view_drop_probability": 0.3,
       "consistency_weight": 0.1, "consistency_centering": "joint_batch",
       "single_factor": "Same registered centred training, rerun from scratch after shared inverse-transform numerical repair. Preserve every finite old decoded value bitwise; recompute only overflowed entries in float64 and cast to original dtype, requiring final finite outputs. No clipping, dropped queries, metric changes or hyperparameter change. Keep original failed run. Verify first16 epoch histories and reference predictions exactly replay."
+    },
+    {
+      "name": "mlp60_views_centered_weight01_query_contract",
+      "parent": "output/v9_r4/mlp60_views_centered_weight01_stable_inverse",
+      "kind": "mlp", "objective": "mae", "mlp_width": 512,
+      "mlp_normalization": "layer_norm", "mlp_task_heads": "shared",
+      "mlp_text_conditioning": "none", "mlp_query_residual": false,
+      "name_only_probability": 0, "epochs": 60, "schedule_epochs": 60,
+      "batch_size": 256, "learning_rate": 0.001, "seed": 20260922,
+      "parameters": 667900, "view_drop_probability": 0.3,
+      "consistency_weight": 0.1, "consistency_centering": "joint_batch",
+      "output_query_policy": "caller_or_schema_axes_v1",
+      "single_factor": "Same centred training from scratch under a shared predeclared query-output contract: all252 forward values must be finite; inverse transform only caller/schema requested coordinates, including every unlabelled requested family axis. True requested overflow still fails. Preserve both prior failures; verify first17 histories and all finite reference predictions. No data/input/loss/metric or hyperparameter change."
     }
   ],
   "fixed": {
