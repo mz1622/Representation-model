@@ -1,5 +1,8 @@
 {
   "version": "V9-R1",
+  "exploration_status": "complete",
+  "confirmation_status": "not_completed",
+  "version_decision": "Retain amount3 as a V9 completion screening branch; source-off has no interval-supported completion gain. No neural model accepted over the tuned tree baselines.",
   "parent": "V9-R0",
   "data_version": "foodnutrigpt_v9_r0_v1",
   "view": "quarantined",
