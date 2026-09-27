@@ -1,10 +1,12 @@
 {
-  "scope": "Current comparison references for new experiments; historical protocols/results unchanged. No model superiority or external-label-validity claim.",
+  "scope": "Protocol-indexed references. Top-level completion/name_only/retrieval entries use historical random PCA32; they are not matched-input baselines for R7/R8 exact common PCA. Select exact32/128 name references under additional_name_input_protocols. R8 completion tuning is incomplete and has no selected final reference. No model superiority or external-label-validity claim.",
   "data_version": "foodnutrigpt_v9_r0_v1",
   "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
   "complete_test_opened": false,
   "external_label_provenance_confirmed": false,
   "completion": {
+    "name_input_protocol": "historical_random_pca32",
+    "name_cache_manifest_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
     "stronger_method_by3seed_mean": "xgb",
     "rf": {
       "runs": [
