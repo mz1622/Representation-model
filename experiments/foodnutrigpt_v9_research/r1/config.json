@@ -1,0 +1,30 @@
+{
+  "version": "V9-R1",
+  "parent": "V9-R0",
+  "data_version": "foodnutrigpt_v9_r0_v1",
+  "view": "quarantined",
+  "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
+  "seed_screen": 20260922,
+  "seeds_confirmation": [20260922, 20260923, 20260924],
+  "max_screening_candidates": 12,
+  "max_wall_hours": 72,
+  "neural_runs": [
+    {"name": "mlp20_panel", "kind": "mlp", "epochs": 20, "schedule_epochs": 20, "batch_size": 256, "learning_rate": 0.001, "objective": "hurdle", "duration_checkpoints": [8, 20]},
+    {"name": "v9_20_a1_s1", "kind": "v9", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 1, "source_weight": 1, "duration_checkpoints": [8, 20]},
+    {"name": "v9_20_a2_s1", "kind": "v9", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 2, "source_weight": 1},
+    {"name": "v9_20_a3_s1", "kind": "v9", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 3, "source_weight": 1},
+    {"name": "v9_20_a1_s0", "kind": "v9", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 1, "source_weight": 0}
+  ],
+  "tree_runs": [
+    {"name": "rf400_unlimited_leaf1", "method": "rf", "trees": 400, "max_depth": 0, "leaf_size": 1, "n_jobs": 6},
+    {"name": "rf400_depth24_leaf3", "method": "rf", "trees": 400, "max_depth": 24, "leaf_size": 3, "n_jobs": 6},
+    {"name": "xgb500d8", "method": "xgb", "trees": 500, "max_depth": 8, "learning_rate": 0.05, "n_jobs": 4},
+    {"name": "xgb1000d6", "method": "xgb", "trees": 1000, "max_depth": 6, "learning_rate": 0.03, "n_jobs": 4},
+    {"name": "xgb800d10", "method": "xgb", "trees": 800, "max_depth": 10, "learning_rate": 0.03, "n_jobs": 4}
+  ],
+  "fixed": {"all_eligible_training_rows": true, "text_field": "original_name", "pca_dimensions": 32, "family_hidden": true, "test_closed": true},
+  "primary_relative_gain_required": 0.05,
+  "max_legacy_nutrition_log_mae_regression": 0.02,
+  "label_provenance_confirmation_pending": true,
+  "claim_scope": "Controlled optimization on the frozen quarantine view; no final claim about external nutrition truth or foundation-model transfer."
+}
