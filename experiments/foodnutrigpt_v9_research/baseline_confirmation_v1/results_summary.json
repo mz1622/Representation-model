@@ -1,6 +1,6 @@
 {
   "version": "baseline-confirmation-v1",
-  "generated_utc": "2026-09-27T04:26:31.927117+00:00",
+  "generated_utc": "2026-09-27T05:13:26.078123+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "2328712e1e8cefe8e811daa8e5e933b6fe29c7ccf9f485f867129fa8614a6425",
   "runs": [
@@ -116,13 +116,48 @@
         "seed": 20260923
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\xgb_seed20260923",
-      "manifest_status": "running",
-      "manifest_sha256": "9de85d01dcc288c4d3edc871481f5b2614bc484f96d7ca858e357787229ff338",
+      "manifest_status": "complete",
+      "manifest_sha256": "60990727075e87c4770e474d83b8d54d26851694c2d91fd6c6d19b73097438b4",
       "code_commit": "fbb80291b3a8ac13bda1fb04fe69b97c7ad8fe95",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 2421.9689999999973,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.17331810765002625,
+          "log_mae": 0.052071830429235896,
+          "log_mse": 0.03147650208975803,
+          "raw_mae": 0.29900030999542976,
+          "positive_scaled_log_mae": 0.2289445127881352,
+          "zero_scaled_log_mae": 0.14722426672092184,
+          "log_rmse_root_mean_axis_mse": 0.17741618328032543
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6809163917835114,
+          "log_mae": 0.03651133275487971,
+          "log_mse": 0.019055335951209385,
+          "raw_mae": 0.06442177348579943,
+          "positive_scaled_log_mae": 0.7807518640295348,
+          "zero_scaled_log_mae": 0.6360249470272968,
+          "log_rmse_root_mean_axis_mse": 0.13804106617673376
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.2954674273612927,
+          "log_mae": 0.04832732564128922,
+          "log_mse": 0.028487451414706218,
+          "raw_mae": 0.24255092955193583,
+          "positive_scaled_log_mae": 0.36173237806012976,
+          "zero_scaled_log_mae": 0.23688592997238703,
+          "log_rmse_root_mean_axis_mse": 0.1687822603673331
+        }
+      }
     },
     {
       "registered_configuration": {
@@ -136,7 +171,13 @@
         "seed": 20260924
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\xgb_seed20260924",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "f6b1aeb65c79288b141c5f98880817634f15f697c155add6da3366241374b79c",
+      "code_commit": "4892bea1aa6a7a6d8299cc4624b3eb0332ac9f02",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     }
   ],
   "completed_retrieval_evaluations": [],
