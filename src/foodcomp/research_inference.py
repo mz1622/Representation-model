@@ -59,7 +59,11 @@ class NutritionModel:
         if missing:
             if self._encoder is None: self._encoder = NameEncoder(self.repo/"data/cache/huggingface")
             raw = self._encoder.encode([names[i] for i in missing])
-            result[missing] = (raw-self._pca["mean"]) @ self._pca["components"].T
+            if "active_components" in self._pca:
+                from .research_name_projection import project_names
+                result[missing] = project_names(raw,self._pca)
+            else:
+                result[missing] = (raw-self._pca["mean"]) @ self._pca["components"].T
         return result
 
     def profile_arrays(self, observed_profile):
