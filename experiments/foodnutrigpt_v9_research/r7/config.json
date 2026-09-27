@@ -1,0 +1,20 @@
+{
+  "version":"V9-R7","status":"preregistered","max_candidates":12,"registered_candidate_budgets":6,
+  "data_version":"foodnutrigpt_v9_r0_v1","view":"quarantined","data_sha256":"48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "parent_cache":"data/cache/research_name_only/1f085dcc818fa79dc3ce40257ab8a263404e353b3e9c8158fb0cd98fb838aa05",
+  "parent_cache_sha256":"705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+  "projection":{"fit":"float64 training covariance eigh, top128; largest-absolute-loading sign positive","train_rows":64700,"input_slots":128,"active_dimensions":[32,128],"whiten":false,"standardize":false,"summation":"float64 row/direction einsum optimize=False thenfloat32","name_field":"original_name","model_revision":"1110a243fdf4706b3f48f1d95db1a4f5529b4d41"},
+  "candidates":[
+    {"name":"legacy_name_knn32","output_dir":"output/v9_r5/retrieval_name_knn10_tree","reused_control":true},
+    {"name":"exact_name_knn32","active_dimensions":32,"kind":"name_knn","output_dir":"output/v9_r7/exact_name_knn32"},
+    {"name":"exact_name_knn128","active_dimensions":128,"kind":"name_knn","output_dir":"output/v9_r7/exact_name_knn128"},
+    {"name":"exact_name_mlp32","active_dimensions":32,"input_slots":128,"kind":"name_mlp","output_dir":"output/v9_r7/exact_name_mlp32"},
+    {"name":"exact_name_mlp128","active_dimensions":128,"input_slots":128,"kind":"name_mlp","output_dir":"output/v9_r7/exact_name_mlp128"},
+    {"name":"legacy_name_mlp_mae","output_dir":"output/v9_r5/name_mlp60_mae","reused_control":true,"scope":"Historical reference only; not matched architecture/initialization"}
+  ],
+  "knn":{"backend":"kd_tree","neighbors":10,"n_jobs":8,"labels":"same187observed train axes andsource/candidate weights","candidate_vectors":"name predictions only"},
+  "mlp":{"width":256,"parameters":164092,"input_slots":128,"objective":"original187axis batch-normalized MAE","epochs":60,"batch_size":256,"learning_rate":0.001,"weight_decay":0.0001,"gradient_clip_norm":1,"seed":20260922,"selection":"fixed142nutrition MAE; earlieststrictminimum"},
+  "candidate_name_count":49913,"new_input_completion_comparison_to_old_trees_allowed":false,
+  "name_direction_screening_criterion":{"relative_primary_gain_at_least":0.01,"paired_group_interval_supports_gain":true,"acceptance_requires_three_seeds":true},
+  "confirmation_seeds":[20260922,20260923,20260924],"complete_test_opened":false,"scientific_confirmation":false
+}
