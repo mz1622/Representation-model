@@ -4,7 +4,7 @@
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
   "max_candidates": 12,
-  "registered_candidate_budgets": 2,
+  "registered_candidate_budgets": 4,
   "max_hours": 72,
   "registered_candidates": [
     {
@@ -46,6 +46,30 @@
       "parameters": 762365,
       "single_factor": "Add a shared nonlinear axis-query residual readout, initialized at zero output; shared parent parameters and global CPU RNG match at initialization. Added capacity, clipping and optimization geometry are part of this architecture intervention.",
       "query_head": {"context_dim": 512, "query_dim": 32, "hidden_dim": 128, "axes": 252, "last_layer_initialization": "zero"}
+    },
+    {
+      "name": "mlp60_views_weight0",
+      "parent": "output/v9_r2/mlp60_mae_width512",
+      "kind": "mlp", "objective": "mae", "mlp_width": 512,
+      "mlp_normalization": "layer_norm", "mlp_task_heads": "shared",
+      "mlp_text_conditioning": "none", "mlp_query_residual": false,
+      "name_only_probability": 0, "epochs": 60, "schedule_epochs": 60,
+      "batch_size": 256, "learning_rate": 0.001, "seed": 20260922,
+      "parameters": 667900, "view_drop_probability": 0.3,
+      "consistency_weight": 0,
+      "single_factor": "Matched-computation control: original supervised view A plus an encoded subset view B and a zero-weight normalized-representation distance; same architecture and supervised objective as original parent. Full new trajectory, not substitution of an old checkpoint."
+    },
+    {
+      "name": "mlp60_views_weight01",
+      "parent": "output/v9_r4/mlp60_views_weight0",
+      "kind": "mlp", "objective": "mae", "mlp_width": 512,
+      "mlp_normalization": "layer_norm", "mlp_task_heads": "shared",
+      "mlp_text_conditioning": "none", "mlp_query_residual": false,
+      "name_only_probability": 0, "epochs": 60, "schedule_epochs": 60,
+      "batch_size": 256, "learning_rate": 0.001, "seed": 20260922,
+      "parameters": 667900, "view_drop_probability": 0.3,
+      "consistency_weight": 0.1,
+      "single_factor": "Consistency coefficient0 ->0.1 with the exact same two-view compute graph, task order and extra masks. L=original supervised MAE(A)+lambda*C(A,B), no rescaling of supervised loss, no regression label on B. Added gradient direction/magnitude and clipping are part of the intervention."
     }
   ],
   "fixed": {
