@@ -1,6 +1,6 @@
 {
   "version": "baseline-confirmation-v1",
-  "generated_utc": "2026-09-27T05:45:53.363417+00:00",
+  "generated_utc": "2026-09-27T06:44:35.250955+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "2328712e1e8cefe8e811daa8e5e933b6fe29c7ccf9f485f867129fa8614a6425",
   "runs": [
@@ -69,13 +69,48 @@
         "seed": 20260923
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\rf_seed20260923",
-      "manifest_status": "running",
-      "manifest_sha256": "cd90c99fb8b32f8e2a6440307c7f5610f1b9c97fa49304195204495f2f7a65fd",
+      "manifest_status": "complete",
+      "manifest_sha256": "893879a43f8cdc7ddcd155f09ed9d05d135a86892ed0fbf9175439dba15069df",
       "code_commit": "16640750b35dfb92756779852731136176e9b3ec",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 4964.264999999999,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.18867922971733025,
+          "log_mae": 0.05611823906323938,
+          "log_mse": 0.0325253395674495,
+          "raw_mae": 0.3217626460687639,
+          "positive_scaled_log_mae": 0.2473381287132055,
+          "zero_scaled_log_mae": 0.16939387944652984,
+          "log_rmse_root_mean_axis_mse": 0.1803478293948932
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6795744191109409,
+          "log_mae": 0.03656552057566835,
+          "log_mse": 0.020599499171618556,
+          "raw_mae": 0.06625030734721557,
+          "positive_scaled_log_mae": 0.7751497738028955,
+          "zero_scaled_log_mae": 0.5974720065054271,
+          "log_rmse_root_mean_axis_mse": 0.14352525621512946
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.3068090881275574,
+          "log_mae": 0.05141303942719287,
+          "log_mse": 0.029655484926741516,
+          "raw_mae": 0.2602757196384448,
+          "positive_scaled_log_mae": 0.37435162619468176,
+          "zero_scaled_log_mae": 0.2479170861851441,
+          "log_rmse_root_mean_axis_mse": 0.1722076796392702
+        }
+      }
     },
     {
       "registered_configuration": {
@@ -88,7 +123,13 @@
         "seed": 20260924
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\rf_seed20260924",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "f23e09a3b1ca2b03069918c424c961c715400a4e19f8a598af8d3756786cef99",
+      "code_commit": "f214808f372a199272d81e63bdeb8360ac2fdbf0",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     },
     {
       "registered_configuration": {
