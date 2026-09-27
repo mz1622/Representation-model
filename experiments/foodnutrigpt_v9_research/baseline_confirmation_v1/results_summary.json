@@ -1,6 +1,6 @@
 {
   "version": "baseline-confirmation-v1",
-  "generated_utc": "2026-09-27T03:43:53.016939+00:00",
+  "generated_utc": "2026-09-27T03:47:13.011027+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "2328712e1e8cefe8e811daa8e5e933b6fe29c7ccf9f485f867129fa8614a6425",
   "runs": [
@@ -15,7 +15,13 @@
         "seed": 20260922
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\rf_seed20260922",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "4579f078f9bfe1f15148d002a80f1fe40ce33655f8c34c8fab0d779355dfaef2",
+      "code_commit": "8cae1a37d2d48fcad9530bff96388c15bcdddc98",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     },
     {
       "registered_configuration": {
@@ -55,7 +61,13 @@
         "seed": 20260922
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\xgb_seed20260922",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "d01cb71f49f8f1f4766d7819140ed75f504d9a762f0497b47afa0d4820ff45a7",
+      "code_commit": "8cae1a37d2d48fcad9530bff96388c15bcdddc98",
+      "elapsed_seconds": null,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     },
     {
       "registered_configuration": {
