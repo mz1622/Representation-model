@@ -1,24 +1,8 @@
 {
   "version": "V9-R4",
-  "generated_utc": "2026-09-27T09:46:18.596680+00:00",
-  "status": "six registered budgets resolved: four completed evaluations and two retained numerical training failures; this query/view branch archived, representation and transfer research continues",
-  "resolved_candidate_budgets": 6,
-  "completed_candidate_budgets": 4,
-  "failed_candidate_budgets": 2,
-  "new_training_trajectories_completed": 3,
-  "new_training_trajectories_failed": 2,
-  "new_training_shared_wall_seconds_including_failures": 1522.094,
-  "accepted_neural_improvement": false,
-  "current_decisions": {
-    "axis_query_residual": "No supported completion improvement; retain original linear-head control.",
-    "view_consistency_weight01": "No supported completion gain; named single-seed name-only branch only.",
-    "translation_probe": "Prediction-preserving common translation changes unit-distance metric; residual differences remain after centring. Not proof of pure-offset learning, semantic collapse or transfer.",
-    "centered_views": "Both registered attempts failed and remain failed; no completed three-task scores or promotion of partial checkpoints.",
-    "stable_inverse": "Accepted shared engineering repair, not a model improvement: finite old predictions exactly preserved; recoverable intermediate overflow repaired; true return-dtype overflow still fails.",
-    "replay_audit": "First16 histories except wall time and partial best16 model bytes exact; completed-epoch exposure matches both original controls. Lost original failing states were not saved and are not claimed bitwise replayed.",
-    "next_question": "Audit caller/family query semantics versus all-axis decoding before any separately registered change; do not use label availability to construct queries. No further training candidate registered."
-  },
-  "configuration_sha256": "539078fbc4f8358cc39a24f1440c22d6993b7886475f0add7643df8efdda9c6c",
+  "generated_utc": "2026-09-27T10:25:23.387616+00:00",
+  "status": "Seven registered budgets resolved: four complete (one reused), three failed; no accepted neural superiority; R4 research continues.",
+  "configuration_sha256": "b8ef9201d3f785b0dcf589e01a67faa437aa214fc5e0177ef90e85c92effcd01",
   "runs": [
     {
       "registered_configuration": {
@@ -507,6 +491,43 @@
         "error_type": "FloatingPointError",
         "error": "Nonfinite prediction."
       }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_views_centered_weight01_query_contract",
+        "parent": "output/v9_r4/mlp60_views_centered_weight01_stable_inverse",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "mlp_text_conditioning": "none",
+        "mlp_query_residual": false,
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "parameters": 667900,
+        "view_drop_probability": 0.3,
+        "consistency_weight": 0.1,
+        "consistency_centering": "joint_batch",
+        "output_query_policy": "caller_or_schema_axes_v1",
+        "single_factor": "Same centred training from scratch under a shared predeclared query-output contract: all252 forward values must be finite; inverse transform only caller/schema requested coordinates, including every unlabelled requested family axis. True requested overflow still fails. Preserve both prior failures; verify first17 histories and all finite reference predictions. No data/input/loss/metric or hyperparameter change."
+      },
+      "local_output": "output\\v9_r4\\mlp60_views_centered_weight01_query_contract",
+      "manifest_status": "failed",
+      "manifest_sha256": "e4cf3c51e0461b528ebe416aa62aec914959672b4cb58a5050a381230ac6a4f9",
+      "code_commit": "c9a774ba0d33f629421c1f5d5b34653847b6172c",
+      "elapsed_seconds": 253.625,
+      "epoch_completed": 29,
+      "best_epoch": null,
+      "checkpoint_sha256": null,
+      "failure": {
+        "error_type": "FloatingPointError",
+        "error": "Nonfinite prediction."
+      }
     }
   ],
   "completed_retrieval_evaluations": [
@@ -633,5 +654,15 @@
   "complete_test_opened": false,
   "provenance_unresolved": true,
   "individual_predictions_included": false,
-  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files.",
+  "resolved_budgets": 7,
+  "complete_budgets": 4,
+  "failed_budgets": 3,
+  "new_training_seconds": 1775.719,
+  "decisions": {
+    "query_residual": "reject default adoption",
+    "raw_view_consistency": "no completion benefit; exploratory name-only branch",
+    "centered_views": "reject current configuration; requested unlabelled Starch overflow at epoch30; no further restart",
+    "stable_inverse_and_output_query_contract": "retain audited engineering fixes; reference predictions and ranks unchanged; not model improvement"
+  }
 }
