@@ -98,3 +98,20 @@ R1登记的XGB800/深10/lr0.03已完成，主指标0.173784、原log-MAE0.052339
 ```powershell
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_normalization.py --kind mlp --objective mae --mlp-width 512 --mlp-normalization none --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width512_no_layernorm
 ```
+
+## 第九/十个候选预算：同轨迹双准则选点（启动前登记）
+
+R0要求保留旧hurdle-loss选点对照，但已有运行没有保存每个epoch的该指标和其最佳检查点，不能事后恢复。新增一次固定V9/a1/s1/20的复现，同时按142营养轴主指标与187轴source-free hurdle loss选择各自最佳检查点，两者都取严格改善时的最早点。每轮同一次forward同时产生两个指标，不改变训练loss、初始化、任务顺序、dropout随机数、优化器、学习率日程和20轮停止预算。两个准则只在此次复现内部比较；此前运行只作历史参考。
+
+次要准则保留旧目标的BCE + amount_weight×仅正值SmoothL1(beta=1)，推理不加来源残差；使用当前固定验证标签、train-only尺度和来源/候选/档案等权，再对全部187轴宏平均。历史实现使用随机遮蔽和小批次宏误差平均，新对照改用共同的完整面板，避免同时混入任务/聚合变化。因此它是“共同协议下的旧hurdle目标选点”，不是声称原历史数值的逐位复现；既不使用训练loss，也不把calibrated训练loss冒充验证loss。
+
+假设：两准则可能选择不同点，主指标选点可能更符合补全目标而牺牲部分存在分类或metabolome拟合；也允许两者选中同一点。保留每轮BCE、正值amount、完整hurdle与主指标曲线，并保存两种最佳检查点及8/20轮预算副本。分别评价completion、name-only和固定候选检索，再报告配对食品组差异；若同一点，明确结果为无差异，不人为寻找有利子集。
+
+功能验证先确认与原评价的预测逐项一致、CPU/CUDA随机数不变、批次大小不改变数学聚合、缺失不监督、零值参与存在损失、重复档案不会提高某来源总权重、NaN/Inf直接失败。2个选择结果计为2个筛选预算，R2累计10/12。该实现是选点诊断，不是新架构，更不能凭一个种子接受模型优越性。
+
+为控制GPU并发，等待当前R1 source-weight=0运行成功完成后启动。任何前置失败均停止此队列并保留错误，不绕过失败。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_selection.py --kind v9 --dual-selection --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_20_dual_selection
+.\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_research_checkpoint.py --checkpoint output/v9_r2/v9_20_dual_selection/best_hurdle_model.pt --selection-budget-epochs 20 --output-dir output/v9_r2/v9_20_dual_selection/evaluation_hurdle
+```

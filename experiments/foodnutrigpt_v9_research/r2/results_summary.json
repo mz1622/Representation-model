@@ -1,8 +1,8 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T02:49:21.109412+00:00",
+  "generated_utc": "2026-09-27T03:02:55.164191+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "60f5f135a386c1d1dc418ef48bd30c2995351d7fae28e0c7be9cad8db87ac752",
+  "configuration_sha256": "f53a552138f40872c73d7f5856755726630c6162161af83416907be9c88d63ef",
   "runs": [
     {
       "registered_configuration": {
@@ -395,10 +395,10 @@
       },
       "local_output": "output\\v9_r2\\v9_direct_smoothl1_20",
       "manifest_status": "running",
-      "manifest_sha256": "f84bd8ff95a2063beebebc64917d8766f20f6097b57f7ac0095d2bc5d8af62d1",
+      "manifest_sha256": "a7acc5fb8ec858cd9a634c04f62a46575fd97084f2dc8806c9d86290c62a7590",
       "code_commit": "16fa5a3330dc8cf9f91c1e14f9d6f27d0b80970d",
-      "elapsed_seconds": 890.6409999999996,
-      "epoch_completed": 2,
+      "elapsed_seconds": 1754.4530000000013,
+      "epoch_completed": 4,
       "best_epoch": null,
       "checkpoint_sha256": null
     },
@@ -459,12 +459,34 @@
       },
       "local_output": "output\\v9_r2\\mlp60_mae_width512_no_layernorm",
       "manifest_status": "running",
-      "manifest_sha256": "11ed95f9b53f4fa62c619d7fa4a7e2214620d0904bea0a048003cf78d6c8f57c",
+      "manifest_sha256": "273ee4f5549fc4935048d18e35baea1ed386198b96a8b2959b7e626997659be3",
       "code_commit": "af4f6ac1644d2bd26bbc5e5a0b4144b3b4f96242",
-      "elapsed_seconds": 583.125,
-      "epoch_completed": 13,
+      "elapsed_seconds": 1378.875,
+      "epoch_completed": 31,
       "best_epoch": null,
       "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_20_dual_selection",
+        "kind": "v9",
+        "objective": "hurdle",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 1,
+        "source_weight": 1,
+        "seed": 20260922,
+        "dual_selection": true,
+        "selection_candidates": [
+          "primary142",
+          "source_free_fixed_panel_hurdle187"
+        ],
+        "single_factor": "checkpoint selection rule within one replay trajectory; same labels, scales, full validation tasks and source-free outputs; adapted historical hurdle objective, not historical minibatch/mask replay"
+      },
+      "local_output": "output\\v9_r2\\v9_20_dual_selection",
+      "manifest_status": "not started; check active process queues separately"
     }
   ],
   "completed_retrieval_evaluations": [

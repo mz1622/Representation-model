@@ -41,6 +41,10 @@ def main():
                 budgets.append({"budget_epochs":budget,"evaluation_manifest":receipt,
                     "metrics":json.loads((evaluation/"metrics.json").read_text())})
         if budgets:record["completed_budget_evaluations"]=budgets
+        alternate=path/"evaluation_hurdle"
+        if (alternate/"evaluation_manifest.json").exists():
+            record["hurdle_selected_evaluation"]={"manifest":json.loads((alternate/"evaluation_manifest.json").read_text()),
+                "metrics":json.loads((alternate/"metrics.json").read_text())}
         runs.append(record)
     retrieval=[]
     for path in sorted((ROOT/f"output/v9_{args.version}").glob("retrieval_*/metrics.json")):

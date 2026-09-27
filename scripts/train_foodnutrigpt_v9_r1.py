@@ -25,6 +25,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--objective",choices=["hurdle","smooth_l1","mae"],default="hurdle")
     p.add_argument("--mlp-width",type=int,default=256)
     p.add_argument("--mlp-normalization",choices=["layer_norm","none"],default="layer_norm")
+    p.add_argument("--dual-selection",action="store_true",help="Retain both primary and fixed-panel source-free hurdle best checkpoints.")
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
@@ -33,6 +34,7 @@ def main(version="V9-R1",protocol_change=None):
     if args.kind=="v9" and args.objective!="hurdle":raise ValueError("Direct-head Transformer is a separate R2 experiment.")
     if args.kind=="v9_direct" and args.objective not in {"smooth_l1","mae"}:raise ValueError("Direct V9 requires an explicit regression objective.")
     if args.kind!="mlp" and args.mlp_normalization!="layer_norm":raise ValueError("MLP normalization is only configurable for MLP runs.")
+    if args.dual_selection and args.kind!="v9":raise ValueError("Dual hurdle selection requires V9 hurdle outputs.")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -43,6 +45,7 @@ def main(version="V9-R1",protocol_change=None):
     model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight,mlp_width=args.mlp_width,mlp_normalization=args.mlp_normalization)
     model.to(device)
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
+    if args.dual_selection:files.append(ROOT/"src/foodcomp/research_selection.py")
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
     manifest={"status":"running","version":version,"args":vars(args),"seed":args.seed,
@@ -53,6 +56,8 @@ def main(version="V9-R1",protocol_change=None):
         "protocol_change":protocol_change or "R0->R1 aligns complete single-family training tasks and global axis/source loss weights; R0 architecture attribution is not allowed.",
         "selection":"fixed full validation nutrition primary metric; fixed learning-rate schedule horizon",
         "data_limitation":"R0 quarantine view retained; FooDB provenance remains unresolved; conditional benchmark research only"}
+    if args.dual_selection:
+        manifest["secondary_selection"]="source-free BCE + amount_weight*positive SmoothL1; all187 axes; full fixed validation panel; source/candidate/profile equal weights; R0 scales; no source residual; earliest strict minimum; historical objective adapted to common protocol, not historical minibatch/mask replay"
     write_json(args.output_dir/"run_manifest.json",manifest)
     try:
         # Verify overfitting, then restore both weights and RNG before all controlled arms.
@@ -70,7 +75,7 @@ def main(version="V9-R1",protocol_change=None):
         del smoke,initial,b
         opt=torch.optim.AdamW(model.parameters(),lr=args.learning_rate,weight_decay=.0001)
         scheduler=torch.optim.lr_scheduler.CosineAnnealingLR(opt,T_max=args.schedule_epochs,eta_min=args.learning_rate*.01)
-        best=float("inf");history=[]
+        best=float("inf");best_hurdle=float("inf");history=[]
         def checkpoint(epoch):
             return {"model_state":model.state_dict(),"kind":args.kind,"config":asdict(config),"text_dim":text.shape[1],
                 "data_root":str(data.root),"view":data.view,"name_cache":str(cache),"best_epoch":epoch,"seed":args.seed,
@@ -83,21 +88,36 @@ def main(version="V9-R1",protocol_change=None):
                 norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
                 if not torch.isfinite(norm):raise FloatingPointError("Nonfinite gradient.")
                 opt.step();weighted+=float(loss.detach())*len(ix);seen+=len(ix)
-            pred=evaluate(model,data,text,device)
+            selection={}
+            if args.dual_selection:
+                from foodcomp.research_selection import evaluate_dual_selection
+                pred,selection=evaluate_dual_selection(model,data,text,device,amount_weight=config.amount_loss_weight)
+            else:pred=evaluate(model,data,text,device)
             metrics,_,_=score_predictions(data,pred);primary=metrics["nutrition"]["scaled_log_mae"]
             history.append({"epoch":epoch,"train_loss":weighted/seen,"validation_primary":primary,
                 "validation_legacy_log_mae":metrics["nutrition"]["log_mae"],"learning_rate":opt.param_groups[0]["lr"],
                 "training_tasks":seen,"elapsed_seconds":time.monotonic()-start})
+            if args.dual_selection:
+                history[-1].update({"validation_"+key:value for key,value in selection.items()})
+                if selection["source_free_hurdle"]<best_hurdle:
+                    best_hurdle=selection["source_free_hurdle"]
+                    alternate=checkpoint(epoch);alternate["selection_criterion"]="fixed_panel_source_free_hurdle"
+                    torch.save(alternate,args.output_dir/"best_hurdle_model.pt")
+                    manifest["best_hurdle_epoch"]=epoch
             pd.DataFrame(history).to_csv(args.output_dir/"history.csv",index=False)
             if primary<best:
                 best=primary;torch.save(checkpoint(epoch),args.output_dir/"best_model.pt")
             if epoch in {8,20,args.epochs}:
                 selected=torch.load(args.output_dir/"best_model.pt",map_location="cpu",weights_only=True)
                 torch.save(selected,args.output_dir/f"best_through_epoch_{epoch:03d}.pt")
+                if args.dual_selection:
+                    alternate=torch.load(args.output_dir/"best_hurdle_model.pt",map_location="cpu",weights_only=True)
+                    torch.save(alternate,args.output_dir/f"best_hurdle_through_epoch_{epoch:03d}.pt")
             scheduler.step()
             state=checkpoint(epoch);state.update(optimizer=opt.state_dict(),scheduler=scheduler.state_dict(),cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all() if device.type=="cuda" else [])
             torch.save(state,args.output_dir/"latest_training_state.pt")
             manifest.update(epoch_completed=epoch,elapsed_seconds=time.monotonic()-start,best_primary=best)
+            if args.dual_selection:manifest["best_validation_hurdle"]=best_hurdle
             write_json(args.output_dir/"run_manifest.json",manifest)
             print(f"{args.kind} epoch {epoch}/{args.epochs}: loss {weighted/seen:.5f}; primary {primary:.6f}; elapsed {time.monotonic()-start:.1f}s",flush=True)
         selected=torch.load(args.output_dir/"best_model.pt",map_location=device,weights_only=True);model.load_state_dict(selected["model_state"])
@@ -109,6 +129,7 @@ def main(version="V9-R1",protocol_change=None):
             groups.to_parquet(args.output_dir/f"{mode}_candidate_errors.parquet",index=False);results[mode]=metric
         write_json(args.output_dir/"metrics.json",results)
         manifest.update(status="complete",elapsed_seconds=time.monotonic()-start,best_epoch=selected["best_epoch"],checkpoint_hash=digest(args.output_dir/"best_model.pt"))
+        if args.dual_selection:manifest["hurdle_checkpoint_hash"]=digest(args.output_dir/"best_hurdle_model.pt")
         write_json(args.output_dir/"run_manifest.json",manifest)
         (args.output_dir/"README.md").write_text(f"# {version} {args.kind}\n\nShared exhaustive family-task training; full-data source/axis weighting; fixed LR horizon.\n\nCompletion primary: {results['completion']['nutrition']['scaled_log_mae']:.8f}; name-only: {results['name_only']['nutrition']['scaled_log_mae']:.8f}.\n\nChange: {manifest['protocol_change']}\n\nSingle-seed exploration. Every epoch and all configuration/code hashes are retained. Frozen test not evaluated.\n",encoding="utf-8")
     except Exception as error:
