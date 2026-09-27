@@ -1,8 +1,8 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T07:13:03.083780+00:00",
+  "generated_utc": "2026-09-27T07:34:13.742366+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "937a8e3bc2472255a43655eaa35480865024fc429dde7d28cd62b1e20cc56f9f",
+  "configuration_sha256": "b2d8c15c4aac310887b0bc4601724348e03d73a9a3382f12280264c722979b6d",
   "runs": [
     {
       "registered_configuration": {
@@ -744,10 +744,10 @@
       },
       "local_output": "output\\v9_r2\\v9_20_dual_selection",
       "manifest_status": "running",
-      "manifest_sha256": "f5318d0f50e7c20dbfe848e76875818b9b987b75316cf146579376a0efc6d862",
+      "manifest_sha256": "1bebd083d0fd3e7647ac8037ab107eae8ea3703164a47c14a37b44420aaa67a0",
       "code_commit": "7bc88c9ec98c4783e20df1d6d7efb4132b4fc029",
-      "elapsed_seconds": 1638.2660000000033,
-      "epoch_completed": 4,
+      "elapsed_seconds": 2825.5620000000054,
+      "epoch_completed": 10,
       "best_epoch": null,
       "checkpoint_sha256": null
     },
@@ -850,6 +850,36 @@
           }
         }
       }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_mae_name_standardized",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_text_conditioning": "train_unique_name",
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "single_factor": "internal fixed affine standardization of unchanged cached PCA32 name input; mean/population std fit on distinct original TRAIN strings only, stored as buffers; changes effective initialization/optimization geometry, not learner input information or supervision",
+        "parameters_control": 667900,
+        "parameters_candidate": 667900,
+        "train_statistics_sha256": "523a5eaf9f19291fa7fd22e0661b2489b1ffd0a35ba35755a7b98d5fed0afb4f"
+      },
+      "local_output": "output\\v9_r2\\mlp60_mae_name_standardized",
+      "manifest_status": "running",
+      "manifest_sha256": "bb1c5a9c01f194fee7c4f14d31bda332ae8a0082305345aba59e51fecef287e3",
+      "code_commit": "90057f26c1206afff27659b510ee8ab1d8f18619",
+      "elapsed_seconds": 86.25,
+      "epoch_completed": 5,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     }
   ],
   "completed_retrieval_evaluations": [
