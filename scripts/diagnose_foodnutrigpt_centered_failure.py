@@ -14,7 +14,7 @@ sys.path.insert(0,str(ROOT/"src"))
 from foodcomp.research_r0 import ResearchData, VERSION, digest, write_json
 from foodcomp.research_text import prepare_names
 from foodcomp.research_r1 import FamilyPanel, PANEL_VERSION, fingerprint_array
-from foodcomp.research_neural import make_model, batch_from_arrays, evaluate
+from foodcomp.research_neural import make_model, batch_from_arrays, evaluate, schema_query_axes
 from foodcomp.research_views import extra_view_masks, two_view_loss
 
 
@@ -26,10 +26,11 @@ def main():
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True)
     manifest=json.loads((args.run_dir/"run_manifest.json").read_text())
-    if manifest["status"]!="failed" or manifest["epoch_completed"] not in {16,17} or manifest["error"]!="Nonfinite prediction.":
-        raise ValueError("Expected a retained epoch17/18 centred-view failure.")
+    if manifest["status"]!="failed" or manifest["epoch_completed"] not in {16,17,29} or manifest["error"]!="Nonfinite prediction.":
+        raise ValueError("Expected a retained centred-view inverse failure.")
     epoch=manifest["epoch_completed"]+1
     stable_inverse="inverse_numerics" in manifest
+    requested_policy=manifest["args"].get("output_query_policy")=="caller_or_schema_axes_v1"
     for relative,sha in manifest["code_hashes"].items():
         if digest(ROOT/relative)!=sha:raise ValueError(f"Failed-run source changed: {relative}")
     result={"status":"incomplete","diagnostic_only":True,"candidate_resumed":False,
@@ -65,7 +66,7 @@ def main():
             if not torch.isfinite(norm):raise FloatingPointError("Nonfinite replay training gradient.")
             opt.step();losses.append(float(loss.detach()));norms.append(float(norm))
             supervised.append(float(parts["supervised"]));consistency.append(float(parts["consistency"]))
-        result.update(replayed_epoch=epoch,stable_inverse=stable_inverse,training_tasks=len(order),optimizer_steps=len(losses),
+        result.update(replayed_epoch=epoch,stable_inverse=stable_inverse,requested_output_policy=requested_policy,training_tasks=len(order),optimizer_steps=len(losses),
             view_mask_sha256=fingerprint_array(masks),learning_rate=opt.param_groups[0]["lr"],
             all_training_losses_gradients_finite=True,all_parameters_finite=all(torch.isfinite(x).all().item() for x in model.parameters()),
             max_training_loss=max(losses),max_preclip_gradient_norm=max(norms),
@@ -96,12 +97,17 @@ def main():
                     if stable_inverse:
                         wide=torch.expm1(amount.double().clamp_min(0))*scale_tensor.double()
                         raw=torch.where(~torch.isfinite(raw),wide.to(raw.dtype),raw)
-                    bad=torch.nonzero(~torch.isfinite(raw),as_tuple=False).cpu().numpy()
+                    requested=torch.zeros(len(data.axes),dtype=torch.bool,device=device)
+                    requested[torch.as_tensor(schema_query_axes(data,family=family),device=device)]=True
+                    invalid=~torch.isfinite(raw)
+                    if requested_policy:invalid=invalid & requested[None,:]
+                    bad=torch.nonzero(invalid,as_tuple=False).cpu().numpy()
                     for i,a in bad:
                         u=float(amount[i,a]);scale=float(data.scale[a]);diagnostic_raw64=float(np.expm1(max(0.,u))*scale)
                         offending.append({"profile_index":int(rr[i]),"axis_index":int(a),"mask_family":str(family),
                             "amount_normalized":u,"scale":scale,"raw_float64_diagnostic":diagnostic_raw64,
                             "is_scored_job":(int(rr[i]),int(a)) in targets,"loss_eligible":bool(data.axes.iloc[a].loss_eligible),
+                            "in_schema_family_request":bool(requested[a]),
                             "axis_loss_group":str(data.axes.iloc[a].loss_group),
                             "final_float32_representable":bool(np.isfinite(diagnostic_raw64) and diagnostic_raw64<=float(np.finfo(np.float32).max))})
         if not offending:raise AssertionError("No overflow located after reproduced failure.")
@@ -113,6 +119,7 @@ def main():
             overflow_unique_profiles=int(frame.profile_index.nunique()),overflow_axes=sorted(frame.axis_index.unique().tolist()),
             overflow_loss_groups=frame.axis_loss_group.value_counts().to_dict(),
             overflow_supervised_axes_cells=int(frame.loss_eligible.sum()),overflow_scored_jobs=int(frame.is_scored_job.sum()),
+            overflow_requested_family_cells=int(frame.in_schema_family_request.sum()),
             inverse_float64_all_finite=bool(np.isfinite(frame.raw_float64_diagnostic).all()),
             final_float32_representable_cells=int(frame.final_float32_representable.sum()),
             maximum_float64_final_value=float(frame.raw_float64_diagnostic.max()),

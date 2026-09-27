@@ -18,7 +18,7 @@ def main():
     root=Path(__file__).resolve().parents[1]
     failed=root/args.failed_run
     manifest=json.loads((failed/"run_manifest.json").read_text())
-    if manifest["status"]!="failed" or manifest["epoch_completed"] not in {16,17}:raise ValueError("Expected retained epoch17/18 failure.")
+    if manifest["status"]!="failed" or manifest["epoch_completed"] not in {16,17,29}:raise ValueError("Expected retained centred-view failure.")
     completed=manifest["epoch_completed"];failed_epoch=completed+1
     paths=[root/"output/v9_r4/mlp60_views_weight0",root/"output/v9_r4/mlp60_views_weight01",failed]
     labels=["No consistency","Original origin, weight0.1","Joint batch centre, weight0.1"]
@@ -44,6 +44,7 @@ def main():
     axes[1,0].legend(frameon=False,fontsize=8)
     fig.suptitle(f"Centred-view run failed during epoch{failed_epoch} validation",fontsize=16)
     reason="final values exceed float32 range" if "inverse_numerics" in manifest else "float32 inverse-transform intermediate overflow"
+    if manifest["args"].get("output_query_policy")=="caller_or_schema_axes_v1":reason="requested output exceeds float32 range"
     fig.supxlabel(f"Retained partial history only; no completed three-task score or 60-epoch comparison. Failure: {reason}.",fontsize=9)
     args.output_dir.mkdir(parents=True)
     for extension in ["png","svg"]:fig.savefig(args.output_dir/f"failure.{extension}",dpi=160)
