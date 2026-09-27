@@ -1,8 +1,8 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T02:02:08.522895+00:00",
+  "generated_utc": "2026-09-27T02:13:13.140126+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "33858a525dfea517fbc7edbb841cf6d66f2ec4f36177d90c613d10b53bc6e92f",
+  "configuration_sha256": "98163924d1fd5752a47e868a23ce3779764d6e2db0d11e0977fde9712244d670",
   "runs": [
     {
       "registered_configuration": {
@@ -211,12 +211,48 @@
       },
       "local_output": "output\\v9_r2\\mlp60_mae_width512",
       "manifest_status": "running",
-      "manifest_sha256": "28c8b90abfdbb326f8769cbe1ff6578a47c217930cb43962f2d7f196d192faaf",
+      "manifest_sha256": "855da867d7d059d32f78a50ca9f24e3e2c2596fe6472a759f6cc7b893b2994c2",
       "code_commit": "89877c9c0207c8e48de4ecd5c400ea5ff8c277f5",
-      "elapsed_seconds": 95.82800000000134,
-      "epoch_completed": 3,
+      "elapsed_seconds": 758.8120000000017,
+      "epoch_completed": 24,
       "best_epoch": null,
       "checkpoint_sha256": null
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_direct_smoothl1_20",
+        "parent": "output/v9_r1/v9_20_a1_s1",
+        "kind": "v9_direct",
+        "objective": "smooth_l1",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 1,
+        "source_weight": 1,
+        "seed": 20260922,
+        "single_factor": "hurdle -> direct output objective; coupled removal of presence BCE/multiplier and inclusion of zero amounts"
+      },
+      "local_output": "output\\v9_r2\\v9_direct_smoothl1_20",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "v9_direct_mae_20",
+        "parent": "output/v9_r2/v9_direct_smoothl1_20",
+        "kind": "v9_direct",
+        "objective": "mae",
+        "epochs": 20,
+        "schedule_epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "amount_weight": 1,
+        "source_weight": 1,
+        "seed": 20260922,
+        "single_factor": "direct numerical loss: SmoothL1 -> MAE"
+      },
+      "local_output": "output\\v9_r2\\v9_direct_mae_20",
+      "manifest_status": "not started; check active process queues separately"
     }
   ],
   "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
