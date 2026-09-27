@@ -4,7 +4,7 @@
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
   "max_candidates": 12,
-  "registered_candidate_budgets": 4,
+  "registered_candidate_budgets": 5,
   "max_hours": 72,
   "registered_candidates": [
     {
@@ -70,6 +70,18 @@
       "parameters": 667900, "view_drop_probability": 0.3,
       "consistency_weight": 0.1,
       "single_factor": "Consistency coefficient0 ->0.1 with the exact same two-view compute graph, task order and extra masks. L=original supervised MAE(A)+lambda*C(A,B), no rescaling of supervised loss, no regression label on B. Added gradient direction/magnitude and clipping are part of the intervention."
+    },
+    {
+      "name": "mlp60_views_centered_weight01",
+      "parent": "output/v9_r4/mlp60_views_weight01",
+      "kind": "mlp", "objective": "mae", "mlp_width": 512,
+      "mlp_normalization": "layer_norm", "mlp_task_heads": "shared",
+      "mlp_text_conditioning": "none", "mlp_query_residual": false,
+      "name_only_probability": 0, "epochs": 60, "schedule_epochs": 60,
+      "batch_size": 256, "learning_rate": 0.001, "seed": 20260922,
+      "parameters": 667900, "view_drop_probability": 0.3,
+      "consistency_weight": 0.1, "consistency_centering": "joint_batch",
+      "single_factor": "Replace origin-based normalization with normalization after subtracting the shared unweighted mean of A/B representations in each training minibatch; differentiate through the mean. Original supervised head/input/loss unchanged. Batch composition and gradient scale effects are part of this intervention; no claim of unbiased full-panel centred-distance estimation or collapse prevention."
     }
   ],
   "fixed": {
