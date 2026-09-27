@@ -156,5 +156,15 @@
   ],
   "first_tree_stage_summary": "reports/v9_r8_xgb32_stage_v1/summary.json",
   "remaining_tree_candidates": 7,
-  "final_tree_selected": false
+  "final_tree_selected": false,
+  "gap_diagnostic_plan": "experiments/foodnutrigpt_v9_research/r8/GAP_DIAGNOSTIC_PLAN.md",
+  "gap32_diagnostic_summary": "reports/v9_r8_mlp32_xgb32_gap_v1/summary.json",
+  "remaining_tree_postprocessing_queued": true,
+  "queued_postprocessing": [
+    "Independent full187 fit and full three-task output audit for each of seven remaining trees",
+    "Each tree vs matched-name-input MLP for completion, name-only and retrieval",
+    "Each tree vs same-name-view KNN for name-only and retrieval",
+    "XGB depth10 and RF leaf1-half fixed-configuration 128-vs32 comparisons for all three tasks",
+    "Fixed-depth XGB128-vsMLP128 signed-error diagnosis using the same registered partitions"
+  ]
 }
