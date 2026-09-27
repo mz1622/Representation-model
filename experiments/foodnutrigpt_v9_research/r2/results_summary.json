@@ -1,8 +1,8 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T05:00:05.406886+00:00",
+  "generated_utc": "2026-09-27T05:45:47.853694+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "f53a552138f40872c73d7f5856755726630c6162161af83416907be9c88d63ef",
+  "configuration_sha256": "3a6d00204466f6da5ef9cff9b0513820873ec1db58f5dfab7026d82f95ca8f39",
   "runs": [
     {
       "registered_configuration": {
@@ -491,10 +491,10 @@
       },
       "local_output": "output\\v9_r2\\v9_direct_mae_20",
       "manifest_status": "running",
-      "manifest_sha256": "8c20eef54172111ebf838c83969cc875cc5af3ac479e546ed3ce1017419d33f3",
+      "manifest_sha256": "e8bcd24be192afee74381c505fbcfee9c71f65bf51d67776c6292b667b961d9e",
       "code_commit": "b44ef5aa3c724d4c8f9aed82fed0e5f0c06c196b",
-      "elapsed_seconds": null,
-      "epoch_completed": null,
+      "elapsed_seconds": 2712.2339999999967,
+      "epoch_completed": 6,
       "best_epoch": null,
       "checkpoint_sha256": null
     },
@@ -671,6 +671,28 @@
         "single_factor": "checkpoint selection rule within one replay trajectory; same labels, scales, full validation tasks and source-free outputs; adapted historical hurdle objective, not historical minibatch/mask replay"
       },
       "local_output": "output\\v9_r2\\v9_20_dual_selection",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_mae_width1024",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 1024,
+        "mlp_normalization": "layer_norm",
+        "mlp_task_heads": "shared",
+        "name_only_probability": 0,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "single_factor": "hidden width512 ->1024 at the same60-epoch schedule and zero added name-only tasks; changed tensor shapes and initialization are part of the capacity intervention",
+        "parameters_control": 667900,
+        "parameters_candidate": 1859836
+      },
+      "local_output": "output\\v9_r2\\mlp60_mae_width1024",
       "manifest_status": "not started; check active process queues separately"
     }
   ],

@@ -255,6 +255,8 @@ V9直接回归头的SmoothL1候选已由顺序队列自动启动；直接MAE等�
 
 R3增加可选MLP独立头后，共享模型文件的哈希发生变化，但默认V9分支未作功能修改。为核验顺序启动的直接MAE对照，另将直接SmoothL1运行保存的模型源码与当前源码配对重放：8个真实训练任务、每种目标分别两步CPU AdamW，初始化与可训练参数、逐步损失、更新后全部参数及dropout随机数逐位相同。损失模块与冻结快照的SHA256也相同（`b61931ea181327a130fc248f727f81ee6ff85ec2a722cc8cc20efada4b2649b2`）。记录为 `reports/v9_r2_direct_default_compatibility_v1/verification.json`，入口 `scripts/audit_foodnutrigpt_direct_v9_compatibility.py`。这是默认实现的有限步兼容性核验，不是完整CUDA训练轨迹复现，也不支持任何目标函数优劣结论。
 
+追加1024宽度的预登记提交为`255d018`。启动前另核验当前默认512/MAE/0%与该60轮父控制冻结代码：768个真实训练任务、三次CPU AdamW更新的初始化、损失和全部参数逐位一致，见 `reports/v9_r2_width1024_parent_compatibility_v1/verification.json`。1024模型在64个真实训练任务上验证了1,859,836参数、所有可训练参数梯度有限、隐藏值/标签/来源改动不影响输出、保存重载逐位一致、任意未观测查询及显式零输入接口正常；记录 `reports/v9_r2_width1024_functional_audit_v1/verification.json`，入口 `scripts/audit_foodnutrigpt_width1024.py`。该核验文件是未训练加载样例，不是候选结果；正式训练仍须完成60轮和三任务评价。
+
 ## 8. 下一轮问题与测试集状态
 
 归一化对照已完成，继续直接V9输出目标以及R1 amount/来源对照，定位剩余正值误差。MLP/V9时长对照和归一化结果共同支持进入R3的name-only任务比例最小试验：以已完成的固定结构为父控制，只改0/10%/20%训练任务比例，先不同时改变遮蔽率和架构；具体预算、随机掩码和控制需启动前另行登记。不会因为加宽或延长训练有效就宣称已找到充分容量，也不会为了达到门槛削弱基线。历史测试集本轮从未打开。
