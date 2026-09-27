@@ -1,8 +1,8 @@
 {
   "version": "V9-R5",
-  "status": "First registered block exploration complete:7/12 budgets resolved,5new runs and2reused references. R5 research continues; confirmation and missing-context robustness incomplete.",
-  "generated_utc": "2026-09-27T11:15:50.986267+00:00",
-  "config_sha256": "a20156a30db6eadf83a091b9b556bfd6aba4e4e87241c0616a2d4765ff912805",
+  "status": "Eight budgets explored completely:6new runs+2reused. Partial views improve sparse retrieval, worsen full input and mean selection. Retain branches; no accepted model or3seed confirmation.",
+  "generated_utc": "2026-09-27T11:38:11.861293+00:00",
+  "config_sha256": "255b84dafa5a4db2afef66fa43a0978c4ccec2f3c7340cd0244b80d9a99e9ca5",
   "runs": [
     {
       "registered_configuration": {
@@ -367,6 +367,71 @@
         "elapsed_seconds": 73.90699999999924
       },
       "metrics_sha256": "62dc5289ab4d29b4bac7d067e13dbd639b56019dcf7ffd860d346ce960be9bd6"
+    },
+    {
+      "registered_configuration": {
+        "name": "mapper_contrastive60_partial05",
+        "parent": "output/v9_r5/mapper_contrastive60",
+        "kind": "mlp",
+        "objective": "contrastive",
+        "temperature": 0.07,
+        "width": 512,
+        "output_dim": 32,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "partial_view_probability": 0.5,
+        "partial_keep_probability": 0.3,
+        "minimum_visible_nutrition": 3,
+        "mask_rng": "NumPy SeedSequence([seed,epoch,5105])",
+        "single_factor": "One view per original training profile. Bernoulli0.5 assignment to a Bernoulli0.3 nutrient subset, randomly restoring originally observed axes to minimum3 if necessary. Same labels,weights,negative groups,order andschedule; no extra task,architecture orobjective change."
+      },
+      "local_output": "output\\v9_r5\\mapper_contrastive60_partial05",
+      "status": "complete",
+      "manifest_sha256": "b8e6a7cb8f44d3f6c08c4497c0cd4a5de43b828c73ada03024bc8ce663b57979",
+      "code_commit": "13a9f2cd6ae668ba76ce4a63b570badd4619084b",
+      "elapsed_seconds": 85.32800000000134,
+      "epoch_completed": 60,
+      "best_epoch": 59,
+      "checkpoint_sha256": "f6df8bd01e3ec7ab5f3806f24a442c69f7c49d753df73beeacd3d04196b4ba85",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.018310277346677433,
+            "recall_at_1": 0.004264736244451327,
+            "recall_at_5": 0.020490089811087023,
+            "recall_at_10": 0.03758903685351502
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.0905394743028396,
+            "recall_at_1": 0.03326449056350326,
+            "recall_at_5": 0.12527469944254147,
+            "recall_at_10": 0.20965645778762845
+          }
+        ],
+        "selection_mean_mrr": 0.054424875824758516,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "numeric_to_name_contrastive",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "checkpoint_sha256": "f6df8bd01e3ec7ab5f3806f24a442c69f7c49d753df73beeacd3d04196b4ba85",
+        "elapsed_seconds": 85.28199999999924
+      },
+      "metrics_sha256": "b0958907a6b7993064aedcef33c0e8f9d9a4aa43a22b54aa0a4eb5b3a7d6e65a"
     }
   ],
   "independent_model_completion_and_name_only": "N/A; separate specialist, no nutrition prediction head",
@@ -403,17 +468,40 @@
     "status": "complete",
     "selection_mean_mrr": 0.007007429368084302
   },
-  "resolved_budgets": 7,
-  "new_completed_runs": 5,
-  "failed_runs": 0,
-  "new_fit_and_final_evaluation_seconds": 203.2980000000025,
-  "reference_replay_seconds": 35.578,
-  "remaining_candidate_budgets": 5,
-  "completed_runs_audit_sha256": "91103e33b875100c98a3fe7b0ab14a6a2a250350c45c95ce770147a36417107d",
-  "decisions": {
-    "contrastive_vs_mse": "retain single-seed full-input retrieval branch, not accepted arbitrary-missingness model",
-    "next_training": "Preregister isolated partial-view training; not yet implemented or launched",
-    "baseline_gap": "Strengthen old eight-epoch forward name-to-nutrition retrieval training budget before acceptance",
-    "completion_goal": "Unchanged and unmet; independent mapper has no nutrition completion/name-only head"
+  "total_new_fitting_final_evaluation_seconds": 288.62600000000384,
+  "partial_view_decision": {
+    "retain_sparse_branch": true,
+    "replace_mean_mrr_winner": false,
+    "completion_claim": false,
+    "report": "PARTIAL_VIEWS_RESULTS.md",
+    "completed_audit": {
+      "status": "complete",
+      "script_sha256": "61fad9004a0029555bdf91fa0debaf0855403cdd4d8ed789f9338c97a92f8bf8",
+      "complete_test_opened": false,
+      "run": "output\\v9_r5\\mapper_contrastive60_partial05",
+      "checkpoint_sha256": "f6df8bd01e3ec7ab5f3806f24a442c69f7c49d753df73beeacd3d04196b4ba85",
+      "manifest_sha256": "b8e6a7cb8f44d3f6c08c4497c0cd4a5de43b828c73ada03024bc8ce663b57979",
+      "parent_checkpoint_sha256": "1daee3452c3a17ca898f59c53856c6d3979aa27a53bf6e58a7cef1265f3902be",
+      "initialization_parameters_labels_weights_panel_order_lr_unchanged": true,
+      "all60_view_hashes_and_counts_exact": true,
+      "all19089_saved_ranks_and_metrics_replayed_exact": true,
+      "trained_nutrition_api_independent_of_name": true,
+      "best_epoch": 59,
+      "training_profiles": 60721,
+      "parameter_count": 426016,
+      "assignment_count_range": [
+        30066,
+        30618
+      ],
+      "changed_count_range": [
+        29813,
+        30357
+      ],
+      "retained_cell_range": [
+        1164392,
+        1177683
+      ],
+      "scope": "Single-seed completed candidate8. Same parent except registered training views; names/weights/negative groups/architecture and evaluation unchanged. No seed confirmation or completion head."
+    }
   }
 }
