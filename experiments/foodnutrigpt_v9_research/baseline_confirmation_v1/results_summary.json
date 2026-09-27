@@ -1,7 +1,7 @@
 {
   "version": "baseline-confirmation-v1",
-  "generated_utc": "2026-09-27T06:44:35.250955+00:00",
-  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "generated_utc": "2026-09-27T07:54:32.654499+00:00",
+  "status": "fixed tree replications complete; neural confirmation not completed",
   "configuration_sha256": "2328712e1e8cefe8e811daa8e5e933b6fe29c7ccf9f485f867129fa8614a6425",
   "runs": [
     {
@@ -123,13 +123,48 @@
         "seed": 20260924
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\rf_seed20260924",
-      "manifest_status": "running",
-      "manifest_sha256": "f23e09a3b1ca2b03069918c424c961c715400a4e19f8a598af8d3756786cef99",
+      "manifest_status": "complete",
+      "manifest_sha256": "0d25d781b15f996bdc14e57ab4e55cbcb72bc1c89f45a138959e2d2439a067e2",
       "code_commit": "f214808f372a199272d81e63bdeb8360ac2fdbf0",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 4524.891000000003,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.18880537397480876,
+          "log_mae": 0.056291986280523766,
+          "log_mse": 0.032741656892273256,
+          "raw_mae": 0.3221730657798746,
+          "positive_scaled_log_mae": 0.24752624546384475,
+          "zero_scaled_log_mae": 0.1691092147263369,
+          "log_rmse_root_mean_axis_mse": 0.18094655811115407
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6746140577265443,
+          "log_mae": 0.03667445080585036,
+          "log_mse": 0.020349245881252545,
+          "raw_mae": 0.0664172632031069,
+          "positive_scaled_log_mae": 0.7748277552274221,
+          "zero_scaled_log_mae": 0.5795586192213159,
+          "log_rmse_root_mean_axis_mse": 0.14265078296754122
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.3057112069631943,
+          "log_mae": 0.05157118897378417,
+          "log_mse": 0.029759525900316407,
+          "raw_mae": 0.2606275517908128,
+          "positive_scaled_log_mae": 0.3744169831074863,
+          "zero_scaled_log_mae": 0.24439875046210224,
+          "log_rmse_root_mean_axis_mse": 0.17250949510191144
+        }
+      }
     },
     {
       "registered_configuration": {
@@ -299,9 +334,25 @@
   ],
   "completed_retrieval_evaluations": [],
   "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
-  "confirmation_seeds_completed": false,
+  "confirmation_seeds_completed": true,
   "complete_test_opened": false,
   "provenance_unresolved": true,
   "individual_predictions_included": false,
-  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files.",
+  "neural_improvement_confirmed": false,
+  "recomputed_three_seed_summaries": {
+    "rf": {
+      "path": "reports\\v9_baseline_rf_three_seeds_v1\\summary.json",
+      "sha256": "4a81a2cf2c28f10a9fdfc476f7b92f7f5504cc6f8e8df81c0d24afb166faa17c"
+    },
+    "xgb": {
+      "path": "reports\\v9_baseline_xgb_three_seeds_v1\\summary.json",
+      "sha256": "651da1cc15cf3e7e13a8db0b02e18bbf705e68f008438e4bd713d513dd2ef698"
+    }
+  },
+  "stronger_tree_by_registered_mean_rule": "xgb",
+  "tree_primary_means": {
+    "rf": 0.18865481419008598,
+    "xgb": 0.17354187949744862
+  }
 }
