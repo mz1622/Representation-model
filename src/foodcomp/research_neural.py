@@ -161,12 +161,26 @@ def loss(model,batch,kind,config):
     return result
 
 def predictions_from_outputs(outputs,scale):
-    u=outputs["amount_normalized"].clamp_min(0)
-    raw=torch.expm1(u)*torch.as_tensor(scale,device=u.device,dtype=u.dtype)
+    amount=outputs["amount_normalized"]
+    if not torch.isfinite(amount).all():raise FloatingPointError("Nonfinite pre-inverse prediction.")
+    u=amount.clamp_min(0)
+    scale_tensor=torch.as_tensor(scale,device=u.device,dtype=u.dtype)
+    if not torch.isfinite(scale_tensor).all() or not (scale_tensor>0).all():
+        raise FloatingPointError("Invalid prediction scale.")
+    raw=torch.expm1(u)*scale_tensor
     probability=None
     if "positive_logit" in outputs:
+        if not torch.isfinite(outputs["positive_logit"]).all():raise FloatingPointError("Nonfinite presence logit.")
         probability=torch.sigmoid(outputs["positive_logit"])
         raw=raw*probability
+    invalid=~torch.isfinite(raw)
+    if invalid.any():
+        # Preserve every finite historical output bitwise. Only intermediate
+        # overflow is recomputed, using the same rounded scale/probability.
+        # The result must still fit the original output dtype; never cap it.
+        wide=torch.expm1(u.to(torch.float64))*scale_tensor.to(torch.float64)
+        if probability is not None:wide=wide*probability.to(torch.float64)
+        raw=torch.where(invalid,wide.to(raw.dtype),raw)
     if not torch.isfinite(raw).all():raise FloatingPointError("Nonfinite prediction.")
     return raw,probability
 

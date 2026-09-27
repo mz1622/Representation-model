@@ -61,6 +61,7 @@ def main():
         "view_assignment":"Independent NumPy SeedSequence([seed,epoch,4104]), float32 uniforms on all fixed task IDs by252 axes; same masks for both arms",
         "consistency_weighting":"q_task=sum_axis(target*cell_weight/train_axis_total); C=sum_task(q_task*0.5*||unit(hA)-unit(hB)||^2)/187; unbiased uniform-task minibatches",
         "data_limitation":"Immutable R0 quarantine view; FooDB raw provenance unresolved; conditional internal research only"}
+    manifest["inverse_numerics"]="Finite old outputs preserved bitwise; only nonfinite intermediate decoded values recomputed in float64, cast to original dtype, and required finite. No cap or skipped query. Shared across neural methods."
     if args.consistency_centering == "joint_batch":
         manifest["protocol_change"] = "Only centre A/B representations by their shared unweighted minibatch mean before normalization in C; mean and both sides receive gradients. Original supervised head, inputs, model and inference unchanged. Same coefficient0.1 and task/mask/schedule as the origin-based reference. Gradient magnitude, clipping and batch-composition effects are part of this intervention; no collapse-prevention guarantee."
         manifest["consistency_weighting"] = "Original q_task and T/(B*187) factor, but distance uses the jointly centred current minibatch. This estimates the random-minibatch regularizer, not an unbiased full-panel centred-distance objective."
