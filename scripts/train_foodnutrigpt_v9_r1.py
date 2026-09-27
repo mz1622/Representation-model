@@ -32,6 +32,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--dual-selection",action="store_true",help="Retain both primary and fixed-panel source-free hurdle best checkpoints.")
     p.add_argument("--name-only-probability",type=float,default=0.,help="Fraction of family tasks with all numeric input hidden; supervision is unchanged.")
     p.add_argument("--context-dropout",choices=["none","fixed_30","mix_30_60_90"],default="none",help="R6: additional deletion after family hiding; targets unchanged.")
+    p.add_argument("--active-name-dimensions",type=int,choices=[32,128],help="R8 frozen exact PCA; both controls use128 name slots.")
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
@@ -49,12 +50,25 @@ def main(version="V9-R1",protocol_change=None):
     if args.metabolome_loss_weight!=1 and (args.kind!="mlp" or args.objective!="mae"):raise ValueError("Auxiliary coefficient is registered only for MAE MLP.")
     if args.context_dropout!="none" and (version!="V9-R6" or args.kind!="mlp" or args.objective!="mae" or args.mlp_width!=512 or args.name_only_probability!=0 or args.metabolome_loss_weight!=1 or args.mlp_task_heads!="shared" or args.mlp_normalization!="layer_norm" or args.mlp_text_conditioning!="none" or args.mlp_query_residual or args.dual_selection or (args.epochs,args.schedule_epochs,args.batch_size,args.learning_rate)!=(60,60,256,.001)):
         raise ValueError("R6 context dropout requires its registered MAE512/60 control configuration.")
+    frozen=None
+    if version=="V9-R8" or args.active_name_dimensions is not None:
+        if (version!="V9-R8" or args.active_name_dimensions is None or args.kind!="mlp" or args.objective!="mae"
+                or args.mlp_width!=512 or args.mlp_normalization!="layer_norm" or args.mlp_task_heads!="shared"
+                or args.mlp_text_conditioning!="none" or args.mlp_query_residual or args.dual_selection
+                or args.name_only_probability!=0 or args.context_dropout!="none" or args.metabolome_loss_weight!=1
+                or args.source_weight!=1 or args.amount_weight!=1 or args.seed not in [20260922,20260923,20260924]
+                or (args.epochs,args.schedule_epochs,args.batch_size,args.learning_rate)!=(60,60,256,.001)):
+            raise ValueError("R8 requires its registered matched name-input MAE512/60 configuration.")
+        from foodcomp.research_completion_input import require_r7_completion,execution_contract,completion_view
+        require_r7_completion(ROOT);frozen,frozen_path=execution_contract(ROOT)
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data=ResearchData(ROOT/"data/processed"/VERSION)
-    text,cache=prepare_names(data,ROOT)
-    panel=FamilyPanel(data,text,ROOT/"data/processed"/PANEL_VERSION,device)
+    if frozen is None:
+        text,cache=prepare_names(data,ROOT);panel_root=ROOT/"data/processed"/PANEL_VERSION
+    else:text,cache,panel_root=completion_view(data,ROOT,args.active_name_dimensions)
+    panel=FamilyPanel(data,text,panel_root,device)
     from foodcomp.research_auxiliary import metabolome_axis_scale
     axis_loss_scale=metabolome_axis_scale(data,args.metabolome_loss_weight,device)
     if digest(cache/"manifest.json")!=panel.manifest["name_cache_hash"]:raise ValueError("Text/task fingerprint mismatch.")
@@ -74,6 +88,7 @@ def main(version="V9-R1",protocol_change=None):
     files.extend([ROOT/"src/foodcomp/research_auxiliary.py"])
     entrypoint=Path(sys.argv[0]).resolve()
     if entrypoint!=Path(__file__).resolve() and entrypoint.is_relative_to(ROOT):files.append(entrypoint)
+    if frozen is not None:files=[ROOT/path for path in frozen['code_hashes']]
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
     from foodcomp.research_neural import OUTPUT_QUERY_POLICY
@@ -86,6 +101,14 @@ def main(version="V9-R1",protocol_change=None):
         "protocol_change":protocol_change or "R0->R1 aligns complete single-family training tasks and global axis/source loss weights; R0 architecture attribution is not allowed.",
         "selection":"fixed full validation nutrition primary metric; fixed learning-rate schedule horizon",
         "data_limitation":"R0 quarantine view retained; FooDB provenance remains unresolved; conditional benchmark research only"}
+    if frozen is not None:
+        from foodcomp.research_alignment import state_fingerprint
+        manifest.update(workspace_commit_at_start=manifest['code_commit'],code_commit=frozen['code_commit'],
+            execution_contract_sha256=digest(frozen_path),parameter_count=sum(p.numel() for p in model.parameters()),
+            initial_state_sha256=state_fingerprint(model),active_name_dimensions=args.active_name_dimensions,
+            input_slots=632,training_tasks=len(panel.rows),observed_target_cells=panel.manifest['observed_target_cells'],
+            panel_root=str(panel.root),name_cache=str(cache),environment=frozen['environment'])
+        if manifest['parameter_count']!=717052:raise AssertionError('R8 model capacity changed.')
     if args.dual_selection:
         manifest["secondary_selection"]="source-free BCE + amount_weight*positive SmoothL1; all187 axes; full fixed validation panel; source/candidate/profile equal weights; R0 scales; no source residual; earliest strict minimum; historical objective adapted to common protocol, not historical minibatch/mask replay"
     if args.name_only_probability>0:
@@ -137,6 +160,7 @@ def main(version="V9-R1",protocol_change=None):
                 "data_hash":manifest["data_hash"],"name_cache_hash":manifest["name_cache_hash"],"panel_hash":manifest["panel_hash"],"args":{k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}}
         for epoch in range(1,args.epochs+1):
             order=np.random.default_rng(args.seed+epoch).permutation(len(panel.rows));model.train();weighted=0.;seen=0
+            if frozen is not None:epoch_target_cells=torch.zeros((),dtype=torch.int64,device=device)
             name_only_cells=0
             norm_sum=0.;clipped=0;steps=0
             if args.context_dropout!="none":
@@ -148,6 +172,7 @@ def main(version="V9-R1",protocol_change=None):
                 name_tasks=name_only_tasks(len(panel.rows),args.name_only_probability,args.seed,epoch)
             for start_batch in range(0,len(order),args.batch_size):
                 ix=order[start_batch:start_batch+args.batch_size];batch=panel.batch(ix)
+                if frozen is not None:epoch_target_cells+=batch['target'].sum()
                 if args.context_dropout!="none":
                     original_visible=~batch["masked"]
                     batch=drop_context(batch,extra_hidden[ix]);visible=~batch["masked"]
@@ -172,6 +197,9 @@ def main(version="V9-R1",protocol_change=None):
                 "validation_legacy_log_mae":metrics["nutrition"]["log_mae"],"learning_rate":opt.param_groups[0]["lr"],
                 "training_tasks":seen,"elapsed_seconds":time.monotonic()-start})
             history[-1].update(mean_preclip_gradient_norm=norm_sum/steps,gradient_clip_fraction=clipped/steps)
+            if frozen is not None:
+                if int(epoch_target_cells)!=manifest['observed_target_cells'] or seen!=len(panel.rows):raise AssertionError('R8 exposure changed.')
+                history[-1].update(training_order_sha256=fingerprint_array(order),observed_target_cells=int(epoch_target_cells))
             if args.context_dropout!="none":
                 original_cells,remaining_cells,changed_tasks,original_empty,remaining_empty,target_cells=context_counts.cpu().tolist()
                 history[-1].update(training_order_sha256=fingerprint_array(order),context_mask_sha256=fingerprint_array(extra_hidden),context_rate_ids_sha256=fingerprint_array(rate_ids),

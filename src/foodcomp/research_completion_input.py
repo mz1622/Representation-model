@@ -4,6 +4,20 @@ from pathlib import Path
 from .research_r0 import digest
 from .research_name_projection import load_variant
 
+EXECUTION_FILES = [
+    'src/foodcomp/research_completion_input.py', 'src/foodcomp/research_tree_prediction.py',
+    'scripts/train_foodnutrigpt_v9_r1.py', 'scripts/train_foodnutrigpt_v9_r8_completion.py',
+    'scripts/run_foodnutrigpt_v9_r8_trees.py', 'src/foodcomp/research_r0.py',
+    'src/foodcomp/research_r1.py', 'src/foodcomp/research_neural.py',
+    'src/foodcomp/research_name_projection.py', 'src/foodcomp/research_inference.py',
+    'src/foodcomp/research_auxiliary.py', 'src/foodcomp/research_text.py',
+    'src/foodcomp/research_profile_retrieval.py', 'src/foodcomp/research_alignment.py',
+    'scripts/train_global_foodnutrigpt_v8_single_stage.py',
+    'scripts/train_global_foodnutrigpt_v9_source_calibrated.py',
+    'scripts/evaluate_foodnutrigpt_name_neighbors.py',
+    'scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py',
+]
+
 
 def read(path):
     return json.loads(Path(path).read_text(encoding='utf-8'))
@@ -43,3 +57,19 @@ def require_r7_completion(repo):
     report = (Path(repo) / 'experiments/foodnutrigpt_v9_research/r7/README.md').read_text(encoding='utf-8')
     if not all(f'## {number}.' in report for number in range(1, 9)):
         raise ValueError('R7 final eight-section research report is required before R8 training.')
+
+
+def execution_contract(repo):
+    """Pin actual executable bytes; later documentation commits can be recorded separately."""
+    repo = Path(repo)
+    path = repo / 'reports/v9_r8_execution_contract_v1/manifest.json'
+    contract = read(path)
+    if contract.get('status') != 'frozen' or set(contract['code_hashes']) != set(EXECUTION_FILES):
+        raise ValueError('Unfrozen R8 execution contract.')
+    for name, expected in contract['code_hashes'].items():
+        if digest(repo / name) != expected:
+            raise ValueError(f'R8 executable source changed after registration: {name}')
+    for name, expected in contract['input_hashes'].items():
+        if digest(repo / name) != expected:
+            raise ValueError(f'R8 input receipt changed: {name}')
+    return contract, path
