@@ -1,0 +1,406 @@
+{
+  "version": "V9-R5",
+  "status": "exploration in progress; no accepted model; main completion goal still unmet",
+  "generated_utc": "2026-09-27T11:15:50.986267+00:00",
+  "config_sha256": "a20156a30db6eadf83a091b9b556bfd6aba4e4e87241c0616a2d4765ff912805",
+  "runs": [
+    {
+      "registered_configuration": {
+        "name": "name_predictions_reused",
+        "output_dir": "output/v9_r0/retrieval_name_mlp_v1",
+        "reused_control": true
+      },
+      "local_output": "output\\v9_r0\\retrieval_name_mlp_v1",
+      "status": "complete_reused_reference",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.007253828140896406,
+            "recall_at_1": 0.0013161969650046454,
+            "recall_at_5": 0.007670073294105502,
+            "recall_at_10": 0.013747806338391658
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.013933927155032439,
+            "recall_at_1": 0.0027033380347907853,
+            "recall_at_5": 0.01664416683457586,
+            "recall_at_10": 0.030482235207199948
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": "c9ad7adda8ac695bc94ce933171f719bc1964792254844dc085453c2ab908c16",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 2.9850000000001273,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "539318d1089769f52236c08317d4d477d091a95587bbb197dfea0690758740ce"
+    },
+    {
+      "registered_configuration": {
+        "name": "ridge_alpha1_reused",
+        "output_dir": "output/v9_r0/retrieval_ridge_v1",
+        "reused_control": true,
+        "alpha": 1
+      },
+      "local_output": "output\\v9_r0\\retrieval_ridge_v1",
+      "status": "complete_reused_reference",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.001648481171004116,
+            "recall_at_1": 0.0004955094456488077,
+            "recall_at_5": 0.0012697429544750696,
+            "recall_at_10": 0.002312377413027769
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.012306743183345372,
+            "recall_at_1": 0.00232722143864598,
+            "recall_at_5": 0.014362952515279736,
+            "recall_at_10": 0.023112700651487676
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "ridge_to_text",
+        "ridge_alpha": 1.0,
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": null,
+        "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 46.25,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "29d02300d9c07f9686313b72ac50eb6a37dc401001c601f4f8106e961e7201f4"
+    },
+    {
+      "registered_configuration": {
+        "name": "ridge_alpha01",
+        "alpha": 0.1,
+        "solver": "lsqr",
+        "tol": 1e-06
+      },
+      "local_output": "output\\v9_r5\\ridge_alpha01",
+      "status": "complete",
+      "manifest_sha256": "ab579b567ba4fd3056977230c70276c20ef9e0c5eb5ff6d9d8651e1cd07a64ce",
+      "code_commit": "7221d16252a3bbda7d52618683a88adc60414348",
+      "elapsed_seconds": 37.92199999999866,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": "3d3a83de886dfcc40ac66c69b59e5b57aecbb3696ae7ebdcc6aa48e677894c8f",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.001674125331558618,
+            "recall_at_1": 0.0004955094456488077,
+            "recall_at_5": 0.001424589656240322,
+            "recall_at_10": 0.0023898007639103955
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.012340733404609986,
+            "recall_at_1": 0.002397743300423131,
+            "recall_at_5": 0.014433474377056887,
+            "recall_at_10": 0.023112700651487676
+          }
+        ],
+        "selection_mean_mrr": 0.007007429368084302,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "ridge_to_text",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "ridge_alpha": 0.1,
+        "elapsed_seconds": 37.875,
+        "checkpoint_sha256": "3d3a83de886dfcc40ac66c69b59e5b57aecbb3696ae7ebdcc6aa48e677894c8f"
+      },
+      "metrics_sha256": "5b64a15a01b167efa5749fb79f453940e7cc31cbecbb7d2af59a78504d3b38df"
+    },
+    {
+      "registered_configuration": {
+        "name": "ridge_alpha10",
+        "alpha": 10,
+        "solver": "lsqr",
+        "tol": 1e-06
+      },
+      "local_output": "output\\v9_r5\\ridge_alpha10",
+      "status": "complete",
+      "manifest_sha256": "c7c27ed2ab74f87fd331f79e01df164cb8e4de5d34c094b4527b10fee93a82b3",
+      "code_commit": "7221d16252a3bbda7d52618683a88adc60414348",
+      "elapsed_seconds": 20.89100000000326,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": "01635a0dfd1791afc8cbff0c5104638ad011fdd66afbff655a9939e7c2444244",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0014842073901530362,
+            "recall_at_1": 0.0003406627438835553,
+            "recall_at_5": 0.0011923196035924434,
+            "recall_at_10": 0.0021575307112625167
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.012157037286224075,
+            "recall_at_1": 0.002256699576868829,
+            "recall_at_5": 0.014174894217207334,
+            "recall_at_10": 0.022572033044529517
+          }
+        ],
+        "selection_mean_mrr": 0.006820622338188555,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "ridge_to_text",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "ridge_alpha": 10.0,
+        "elapsed_seconds": 20.82800000000134,
+        "checkpoint_sha256": "01635a0dfd1791afc8cbff0c5104638ad011fdd66afbff655a9939e7c2444244"
+      },
+      "metrics_sha256": "d9678551406d42f8ec155f15a26cbbf520d317c9ff0835bd29d8f07809ad94cc"
+    },
+    {
+      "registered_configuration": {
+        "name": "ridge_alpha100",
+        "alpha": 100,
+        "solver": "lsqr",
+        "tol": 1e-06
+      },
+      "local_output": "output\\v9_r5\\ridge_alpha100",
+      "status": "complete",
+      "manifest_sha256": "7b7ea859ebe51e15f071e086a3c18224cc2d19a0bbdbb1257c4eebe9c60dedbb",
+      "code_commit": "7221d16252a3bbda7d52618683a88adc60414348",
+      "elapsed_seconds": 10.218999999997322,
+      "epoch_completed": null,
+      "best_epoch": null,
+      "checkpoint_sha256": "3d69af562df93e7eaa0f512d39bcfd735abe9dfdfcf4d591f477e6bb4e2b461a",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0014434542766151657,
+            "recall_at_1": 0.00022452771755961597,
+            "recall_at_5": 0.0011923196035924434,
+            "recall_at_10": 0.0020026840094972643
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.011354607113117515,
+            "recall_at_1": 0.0019040902679830747,
+            "recall_at_5": 0.012764456981664316,
+            "recall_at_10": 0.022090133655718987
+          }
+        ],
+        "selection_mean_mrr": 0.00639903069486634,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "ridge_to_text",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "ridge_alpha": 100.0,
+        "elapsed_seconds": 10.156000000002678,
+        "checkpoint_sha256": "3d69af562df93e7eaa0f512d39bcfd735abe9dfdfcf4d591f477e6bb4e2b461a"
+      },
+      "metrics_sha256": "4a90723a46dc7baad828f8fbf2c68817b078c25e9f1d5217ddfc362418ce65f4"
+    },
+    {
+      "registered_configuration": {
+        "name": "mapper_mse60",
+        "kind": "mlp",
+        "objective": "mse",
+        "width": 512,
+        "output_dim": 32,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922
+      },
+      "local_output": "output\\v9_r5\\mapper_mse60",
+      "status": "complete",
+      "manifest_sha256": "540c746359decabf44dd732d0f8615f21a816cf96358c76c7c32c785a61393f1",
+      "code_commit": "7221d16252a3bbda7d52618683a88adc60414348",
+      "elapsed_seconds": 60.31300000000192,
+      "epoch_completed": 60,
+      "best_epoch": 57,
+      "checkpoint_sha256": "7f56e0412ce617c67a9f1f2b9ff82e170314dc4433e7d4f9194f39f4b12c8d0a",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.001272966317788462,
+            "recall_at_1": 0.0001935583772065655,
+            "recall_at_5": 0.0009935996696603694,
+            "recall_at_10": 0.0021859192732528133
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.11023551433612809,
+            "recall_at_1": 0.04544630263953254,
+            "recall_at_5": 0.16814393176170328,
+            "recall_at_10": 0.2485794882127745
+          }
+        ],
+        "selection_mean_mrr": 0.055754240326958276,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "numeric_to_name_mse",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "checkpoint_sha256": "7f56e0412ce617c67a9f1f2b9ff82e170314dc4433e7d4f9194f39f4b12c8d0a",
+        "elapsed_seconds": 60.26600000000326
+      },
+      "metrics_sha256": "b72d41e90ec66590f44b8597521dabe35c1b8a9ddd566b1a157093393e778e3f"
+    },
+    {
+      "registered_configuration": {
+        "name": "mapper_contrastive60",
+        "kind": "mlp",
+        "objective": "contrastive",
+        "temperature": 0.07,
+        "width": 512,
+        "output_dim": 32,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922
+      },
+      "local_output": "output\\v9_r5\\mapper_contrastive60",
+      "status": "complete",
+      "manifest_sha256": "534506799dcdfa5f5d12a26e99bd1dba8d0b988d1ab9fcfd292d59bb41ac0cb3",
+      "code_commit": "7221d16252a3bbda7d52618683a88adc60414348",
+      "elapsed_seconds": 73.95300000000134,
+      "epoch_completed": 60,
+      "best_epoch": 59,
+      "checkpoint_sha256": "1daee3452c3a17ca898f59c53856c6d3979aa27a53bf6e58a7cef1265f3902be",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0013749152418257291,
+            "recall_at_1": 0.0003096934035305048,
+            "recall_at_5": 0.0009047471574569747,
+            "recall_at_10": 0.0022261056791871288
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.13177578093919165,
+            "recall_at_1": 0.05482906843978776,
+            "recall_at_5": 0.2019559981961755,
+            "recall_at_10": 0.3018028650106023
+          }
+        ],
+        "selection_mean_mrr": 0.06657534809050869,
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "numeric_to_name_contrastive",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false,
+        "checkpoint_sha256": "1daee3452c3a17ca898f59c53856c6d3979aa27a53bf6e58a7cef1265f3902be",
+        "elapsed_seconds": 73.90699999999924
+      },
+      "metrics_sha256": "62dc5289ab4d29b4bac7d067e13dbd639b56019dcf7ffd860d346ce960be9bd6"
+    }
+  ],
+  "independent_model_completion_and_name_only": "N/A; separate specialist, no nutrition prediction head",
+  "confirmation_completed": false,
+  "complete_test_opened": false,
+  "individual_predictions_included": false,
+  "scope": "Manifest status only; inspect actual sessions/processes for liveness. Specialist ranking gains are not evidence of a completion gain.",
+  "ridge_selection": {
+    "criterion": "equal mean full/30pct food-group MRR; earliest registered tie",
+    "candidates": [
+      {
+        "path": "output/v9_r0/retrieval_ridge_v1",
+        "metrics_sha256": "29D02300D9C07F9686313B72AC50EB6A37DC401001C601F4F8106E961E7201F4",
+        "mean_mrr": 0.006977612177174744
+      },
+      {
+        "path": "output/v9_r5/ridge_alpha01",
+        "metrics_sha256": "5B64A15A01B167EFA5749FB79F453940E7CC31CBECBB7D2AF59A78504D3B38DF",
+        "mean_mrr": 0.007007429368084302
+      },
+      {
+        "path": "output/v9_r5/ridge_alpha10",
+        "metrics_sha256": "D9678551406D42F8EC155F15A26CBBF520D317C9FF0835BD29D8F07809AD94CC",
+        "mean_mrr": 0.006820622338188555
+      },
+      {
+        "path": "output/v9_r5/ridge_alpha100",
+        "metrics_sha256": "4A90723A46DC7BAAD828F8FBF2C68817B078C25E9F1D5217DDFC362418CE65F4",
+        "mean_mrr": 0.00639903069486634
+      }
+    ],
+    "selected": "output/v9_r5/ridge_alpha01",
+    "complete_test_opened": false,
+    "status": "complete",
+    "selection_mean_mrr": 0.007007429368084302
+  }
+}
