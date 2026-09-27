@@ -1,6 +1,6 @@
 {
   "version": "V9-R4",
-  "generated_utc": "2026-09-27T08:51:22.041493+00:00",
+  "generated_utc": "2026-09-27T08:55:42.318937+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "7036497f8e5bf25f8dbae26a5f07395c3da4759548fee0524fd8473ba527d866",
   "runs": [
@@ -340,7 +340,13 @@
         "single_factor": "Consistency coefficient0 ->0.1 with the exact same two-view compute graph, task order and extra masks. L=original supervised MAE(A)+lambda*C(A,B), no rescaling of supervised loss, no regression label on B. Added gradient direction/magnitude and clipping are part of the intervention."
       },
       "local_output": "output\\v9_r4\\mlp60_views_weight01",
-      "manifest_status": "not started; check active process queues separately"
+      "manifest_status": "running",
+      "manifest_sha256": "adf386111ff2ec1798f7330a11a7b2209a8e4237b25c9e46cc3470c828dbfff6",
+      "code_commit": "70b9bc9a5f72689debec683be22fce9b20746d4b",
+      "elapsed_seconds": 255.86000000000058,
+      "epoch_completed": 34,
+      "best_epoch": null,
+      "checkpoint_sha256": null
     }
   ],
   "completed_retrieval_evaluations": [
