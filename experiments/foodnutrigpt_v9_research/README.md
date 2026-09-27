@@ -8,7 +8,7 @@
 | V9-R1 | 共同训练任务、时长、amount2与树搜索完成；amount3/来源关闭尚未完成 | [训练优化](r1/README.md) |
 | V9-R2 | MLP系列、树MAE及直接V9/SmoothL1完成；直接MAE运行、双准则排队，未确认 | [数值目标实验](r2/README.md) |
 | V9-R3 | 10%三任务完成：名称能力改善、补全退步；20%运行，追加独立头对照，未确认 | [任务比例实验](r3/README.md) |
-| 基线三种子复跑 | XGB seed22/23完成、seed24运行；RF seed22运行，其余排队 | [确认运行记录](baseline_confirmation_v1/README.md) |
+| 基线三种子复跑 | XGB seed22/23完成、seed24运行；RF seed22完成、seed23运行，数值复现诊断已记录 | [确认运行记录](baseline_confirmation_v1/README.md) |
 
 指标、数据隔离视图和验证面板已经冻结。历史测试集保持关闭。单种子探索、配对食品组区间和三种子确认分别记录；未达到确认门槛不写成确定结论。
 
