@@ -1,5 +1,6 @@
 {
-  "version":"V9-R6","status":"preregistered","max_candidates":12,"registered_candidate_budgets":3,
+  "version":"V9-R6","status":"exploration_complete_confirmation_not_promoted","max_candidates":12,"registered_candidate_budgets":3,
+  "decision":"Reject both registered60-epoch dropout configurations for completion; keep R2MAE512 controlled parent. Both improve weak-parent name-only/retrieval but remain below strong KNN. Main completion goal unmet.",
   "data_version":"foodnutrigpt_v9_r0_v1","view":"quarantined","data_sha256":"48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
   "parent":"output/v9_r2/mlp60_mae_width512","parent_checkpoint_sha256":"f77e8501427efe870ad8c035a7900833ce442d8c4f666124f7447ce847d338e6",
   "candidates":[
