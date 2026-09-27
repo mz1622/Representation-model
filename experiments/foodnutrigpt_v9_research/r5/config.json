@@ -1,0 +1,22 @@
+{
+  "version": "V9-R5", "max_candidates": 12, "registered_candidate_budgets": 7,
+  "data_version": "foodnutrigpt_v9_r0_v1", "view": "quarantined",
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
+  "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+  "selection": "0.5*(source-equal food-group MRR at full input + at30pct); strict maximum, earliest tie",
+  "registered_candidates": [
+    {"name":"name_predictions_reused","output_dir":"output/v9_r0/retrieval_name_mlp_v1","reused_control":true},
+    {"name":"ridge_alpha1_reused","output_dir":"output/v9_r0/retrieval_ridge_v1","reused_control":true,"alpha":1},
+    {"name":"ridge_alpha01","alpha":0.1,"solver":"lsqr","tol":0.000001},
+    {"name":"ridge_alpha10","alpha":10,"solver":"lsqr","tol":0.000001},
+    {"name":"ridge_alpha100","alpha":100,"solver":"lsqr","tol":0.000001},
+    {"name":"mapper_mse60","kind":"mlp","objective":"mse","width":512,"output_dim":32,"epochs":60,"schedule_epochs":60,"batch_size":256,"learning_rate":0.001,"seed":20260922},
+    {"name":"mapper_contrastive60","kind":"mlp","objective":"contrastive","temperature":0.07,"width":512,"output_dim":32,"epochs":60,"schedule_epochs":60,"batch_size":256,"learning_rate":0.001,"seed":20260922}
+  ],
+  "fixed": {"numeric_axes":142,"features":"visible scaled-log nutrition values + observedness mask, no name/source","name_features":"pinned original_name-only PCA32, frozen","training_min_observed_axes":3,"training_extra_masking":false,"training_weights":"candidate groups equal; source equal; profile equal within source; global weighted mean","candidate_name_count":49913,"query_profile_counts":{"1.0":10479,"0.3":8610},"negative_pool":"training batch unique exact names only","candidate_nutrition_used":false,"optimizer":"AdamW","weight_decay":0.0001,"gradient_clip_norm":1,"eta_min":0.00001},
+  "confirmation_seeds":[20260922,20260923,20260924],
+  "paired_bootstrap":{"unit":"whole exact-name food candidate group","repeats":1000,"seed":20260922},
+  "completion_protocol_changed":false,"complete_test_opened":false,"external_provenance_confirmed":false,
+  "independent_mapper_completion_and_name_only":"not defined; never borrow another model's capabilities"
+}
