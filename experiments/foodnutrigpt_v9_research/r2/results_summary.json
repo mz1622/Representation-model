@@ -1,8 +1,8 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T01:56:39.336241+00:00",
+  "generated_utc": "2026-09-27T02:02:08.522895+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "c6dbd0b6eb7de1ab00af28f55acc026df363b8d549fd8621b4fe7ef9897b945b",
+  "configuration_sha256": "33858a525dfea517fbc7edbb841cf6d66f2ec4f36177d90c613d10b53bc6e92f",
   "runs": [
     {
       "registered_configuration": {
@@ -112,11 +112,109 @@
         "single_factor": "hidden width: 256 -> 512; initialized tensor shapes differ"
       },
       "local_output": "output\\v9_r2\\mlp20_mae_width512",
-      "manifest_status": "running",
-      "manifest_sha256": "60af8a963fc0d2aa831a2223ec27a7a2c7f3d6009ddf9a4bcfa87e5cde7c35f7",
+      "manifest_status": "complete",
+      "manifest_sha256": "cbfaa0658d8b559cc6e2f6dc489dc893d9ca963e572f3c5cdd68ea5dc6710a91",
       "code_commit": "5b652163c41e5b01107e760027ac8f297933487a",
-      "elapsed_seconds": 585.5159999999996,
-      "epoch_completed": 18,
+      "elapsed_seconds": 657.7029999999977,
+      "epoch_completed": 20,
+      "best_epoch": 20,
+      "checkpoint_sha256": "f60dc45dcb8d139d4684c821e100af08e46097ca78f3faf48b5afc4e75e75720",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.2024275385373225,
+            "log_mae": 0.06429978208952487,
+            "log_mse": 0.04733480812112139,
+            "raw_mae": 0.3958548867739134,
+            "positive_scaled_log_mae": 0.31463728083471715,
+            "zero_scaled_log_mae": 0.11772859450380209,
+            "log_rmse_root_mean_axis_mse": 0.21756564094801686
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5760446360652419,
+            "log_mae": 0.035021724603417737,
+            "log_mse": 0.019065647949390967,
+            "raw_mae": 0.06425257904759946,
+            "positive_scaled_log_mae": 0.7891956701776084,
+            "zero_scaled_log_mae": 0.2965591472082269,
+            "log_rmse_root_mean_axis_mse": 0.13807841232209678
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.29233539623120686,
+            "log_mae": 0.057254260234579295,
+            "log_mse": 0.04053206904236273,
+            "raw_mae": 0.3160575399948539,
+            "positive_scaled_log_mae": 0.4288358237247176,
+            "zero_scaled_log_mae": 0.15053183198212855,
+            "log_rmse_root_mean_axis_mse": 0.2013257783850909
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5022475145391816,
+            "log_mae": 0.18617976289759383,
+            "log_mse": 0.20406101266650623,
+            "raw_mae": 1.0503682751362253,
+            "positive_scaled_log_mae": 0.6524792191701171,
+            "zero_scaled_log_mae": 0.40658731722479735,
+            "log_rmse_root_mean_axis_mse": 0.45173112873312843
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.9702379663993068,
+            "log_mae": 0.06087872394586829,
+            "log_mse": 0.03701012624056899,
+            "raw_mae": 0.10101218936947279,
+            "positive_scaled_log_mae": 1.08957738766955,
+            "zero_scaled_log_mae": 0.5852143030158067,
+            "log_rmse_root_mean_axis_mse": 0.19238016072497963
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6148655377140781,
+            "log_mae": 0.1560271064653604,
+            "log_mse": 0.16386160149448922,
+            "raw_mae": 0.8219136020907502,
+            "positive_scaled_log_mae": 0.7576632704132962,
+            "zero_scaled_log_mae": 0.4393532140266985,
+            "log_rmse_root_mean_axis_mse": 0.404798223185934
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_mae_width512",
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "duration_checkpoints": [
+          20,
+          60
+        ],
+        "learning_rate": 0.001,
+        "batch_size": 256,
+        "seed": 20260922,
+        "single_factor": "duration budget 20 vs 60 on SAME fixed 60-epoch schedule; earlier 20-epoch-schedule run is not the causal duration control"
+      },
+      "local_output": "output\\v9_r2\\mlp60_mae_width512",
+      "manifest_status": "running",
+      "manifest_sha256": "28c8b90abfdbb326f8769cbe1ff6578a47c217930cb43962f2d7f196d192faaf",
+      "code_commit": "89877c9c0207c8e48de4ecd5c400ea5ff8c277f5",
+      "elapsed_seconds": 95.82800000000134,
+      "epoch_completed": 3,
       "best_epoch": null,
       "checkpoint_sha256": null
     }
