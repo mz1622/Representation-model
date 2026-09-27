@@ -19,6 +19,7 @@ def main():
     p.add_argument("--checkpoint",type=Path,nargs="+",required=True)
     p.add_argument("--output-dir",type=Path,required=True)
     p.add_argument("--batches",type=int,default=32);p.add_argument("--batch-size",type=int,default=256)
+    p.add_argument("--context-targets-only",action="store_true",help="Keep the same task sample and denominators; zero diagnostic loss for tasks already lacking numeric context.")
     p.add_argument("--seed",type=int,default=20260922);args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     if args.batches<1 or args.batch_size<1:raise ValueError("Positive diagnostic sizes required.")
@@ -50,6 +51,9 @@ def main():
         total={view:[torch.zeros_like(p,dtype=torch.float64) for p in parameters] for view in ["completion","name_only"]}
         for start in range(0,count,args.batch_size):
             selected=indices[start:start+args.batch_size];batch=panel.batch(selected)
+            has_context=(~batch["masked"]).any(1)
+            original_targets=int(batch["target"].sum())
+            if args.context_targets_only:batch=dict(batch,target=batch["target"]&has_context[:,None])
             name_batch=remove_numeric_context(batch,np.ones(len(selected),bool))
             for key in batch:
                 if key!="masked" and name_batch[key] is not batch[key]:raise AssertionError("Task view changed more than numeric context.")
@@ -63,6 +67,7 @@ def main():
                 stats=gradient_geometry([gradients["completion"][i] for i in positions],[gradients["name_only"][i] for i in positions])
                 records.append({"run":checkpoint.parent.name,"batch":start//args.batch_size,"scope":scope,
                     "tasks":len(selected),"observed_targets":int(batch["target"].sum()),
+                    "original_observed_targets":original_targets,"tasks_with_numeric_context":int(has_context.sum()),
                     **{key+"_loss":value for key,value in losses.items()},**stats})
         for key,value in initial.items():torch.testing.assert_close(value,model.state_dict()[key],rtol=0,atol=0)
         if any(p.grad is not None for p in parameters):raise AssertionError("Diagnostic populated parameter .grad.")
@@ -88,6 +93,8 @@ def main():
     pd.DataFrame(records).to_csv(args.output_dir/"gradient_batches.csv",index=False)
     write_json(args.output_dir/"summary.json",{"models":models,"seed":args.seed,"data_panel_name_hashes":identity,
         "code_sha256":digest(Path(__file__)),"module_sha256":digest(ROOT/"src/foodcomp/research_gradient_geometry.py"),
+        "context_targets_only":args.context_targets_only,
+        "context_subset_definition":"If enabled, set diagnostic target weights to zero for sampled tasks whose original family-hidden input has no visible numeric axis. Keep the original 8192-task sample, batch ordering, task multiplier and all187 training-axis denominators. This is a loss-component diagnostic, not a resampled/reweighted training protocol.",
         "complete_test_opened":False,"loss_normalization":"Same observed targets, source weights and original187-axis training denominator in both views.",
         "scope":"Local train-only eval-mode MAE gradients at selected checkpoints, no optimizer/update. Euclidean first-order geometry, not AdamW updates, training-history evidence or causal explanation of validation harm."})
 
