@@ -1,6 +1,6 @@
 {
   "version": "baseline-confirmation-v1",
-  "generated_utc": "2026-09-27T05:21:34.624678+00:00",
+  "generated_utc": "2026-09-27T05:45:53.363417+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "2328712e1e8cefe8e811daa8e5e933b6fe29c7ccf9f485f867129fa8614a6425",
   "runs": [
@@ -212,13 +212,48 @@
         "seed": 20260924
       },
       "local_output": "output\\v9_baseline_confirmation_v1\\xgb_seed20260924",
-      "manifest_status": "running",
-      "manifest_sha256": "f6b1aeb65c79288b141c5f98880817634f15f697c155add6da3366241374b79c",
+      "manifest_status": "complete",
+      "manifest_sha256": "4fdf32ced08ee98ef4fd800b96db9df41038f8052dc45b6659210e5f08d3342b",
       "code_commit": "4892bea1aa6a7a6d8299cc4624b3eb0332ac9f02",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 2411.3899999999994,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.1735236314230848,
+          "log_mae": 0.05211064487342549,
+          "log_mse": 0.03163226242589233,
+          "raw_mae": 0.2964002918307724,
+          "positive_scaled_log_mae": 0.22928371465745545,
+          "zero_scaled_log_mae": 0.1476086702278222,
+          "log_rmse_root_mean_axis_mse": 0.17785461035883307
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6908306256860582,
+          "log_mae": 0.03598649417556004,
+          "log_mse": 0.018734458031900374,
+          "raw_mae": 0.06363601697150806,
+          "positive_scaled_log_mae": 0.7862601418354617,
+          "zero_scaled_log_mae": 0.6617957446658955,
+          "log_rmse_root_mean_axis_mse": 0.13687387636762677
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.29800927175374686,
+          "log_mae": 0.04823050165736162,
+          "log_mse": 0.02852851270541298,
+          "raw_mae": 0.2403874984154414,
+          "positive_scaled_log_mae": 0.36331547520831253,
+          "zero_scaled_log_mae": 0.2419270093259304,
+          "log_rmse_root_mean_axis_mse": 0.16890385639591826
+        }
+      }
     }
   ],
   "completed_retrieval_evaluations": [],
