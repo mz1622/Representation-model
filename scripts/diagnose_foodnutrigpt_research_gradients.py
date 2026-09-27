@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--batches", type=int, default=32)
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--seed", type=int, default=20260922)
+    parser.add_argument("--device",choices=["cpu","cuda"])
     args = parser.parse_args()
     if args.output_dir.exists():
         raise FileExistsError(args.output_dir)
@@ -28,7 +29,7 @@ def main():
         raise ValueError("Positive diagnostic sample sizes required.")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(2)
-    wrapper = NutritionModel(args.checkpoint)
+    wrapper = NutritionModel(args.checkpoint,device=args.device)
     saved = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
     model, data = wrapper.model, wrapper.data
     if saved["kind"] not in {"mlp", "v9"}:
@@ -53,6 +54,9 @@ def main():
     np.save(args.output_dir / "training_task_indices.npy", indices)
     records = []
     model.eval()  # Deterministic local gradients, dropout disabled; not a training intervention.
+    initial={key:value.clone() for key,value in model.state_dict().items()}
+    cpu_rng=torch.get_rng_state();cuda_rng=torch.cuda.get_rng_state_all() if wrapper.device.type=="cuda" else []
+    totals={group:torch.zeros(sum(p.numel() for p in parameters),dtype=torch.float64,device=wrapper.device) for group in masks}
     for start in range(0, count, args.batch_size):
         batch = panel.batch(indices[start:start + args.batch_size])
         outputs = model(batch)
@@ -69,10 +73,19 @@ def main():
             if not torch.isfinite(vector).all():
                 raise FloatingPointError("Nonfinite task gradient.")
             vectors[group] = vector
+            totals[group].add_(vector.double(),alpha=row["tasks"]/count)
             row[group + "_loss"] = float(value.detach())
             row[group + "_norm"] = float(vector.norm())
             row[group + "_targets"] = int(group_batch["target"].sum())
         a, b = vectors["nutrition"], vectors["food_metabolome"]
+        if start==0:
+            full=panel_loss(outputs,batch,config.amount_loss_weight,objective)
+            if calibrated is not None:
+                full=(full+weight*panel_loss(calibrated,batch,config.amount_loss_weight,objective))/(1+weight)
+            torch.testing.assert_close(full,torch.as_tensor(row["nutrition_loss"]+row["food_metabolome_loss"],device=full.device,dtype=full.dtype),rtol=1e-5,atol=1e-7)
+            grads=torch.autograd.grad(full,parameters,retain_graph=True,allow_unused=True)
+            vector=torch.cat([(g if g is not None else torch.zeros_like(p)).flatten() for p,g in zip(parameters,grads)])
+            torch.testing.assert_close(a+b,vector,rtol=1e-4,atol=1e-6)
         denominator = a.norm() * b.norm()
         row["both_nonzero"] = bool(denominator > 0)
         row["cosine"] = float(torch.dot(a, b) / denominator) if row["both_nonzero"] else None
@@ -82,6 +95,12 @@ def main():
     valid = frame[frame.both_nonzero]
     if not len(valid):
         raise ValueError("No batches contain both nonzero task gradients.")
+    for key,value in initial.items():torch.testing.assert_close(value,model.state_dict()[key],rtol=0,atol=0)
+    if any(p.grad is not None for p in parameters):raise AssertionError("Diagnostic populated gradient buffers.")
+    torch.testing.assert_close(cpu_rng,torch.get_rng_state(),rtol=0,atol=0)
+    for a,b in zip(cuda_rng,torch.cuda.get_rng_state_all() if cuda_rng else []):torch.testing.assert_close(a,b,rtol=0,atol=0)
+    from foodcomp.research_gradient_geometry import gradient_geometry
+    geometry=gradient_geometry([totals["nutrition"]],[totals["food_metabolome"]])
     summary = {
         "checkpoint": str(args.checkpoint), "checkpoint_sha256": digest(args.checkpoint),
         "data_sha256": saved["data_hash"], "panel_sha256": saved["panel_hash"],
@@ -93,6 +112,10 @@ def main():
         "median_metabolome_to_nutrition_gradient_norm": float((valid.food_metabolome_norm / valid.nutrition_norm).median()),
         "shared_parameter_names": [name for name, _ in parameter_items],
         "shared_parameter_count": sum(p.numel() for p in parameters),
+        "device":str(wrapper.device),"parameters_grad_buffers_and_rng_unchanged":True,
+        "first_batch_loss_and_gradient_partition_check_passed":True,
+        "undefined_cosine_batches":len(frame)-len(valid),
+        "geometry_of_mean_gradients":{"nutrition_norm":geometry["completion_norm"],"metabolome_norm":geometry["name_only_norm"],"dot":geometry["dot"],"cosine":geometry["cosine"],"metabolome_to_nutrition_norm":geometry["name_to_completion_norm"],"both_nonzero":geometry["both_nonzero"]},
         "normalization": "Original 187-axis training normalization retained for both component losses.",
         "model_mode": "eval; dropout disabled; no optimizer or parameter update",
         "interpretation": "Local train-only gradient diagnostic at one selected checkpoint. Negative cosine indicates conflicting infinitesimal directions in these shared parameters, not causal evidence of validation harm. A controlled loss-weight ablation is required before attribution.",
