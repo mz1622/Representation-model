@@ -8,7 +8,8 @@
   "max_candidates": 12,
   "max_hours": 72,
   "registered_candidates": [
-    {"name": "mlp20_mae", "kind": "mlp", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "loss: SmoothL1(beta=1) -> MAE"}
+    {"name": "mlp20_mae", "kind": "mlp", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "loss: SmoothL1(beta=1) -> MAE"},
+    {"name": "mlp20_mae_width512", "parent": "output/v9_r2/mlp20_mae", "kind": "mlp", "objective": "mae", "mlp_width": 512, "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "hidden width: 256 -> 512; initialized tensor shapes differ"}
   ],
   "confirmation_seeds": [20260922, 20260923, 20260924],
   "primary_gain_vs_stronger_tuned_tree": 0.05,

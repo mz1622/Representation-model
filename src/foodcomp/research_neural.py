@@ -13,13 +13,14 @@ import train_global_foodnutrigpt_v8_single_stage as legacy_v8
 import train_global_foodnutrigpt_v9_source_calibrated as legacy_v9
 
 class DenseModel(nn.Module):
-    def __init__(self, text_dim, axes, kind):
+    def __init__(self, text_dim, axes, kind, width=256):
         super().__init__()
+        if not isinstance(width,int) or width<1:raise ValueError("Positive integer MLP width required.")
         self.kind = kind
         size = text_dim if kind == "name_mlp" else axes*2 if kind == "numeric_mlp" else text_dim+axes*2
-        self.encoder = nn.Sequential(nn.Linear(size,256),nn.GELU(),nn.LayerNorm(256),
-                                     nn.Linear(256,256),nn.GELU())
-        self.head = nn.Linear(256, axes)
+        self.encoder = nn.Sequential(nn.Linear(size,width),nn.GELU(),nn.LayerNorm(width),
+                                     nn.Linear(width,width),nn.GELU())
+        self.head = nn.Linear(width, axes)
 
     def encode(self, batch):
         numeric = torch.cat([torch.where(batch["masked"],0.,batch["value"]),
@@ -30,10 +31,10 @@ class DenseModel(nn.Module):
     def forward(self, batch):
         return {"amount_normalized": self.head(self.encode(batch))}
 
-def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1.):
+def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_width=256):
     config=legacy_v9.Config(amount_loss_weight=amount_weight, source_calibrated_loss_weight=source_weight)
     if kind in {"mlp","name_mlp","numeric_mlp"}:
-        return DenseModel(text_dim,len(data.axes),kind),config
+        return DenseModel(text_dim,len(data.axes),kind,mlp_width),config
     source_count=int(data.profiles.source_index.max())+1
     if kind=="v9":
         sources=np.unique(data.profiles.iloc[data.train].source_index)

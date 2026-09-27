@@ -52,11 +52,12 @@ def test_nonfinite_loss_or_prediction_fails():
     with pytest.raises(FloatingPointError):macro_loss({"amount_normalized":torch.tensor([[float("inf")]])},b,1)
 
 
-def test_checkpoint_reload_predictions_match(tmp_path):
-    model,_=make_model(tiny_data(),3,"mlp");model.eval()
+@pytest.mark.parametrize("width",[256,512])
+def test_checkpoint_reload_predictions_match(tmp_path,width):
+    model,_=make_model(tiny_data(),3,"mlp",mlp_width=width);model.eval()
     batch=batch_from_arrays(np.ones((2,4)),np.zeros((2,4),bool),np.ones((2,3)),"cpu")
     torch.save(model.state_dict(),tmp_path/"model.pt")
-    loaded,_=make_model(tiny_data(),3,"mlp")
+    loaded,_=make_model(tiny_data(),3,"mlp",mlp_width=width)
     loaded.load_state_dict(torch.load(tmp_path/"model.pt",weights_only=True));loaded.eval()
     with torch.no_grad():torch.testing.assert_close(model(batch)["amount_normalized"],loaded(batch)["amount_normalized"],rtol=0,atol=0)
 

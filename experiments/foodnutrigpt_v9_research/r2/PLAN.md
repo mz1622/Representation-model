@@ -27,3 +27,17 @@ R1的MLP20主指标0.222459，新增XGB500/深8为0.178131。MLP只在142个营�
 ```powershell
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_loss.py --kind mlp --objective mae --epochs 20 --schedule-epochs 20 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp20_mae
 ```
+
+## 第二候选：共享 MLP 宽度（启动前登记）
+
+第一候选已完成，主指标从0.222459降至0.209484（5.83%相对改善），但仍落后XGB500d8约17.60%。显式零误差从0.169492降至0.131018，正值误差从0.299508升至0.324323。因此MAE收益没有解决正值拟合差距。此时仍有118/142轴落后树模型；不以删除困难轴或改变指标改善结果。
+
+另一个训练集诊断显示，8192个训练任务上的nutrition/metabolome共享梯度平均余弦为-0.00485，metabolome梯度范数中位数为nutrition的0.179倍。这只是局部诊断，不支持优先引入复杂梯度平衡方法，也不能证明没有任何任务干扰。
+
+假设：256维共享网络对许多营养关系的拟合容量有限。最小试验为256→512宽度，固定MAE、两层深度、所有输入/训练任务/来源权重、20轮训练和日程、batch256、lr0.001、seed20260922及任务顺序。父模型是已完成的R2 `mlp20_mae`，不是SmoothL1模型，因此本候选只改变宽度。不同形状必然改变初始参数，不宣称初始张量相同。
+
+观察主指标以及正值/零值误差；只有逐轴和正值误差支持才认为容量假设得到初步支持。即使总体提升，也须报告name-only和检索代价，并与最终较强树基线比较。该候选计为R2第2个配置，总上限仍为12。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_capacity.py --kind mlp --objective mae --mlp-width 512 --epochs 20 --schedule-epochs 20 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp20_mae_width512
+```

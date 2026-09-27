@@ -22,7 +22,8 @@ class NutritionModel:
             if digest(self.cache/name) != expected: raise ValueError(f"Stale text cache: {name}")
         self.model, _ = make_model(self.data, saved["text_dim"], saved["kind"],
             amount_weight=saved["config"]["amount_loss_weight"],
-            source_weight=saved["config"].get("source_calibrated_loss_weight", 1.))
+            source_weight=saved["config"].get("source_calibrated_loss_weight", 1.),
+            mlp_width=saved.get("args",{}).get("mlp_width",256))
         self.model.load_state_dict(saved["model_state"])
         self.model.to(self.device).eval()
         self.kind = saved["kind"]

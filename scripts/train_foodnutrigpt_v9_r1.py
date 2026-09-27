@@ -23,6 +23,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--batch-size",type=int,default=256);p.add_argument("--learning-rate",type=float,default=.001)
     p.add_argument("--amount-weight",type=float,default=1);p.add_argument("--source-weight",type=float,default=1)
     p.add_argument("--objective",choices=["hurdle","smooth_l1","mae"],default="hurdle")
+    p.add_argument("--mlp-width",type=int,default=256)
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
@@ -36,7 +37,7 @@ def main(version="V9-R1",protocol_change=None):
     text,cache=prepare_names(data,ROOT)
     panel=FamilyPanel(data,text,ROOT/"data/processed"/PANEL_VERSION,device)
     if digest(cache/"manifest.json")!=panel.manifest["name_cache_hash"]:raise ValueError("Text/task fingerprint mismatch.")
-    model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight)
+    model,config=make_model(data,text.shape[1],args.kind,amount_weight=args.amount_weight,source_weight=args.source_weight,mlp_width=args.mlp_width)
     model.to(device)
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
