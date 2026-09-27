@@ -66,3 +66,28 @@ def paired_axis_intervals(baseline, candidate, repeats=1000, seed=20260922):
             "difference_95_low":float(lo),"difference_95_high":float(hi),"valid_resamples":len(kept),
             "resamples_without_axis_support":int(repeats-len(kept)),"sparse_support_below_30":bool(counts[i]<30)})
     return pd.DataFrame(rows)
+
+
+def paired_group_rates(baseline, candidate, metrics, repeats=1000, seed=20260922):
+    """Absolute paired differences for source-equal food-group retrieval rates.
+
+    Relative changes are deliberately omitted because a sparse Recall@1 baseline
+    or bootstrap draw can be zero. Higher values are better for these metrics.
+    """
+    key="exact_name_group_id"
+    joined=baseline[[key]+list(metrics)].merge(candidate[[key]+list(metrics)],on=key,
+        suffixes=("_base","_candidate"),how="outer",validate="one_to_one",indicator=True)
+    if not len(joined) or not joined._merge.eq("both").all():raise ValueError("Retrieval groups differ or are empty.")
+    values=[joined[[m+suffix for m in metrics]].to_numpy(float) for suffix in ["_base","_candidate"]]
+    if not all(np.isfinite(v).all() and (v>=0).all() and (v<=1).all() for v in values):
+        raise ValueError("Retrieval rates must be finite in [0,1].")
+    differences=values[1]-values[0];rng=np.random.default_rng(seed);samples=[];n=len(joined)
+    for start in range(0,repeats,32):
+        weights=rng.multinomial(n,np.full(n,1/n),size=min(32,repeats-start))
+        samples.append(weights@differences/n)
+    interval=np.quantile(np.concatenate(samples),[.025,.975],axis=0)
+    return {metric:{"baseline":float(values[0][:,i].mean()),"candidate":float(values[1][:,i].mean()),
+        "candidate_minus_baseline":float(differences[:,i].mean()),
+        "difference_95_interval":interval[:,i].tolist(),"group_count":n,"repeats":repeats,"seed":seed,
+        "higher_is_better":True,"scope":"paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"}
+        for i,metric in enumerate(metrics)}
