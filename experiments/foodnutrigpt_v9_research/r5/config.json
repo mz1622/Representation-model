@@ -1,5 +1,7 @@
 {
   "version": "V9-R5", "max_candidates": 12, "registered_candidate_budgets": 12,
+  "exploration_status":"complete","confirmation_status":"not_completed",
+  "version_decision":"Retain full-input contrastive specialist for conditional3seed confirmation; reject general sparse superiority to batch-invariant nameKNN. No completion improvement accepted. No additional R5 screening configurations.",
   "data_version": "foodnutrigpt_v9_r0_v1", "view": "quarantined",
   "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
   "name_cache_sha256": "705e423f4145ce3a68482bd79f8be3236d8a14cc8836aeb36570751910a919c0",
