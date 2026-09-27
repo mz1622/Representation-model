@@ -8,7 +8,7 @@
 | V9-R1 | 共同训练任务、时长、amount2与树搜索完成；amount3/来源关闭尚未完成 | [训练优化](r1/README.md) |
 | V9-R2 | MLP损失/宽度/预算/归一化和树MAE对照完成；直接V9与双准则选点尚未完成，未确认 | [数值目标实验](r2/README.md) |
 | V9-R3 | 固定MLP的name-only任务比例0/10%/20%对照；10%运行、20%排队，未确认 | [任务比例实验](r3/README.md) |
-| 基线三种子复跑 | 固定搜索选出的RF/XGB；两个seed22运行，其余顺序排队 | [确认运行记录](baseline_confirmation_v1/README.md) |
+| 基线三种子复跑 | XGB seed22已逐项复现、seed23运行；RF seed22运行，其余排队 | [确认运行记录](baseline_confirmation_v1/README.md) |
 
 指标、数据隔离视图和验证面板已经冻结。历史测试集保持关闭。单种子探索、配对食品组区间和三种子确认分别记录；未达到确认门槛不写成确定结论。
 
