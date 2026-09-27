@@ -18,19 +18,23 @@ from foodcomp.research_text import prepare_names
 from foodcomp.research_neural import make_model,training_batch,loss,evaluate,OUTPUT_QUERY_POLICY
 from foodcomp.research_alignment import state_fingerprint
 from foodcomp.research_r1 import fingerprint_array
+from foodcomp.research_forward_loss import forward_loss
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--epochs',type=int,choices=[8,60],default=60)
     p.add_argument('--seed',type=int,choices=[20260922,20260923,20260924],default=20260922)
+    p.add_argument('--objective',choices=['smooth_l1','mae'],default='smooth_l1')
     p.add_argument('--output-dir',type=Path,required=True);args=p.parse_args()
     if args.epochs==8 and args.seed!=20260922:raise ValueError('Only original seed registered for compatibility replay.')
+    if args.epochs==8 and args.objective!='smooth_l1':raise ValueError('Only original loss registered for8-epoch replay.')
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True);started=time.monotonic()
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     files=[Path(__file__),ROOT/'src/foodcomp/research_neural.py',ROOT/'src/foodcomp/research_r0.py',
         ROOT/'src/foodcomp/research_text.py',ROOT/'src/foodcomp/research_inference.py',
-        ROOT/'scripts/train_global_foodnutrigpt_v8_single_stage.py',ROOT/'scripts/train_global_foodnutrigpt_v9_source_calibrated.py']
+        ROOT/'scripts/train_global_foodnutrigpt_v8_single_stage.py',ROOT/'scripts/train_global_foodnutrigpt_v9_source_calibrated.py',
+        ROOT/'src/foodcomp/research_forward_loss.py']
     snapshot=args.output_dir/'code_snapshot';snapshot.mkdir()
     for f in files:shutil.copyfile(f,snapshot/f.name)
     manifest={'status':'running','version':'V9-R5','kind':'name_mlp','seed':args.seed,'args':vars(args),
@@ -38,8 +42,8 @@ def main():
         'code_hashes':{str(f.relative_to(ROOT)):digest(f) for f in files},'complete_test_opened':False,
         'output_query_policy':OUTPUT_QUERY_POLICY,'confirmation_completed':False,
         'selection':'minimum fixed142nutrition validation scaled-log MAE; earliest strict minimum; retrieval evaluated only after selection',
-        'training_protocol':'Original R0 name_mlp width256; all observed187targets; per-batch axis-normalized SmoothL1; batch256 AdamW lr.001 wd.0001 clip1; cosine horizon=epochs eta_min1e-5',
-        'scope':'Same parent name-only predictor and loss, longer training including changed cosine horizon. This is not a pure added-update contrast or an optimized retrieval-selected checkpoint.',
+        'training_protocol':f'Original R0 name_mlp width256; all observed187targets; per-batch axis-normalized {args.objective}; batch256 AdamW lr.001 wd.0001 clip1; cosine horizon=epochs eta_min1e-5',
+        'scope':'Original forward inputs, row sampling and normalization. SmoothL1 default is original; MAE changes only pointwise loss relative to60-epoch parent. Retrieval is not used to select checkpoint.',
         'environment':{'python':platform.python_version(),'torch':torch.__version__,'numpy':np.__version__,'cuda':torch.version.cuda}}
     write_json(args.output_dir/'run_manifest.json',manifest)
     try:
@@ -62,10 +66,10 @@ def main():
             original=model(b)['amount_normalized'];altered={k:v.clone() for k,v in b.items()}
             altered['value'].fill_(123.);altered['masked'].fill_(False)
             assert torch.equal(original,model(altered)['amount_normalized'])
-        smoke=torch.optim.AdamW(model.parameters(),lr=.001);model.train();before=float(loss(model,b,'name_mlp',config).detach())
+        smoke=torch.optim.AdamW(model.parameters(),lr=.001);model.train();before=float(forward_loss(model,b,config,args.objective).detach())
         for _ in range(50):
-            smoke.zero_grad(set_to_none=True);ll=loss(model,b,'name_mlp',config);ll.backward();smoke.step()
-        model.eval();after=float(loss(model,b,'name_mlp',config).detach())
+            smoke.zero_grad(set_to_none=True);ll=forward_loss(model,b,config,args.objective);ll.backward();smoke.step()
+        model.eval();after=float(forward_loss(model,b,config,args.objective).detach())
         if not after<before:raise AssertionError('Overfit check failed.')
         assert torch.equal(cpu_rng,torch.get_rng_state())
         if gpu_rng:
@@ -84,7 +88,7 @@ def main():
             rng=np.random.default_rng(args.seed+epoch);order=rng.permutation(active);model.train();total=0.;batches=0;seen=0;norms=0.;clipped=0
             for start in range(0,len(order),256):
                 rows=order[start:start+256];b=training_batch(data,text,rows,device,rng,'name_mlp',.3,0.)
-                opt.zero_grad(set_to_none=True);ll=loss(model,b,'name_mlp',config);ll.backward()
+                opt.zero_grad(set_to_none=True);ll=forward_loss(model,b,config,args.objective);ll.backward()
                 norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
                 if not torch.isfinite(norm):raise FloatingPointError('Nonfinite gradient.')
                 opt.step();total+=float(ll.detach());batches+=1;seen+=len(rows);norms+=float(norm);clipped+=int(norm>1)
