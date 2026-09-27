@@ -31,6 +31,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--mlp-query-residual",action="store_true",help="Add a zero-initialized nonlinear axis-query readout residual.")
     p.add_argument("--dual-selection",action="store_true",help="Retain both primary and fixed-panel source-free hurdle best checkpoints.")
     p.add_argument("--name-only-probability",type=float,default=0.,help="Fraction of family tasks with all numeric input hidden; supervision is unchanged.")
+    p.add_argument("--context-dropout",choices=["none","fixed_30","mix_30_60_90"],default="none",help="R6: additional deletion after family hiding; targets unchanged.")
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
@@ -46,6 +47,8 @@ def main(version="V9-R1",protocol_change=None):
     if not np.isfinite(args.name_only_probability) or not 0<=args.name_only_probability<=1:raise ValueError("Name-only task probability must be in [0,1].")
     if not np.isfinite(args.metabolome_loss_weight) or not 0<args.metabolome_loss_weight<=1:raise ValueError("Metabolome weight must be in (0,1].")
     if args.metabolome_loss_weight!=1 and (args.kind!="mlp" or args.objective!="mae"):raise ValueError("Auxiliary coefficient is registered only for MAE MLP.")
+    if args.context_dropout!="none" and (version!="V9-R6" or args.kind!="mlp" or args.objective!="mae" or args.mlp_width!=512 or args.name_only_probability!=0 or args.metabolome_loss_weight!=1 or args.mlp_task_heads!="shared" or args.mlp_normalization!="layer_norm" or args.mlp_text_conditioning!="none" or args.mlp_query_residual or args.dual_selection or (args.epochs,args.schedule_epochs,args.batch_size,args.learning_rate)!=(60,60,256,.001)):
+        raise ValueError("R6 context dropout requires its registered MAE512/60 control configuration.")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -65,6 +68,7 @@ def main(version="V9-R1",protocol_change=None):
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
     if args.dual_selection:files.append(ROOT/"src/foodcomp/research_selection.py")
     if args.name_only_probability>0:files.append(ROOT/"src/foodcomp/research_task_mix.py")
+    if args.context_dropout!="none":files.append(ROOT/"src/foodcomp/research_context_dropout.py")
     if args.mlp_text_conditioning!="none":files.append(ROOT/"src/foodcomp/research_conditioning.py")
     if args.mlp_query_residual:files.append(ROOT/"src/foodcomp/research_query.py")
     files.extend([ROOT/"src/foodcomp/research_auxiliary.py"])
@@ -86,6 +90,9 @@ def main(version="V9-R1",protocol_change=None):
         manifest["secondary_selection"]="source-free BCE + amount_weight*positive SmoothL1; all187 axes; full fixed validation panel; source/candidate/profile equal weights; R0 scales; no source residual; earliest strict minimum; historical objective adapted to common protocol, not historical minibatch/mask replay"
     if args.name_only_probability>0:
         manifest["training_context_intervention"]="Bernoulli name-only assignment per original family-task ID per epoch. Independent NumPy SeedSequence(seed,epoch,3103); nested assignments across probabilities. Only the numeric visibility mask changes, never target labels/axes/weights or task count. Validation panel and inference stay fixed."
+    if args.context_dropout!="none":
+        manifest["training_context_intervention"]="R6 extra Bernoulli deletion of remaining252-axis context after complete family hiding. SeedSequence(seed,epoch,6106), task-ID keyed; no restoration or new targets. Same target labels/weights/exposure and validation."
+        manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
     if args.mlp_task_heads=="separate":
         manifest["task_head_intervention"]="Shared encoder with independent cloned-initialization linear heads. Any visible numeric input, including explicit zero, selects completion head; no visible numeric input selects name-only head. No target/source/assignment label enters routing."
         manifest["parameter_count"]=sum(p.numel() for p in model.parameters())
@@ -132,11 +139,20 @@ def main(version="V9-R1",protocol_change=None):
             order=np.random.default_rng(args.seed+epoch).permutation(len(panel.rows));model.train();weighted=0.;seen=0
             name_only_cells=0
             norm_sum=0.;clipped=0;steps=0
+            if args.context_dropout!="none":
+                from foodcomp.research_context_dropout import context_dropout_masks,drop_context
+                extra_hidden,rate_ids=context_dropout_masks(len(panel.rows),len(data.axes),args.context_dropout,args.seed,epoch)
+                context_counts=torch.zeros(6,dtype=torch.int64,device=device)
             if args.name_only_probability>0:
                 from foodcomp.research_task_mix import name_only_tasks,remove_numeric_context
                 name_tasks=name_only_tasks(len(panel.rows),args.name_only_probability,args.seed,epoch)
             for start_batch in range(0,len(order),args.batch_size):
                 ix=order[start_batch:start_batch+args.batch_size];batch=panel.batch(ix)
+                if args.context_dropout!="none":
+                    original_visible=~batch["masked"]
+                    batch=drop_context(batch,extra_hidden[ix]);visible=~batch["masked"]
+                    removed=original_visible&batch["masked"]
+                    context_counts+=torch.stack([original_visible.sum(),visible.sum(),removed.any(1).sum(),(~original_visible.any(1)).sum(),(~visible.any(1)).sum(),batch["target"].sum()])
                 if args.name_only_probability>0:
                     selected=torch.as_tensor(name_tasks[ix],device=device)
                     batch=remove_numeric_context(batch,selected)
@@ -156,6 +172,12 @@ def main(version="V9-R1",protocol_change=None):
                 "validation_legacy_log_mae":metrics["nutrition"]["log_mae"],"learning_rate":opt.param_groups[0]["lr"],
                 "training_tasks":seen,"elapsed_seconds":time.monotonic()-start})
             history[-1].update(mean_preclip_gradient_norm=norm_sum/steps,gradient_clip_fraction=clipped/steps)
+            if args.context_dropout!="none":
+                original_cells,remaining_cells,changed_tasks,original_empty,remaining_empty,target_cells=context_counts.cpu().tolist()
+                history[-1].update(training_order_sha256=fingerprint_array(order),context_mask_sha256=fingerprint_array(extra_hidden),context_rate_ids_sha256=fingerprint_array(rate_ids),
+                    original_visible_cells=original_cells,training_visible_cells=remaining_cells,removed_visible_cells=original_cells-remaining_cells,
+                    changed_context_tasks=changed_tasks,original_no_context_tasks=original_empty,training_no_context_tasks=remaining_empty,training_target_cells=target_cells,
+                    **{f"context_rate_{rate}_tasks":int((rate_ids==i).sum()) for i,rate in enumerate([30,60,90])})
             if args.name_only_probability>0:
                 history[-1].update(name_only_tasks=int(name_tasks.sum()),name_only_target_cells=name_only_cells,
                                    name_only_task_mask_sha256=fingerprint_array(name_tasks))
