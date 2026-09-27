@@ -69,6 +69,7 @@ class AlignmentPanel:
         self.weights=source_equal_weights(profiles)
         self.targets=self.namespace.text[self.rows]
         self.name_ids=self.namespace.profile_name_ids[self.rows]
+        self.group_ids=pd.factorize(profiles.exact_name_group_id,sort=True)[0].astype(np.int64)
         self.candidates=F.normalize(torch.as_tensor(self.namespace.features,device=self.device),dim=1)
         self.queries={}
         for fraction in [1.,.3]:
@@ -82,6 +83,8 @@ class AlignmentPanel:
             'training_rows':len(self.rows),'training_names':int(np.unique(self.name_ids).size),
             'training_rows_sha256':fingerprint_array(self.rows),'training_features_sha256':fingerprint_array(self.features),
             'training_targets_sha256':fingerprint_array(self.targets),'training_weights_sha256':fingerprint_array(self.weights),
+            'training_group_ids_sha256':fingerprint_array(self.group_ids),
+            'negative_exclusion':'Other names in same training candidate group are excluded, not made positives or merged. No fuzzy identity claims.',
             'nutrition_axes':self.axes.tolist(),'candidate_count':len(self.namespace.names),
             'candidate_features_sha256':fingerprint_array(self.namespace.features),
             'queries':{str(f):{'profiles':len(q['rows']),'rows_sha256':fingerprint_array(q['rows']),
@@ -103,7 +106,7 @@ class NumericNameMapper(nn.Module):
         return mapped
 
 
-def mapping_loss(mapped,target_vectors,name_ids,weights,*,objective,population_size,weight_sum,temperature=.07):
+def mapping_loss(mapped,target_vectors,name_ids,weights,*,objective,population_size,weight_sum,temperature=.07,group_ids=None):
     if mapped.shape!=target_vectors.shape or mapped.ndim!=2 or name_ids.shape!=mapped.shape[:1] or weights.shape!=name_ids.shape:
         raise ValueError('Mismatched mapping batch shapes.')
     if not torch.isfinite(mapped).all() or not torch.isfinite(target_vectors).all() or not torch.isfinite(weights).all() or not (weights>0).all():
@@ -120,6 +123,11 @@ def mapping_loss(mapped,target_vectors,name_ids,weights,*,objective,population_s
         candidates=target_vectors[first]
         if not torch.equal(candidates[inverse],target_vectors):raise ValueError('Duplicate exact-name vectors disagree.')
         logits=F.normalize(mapped,dim=1)@F.normalize(candidates,dim=1).T/temperature
+        if group_ids is not None:
+            if group_ids.shape!=name_ids.shape:raise ValueError('Invalid training group IDs.')
+            if not torch.equal(group_ids[first][inverse],group_ids):raise ValueError('An exact name belongs to different candidate groups.')
+            excluded=(group_ids[:,None]==group_ids[first][None,:]) & (inverse[:,None]!=torch.arange(len(unique),device=name_ids.device)[None,:])
+            logits=logits.masked_fill(excluded,torch.finfo(logits.dtype).min)
         per_row=F.cross_entropy(logits,inverse,reduction='none')
     else:raise ValueError(objective)
     value=(per_row*weights).sum()*(population_size/(len(mapped)*weight_sum))

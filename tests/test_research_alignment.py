@@ -52,6 +52,16 @@ def test_contrastive_labels_are_supervision_not_model_inputs():
     torch.testing.assert_close(model(x),before,rtol=0,atol=0)
 
 
+def test_same_candidate_group_alternative_name_is_excluded_not_positive():
+    mapped=torch.tensor([[1.,0.],[1.,0.],[0.,1.]],dtype=torch.float64,requires_grad=True)
+    target=mapped.detach().clone()
+    loss=mapping_loss(mapped,target,torch.tensor([5,6,9]),torch.ones(3,dtype=torch.float64),objective='contrastive',
+        population_size=3,weight_sum=3.,temperature=1.,group_ids=torch.tensor([0,0,1]))
+    # First two each face one other group; third still faces both distinct names.
+    expected=(2*torch.log1p(torch.exp(torch.tensor(-1.,dtype=torch.float64)))+torch.log1p(2*torch.exp(torch.tensor(-1.,dtype=torch.float64))))/3
+    torch.testing.assert_close(loss,expected);loss.backward();assert torch.isfinite(mapped.grad).all()
+
+
 def test_exact_ranks_perfect_worst_and_lexical_ties():
     distance=torch.tensor([[0.,1.,2.],[0.,1.,2.],[0.,0.,0.]])
     assert exact_ranks(distance,torch.tensor([0,2,2])).tolist()==[1,3,3]
