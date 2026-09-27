@@ -1,0 +1,15 @@
+{
+  "version":"V9-R6","status":"preregistered","max_candidates":12,"registered_candidate_budgets":3,
+  "data_version":"foodnutrigpt_v9_r0_v1","view":"quarantined","data_sha256":"48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "parent":"output/v9_r2/mlp60_mae_width512","parent_checkpoint_sha256":"f77e8501427efe870ad8c035a7900833ce442d8c4f666124f7447ce847d338e6",
+  "candidates":[
+    {"name":"mlp512_parent","reused_control":true,"output_dir":"output/v9_r2/mlp60_mae_width512","context_dropout":"none"},
+    {"name":"mlp512_context_mix","output_dir":"output/v9_r6/mlp512_context_mix","context_dropout":"mix_30_60_90"},
+    {"name":"mlp512_context_drop30","output_dir":"output/v9_r6/mlp512_context_drop30","context_dropout":"fixed_30"}
+  ],
+  "fixed":{"kind":"mlp","objective":"mae","mlp_width":512,"mlp_normalization":"layer_norm","mlp_task_heads":"shared","name_only_probability":0,"metabolome_loss_weight":1,"epochs":60,"schedule_epochs":60,"batch_size":256,"learning_rate":0.001,"seed":20260922,"weight_decay":0.0001,"gradient_clip_norm":1,"selection":"minimum fixed142 nutrition MAE; earliest strict minimum","validation_changed":false},
+  "mask_rng":"NumPy SeedSequence([seed,epoch,6106]); draw all task rate IDs first then all252-axis float32 uniforms; task-ID keyed",
+  "mask_scope":"Additional deletion of remaining input after complete family hiding. Labels,loss weights,target count andtask count unchanged. No forced axis restoration.",
+  "complete_test_opened":false,"external_provenance_confirmed":false,"confirmation_allowed":false,
+  "confirmation_seeds":[20260922,20260923,20260924],"generalization_protocol_status":"source/category holdout andfewshot remain unperformed; R6 numbering does not imply completion"
+}
