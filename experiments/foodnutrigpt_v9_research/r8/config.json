@@ -1,6 +1,6 @@
 {
   "version": "V9-R8",
-  "status": "input_preflight_complete_formal_runners_pending",
+  "status": "formal_mlp_and_tree_queues_running",
   "start_gate": "R7 all registered tasks/audits/report complete and dimension screening criterion passed",
   "max_candidates": 12,
   "registered_candidates": 12,
@@ -138,5 +138,10 @@
   "r7_gate_passed": true,
   "input_panels_receipt": "reports/v9_r8_input_panels_v2/verification.json",
   "input_functional_receipt": "reports/v9_r8_input_functional_v2/verification.json",
-  "formal_training_started": false
+  "formal_training_started": true,
+  "execution_contract": "reports/v9_r8_execution_contract_v1/manifest.json",
+  "implementation_commit": "6ff6f36d4f32c9c2dbf12eac6d32d0f3c21d6df4",
+  "tree_fit_n_jobs": 4,
+  "rf_prediction_n_jobs": 1,
+  "tree_functional_receipt": "reports/v9_r8_tree_functional_v1/verification.json"
 }
