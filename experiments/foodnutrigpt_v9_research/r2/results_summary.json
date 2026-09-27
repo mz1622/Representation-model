@@ -1,6 +1,6 @@
 {
   "version": "V9-R2",
-  "generated_utc": "2026-09-27T03:02:55.164191+00:00",
+  "generated_utc": "2026-09-27T03:06:07.183167+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
   "configuration_sha256": "f53a552138f40872c73d7f5856755726630c6162161af83416907be9c88d63ef",
   "runs": [
@@ -434,13 +434,48 @@
         "single_factor": "tree objective: squared error -> absolute error; all eligible training data, inputs, masks, weights and other hyperparameters unchanged"
       },
       "local_output": "output\\v9_r2\\xgb800d10_mae",
-      "manifest_status": "running",
-      "manifest_sha256": "a0691beefc77659e76b30ca9db6d4631dcce036856c1211860bd35cfccd79306",
+      "manifest_status": "complete",
+      "manifest_sha256": "4015eed0db80f6d9e55067a3b5c4aee32da5ac88a0a9cfe8b33db704befd6b44",
       "code_commit": "5c02342666ba23eebdb895e6ca4822a7bd1d1922",
-      "elapsed_seconds": null,
+      "elapsed_seconds": 2889.0310000000027,
       "epoch_completed": null,
       "best_epoch": null,
-      "checkpoint_sha256": null
+      "checkpoint_sha256": null,
+      "metrics": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.17611867121982364,
+          "log_mae": 0.053007961419793234,
+          "log_mse": 0.0342933412028584,
+          "raw_mae": 0.3127548317670078,
+          "positive_scaled_log_mae": 0.2515321572457159,
+          "zero_scaled_log_mae": 0.1328222064815064,
+          "log_rmse_root_mean_axis_mse": 0.1851846138394289
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.6283873156962032,
+          "log_mae": 0.03255693369413505,
+          "log_mse": 0.017709409280882975,
+          "raw_mae": 0.05876806122507698,
+          "positive_scaled_log_mae": 0.7715666255201825,
+          "zero_scaled_log_mae": 0.46222099889337476,
+          "log_rmse_root_mean_axis_mse": 0.13307670450113715
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.28495337176226787,
+          "log_mae": 0.04808659111147976,
+          "log_mse": 0.0303025554462333,
+          "raw_mae": 0.2516350206740298,
+          "positive_scaled_log_mae": 0.376674141589839,
+          "zero_scaled_log_mae": 0.193244470178358,
+          "log_rmse_root_mean_axis_mse": 0.17407629202804528
+        }
+      }
     },
     {
       "registered_configuration": {
@@ -459,10 +494,10 @@
       },
       "local_output": "output\\v9_r2\\mlp60_mae_width512_no_layernorm",
       "manifest_status": "running",
-      "manifest_sha256": "273ee4f5549fc4935048d18e35baea1ed386198b96a8b2959b7e626997659be3",
+      "manifest_sha256": "913285067c1b351503c6753b7fe2d1c52569f892f010ce1003f354dbe6fd534b",
       "code_commit": "af4f6ac1644d2bd26bbc5e5a0b4144b3b4f96242",
-      "elapsed_seconds": 1378.875,
-      "epoch_completed": 31,
+      "elapsed_seconds": 1552.1100000000006,
+      "epoch_completed": 35,
       "best_epoch": null,
       "checkpoint_sha256": null
     },
