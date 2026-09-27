@@ -1,4 +1,4 @@
-"""Optional nonlinear axis-query readout; not yet a registered training candidate.
+"""Optional nonlinear axis-query readout; registration is tracked in experiment records.
 
 The caller retains its original linear head and adds this residual. Context is
 encoded once, independently of the requested query set. No target value,

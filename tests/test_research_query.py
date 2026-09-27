@@ -2,6 +2,9 @@ import copy
 import pytest
 import torch
 from foodcomp.research_query import AxisQueryResidual
+from foodcomp.research_neural import make_model, batch_from_arrays
+from types import SimpleNamespace
+import numpy as np
 
 
 def test_zero_initial_residual_preserves_original_linear_predictions_and_gradient():
@@ -97,3 +100,41 @@ def test_factorized_joint_linear_matches_literal_concatenation_and_gradients():
     torch.testing.assert_close(a.grad, b.grad, rtol=1e-12, atol=1e-14)
     for first, second in zip(model.parameters(), literal.parameters()):
         torch.testing.assert_close(first.grad, second.grad, rtol=1e-12, atol=1e-14)
+
+
+def test_composite_head_preserves_parent_initialization_rng_and_predictions():
+    data = SimpleNamespace(axes=list(range(252)))
+    torch.manual_seed(20260922)
+    parent, _ = make_model(data, 32, "mlp", mlp_width=512)
+    rng = torch.get_rng_state()
+    torch.manual_seed(20260922)
+    candidate, _ = make_model(data, 32, "mlp", mlp_width=512, mlp_query_residual=True)
+    torch.testing.assert_close(rng, torch.get_rng_state(), rtol=0, atol=0)
+    for key, value in parent.state_dict().items():
+        torch.testing.assert_close(value, candidate.state_dict()[key], rtol=0, atol=0)
+    assert sum(p.numel() for p in candidate.parameters()) == 762365
+    batch = batch_from_arrays(np.zeros((3, 252)), np.zeros((3, 252), bool), np.ones((3, 32)), "cpu")
+    torch.testing.assert_close(parent(batch)["amount_normalized"], candidate(batch)["amount_normalized"], rtol=0, atol=0)
+
+
+def test_nonzero_composite_query_head_keeps_hidden_values_and_source_out_of_inputs(tmp_path):
+    data = SimpleNamespace(axes=list(range(4)))
+    model, _ = make_model(data, 3, "mlp", mlp_query_residual=True)
+    torch.nn.init.normal_(model.query_residual.joint[-1].weight, std=.1)
+    batch = batch_from_arrays(np.array([[0., 3., 2., 5.]]), np.array([[True, False, True, False]]), np.ones((1, 3)), "cpu")
+    reference = model(batch)["amount_normalized"]
+    batch["value"][batch["masked"]] = 12345
+    batch["source"] = torch.tensor([99])
+    batch["target"] = torch.ones((1, 4), dtype=torch.bool)
+    torch.testing.assert_close(reference, model(batch)["amount_normalized"], rtol=0, atol=0)
+    torch.save(model.state_dict(), tmp_path/"model.pt")
+    loaded, _ = make_model(data, 3, "mlp", mlp_query_residual=True)
+    loaded.load_state_dict(torch.load(tmp_path/"model.pt", weights_only=True))
+    torch.testing.assert_close(reference, loaded(batch)["amount_normalized"], rtol=0, atol=0)
+
+
+def test_unsupported_query_combinations_fail():
+    data = SimpleNamespace(axes=list(range(4)))
+    for kwargs in [dict(kind="numeric_mlp"), dict(kind="v9"), dict(kind="mlp", mlp_task_heads="separate")]:
+        with pytest.raises(ValueError, match="shared head"):
+            make_model(data, 3, mlp_query_residual=True, **kwargs)
