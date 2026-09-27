@@ -34,3 +34,7 @@ R1的MLP和V9在增加训练预算后，补全改善但name-only主指标退步�
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r3_task_mix.py --kind mlp --objective mae --mlp-width 512 --name-only-probability 0.1 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r3/mlp60_name_mix10
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r3_task_mix.py --kind mlp --objective mae --mlp-width 512 --name-only-probability 0.2 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r3/mlp60_name_mix20
 ```
+
+## 10%完成后的追加登记
+
+原三比例计划保持不变。10%三任务对照已完成，补全退步、name-only与检索改善；在这个固定已完成父控制上追加一个[独立预测头候选](separate_heads_plan.md)。这一候选只改变输出头共享，不同时改变比例、输入特征、监督、日程或架构主干。当前总预算4/12；20%先完成，再顺序启动新候选，结果与旧计划分别完整记录。

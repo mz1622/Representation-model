@@ -24,7 +24,8 @@ class NutritionModel:
             amount_weight=saved["config"]["amount_loss_weight"],
             source_weight=saved["config"].get("source_calibrated_loss_weight", 1.),
             mlp_width=saved.get("args",{}).get("mlp_width",256),
-            mlp_normalization=saved.get("args",{}).get("mlp_normalization","layer_norm"))
+            mlp_normalization=saved.get("args",{}).get("mlp_normalization","layer_norm"),
+            mlp_task_heads=saved.get("args",{}).get("mlp_task_heads","shared"))
         self.model.load_state_dict(saved["model_state"])
         self.model.to(self.device).eval()
         self.kind = saved["kind"]
