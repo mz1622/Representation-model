@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--max-depth", type=int, default=16)
     parser.add_argument("--leaf-size", type=int, default=3)
     parser.add_argument("--learning-rate", type=float, default=.05)
+    parser.add_argument("--xgb-objective", choices=["reg:squarederror", "reg:absoluteerror"], default="reg:squarederror")
     parser.add_argument("--seed", type=int, default=20260922)
     parser.add_argument("--n-jobs", type=int, default=8)
     parser.add_argument("--text-components", type=int, default=32)
@@ -84,7 +85,7 @@ def main():
                         model = XGBRegressor(n_estimators=args.trees, max_depth=args.max_depth,
                             learning_rate=args.learning_rate, min_child_weight=5, subsample=.8,
                             colsample_bytree=.8, reg_lambda=1., tree_method="hist",
-                            objective="reg:squarederror", random_state=args.seed+int(axis), n_jobs=args.n_jobs)
+                            objective=args.xgb_objective, random_state=args.seed+int(axis), n_jobs=args.n_jobs)
                     model.fit(x_train, data.values[train, axis], sample_weight=weights/weights.mean())
                     predicted_t = np.maximum(model.predict(x_valid).astype(float), 0)
                     result = data.scale[axis]*np.expm1(predicted_t)

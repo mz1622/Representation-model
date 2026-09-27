@@ -72,3 +72,15 @@ R0中对同一个已训练hurdle检查点直接去掉存在概率相乘，总体
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_direct.py --kind v9_direct --objective smooth_l1 --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_direct_smoothl1_20
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_direct.py --kind v9_direct --objective mae --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_direct_mae_20
 ```
+
+## 第七个候选：较强XGBoost的损失对齐（启动前登记）
+
+R1登记的XGB800/深10/lr0.03已完成，主指标0.173784、原log-MAE0.052339，比此前XGB500d8更强。后续成功标准必须使用较强配置，不能保留较弱参照。该模型仍使用平方误差训练；既然神经网络已尝试MAE，树模型也应获得直接优化绝对误差的机会。
+
+固定XGB800d10的全部合格训练行、原名称32维特征、家族遮蔽、标签/尺度/来源权重、800树、深10、lr0.03、subsample/colsample0.8、min_child_weight5、lambda1以及seed20260922；只把objective从reg:squarederror改为reg:absoluteerror。用同一完整验证面板评分，不增加行数上限，也不为树模型另设较弱输入。
+
+这是一项树基线的单因素筛选，不把更多参数搜索解释为单因素。完成后保留两个目标的结果，取较强者作为阶段里程碑参照。R2候选计数升至7，仍不超过12。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_foodnutrigpt_v9_r0_baseline.py --method xgb --trees 800 --max-depth 10 --learning-rate 0.03 --xgb-objective reg:absoluteerror --n-jobs 4 --output-dir output/v9_r2/xgb800d10_mae
+```
