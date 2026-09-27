@@ -6,7 +6,7 @@
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
   "max_candidates": 12,
-  "registered_candidate_budgets_including_duration_checkpoints": 10,
+  "registered_candidate_budgets_including_duration_checkpoints": 11,
   "max_hours": 72,
   "registered_candidates": [
     {"name": "mlp20_mae", "kind": "mlp", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "loss: SmoothL1(beta=1) -> MAE"},
@@ -16,7 +16,8 @@
     {"name": "v9_direct_mae_20", "parent": "output/v9_r2/v9_direct_smoothl1_20", "kind": "v9_direct", "objective": "mae", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 1, "source_weight": 1, "seed": 20260922, "single_factor": "direct numerical loss: SmoothL1 -> MAE"},
     {"name": "xgb800d10_mae", "parent": "output/v9_r1/xgb800d10", "method": "xgb", "trees": 800, "max_depth": 10, "learning_rate": 0.03, "xgb_objective": "reg:absoluteerror", "n_jobs": 4, "seed": 20260922, "single_factor": "tree objective: squared error -> absolute error; all eligible training data, inputs, masks, weights and other hyperparameters unchanged"},
     {"name": "mlp60_mae_width512_no_layernorm", "parent": "output/v9_r2/mlp60_mae_width512", "kind": "mlp", "objective": "mae", "mlp_width": 512, "mlp_normalization": "none", "epochs": 60, "schedule_epochs": 60, "learning_rate": 0.001, "batch_size": 256, "seed": 20260922, "single_factor": "hidden LayerNorm -> Identity; all shared linear weights have matched initialization"},
-    {"name": "v9_20_dual_selection", "kind": "v9", "objective": "hurdle", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 1, "source_weight": 1, "seed": 20260922, "dual_selection": true, "selection_candidates": ["primary142", "source_free_fixed_panel_hurdle187"], "single_factor": "checkpoint selection rule within one replay trajectory; same labels, scales, full validation tasks and source-free outputs; adapted historical hurdle objective, not historical minibatch/mask replay"}
+    {"name": "v9_20_dual_selection", "kind": "v9", "objective": "hurdle", "epochs": 20, "schedule_epochs": 20, "batch_size": 64, "learning_rate": 0.0001, "amount_weight": 1, "source_weight": 1, "seed": 20260922, "dual_selection": true, "selection_candidates": ["primary142", "source_free_fixed_panel_hurdle187"], "single_factor": "checkpoint selection rule within one replay trajectory; same labels, scales, full validation tasks and source-free outputs; adapted historical hurdle objective, not historical minibatch/mask replay"},
+    {"name": "mlp60_mae_width1024", "parent": "output/v9_r2/mlp60_mae_width512", "kind": "mlp", "objective": "mae", "mlp_width": 1024, "mlp_normalization": "layer_norm", "mlp_task_heads": "shared", "name_only_probability": 0, "epochs": 60, "schedule_epochs": 60, "batch_size": 256, "learning_rate": 0.001, "seed": 20260922, "single_factor": "hidden width512 ->1024 at the same60-epoch schedule and zero added name-only tasks; changed tensor shapes and initialization are part of the capacity intervention", "parameters_control": 667900, "parameters_candidate": 1859836}
   ],
   "confirmation_seeds": [20260922, 20260923, 20260924],
   "primary_gain_vs_stronger_tuned_tree": 0.05,

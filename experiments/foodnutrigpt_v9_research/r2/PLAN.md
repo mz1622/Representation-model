@@ -115,3 +115,19 @@ R0要求保留旧hurdle-loss选点对照，但已有运行没有保存每个epoc
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_selection.py --kind v9 --dual-selection --epochs 20 --schedule-epochs 20 --batch-size 64 --learning-rate 0.0001 --output-dir output/v9_r2/v9_20_dual_selection
 .\.venv\Scripts\python.exe scripts/evaluate_foodnutrigpt_research_checkpoint.py --checkpoint output/v9_r2/v9_20_dual_selection/best_hurdle_model.pt --selection-budget-epochs 20 --output-dir output/v9_r2/v9_20_dual_selection/evaluation_hurdle
 ```
+
+## 第十一个候选：固定60轮预算下512→1024宽度（启动前登记）
+
+进入依据只使用已经完成的R2对照：20轮同预算256→512使主误差改善3.37%，正值贡献−0.00491635、零值−0.00214027；同60轮日程训练预算增加后，512宽度补全达到0.184491、训练面板0.110761，仍落后XGB800d10约6.16%，主要剩余差距来自正值。取消LayerNorm和R3替换10%/20%任务均没有改善补全。这些证据支持进行一次更宽网络试验，但不证明容量不足，也不能仅凭训练/验证差距推断增加参数会成功。
+
+父控制固定 `output/v9_r2/mlp60_mae_width512`。唯一候选改变为隐藏宽度512→1024，参数数667,900→1,859,836；保持两层GELU网络、LayerNorm、共享输出头、0%额外name-only任务、MAE、全部187监督轴、相同标签/尺度/原名称PCA32/家族任务/来源权重、seed20260922、batch256、lr0.001、AdamW weight_decay0.0001、clip1及60轮cosine日程。参数形状、初始化张量和优化几何随宽度变化，不能宣称相同初始权重，也不能唯一归因于可表示函数数量。
+
+先核验当前默认512模型与父控制冻结实现的有限步兼容性，再核对1024参数数与实际训练批次的隐藏输入/保存加载行为。正式运行从头初始化，保留内置小样本过拟合检查及恢复参数/随机状态。完整跑满60轮，仍按固定验证142轴主指标的最早严格最小值选点，不因早期训练曲线改日程或停止条件。
+
+完成后统一报告三任务、全训练面板拟合、正值/零值可加误差贡献、逐轴/来源与食品组配对区间；对照固定512父控制、同协议XGB800d10/RF400及专项名称近邻/检索名称MLP。不把R3或另一个模型的名称分数拼接进该模型。若训练拟合改善而验证无收益，记录为该预算下未支持容量改进；若验证改善，只支持这个宽度干预，接受最终收益仍需三个固定种子与更强树的确认比较。
+
+此项计为R2第11/12个候选，原72小时上限不变。为控制资源，在当前R1 amount=3的训练成功结束后启动；不根据该V9的结果更换父控制。其他已登记实验与R3独立头继续独立执行。来源原始证据及历史测试状态不变。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_capacity_long.py --kind mlp --objective mae --mlp-width 1024 --mlp-normalization layer_norm --mlp-task-heads shared --name-only-probability 0 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width1024
+```
