@@ -37,12 +37,13 @@ class DirectSourceCalibratedModel(legacy_v9.SourceCalibratedFoodNutriGPT):
         return self.source_amount_residual.weight[self.train_source_indices].square().mean()
 
 class DenseModel(nn.Module):
-    def __init__(self, text_dim, axes, kind, width=256):
+    def __init__(self, text_dim, axes, kind, width=256, normalization="layer_norm"):
         super().__init__()
         if not isinstance(width,int) or width<1:raise ValueError("Positive integer MLP width required.")
+        if normalization not in {"layer_norm","none"}:raise ValueError("Unknown MLP normalization.")
         self.kind = kind
         size = text_dim if kind == "name_mlp" else axes*2 if kind == "numeric_mlp" else text_dim+axes*2
-        self.encoder = nn.Sequential(nn.Linear(size,width),nn.GELU(),nn.LayerNorm(width),
+        self.encoder = nn.Sequential(nn.Linear(size,width),nn.GELU(),nn.LayerNorm(width) if normalization=="layer_norm" else nn.Identity(),
                                      nn.Linear(width,width),nn.GELU())
         self.head = nn.Linear(width, axes)
 
@@ -55,10 +56,10 @@ class DenseModel(nn.Module):
     def forward(self, batch):
         return {"amount_normalized": self.head(self.encode(batch))}
 
-def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_width=256):
+def make_model(data, text_dim, kind, *, amount_weight=1., source_weight=1., mlp_width=256, mlp_normalization="layer_norm"):
     config=legacy_v9.Config(amount_loss_weight=amount_weight, source_calibrated_loss_weight=source_weight)
     if kind in {"mlp","name_mlp","numeric_mlp"}:
-        return DenseModel(text_dim,len(data.axes),kind,mlp_width),config
+        return DenseModel(text_dim,len(data.axes),kind,mlp_width,mlp_normalization),config
     source_count=int(data.profiles.source_index.max())+1
     if kind in {"v9","v9_direct"}:
         sources=np.unique(data.profiles.iloc[data.train].source_index)

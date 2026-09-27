@@ -54,11 +54,12 @@ def test_nonfinite_loss_or_prediction_fails():
 
 
 @pytest.mark.parametrize("width",[256,512])
-def test_checkpoint_reload_predictions_match(tmp_path,width):
-    model,_=make_model(tiny_data(),3,"mlp",mlp_width=width);model.eval()
+@pytest.mark.parametrize("normalization",["layer_norm","none"])
+def test_checkpoint_reload_predictions_match(tmp_path,width,normalization):
+    model,_=make_model(tiny_data(),3,"mlp",mlp_width=width,mlp_normalization=normalization);model.eval()
     batch=batch_from_arrays(np.ones((2,4)),np.zeros((2,4),bool),np.ones((2,3)),"cpu")
     torch.save(model.state_dict(),tmp_path/"model.pt")
-    loaded,_=make_model(tiny_data(),3,"mlp",mlp_width=width)
+    loaded,_=make_model(tiny_data(),3,"mlp",mlp_width=width,mlp_normalization=normalization)
     loaded.load_state_dict(torch.load(tmp_path/"model.pt",weights_only=True));loaded.eval()
     with torch.no_grad():torch.testing.assert_close(model(batch)["amount_normalized"],loaded(batch)["amount_normalized"],rtol=0,atol=0)
 
@@ -116,3 +117,12 @@ def test_direct_v9_supervises_explicit_zero_and_omits_missing():
     assert model.source_amount_residual.weight.grad is not None
     assert model.source_presence_residual.weight.grad is None
     assert all(p.grad is None for p in model.presence_head.parameters())
+
+
+def test_normalization_ablation_preserves_linear_initialization_and_rng():
+    torch.manual_seed(19);a,_=make_model(tiny_data(),3,"mlp",mlp_width=512);rng_a=torch.get_rng_state()
+    torch.manual_seed(19);b,_=make_model(tiny_data(),3,"mlp",mlp_width=512,mlp_normalization="none");rng_b=torch.get_rng_state()
+    torch.testing.assert_close(rng_a,rng_b,rtol=0,atol=0)
+    assert set(a.state_dict())-set(b.state_dict())=={"encoder.2.weight","encoder.2.bias"}
+    for key,value in b.state_dict().items():
+        torch.testing.assert_close(a.state_dict()[key],value,rtol=0,atol=0)

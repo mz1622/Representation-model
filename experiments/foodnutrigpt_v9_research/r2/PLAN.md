@@ -84,3 +84,17 @@ R1登记的XGB800/深10/lr0.03已完成，主指标0.173784、原log-MAE0.052339
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_foodnutrigpt_v9_r0_baseline.py --method xgb --trees 800 --max-depth 10 --learning-rate 0.03 --xgb-objective reg:absoluteerror --n-jobs 4 --output-dir output/v9_r2/xgb800d10_mae
 ```
+
+## 第八个候选：MLP隐藏层归一化（启动前登记）
+
+60轮MAE/512已完成，最佳点第58轮，补全主指标0.184491，仍比XGB800d10差6.16%，原log-MAE差11.10%。训练面板主误差0.110761，说明拟合和泛化均需要继续区分；仅凭差距不能断定缺少容量或已经过拟合。当前剩余宏误差差距主要在维生素、矿物质及脂肪酸，不只在低支持轴。
+
+待检验假设：逐样本隐藏层LayerNorm可能影响可见营养数值幅度的表示和优化。该假设不是上述误差差距的逻辑结论，只是一项小而明确的结构对照；文本、掩码与偏置仍提供幅度信息，不能声称LayerNorm完全丢失了数值量级。
+
+最小试验：把MLP第一隐藏层的LayerNorm替换成Identity。保持两层512宽度、同一MAE、所有数据/名称/尺度/任务/权重、seed20260922、batch256、lr0.001、60轮训练和日程、优化器及验证选点。所有共同线性层的初始张量和初始化随机数状态须逐项相同。与完成的MAE/512/60直接比较，不同时加宽或改变损失。
+
+判断依据为主指标、正值/零值、逐轴/来源、训练与验证误差、name-only和名称检索。可能改善，也可能因数值优化不稳或泛化退步而被否定；未获三种子证据时不接受为最终改进。计为第8个筛选候选，仍在12个上限内。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_normalization.py --kind mlp --objective mae --mlp-width 512 --mlp-normalization none --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width512_no_layernorm
+```
