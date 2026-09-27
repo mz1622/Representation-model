@@ -1,0 +1,22 @@
+{
+  "version": "V9-R3",
+  "data_version": "foodnutrigpt_v9_r0_v1",
+  "view": "quarantined",
+  "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
+  "max_candidates": 12,
+  "registered_candidate_budgets": 3,
+  "max_hours": 72,
+  "registered_candidates": [
+    {"name": "mlp60_mix0_reused_control", "output_dir": "output/v9_r2/mlp60_mae_width512", "reused_control": true, "name_only_probability": 0, "kind": "mlp", "objective": "mae", "mlp_width": 512, "mlp_normalization": "layer_norm", "epochs": 60, "schedule_epochs": 60, "batch_size": 256, "learning_rate": 0.001, "seed": 20260922},
+    {"name": "mlp60_name_mix10", "parent": "output/v9_r2/mlp60_mae_width512", "name_only_probability": 0.1, "kind": "mlp", "objective": "mae", "mlp_width": 512, "mlp_normalization": "layer_norm", "epochs": 60, "schedule_epochs": 60, "batch_size": 256, "learning_rate": 0.001, "seed": 20260922, "single_factor": "10% Bernoulli fraction of existing family tasks hide all numeric context; no change in targets or weights"},
+    {"name": "mlp60_name_mix20", "parent": "output/v9_r2/mlp60_mae_width512", "name_only_probability": 0.2, "kind": "mlp", "objective": "mae", "mlp_width": 512, "mlp_normalization": "layer_norm", "epochs": 60, "schedule_epochs": 60, "batch_size": 256, "learning_rate": 0.001, "seed": 20260922, "single_factor": "20% Bernoulli fraction of existing family tasks hide all numeric context; same random uniforms as10%"}
+  ],
+  "assignment": "Independent numpy SeedSequence([seed,epoch,3103]); Bernoulli per fixed family-task ID, probabilities share uniforms and are nested; not per-profile or per-axis resampling",
+  "fixed": {"labels": true, "train_scales": true, "name_cache": true, "observed_targets_per_epoch": 1828536, "family_tasks_per_epoch": 337048, "source_weights": true, "all187_loss_axes": true, "validation_panel": true, "selection": "142-axis completion primary only; earliest strict minimum", "no_early_stopping": true},
+  "confirmation_seeds": [20260922, 20260923, 20260924],
+  "primary_gain_vs_stronger_tuned_tree": 0.05,
+  "max_legacy_nutrition_log_mae_regression": 0.02,
+  "complete_test_opened": false,
+  "external_label_provenance_confirmed": false,
+  "parent_iteration_status": "Completed MLP parent and normalization rejection support this independent branch; R1/R2 V9 ablations are still running and are not declared complete."
+}

@@ -1,0 +1,150 @@
+{
+  "version": "V9-R3",
+  "generated_utc": "2026-09-27T03:35:27.842815+00:00",
+  "status": "exploration in progress; no accepted improvement over stronger tree baseline",
+  "configuration_sha256": "d63e9a70bd86542da90c47e7f1d26d0ddb9a4d988281d6bf3b6e6d2667d0f683",
+  "runs": [
+    {
+      "registered_configuration": {
+        "name": "mlp60_mix0_reused_control",
+        "output_dir": "output/v9_r2/mlp60_mae_width512",
+        "reused_control": true,
+        "name_only_probability": 0,
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922
+      },
+      "local_output": "output\\v9_r2\\mlp60_mae_width512",
+      "manifest_status": "complete",
+      "manifest_sha256": "75e54b447d5146f8dfb0bd8fd8946522ea34b6b78ffe082cbdd41cc9cf3e895a",
+      "code_commit": "89877c9c0207c8e48de4ecd5c400ea5ff8c277f5",
+      "elapsed_seconds": 1884.219000000001,
+      "epoch_completed": 60,
+      "best_epoch": 58,
+      "checkpoint_sha256": "f77e8501427efe870ad8c035a7900833ce442d8c4f666124f7447ce847d338e6",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18449135754384371,
+            "log_mae": 0.05814825627429503,
+            "log_mse": 0.03813247411383595,
+            "raw_mae": 0.3586597053289985,
+            "positive_scaled_log_mae": 0.2821666350672073,
+            "zero_scaled_log_mae": 0.11381119461195682,
+            "log_rmse_root_mean_axis_mse": 0.19527538020404914
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5650996946990219,
+            "log_mae": 0.03282093187145539,
+            "log_mse": 0.018311707064047725,
+            "raw_mae": 0.06111006319211429,
+            "positive_scaled_log_mae": 0.7629709579425621,
+            "zero_scaled_log_mae": 0.16530594790934258,
+            "log_rmse_root_mean_axis_mse": 0.13532075622035122
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.2760815991052502,
+            "log_mae": 0.052053445589119715,
+            "log_mse": 0.03336277081308477,
+            "raw_mae": 0.2870568502693205,
+            "positive_scaled_log_mae": 0.3978682100906884,
+            "zero_scaled_log_mae": 0.12325697776118144,
+            "log_rmse_root_mean_axis_mse": 0.18265478590249085
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.5598760676903538,
+            "log_mae": 0.20728471522879624,
+            "log_mse": 0.24370781747883982,
+            "raw_mae": 1.2240947664913353,
+            "positive_scaled_log_mae": 0.7052233573717843,
+            "zero_scaled_log_mae": 0.4585832285988239,
+            "log_rmse_root_mean_axis_mse": 0.49366771970510676
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 1.0608042523722943,
+            "log_mae": 0.06517358757717448,
+            "log_mse": 0.03949096868690313,
+            "raw_mae": 0.10753356221398411,
+            "positive_scaled_log_mae": 1.2227492218917495,
+            "zero_scaled_log_mae": 0.4927226941058973,
+            "log_rmse_root_mean_axis_mse": 0.1987233471107588
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.6804202832555267,
+            "log_mae": 0.17308685028589257,
+            "log_mse": 0.1945647255235609,
+            "raw_mae": 0.9554035676010639,
+            "positive_scaled_log_mae": 0.8297616670156264,
+            "zero_scaled_log_mae": 0.46484549741964803,
+            "log_rmse_root_mean_axis_mse": 0.4410949166829753
+          }
+        }
+      }
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_name_mix10",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "name_only_probability": 0.1,
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "single_factor": "10% Bernoulli fraction of existing family tasks hide all numeric context; no change in targets or weights"
+      },
+      "local_output": "output\\v9_r3\\mlp60_name_mix10",
+      "manifest_status": "not started; check active process queues separately"
+    },
+    {
+      "registered_configuration": {
+        "name": "mlp60_name_mix20",
+        "parent": "output/v9_r2/mlp60_mae_width512",
+        "name_only_probability": 0.2,
+        "kind": "mlp",
+        "objective": "mae",
+        "mlp_width": 512,
+        "mlp_normalization": "layer_norm",
+        "epochs": 60,
+        "schedule_epochs": 60,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "seed": 20260922,
+        "single_factor": "20% Bernoulli fraction of existing family tasks hide all numeric context; same random uniforms as10%"
+      },
+      "local_output": "output\\v9_r3\\mlp60_name_mix20",
+      "manifest_status": "not started; check active process queues separately"
+    }
+  ],
+  "completed_retrieval_evaluations": [],
+  "process_liveness": "Manifest status only. Check actual process/session before scheduling or declaring a live job.",
+  "confirmation_seeds_completed": false,
+  "complete_test_opened": false,
+  "provenance_unresolved": true,
+  "individual_predictions_included": false,
+  "interpretation": "Aggregate ledger, not a success certificate. Historical baseline and retrieval comparisons are in README and ignored local result files."
+}

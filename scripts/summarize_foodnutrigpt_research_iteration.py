@@ -11,14 +11,14 @@ from foodcomp.research_r0 import digest,write_json
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--version",choices=["r1","r2"],required=True)
+    p.add_argument("--version",choices=["r1","r2","r3"],required=True)
     args=p.parse_args()
     folder=ROOT/"experiments/foodnutrigpt_v9_research"/args.version
     config=json.loads((folder/"config.json").read_text())
     registered=config.get("registered_candidates",config.get("neural_runs",[])+config.get("tree_runs",[]))
     runs=[]
     for item in registered:
-        path=ROOT/f"output/v9_{args.version}"/item["name"]
+        path=ROOT/item.get("output_dir",f"output/v9_{args.version}/{item['name']}")
         record={"registered_configuration":item,"local_output":str(path.relative_to(ROOT))}
         manifest=path/"run_manifest.json"
         if not manifest.exists():

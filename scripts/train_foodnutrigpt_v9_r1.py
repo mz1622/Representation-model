@@ -14,7 +14,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/"src"))
 from foodcomp.research_r0 import ResearchData,VERSION,digest,write_json,score_predictions
 from foodcomp.research_text import prepare_names
 from foodcomp.research_neural import make_model,evaluate
-from foodcomp.research_r1 import FamilyPanel,PANEL_VERSION,model_loss
+from foodcomp.research_r1 import FamilyPanel,PANEL_VERSION,model_loss,fingerprint_array
 
 def main(version="V9-R1",protocol_change=None):
     p=argparse.ArgumentParser(description=__doc__)
@@ -26,6 +26,7 @@ def main(version="V9-R1",protocol_change=None):
     p.add_argument("--mlp-width",type=int,default=256)
     p.add_argument("--mlp-normalization",choices=["layer_norm","none"],default="layer_norm")
     p.add_argument("--dual-selection",action="store_true",help="Retain both primary and fixed-panel source-free hurdle best checkpoints.")
+    p.add_argument("--name-only-probability",type=float,default=0.,help="Fraction of family tasks with all numeric input hidden; supervision is unchanged.")
     p.add_argument("--seed",type=int,default=20260922)
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
@@ -35,6 +36,7 @@ def main(version="V9-R1",protocol_change=None):
     if args.kind=="v9_direct" and args.objective not in {"smooth_l1","mae"}:raise ValueError("Direct V9 requires an explicit regression objective.")
     if args.kind!="mlp" and args.mlp_normalization!="layer_norm":raise ValueError("MLP normalization is only configurable for MLP runs.")
     if args.dual_selection and args.kind!="v9":raise ValueError("Dual hurdle selection requires V9 hurdle outputs.")
+    if not np.isfinite(args.name_only_probability) or not 0<=args.name_only_probability<=1:raise ValueError("Name-only task probability must be in [0,1].")
     args.output_dir.mkdir(parents=True)
     torch.set_num_threads(4);torch.manual_seed(args.seed);np.random.seed(args.seed)
     start=time.monotonic();device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -46,6 +48,7 @@ def main(version="V9-R1",protocol_change=None):
     model.to(device)
     files=[Path(__file__),ROOT/"src/foodcomp/research_r1.py",ROOT/"src/foodcomp/research_neural.py",ROOT/"src/foodcomp/research_r0.py"]
     if args.dual_selection:files.append(ROOT/"src/foodcomp/research_selection.py")
+    if args.name_only_probability>0:files.append(ROOT/"src/foodcomp/research_task_mix.py")
     snapshot=args.output_dir/"code_snapshot";snapshot.mkdir()
     for f in files:(snapshot/f.name).write_bytes(f.read_bytes())
     manifest={"status":"running","version":version,"args":vars(args),"seed":args.seed,
@@ -58,6 +61,8 @@ def main(version="V9-R1",protocol_change=None):
         "data_limitation":"R0 quarantine view retained; FooDB provenance remains unresolved; conditional benchmark research only"}
     if args.dual_selection:
         manifest["secondary_selection"]="source-free BCE + amount_weight*positive SmoothL1; all187 axes; full fixed validation panel; source/candidate/profile equal weights; R0 scales; no source residual; earliest strict minimum; historical objective adapted to common protocol, not historical minibatch/mask replay"
+    if args.name_only_probability>0:
+        manifest["training_context_intervention"]="Bernoulli name-only assignment per original family-task ID per epoch. Independent NumPy SeedSequence(seed,epoch,3103); nested assignments across probabilities. Only the numeric visibility mask changes, never target labels/axes/weights or task count. Validation panel and inference stay fixed."
     write_json(args.output_dir/"run_manifest.json",manifest)
     try:
         # Verify overfitting, then restore both weights and RNG before all controlled arms.
@@ -82,8 +87,16 @@ def main(version="V9-R1",protocol_change=None):
                 "data_hash":manifest["data_hash"],"name_cache_hash":manifest["name_cache_hash"],"panel_hash":manifest["panel_hash"],"args":{k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}}
         for epoch in range(1,args.epochs+1):
             order=np.random.default_rng(args.seed+epoch).permutation(len(panel.rows));model.train();weighted=0.;seen=0
+            name_only_cells=0
+            if args.name_only_probability>0:
+                from foodcomp.research_task_mix import name_only_tasks,remove_numeric_context
+                name_tasks=name_only_tasks(len(panel.rows),args.name_only_probability,args.seed,epoch)
             for start_batch in range(0,len(order),args.batch_size):
                 ix=order[start_batch:start_batch+args.batch_size];batch=panel.batch(ix)
+                if args.name_only_probability>0:
+                    selected=torch.as_tensor(name_tasks[ix],device=device)
+                    batch=remove_numeric_context(batch,selected)
+                    name_only_cells+=int(batch["target"][selected].sum())
                 opt.zero_grad(set_to_none=True);loss=model_loss(model,batch,args.kind,config,args.objective);loss.backward()
                 norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
                 if not torch.isfinite(norm):raise FloatingPointError("Nonfinite gradient.")
@@ -97,6 +110,9 @@ def main(version="V9-R1",protocol_change=None):
             history.append({"epoch":epoch,"train_loss":weighted/seen,"validation_primary":primary,
                 "validation_legacy_log_mae":metrics["nutrition"]["log_mae"],"learning_rate":opt.param_groups[0]["lr"],
                 "training_tasks":seen,"elapsed_seconds":time.monotonic()-start})
+            if args.name_only_probability>0:
+                history[-1].update(name_only_tasks=int(name_tasks.sum()),name_only_target_cells=name_only_cells,
+                                   name_only_task_mask_sha256=fingerprint_array(name_tasks))
             if args.dual_selection:
                 history[-1].update({"validation_"+key:value for key,value in selection.items()})
                 if selection["source_free_hurdle"]<best_hurdle:
