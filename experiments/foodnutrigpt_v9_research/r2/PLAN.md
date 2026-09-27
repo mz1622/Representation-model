@@ -131,3 +131,21 @@ R0要求保留旧hurdle-loss选点对照，但已有运行没有保存每个epoc
 ```powershell
 .\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_capacity_long.py --kind mlp --objective mae --mlp-width 1024 --mlp-normalization layer_norm --mlp-task-heads shared --name-only-probability 0 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_width1024
 ```
+
+## 第十二个候选：同一名称输入的模型内标准化（启动前登记）
+
+已完成的512→1024宽度试验降低训练误差，但补全主指标改善0.78%的食品组区间跨零，name-only退步11.56%。不据此继续扩大参数。新增[训练集尺度诊断](name_conditioning_audit.md)显示：既有PCA32的坐标标准差为0.07384–0.19299；在固定512初始化及8,192个训练家族任务上，名称第一层贡献RMS为数值/可见性联合贡献的7.85%。这个描述性现象支持检验数值条件，但不是模型忽略文本或标准化必然有效的证据。
+
+父控制仍固定 `output/v9_r2/mlp60_mae_width512`。唯一改变是在MLP内部对既有32维名称向量应用固定 `(x-mean)/std`。均值与总体标准差只按42,469个不同训练原始名称字符串等权计算，使用float64拟合后保存float32 buffer；不裁剪、不重新训练PCA、不增加维数、不读取验证向量拟合、不用营养标签拟合。同一字符串须对应完全相同缓存向量，退化坐标直接失败。统计量嵌入检查点并保留哈希，推理只加载、不重拟合。没有名称的nutrition表征分支仍输入固定原始零向量，与任何食品名称无关。
+
+这是模型内部固定可逆仿射重参数化，改变初始化对应的函数、梯度、AdamW正则化的有效几何；**不声称只改变优化速度或只消除了某个混杂因素**。所有可训练线性层与父控制初始张量及初始化随机数相同，参数量667,900不变；新增的是无梯度buffer。标准化不增加模型可表示函数集合，但固定初始化和优化器下的学习过程可以不同。
+
+保留原冻结名称缓存及learner输入32维向量、训练/验证任务、标签/尺度/权重、两层512/GELU/LayerNorm/共享头、MAE/187轴、0%额外name-only、batch256、lr0.001、AdamW weight_decay0.0001、clip1、seed20260922及60轮cosine日程。所有方法仍在外部接口接收相同信息；这属于模型结构内部的数值处理，已有树基线无需因这个内部层重新拟合。不能把模型内部变换后的激活冒称逐数值相同的中间表示；若未来改变外部缓存、维数、监督或评分，则必须重算基线。
+
+预期现象：若当前数值条件限制文本利用，可能观察到同预算下训练拟合、补全正值或name-only改善；也可能因放大不利方向、改变正则化而退步。保留全部60轮并按固定补全主指标选择最早严格最小值，不依据早期曲线调整倍率、超参数或停止条件。完整报告三任务、全训练拟合、正值/零值可加贡献、逐轴/来源、与固定父控制/较强树/名称专项基线的食品组配对区间。没有收益、或有名称/检索代价都如实保留；最终接受仍需三个固定种子和原有5%/2%门槛。
+
+启动前须通过训练统计量隔离测试、默认实现与父快照有限步兼容性、所有线性层初始化/随机数匹配、任意隐藏标签不影响输入或输出、显式零与未观测区别、保存重载及任意查询接口检查。运行前保存源码快照和配置。此项使R2达到12/12筛选预算，72小时上限不变；不再向本轮添加第13个候选。现有双准则V9与RF第三种子继续独立完成，历史测试保持关闭。
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_foodnutrigpt_v9_r2_conditioning.py --kind mlp --objective mae --mlp-width 512 --mlp-text-conditioning train_unique_name --mlp-normalization layer_norm --mlp-task-heads shared --name-only-probability 0 --epochs 60 --schedule-epochs 60 --batch-size 256 --learning-rate 0.001 --output-dir output/v9_r2/mlp60_mae_name_standardized
+```
