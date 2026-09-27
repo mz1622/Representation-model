@@ -18,5 +18,6 @@
   "confirmation_seeds":[20260922,20260923,20260924],
   "paired_bootstrap":{"unit":"whole exact-name food candidate group","repeats":1000,"seed":20260922},
   "completion_protocol_changed":false,"complete_test_opened":false,"external_provenance_confirmed":false,
-  "independent_mapper_completion_and_name_only":"not defined; never borrow another model's capabilities"
+  "independent_mapper_completion_and_name_only":"not defined; never borrow another model's capabilities",
+  "pretraining_negative_exclusion_amendment":"Exclude other names in the same existing exact-name candidate group from contrastive negatives, while only original exact name remains positive. No food identity or nutrition merge; only training group IDs; strict historical evaluation unchanged.222 groups with2 original strings observed before any new model candidate result."
 }
