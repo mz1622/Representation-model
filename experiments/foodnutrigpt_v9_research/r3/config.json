@@ -14,6 +14,11 @@
   "assignment": "Independent numpy SeedSequence([seed,epoch,3103]); Bernoulli per fixed family-task ID, probabilities share uniforms and are nested; not per-profile or per-axis resampling",
   "fixed": {"labels": true, "train_scales": true, "name_cache": true, "observed_targets_per_epoch": 1828536, "family_tasks_per_epoch": 337048, "source_weights": true, "all187_loss_axes": true, "validation_panel": true, "selection": "142-axis completion primary only; earliest strict minimum", "no_early_stopping": true},
   "confirmation_seeds": [20260922, 20260923, 20260924],
+  "fixed_task_references": {
+    "name_only": "output/v9_r0/name_knn_quarantined",
+    "retrieval": "output/v9_r0/retrieval_name_mlp_v1",
+    "interpretation": "Additional comparisons against completed dedicated-task baselines under the same input/data/evaluation protocol; no new fitted candidate or combined best-checkpoint claim."
+  },
   "primary_gain_vs_stronger_tuned_tree": 0.05,
   "max_legacy_nutrition_log_mae_regression": 0.02,
   "complete_test_opened": false,
