@@ -26,8 +26,10 @@ def main():
     if args.output_dir.exists():raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True)
     manifest=json.loads((args.run_dir/"run_manifest.json").read_text())
-    if manifest["status"]!="failed" or manifest["epoch_completed"]!=16 or manifest["error"]!="Nonfinite prediction.":
-        raise ValueError("Expected the retained epoch17 centred-view failure.")
+    if manifest["status"]!="failed" or manifest["epoch_completed"] not in {16,17} or manifest["error"]!="Nonfinite prediction.":
+        raise ValueError("Expected a retained epoch17/18 centred-view failure.")
+    epoch=manifest["epoch_completed"]+1
+    stable_inverse="inverse_numerics" in manifest
     for relative,sha in manifest["code_hashes"].items():
         if digest(ROOT/relative)!=sha:raise ValueError(f"Failed-run source changed: {relative}")
     result={"status":"incomplete","diagnostic_only":True,"candidate_resumed":False,
@@ -38,7 +40,7 @@ def main():
     try:
         torch.set_num_threads(4);device=torch.device("cuda")
         saved=torch.load(args.run_dir/"latest_training_state.pt",map_location="cpu",weights_only=True)
-        if saved["best_epoch"]!=16:raise ValueError("Wrong replay starting epoch.")
+        if saved["best_epoch"]!=epoch-1:raise ValueError("Wrong replay starting epoch.")
         data=ResearchData(ROOT/"data/processed"/VERSION);text,cache=prepare_names(data,ROOT)
         panel=FamilyPanel(data,text,ROOT/"data/processed"/PANEL_VERSION,device)
         for actual,expected in [(digest(data.root/"manifest.json"),manifest["data_hash"]),
@@ -52,8 +54,8 @@ def main():
         scheduler=torch.optim.lr_scheduler.CosineAnnealingLR(opt,T_max=60,eta_min=.00001)
         scheduler.load_state_dict(saved["scheduler"])
         torch.set_rng_state(saved["cpu_rng"]);torch.cuda.set_rng_state_all(saved["cuda_rng"])
-        order=np.random.default_rng(20260922+17).permutation(len(panel.rows))
-        masks=extra_view_masks(len(panel.rows),len(data.axes),.3,20260922,17)
+        order=np.random.default_rng(20260922+epoch).permutation(len(panel.rows))
+        masks=extra_view_masks(len(panel.rows),len(data.axes),.3,20260922,epoch)
         model.train();losses=[];norms=[];supervised=[];consistency=[]
         for start in range(0,len(order),256):
             ix=order[start:start+256];batch=panel.batch(ix)
@@ -63,7 +65,7 @@ def main():
             if not torch.isfinite(norm):raise FloatingPointError("Nonfinite replay training gradient.")
             opt.step();losses.append(float(loss.detach()));norms.append(float(norm))
             supervised.append(float(parts["supervised"]));consistency.append(float(parts["consistency"]))
-        result.update(replayed_epoch=17,training_tasks=len(order),optimizer_steps=len(losses),
+        result.update(replayed_epoch=epoch,stable_inverse=stable_inverse,training_tasks=len(order),optimizer_steps=len(losses),
             view_mask_sha256=fingerprint_array(masks),learning_rate=opt.param_groups[0]["lr"],
             all_training_losses_gradients_finite=True,all_parameters_finite=all(torch.isfinite(x).all().item() for x in model.parameters()),
             max_training_loss=max(losses),max_preclip_gradient_norm=max(norms),
@@ -89,24 +91,31 @@ def main():
                     nonfinite_amounts+=int((~torch.isfinite(amount)).sum())
                     if not torch.isfinite(amount).all():raise FloatingPointError("Nonfinite pre-inverse model output.")
                     amount_min=min(amount_min,float(amount.min()));amount_max=max(amount_max,float(amount.max()))
-                    raw=torch.expm1(amount.clamp_min(0))*torch.as_tensor(data.scale,device=device,dtype=amount.dtype)
+                    scale_tensor=torch.as_tensor(data.scale,device=device,dtype=amount.dtype)
+                    raw=torch.expm1(amount.clamp_min(0))*scale_tensor
+                    if stable_inverse:
+                        wide=torch.expm1(amount.double().clamp_min(0))*scale_tensor.double()
+                        raw=torch.where(~torch.isfinite(raw),wide.to(raw.dtype),raw)
                     bad=torch.nonzero(~torch.isfinite(raw),as_tuple=False).cpu().numpy()
                     for i,a in bad:
                         u=float(amount[i,a]);scale=float(data.scale[a]);diagnostic_raw64=float(np.expm1(max(0.,u))*scale)
                         offending.append({"profile_index":int(rr[i]),"axis_index":int(a),"mask_family":str(family),
                             "amount_normalized":u,"scale":scale,"raw_float64_diagnostic":diagnostic_raw64,
                             "is_scored_job":(int(rr[i]),int(a)) in targets,"loss_eligible":bool(data.axes.iloc[a].loss_eligible),
-                            "axis_loss_group":str(data.axes.iloc[a].loss_group)})
+                            "axis_loss_group":str(data.axes.iloc[a].loss_group),
+                            "final_float32_representable":bool(np.isfinite(diagnostic_raw64) and diagnostic_raw64<=np.finfo(np.float32).max)})
         if not offending:raise AssertionError("No overflow located after reproduced failure.")
         frame=pd.DataFrame(offending)
         frame.to_parquet(args.output_dir/"overflow_cells_private.parquet",index=False)
-        torch.save({"model_state":model.state_dict(),"diagnostic_only":True,"replayed_epoch":17},args.output_dir/"replayed_epoch17_diagnostic_not_candidate.pt")
+        torch.save({"model_state":model.state_dict(),"diagnostic_only":True,"replayed_epoch":epoch},args.output_dir/f"replayed_epoch{epoch}_diagnostic_not_candidate.pt")
         result.update(status="complete_failure_reproduced",preinverse_outputs_all_finite=nonfinite_amounts==0,
             preinverse_min=amount_min,preinverse_max=amount_max,overflow_cells=len(frame),
             overflow_unique_profiles=int(frame.profile_index.nunique()),overflow_axes=sorted(frame.axis_index.unique().tolist()),
             overflow_loss_groups=frame.axis_loss_group.value_counts().to_dict(),
             overflow_supervised_axes_cells=int(frame.loss_eligible.sum()),overflow_scored_jobs=int(frame.is_scored_job.sum()),
             inverse_float64_all_finite=bool(np.isfinite(frame.raw_float64_diagnostic).all()),
+            final_float32_representable_cells=int(frame.final_float32_representable.sum()),
+            maximum_float64_final_value=float(frame.raw_float64_diagnostic.max()),
             overflow_preinverse_range=[float(frame.amount_normalized.min()),float(frame.amount_normalized.max())],
             scope="Diagnostic replay from saved optimizer/scheduler/RNG with unchanged source and masks; original failed epoch was not saved, so no bitwise claim about that lost state. Float64 values only diagnose inverse overflow, never replace benchmark scores or resume selection. Failed candidate remains failed.",
             elapsed_seconds=time.monotonic()-started)
