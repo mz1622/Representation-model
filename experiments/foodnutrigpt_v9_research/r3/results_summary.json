@@ -1,8 +1,8 @@
 {
   "version": "V9-R3",
-  "generated_utc": "2026-09-27T05:35:40.940002+00:00",
+  "generated_utc": "2026-09-27T06:40:06.226235+00:00",
   "status": "exploration in progress; no accepted improvement over stronger tree baseline",
-  "configuration_sha256": "5581c5a9d70388de536a930e6a5b77c0999eac15cd950ba6ad7f428c20ff1b48",
+  "configuration_sha256": "67b8526bc282ae17a4d789855c28e5a3763cc8cf0d65216e33468651c62deedf",
   "runs": [
     {
       "registered_configuration": {
@@ -315,16 +315,127 @@
         "parameters_candidate": 797176
       },
       "local_output": "output\\v9_r3\\mlp60_mix10_separate_heads",
-      "manifest_status": "running",
-      "manifest_sha256": "3ec10f3151a560103c9ca5a665b98ffc9fee0a6c8fd4a299a73c476cc07388f8",
+      "manifest_status": "complete",
+      "manifest_sha256": "afe5c654a840a0e150e36392e48b392a6fc7daab042f42667b80b47a9a2477e2",
       "code_commit": "5feee463f12f7c9582803750968707e7974ebbef",
-      "elapsed_seconds": 184.73399999999674,
-      "epoch_completed": 3,
-      "best_epoch": null,
-      "checkpoint_sha256": null
+      "elapsed_seconds": 3530.875,
+      "epoch_completed": 60,
+      "best_epoch": 55,
+      "checkpoint_sha256": "5afe1a6928fb58daa561a6b04a39a0331babfd1c3771540ec0d7ed8021c4ecb4",
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.1926008422909338,
+            "log_mae": 0.06219422978153923,
+            "log_mse": 0.049191399819071994,
+            "raw_mae": 0.3760710138422287,
+            "positive_scaled_log_mae": 0.2941791323187372,
+            "zero_scaled_log_mae": 0.11188591922277588,
+            "log_rmse_root_mean_axis_mse": 0.22179134297594214
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5835807268059495,
+            "log_mae": 0.03854626724759072,
+            "log_mse": 0.024665902737997784,
+            "raw_mae": 0.06914518789306243,
+            "positive_scaled_log_mae": 0.7840820352764231,
+            "zero_scaled_log_mae": 0.24746370384791277,
+            "log_rmse_root_mean_axis_mse": 0.15705382115057814
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.28668691075711406,
+            "log_mae": 0.056503543610268214,
+            "log_mse": 0.043289542232717235,
+            "raw_mae": 0.3022118578651566,
+            "positive_scaled_log_mae": 0.41207020522299315,
+            "zero_scaled_log_mae": 0.1367552169942507,
+            "log_rmse_root_mean_axis_mse": 0.20806139053826694
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.3153872782628451,
+            "log_mae": 0.10967322903640336,
+            "log_mse": 0.09219483590086902,
+            "raw_mae": 0.6579121946967599,
+            "positive_scaled_log_mae": 0.4612803509985715,
+            "zero_scaled_log_mae": 0.23719783180144968,
+            "log_rmse_root_mean_axis_mse": 0.3036360253673286
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.7330624123132201,
+            "log_mae": 0.04747995767280086,
+            "log_mse": 0.02828856844416957,
+            "raw_mae": 0.0809115467249674,
+            "positive_scaled_log_mae": 0.8752345215764054,
+            "zero_scaled_log_mae": 0.38993135695481057,
+            "log_rmse_root_mean_axis_mse": 0.16819205820778094
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.41589733725892464,
+            "log_mae": 0.09470693378847762,
+            "log_mse": 0.07681632234177023,
+            "raw_mae": 0.5190617713880399,
+            "positive_scaled_log_mae": 0.5608949909771945,
+            "zero_scaled_log_mae": 0.26521404055739156,
+            "log_rmse_root_mean_axis_mse": 0.2771575767352757
+          }
+        }
+      }
     }
   ],
   "completed_retrieval_evaluations": [
+    {
+      "local_output": "output\\v9_r3\\retrieval_mlp60_mix10_separate_heads",
+      "metrics": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0068766036115161765,
+            "recall_at_1": 0.001548467017652524,
+            "recall_at_5": 0.007228022828828032,
+            "recall_at_10": 0.013222433600259553
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.011747201732181835,
+            "recall_at_1": 0.0034310564846530994,
+            "recall_at_5": 0.013161442292008482,
+            "recall_at_10": 0.02309830843479846
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "method": "name_predictions",
+        "ridge_alpha": null,
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "checkpoint_sha256": "5afe1a6928fb58daa561a6b04a39a0331babfd1c3771540ec0d7ed8021c4ecb4",
+        "code_sha256": "4f631878d97b5d753fbe6c52038a7e4fae86d7df4ab34bd2a2e3d50ff2c84832",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "elapsed_seconds": 6.860000000000582,
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "unseen_names": "All query groups are validation-only. Candidate names include train+validation text, never their measured nutrition.",
+        "complete_test_opened": false,
+        "scientific_claim_allowed": false
+      },
+      "metrics_sha256": "fed42daa83b11b0237e1cc271323cefab32a964b1e6d2bbf4f1149e5d8d594d1"
+    },
     {
       "local_output": "output\\v9_r3\\retrieval_mlp60_name_mix10",
       "metrics": {

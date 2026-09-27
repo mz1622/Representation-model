@@ -1,5 +1,8 @@
 {
   "version": "V9-R3",
+  "exploration_status": "complete",
+  "confirmation_status": "not_completed",
+  "version_decision": "Reject all added candidates as completion improvements; retain named task-tradeoff branches. No model accepted and no three-seed superiority claim.",
   "data_version": "foodnutrigpt_v9_r0_v1",
   "view": "quarantined",
   "training_panel": "foodnutrigpt_v9_r1_tasks_v1",
