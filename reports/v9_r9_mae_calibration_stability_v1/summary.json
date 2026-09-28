@@ -1,0 +1,213 @@
+{
+  "status": "complete",
+  "records": [
+    {
+      "seed": 20260922,
+      "selected_epoch": 60,
+      "checkpoint_sha256": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+      "raw_training_source_table_mean_square_252axes": 0.002132259076461196,
+      "regularization_term": 2.132259076461196e-07,
+      "max_abs_centering_roundoff": 1.3892228404680887e-08
+    },
+    {
+      "seed": 20260923,
+      "selected_epoch": 60,
+      "checkpoint_sha256": "09f728d3bb161c22d942d0d617895007a6a850df679d7e6ccb94aae796bd8092",
+      "raw_training_source_table_mean_square_252axes": 0.002340506762266159,
+      "regularization_term": 2.340506762266159e-07,
+      "max_abs_centering_roundoff": 1.1408701539039612e-08
+    },
+    {
+      "seed": 20260924,
+      "selected_epoch": 57,
+      "checkpoint_sha256": "7c1fec8110ecf13f270d6f891af583cfa92b2563c9a3efa7cc4a18eef2e91684",
+      "raw_training_source_table_mean_square_252axes": 0.0026002165395766497,
+      "regularization_term": 2.6002165395766496e-07,
+      "max_abs_centering_roundoff": 1.4357889691988627e-08
+    }
+  ],
+  "subsets": [
+    {
+      "seed": 20260922,
+      "subset": "nutrition",
+      "axes": 142,
+      "source_count": 24,
+      "rms": 0.05835869807028639,
+      "mean_absolute": 0.015395256748379252,
+      "max_absolute": 1.3775919675827026
+    },
+    {
+      "seed": 20260922,
+      "subset": "food_metabolome",
+      "axes": 45,
+      "source_count": 24,
+      "rms": 0.03099854749400495,
+      "mean_absolute": 0.004022703805665313,
+      "max_absolute": 0.852295458316803
+    },
+    {
+      "seed": 20260922,
+      "subset": "all_supervised",
+      "axes": 187,
+      "source_count": 24,
+      "rms": 0.053079281462539776,
+      "mean_absolute": 0.012658546147191406,
+      "max_absolute": 1.3775919675827026
+    },
+    {
+      "seed": 20260923,
+      "subset": "nutrition",
+      "axes": 142,
+      "source_count": 24,
+      "rms": 0.0615606793552554,
+      "mean_absolute": 0.016358205324060793,
+      "max_absolute": 1.3836599588394165
+    },
+    {
+      "seed": 20260923,
+      "subset": "food_metabolome",
+      "axes": 45,
+      "source_count": 24,
+      "rms": 0.030471416070151,
+      "mean_absolute": 0.004161307920138787,
+      "max_absolute": 0.8467074036598206
+    },
+    {
+      "seed": 20260923,
+      "subset": "all_supervised",
+      "axes": 187,
+      "source_count": 24,
+      "rms": 0.05568833595266382,
+      "mean_absolute": 0.01342312306108491,
+      "max_absolute": 1.3836599588394165
+    },
+    {
+      "seed": 20260924,
+      "subset": "nutrition",
+      "axes": 142,
+      "source_count": 24,
+      "rms": 0.06571410972147362,
+      "mean_absolute": 0.01735004541987317,
+      "max_absolute": 1.4143167734146118
+    },
+    {
+      "seed": 20260924,
+      "subset": "food_metabolome",
+      "axes": 45,
+      "source_count": 24,
+      "rms": 0.024935925073937024,
+      "mean_absolute": 0.004486039267558058,
+      "max_absolute": 0.5052644610404968
+    },
+    {
+      "seed": 20260924,
+      "subset": "all_supervised",
+      "axes": 187,
+      "source_count": 24,
+      "rms": 0.05855596961074451,
+      "mean_absolute": 0.0142544289661075,
+      "max_absolute": 1.4143167734146118
+    }
+  ],
+  "seed_pairs": [
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260923,
+      "subset": "nutrition",
+      "pearson_r": 0.9737407597232735,
+      "difference_rms": 0.01410427719273277,
+      "difference_rms_over_average_offset_rms": 0.23522932649463008
+    },
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260923,
+      "subset": "food_metabolome",
+      "pearson_r": 0.9713062621957642,
+      "difference_rms": 0.00738135046005652,
+      "difference_rms_over_average_offset_rms": 0.24016121149486724
+    },
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260923,
+      "subset": "all_supervised",
+      "pearson_r": 0.973381401244938,
+      "difference_rms": 0.01281291653733112,
+      "difference_rms_over_average_offset_rms": 0.23560167707673116
+    },
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260924,
+      "subset": "nutrition",
+      "pearson_r": 0.9714785404130398,
+      "difference_rms": 0.016518507765032026,
+      "difference_rms_over_average_offset_rms": 0.26627120090255685
+    },
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260924,
+      "subset": "food_metabolome",
+      "pearson_r": 0.8774747141667288,
+      "difference_rms": 0.015039081039273434,
+      "difference_rms_over_average_offset_rms": 0.5377392634213508
+    },
+    {
+      "seed_a": 20260922,
+      "seed_b": 20260924,
+      "subset": "all_supervised",
+      "pearson_r": 0.9627374509931576,
+      "difference_rms": 0.016174864001115792,
+      "difference_rms_over_average_offset_rms": 0.2897805817715698
+    },
+    {
+      "seed_a": 20260923,
+      "seed_b": 20260924,
+      "subset": "nutrition",
+      "pearson_r": 0.9692567307993342,
+      "difference_rms": 0.01630916761525776,
+      "difference_rms_over_average_offset_rms": 0.25628276791604965
+    },
+    {
+      "seed_a": 20260923,
+      "seed_b": 20260924,
+      "subset": "food_metabolome",
+      "pearson_r": 0.9075735978032544,
+      "difference_rms": 0.013080478274192293,
+      "difference_rms_over_average_offset_rms": 0.47215686600720363
+    },
+    {
+      "seed_a": 20260923,
+      "seed_b": 20260924,
+      "subset": "all_supervised",
+      "pearson_r": 0.9639773926051928,
+      "difference_rms": 0.015593410388993222,
+      "difference_rms_over_average_offset_rms": 0.272983590947358
+    }
+  ],
+  "input_hashes": {
+    "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+    "data/processed/foodnutrigpt_v9_r0_v1/axes.csv": "404d81da221ea4c33cf93c433383dda8c38c6c2dba06efe579832fd43dbf076f",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "output/v9_r9/tf192_mae_lr3e4_60/best_model.pt": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923/run_manifest.json": "0feb506b39c3d6aeba8c968dd6ed8377df3349d55e1886197afa210271ae7d5c",
+    "reports/v9_r9_confirmation_seed20260923_audit_v1/verification.json": "48886bbb7d8608776fa112bca06ac2d6405ca15f50e8f1c34db19f0846878579",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923/best_model.pt": "09f728d3bb161c22d942d0d617895007a6a850df679d7e6ccb94aae796bd8092",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260924/run_manifest.json": "ab7a5a495fea117ad69376926cf7390564ab7db108486b074c1059dc1f707f9a",
+    "reports/v9_r9_confirmation_seed20260924_audit_v1/verification.json": "f0183c0312d249aaf35e8e6c3376400999e176b90abe992e71663fd1299e58f9",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260924/best_model.pt": "7c1fec8110ecf13f270d6f891af583cfa92b2563c9a3efa7cc4a18eef2e91684"
+  },
+  "script_sha256": "6b350f11e2aa0a56f6e1bc15c4bca93312620a9f5f0a0bdaf9ea415a713598ab",
+  "elapsed_seconds": 0.0779999999795109,
+  "device": "cpu",
+  "torch_threads": 1,
+  "model_forward_performed": false,
+  "training_performed": false,
+  "raw_composition_values_loaded": false,
+  "validation_labels_loaded": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "current_mse_run_read_or_modified": false,
+  "goal_achieved": false,
+  "scope": "Learned-parameter descriptors only, equally weighting24 training sources. The models were previously selected on validation. High parameter correlation does not show calibration improves source-free predictions; low correlation does not prove the cause of prediction variance. Offsets are in scaled-log space and are not concentrations. Different source/axis supervision coverage is not controlled. No causal calibration on/off contrast has been performed."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "reviewed_parameter_diagnosis",
+  "bilingual_result_rows_checked": 6,
+  "input_hashes_verified": true,
+  "no_model_forward_or_fit": true,
+  "readme_sha256": "949103e90e875477ff8fc491b809ca2d262ba820d940c16d13419a8b5496e9e1",
+  "english_sha256": "8c55724a3741f1ec114c484d83a4200c0a55722a9debae77652fa555f8b8d6af",
+  "summary_sha256": "949f5158a4674041427efb7c16c592a50f023f03de9dfb05dca58214a127d2c5",
+  "causal_calibration_ablation_performed": false,
+  "goal_achieved": false
+}

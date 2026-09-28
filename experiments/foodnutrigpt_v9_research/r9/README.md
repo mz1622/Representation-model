@@ -4,6 +4,8 @@
 
 完整本轮[八节研究记录与决定](confirmation_v1/README.md)、综合[中文报告](../report_snapshot_r9_confirmation_v1/REPORT_ZH.md)、[英文报告](../report_snapshot_r9_confirmation_v1/REPORT_EN.md)及[报告审阅凭据](../report_snapshot_r9_confirmation_v1/review_verification.json)已保存。逐轴诊断支持下一步单独检验MAE→MSE，不先改容量、采样或来源校准。旧数据、RF/XGBoost及测试使用状态保持冻结。
 
+MAE→MSE已按[独立预登记](mse_v1/PLAN.md)启动，现阶段等待完整60轮及审计；[分析入口](mse_v1/ANALYSIS.md)已排队。等待期间的[来源参数稳定性诊断](../../../reports/v9_r9_mae_calibration_stability_v1/README.md)只读取三个已完成MAE检查点：营养偏置相关性0.969–0.974，但不证明校准改善或损害性能，不据此改动在跑配置。
+
 以下保留各时点的历史记录；“待复验”“正在运行”仅指当时，不是当前作业状态。
 
 ## 历史首组交接记录
