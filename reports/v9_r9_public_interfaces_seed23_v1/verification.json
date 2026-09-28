@@ -1,0 +1,41 @@
+{
+  "status": "complete_public_interface_contract_check",
+  "run": "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923",
+  "seed": 20260923,
+  "checkpoint_sha256": "09f728d3bb161c22d942d0d617895007a6a850df679d7e6ccb94aae796bd8092",
+  "input_hashes": {
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923/run_manifest.json": "0feb506b39c3d6aeba8c968dd6ed8377df3349d55e1886197afa210271ae7d5c",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923/best_model.pt": "09f728d3bb161c22d942d0d617895007a6a850df679d7e6ccb94aae796bd8092",
+    "src/foodcomp/research_inference.py": "ceba19ae5365b070dbfcfbdcc4ecaa4d35cad66ebdf900dcb634093cb3e807e4",
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/audit_foodnutrigpt_r9_public_interfaces.py": "e1aeea0e913dd9b9851de2ff6d40279d18921b595389c6ea2ca725113d500665"
+  },
+  "checks": {
+    "all_three_modalities_finite_expected_width": true,
+    "name_representation_independent_of_numeric_context": true,
+    "nutrition_representation_independent_of_supplied_name": true,
+    "unknown_modality_rejected": true,
+    "caller_supplied_unobserved_axis_predicted": true,
+    "visible_target_rejected": true,
+    "context_only_output_rejected": true,
+    "retrieval_query_has_no_name_parameter": true,
+    "retrieval_uses_name_predicted_profiles_and_negative_mse": true,
+    "candidate_order_and_duplicate_names_invariant": true,
+    "explicit_zero_retrieval_query_retained": true,
+    "empty_numeric_retrieval_query_rejected": true
+  },
+  "device": "cpu",
+  "cpu_threads": 2,
+  "representation_width": 192,
+  "candidate_training_names": 3,
+  "training_query_profiles": 1,
+  "new_text_embeddings_created": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "validation_query_values_used": false,
+  "new_performance_result": false,
+  "scope": "One completed checkpoint, cached train names and one train profile. Checks public modality/query/ranking contracts only. Axis-token mean representations are probes, not trained contrastive embeddings. This does not establish transfer, retrieval quality, or all-name coverage.",
+  "elapsed_seconds": 1.2820000000065193
+}
