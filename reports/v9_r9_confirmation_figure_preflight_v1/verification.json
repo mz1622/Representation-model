@@ -1,0 +1,26 @@
+{
+  "compile_passed": true,
+  "goal_achieved": false,
+  "active_queue_pins_checked": {
+    "../../work/r9-fixed-recipe-confirmation-v1-status.json": 30,
+    "../../work/r9-statistics-after-confirmation-v1-status.json": 36
+  },
+  "source_hashes": {
+    "scripts/plot_foodnutrigpt_r9_confirmation.py": "f088a7a4cbf657aa3a1679864f152df450db1c57a68215316ea1525d225a54bf",
+    "experiments/foodnutrigpt_v9_research/r9/CONFIRMATION_FIGURES.md": "f69a8a0333724009918ade3965f015354d904d5ec7ed5428aa48bd14f82f0bd9"
+  },
+  "complete_test_opened": false,
+  "actual_figure_generated": false,
+  "training_performed": false,
+  "visual_review_complete": false,
+  "status": "prepared_dependency_incomplete",
+  "data_modified": false,
+  "actual_readiness": {
+    "ready": false,
+    "missing": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\reports\\v9_r9_three_seed_confirmation_v1\\summary.json",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\reports\\v9_r9_three_seed_confirmation_v1\\status.json"
+    ],
+    "outputs_written": false
+  }
+}
