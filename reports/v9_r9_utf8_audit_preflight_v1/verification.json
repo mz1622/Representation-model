@@ -1,0 +1,24 @@
+{
+  "status": "encoding_preflight_complete_not_model_audit",
+  "candidate_count": 49913,
+  "non_ascii_names": 3713,
+  "observed_default_encoding": "cp936",
+  "cp936_failure": {
+    "type": "UnicodeDecodeError",
+    "message": "'gbk' codec can't decode byte 0x9e in position 4918: illegal multibyte sequence"
+  },
+  "explicit_utf8_names_exact": true,
+  "json_bytes_sha256": "0503711d6f052d9c77553ef450c2a4aa026d3ccafbc3ca643469ef20299eec23",
+  "only_four_explicit_encoding_arguments_and_module_docstring_changed": true,
+  "corrected_script_compiles": true,
+  "input_hashes": {
+    "scripts\\audit_foodnutrigpt_r9_completed.py": "a81512c0c5f6b87abc2476078cedeaeb324037c10cebed72c16a8f6c42e02511",
+    "scripts\\audit_foodnutrigpt_r9_completed_utf8.py": "74c592ed3e7691bb63e238c4242ee811493a900af19c6bc2096e74066df005cb",
+    "data\\processed\\foodnutrigpt_v9_r0_v1\\profiles.csv.gz": "c8c7d79dcea8fcdca4daa03ec2c37cb43713d31a8cbe85801d0349ab3b660660"
+  },
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Real frozen name-list encoding reproduction and AST equivalence, excluding the documented I/O fix. No checkpoint inference or scientific result is claimed. Original scripts and active queues are unchanged."
+}
