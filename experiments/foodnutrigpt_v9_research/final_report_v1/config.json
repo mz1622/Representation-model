@@ -1,0 +1,35 @@
+{
+  "version": "final_report_v1",
+  "status": "in_progress",
+  "amendment_local_date": "2026-09-28",
+  "requested_by_user": true,
+  "objective": "Validated nutrition-model training, fair RF/XGBoost comparisons and complete Chinese/English reports; superiority is not required.",
+  "supersedes_superiority_completion_gate": true,
+  "amendment_is_post_initial_results": true,
+  "finish_registered_r8": true,
+  "neural_candidate": "mlp512_name128",
+  "baseline_selection": "Per method: minimum completion nutrition scaled_log_mae over three registered R8 128-dimensional candidates; ties follow registration order. Freeze before new seeds.",
+  "seeds": [
+    20260922,
+    20260923,
+    20260924
+  ],
+  "reuse_seed22_only_if_execution_identity_matches": true,
+  "new_replication_runs": 6,
+  "new_hyperparameter_candidates": 0,
+  "three_tasks_required": true,
+  "paired_bootstrap_unit": "exact-name food candidate group",
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20260922,
+  "seed_aggregation": "average independent model errors; not ensemble predictions",
+  "complete_test_opened": false,
+  "external_validation_claim": false,
+  "foundation_model_claim": false,
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "execution_contract": "reports/v9_r8_execution_contract_v1/manifest.json",
+  "reports": [
+    "REPORT_ZH.md",
+    "REPORT_EN.md"
+  ],
+  "final_reports_complete": false
+}
