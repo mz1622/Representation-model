@@ -1,0 +1,72 @@
+{
+  "status": "fixed_recipe_for_seed_confirmation",
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_manifest_sha256": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "rationale": "The completed controlled learning-rate contrast, nested budget analysis, independent audits, curve review and full training-fit diagnosis support selecting lr3e-4/60 for completion replication. It improves the fixed RF primary score with a supporting conditional group interval and passes the legacy guard. Sparse-axis sensitivity, seed variation and auxiliary-task tradeoffs remain; no final acceptance yet.",
+  "supporting_evidence": [
+    {
+      "path": "reports/v9_r9_first_group_v1/summary.json",
+      "sha256": "28b8b5527957cc8babf5c8908dc16f8774b101631db60efe94fe7e2707c0ab20"
+    },
+    {
+      "path": "reports/v9_r9_first_group_fit_v1/summary.json",
+      "sha256": "515d993d2e497ab9f89dbe52f2fdb077121ffc3533229ce6d1b263468118dbfc"
+    },
+    {
+      "path": "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/summary.json",
+      "sha256": "cdc1004d0c74e0b607045f79fa117e0a874c12b39fb458c5cb0947a7a0dbb61b"
+    },
+    {
+      "path": "experiments/foodnutrigpt_v9_research/r9/first_group_v1/evidence.json",
+      "sha256": "84e52f925b3db954cbc5ef396113d5e4fed7455bea197b3d4b471b40ba52298d"
+    }
+  ],
+  "selected_spec": {
+    "version": "V9-R9",
+    "goal": "Transformer improvement over frozen RF on unchanged research data",
+    "data_version": "foodnutrigpt_v9_r0_v1",
+    "view": "quarantined",
+    "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+    "active_name_dimensions": 32,
+    "name_input_slots": 128,
+    "seed": 20260922,
+    "confirmation_seeds": [
+      20260922,
+      20260923,
+      20260924
+    ],
+    "supervised_axes": 187,
+    "primary_axes": 142,
+    "batch_size": 64,
+    "epochs": 60,
+    "schedule_epochs": 60,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "source_weight": 1.0,
+    "source_residual_l2": 0.0001,
+    "objective": "mae",
+    "dropout": 0.15,
+    "axis_residual_rank": 16,
+    "stages": 1,
+    "d_model": 192,
+    "n_layers": 3,
+    "n_heads": 6,
+    "feedforward_dim": 768,
+    "max_candidates_this_round": 12,
+    "rf_reference": "output/v9_r8/rf400leaf1half_name32",
+    "xgb_reference": "output/v9_r8/xgb800d10_name32",
+    "additional_tree_training_allowed": false,
+    "data_changes_allowed": false,
+    "test_opened": false,
+    "require_three_neural_seeds_for_acceptance": true,
+    "minimum_primary_gain": 0.0,
+    "paired_interval_must_support_gain": true,
+    "maximum_legacy_relative_regression": 0.02,
+    "name": "tf192_mae_lr3e4_60",
+    "learning_rate": 0.0003
+  },
+  "decision_scope": "fixed_recipe_for_three_seed_confirmation_only",
+  "scientific_confirmation": false,
+  "complete_test_opened": false
+}

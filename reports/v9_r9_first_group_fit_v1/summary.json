@@ -1,0 +1,187 @@
+{
+  "status": "complete",
+  "models": [
+    {
+      "run": "tf192_mae_lr1e4_60",
+      "kind": "transformer_direct",
+      "checkpoint_sha256": "b9ee82eda2edeec17c62ac6e9b67df5b2dded0b6bbf53ab976e4e1319527f2a0",
+      "training": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 1828536,
+        "candidate_axis_cells": 1513053,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.14309226355269178,
+          "log_mae": 0.04206222633427505,
+          "log_mse": 0.024842245324657248,
+          "raw_mae": 0.2773220499363798,
+          "positive_scaled_log_mae": 0.2614985977618889,
+          "zero_scaled_log_mae": 0.052269971031620295,
+          "log_rmse_root_mean_axis_mse": 0.15761422944854075
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.15512397391210947,
+          "log_mae": 0.01291225979056159,
+          "log_mse": 0.004939861162575906,
+          "raw_mae": 0.03274171207098707,
+          "positive_scaled_log_mae": 0.2864935620768952,
+          "zero_scaled_log_mae": 0.03534520636717161,
+          "log_rmse_root_mean_axis_mse": 0.07028414588351989
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.14598759492260513,
+          "log_mae": 0.03504752850290016,
+          "log_mse": 0.020052901542338207,
+          "raw_mae": 0.2184658188992532,
+          "positive_scaled_log_mae": 0.2675134287467834,
+          "zero_scaled_log_mae": 0.04852969154776422,
+          "log_rmse_root_mean_axis_mse": 0.1416082679165952
+        }
+      },
+      "validation": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.19454327442728286,
+          "log_mae": 0.058632117884751055,
+          "log_mse": 0.045044054486255376,
+          "raw_mae": 0.35772846687256765,
+          "positive_scaled_log_mae": 0.3247430110580599,
+          "zero_scaled_log_mae": 0.08613780641839905,
+          "log_rmse_root_mean_axis_mse": 0.21223584637439402
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.577951513453763,
+          "log_mae": 0.032939802819420744,
+          "log_mse": 0.01745269157833871,
+          "raw_mae": 0.05952340345349161,
+          "positive_scaled_log_mae": 0.8087720710940899,
+          "zero_scaled_log_mae": 0.17667836016501093,
+          "log_rmse_root_mean_axis_mse": 0.13210863551766291
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.28680728916627546,
+          "log_mae": 0.05244947522197102,
+          "log_mse": 0.03840442170092784,
+          "raw_mae": 0.2859678901139665,
+          "positive_scaled_log_mae": 0.44122059235015276,
+          "zero_scaled_log_mae": 0.10274583698730418,
+          "log_rmse_root_mean_axis_mse": 0.19597046129692056
+        }
+      },
+      "training_job_count": 1828536,
+      "training_query_panel_sha256": "39c80945daa7405dd2e8b741e799051820313d50e3fc550aa4bec7a995abbd84",
+      "prediction_path": "data\\local\\research_diagnostics\\v9_r9_first_group_fit_v1\\tf192_mae_lr1e4_60\\completion_predictions.parquet",
+      "prediction_sha256": "2f6429a134faaf6803e0a0954fa898110c3274a6d66fb61a0f45733c44098cab",
+      "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+      "elapsed_seconds": 54.203000000008615
+    },
+    {
+      "run": "tf192_mae_lr3e4_60",
+      "kind": "transformer_direct",
+      "checkpoint_sha256": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+      "training": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 1828536,
+        "candidate_axis_cells": 1513053,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.1349370786529251,
+          "log_mae": 0.04034532574305789,
+          "log_mse": 0.022307157709264155,
+          "raw_mae": 0.26133001127904515,
+          "positive_scaled_log_mae": 0.25014911141364776,
+          "zero_scaled_log_mae": 0.05425002469778514,
+          "log_rmse_root_mean_axis_mse": 0.1493558090911236
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.12667718855600202,
+          "log_mae": 0.009640051714695286,
+          "log_mse": 0.003243622634385962,
+          "raw_mae": 0.029640059262827197,
+          "positive_scaled_log_mae": 0.24155367217962653,
+          "zero_scaled_log_mae": 0.02698413019271433,
+          "log_rmse_root_mean_axis_mse": 0.05695281059250686
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.13294940456543022,
+          "log_mae": 0.03295635605708828,
+          "log_mse": 0.017719676006753362,
+          "raw_mae": 0.20557574475107826,
+          "positive_scaled_log_mae": 0.24808069020759993,
+          "zero_scaled_log_mae": 0.048224412652465624,
+          "log_rmse_root_mean_axis_mse": 0.13311527337895288
+        }
+      },
+      "validation": {
+        "complete_test_opened": false,
+        "profile_axis_jobs": 323809,
+        "candidate_axis_cells": 268837,
+        "nutrition": {
+          "axes": 142,
+          "scaled_log_mae": 0.18355327847469688,
+          "log_mae": 0.054362319923894606,
+          "log_mse": 0.03603355672852335,
+          "raw_mae": 0.330240460832641,
+          "positive_scaled_log_mae": 0.30277267666689867,
+          "zero_scaled_log_mae": 0.09203905513249852,
+          "log_rmse_root_mean_axis_mse": 0.1898250687567987
+        },
+        "food_metabolome": {
+          "axes": 45,
+          "scaled_log_mae": 0.5980220428612179,
+          "log_mae": 0.03587222522357715,
+          "log_mse": 0.022335943219397913,
+          "raw_mae": 0.06484595878358246,
+          "positive_scaled_log_mae": 0.8109576712144156,
+          "zero_scaled_log_mae": 0.2150257527499769,
+          "log_rmse_root_mean_axis_mse": 0.14945214357578787
+        },
+        "all": {
+          "axes": 187,
+          "scaled_log_mae": 0.2832917511880308,
+          "log_mae": 0.04991283189440645,
+          "log_mse": 0.03273733957392098,
+          "raw_mae": 0.2663754737085361,
+          "positive_scaled_log_mae": 0.42506318337619414,
+          "zero_scaled_log_mae": 0.1145987452280123,
+          "log_rmse_root_mean_axis_mse": 0.18093462790168435
+        }
+      },
+      "training_job_count": 1828536,
+      "training_query_panel_sha256": "39c80945daa7405dd2e8b741e799051820313d50e3fc550aa4bec7a995abbd84",
+      "prediction_path": "data\\local\\research_diagnostics\\v9_r9_first_group_fit_v1\\tf192_mae_lr3e4_60\\completion_predictions.parquet",
+      "prediction_sha256": "32744bae77379daa54a23e65299c09e1d7507907ed06d6472ba81d5f8528af8c",
+      "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+      "elapsed_seconds": 54.312000000005355
+    }
+  ],
+  "input_hashes": {
+    "reports\\v9_r9_first_group_v1\\summary.json": "28b8b5527957cc8babf5c8908dc16f8774b101631db60efe94fe7e2707c0ab20",
+    "output\\v9_r9\\tf192_mae_lr1e4_60\\best_model.pt": "b9ee82eda2edeec17c62ac6e9b67df5b2dded0b6bbf53ab976e4e1319527f2a0",
+    "output\\v9_r9\\tf192_mae_lr1e4_60\\run_manifest.json": "d5b9a98d8cab165b49937104c2a54fb084bc1dee3113304de391f04a2e991a06",
+    "reports\\v9_r9_tf192_mae_lr1e4_60_audit_v1\\verification.json": "37d42d6ec8b0ed559efaf769034f616a8739952b512bba83be89adcfbe88d145",
+    "output\\v9_r9\\tf192_mae_lr1e4_60\\metrics.json": "47e7879cc6df9246fa43979f3553885511fd7621706f9da86970b92a81878fbd",
+    "output\\v9_r9\\tf192_mae_lr1e4_60\\completion_axis_metrics.csv": "fde3866d6810f538bfc4ada5a39c192054b371c8a6e6611f1b93f0c47881753a",
+    "output\\v9_r9\\tf192_mae_lr3e4_60\\best_model.pt": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+    "output\\v9_r9\\tf192_mae_lr3e4_60\\run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports\\v9_r9_tf192_mae_lr3e4_60_audit_v1\\verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "output\\v9_r9\\tf192_mae_lr3e4_60\\metrics.json": "350689b9aae0e234b0504315964692aab834b43f4852f323b3251d1dc902d7e7",
+    "output\\v9_r9\\tf192_mae_lr3e4_60\\completion_axis_metrics.csv": "e6b729290124e23b7643825bb24b0c4c3d1428aa22ac96e14a8f7895839bd99d"
+  },
+  "script_sha256": "8eed9e6d6fe1822ffe913771740e5c3febbc6130980597bbddfb1fb1f5265d08",
+  "complete_test_opened": false,
+  "training_performed": false,
+  "optimization_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "scope": "Full training-family reconstruction in inference mode with the same source-free scorer. Only a shallow in-memory evaluation view is created; frozen data and validation tasks are unchanged. Validation metrics are reused from independently audited saved predictions. Training/validation differ in foods and support; the gap alone does not prove overfitting, identify a unique bottleneck, or establish that capacity cannot help. No calibrated-source prediction is presented as an inference capability."
+}

@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "report_table_rows_checked": 8,
+  "report_links_checked": {
+    "README.md": 2,
+    "REPORT_EN.md": 2
+  },
+  "report_hashes": {
+    "README.md": "04f3bce2e84596941f1792061fd438807c9729c126f0ea24612f54ae27f86b25",
+    "REPORT_EN.md": "c5d9b5128fe9e9ecd46fdd881815b59d8fae16fb22b3073fce1e8aaa677b29ba"
+  },
+  "plan_sha256": "a15ce0b3f9ec50dd7e189beec7d93e1fedd1fdcaa0ba42b703fd866db020d0f6",
+  "decision_sha256": "527eb140c290110cd844be79b8879cc571ce2f2f3e612024d7fa157a558d5be6",
+  "evidence_sha256": "84e52f925b3db954cbc5ef396113d5e4fed7455bea197b3d4b471b40ba52298d",
+  "seed_only_registration_checks": [
+    {
+      "seed": 20260923,
+      "only_recipe_change": "seed",
+      "binding_count": 29
+    },
+    {
+      "seed": 20260924,
+      "only_recipe_change": "seed",
+      "binding_count": 29
+    }
+  ],
+  "completed_first_group_queue_and22_pins_verified": true,
+  "environment_matches_parent": true,
+  "model_forward_performed": false,
+  "training_performed": false,
+  "scientific_confirmation": false,
+  "complete_test_opened": false,
+  "script_sha256": "2ea701106e23f9a179f53b9df05d81c87642938190f3a191ebd449346791ff7a"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "stage": "first_group_analysis_ready_for_research_interpretation",
+  "training_performed": false,
+  "complete_test_opened": false,
+  "baseline_refit": false,
+  "data_modified": false,
+  "script_sha256": "f757167caf6054b47b1b3ce94ee7d7f8cc9255cf281f34e20c9efa78b1964fef",
+  "elapsed_seconds": 9.90700000000652
+}

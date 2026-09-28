@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "purpose": "fixed_r9_transformer_seed_confirmation",
+  "seeds": [
+    20260922,
+    20260923,
+    20260924
+  ],
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_manifest_sha256": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "parent_audit_sha256": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+  "decision_record": "experiments/foodnutrigpt_v9_research/r9/first_group_v1/decision.json",
+  "decision_record_sha256": "527eb140c290110cd844be79b8879cc571ce2f2f3e612024d7fa157a558d5be6"
+}
