@@ -1,0 +1,33 @@
+{
+  "status": "registered",
+  "purpose": "r9_single_factor_axisvalue_contrast",
+  "candidate": "tf192_mae_axisvalue_lr3e4_60",
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "seed": 20260922,
+  "changes": {
+    "axis_value_residual": "zero_init_linear_v1"
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/axisvalue_v1/PLAN.md": "52a78e7b7d0f408d8b97d27b768c9e62bd52dae5e2c8935c000431bdb852f8db",
+    "experiments/foodnutrigpt_v9_research/r9/mse_v1/decision.json": "94fa12d622bfad60f68203d2ed972933776bb96586da8f317cb7214245afcf5b",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_mse_v1/review_verification.json": "c3e3e11975a11fc97861e338128b958242bbd41c00caeb930d3a8b195b279646",
+    "reports/v9_r9_mse_analysis_v1/summary.json": "dcd84aee6f661db364043d0335d84e1bba0d4c06878ff2596efa6352a35bd8ee",
+    "reports/v9_r9_mse_axis_changes_v1/summary.json": "307cae4222a8eecc95e265e2cd2d881f6fee78acad4da2571f4ababf4825bc0f",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "src/foodcomp/research_transformer_r9_axisvalue.py": "a68a869e5983f81eaecb6144878e4ef0b8e7af3b533b281a966b0e1debebee8f",
+    "scripts/train_foodnutrigpt_v9_r9_axisvalue.py": "0478ce8c09917bd37d47434df01fd6ce66f2455c98d2b4c6ec6cd5d8bb5ea344",
+    "scripts/verify_foodnutrigpt_r9_axisvalue_functional.py": "d24160e90e5284f71f372fd7063ad939bb4f04f8371e7c571f94812b6b80017b",
+    "scripts/audit_foodnutrigpt_r9_axisvalue.py": "403b39d6ffa11ba8077ab8a6bacd1640719df5b070bd8de7230b398556848b81",
+    "tests/test_research_transformer_r9_axisvalue.py": "565abb6183a7e219e89bf6dcb24065511ca0a20bad79fbc3b96503f82536b9a9"
+  },
+  "candidate_index": 4,
+  "max_candidates": 12,
+  "screening_decision": "All required vs same-seed MAE: lower primary, paired gain lower95 > 0, legacy regression <= 2%. Three fixed seeds still required for accepting improvement; goal separately compares frozen RF.",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

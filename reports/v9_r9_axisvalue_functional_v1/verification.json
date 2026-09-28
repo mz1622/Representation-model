@@ -1,0 +1,41 @@
+{
+  "status": "complete",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_axisvalue.py": "0478ce8c09917bd37d47434df01fd6ce66f2455c98d2b4c6ec6cd5d8bb5ea344",
+    "src/foodcomp/research_transformer_r9_methods.py": "6a4df8030bd4d4e4922af5f2372fa72a782dae69bf0b3a07c8a9c2bec32468f9",
+    "src/foodcomp/research_transformer_r9_axisvalue.py": "a68a869e5983f81eaecb6144878e4ef0b8e7af3b533b281a966b0e1debebee8f",
+    "scripts/audit_foodnutrigpt_r9_axisvalue.py": "403b39d6ffa11ba8077ab8a6bacd1640719df5b070bd8de7230b398556848b81",
+    "tests/test_research_transformer_r9_axisvalue.py": "565abb6183a7e219e89bf6dcb24065511ca0a20bad79fbc3b96503f82536b9a9",
+    "scripts/verify_foodnutrigpt_r9_axisvalue_functional.py": "d24160e90e5284f71f372fd7063ad939bb4f04f8371e7c571f94812b6b80017b"
+  },
+  "plan_sha256": "1a01380bb2f6ae9b711d91da53287ebf15129550c1052b4e7a8b09b94a74e32c",
+  "same_seed_parent_shared_initialization_exact": true,
+  "zero_added_residual_no_rng_draw": true,
+  "gpu_train_forward_and_rng_exact_at_zero": true,
+  "nonzero_residual_public_reload_and_encode_exact": true,
+  "nutrition_encode_ignores_name": true,
+  "name_encode_ignores_profile": true,
+  "added_parameters": 48384,
+  "trained_functional_checkpoint_sha256": "ab50f3a07f40120dff4edc6a9cc7eccb56be7736346d23bdaaeb7a66d835e8df",
+  "inner_training_loop_ast_unchanged": true,
+  "functional_checkpoint_sha256": "6c6b420097e55d408ea07ca943dad8b0bdbe0db0f3c9fecd6dc9f407cb1efef1",
+  "legacy_control_initialization_forward_and_mae_exact": true,
+  "hidden_label_target_and_source_changes_forward_exact": true,
+  "public_loader_reload_forward_exact": true,
+  "caller_requested_unobserved_axes_predicted": true,
+  "train_names_all187_queries_finite": true,
+  "small_batch_overfit": {
+    "before": 0.21735809743404388,
+    "after": 0.04406820610165596,
+    "steps": 50
+  },
+  "parameter_count": 1596978,
+  "trainable_parameter_count": 1564313,
+  "old_frozen18_sources_unchanged": true,
+  "complete_test_opened": false,
+  "validation_metrics_used_for_functional_checks": false,
+  "scope": "Training-row functional checks only, not performance evidence."
+}
