@@ -1,0 +1,23 @@
+{
+  "status": "complete_aggregate_axis_contrast",
+  "axis_count": 142,
+  "primary_mse_minus_mae": 0.009452771216267895,
+  "axes_point_better_than_mae": 31,
+  "axes_unadjusted_interval_supports_improvement": 7,
+  "axes_unadjusted_interval_supports_regression": 63,
+  "sparse_validation_axes_below30": 9,
+  "mse_axes_better_than_rf": 63,
+  "amino_acid_axes_mse_worse_than_mae": 19,
+  "input_hashes": {
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_signed_contributions.csv": "2a131a5d5de9769f6a64b15528aeda1bf075a96045c79b629fce394a3a5bb876",
+    "reports/v9_r9_mse_rf32_gap_v1/axis_signed_contributions.csv": "da160ebef313802085f6e1e17d0bbdb0b380bb1125fe7ef0e9708ace989d4ed4",
+    "reports/v9_r9_mse_vs_mae_parent_completion_v1/axis_paired_intervals.csv": "6692e97d2a204fc049d471a99717cb50376ed1359e228dc9169d62b528c38202",
+    "reports/v9_r9_mse_analysis_v1/summary.json": "dcd84aee6f661db364043d0335d84e1bba0d4c06878ff2596efa6352a35bd8ee"
+  },
+  "training_performed": false,
+  "model_forward_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Subtraction of existing complete same-panel contributions and existing food-group intervals. Exploratory axis inspection without multiplicity correction or new selection. Axis/source differences cannot establish a unique mechanism."
+}

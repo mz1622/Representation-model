@@ -1,0 +1,34 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_mse_analysis_v1/summary.json": "dcd84aee6f661db364043d0335d84e1bba0d4c06878ff2596efa6352a35bd8ee",
+    "reports/v9_r9_mse_fit_v1/summary.json": "7196e88f8e9c6cdea881a72ed07781c808634760df8c965a37a22f4c59ec3b51",
+    "reports/v9_r9_mae_calibration_stability_v1/summary.json": "949f5158a4674041427efb7c16c592a50f023f03de9dfb05dca58214a127d2c5",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_confirmation_v1/review_verification.json": "7e63566c86bb4a8977ce1868b73b890b638b3ee8e17a23445440e3aa8cebf1d1",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_confirmation_v1/REPORT_ZH.md": "9c80c4dfa2c22c29c276f985aec6f1262dd83c77767bcc38ed4f02bfd9e158ca",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_confirmation_v1/REPORT_EN.md": "fd9f4ac106e7b50e0bc11ddc9f574a15b58979df86caebf482d46be75e18b226",
+    "experiments/foodnutrigpt_v9_research/r9/mse_v1/PLAN.md": "ee5573d203d0e8d6416688f5b00745734aea2fc507b1aa3d2366f3938f0b22be",
+    "experiments/foodnutrigpt_v9_research/r9/mse_v1/config.json": "28d562f705e48f07526524093c9be180341b8c141040646faff99f2239fed4f0",
+    "scripts/report_foodnutrigpt_r9_mse.py": "7b6550ab676c20ac842eb0d9fd953c4cccd198add5b219bf1ccea875d76563b1"
+  },
+  "local_links_checked": 80,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "1ff64eba7378ec904b13a949169ea3b29c75810987511ec5121ba7fb44bc53ec",
+    "REPORT_EN.md": "e81d8fd3bd2ab2c4b522f6ac826ec0346821c998ceffb01b606524cd204a6d1d"
+  }
+}

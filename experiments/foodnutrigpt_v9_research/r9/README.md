@@ -1,10 +1,12 @@
-# V9-R9：Transformer方法研究（三种子 MAE 复验完成）
+# V9-R9：Transformer方法研究（MAE复验与MSE筛选完成）
 
 当前状态：首组两个学习率和固定3e-4配方的三个种子全部完成、独立审计和统计通过；没有仍在运行的旧复验队列。主误差均值0.189184±0.006925，冻结RF0.189031；改善区间[−2.173%,+2.074%]，旧log-MAE退步2.103%。因此保留为已审计控制，未确认优于RF。
 
 完整本轮[八节研究记录与决定](confirmation_v1/README.md)、综合[中文报告](../report_snapshot_r9_confirmation_v1/REPORT_ZH.md)、[英文报告](../report_snapshot_r9_confirmation_v1/REPORT_EN.md)及[报告审阅凭据](../report_snapshot_r9_confirmation_v1/review_verification.json)已保存。逐轴诊断支持下一步单独检验MAE→MSE，不先改容量、采样或来源校准。旧数据、RF/XGBoost及测试使用状态保持冻结。
 
-MAE→MSE已按[独立预登记](mse_v1/PLAN.md)启动，现阶段等待完整60轮及审计；[分析入口](mse_v1/ANALYSIS.md)已排队。等待期间的[来源参数稳定性诊断](../../../reports/v9_r9_mae_calibration_stability_v1/README.md)只读取三个已完成MAE检查点：营养偏置相关性0.969–0.974，但不证明校准改善或损害性能，不据此改动在跑配置。
+MAE→MSE的60轮、独立重放、11项比较和全量训练拟合均已完成。主误差0.193006，相对同种子MAE退步5.150%，旧log-MAE退步10.622%；三个筛选条件全部失败，不追加其23/24种子。见[MSE八节记录](mse_v1/README.md)、最新[中文报告](../report_snapshot_r9_mse_v1/REPORT_ZH.md)和[英文报告](../report_snapshot_r9_mse_v1/REPORT_EN.md)。下一项待登记假设是增加营养轴与数值的显式交互；尚未训练，不宣称收益。
+
+[来源参数稳定性诊断](../../../reports/v9_r9_mae_calibration_stability_v1/README.md)只读取三个已完成MAE检查点：营养偏置相关性0.969–0.974，但不证明校准改善或损害性能。
 
 以下保留各时点的历史记录；“待复验”“正在运行”仅指当时，不是当前作业状态。
 

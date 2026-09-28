@@ -1,0 +1,20 @@
+{
+  "status": "screen_complete_fixed_mse_recipe_rejected",
+  "candidate_number": 3,
+  "seed": 20260922,
+  "selected_epoch": 56,
+  "gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "analysis_sha256": "dcd84aee6f661db364043d0335d84e1bba0d4c06878ff2596efa6352a35bd8ee",
+  "retain_mae_as_control": true,
+  "additional_mse_seeds_authorized_by_screen": false,
+  "accept_as_rf_superior": false,
+  "goal_achieved": false,
+  "next_question": "Zero-initialized axis-by-value linear residual with unchanged MAE recipe; unregistered and untrained at this closure.",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

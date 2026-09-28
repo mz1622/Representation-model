@@ -1,0 +1,28 @@
+{
+  "status": "reviewed_complete_mse_stage_report",
+  "manual_proofreading_complete": true,
+  "visual_review_complete": true,
+  "version_decision_complete": true,
+  "report_complete": true,
+  "scope": "Inherited reviewed R0-R9 history retained; both current summaries and complete MSE sections read and revised. Tables, links, causal limits, actual plot review, failed screen and local case verification checked. Closes this stage only.",
+  "numeric_table_row_count": 230,
+  "local_links_checked": 103,
+  "verified_input_count": 142,
+  "generation_evidence_sha256": "9beac217f94c9069f6db9909a974381d09c21bc7b4a88d05a5c237e4f4b9358b",
+  "document_hashes": {
+    "REPORT_ZH.md": "b90c2d9f2c319222d9cc1886b5450ca61b28a76ac164b2798f6d3a813c1fc545",
+    "REPORT_EN.md": "e8e5eaa54e2f106834224f6f087a0df9a79099767e00b0979700efef11746c25"
+  },
+  "version_readme_sha256": "88e2f0bf2dcc6521e6db3629f2861d5a45f6e0182d82b0f9cbe731a612a62b8e",
+  "additional_evidence_hashes": {
+    "reports/v9_r9_mse_analysis_v1/visual_review.json": "0a37cc1b0790c37922f29fde31fe7d8f2afb244a47f6f09523054b90d1c9e12c",
+    "reports/v9_r9_mse_axis_changes_v1/summary.json": "307cae4222a8eecc95e265e2cd2d881f6fee78acad4da2571f4ababf4825bc0f",
+    "reports/v9_r9_mse_axis_changes_v1/axis_changes.csv": "e75a8cf47bab9a1ae3c769dddbbbb3b4214c632f27fa66295c1bb15a67e36229",
+    "reports/v9_r9_mse_cases_review_v2/summary.json": "fc7c33a1003b6c47c6cd3f0eed9272d0fad0e4398207eff72e55f02c739414c6",
+    "experiments/foodnutrigpt_v9_research/r9/mse_v1/decision.json": "94fa12d622bfad60f68203d2ed972933776bb96586da8f317cb7214245afcf5b"
+  },
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false
+}

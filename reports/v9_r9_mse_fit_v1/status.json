@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "training_performed": false,
+  "optimization_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "script_sha256": "2e61557ee9314171a158653ad779ed3ebeb99f2afba32c67611631704e4cde73",
+  "elapsed_seconds": 57.17200000002049,
+  "summary_sha256": "7196e88f8e9c6cdea881a72ed07781c808634760df8c965a37a22f4c59ec3b51"
+}

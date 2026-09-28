@@ -1,0 +1,16 @@
+{
+  "status": "actual_six_panel_visual_review_complete",
+  "visual_review_complete": true,
+  "analysis_sha256": "dcd84aee6f661db364043d0335d84e1bba0d4c06878ff2596efa6352a35bd8ee",
+  "figure_hashes": {
+    "learning_curves.png": "bbe216ef90f37de578e251e0ad753706a80a1123328fa540cc55d50390ec72a5",
+    "learning_curves.svg": "1e2bc478f64d1017ad6e535501d29ab9e03b79772176c4c100cff8c5f1f83cee"
+  },
+  "inspection": "Viewed the2400x1360 PNG at2048x1161 display resolution. Six panels, legends, axes and selected-epoch stars are legible with no clipped content. MSE improves conditional positive error but worsens zero/primary/legacy error against MAE; late clipping is lower for MSE. No causal attribution to clipping alone.",
+  "selection_markers": {
+    "mae": 60,
+    "mse": 56
+  },
+  "scientific_acceptance": false,
+  "goal_achieved": false
+}

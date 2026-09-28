@@ -1,5 +1,7 @@
 # MSE 完成后的双语证据草稿
 
+当前状态：已生成并补充[中文报告](../../report_snapshot_r9_mse_v1/REPORT_ZH.md)和[英文报告](../../report_snapshot_r9_mse_v1/REPORT_EN.md)，纳入完整MSE结果、曲线查看、逐轴诊断及40项案例核验。最初的evidence.json保持为生成时凭据；最终审阅另存review_verification.json，不把自动生成当成审阅。以下保留原工作流。
+
 `scripts/report_foodnutrigpt_r9_mse.py`仅在原训练、独立重放、11项比较、完整分析和全量训练拟合诊断成功后生成新报告快照。它保留已审阅的R0–R9 MAE阶段报告作为第1–8节历史，增加第9节MSE单因素结果和第10节来源残差参数诊断；原报告不覆盖。
 
 ```powershell
