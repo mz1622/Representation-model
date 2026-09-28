@@ -1,0 +1,34 @@
+{
+  "status": "postprocessing_implementation_prepared_not_executed_on_candidate",
+  "created_utc": "2026-09-28T22:38:58.3523125Z",
+  "training_code_commit": "92f80d90b798822d39af4644d65ea9441e52d042",
+  "config_sha256": "c98d64d187a37396cc51b6145843930ba43f195ef86c9bbc64c28c6c925e79fa",
+  "implementation_hashes": {
+    "scripts/analyze_foodnutrigpt_r9_source0.py": "680da1deae3e97865fe7570dd2df9c5803f52e4ae2d210393413a18fa6704a6f",
+    "scripts/diagnose_foodnutrigpt_r9_source0_fit.py": "000fc37214c6f2d5e358b7b5e90cffa315a0fba4cbc5f470330c4dae55cf254a",
+    "scripts/review_foodnutrigpt_r9_source0_axes.py": "e180e9da2170f01aa081c7fd83f218bd5cbc685a36c799c7ffa3a82aba886c95",
+    "scripts/review_foodnutrigpt_r9_source0_cases.py": "909d9264043a6055ace9467c5d92d446e5da09a18139e29d30c0da28ac13ddce",
+    "scripts/report_foodnutrigpt_r9_source0.py": "14e05a9d995d9eeb9d351d37439365732675c89bb129bcf97c3957d8241ac784",
+    "tests/test_research_transformer_r9_source0_analysis.py": "2ccb5296be4d5dccd71408cc0a57244ce1ee74873b197e4c9ab0a9f66421aeb1",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/POSTPROCESS.md": "8a24710311fc2c2e62ba8a82591958d76223b7a001e56461c08ee253bd5d005c"
+  },
+  "validation": {
+    "pytest_reported_seconds": 2.74,
+    "all_five_scripts_py_compile_passed": true,
+    "pytest_exit_code": 0,
+    "analysis_synthetic_tests": 21,
+    "registered14_bindings_and_frozen_inputs_unchanged": true
+  },
+  "candidate_history_or_intermediate_metrics_read": false,
+  "candidate_postprocessing_executed": false,
+  "candidate_training_started_by_this_preparation": false,
+  "model_forward_performed": false,
+  "running_controller_modified": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scientific_confirmation": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "scope": "Prepare common-denominator analysis,source-free full train inference,axis/case review and bilingual draft generation before candidate outcomes. Existing workflow and scientific gates unchanged. Exact reference and ordinary CUDA backend distinction retained. Two code-generation guards caught a stale recipe phrase and CRLF block-boundary mismatch before writing; corrected generation then passed all21 tests and compilation. No candidate run or metric was altered."
+}

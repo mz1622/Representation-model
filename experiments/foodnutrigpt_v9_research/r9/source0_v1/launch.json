@@ -1,0 +1,57 @@
+{
+  "status": "training_launched_followup_armed",
+  "candidate": "tf192_mae_source0_lr3e4_60",
+  "code_commit": "92f80d90b798822d39af4644d65ea9441e52d042",
+  "controller_session_id": 17450,
+  "controller_status_file": "work/r9-source0-v1-status.json",
+  "controller_script": "work/run-r9-source0-v1.ps1",
+  "launch_utc": "2026-09-28T22:27:12.1564819Z",
+  "actual_processes_checked_utc": "2026-09-28T22:27:48.7433890Z",
+  "actual_processes": [
+    {
+      "ProcessId": 7888,
+      "ParentProcessId": 25044,
+      "CreationUTC": "2026-09-28T22:27:11.7009240Z",
+      "CommandLine": "\"C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./work/run-r9-source0-v1.ps1\""
+    },
+    {
+      "ProcessId": 24792,
+      "ParentProcessId": 7888,
+      "CreationUTC": "2026-09-28T22:27:12.1961470Z",
+      "CommandLine": "\"C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\.venv\\Scripts\\python.exe\" -X utf8 scripts/train_foodnutrigpt_v9_r9_source0.py --candidate tf192_mae_source0_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_source0_lr3e4_60"
+    },
+    {
+      "ProcessId": 4996,
+      "ParentProcessId": 24792,
+      "CreationUTC": "2026-09-28T22:27:12.2040120Z",
+      "CommandLine": "\"C:\\Users\\Admin\\miniconda3\\envs\\llava\\python.exe\" -X utf8 scripts/train_foodnutrigpt_v9_r9_source0.py --candidate tf192_mae_source0_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_source0_lr3e4_60"
+    }
+  ],
+  "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "estimated_training_seconds": 10800,
+  "estimate_basis": "Previous same-hardware axis-value60 run10564.781s, MSE60 run10389.016s; allow about3h plus10min first followup.",
+  "automation_id": "nutrition",
+  "automation_status": "ACTIVE",
+  "automation_updated_utc": "2026-09-28T22:27:48.926Z",
+  "estimated_followup_due_utc": "2026-09-29T01:37:48.926Z",
+  "due_time_scope": "Estimated from the confirmed automation update plus190min; app receipt confirms ACTIVE recurrence, not an exact scheduler next_run_at.",
+  "automation_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+      }
+    ],
+    "isError": false
+  },
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "formal_results_available": false,
+  "goal_achieved": false,
+  "no_per_epoch_observer": true
+}

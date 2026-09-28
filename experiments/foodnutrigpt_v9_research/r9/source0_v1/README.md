@@ -22,7 +22,7 @@ $env:PYTHONPATH = (Join-Path (Get-Location) 'src')
 .venv/Scripts/python.exe -X utf8 scripts/audit_foodnutrigpt_r9_source0.py --run output/v9_r9_methods/tf192_mae_source0_lr3e4_60 --output-dir reports/v9_r9_source0_lr3e4_60_audit_v1
 ```
 
-前两项已完成；训练与审计尚待完成。所有产物目录拒绝覆盖。正式运行估计约3小时，启动后约3小时10分钟通过已有定时任务回访；不运行逐epoch观察器。实际成本和代码提交由run_manifest记录。
+前两项已完成；正式训练已于2026-09-29 06:27（北京时间）启动，代码提交为 `92f80d90b798822d39af4644d65ea9441e52d042`，训练与审计结果尚待完成。所有产物目录拒绝覆盖。正式运行估计约3小时，已启用原任务内的190分钟定时回访，预计北京时间09:38左右回访；不运行逐epoch观察器。[启动及工具回执](launch.json)记录实际进程身份和估时依据，时间是估算，不是完成承诺。实际成本由run_manifest记录。
 
 ## 4. 结果与失败记录
 
