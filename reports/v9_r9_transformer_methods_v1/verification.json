@@ -1,0 +1,35 @@
+{
+  "status": "methods_documentation_checked_not_results",
+  "parameter_rows_identical_and_matched_to_evidence": 21,
+  "commands_identical": true,
+  "shared_formulas_checked": 4,
+  "reported_data_counts_checked": true,
+  "english_contains_no_cjk_text": true,
+  "local_links_exist": 14,
+  "input_hashes": {
+    "experiments/foodnutrigpt_v9_research/r9/config.json": "e7b148c37f34cc86c1a0fd51a02a464ef8b797b449fbd69e131ef0a3a621ede7",
+    "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+    "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+    "reports/v9_r9_functional_v1/verification.json": "d1294bd63101256c9e2f9fae961abbf3e5b379650f6bb668592bd218d3605019",
+    "reports/v9_final_data_evidence_v1/summary.json": "45ee689bc66850b0a9a5de766afe8c0721707b7f3f61cbc48041c11660297b1f",
+    "src/foodcomp/research_r0.py": "17d2e0223af54a27ce17605ce46acc6b05be8b921cfadab65a9944904daea3c1",
+    "src/foodcomp/research_r1.py": "295d8c540818bb2f1f896570efcea3200b22b5877d437289915e04ff616056af",
+    "src/foodcomp/research_neural.py": "a359e639cfb3e58be2ea321a346a6f62124d9a87035e4fbde7bf3569a1796546",
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "src/foodcomp/research_profile_retrieval.py": "8e6d4cd5301e539b7bc2bdb8d1d8f4bb9e6c520b3982c7efa635f571e5675d40",
+    "scripts/train_global_foodnutrigpt_v8_single_stage.py": "76d7071ace9ea62ecc90614fe8b59977683bbf875b788383d90fb27e95d962e5",
+    "scripts/train_global_foodnutrigpt_v9_source_calibrated.py": "9788a004063220a213ba8e52b5ee2191f0f95fa8862804850cd9de235d3a3d7d",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e"
+  },
+  "document_hashes": {
+    "METHODS_ZH.md": "47052270d244da4ba6e82e89e5503d414c2fb20274044adb0ee3c9256cf30fec",
+    "METHODS_EN.md": "593cb3fc238cc01cb52517839a51a8e02860c2f7502ac348982e3454773dc4be"
+  },
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "final_recipe_selected": false,
+  "scope": "Parameter, formula, count and link checks plus manual comparison with executed source. Not automated proof of translation semantics, completed experiments, scientific improvement or goal completion."
+}
