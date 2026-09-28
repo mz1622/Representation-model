@@ -1,0 +1,103 @@
+{
+  "status": "complete_original_archive_identity_verification",
+  "verified_at_utc": "2026-09-28T10:37:14.503245+00:00",
+  "archive_filename": "foodnutrigpt_v8_source_native_baseline.tar.gz",
+  "archive_bytes": 135711396,
+  "archive_sha256": "83ee2b50f04963943797aa1818a91f66d0ffaeb7a5bc3c5b2db7a11be6dff792",
+  "dataset_version": "global_foodnutrigpt_v8_single_stage_v2_complete_test",
+  "release_manifest_sha256": "fe661bb47584bcc9f4e18cf9171c27a03b5a4f2671847567e88bbd8c2ab7cb15",
+  "r0_manifest_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "payload_files": [
+    {
+      "archive_member": "data/axis_registry.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/axis_registry.csv",
+      "bytes": 46219,
+      "sha256": "8b46716c070468af0763dbf25f5ad914c9b720e583e5f114b90fa1c6266b03e8",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/build_manifest.json",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/build_manifest.json",
+      "bytes": 1817,
+      "sha256": "4b0bb6d2d37a56d1f2903a169b27b907150d70b7c8ce9f29bcf94294de70e2d6",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/complete_test_axis_coverage.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/complete_test_axis_coverage.csv",
+      "bytes": 18095,
+      "sha256": "a00d003a48ddbfb1910c2c6d902a25e873b572a02cc6a536ce30a4a0d1cc7c05",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/food_profiles.csv.gz",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/food_profiles.csv.gz",
+      "bytes": 4065173,
+      "sha256": "5b25b14984be112f47ff92ce3a3b3865ee8b9a5ddfee205ef0177a4255bd71e3",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/partition_summary.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/partition_summary.csv",
+      "bytes": 191,
+      "sha256": "a5623a5195928987ab2a67d4ecb3d77bc887babf38e947fb1f911f14a882c41e",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/source_native_axis_tokens.csv.gz",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/source_native_axis_tokens.csv.gz",
+      "bytes": 130804692,
+      "sha256": "fa0bdfeb21f11f0949b7018c075267385e0f68c0576aa9f01cc5f83e195cb2a3",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/source_vocabulary.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/source_vocabulary.csv",
+      "bytes": 417,
+      "sha256": "40a4820608895a659c72dfd22a23b22ea1409d5efe34976fbf5a5716c418b797",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/supplemental_test_exact_name_groups.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/supplemental_test_exact_name_groups.csv",
+      "bytes": 2297,
+      "sha256": "54c06901193f67d366a7c89f83cf9de0ee0ab2a89b0aec60500b3d9e36a5413a",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "data/train_only_axis_normalization.csv",
+      "local_path": "data/processed/global_foodnutrigpt_v8_single_stage_v2_complete_test/train_only_axis_normalization.csv",
+      "bytes": 23745,
+      "sha256": "756a2581a853f0bdcd138232e4890c35539bf9b013030e119c000a91c6907300",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    },
+    {
+      "archive_member": "splits/splits.json",
+      "local_path": "data/splits/global_foodnutrigpt_v8_single_stage_v2_complete_test/splits.json",
+      "bytes": 4514175,
+      "sha256": "66afdf0d7bf8f354f55ee724a7271fb488003668610e3e1920a9e74a772266a1",
+      "release_manifest_match": true,
+      "r0_input_match": true
+    }
+  ],
+  "all_ten_files_match_archive_release_and_r0_fingerprints": true,
+  "script_sha256": "efa03180a64676c4eea5fd045a1f07c4c5a4a0224b9d6a514bfcd1032ed3e665",
+  "code_commit": "3241cd8a57db3d5f8f4d9e163b652178b8791518",
+  "data_modified": false,
+  "archive_extracted": false,
+  "nutrient_rows_parsed": false,
+  "complete_test_opened_for_model_evaluation": false,
+  "model_training_performed": false,
+  "upstream_authenticity_independently_verified": false,
+  "record_level_unit_and_label_validity_proven": false,
+  "scope": "Byte identity of the user-supplied archive, its embedded manifest, the frozen local V8 payload, and R0 input fingerprints. The embedded checksums are not an independent publisher signature. This does not establish exact upstream database releases, licensing, provenance of individual values, or label correctness. Payload tables remain opaque bytes; no food names or nutrient values are exported."
+}
