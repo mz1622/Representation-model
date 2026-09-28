@@ -1,5 +1,7 @@
 # Nutrition Representation Model: Research Report
 
+**Subsequent scope change: this document is retained as the earlier MLP-stage draft.** Current work targets a [Transformer that improves on frozen RF results](../r9/PLAN.md), with unchanged data and no further tree training. The pending tree runs described below were cancelled. The final bilingual reports must incorporate the new Transformer evidence; this draft does not establish completion of that objective.
+
 **Status: working draft; experiments and comparisons are being finalized (28 September 2026).** Data, methods, R0–R7 and the neural three-seed results are documented. The last two R8 RF configurations, repetitions of the selected trees, final paired intervals and final version decision remain incomplete. This is not the final deliverable. The corresponding Chinese draft is [REPORT_ZH.md](REPORT_ZH.md).
 
 ## 1. Research questions and scope of conclusions

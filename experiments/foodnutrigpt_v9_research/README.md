@@ -1,8 +1,10 @@
 # Nutrition representation model 研究记录
 
-当前目标（2026-09-28 用户修订）：验证营养模型的训练流程、方法与参数选择，完成公平的 RF/XGBoost 对照，并交付中文、英文两份完整报告；不再要求神经网络超过树模型。新的收尾范围、固定配置复核和交付标准见[最终报告计划](final_report_v1/PLAN.md)。历史改进门槛及所有失败结果保留，不宣称 foundation model 能力已经成立。
+当前目标（2026-09-28 后续用户修订）：沿本地PDF的Transformer思路改进训练，目标优于冻结的上次RF结果；RF/XGBoost不再训练，数据、划分、尺度和评分不改。执行以[R9计划](r9/PLAN.md)为准，中英文完整报告要求继续保留。此前MLP收尾计划及旧胜负门槛为历史记录，不能用MLP成绩完成Transformer目标；不宣称foundation能力已经成立。
 
-最新证据：[补全MLP三种子与名称近邻的食品组比较](final_report_v1/NEURAL_REFERENCE_COMPARISON.md)已完成，name-only误差高98.186%，区间支持该不足。最终同输入树重复和全量统计已串接到后台队列，[统计口径](final_report_v1/STATISTICS.md)保留执行要求与失败记录；[中文](final_report_v1/REPORT_ZH.md)和[英文](final_report_v1/REPORT_EN.md)目前都是草稿。以下旧协议数值及旧确认门槛用于历史追溯，不替代最终新输入比较。
+R9已完成PDF全文核验、67个输入文件及六个完整树结果冻结、6项针对性测试和真实训练行功能检查。首组两个60轮Transformer仅学习率不同，已顺序启动，见[R9运行报告](r9/README.md)。旧树队列及依赖已按最新指示停止，R8实际完成范围见[范围调整记录](r8/SCOPE_CHANGE_CLOSURE.md)。
+
+此前MLP阶段证据：[补全MLP三种子与名称近邻的食品组比较](final_report_v1/NEURAL_REFERENCE_COMPARISON.md)已完成，name-only误差高98.186%，区间支持该不足。[统计口径](final_report_v1/STATISTICS.md)和[中文](final_report_v1/REPORT_ZH.md)、[英文](final_report_v1/REPORT_EN.md)草稿保留该阶段记录；其中旧树重复队列已取消。以下旧协议数值及旧确认门槛用于历史追溯，不替代当前Transformer比较。
 
 | 版本 | 状态 | 报告 |
 |---|---|---|
@@ -14,7 +16,8 @@
 | V9-R5 | 12/12探索及完整输入分支三种子复核完成：完整R@10为29.82%±0.37%，强近邻19.22%；稀疏仍失败 | [探索](r5/README.md) · [三种子复核](r5/CONFIRMATION_RESULTS.md) |
 | V9-R6 | 3项探索完成：混合/固定30%遮蔽补全较父退步14.08%/6.91%，不采用；名称收益未超过强近邻 | [上下文遮蔽结果](r6/README.md) |
 | V9-R7 | 6项探索完成：增加名称维度使MLP/KNN主误差改善8.84%/6.87%；同128输入MLP仍落后KNN5.11%，保留输入方向 | [名称压缩结果](r7/README.md) |
-| V9-R8 | 两项MLP及六项树完成审计；XGB128深6/10/14全部结束，尚余两项RF；完整版本仍收尾 | [阶段结果与状态](r8/README.md) · [追加128对照](r8/TREE128_STAGE_RESULTS.md) |
+| V9-R8 | 两项MLP、六项树及两项KNN完整；另外两项RF按最新要求取消；已有结果冻结 | [范围调整](r8/SCOPE_CHANGE_CLOSURE.md) · [追加128对照](r8/TREE128_STAGE_RESULTS.md) |
+| V9-R9 | Transformer首组运行中；固定数据和树参照，仅比较优化方法 | [预登记与核验](r9/README.md) |
 | 基线三种子复跑 | 六次全部完成并核验；XGB 0.173542±0.000233、RF 0.188655±0.000164（种子SD）；较强参照为XGB | [确认运行记录](baseline_confirmation_v1/README.md) |
 
 指标、数据隔离视图和验证面板已经冻结。历史测试集保持关闭。单种子探索、配对食品组区间和三种子确认分别记录；未达到确认门槛不写成确定结论。

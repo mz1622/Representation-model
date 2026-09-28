@@ -1,4 +1,4 @@
-# V9-R9：Transformer方法研究（首组执行准备完成）
+# V9-R9：Transformer方法研究（首组运行中）
 
 ## 1. 问题与预先假设
 
@@ -27,7 +27,7 @@ $env:PYTHONPATH='src'
 
 ## 4. 结果
 
-首组长训练尚无完整结果。固定RF32主误差.1890309379，旧log .0562700618；同输入固定XGB32主误差.1744867960。禁止用部分epoch、功能过拟合或旧MLP分数宣称Transformer获胜。
+首组长训练已顺序启动，运行实现提交`b4fd4c1`，尚无完整结果。队列先tf192_mae_lr1e4_60，随后tf192_mae_lr3e4_60；每项结束自动独立审计并与冻结RF/XGB/KNN比较。状态以各run_manifest和`work/r9-first-transformers-status.json`为准。固定RF32主误差.1890309379，旧log .0562700618；同输入固定XGB32主误差.1744867960。禁止用部分epoch、功能过拟合或旧MLP分数宣称Transformer获胜。
 
 ## 5. 机制诊断
 

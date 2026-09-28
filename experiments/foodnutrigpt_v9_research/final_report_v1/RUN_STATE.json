@@ -1,5 +1,6 @@
 {
-  "status": "running_final_tree_evidence_pending",
+  "status": "superseded_by_transformer_only_goal",
+  "superseded_by": "experiments/foodnutrigpt_v9_research/r9/PLAN.md",
   "as_of_date": "2026-09-28",
   "superiority_over_rf_xgb_required": false,
   "complete_test_opened": false,
@@ -9,12 +10,12 @@
   "r8_tree_candidates_complete": 6,
   "r8_tree_candidates_registered": 8,
   "r8_tree_candidates_remaining": ["rf400leaf3half_name128", "rf400leaf1all_name128"],
-  "selected_tree_four_repetitions_and_independent_audits": "queued_after_full_r8_collection",
-  "final_three_seed_statistics": "queued_after_tree_repetitions_and_audits",
+  "selected_tree_four_repetitions_and_independent_audits": "cancelled_by_user_baseline_freeze",
+  "final_three_seed_statistics": "cancelled_dependency_on_old_tree_repetition_plan",
   "final_statistics_expected_directory": "reports/v9_final_comparison_v1",
   "neural_reference_statistics_directory": "reports/v9_final_neural_reference_comparison_v2",
   "retained_failed_postprocessing_attempt": "reports/v9_final_neural_reference_comparison_v1",
-  "report_status": {"REPORT_ZH.md": "draft", "REPORT_EN.md": "draft"},
+  "report_status": {"REPORT_ZH.md": "historical_mlp_stage_draft", "REPORT_EN.md": "historical_mlp_stage_draft"},
   "remaining_review": ["Complete R8 eight-section final report", "Inspect full three-seed comparison and mechanism/source/axis evidence", "Finalize and verify both languages against shared machine results"],
   "liveness_note": "This versioned snapshot is not a process-health certificate; revalidate live controllers and local work status receipts.",
   "new_model_search_queued": false
