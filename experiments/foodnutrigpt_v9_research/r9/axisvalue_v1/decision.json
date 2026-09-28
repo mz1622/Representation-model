@@ -1,0 +1,25 @@
+{
+  "status": "screen_complete_fixed_axisvalue_recipe_rejected",
+  "candidate_number": 4,
+  "seed": 20260922,
+  "selected_epoch": 60,
+  "gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "analysis_sha256": "d6a3c7ae8d1cb13ec404e5e838bb135203ee21acc48efff3e6830f8c35784f28",
+  "fit_sha256": "111f0e2f153d9e3577a02b79f05b6521a45f9969503808aab36400848a5b8eae",
+  "checkpoint_sha256": "512d963a4053262d90accaeae98f1c8d267f8501e9f7e1b69c6dac157e38a70c",
+  "primary_point_regression_vs_mae_fraction": 0.023092453639680155,
+  "legacy_point_regression_vs_mae_fraction": 0.030629762911075442,
+  "retain_mae_as_control": true,
+  "additional_axisvalue_seeds_authorized_by_screen": false,
+  "accept_as_rf_superior": false,
+  "goal_achieved": false,
+  "next_question": "Test source-calibration weight1 versus0 on the original MAE control, retaining loss normalization by1+w, shared initialization and all other settings. Not yet registered or trained at this closure; stable source offsets and source-partition gaps do not establish a causal benefit or harm.",
+  "future_long_run_followup": "Estimate duration and schedule a thread reminder; no per-epoch agent observation.",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

@@ -1,0 +1,24 @@
+{
+  "status": "complete_aggregate_axis_contrast",
+  "axis_count": 142,
+  "primary_axisvalue_minus_mae": 0.004238695573588296,
+  "axes_point_better_than_mae": 60,
+  "axes_unadjusted_interval_supports_improvement": 14,
+  "axes_unadjusted_interval_supports_regression": 20,
+  "sparse_validation_axes_below30": 9,
+  "axisvalue_axes_better_than_rf": 70,
+  "amino_acid_axes_axisvalue_worse_than_mae": 16,
+  "input_hashes": {
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_signed_contributions.csv": "2a131a5d5de9769f6a64b15528aeda1bf075a96045c79b629fce394a3a5bb876",
+    "reports/v9_r9_axisvalue_rf32_gap_v1/axis_signed_contributions.csv": "97d68f48ea14afc319eda5b7d9c05f8c247bf18edc930e618b0b2385f9f4a06a",
+    "reports/v9_r9_axisvalue_vs_mae_parent_completion_v1/axis_paired_intervals.csv": "32478a7c20345d57dac81533ca3157cf1c0d50ad484d5126982b9a7fdb3a36f2",
+    "reports/v9_r9_axisvalue_analysis_v1/summary.json": "d6a3c7ae8d1cb13ec404e5e838bb135203ee21acc48efff3e6830f8c35784f28",
+    "scripts/review_foodnutrigpt_r9_axisvalue_axes.py": "17819bd7250afc4e36d9afe44cd8ab6bf4061e58c3d7025ab9fe711dfa764491"
+  },
+  "training_performed": false,
+  "model_forward_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Subtraction of existing complete same-panel contributions and existing food-group intervals. Exploratory axis inspection without multiplicity correction or new selection. Axis/source differences cannot establish a unique mechanism."
+}

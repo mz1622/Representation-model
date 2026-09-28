@@ -1,14 +1,16 @@
-# V9-R9：Transformer方法研究（MAE复验与MSE筛选完成）
+# V9-R9：Transformer方法研究（MAE复验及两项方法筛选完成）
+
+最新完整版本为[轴×数值残差筛选](axisvalue_v1/README.md)：60轮、独立重放、11项比较、全量训练拟合、逐轴/案例与曲线审阅均完成。主误差0.187792，相对同种子MAE点退步2.309%，旧log点退步3.063%；三个筛选条件均失败，不追加23/24种子。已完成[中文综合报告](../report_snapshot_r9_axisvalue_v1/REPORT_ZH.md)、[英文综合报告](../report_snapshot_r9_axisvalue_v1/REPORT_EN.md)及[审阅凭据](../report_snapshot_r9_axisvalue_v1/review_verification.json)。下一项问题是原MAE控制的来源校准权重1→0，目前尚未登记或训练。后续遵循[估时和定时回访流程](RUN_FOLLOWUP.md)，不再逐epoch观察。
 
 当前状态：首组两个学习率和固定3e-4配方的三个种子全部完成、独立审计和统计通过；没有仍在运行的旧复验队列。主误差均值0.189184±0.006925，冻结RF0.189031；改善区间[−2.173%,+2.074%]，旧log-MAE退步2.103%。因此保留为已审计控制，未确认优于RF。
 
 完整本轮[八节研究记录与决定](confirmation_v1/README.md)、综合[中文报告](../report_snapshot_r9_confirmation_v1/REPORT_ZH.md)、[英文报告](../report_snapshot_r9_confirmation_v1/REPORT_EN.md)及[报告审阅凭据](../report_snapshot_r9_confirmation_v1/review_verification.json)已保存。逐轴诊断支持下一步单独检验MAE→MSE，不先改容量、采样或来源校准。旧数据、RF/XGBoost及测试使用状态保持冻结。
 
-MAE→MSE的60轮、独立重放、11项比较和全量训练拟合均已完成。主误差0.193006，相对同种子MAE退步5.150%，旧log-MAE退步10.622%；三个筛选条件全部失败，不追加其23/24种子。见[MSE八节记录](mse_v1/README.md)、最新[中文报告](../report_snapshot_r9_mse_v1/REPORT_ZH.md)和[英文报告](../report_snapshot_r9_mse_v1/REPORT_EN.md)。下一项待登记假设是增加营养轴与数值的显式交互；尚未训练，不宣称收益。
+MAE→MSE的60轮、独立重放、11项比较和全量训练拟合均已完成。主误差0.193006，相对同种子MAE退步5.150%，旧log-MAE退步10.622%；三个筛选条件全部失败，不追加其23/24种子。见[MSE八节记录](mse_v1/README.md)、当时的[中文报告](../report_snapshot_r9_mse_v1/REPORT_ZH.md)和[英文报告](../report_snapshot_r9_mse_v1/REPORT_EN.md)。随后登记并完成轴×数值残差对照，最新结论见首段。
 
 [来源参数稳定性诊断](../../../reports/v9_r9_mae_calibration_stability_v1/README.md)只读取三个已完成MAE检查点：营养偏置相关性0.969–0.974，但不证明校准改善或损害性能。
 
-随后已登记第4项[轴×数值残差实验](axisvalue_v1/README.md)。11项测试和真实训练行功能预检通过，增加48,384个零初始化参数；保留MAE及全部优化设置。正式三任务成绩尚无，不能据预检宣称改进。
+第4项[轴×数值残差实验](axisvalue_v1/README.md)增加48,384个零初始化参数，保留MAE及全部优化设置；11项功能测试、真实训练行预检和正式三任务审计通过。模型运行正确与配方取得改善是两个不同结论，本轮只满足前者。
 
 以下保留各时点的历史记录；“待复验”“正在运行”仅指当时，不是当前作业状态。
 

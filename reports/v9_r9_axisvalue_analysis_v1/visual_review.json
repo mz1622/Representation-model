@@ -1,0 +1,21 @@
+{
+  "status": "actual_six_panel_visual_review_complete",
+  "figure": "reports/v9_r9_axisvalue_analysis_v1/learning_curves.png",
+  "figure_sha256": "d3d92c04ac7761f3a0c32e06128f1d13ee6ccabac9270bb387527474e942a431",
+  "analysis_sha256": "d6a3c7ae8d1cb13ec404e5e838bb135203ee21acc48efff3e6830f8c35784f28",
+  "viewed_with": "view_image",
+  "all_six_panels_viewed": true,
+  "axes_legends_and_selected_epoch_markers_readable": true,
+  "observations": [
+    "Both same-seed models select epoch60 under the registered primary metric. Axis-value has higher primary, legacy and conditional-positive error at those checkpoints, while conditional-zero error is lower.",
+    "Both learning curves improve substantially and flatten late in the fixed schedule; the observed late curve does not prove convergence to an optimum or predict an extended schedule.",
+    "No visible gradient explosion. Last-ten-epoch clipping fraction is0.34490222137839377 for axis-value versus0.3508828555154737 for the control; increased clipping frequency is not supported as the explanation.",
+    "The frozen tree lines are comparison references, not training targets. Final positive error remains above both tree references."
+  ],
+  "visual_review_complete": true,
+  "causal_mechanism_established": false,
+  "goal_achieved": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

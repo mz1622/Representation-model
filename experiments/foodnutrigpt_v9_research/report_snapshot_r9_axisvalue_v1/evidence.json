@@ -1,0 +1,33 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_axisvalue_analysis_v1/summary.json": "d6a3c7ae8d1cb13ec404e5e838bb135203ee21acc48efff3e6830f8c35784f28",
+    "reports/v9_r9_axisvalue_fit_v1/summary.json": "111f0e2f153d9e3577a02b79f05b6521a45f9969503808aab36400848a5b8eae",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_mse_v1/review_verification.json": "c3e3e11975a11fc97861e338128b958242bbd41c00caeb930d3a8b195b279646",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_mse_v1/REPORT_ZH.md": "b90c2d9f2c319222d9cc1886b5450ca61b28a76ac164b2798f6d3a813c1fc545",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_mse_v1/REPORT_EN.md": "e8e5eaa54e2f106834224f6f087a0df9a79099767e00b0979700efef11746c25",
+    "experiments/foodnutrigpt_v9_research/r9/axisvalue_v1/PLAN.md": "52a78e7b7d0f408d8b97d27b768c9e62bd52dae5e2c8935c000431bdb852f8db",
+    "experiments/foodnutrigpt_v9_research/r9/axisvalue_v1/config.json": "1a01380bb2f6ae9b711d91da53287ebf15129550c1052b4e7a8b09b94a74e32c",
+    "scripts/report_foodnutrigpt_r9_axisvalue.py": "194805ae74853b625d9d6f2eea068f3a7c04c8da8c94bfd3f68481ce39c38fdf"
+  },
+  "local_links_checked": 102,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "ab0571dad7512f026a4a629433701aea81e4952490a9b2be5db788d91383a866",
+    "REPORT_EN.md": "0744c36340debb26df14d2b0552749aee308fa4fbdbf64c8df419b684862de72"
+  }
+}

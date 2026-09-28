@@ -1,6 +1,6 @@
 # 轴×数值残差：完成后的逐轴与案例核验
 
-本文件登记两项结果解释检查；不增加候选模型，不改变训练、评分或预登记的接受条件。当前仅完成代码编译与和既有 MSE 检查器的差异审阅，尚未运行本轮结果检查。
+两项结果解释检查已完成：[案例核验](../../../../reports/v9_r9_axisvalue_cases_v1/summary.json)与[逐轴核验](../../../../reports/v9_r9_axisvalue_axis_changes_v1/summary.json)。40个案例的标识、数值和元数据一致；142轴差值重构整体差值。完整解释与限制已纳入本版本README和双语综合报告。以下保留核验方法，不增加候选模型，不改变训练、评分或接受条件。
 
 ```powershell
 .venv/Scripts/python.exe -X utf8 scripts/review_foodnutrigpt_r9_axisvalue_cases.py --output-dir reports/v9_r9_axisvalue_cases_v1
