@@ -103,7 +103,7 @@
       "active_dimensions": 128,
       "trees": 400,
       "leaf_size": 1,
-      "max_features": 1.0
+      "max_features": 1
     },
     {
       "name": "name_knn32",
@@ -154,7 +154,10 @@
   "completed_audited_tree_candidates": [
     "xgb800d10_name32",
     "xgb800d10_name128",
-    "rf400leaf1half_name32"
+    "rf400leaf1half_name32",
+    "rf400leaf1half_name128",
+    "xgb800d6_name128",
+    "xgb800d14_name128"
   ],
   "first_tree_stage_summary": "reports/v9_r8_xgb32_stage_v1/summary.json",
   "xgb128_stage_summary": "reports/v9_r8_xgb128d10_stage_v1/summary.json",
@@ -162,7 +165,7 @@
   "gap128_diagnostic_summary": "reports/v9_r8_mlp128_xgb128d10_gap_v1/summary.json",
   "rf32_stage_summary": "reports/v9_r8_rf32leaf1half_stage_v1/summary.json",
   "rf32_stage_summary_sha256": "fd2b5a02b35bd7f227ac5c6fecddee912f4788444b267d879d0b21cef0458f8c",
-  "remaining_tree_candidates": 5,
+  "remaining_tree_candidates": 2,
   "final_tree_selected": false,
   "gap_diagnostic_plan": "experiments/foodnutrigpt_v9_research/r8/GAP_DIAGNOSTIC_PLAN.md",
   "gap32_diagnostic_summary": "reports/v9_r8_mlp32_xgb32_gap_v1/summary.json",
@@ -176,5 +179,8 @@
     "Each tree vs same-name-view KNN for name-only and retrieval",
     "XGB depth10 and RF leaf1-half fixed-configuration 128-vs32 comparisons for all three tasks",
     "Fixed-depth XGB128-vsMLP128 signed-error diagnosis using the same registered partitions"
-  ]
+  ],
+  "additional_128_stage_report": "experiments/foodnutrigpt_v9_research/r8/TREE128_STAGE_RESULTS.md",
+  "user_goal_amendment": "experiments/foodnutrigpt_v9_research/final_report_v1/PLAN.md",
+  "final_neural_repetition_report": "experiments/foodnutrigpt_v9_research/final_report_v1/NEURAL_REPLICATION.md"
 }
