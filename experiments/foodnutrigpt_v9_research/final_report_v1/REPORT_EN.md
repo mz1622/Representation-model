@@ -177,6 +177,8 @@ The same models achieve full-input retrieval R@10 0.003182 ± 0.000271 and 30%-i
 
 ![Three-seed training and validation curves](../../../reports/v9_final_neural_summary_v1/learning_curves.png)
 
+The food-group comparison against the same-PCA128 name neighbor is complete: MLP name-only primary error is 98.186% higher, with conditional 95% interval [92.594%, 104.248%]. Full-input retrieval R@10 differs by −0.246558, interval [−0.256954, −0.236429]. These results establish name prediction and retrieval as limitations of this completion model within the present benchmark. KNN is one deterministic reference, without fictitious three-seed variability. The [stage record](NEURAL_REFERENCE_COMPARISON.md) preserves all tasks, axis/source results and failures; the [statistics record](STATISTICS.md) specifies the procedure.
+
 **Final matched-protocol comparison: pending.** It must include all three seeds for each selected RF/XGBoost configuration, complete mean/SD/range summaries for both regression tasks, retrieval MRR/R@1/5/10, axis support and source breakdowns, paired food-group intervals and computational cost. Missing tree repetitions are not replaced by a single-seed score in a supposedly final table.
 
 Paired intervals will first average errors from three independent models, then resample complete food groups 1,000 times. Predictions are not averaged into an ensemble. Seed SD and food-group intervals answer different questions; neither eliminates repeated-validation selection bias. These remain internal validation results, with the historical test closed.
