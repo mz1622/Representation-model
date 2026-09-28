@@ -1,0 +1,25 @@
+{
+  "status": "complete_reused_fit_evidence_identity_preflight",
+  "input_hashes": {
+    "reports/v9_r9_first_group_fit_v1/summary.json": "515d993d2e497ab9f89dbe52f2fdb077121ffc3533229ce6d1b263468118dbfc",
+    "reports/v9_r9_mse_fit_parent_preflight_v1/verification.json": "62bf0e8bcbb67909b1863ad1c0a2aace24ba53109c6a0b11dad3619cadbd68e1",
+    "data/local/research_diagnostics/v9_r9_first_group_fit_v1/tf192_mae_lr3e4_60/completion_predictions.parquet": "32744bae77379daa54a23e65299c09e1d7507907ed06d6472ba81d5f8528af8c",
+    "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+    "scripts/diagnose_foodnutrigpt_r9_axisvalue_fit.py": "a1cfa30b29da0ed2d65241848a988b7998b015d39a069798056a0ce46fec352b",
+    "src/foodcomp/research_transformer_r9_axisvalue.py": "a68a869e5983f81eaecb6144878e4ef0b8e7af3b533b281a966b0e1debebee8f"
+  },
+  "inherited_training_job_count": 1828536,
+  "training_query_panel_sha256": "39c80945daa7405dd2e8b741e799051820313d50e3fc550aa4bec7a995abbd84",
+  "unchanged_parent_predictions_verified": true,
+  "current_rescoring_performed": false,
+  "current_model_forward_performed": false,
+  "candidate_checkpoint_read": false,
+  "fit_script_compiles": true,
+  "completed_evidence_guard_returns_pending": true,
+  "implementation_diff_reviewed": "Only candidate loader, bound paths, role/column/output names changed from successful MSE fit diagnostic; numerical inference/scoring and complete training panel unchanged.",
+  "scope": "Identity/preflight only. Prior completed rescore is reused, not presented as newly executed. Actual candidate fit must wait for complete audited analysis.",
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}
