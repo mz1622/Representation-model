@@ -1,0 +1,19 @@
+{
+  "status": "complete_parent_control_preflight",
+  "training_jobs": 1828536,
+  "training_query_panel_sha256": "39c80945daa7405dd2e8b741e799051820313d50e3fc550aa4bec7a995abbd84",
+  "mae_training_metrics_rescored_exact": true,
+  "mae_training_primary": 0.1349370786529251,
+  "parent_fit_summary_sha256": "515d993d2e497ab9f89dbe52f2fdb077121ffc3533229ce6d1b263468118dbfc",
+  "parent_prediction_sha256": "32744bae77379daa54a23e65299c09e1d7507907ed06d6472ba81d5f8528af8c",
+  "prepared_fit_script_sha256": "2e61557ee9314171a158653ad779ed3ebeb99f2afba32c67611631704e4cde73",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "elapsed_seconds": 3.4689999999827705,
+  "training_performed": false,
+  "model_forward_performed": false,
+  "mse_checkpoint_read": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Real frozen training-panel and existing MAE prediction replay only. The prepared MSE forward evaluation remains pending complete training/audit/analysis. No additional model performance result."
+}
