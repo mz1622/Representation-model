@@ -1,0 +1,28 @@
+{
+  "status": "existing_frozen_name_files_read_check_complete_not_model_audit",
+  "records": [
+    {
+      "path": "output/v9_r8/rf400leaf1half_name32/retrieval/candidate_names.json",
+      "sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+      "candidate_count": 49913,
+      "actual_default_read_failed": "'gbk' codec can't decode byte 0x9e in position 5002: illegal multibyte sequence",
+      "actual_explicit_utf8_read_exact": true,
+      "windows_writer_bytes_exact": true,
+      "crlf_count": 49915
+    },
+    {
+      "path": "output/v9_r8/xgb800d10_name32/retrieval/candidate_names.json",
+      "sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+      "candidate_count": 49913,
+      "actual_default_read_failed": "'gbk' codec can't decode byte 0x9e in position 5002: illegal multibyte sequence",
+      "actual_explicit_utf8_read_exact": true,
+      "windows_writer_bytes_exact": true,
+      "crlf_count": 49915
+    }
+  ],
+  "data_modified": false,
+  "training_performed": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "earlier_check": "Direct equality between in-memory LF preflight bytes and existing Windows CRLF files failed. Exact logical names and CRLF writer bytes now verified; no files were rewritten. Earlier preflight hash identifies its in-memory LF text, not the existing candidate file."
+}
