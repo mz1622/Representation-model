@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "seed_primary": {
+    "20260922": 0.18355327847469682,
+    "20260923": 0.18708334056598971,
+    "20260924": 0.19691659518102336
+  },
+  "mean_primary": 0.18918440474056997,
+  "rf_primary": 0.18903093786773023,
+  "mean_gap_to_rf": 0.0001534668728397407,
+  "seed24_minus_seed22": 0.013363316706326508,
+  "all_seeds_better_rf_axes": 53,
+  "all_seeds_worse_rf_axes": 62,
+  "mean_better_rf_axes": 64,
+  "sparse_validation_axes_below30": 9,
+  "input_hashes": {
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "reports/v9_r9_three_seed_confirmation_v1/axis_metrics_by_seed.csv": "aa7ef9d84ac5b480288bcbb950d909b0be96224dbdda45e12268d3961d01fad6",
+    "reports/v9_r9_three_seed_confirmation_v1/axis_paired_intervals.csv": "82dac7aa2dec666b86a9fce16dc165ff1f9979f9362cecf0adb9fbca8501f536",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_comparison.csv": "81a98ce6c00f1a4775b651f01d2e73ca915cb4dcdb10316ced0a370e6eb2d8a2"
+  },
+  "script_sha256": "737838e64076ac59e40687655181c6160cdecfb9b5dc603ecfea16aeb1c367b0",
+  "scope": "Descriptive decomposition of previously selected checkpoints. Axis intervals are exploratory, unadjusted for multiple comparisons. Each primary contribution uses the fixed142-axis denominator. No unique causal mechanism is established.",
+  "complete_test_opened": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "training_performed": false
+}

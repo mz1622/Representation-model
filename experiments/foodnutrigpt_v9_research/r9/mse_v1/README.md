@@ -1,0 +1,44 @@
+# V9-R9 / MSE 单因素对照（已登记，等待正式结果）
+
+这是第3个方法候选，不是已接受的配方。父版本和完整双语报告见[MAE三种子复验](../confirmation_v1/README.md)。原数据及树基线冻结。
+
+## 1. 研究问题与预先假设
+
+MAE控制的正值误差抵消零值优势；假设平方残差训练可降低正值低估，但可能伤害零值与总体MAE。详见[预登记](PLAN.md)。不预设假设成立。
+
+## 2. 父版本与唯一改动
+
+父模型为种子20260922的192维、3层、6头、MAE、source1、lr3e-4、60轮Transformer。仅将训练损失换为MSE，其余数值配置相同；名称标识变化不算方法因素。从相同随机初值重训，非微调。评分、数据、任务、缓存、基线均不变。
+
+## 3. 复现与功能核验
+
+[机器配置](config.json)绑定父运行、审计、三种子统计和方法源文件。9项测试通过，包括独立逐单元权重/梯度重算、缺失不监督和显式零梯度。真实训练样本[功能核验](../../../../reports/v9_r9_mse_functional_v1/verification.json)通过：初值与父模型精确一致、内部训练循环AST一致、隐藏标签与来源不改变前向、保存重载精确、未观测监督轴可查询。32训练任务50步MSE从0.557977降至0.011301；正式训练会恢复初值和RNG。功能检查不构成泛化证据。
+
+```powershell
+$env:PYTHONPATH='src'
+.venv/Scripts/python.exe -m pytest tests/test_research_transformer_r9.py tests/test_research_transformer_r9_mse.py -q
+.venv/Scripts/python.exe scripts/verify_foodnutrigpt_r9_mse_functional.py --output-dir reports/v9_r9_mse_functional_v1
+.venv/Scripts/python.exe scripts/train_foodnutrigpt_v9_r9_mse.py --candidate tf192_mse_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mse_lr3e4_60
+```
+
+已有目录不能覆盖；前两条已执行。正式运行记录源码提交、每轮曲线、模型及数据哈希和实际耗时。预计3小时仅供安排，不作为成本结果。
+
+## 4. 完整结果
+
+待60轮、独立重放和同协议比较后填写。尚无MSE验证成绩，不拼入综合报告结果表。三个任务使用同一补全选点。
+
+## 5. 机制诊断
+
+预先要求正值低估/高估、显式零的共同分母分解，逐轴/来源支持、学习曲线和梯度裁剪频率。MAE和MSE训练损失值不能直接作优劣比较。
+
+## 6. 因果分析
+
+当前只验证实现可运行。方法结论须等待相同种子、初值、样本顺序及预算的完整对照。损失形状也改变梯度尺度；即使改善，也不能将机制唯一归因为均值/中位数或PDF方法。
+
+## 7. 版本决定
+
+待结果；不接受、不拒绝性能假设。筛选条件已写入PLAN，不在看到成绩后改动。三种子确认尚未登记启动。
+
+## 8. 下一轮问题及测试使用
+
+先完成本候选与父MAE、冻结RF/XGB、名称KNN的比较。若筛选支持才固定配方追加23/24；否则保留失败并根据现象决定下一因素。测试集保持关闭，数据及树结果保持冻结。

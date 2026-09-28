@@ -1,0 +1,23 @@
+{
+  "status": "confirmation_complete_recipe_not_accepted",
+  "retain_as_control": true,
+  "accept_as_rf_superior": false,
+  "seeds": [
+    20260922,
+    20260923,
+    20260924
+  ],
+  "gates": {
+    "three_registered_neural_seeds": true,
+    "primary_mean_improvement_over_fixed_rf": false,
+    "food_group_interval_supports_improvement": false,
+    "legacy_mean_regression_at_most_2_percent": false
+  },
+  "statistics_sha256": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+  "next_single_factor": "objective: mae -> mse",
+  "next_experiment_launched_by_this_script": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false
+}

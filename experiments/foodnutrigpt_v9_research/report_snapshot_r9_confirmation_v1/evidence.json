@@ -1,0 +1,38 @@
+{
+  "status": "draft_rendered_review_required",
+  "input_hashes": {
+    "reports/v9_r9_three_seed_confirmation_v1/status.json": "3159d0ce32a0a889739e79054ffe165f42e933459c2af5c59b5477cd41cd802c",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "reports/v9_r9_three_seed_curves_v1/verification.json": "a371bb9452a26670ef73f5c841dd3d8380c7fe032d60431a498b9c0304908d0d",
+    "reports/v9_r9_three_seed_curves_v1/visual_review.json": "0047129e16f97898806eff9608d56539465ae104f21acc078445d4f096ae807a",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_v1/REPORT_ZH.md": "9df7be870c1a268d1eef9b7c12f8984cd7c64138255ab62664b138b9f7f07365",
+    "reports/v9_r9_original_archive_identity_v1/verification.json": "5f6a9c645b0f2f7917ffd122112c7db6b1db3bd552bf337c77364f1716fc187d",
+    "reports/v9_r9_public_interfaces_seed23_v1/verification.json": "981e3e83b550e3554838f7c485a920ab0898221187c19f8c93b79264c4b5f41e",
+    "experiments/foodnutrigpt_v9_research/r9/first_group_v1/README.md": "04f3bce2e84596941f1792061fd438807c9729c126f0ea24612f54ae27f86b25",
+    "reports/v9_r9_three_seed_confirmation_v1/metrics_by_seed.csv": "31b88dc5e83bb8dd941436db52b01c7e9c1ed594b55e1786415d7bf6060ce6e4",
+    "reports/v9_r9_three_seed_confirmation_v1/retrieval_by_seed.csv": "755f52fa96f272bdcb0979958106aee7ae4f5cb4102d2e994b3dbacf12be2d7a",
+    "reports/v9_r9_three_seed_confirmation_v1/recorded_compute_seconds.csv": "a493bfa4c56efe90c59f91c0c37b6289aa2921f792fe372ed56d73a2bc062abc",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923/run_manifest.json": "0feb506b39c3d6aeba8c968dd6ed8377df3349d55e1886197afa210271ae7d5c",
+    "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260924/run_manifest.json": "ab7a5a495fea117ad69376926cf7390564ab7db108486b074c1059dc1f707f9a",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_v1/REPORT_EN.md": "f0a7cc53b1aaa21f35fb16770200932ac3443467f4845321b7740a9ee6327643",
+    "experiments/foodnutrigpt_v9_research/r9/first_group_v1/REPORT_EN.md": "c5d9b5128fe9e9ecd46fdd881815b59d8fae16fb22b3073fce1e8aaa677b29ba"
+  },
+  "document_hashes": {
+    "REPORT_ZH.md": "23ebe7c65826a79d4058d6b5487ab2ca7d29067ddce0669370c5aba419caeb64",
+    "REPORT_EN.md": "0f788fea4cfb383ef3194c9013732160bdb730b88a6f3e3d0c0df4097040e3d2"
+  },
+  "conditional_fixed_rf_milestone_passed": false,
+  "table_rows": {
+    "ZH": 182,
+    "EN": 182
+  },
+  "code_commit": "aee90602ff7ce0e60bd7ac17ee2dd59f4ec308bd",
+  "builder_sha256": "48cdf8b1dd59fc2e245eaf8b1682bfea71e5163bd7064d5a7267560bef1bf125",
+  "manual_proofreading_complete": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "final_report_complete": false,
+  "goal_achieved": false
+}

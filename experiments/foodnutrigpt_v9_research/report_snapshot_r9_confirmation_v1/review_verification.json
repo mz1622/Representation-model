@@ -1,0 +1,19 @@
+{
+  "status": "reviewed_complete_stage_report",
+  "manual_proofreading_complete": true,
+  "review_scope": "Both language versions read; dynamic tables, source methods, iteration history, failure records, causal limits and next-method wording reviewed. Local links and numeric table cells checked. This closes the MAE confirmation report only.",
+  "numeric_table_row_count": 121,
+  "local_links_checked": 68,
+  "generation_evidence_sha256": "7135fdaa677e0afd8410f9fb46469382a7e27f62756d60d05d6f6944dd81b00a",
+  "document_hashes": {
+    "REPORT_ZH.md": "9c80c4dfa2c22c29c276f985aec6f1262dd83c77767bcc38ed4f02bfd9e158ca",
+    "REPORT_EN.md": "fd9f4ac106e7b50e0bc11ddc9f574a15b58979df86caebf482d46be75e18b226"
+  },
+  "statistics_sha256": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+  "seed_diagnosis_sha256": "8245cfeed20de9e8efa276b9a6a66e4a76a9de43bf6490dfcf11483a88289b62",
+  "version_readme_sha256": "b5c595478a3a1d66ff00c3d9cd5eb0aca64f0554e371459ae8c49ebe1e89f862",
+  "complete_test_opened": false,
+  "baseline_refit": false,
+  "data_modified": false,
+  "goal_achieved": false
+}

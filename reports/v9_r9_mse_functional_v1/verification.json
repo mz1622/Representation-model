@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_mse.py": "b9975aa7e49a5a3af447ff93034c630b8923ec050ae9a7c24da46c721240c427",
+    "src/foodcomp/research_transformer_r9_methods.py": "6a4df8030bd4d4e4922af5f2372fa72a782dae69bf0b3a07c8a9c2bec32468f9",
+    "scripts/verify_foodnutrigpt_r9_mse_functional.py": "238ef1ec8f140cf546a41d29ef4ee7424cb58e62d18e36e4325bc466467c1061"
+  },
+  "plan_sha256": "28d562f705e48f07526524093c9be180341b8c141040646faff99f2239fed4f0",
+  "same_seed_parent_initialization_exact": true,
+  "inner_training_loop_ast_unchanged": true,
+  "functional_checkpoint_sha256": "abe923e1405d8dc3bf514cd6bb1c8c196f87036f83ed14c735985e15e4c7fdea",
+  "legacy_control_initialization_forward_and_mse_exact": true,
+  "hidden_label_target_and_source_changes_forward_exact": true,
+  "public_loader_reload_forward_exact": true,
+  "caller_requested_unobserved_axes_predicted": true,
+  "train_names_all187_queries_finite": true,
+  "small_batch_overfit": {
+    "before": 0.5579769015312195,
+    "after": 0.011300577782094479,
+    "steps": 50
+  },
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "old_frozen18_sources_unchanged": true,
+  "complete_test_opened": false,
+  "validation_metrics_read": false,
+  "scope": "Training-row functional checks only, not performance evidence."
+}

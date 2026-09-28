@@ -1,0 +1,53 @@
+{
+  "status": "generated_visual_review_pending",
+  "statistics_sha256": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+  "script_sha256": "f088a7a4cbf657aa3a1679864f152df450db1c57a68215316ea1525d225a54bf",
+  "records": [
+    {
+      "seed": 20260922,
+      "run": "output/v9_r9/tf192_mae_lr3e4_60",
+      "best_epoch": 60,
+      "best_primary": 0.18355327847469688,
+      "history_sha256": "78028e33bcd99cc3fbf1fe7effcd3c542089b6b438a90ec921244d564371606f",
+      "manifest_sha256": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8"
+    },
+    {
+      "seed": 20260923,
+      "run": "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260923",
+      "best_epoch": 60,
+      "best_primary": 0.18708334056598974,
+      "history_sha256": "df19f62d608e8c82ccb29cac1944f6c3130e3a2c9fda730197504f0753564e66",
+      "manifest_sha256": "0feb506b39c3d6aeba8c968dd6ed8377df3349d55e1886197afa210271ae7d5c"
+    },
+    {
+      "seed": 20260924,
+      "run": "output/v9_r9_confirmation/tf192_mae_lr3e4_60_seed20260924",
+      "best_epoch": 57,
+      "best_primary": 0.1969165951810234,
+      "history_sha256": "5e9db1af37b5fd1ad5bb9c09295158706a204cb4136913122bdb445732218b7c",
+      "manifest_sha256": "ab7a5a495fea117ad69376926cf7390564ab7db108486b074c1059dc1f707f9a"
+    }
+  ],
+  "interpretation_notes": {
+    "panels": 6,
+    "seed_count": 3,
+    "all_full_trajectories": true,
+    "stars": "Each seed completion-selected epoch, reused on all panels; no per-panel reselection.",
+    "training_validation_warning": "Training objective includes187 axes and calibration; do not subtract it from validation142-axis MAE.",
+    "zero_positive_warning": "Conditional errors have different denominators and cannot be added directly.",
+    "interval_warning": "No uncertainty band is invented from three trajectories; seed variability and conditional food-group intervals are reported in aggregate statistics.",
+    "zoom_warning": "Final20 panel is a visual zoom on the same full trajectory, not another selection window."
+  },
+  "figure_hashes": {
+    "learning_curves.png": "583350030341f0380a1a2e654a6dd71026a6aa0765b83903566726e7288a330d",
+    "learning_curves.svg": "259f15fe390e713dd2508456a587f21f26e61d3b91d81ab23b675e8ecbb2a26e"
+  },
+  "conditional_fixed_rf_milestone_passed": false,
+  "visual_review_complete": false,
+  "complete_test_opened": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "final_report_complete": false,
+  "goal_achieved": false
+}

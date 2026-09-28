@@ -1,0 +1,29 @@
+{
+  "status": "registered",
+  "purpose": "r9_single_factor_objective_contrast",
+  "candidate": "tf192_mse_lr3e4_60",
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "seed": 20260922,
+  "changes": {
+    "objective": "mse"
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/mse_v1/PLAN.md": "ee5573d203d0e8d6416688f5b00745734aea2fc507b1aa3d2366f3938f0b22be",
+    "experiments/foodnutrigpt_v9_research/r9/confirmation_v1/decision.json": "727b556297ac8d39c6282ab2868e2273364ab893c2327d0780bde2a888dfffd4",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "reports/v9_r9_seed_variation_v1/summary.json": "8245cfeed20de9e8efa276b9a6a66e4a76a9de43bf6490dfcf11483a88289b62",
+    "scripts/train_foodnutrigpt_v9_r9_mse.py": "b9975aa7e49a5a3af447ff93034c630b8923ec050ae9a7c24da46c721240c427",
+    "scripts/verify_foodnutrigpt_r9_mse_functional.py": "238ef1ec8f140cf546a41d29ef4ee7424cb58e62d18e36e4325bc466467c1061",
+    "src/foodcomp/research_transformer_r9_methods.py": "6a4df8030bd4d4e4922af5f2372fa72a782dae69bf0b3a07c8a9c2bec32468f9"
+  },
+  "candidate_index": 3,
+  "max_candidates": 12,
+  "screening_decision": "Relative to same-seed MAE: primary point improvement and paired interval supporting improvement; legacy error at most2percent worse. Three fixed seeds required for accepting any method gain.",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

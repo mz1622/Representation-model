@@ -1,0 +1,26 @@
+{
+  "visual_review_complete": true,
+  "review_method": "Actual PNG inspection using view_image; six panels viewed at 2048x1165 from the 2448x1393 source.",
+  "statistics_sha256": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+  "figure_hashes": {
+    "learning_curves.png": "583350030341f0380a1a2e654a6dd71026a6aa0765b83903566726e7288a330d",
+    "learning_curves.svg": "259f15fe390e713dd2508456a587f21f26e61d3b91d81ab23b675e8ecbb2a26e"
+  },
+  "layout": "Titles, axes, legends and selected-epoch stars are readable; no clipped labels observed.",
+  "observations": [
+    "All three training objectives decline; seed20260924 has higher late training objective and validation error.",
+    "The completion-selected epochs are 60, 60 and 57. All three remain above frozen XGBoost; seed20260924 remains above frozen RF.",
+    "Conditional positive errors exceed both tree references while conditional explicit-zero errors are lower.",
+    "Seed20260924 exceeds the RF legacy-log-MAE plus2percent line."
+  ],
+  "limits": [
+    "Training covers187 axes with calibration whereas primary validation covers142 axes; subtracting the plotted objectives is not an overfitting diagnostic.",
+    "Conditional positive and zero errors use different denominators and cannot be added.",
+    "The figure contains no confidence bands; it does not establish a unique cause for seed differences or population-level seed uncertainty."
+  ],
+  "original_generation_receipt_preserved": true,
+  "complete_test_opened": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "goal_achieved": false
+}
