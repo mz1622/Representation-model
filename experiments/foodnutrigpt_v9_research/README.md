@@ -1,6 +1,6 @@
 # Nutrition representation model 研究记录
 
-当前目标（2026-09-28 后续用户修订）：沿本地PDF的Transformer思路改进训练，目标优于冻结的上次RF结果；RF/XGBoost不再训练，数据、划分、尺度和评分不改。执行以[R9计划](r9/PLAN.md)为准，中英文完整报告要求继续保留。此前MLP收尾计划及旧胜负门槛为历史记录，不能用MLP成绩完成Transformer目标；不宣称foundation能力已经成立。
+当前交付目标：训练方法和参数选择有验证依据，并交付完整中英文报告，**不要求超过RF/XGBoost**，见[证据与报告要求](r9/EVIDENCE_AND_REPORTING.md)。已登记的[R9 Transformer实验](r9/PLAN.md)继续运行；RF/XGBoost结果冻结，数据、划分、尺度和评分不改。历史MLP与Transformer结果分别保留，不宣称foundation能力已经成立。
 
 R9已完成PDF全文核验、67个输入文件及六个完整树结果冻结、6项针对性测试和真实训练行功能检查。首组两个60轮Transformer仅学习率不同，已顺序启动，见[R9运行报告](r9/README.md)。旧树队列及依赖已按最新指示停止，R8实际完成范围见[范围调整记录](r8/SCOPE_CHANGE_CLOSURE.md)。
 
