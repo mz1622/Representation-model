@@ -1,0 +1,31 @@
+{
+  "status": "confirmation_entrypoint_prepared_not_registered_or_executed",
+  "observed_utc": "2026-09-28T08:34:42.529121+00:00",
+  "source_sha256": {
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_confirmation.py": "c4512788003aa7df4aa2fa2bc6ff2326fe6b2b1d66cf10b8c0001d69cded7aca",
+    "tests/test_research_transformer_confirmation.py": "a72a2e3a760c0bcc42c4ba33cdfbea8c80acf4e03aaacbe5fce8c8fbfc424de1",
+    "experiments/foodnutrigpt_v9_research/r9/REPLICATION_ENTRYPOINT.md": "28869e85bd34679e706e4095abccaf1ca4e8faf3b2c1d1ab1edf61910cb63cb3"
+  },
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_research_transformer_confirmation.py -q --basetemp ../../work/pytest-r9-confirmation-v1",
+    "passed": 18,
+    "exit_code": 0,
+    "duration_seconds": 8.61
+  },
+  "cli_help_passed": true,
+  "actual_environment_matches_audited_parent": true,
+  "initialization_statements_identical": true,
+  "checkpoint_warmup_optimizer_training_selection_evaluation_statements_identical_except_read_only_evidence_checks": true,
+  "active_queue_pins_unchanged": 22,
+  "actual_model_forward_executed": false,
+  "new_training_started": false,
+  "confirmation_plan_created": false,
+  "recipe_selected": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scientific_confirmation": false,
+  "goal_achieved": false,
+  "scope": "Synthetic registration guards plus numerical-source identity and actual environment checks only. Does not replace real seed runs, full replay, paired uncertainty or scientific recipe selection."
+}
