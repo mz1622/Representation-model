@@ -1,0 +1,29 @@
+{
+  "status": "saved_budget20_snapshot_readiness_verified",
+  "observed_utc": "2026-09-28T07:02:36.768546+00:00",
+  "run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "checkpoint_sha256": "84b34871db1f2ce9506a170b7d3a1282179e9df11d57c6d791f5c1e4a0314f37",
+  "checkpoint_bytes": 6223541,
+  "selected_epoch": 18,
+  "recorded_validation_primary": 0.21340470440277987,
+  "all_saved_state_tensors_finite": true,
+  "cpu_deserialization_passed": true,
+  "configuration_seed_and_input_identity_match": true,
+  "prefix20_complete_and_finite": true,
+  "selected_epoch_is_earliest_prefix_primary_minimum": true,
+  "state_tensor_count": 72,
+  "parent_status_at_read": "running",
+  "same_initial_state_sources_and_frozen_inputs_as_first_candidate": true,
+  "first20_task_order_and_exposure_match_first_candidate": true,
+  "only_spec_differences": [
+    "name",
+    "learning_rate"
+  ],
+  "complete_test_opened": false,
+  "baseline_refit": false,
+  "data_modified": false,
+  "forward_or_metric_replay_performed": false,
+  "training_performed_by_this_check": false,
+  "scope": "Saved20-window readiness only; recorded history, not independent metric replay or early model selection. Formal three-task budget/LR analyses still await both audited60-epoch runs.",
+  "script_sha256": "c4fcdc8acdef4199007c5f5346d9957d0b58445c6386701708972bfa4f653e55"
+}
