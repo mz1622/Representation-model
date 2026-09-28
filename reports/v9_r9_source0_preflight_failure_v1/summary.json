@@ -1,0 +1,13 @@
+{
+  "status": "failed_exact_gpu_gradient_precheck_in_default_backend",
+  "command": "python -X utf8 scripts/verify_foodnutrigpt_r9_source0_functional.py --output-dir reports/v9_r9_source0_functional_v1",
+  "failure": "Initial shared gradient exact check differed in15 of48384 elements; largest absolute difference1.8189894035458565e-12. The checker stopped before creating its output directory or performing optimizer steps.",
+  "diagnostic": "reports/v9_r9_source0_gradient_reference_v1/summary.json",
+  "finding": "The same-objective GPU repeat also differs with ordinary backend reduction order (maximum2.3283064365386963e-10 in the diagnostic). CPU and GPU deterministic references both match exactly between source weights1 and0.",
+  "recovery": "Run the unchanged functional script in a separately recorded deterministic reference process. Keep exact assertions and preserve the ordinary production backend; no training recipe, registration, data or tolerance change.",
+  "optimizer_steps_before_failure": 0,
+  "formal_training_started": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

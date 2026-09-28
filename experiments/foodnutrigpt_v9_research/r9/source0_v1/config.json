@@ -1,0 +1,40 @@
+{
+  "status": "registered",
+  "purpose": "r9_single_factor_source_weight_contrast",
+  "candidate": "tf192_mae_source0_lr3e4_60",
+  "seed": 20260922,
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "prior_decision": "experiments/foodnutrigpt_v9_research/r9/axisvalue_v1/decision.json",
+  "prior_review": "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/review_verification.json",
+  "changes": {
+    "source_weight": 0.0
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/PLAN.md": "9454c263ab774029f0fd7d671a6b0ee0dea340bf547d27aa7497cb7e19c7baed",
+    "experiments/foodnutrigpt_v9_research/r9/axisvalue_v1/decision.json": "43cce40511383ebe0dede5be499b26dcfbef34aaffa8e1ef560b92a9efc078de",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/review_verification.json": "0a9879d3141dd4ceb850390ef2e249b0bfa7c2eae21ee26a8f6e52179d5f0f58",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/REPORT_ZH.md": "ab39be9eaebe6032e118a66b864c46e7a18a71781d7c49c1b89dc40472ba4ea2",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/REPORT_EN.md": "5f997a27c45c268c85159249ab5b3133bdc05a79a89f59009d268bdeaae3fc45",
+    "reports/v9_r9_axisvalue_analysis_v1/summary.json": "d6a3c7ae8d1cb13ec404e5e838bb135203ee21acc48efff3e6830f8c35784f28",
+    "reports/v9_r9_axisvalue_fit_v1/summary.json": "111f0e2f153d9e3577a02b79f05b6521a45f9969503808aab36400848a5b8eae",
+    "reports/v9_r9_mae_calibration_stability_v1/summary.json": "949f5158a4674041427efb7c16c592a50f023f03de9dfb05dca58214a127d2c5",
+    "scripts/train_foodnutrigpt_v9_r9_source0.py": "04c53805eecd9f5578e536f134341ff8c6b4b99b8293a33252376a73252a3e39",
+    "scripts/verify_foodnutrigpt_r9_source0_functional.py": "f885f274907173adfcb66ffbb5b93c6f76483f1a3187285ba671d7870f054dc7",
+    "src/foodcomp/research_transformer_r9_source0.py": "24e248b3a5d46afbb280dc627808ea9d245e5d346ba9db798ed6a95f314489af",
+    "tests/test_research_transformer_r9_source0.py": "4f13af96d297f7aa29ef8e13c8f3c94cc2b1423badc81d698d87b23431811e45"
+  },
+  "candidate_index": 5,
+  "max_candidates": 12,
+  "screening_decision": "All required versus same-seed MAE: lower primary point error; paired improvement interval lower above0; legacy point regression at most2percent. Three fixed seeds are required for accepting an improvement.",
+  "estimated_training_seconds": 10800,
+  "first_followup_delay_minutes": 190,
+  "followup_automation_id": "nutrition",
+  "created_utc": "2026-09-28T22:15:02.961753+00:00",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

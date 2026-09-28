@@ -1,0 +1,15 @@
+{
+  "status": "complete_deterministic_functional_reference",
+  "functional_sha256": "29198f58048d78b8b6d05bf84c7c95e9cf7a47ace5fac82fb24da0385b5c2db3",
+  "gradient_reference_sha256": "167e721e80b92a76e1a908914fdc57482cd066f4ff92e0816c59edf2966b646f",
+  "wrapper_sha256": "14766e2f5ded698b273e2e6fabf7f3fae20ae3508dedfa9a6748cbc81c578022",
+  "deterministic_algorithms": true,
+  "cublas_workspace_config": ":4096:8",
+  "exact_checks_loosened": false,
+  "production_trainer_changed": false,
+  "formal_training_started": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Exact initial shared-gradient checks and the 50-step functional exercise ran in this deterministic reference process. Ordinary CUDA reduction order differed even for repeated identical objectives; no tolerance was widened. Formal training retains the parent backend settings and independently repeats its small-batch check."
+}

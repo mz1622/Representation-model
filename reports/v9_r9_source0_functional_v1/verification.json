@@ -1,0 +1,37 @@
+{
+  "status": "complete",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_source0.py": "04c53805eecd9f5578e536f134341ff8c6b4b99b8293a33252376a73252a3e39",
+    "src/foodcomp/research_transformer_r9_source0.py": "24e248b3a5d46afbb280dc627808ea9d245e5d346ba9db798ed6a95f314489af",
+    "scripts/verify_foodnutrigpt_r9_source0_functional.py": "f885f274907173adfcb66ffbb5b93c6f76483f1a3187285ba671d7870f054dc7"
+  },
+  "plan_sha256": "c98d64d187a37396cc51b6145843930ba43f195ef86c9bbc64c28c6c925e79fa",
+  "same_seed_parent_initialization_exact": true,
+  "inner_training_loop_ast_unchanged": true,
+  "constructor_rng_exact": true,
+  "initial_shared_parameter_gradients_and_dropout_rng_exact": true,
+  "source0_offsets_zero_after_each_smoke_step": true,
+  "source0_loss_invariant_to_source_indices": true,
+  "learned_public_loader_reload_exact": true,
+  "learned_functional_checkpoint_sha256": "fbe49765f1dad5c5abb1fe3ba82c7eed151eec52b7844627aa0ea31c7d2ed827",
+  "functional_checkpoint_sha256": "556bee62ce06688ce51114ee27a80183c761e3fe159b2d9df48b94ed891eda44",
+  "legacy_control_initialization_forward_and_initial_mae_exact": true,
+  "hidden_label_target_and_source_changes_forward_exact": true,
+  "public_loader_reload_forward_exact": true,
+  "caller_requested_unobserved_axes_predicted": true,
+  "train_names_all187_queries_finite": true,
+  "small_batch_overfit": {
+    "before": 0.21735809743404388,
+    "after": 0.058560263365507126,
+    "steps": 50
+  },
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "all_frozen_inputs_and_registered_bindings_unchanged": true,
+  "complete_test_opened": false,
+  "current_candidate_validation_evaluated": false,
+  "scope": "Training-row functional checks only, not performance evidence. Prior completed run metadata is used to verify identities."
+}

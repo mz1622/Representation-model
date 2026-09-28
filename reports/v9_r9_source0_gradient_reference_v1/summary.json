@@ -1,0 +1,277 @@
+{
+  "status": "completed_training_row_gradient_reference",
+  "records": [
+    {
+      "device": "cuda",
+      "deterministic_algorithms": false,
+      "loss_control": 0.2172936648130417,
+      "loss_candidate": 0.2172936648130417,
+      "same_objective_repeat_differences": [
+        {
+          "parameter": "cls",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.4551915228366852e-11
+        },
+        {
+          "parameter": "mask_value",
+          "elements_different": 1,
+          "maximum_absolute_difference": 2.3283064365386963e-10
+        },
+        {
+          "parameter": "text_projection.0.weight",
+          "elements_different": 25,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "text_projection.0.bias",
+          "elements_different": 17,
+          "maximum_absolute_difference": 9.094947017729282e-13
+        },
+        {
+          "parameter": "text_projection.1.weight",
+          "elements_different": 1779,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "text_projection.1.bias",
+          "elements_different": 10,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "text_projection.3.weight",
+          "elements_different": 1106,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "text_projection.3.bias",
+          "elements_different": 7,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "axis_embedding.weight",
+          "elements_different": 933,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        },
+        {
+          "parameter": "value_encoder.0.weight",
+          "elements_different": 9,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "value_encoder.0.bias",
+          "elements_different": 13,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "value_encoder.2.weight",
+          "elements_different": 727,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "value_encoder.2.bias",
+          "elements_different": 2,
+          "maximum_absolute_difference": 9.094947017729282e-13
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.in_proj_weight",
+          "elements_different": 5194,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.in_proj_bias",
+          "elements_different": 50,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.out_proj.weight",
+          "elements_different": 207,
+          "maximum_absolute_difference": 2.9103830456733704e-11
+        },
+        {
+          "parameter": "encoder.layers.0.linear1.weight",
+          "elements_different": 1133,
+          "maximum_absolute_difference": 2.3283064365386963e-10
+        },
+        {
+          "parameter": "encoder.layers.0.linear1.bias",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.4551915228366852e-11
+        },
+        {
+          "parameter": "encoder.layers.0.linear2.weight",
+          "elements_different": 81,
+          "maximum_absolute_difference": 1.1641532182693481e-10
+        },
+        {
+          "parameter": "encoder.layers.0.norm1.weight",
+          "elements_different": 40,
+          "maximum_absolute_difference": 2.9103830456733704e-11
+        },
+        {
+          "parameter": "encoder.layers.0.norm1.bias",
+          "elements_different": 11,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "encoder.layers.0.norm2.weight",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "encoder.layers.0.norm2.bias",
+          "elements_different": 1,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "encoder.layers.1.self_attn.in_proj_weight",
+          "elements_different": 85,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        }
+      ],
+      "source_weight_contrast_differences": [
+        {
+          "parameter": "cls",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.4551915228366852e-11
+        },
+        {
+          "parameter": "mask_value",
+          "elements_different": 1,
+          "maximum_absolute_difference": 2.3283064365386963e-10
+        },
+        {
+          "parameter": "text_projection.0.weight",
+          "elements_different": 25,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "text_projection.0.bias",
+          "elements_different": 17,
+          "maximum_absolute_difference": 9.094947017729282e-13
+        },
+        {
+          "parameter": "text_projection.1.weight",
+          "elements_different": 1779,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "text_projection.1.bias",
+          "elements_different": 10,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "text_projection.3.weight",
+          "elements_different": 1106,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "text_projection.3.bias",
+          "elements_different": 7,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "axis_embedding.weight",
+          "elements_different": 939,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        },
+        {
+          "parameter": "value_encoder.0.weight",
+          "elements_different": 8,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "value_encoder.0.bias",
+          "elements_different": 14,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "value_encoder.2.weight",
+          "elements_different": 719,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "value_encoder.2.bias",
+          "elements_different": 2,
+          "maximum_absolute_difference": 9.094947017729282e-13
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.in_proj_weight",
+          "elements_different": 5186,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.in_proj_bias",
+          "elements_different": 50,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        },
+        {
+          "parameter": "encoder.layers.0.self_attn.out_proj.weight",
+          "elements_different": 207,
+          "maximum_absolute_difference": 2.9103830456733704e-11
+        },
+        {
+          "parameter": "encoder.layers.0.linear1.weight",
+          "elements_different": 1133,
+          "maximum_absolute_difference": 2.3283064365386963e-10
+        },
+        {
+          "parameter": "encoder.layers.0.linear1.bias",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.4551915228366852e-11
+        },
+        {
+          "parameter": "encoder.layers.0.linear2.weight",
+          "elements_different": 81,
+          "maximum_absolute_difference": 1.1641532182693481e-10
+        },
+        {
+          "parameter": "encoder.layers.0.norm1.weight",
+          "elements_different": 40,
+          "maximum_absolute_difference": 2.9103830456733704e-11
+        },
+        {
+          "parameter": "encoder.layers.0.norm1.bias",
+          "elements_different": 11,
+          "maximum_absolute_difference": 5.820766091346741e-11
+        },
+        {
+          "parameter": "encoder.layers.0.norm2.weight",
+          "elements_different": 3,
+          "maximum_absolute_difference": 1.8189894035458565e-12
+        },
+        {
+          "parameter": "encoder.layers.0.norm2.bias",
+          "elements_different": 1,
+          "maximum_absolute_difference": 7.275957614183426e-12
+        },
+        {
+          "parameter": "encoder.layers.1.self_attn.in_proj_weight",
+          "elements_different": 85,
+          "maximum_absolute_difference": 3.637978807091713e-12
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "deterministic_algorithms": true,
+      "loss_control": 0.2172936648130417,
+      "loss_candidate": 0.2172936648130417,
+      "same_objective_repeat_differences": [],
+      "source_weight_contrast_differences": []
+    },
+    {
+      "device": "cpu",
+      "deterministic_algorithms": true,
+      "loss_control": 0.21965965628623962,
+      "loss_candidate": 0.21965965628623962,
+      "same_objective_repeat_differences": [],
+      "source_weight_contrast_differences": []
+    }
+  ],
+  "script_sha256": "e12507925dc6d8096e82f12a8ea60d525b65aeda950ffbde3e81bf62e2c25284",
+  "scope": "No optimizer steps or validation evaluation; deterministic mode used only for this reference, not a change to the planned production recipe.",
+  "formal_training_started": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}
