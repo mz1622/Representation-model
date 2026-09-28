@@ -1,0 +1,162 @@
+{
+  "status": "complete_existing_parent_case_selection_and_value_check",
+  "seed": 20260922,
+  "case_rows": 40,
+  "all_40_rows_content_review_scope": "Two extreme tails, not a representative sample.",
+  "case_selection": "20 smallest and 20 largest profile-axis scaled-log absolute-error differences: Transformer minus fixed RF. Reconstructed from frozen validation jobs and saved predictions.",
+  "case_keys_targets_predictions_errors_and_metadata_verified": true,
+  "numeric_comparison_rtol": 1e-12,
+  "numeric_comparison_atol": 1e-12,
+  "visible_context_and_near_name_columns_recomputed": false,
+  "counts": [
+    {
+      "direction": "transformer_better",
+      "profile_axis_rows": 20,
+      "unique_food_groups": 15,
+      "unique_group_axis_pairs": 15,
+      "positive_rows": 14,
+      "explicit_zero_rows": 6,
+      "source_counts": {
+        "foodb": 14,
+        "bls_4_0": 2,
+        "cnf": 2,
+        "fndds": 1,
+        "usda_sr_legacy": 1
+      },
+      "axis_counts": {
+        "Biotin": 11,
+        "Dodecanoic acid (12:0)": 5,
+        "Retinol": 2,
+        "Cholesterol": 1,
+        "Docosapentaenoic acid (DPA; 22:5n-3)": 1
+      }
+    },
+    {
+      "direction": "transformer_worse",
+      "profile_axis_rows": 20,
+      "unique_food_groups": 18,
+      "unique_group_axis_pairs": 18,
+      "positive_rows": 19,
+      "explicit_zero_rows": 1,
+      "source_counts": {
+        "foodb": 20
+      },
+      "axis_counts": {
+        "Cholesterol": 17,
+        "Biotin": 2,
+        "Dodecanoic acid (12:0)": 1
+      }
+    }
+  ],
+  "worst_tail_cholesterol_pattern": {
+    "rows": 17,
+    "all_foodb": true,
+    "all_positive": true,
+    "all_neural_below_retained_label": true,
+    "rows_neural_at_least_500_fold_below_retained_label": 17,
+    "unit_error_confirmed": false,
+    "label_correctness_confirmed": false
+  },
+  "full_panel_axis_contributions_not_case_sample_contributions": [
+    {
+      "axis_index": 113,
+      "neural_under_contribution": 0.001420594936235349,
+      "neural_over_contribution": 0.0009338217437142849,
+      "neural_mae_contribution": 0.002354416679949634,
+      "tree_under_contribution": 0.001086671865303399,
+      "tree_over_contribution": 0.0011869567831857453,
+      "tree_mae_contribution": 0.0022736286484891445,
+      "macro_weight": 0.00704225352112676,
+      "under_gap_contribution": 0.00033392307093195006,
+      "over_gap_contribution": -0.0002531350394714604,
+      "mae_gap_contribution": 8.078803146048964e-05,
+      "canonical_name": "Biotin",
+      "mask_family": "vitamin",
+      "training_candidates": 9884
+    },
+    {
+      "axis_index": 122,
+      "neural_under_contribution": 0.0005510402930632551,
+      "neural_over_contribution": 0.0002673550178453383,
+      "neural_mae_contribution": 0.0008183953109085934,
+      "tree_under_contribution": 0.0002392043525120087,
+      "tree_over_contribution": 0.000265252576985367,
+      "tree_mae_contribution": 0.0005044569294973757,
+      "macro_weight": 0.007042253521126761,
+      "under_gap_contribution": 0.0003118359405512464,
+      "over_gap_contribution": 2.102440859971333e-06,
+      "mae_gap_contribution": 0.00031393838141121776,
+      "canonical_name": "Cholesterol",
+      "mask_family": "sterol",
+      "training_candidates": 22719
+    },
+    {
+      "axis_index": 134,
+      "neural_under_contribution": 0.0005814363626839646,
+      "neural_over_contribution": 0.00033775603707351405,
+      "neural_mae_contribution": 0.0009191923997574786,
+      "tree_under_contribution": 0.00042548448930195367,
+      "tree_over_contribution": 0.00042176678098959766,
+      "tree_mae_contribution": 0.0008472512702915513,
+      "macro_weight": 0.00704225352112676,
+      "under_gap_contribution": 0.00015595187338201096,
+      "over_gap_contribution": -8.40107439160836e-05,
+      "mae_gap_contribution": 7.19411294659273e-05,
+      "canonical_name": "Docosapentaenoic acid (DPA; 22:5n-3)",
+      "mask_family": "fatty_acid",
+      "training_candidates": 16689
+    },
+    {
+      "axis_index": 137,
+      "neural_under_contribution": 0.0014847697423188374,
+      "neural_over_contribution": 0.0006820257389521545,
+      "neural_mae_contribution": 0.002166795481270992,
+      "tree_under_contribution": 0.0011007218020633444,
+      "tree_over_contribution": 0.0012379162587599153,
+      "tree_mae_contribution": 0.0023386380608232597,
+      "macro_weight": 0.007042253521126762,
+      "under_gap_contribution": 0.00038404794025549303,
+      "over_gap_contribution": -0.0005558905198077608,
+      "mae_gap_contribution": -0.0001718425795522679,
+      "canonical_name": "Dodecanoic acid (12:0)",
+      "mask_family": "fatty_acid",
+      "training_candidates": 19138
+    },
+    {
+      "axis_index": 208,
+      "neural_under_contribution": 0.0010291064380829032,
+      "neural_over_contribution": 0.0005815034598909627,
+      "neural_mae_contribution": 0.0016106098979738659,
+      "tree_under_contribution": 0.0007133781583256528,
+      "tree_over_contribution": 0.000911461005655181,
+      "tree_mae_contribution": 0.0016248391639808338,
+      "macro_weight": 0.007042253521126761,
+      "under_gap_contribution": 0.0003157282797572504,
+      "over_gap_contribution": -0.0003299575457642183,
+      "mae_gap_contribution": -1.4229266006967906e-05,
+      "canonical_name": "Retinol",
+      "mask_family": "vitamin",
+      "training_candidates": 28747
+    }
+  ],
+  "input_hashes": {
+    "data/processed/foodnutrigpt_v9_r0_v1/manifest.json": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/summary.json": "cdc1004d0c74e0b607045f79fa117e0a874c12b39fb458c5cb0947a7a0dbb61b",
+    "data/local/research_diagnostics/v9_r9_tf192_lr3e4_rf32_gap_v1/local_success_failure_cases.csv": "37c64329ff5fdee62a09117bce5c210165926355f8bad9450ea79ca4e9697752",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_signed_contributions.csv": "2a131a5d5de9769f6a64b15528aeda1bf075a96045c79b629fce394a3a5bb876",
+    "scripts/review_foodnutrigpt_r9_extreme_cases.py": "f7490a055fd77d8c3b351cbc3f742fd11c5fd1c02b32f4d0c11af010822c6fed",
+    "data/processed/foodnutrigpt_v9_r0_v1/axes.csv": "404d81da221ea4c33cf93c433383dda8c38c6c2dba06efe579832fd43dbf076f",
+    "data/processed/foodnutrigpt_v9_r0_v1/profiles.csv.gz": "c8c7d79dcea8fcdca4daa03ec2c37cb43713d31a8cbe85801d0349ab3b660660",
+    "data/processed/foodnutrigpt_v9_r0_v1/quarantined_validation_jobs.parquet": "a295dd3bc361e704eab07fbf3a19cc05490a36855385b793a9b07584fe55a1e5",
+    "output/v9_r9/tf192_mae_lr3e4_60/completion_predictions.parquet": "fa0d17cf270746ca4891f79cea382965ea0c11821ef611aae7f87f6d47d10658",
+    "output/v9_r8/rf400leaf1half_name32/completion_predictions.parquet": "20cc533ae4903ef6924efb3dfafa5e2385e6413b0fc4cded01dc004a4720461b"
+  },
+  "data_modified": false,
+  "baseline_refit": false,
+  "model_forward_performed": false,
+  "new_training_performed": false,
+  "complete_test_opened": false,
+  "new_model_selection_performed": false,
+  "individual_food_names_targets_and_predictions_exported": false,
+  "scope": "Post-hoc descriptive review of seed22 only. Profile-level extremes are not source/group/axis-weighted contributions or independent samples. Possible label-scale problems remain hypotheses without upstream records; no relabeling, exclusion, new scoring protocol, or causal attribution follows from these cases."
+}

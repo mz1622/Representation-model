@@ -1,0 +1,19 @@
+{
+  "status": "complete_bilingual_parent_case_review_documentation_check",
+  "summary_sha256": "aefc3fab3063c621361c203b4f131112219f7ef29b0184c6e1bbd7c66ee838ea",
+  "document_hashes": {
+    "README.md": "e3974fa6639cd91b6bd6d652f7f513be7353119f292ea71cc9a30ee179ad7efa",
+    "REPORT_EN.md": "b21788594fa1e2bcca772ec2fcf65bdf6cd9c6ff30ae237e3faa77ad824478a4"
+  },
+  "each_language_has_eight_sections": true,
+  "count_and_contribution_tables_match_summary": true,
+  "local_links_exist": true,
+  "english_has_no_untranslated_chinese": true,
+  "source_inputs_unchanged": true,
+  "individual_values_in_public_reports": false,
+  "parent_case_review_is_not_three_seed_confirmation": true,
+  "manual_case_inspection_and_attribution_limits_recorded": true,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "checker_sha256": "ee16e5c378e60c2b3bfdbacd5f61b2a6b25f3f8e7cf0a5a15d8e11b65d89f185"
+}
