@@ -1,0 +1,17 @@
+{
+  "status": "formatting_preflight_only",
+  "script_sha256": "194805ae74853b625d9d6f2eea068f3a7c04c8da8c94bfd3f68481ce39c38fdf",
+  "shared_tables_checked": 10,
+  "eight_supplement_sections_verified": true,
+  "prior_reviewed_document_hashes_verified": true,
+  "rebase_links_checked": true,
+  "nonfinite_values_rejected": true,
+  "formal_axisvalue_results_consumed": false,
+  "report_written": false,
+  "training_performed": false,
+  "model_forward_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Schema and bilingual formatting check with an explicitly duplicated existing MAE control and zero placeholders in memory. No axis-value observations or experimental conclusions; no report artifacts generated."
+}
