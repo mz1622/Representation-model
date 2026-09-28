@@ -1,0 +1,104 @@
+{
+  "status": "complete",
+  "run": "output\\v9_r9_confirmation\\tf192_mae_lr3e4_60_seed20260923",
+  "manifest_sha256": "0feb506b39c3d6aeba8c968dd6ed8377df3349d55e1886197afa210271ae7d5c",
+  "checkpoint_sha256": "09f728d3bb161c22d942d0d617895007a6a850df679d7e6ccb94aae796bd8092",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "prediction_sha256": {
+    "completion": "db1280fdf0bbfe77086625ab8dbf6d156a7cea33740131671d889fe51bb9fe22",
+    "name_only": "22f7508e01134dda93586df1560d36708f6754234a84b44d437f079b31df6e2a"
+  },
+  "all_epoch_orders_exposures_and_schedule_verified": true,
+  "both323809_predictions_public_loader_replayed_exact": true,
+  "all_candidate_vectors_and19089_ranks_replayed_exact": true,
+  "metrics": {
+    "completion": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.18708334056598974,
+        "log_mae": 0.057067262797652264,
+        "log_mse": 0.04385406414720788,
+        "raw_mae": 0.3427140437821543,
+        "positive_scaled_log_mae": 0.3056412980399431,
+        "zero_scaled_log_mae": 0.09052490517102604,
+        "log_rmse_root_mean_axis_mse": 0.2094136197748558
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.5816237847078813,
+        "log_mae": 0.03521041121362194,
+        "log_mse": 0.019077131602876878,
+        "raw_mae": 0.06320212933270136,
+        "positive_scaled_log_mae": 0.7892627824981069,
+        "zero_scaled_log_mae": 0.2289975101728349,
+        "log_rmse_root_mean_axis_mse": 0.13811998987430052
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.28202622819371764,
+        "log_mae": 0.05180759263037224,
+        "log_mse": 0.03789170070071111,
+        "raw_mae": 0.2754518183798795,
+        "positive_scaled_log_mae": 0.4220207996475226,
+        "zero_scaled_log_mae": 0.11592520549680163,
+        "log_rmse_root_mean_axis_mse": 0.19465790685382164
+      }
+    },
+    "name_only": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.4094777866632021,
+        "log_mae": 0.14576900891490022,
+        "log_mse": 0.15258790587642362,
+        "raw_mae": 0.9474521455644971,
+        "positive_scaled_log_mae": 0.5346473837850315,
+        "zero_scaled_log_mae": 0.38266620651858924,
+        "log_rmse_root_mean_axis_mse": 0.39062501952182177
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.8072724314483545,
+        "log_mae": 0.05833621650731344,
+        "log_mse": 0.034184210737450614,
+        "raw_mae": 0.09649480700036561,
+        "positive_scaled_log_mae": 0.9235271071835666,
+        "zero_scaled_log_mae": 0.5666302999044311,
+        "log_rmse_root_mean_axis_mse": 0.18488972588397284
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.5052037707024098,
+        "log_mae": 0.12472903213232585,
+        "log_mse": 0.12409503806223228,
+        "raw_mae": 0.7426763154287435,
+        "positive_scaled_log_mae": 0.6282280658862831,
+        "zero_scaled_log_mae": 0.4164110993881815,
+        "log_rmse_root_mean_axis_mse": 0.35227125636678375
+      }
+    }
+  },
+  "retrieval_metrics": [
+    {
+      "visible_fraction": 0.3,
+      "mrr": 0.0029935398781855355,
+      "recall_at_1": 0.0004645401052957572,
+      "recall_at_5": 0.0025549705791266648,
+      "recall_at_10": 0.004090533704965418
+    },
+    {
+      "visible_fraction": 1.0,
+      "mrr": 0.005251798937927765,
+      "recall_at_1": 0.0010860366713681241,
+      "recall_at_5": 0.005125931896030627,
+      "recall_at_10": 0.009536906440996707
+    }
+  ],
+  "complete_test_opened": false,
+  "script_sha256": "74c592ed3e7691bb63e238c4242ee811493a900af19c6bc2096e74066df005cb"
+}
