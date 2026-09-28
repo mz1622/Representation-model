@@ -4,6 +4,8 @@
 
 当前目标是固定数据与已完成RF/XGBoost后，获得有验证依据且优于固定RF的Transformer，并交付完整中英文报告；见[目标与报告标准](EVIDENCE_AND_REPORTING.md)。首组假设是现有直接Transformer的优化速度和预算可能限制补全；两个学习率的完整60轮轨迹用于检验。[预登记计划](PLAN.md)保留原假设和方法，不倒写运行中的配置。
 
+已整理新的[中文阶段报告](../report_snapshot_r9_v1/REPORT_ZH.md)和[英文阶段报告](../report_snapshot_r9_v1/REPORT_EN.md)，统一数据来源、当前Transformer方法、R0–R9迭代、六个冻结树配置、首项三任务及因果边界。两份报告各12张表，25来源数量、21项配置、30行树结果和28行新增结果已与共同证据核对；[文档检查](../report_snapshot_r9_v1/verification.json)不代替模型确认。旧MLP报告作为历史保留，新稿不再把已取消树训练写成待办。当前为阶段稿，仍须加入第二项、后续方法及三种子证据后形成终稿。
+
 ## 2. 父版本与控制
 
 模型父实现为R2的192维source-free直接回归Transformer；输入采用已存在的R8公共PCA32，并保持与固定RF32一致。旧R2名称缓存不同，故必须重建同输入Transformer控制。首组仅lr .0001/.0003不同；固定3层、6头、FF768、dropout .15、rank16、batch64、MAE、source weight1、AdamW及60轮余弦日程。旧MLP作为辅助历史对照，不作为本目标的完成模型。

@@ -1,0 +1,30 @@
+{
+  "status": "checked_bilingual_snapshot_not_final_research_confirmation",
+  "source_input_hashes_verified": 19,
+  "local_links_verified": {
+    "ZH": 25,
+    "EN": 25
+  },
+  "tables_per_language": {
+    "ZH": 12,
+    "EN": 12
+  },
+  "source_count_rows_match": 25,
+  "frozen_tree_table_rows_match": 30,
+  "transformer_configuration_rows_match": 21,
+  "generated_completed_result_rows_match": 28,
+  "english_contains_no_cjk": true,
+  "section_order_1_through_8": true,
+  "active_queue_pins_unchanged": 22,
+  "report_sha256": {
+    "ZH": "9df7be870c1a268d1eef9b7c12f8984cd7c64138255ab62664b138b9f7f07365",
+    "EN": "f0a7cc53b1aaa21f35fb16770200932ac3443467f4845321b7740a9ee6327643"
+  },
+  "evidence_sha256": "82da89831c0fea0e19edd5e30caa87da60c3ba25de4dd8428a52fdcc356e6d37",
+  "complete_test_opened": false,
+  "baseline_refit": false,
+  "data_modified": false,
+  "overall_report_complete": false,
+  "goal_achieved": false,
+  "scope": "Document tables, links, source hashes and frozen queue pins checked. No new training or scientific acceptance; English/Chinese attribution prose also requires author review."
+}
