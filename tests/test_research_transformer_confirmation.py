@@ -75,7 +75,7 @@ def test_only_seed_changes_and_unicode_decision_is_read(records, seed):
     assert spec == expected and parent['spec']['seed'] == 20260922
     spec['nested']['fixed'][0] = 99
     assert parent['spec']['nested']['fixed'][0] == 1
-    assert len(bindings) == 7
+    assert len(bindings) == 8
 
 
 @pytest.mark.parametrize('seed', [20260922, 42])
@@ -130,10 +130,11 @@ def test_changed_checkpoint_source_or_supporting_evidence_rejected(records, path
     assert not (root / 'output/confirmation').exists()
 
 
-def test_bindings_are_rechecked_after_loading(records):
+@pytest.mark.parametrize('changed_path', ['reports/decision.json', 'plan.json'])
+def test_bindings_are_rechecked_after_loading(records, changed_path):
     root, write, *_ = records
     *_, bindings = call(records)
-    write('reports/decision.json', b'changed later')
+    write(changed_path, b'changed later')
     with pytest.raises(ValueError, match='evidence changed'):
         MODULE.verify_bindings(root, bindings)
 

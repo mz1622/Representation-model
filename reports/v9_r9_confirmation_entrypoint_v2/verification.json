@@ -1,0 +1,36 @@
+{
+  "status": "confirmation_entrypoint_prepared_not_registered_or_executed",
+  "observed_utc": "2026-09-28T08:39:16.893642+00:00",
+  "source_sha256": {
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_confirmation.py": "a99ea8f26668bd3b596da0c848192ff5efed28d225c415884126eed48d975dd9",
+    "tests/test_research_transformer_confirmation.py": "f1e9cade4081e5da881c169d12f5e43c7ce299ee468d62ee114db63519fdfce4",
+    "experiments/foodnutrigpt_v9_research/r9/REPLICATION_ENTRYPOINT.md": "e9cf306358af48628575f028a9d14e5f4b953df880fe438cb73adf4d6ed56c55"
+  },
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_research_transformer_confirmation.py -q --basetemp ../../work/pytest-r9-confirmation-v2",
+    "passed": 19,
+    "exit_code": 0,
+    "duration_seconds": 3.07
+  },
+  "cli_help_passed": true,
+  "actual_environment_matches_audited_parent": true,
+  "initialization_statements_identical": true,
+  "checkpoint_warmup_optimizer_training_selection_evaluation_statements_identical_except_read_only_evidence_checks": true,
+  "active_queue_pins_unchanged": 22,
+  "actual_model_forward_executed": false,
+  "new_training_started": false,
+  "confirmation_plan_created": false,
+  "recipe_selected": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scientific_confirmation": false,
+  "goal_achieved": false,
+  "scope": "Synthetic registration guards plus numerical-source identity and actual environment checks only. Does not replace real seed runs, full replay, paired uncertainty or scientific recipe selection.",
+  "prior_version": "reports/v9_r9_confirmation_entrypoint_v1/verification.json",
+  "prior_implementation_commit": "412347f",
+  "change": "Bind the confirmation-plan bytes as an input, checked per epoch and after evaluation. Add a changed-plan regression test; numerical training core unchanged.",
+  "cli_and_environment_evidence": "reports/v9_r9_confirmation_entrypoint_v1/verification.json",
+  "plan_in_final_evidence_bindings": true
+}

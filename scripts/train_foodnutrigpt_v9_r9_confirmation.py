@@ -2,6 +2,7 @@
 import argparse
 import copy
 from dataclasses import asdict
+import hashlib
 import json
 from pathlib import Path
 import platform
@@ -36,7 +37,11 @@ def load_confirmation(repo, plan_path, seed, frozen, freeze_path):
     repo = Path(repo).resolve()
     if seed not in (20260923, 20260924):
         raise ValueError('Reuse the audited seed22 parent; only seeds23/24 may be trained.')
-    plan = json.loads(Path(plan_path).read_text(encoding='utf-8-sig'))
+    plan_path = Path(plan_path).resolve()
+    if not plan_path.is_relative_to(repo):
+        raise ValueError('Register the confirmation plan within the repository.')
+    plan_bytes = plan_path.read_bytes()
+    plan = json.loads(plan_bytes.decode('utf-8-sig'))
     required = {'schema_version', 'purpose', 'seeds', 'freeze_sha256', 'parent_run',
                 'parent_manifest_sha256', 'parent_audit', 'parent_audit_sha256',
                 'decision_record', 'decision_record_sha256'}
@@ -46,7 +51,7 @@ def load_confirmation(repo, plan_path, seed, frozen, freeze_path):
             or plan['seeds'] != [20260922, 20260923, 20260924]
             or plan['freeze_sha256'] != digest(freeze_path)):
         raise ValueError('Expected the registered confirmation purpose, seeds and freeze.')
-    hashes = {}
+    hashes = {plan_path.relative_to(repo).as_posix(): hashlib.sha256(plan_bytes).hexdigest()}
     def bound(relative, expected):
         path = (repo / relative).resolve()
         if not path.is_relative_to(repo):
