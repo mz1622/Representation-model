@@ -1,0 +1,31 @@
+{
+  "status": "partial_snapshot_metadata_consistent",
+  "recorded_training_epoch_at_read": 20,
+  "window_epochs": 20,
+  "selected_snapshot_epoch": 18,
+  "selected_window_primary_from_training_log": 0.21657360014577204,
+  "snapshot_sha256": "a92bb25d88e2ef8dcdeecf6d74638119601e84450509250283f97b9f2f9f5381",
+  "snapshot_bytes": 6417461,
+  "history20_canonical_json_sha256": "7ea94a40e3ec23f68594235c6fb1767295a3d2e9d9292e83feb3045072a419b4",
+  "same_parent_shared_initialization_metadata": true,
+  "same_first20_orders_exposures_and_learning_rates": true,
+  "only_declared_axisvalue_factor_differs": true,
+  "added_residual_parameters_nonzero": 45504,
+  "added_residual_shape": [
+    252,
+    192
+  ],
+  "cpu_deserialization_all_state_tensors_finite": true,
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "name_cache_sha256": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+  "panel_sha256": "3e8714b9d0033372c1eefe96e7536b440c90d2151cb434d3219d45251025549a",
+  "model_forward_performed": false,
+  "prediction_replay_performed": false,
+  "training_complete": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "elapsed_seconds": 0.046999999991385266,
+  "scope": "Partial snapshot identity, finite-state and selection-metadata checks only. The logged score is not independently rescored here. Full60-epoch training and independent prediction/retrieval replay remain required; no acceptance decision."
+}
