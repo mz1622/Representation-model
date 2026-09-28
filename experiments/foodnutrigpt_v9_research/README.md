@@ -2,6 +2,8 @@
 
 当前目标（2026-09-28 用户修订）：验证营养模型的训练流程、方法与参数选择，完成公平的 RF/XGBoost 对照，并交付中文、英文两份完整报告；不再要求神经网络超过树模型。新的收尾范围、固定配置复核和交付标准见[最终报告计划](final_report_v1/PLAN.md)。历史改进门槛及所有失败结果保留，不宣称 foundation model 能力已经成立。
 
+最新证据：[补全MLP三种子与名称近邻的食品组比较](final_report_v1/NEURAL_REFERENCE_COMPARISON.md)已完成，name-only误差高98.186%，区间支持该不足。最终同输入树重复和全量统计已串接到后台队列，[统计口径](final_report_v1/STATISTICS.md)保留执行要求与失败记录；[中文](final_report_v1/REPORT_ZH.md)和[英文](final_report_v1/REPORT_EN.md)目前都是草稿。以下旧协议数值及旧确认门槛用于历史追溯，不替代最终新输入比较。
+
 | 版本 | 状态 | 报告 |
 |---|---|---|
 | V9-R0 | 共同数据/评价及首轮基线探索已完成；原始标签证据未闭环 | [核验与基准](r0/README.md) |
