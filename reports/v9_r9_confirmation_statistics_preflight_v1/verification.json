@@ -1,0 +1,51 @@
+{
+  "status": "preparation_complete_not_three_seed_confirmation",
+  "targeted_and_shared_statistics_tests_passed": 38,
+  "test_elapsed_seconds": 3.07,
+  "initial_test_invocation_failure": "PYTHONPATH omitted; collection failed before tests. Corrected by explicit src path, all subsequent tests passed.",
+  "actual_four_model_retrieval_metadata_match": true,
+  "frozen_tree_and_knn_manifest_adapter_checked": true,
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "output/v9_r9/tf192_mae_lr3e4_60/retrieval/metrics.json": "b94a31ebc27cff87bd50dd52eb6769d06b9723ef81a94372e816a9858a9949dd",
+    "output/v9_r9/tf192_mae_lr3e4_60/retrieval/candidate_names.json": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+    "output/v9_r8/rf400leaf1half_name32/run_manifest.json": "0d2e715e0ba7bd5f61ede54c06bac6d68135ffed56e4c42e0ae39b7651e6ac1b",
+    "output/v9_r8/rf400leaf1half_name32/retrieval/metrics.json": "721bd6a5fa18be681874a78d160d70649e839e0c9223094d27ac2fa89a4593f5",
+    "output/v9_r8/rf400leaf1half_name32/retrieval/candidate_names.json": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+    "output/v9_r8/xgb800d10_name32/run_manifest.json": "e37b13d6d344812a2e87562a2159791ad506c120a4f54691ae6212e1a493381d",
+    "output/v9_r8/xgb800d10_name32/retrieval/metrics.json": "c101bdcaf7d47aedeaf4c445ebece3306118fa507570f55094c9b54d2006d8a4",
+    "output/v9_r8/xgb800d10_name32/retrieval/candidate_names.json": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+    "output/v9_r7/exact_name_knn32/run_manifest.json": "9906043fca3e0be7ee2f57bd6277002449501a3361dc01d55d995c014b403dc0",
+    "output/v9_r7/exact_name_knn32/metrics.json": "6277890fc61064fb7a77da99b586855ff3655a9f039eb2b47a683d949b8d93d3",
+    "output/v9_r7/exact_name_knn32/candidate_names.json": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+    "reports/v9_r7_knn_completed_audit_v1/verification.json": "efe51ef16b0c8752b29ebab8a20e66618bad63be38d857965b78e03f6aaedf8b",
+    "output/v9_r7/exact_name_knn32/nutrition_predictions.parquet": "af41ba8ad7e6fc46d5b9e17813c7c385985bad3c59b17e7079421778497aef06"
+  },
+  "new_source_hashes": {
+    "scripts/confirm_foodnutrigpt_r9_fixed_references.py": "f350d76ba68a75bc94051b37453bc2573a2dad0eb6a1aa63d51dc85c6314b126",
+    "src/foodcomp/research_fixed_reference_confirmation.py": "13e84452439a8c8330eaaa8b3b91118bdd3a6c823bda999a181c54b1f7f9417c",
+    "tests/test_research_fixed_reference_confirmation.py": "0c6fc67d14fcfd95e193b192cea9b27896e1b9c941d718e7ab206dba9a02c03b",
+    "tests/test_research_r9_confirmation_statistics.py": "0e9e4424611519cd5337f8287921e8d9d45a96bf441e177bbcb99d645cb4232d"
+  },
+  "pending_readiness": {
+    "ready": false,
+    "missing": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\reports\\v9_r9_confirmation_seed20260923_audit_v1\\verification.json",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\output\\v9_r9_confirmation\\tf192_mae_lr3e4_60_seed20260924\\run_manifest.json",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\reports\\v9_r9_confirmation_seed20260924_audit_v1\\verification.json"
+    ],
+    "unfinished": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\output\\v9_r9_confirmation\\tf192_mae_lr3e4_60_seed20260923\\run_manifest.json"
+    ],
+    "outputs_written": false
+  },
+  "active_queue_pin_count": 30,
+  "active_queue_pins_unchanged": true,
+  "new_model_forward_performed": false,
+  "new_model_training_performed_by_this_check": false,
+  "formal_statistics_executed": false,
+  "complete_test_opened": false,
+  "scientific_confirmation": false,
+  "goal_achieved": false,
+  "script_sha256": "148dbc0a7c6b356598b4c4dda7018aa36e7b50dfe02bd2c6cb2c7adba88ff7ca"
+}
