@@ -11,7 +11,7 @@
 .venv/Scripts/python.exe scripts/diagnose_foodnutrigpt_r9_mse_fit.py --output-dir reports/v9_r9_mse_fit_v1 --local-dir data/local/research_diagnostics/v9_r9_mse_fit_v1
 ```
 
-第二条应在原队列全部完成后执行，避免与训练竞争GPU。本入口没有自动排队；检查--check-only为ready后才执行。已有目录拒绝覆盖。数值预测只写到本地忽略目录，公开报告只含汇总误差和支持数。
+第二条应在原队列全部完成后执行，避免与训练竞争GPU。现已增加独立依赖队列：等待原训练/重放/比较及完整分析成功，核对进程身份与40项代码/证据指纹，并检查没有活动训练进程、--check-only为ready后才执行。它不启动任何新训练，不作模型接受决定；控制器与状态保留在本地work目录。已有目录拒绝覆盖。数值预测只写到本地忽略目录，公开报告只含汇总误差和支持数。
 
 真实父控制预检已经完成：[核验凭据](../../../../reports/v9_r9_mse_fit_parent_preflight_v1/verification.json)。在CPU上重建1,828,536个训练目标，查询指纹与既有父模型记录一致；重新评分MAE的已保存预测，主误差0.1349370786529251和全部其他指标均精确重现。实测诊断主体3.469秒，无模型前向或优化、未读取MSE检查点。这只验证已存在控制及比较面板，完整MSE拟合诊断仍待前置训练完成。
 
