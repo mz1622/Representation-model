@@ -1,0 +1,150 @@
+{
+  "status": "complete",
+  "plan_sha256": "c207798fd903b429cb7eeb5e787a69d354333244b89a747cf8cbe6457519eba4",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9_rmsnorm.py": "4773c0a495d63916405b0e160b74179e743101c3af21fb98e3c0068dcb171378",
+    "scripts/train_foodnutrigpt_v9_r9_rmsnorm.py": "23b01aeb9ea6d5a2b109f2a90da366352a47dcb76f0bef1e44ba73fc7f6fcb67",
+    "scripts/verify_foodnutrigpt_r9_rmsnorm_functional.py": "115c87aeba13de751bbf31fc8018862682611426a29145df31236efef20aa439"
+  },
+  "initial_state_sha256": "0ff01d3f67c71fff04f5f4caad0732eed39bfbccc298fc9383cb04ea3d9dac73",
+  "parent_initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "shared_initial_tensors_exact": true,
+  "constructor_rng_exact": true,
+  "removed_keys": [
+    "encoder.layers.0.norm1.bias",
+    "encoder.layers.0.norm2.bias",
+    "encoder.layers.1.norm1.bias",
+    "encoder.layers.1.norm2.bias",
+    "encoder.layers.2.norm1.bias",
+    "encoder.layers.2.norm2.bias",
+    "encoder.norm.bias"
+  ],
+  "parameter_count": 1547250,
+  "trainable_parameter_count": 1514585,
+  "seven_encoder_norms_replaced": true,
+  "norm_sites": {
+    "text_projection.0": {
+      "type": "LayerNorm",
+      "eps": 1e-05,
+      "width": [
+        128
+      ]
+    },
+    "encoder.layers.0.norm1": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.layers.0.norm2": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.layers.1.norm1": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.layers.1.norm2": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.layers.2.norm1": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.layers.2.norm2": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "encoder.norm": {
+      "type": "RMSNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "presence_head.shared.0": {
+      "type": "LayerNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    },
+    "amount_head.shared.0": {
+      "type": "LayerNorm",
+      "eps": 1e-05,
+      "width": [
+        192
+      ]
+    }
+  },
+  "unchanged_dropout_sites": {
+    "encoder.layers.0.self_attn.attention_dropout": 0.15,
+    "encoder.layers.0.dropout.p": 0.15,
+    "encoder.layers.0.dropout1.p": 0.15,
+    "encoder.layers.0.dropout2.p": 0.15,
+    "encoder.layers.1.self_attn.attention_dropout": 0.15,
+    "encoder.layers.1.dropout.p": 0.15,
+    "encoder.layers.1.dropout1.p": 0.15,
+    "encoder.layers.1.dropout2.p": 0.15,
+    "encoder.layers.2.self_attn.attention_dropout": 0.15,
+    "encoder.layers.2.dropout.p": 0.15,
+    "encoder.layers.2.dropout1.p": 0.15,
+    "encoder.layers.2.dropout2.p": 0.15,
+    "presence_head.shared.3.p": 0.15,
+    "amount_head.shared.3.p": 0.15
+  },
+  "default_fused_vs_explicit_layernorm_max_abs_difference": 5.5633485317230225e-05,
+  "matched_unfused_layernorm_bridge_exact": true,
+  "formal_default_mha_backend_restored": true,
+  "hidden_label_target_and_source_changes_forward_exact": true,
+  "learned_source_independence_exact": true,
+  "initial_and_learned_public_reload_exact": true,
+  "unobserved_axes_predictable": true,
+  "name_only_candidate_profiles_finite": true,
+  "inner_training_loop_ast_unchanged": true,
+  "small_batch_overfit": {
+    "before": 0.17033641040325165,
+    "after": 0.06469972431659698,
+    "steps": 50,
+    "learning_rate": 0.0003
+  },
+  "benchmark_step_seconds": {
+    "parent": [
+      0.026254415000221343,
+      0.026305914999829837,
+      0.026269479999973554
+    ],
+    "rmsnorm": [
+      0.027381434999915653,
+      0.02747142000007443,
+      0.02742818000006082
+    ]
+  },
+  "benchmark_ratio": 1.044108219884384,
+  "estimated_training_seconds": 11391.55385387159,
+  "followup_delay_minutes": 205,
+  "device": "cuda",
+  "current_candidate_validation_evaluated": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Training samples only. Benchmark timing is approximate, not a performance result."
+}

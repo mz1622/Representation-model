@@ -1,0 +1,33 @@
+{
+  "status": "prepared_verified",
+  "tests_passed": 30,
+  "tests_seconds": 2.8,
+  "tests_command": "PYTHONPATH=src python -m pytest tests/test_research_transformer_r9.py tests/test_research_transformer_r9_rmsnorm.py tests/test_research_transformer_r9_rmsnorm_analysis.py -q",
+  "prepared_code_hashes": {
+    "src/foodcomp/research_transformer_r9_rmsnorm.py": "4773c0a495d63916405b0e160b74179e743101c3af21fb98e3c0068dcb171378",
+    "src/foodcomp/research_transformer_r9_drop25.py": "cffd05b4bcb97fa56d3f87bbbc88968407ca755b2256acf9e3c42c286a5c919f",
+    "scripts/train_foodnutrigpt_v9_r9_rmsnorm.py": "23b01aeb9ea6d5a2b109f2a90da366352a47dcb76f0bef1e44ba73fc7f6fcb67",
+    "scripts/verify_foodnutrigpt_r9_rmsnorm_functional.py": "115c87aeba13de751bbf31fc8018862682611426a29145df31236efef20aa439",
+    "scripts/audit_foodnutrigpt_r9_rmsnorm.py": "20de5f51bf89edaddca2b82bb1ad8a28842602a26b9e1f84d9f719589697aef6",
+    "scripts/audit_foodnutrigpt_r9_rmsnorm_replay.py": "3f3464d4d4a97bdfcaa5cd3dc0c7e228fa141c2a295c90a235210f2221008afe",
+    "scripts/analyze_foodnutrigpt_r9_rmsnorm.py": "e30b50ece1e43a374bcebd4cc383ae175a5f7ccf9d1feefff1c5a873d1f110ae",
+    "scripts/diagnose_foodnutrigpt_r9_rmsnorm_fit.py": "68056dd817695bc3254362d237dd942a50e3bf4e8cf87a0372134638fb510706",
+    "scripts/compare_foodnutrigpt_research_predictions.py": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+    "scripts/compare_foodnutrigpt_research_retrieval.py": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+    "scripts/diagnose_foodnutrigpt_research_gap.py": "1990bf9fe0ad6d682366edb91bee3adcdcd6624d5e5a58683c2466ca24f87d2c",
+    "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e",
+    "tests/test_research_transformer_r9_rmsnorm.py": "cce1a682c1a0ea1c58fd479c8ddf0989f13de3463b3aa093a0cc4d9834f95330",
+    "tests/test_research_transformer_r9_rmsnorm_analysis.py": "f30ac63bbe8e79d9e934c3a270af8366ba0471946717042a204dc7d471390869"
+  },
+  "plan_sha256": "c207798fd903b429cb7eeb5e787a69d354333244b89a747cf8cbe6457519eba4",
+  "functional_sha256": "ec879ed5302a263a245a8526c11810e1199aae0373b79443faaf6346e3bc3c12",
+  "frozen_inputs_verified": 67,
+  "registered_bindings_verified": 40,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "estimated_training_seconds": 11391.55385387159,
+  "followup_delay_minutes": 205,
+  "previous_preflight_failure_preserved": "reports/v9_r9_rmsnorm_functional_failure_v1/verification.json"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "failed_before_formal_training",
+  "stage": "default_gpu_fused_vs_explicit_layernorm_bridge",
+  "max_absolute_difference": 0.000055633485317230225,
+  "max_relative_difference": 10.645282745361328,
+  "mismatched_elements": 13652,
+  "total_elements": 16128,
+  "rtol": 0.00001,
+  "atol": 0.000002,
+  "config": "experiments/foodnutrigpt_v9_research/r9/rmsnorm_v1/config.json",
+  "formal_training_started": false,
+  "current_candidate_validation_evaluated": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "repair": "Record default fused-path difference and verify both LayerNorm implementations under the same temporary unfused path with zero tolerance; restore default backend before candidate checks and training. Preserve original registration."
+}
