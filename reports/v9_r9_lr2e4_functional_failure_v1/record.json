@@ -1,0 +1,23 @@
+{
+  "status": "failed_production_backend_exact_backward_check",
+  "recorded_utc": "2026-09-29T13:02:28.416374+00:00",
+  "command": "python -X utf8 scripts/verify_foodnutrigpt_r9_lr2e4_functional.py --output-dir reports/v9_r9_lr2e4_functional_v1",
+  "error_type": "AssertionError",
+  "stage": "paired_initial_parameter_gradients_exact",
+  "mismatched_elements": 3,
+  "tensor_elements": 192,
+  "greatest_absolute_difference": 1.4551915228366852e-11,
+  "greatest_relative_difference": 1.0811424999701558e-06,
+  "failed_line": 87,
+  "optimizer_steps": 0,
+  "formal_training_started": false,
+  "functional_output_created": false,
+  "initialization_forward_loss_and_rng_checks_before_failure_passed": true,
+  "interpretation": "Consistent with small nondeterministic GPU backward differences; this observation alone does not prove a unique kernel cause. Do not rerun unchanged nondeterministic checks until they happen to pass.",
+  "next_check": "Isolated deterministic diagnostic wrapper; original registered numerical implementation retained. Formal training backend remains parent configuration.",
+  "registered_config_sha256": "7f419e2612305c9db991e601c943682636d3eeca22227045519de58b7ad18852",
+  "registered_functional_script_sha256": "59d7a33741cd26c6204f682bdfb519bf30f808c96b93f792a49819728899973a",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

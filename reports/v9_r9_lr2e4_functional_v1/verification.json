@@ -1,0 +1,50 @@
+{
+  "status": "complete",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "scripts/train_foodnutrigpt_v9_r9_lr2e4.py": "9b7db63f207d9f7a8c6fe42634070b1584567d6b15c9d52ac406285d4fccebc4",
+    "src/foodcomp/research_transformer_r9_lr2e4.py": "e523dafe042dc8cc6db3651384f7fbf8796c8cac8b56f5b448bbd8d15e155ed4",
+    "scripts/verify_foodnutrigpt_r9_lr2e4_functional.py": "59d7a33741cd26c6204f682bdfb519bf30f808c96b93f792a49819728899973a",
+    "scripts/verify_foodnutrigpt_r9_lr2e4_deterministic.py": "07b9594d91dd4ca36e38975a5529aa183a53c1e7b51c66de2e40458be824ae0f"
+  },
+  "plan_sha256": "7f419e2612305c9db991e601c943682636d3eeca22227045519de58b7ad18852",
+  "same_seed_parent_initialization_exact": true,
+  "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "inner_training_loop_ast_unchanged": true,
+  "constructor_rng_exact": true,
+  "initial_shared_parameter_gradients_and_dropout_rng_exact": true,
+  "source_calibration_table_learned_nonzero": true,
+  "source_not_in_learned_base_forward": true,
+  "learned_public_loader_reload_exact": true,
+  "learned_functional_checkpoint_sha256": "4902402733134736bbee9b6eee88483d414d8924409ffbb2e8faf464bb6f6504",
+  "functional_checkpoint_sha256": "476f6da1cef3f087b9afc01ab18f0f4fc98b34296655529302ee1bb3f53b3fde",
+  "legacy_control_initialization_forward_and_initial_mae_exact": true,
+  "hidden_label_target_and_source_changes_forward_exact": true,
+  "public_loader_reload_forward_exact": true,
+  "caller_requested_unobserved_axes_predicted": true,
+  "train_names_all187_queries_finite": true,
+  "small_batch_overfit": {
+    "before": 0.21735809743404388,
+    "after": 0.05030610412359238,
+    "steps": 50
+  },
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "all_frozen_inputs_and_registered_bindings_unchanged": true,
+  "complete_test_opened": false,
+  "current_candidate_validation_evaluated": false,
+  "scope": "Training-row implementation and learnability under isolated deterministic diagnostic backend, not production bitwise trajectory equality or validation performance. Initial production-backend backward check had tiny unequal gradients and is preserved. Formal method is unchanged.",
+  "diagnostic_backend": {
+    "deterministic_algorithms": true,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "flash_sdp": false,
+    "memory_efficient_sdp": false,
+    "math_sdp": true,
+    "scope": "Isolated functional diagnostic only; formal training retains parent nondeterministic backend and no CUBLAS environment override."
+  },
+  "initial_production_backend_exact_gradient_check_failed": true,
+  "failed_diagnostic_record": "reports/v9_r9_lr2e4_functional_failure_v1/record.json",
+  "failed_diagnostic_sha256": "0adb7887e9e2357ba30869d5a43374b17a81e4a1d3b53e1a12946b2cddd864a0"
+}
