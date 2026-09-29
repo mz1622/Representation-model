@@ -1,0 +1,91 @@
+{
+  "status": "verified_launched_with_scheduled_followup",
+  "verified_utc": "2026-09-29T13:10:56.482107+00:00",
+  "code_commit": "dbfec0338b798847909bf446d2c5020cdcb7df88",
+  "candidate": "tf192_mae_lr2e4_60",
+  "seed": 20260922,
+  "current_run": "output/v9_r9_methods/tf192_mae_lr2e4_60",
+  "plan_sha256": "7f419e2612305c9db991e601c943682636d3eeca22227045519de58b7ad18852",
+  "functional_sha256": "b7ee8b44b942cf483b10e002d1b06f0446f685ca872863d4a619c9e22552fb46",
+  "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "initialization_and_registered_recipe_match_parent_except_learning_rate": true,
+  "actual_processes": [
+    {
+      "ProcessId": 9252,
+      "ParentProcessId": 23548,
+      "Name": "pwsh.exe",
+      "CreationUTC": "2026-09-29T13:04:49.3889050Z",
+      "role": "controller"
+    },
+    {
+      "ProcessId": 17416,
+      "ParentProcessId": 9252,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T13:04:50.0539030Z",
+      "role": "venv_launcher"
+    },
+    {
+      "ProcessId": 15800,
+      "ParentProcessId": 17416,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T13:04:50.0671170Z",
+      "role": "actual_trainer"
+    }
+  ],
+  "controller_state_file": "work/r9-lr2e4-v1-status.json",
+  "controller_script": "work/run-r9-lr2e4-v1.ps1",
+  "controller_sha256": "316B8172AC6126B92BFA1E55CD951742A6D45D5823C2666F37583597F4836E63",
+  "launch_utc": "2026-09-29T13:04:50.0053618Z",
+  "estimated_training_seconds": 12093.650699999991,
+  "followup_delay_minutes": 212,
+  "estimated_followup_due_utc": "2026-09-29T16:36:50.042000+00:00",
+  "automation_id": "nutrition",
+  "automation_status": "ACTIVE",
+  "automation_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+      }
+    ],
+    "isError": false
+  },
+  "per_epoch_observer_created": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "report_complete": false,
+  "queued_work": [
+    "train60",
+    "independent_three_task_replay",
+    "eleven_fixed_reference_comparisons",
+    "gap_decomposition",
+    "analysis_and_figures",
+    "full_training_fit"
+  ],
+  "remaining_after_queue": [
+    "actual_visual_axis_and_case_review",
+    "eight_section_version_decision",
+    "complete_new_Chinese_and_English_report_snapshot"
+  ],
+  "preflight_failure_record": "reports/v9_r9_lr2e4_functional_failure_v1/record.json",
+  "process_identity_check": {
+    "source": "previously captured startup snapshot, not a new liveness poll",
+    "snapshot_file": "work/r9-lr2e4-startup-processes.json",
+    "snapshot_sha256": "27283bc23644d64fc8be44d7bff41c8d7a9c6c1a4704741acaa897f6834eb50b",
+    "controller_cim_utc": "2026-09-29T13:04:49.3889050Z",
+    "controller_get_process_utc": "2026-09-29T13:04:49.3889054Z",
+    "comparison_precision": "microsecond; CIM drops sub-microsecond digits",
+    "same_pid_and_parent_chain_verified": true,
+    "auxiliary_receipt_failure": "Original literal-string timestamp assertion rejected differing display precision; trainer was not restarted."
+  },
+  "deterministic_diagnostic_only_formal_backend_unchanged": true,
+  "powershell_executable": "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+}
