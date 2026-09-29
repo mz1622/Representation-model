@@ -1,0 +1,14 @@
+{
+  "status": "complete_registered_source0_method_audit",
+  "config_sha256": "c98d64d187a37396cc51b6145843930ba43f195ef86c9bbc64c28c6c925e79fa",
+  "manifest_sha256": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+  "full_replay_sha256": "9d6381c9c81923233a0708d3a9d59546b899817f9442e7645fa66c43712ca1b4",
+  "script_sha256": "318fefff09af25c3a787fe11b6a51c51676e7675d2f4b731b6eba67b3f62ab6e",
+  "same_parent_initial_state_and_parameter_count": true,
+  "same_all60_orders_exposures_and_learning_rates": true,
+  "sole_numerical_recipe_change": "source_weight1_to0",
+  "selected_and_final_source_offsets_exact_zero": true,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

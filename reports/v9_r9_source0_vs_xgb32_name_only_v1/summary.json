@@ -1,0 +1,130 @@
+{
+  "task": "name_only",
+  "scores": {
+    "baseline": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.656147504703501,
+        "log_mae": 0.21371924251789032,
+        "log_mse": 0.22784861096969813,
+        "raw_mae": 1.173380660210836,
+        "positive_scaled_log_mae": 0.693837533473415,
+        "zero_scaled_log_mae": 0.7183897251663349,
+        "log_rmse_root_mean_axis_mse": 0.47733490441167
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.8515446560890014,
+        "log_mae": 0.04734936090604431,
+        "log_mse": 0.024287006225065196,
+        "raw_mae": 0.0807821081385967,
+        "positive_scaled_log_mae": 0.9197095002548549,
+        "zero_scaled_log_mae": 0.7744981188335315,
+        "log_rmse_root_mean_axis_mse": 0.15584288955568423
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.7031682095823648,
+        "log_mae": 0.17368370950969209,
+        "log_mse": 0.1788631980632356,
+        "raw_mae": 0.9104558749528106,
+        "positive_scaled_log_mae": 0.7481917500785744,
+        "zero_scaled_log_mae": 0.7286817973774775,
+        "log_rmse_root_mean_axis_mse": 0.4229222127805959
+      }
+    },
+    "candidate": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.44441294523159636,
+        "log_mae": 0.15672076415289607,
+        "log_mse": 0.17572418862605643,
+        "raw_mae": 0.9744822202975675,
+        "positive_scaled_log_mae": 0.5543775742181495,
+        "zero_scaled_log_mae": 0.42419632975761395,
+        "log_rmse_root_mean_axis_mse": 0.41919469059860054
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.8457867427905471,
+        "log_mae": 0.07627520229059347,
+        "log_mse": 0.0764834717356314,
+        "raw_mae": 0.2141054556004633,
+        "positive_scaled_log_mae": 0.9736974829883068,
+        "zero_scaled_log_mae": 0.6394143334439765,
+        "log_rmse_root_mean_axis_mse": 0.27655645307175786
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.5410002227190444,
+        "log_mae": 0.13736220648549702,
+        "log_mse": 0.1518427326898579,
+        "raw_mae": 0.7915038544613661,
+        "positive_scaled_log_mae": 0.6552834346173853,
+        "zero_scaled_log_mae": 0.4636741884219763,
+        "log_rmse_root_mean_axis_mse": 0.389670030525646
+      }
+    }
+  },
+  "paired_intervals": {
+    "scaled_log_mae": {
+      "metric": "scaled_log_mae",
+      "group_count": 7344,
+      "repeats": 1000,
+      "seed": 20260922,
+      "valid_resamples": 1000,
+      "resamples_without_all_axis_support": 0,
+      "baseline": 0.656147504703501,
+      "candidate": 0.44441294523159636,
+      "relative_improvement": 0.32269353758737984,
+      "relative_improvement_95_interval": [
+        0.29886637658287335,
+        0.3455761322776801
+      ],
+      "candidate_minus_baseline_95_interval": [
+        -0.22835061126477776,
+        -0.19445693661143343
+      ],
+      "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+    },
+    "log_mae": {
+      "metric": "log_mae",
+      "group_count": 7344,
+      "repeats": 1000,
+      "seed": 20260922,
+      "valid_resamples": 1000,
+      "resamples_without_all_axis_support": 0,
+      "baseline": 0.21371924251789032,
+      "candidate": 0.15672076415289607,
+      "relative_improvement": 0.2666979243117191,
+      "relative_improvement_95_interval": [
+        0.22731186708117157,
+        0.3007531107205747
+      ],
+      "candidate_minus_baseline_95_interval": [
+        -0.06493194286728424,
+        -0.04834853297332486
+      ],
+      "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+    }
+  },
+  "primary_change_decomposition": {
+    "positive_delta_contribution": -0.11818213904737437,
+    "zero_delta_contribution": -0.09355242042453034
+  },
+  "baseline_path": "output\\v9_r8\\xgb800d10_name32\\name_only_predictions.parquet",
+  "candidate_path": "output\\v9_r9_methods\\tf192_mae_source0_lr3e4_60\\name_only_predictions.parquet",
+  "baseline_sha256": "b35a343380637ca45d78bdea37aee8b729be304f9c5106cb58a08b0e55c8ef5b",
+  "candidate_sha256": "40b3bd0ece49c4182b48784df811a251822229a9d6d93aeeb3b25c99c5653c62",
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+  "complete_test_opened": false,
+  "confirmation": false,
+  "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+}

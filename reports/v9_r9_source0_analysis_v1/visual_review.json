@@ -1,0 +1,15 @@
+{
+  "status": "actual_visual_review_complete",
+  "figure_sha256": "ba1dc6a1a2879c8ac0f52359df7e0d33ec1b8dbc03f474dd12e05a4ebbc87fc4",
+  "all_six_panels_viewed": true,
+  "source0_selected_epoch": 58,
+  "control_selected_epoch": 60,
+  "observations": [
+    "Both validation primary curves decline and flatten late; source0 remains above the control near the end.",
+    "Legacy and positive conditional errors are not improved by removing calibration at the selected point.",
+    "Conditional zero error is lower but is not the common-denominator primary contribution.",
+    "Clipping fractions are similar late; gradient means fluctuate without a visible divergent trend.",
+    "Legends, axis labels, fixed RF/XGB horizontal lines and selected-epoch stars are visible in all relevant panels."
+  ],
+  "scope": "Actual inspection of the generated six-panel PNG, supplemented by exact machine records; no claim of global convergence."
+}

@@ -1,0 +1,19 @@
+{
+  "status": "english_new_prose_copyedited_without_numeric_changes",
+  "previous_document_hashes": {
+    "REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "REPORT_EN.md": "510c6e740acc7af3763f29fb34820e0fe54fb73d7ae52a66f6f96b9c8906cf6b"
+  },
+  "document_hashes": {
+    "REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "REPORT_EN.md": "208699607d795023af09ceb5f4ca025440a8d236b1b734668785484d4415603a"
+  },
+  "corrections": [
+    "Preserved decision link target source0_v1 after a broad spacing transformation inserted a space.",
+    "Separated articles, signed contributions, clause punctuation and head/layer lists in new English prose."
+  ],
+  "historical_sections_changed": false,
+  "numeric_tables_changed": false,
+  "script_sha256": "a1effc961b0216138315e0e1891c3a88df6205951299e42447f4711b5941a692",
+  "manual_bilingual_review_complete": false
+}

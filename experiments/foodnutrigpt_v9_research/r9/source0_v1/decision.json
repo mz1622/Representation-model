@@ -1,0 +1,22 @@
+{
+  "status": "screen_complete_fixed_source0_recipe_rejected",
+  "candidate": "tf192_mae_source0_lr3e4_60",
+  "gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "decision": "reject_this_fixed_recipe_as_completion_upgrade",
+  "retained_control": "output/v9_r9/tf192_mae_lr3e4_60",
+  "additional_seeds_to_launch": [],
+  "analysis_sha256": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+  "fit_sha256": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+  "reason": "All same-seed MAE screen gates fail. One-seed RF point improvement has a food-group interval crossing zero; no final RF confirmation.",
+  "next_question": "Separately register and verify the PDF256/8/FF1024 capacity group while keeping MAE and source weight1. This changes a capacity combination, not width alone.",
+  "next_candidate_registered_or_launched": false,
+  "scientific_confirmation": false,
+  "goal_achieved": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

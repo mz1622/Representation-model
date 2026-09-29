@@ -1,0 +1,19 @@
+{
+  "status": "scientific_interpretation_added_actual_bilingual_review_required",
+  "original_draft_hashes": {
+    "REPORT_ZH.md": "625cca7c60a112d6d09cfebab4641c93e8609a7472091a266d93d8fb381698ab",
+    "REPORT_EN.md": "4aab9f3548cf9370b63afbfdc8c5fc1b84db8bd32afe72124c1eb7f25f380bf1"
+  },
+  "document_hashes": {
+    "REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "REPORT_EN.md": "510c6e740acc7af3763f29fb34820e0fe54fb73d7ae52a66f6f96b9c8906cf6b"
+  },
+  "version_readme_sha256": "10ccbfd6b06efec3cc495b1eefd91c43a7c48111cd7d1199d3cba31056821bc9",
+  "script_sha256": "afa8762cecf339abeb8812152426751ec477384754e68eaed79a42ea15fd3dbb",
+  "manual_bilingual_review_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

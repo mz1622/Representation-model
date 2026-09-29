@@ -1,0 +1,37 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_source0_analysis_v1/summary.json": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+    "reports/v9_r9_source0_fit_v1/summary.json": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/review_verification.json": "0a9879d3141dd4ceb850390ef2e249b0bfa7c2eae21ee26a8f6e52179d5f0f58",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/REPORT_ZH.md": "ab39be9eaebe6032e118a66b864c46e7a18a71781d7c49c1b89dc40472ba4ea2",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_axisvalue_v1/REPORT_EN.md": "5f997a27c45c268c85159249ab5b3133bdc05a79a89f59009d268bdeaae3fc45",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/PLAN.md": "9454c263ab774029f0fd7d671a6b0ee0dea340bf547d27aa7497cb7e19c7baed",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/config.json": "c98d64d187a37396cc51b6145843930ba43f195ef86c9bbc64c28c6c925e79fa",
+    "scripts/report_foodnutrigpt_r9_source0.py": "14e05a9d995d9eeb9d351d37439365732675c89bb129bcf97c3957d8241ac784",
+    "reports/v9_r9_source0_functional_v1/verification.json": "29198f58048d78b8b6d05bf84c7c95e9cf7a47ace5fac82fb24da0385b5c2db3",
+    "reports/v9_r9_source0_functional_v1/reference_execution.json": "5604a3c646948f3903288f891fdc8ba59015fafc6f5f610840ab2dea13ea955f",
+    "reports/v9_r9_source0_gradient_reference_v1/summary.json": "167e721e80b92a76e1a908914fdc57482cd066f4ff92e0816c59edf2966b646f",
+    "reports/v9_r9_source0_preflight_failure_v1/summary.json": "15e7b18a847fbb27584d3e1ccd84793d46b2bcf781f1f1bb29f691f7f9289916"
+  },
+  "local_links_checked": 124,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "625cca7c60a112d6d09cfebab4641c93e8609a7472091a266d93d8fb381698ab",
+    "REPORT_EN.md": "4aab9f3548cf9370b63afbfdc8c5fc1b84db8bd32afe72124c1eb7f25f380bf1"
+  }
+}

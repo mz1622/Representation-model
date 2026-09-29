@@ -1,0 +1,21 @@
+{
+  "status": "english_links_and_identifiers_corrected",
+  "previous_document_hashes": {
+    "REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "REPORT_EN.md": "208699607d795023af09ceb5f4ca025440a8d236b1b734668785484d4415603a"
+  },
+  "previous_receipt_sha256": "161dc7fbbed4990301936a6e397ffae5c5b1df62fa748ee06bb26b2adacffd36",
+  "document_hashes": {
+    "REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171"
+  },
+  "corrections": [
+    "Restored three registration/config/version link targets affected by prior broad spacing.",
+    "Restored the exact cu128 version identifier and formatted hardware name and one prose comma."
+  ],
+  "all_english_local_links_checked": 66,
+  "numeric_tables_changed": false,
+  "historical_sections_changed": false,
+  "script_sha256": "f4224997ba44223441858bcf4c596192f8baf7f1a194204ed8667280b29be1ca",
+  "manual_bilingual_review_complete": false
+}
