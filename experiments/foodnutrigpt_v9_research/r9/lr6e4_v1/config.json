@@ -1,0 +1,56 @@
+{
+  "status": "registered",
+  "purpose": "r9_single_factor_learning_rate_contrast",
+  "candidate": "tf192_mae_lr6e4_60",
+  "seed": 20260922,
+  "candidate_index": 7,
+  "max_candidates": 12,
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "prior_decision": "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/decision.json",
+  "prior_review": "experiments/foodnutrigpt_v9_research/report_snapshot_r9_capacity256_v1/review_verification.json",
+  "changes": {
+    "learning_rate": 0.0006
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "experiments/foodnutrigpt_v9_research/r9/lr6e4_v1/PLAN.md": "5e5eb7c5fcdc8230f538c07246d00deef57bba5238f0de9a32afcfb680e55f28",
+    "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/decision.json": "7982c28fa9f90d8595a3b4234fccec27f8c29ca2beb0c8311b520833d99ec6af",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_capacity256_v1/review_verification.json": "5dc8a4f601eb3924eea16ff098b5e67b027c2d4e05040e083665b1955d1bb905",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_capacity256_v1/REPORT_ZH.md": "8e61b2fe74b99b58019d55e085c83ebf82ba6315fc0deef2eda7d9e733711ac2",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_capacity256_v1/REPORT_EN.md": "049e866bba72fa90c1e255571731485e1fbb2111a354a5c302bd21069a510584",
+    "reports/v9_r9_capacity256_analysis_v1/summary.json": "4833a15595a5abb682ab4b54d90f963018d23c7c595de8482bbfb4e2e37f8bb9",
+    "reports/v9_r9_capacity256_fit_v1/summary.json": "628e4771044160b9f5413220e583b4847ea91a820f60193bd57d701e170e1202",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/run_manifest.json": "a0ce6fd5c2694bf6791fe1fd18386d334cf2a587da11010d5b3f1bc4ba996fa5",
+    "src/foodcomp/research_transformer_r9_lr6e4.py": "75505a981861b2d63d18a2a07e9150b2be9e687b108e2564d26c09496c1a42de",
+    "scripts/train_foodnutrigpt_v9_r9_lr6e4.py": "1c48e4fbe2024b83e7ab9bb7ee841eac6bf29f72ebe55639f8bdd447cbfe892a",
+    "scripts/verify_foodnutrigpt_r9_lr6e4_functional.py": "a57ad0908f29cea4e7096a96d0bd569caca2358733a24c967c411988a7b16104",
+    "scripts/audit_foodnutrigpt_r9_lr6e4.py": "171c3a42df768b08fc0056af2476a94a324504ecf0b2d0c55c35fd8eb9ed7f4f",
+    "tests/test_research_transformer_r9_lr6e4.py": "d1529bf1315508d93a51432d05836bba84b090f56a97af04a5176bb828d2c963",
+    "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226"
+  },
+  "runtime_basis": [
+    {
+      "run": "output/v9_r9/tf192_mae_lr3e4_60",
+      "elapsed_seconds": 12254.358999999997,
+      "manifest_sha256": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8"
+    },
+    {
+      "run": "output/v9_r9_methods/tf192_mae_source0_lr3e4_60",
+      "elapsed_seconds": 10516.217999999993,
+      "manifest_sha256": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226"
+    }
+  ],
+  "runtime_estimator": "max(reference60epoch_wall_seconds)*1.1",
+  "estimated_training_seconds": 13479.794899999997,
+  "followup_postprocess_allowance_minutes": 10,
+  "followup_delay_minutes": 235,
+  "created_utc": "2026-09-29T08:41:22.404225+00:00",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "confirmation_seeds_require_separate_registration": true
+}

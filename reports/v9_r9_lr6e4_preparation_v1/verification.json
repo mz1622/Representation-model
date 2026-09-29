@@ -1,0 +1,55 @@
+{
+  "status": "prepared_verified",
+  "created_utc": "2026-09-29T08:46:47.250072+00:00",
+  "plan_sha256": "cf4e17db414000b590dacd5b5c4f3d95937b0b2c640575a6052a079d0b8338f1",
+  "functional_sha256": "bace29b60a6d62aa2d619b5d323fd4415c80f535a0560a54cfca47b2158e5ec7",
+  "prepared_code_hashes": {
+    "scripts/train_foodnutrigpt_v9_r9_lr6e4.py": "1c48e4fbe2024b83e7ab9bb7ee841eac6bf29f72ebe55639f8bdd447cbfe892a",
+    "src/foodcomp/research_transformer_r9_lr6e4.py": "75505a981861b2d63d18a2a07e9150b2be9e687b108e2564d26c09496c1a42de",
+    "scripts/verify_foodnutrigpt_r9_lr6e4_functional.py": "a57ad0908f29cea4e7096a96d0bd569caca2358733a24c967c411988a7b16104",
+    "scripts/audit_foodnutrigpt_r9_lr6e4.py": "171c3a42df768b08fc0056af2476a94a324504ecf0b2d0c55c35fd8eb9ed7f4f",
+    "scripts/audit_foodnutrigpt_r9_completed_utf8.py": "74c592ed3e7691bb63e238c4242ee811493a900af19c6bc2096e74066df005cb",
+    "scripts/compare_foodnutrigpt_research_predictions.py": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+    "scripts/compare_foodnutrigpt_research_retrieval.py": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+    "scripts/diagnose_foodnutrigpt_research_gap.py": "1990bf9fe0ad6d682366edb91bee3adcdcd6624d5e5a58683c2466ca24f87d2c",
+    "scripts/analyze_foodnutrigpt_r9_lr6e4.py": "bd04e37c1f05406669c7570580a237c7ca121dfff148a9a05f04275b5ba3abb5",
+    "scripts/diagnose_foodnutrigpt_r9_lr6e4_fit.py": "9fc04f17c5dff3194bb5981ca963465d46287fbbf8807df4cd673661698a459b",
+    "tests/test_research_transformer_r9_lr6e4.py": "d1529bf1315508d93a51432d05836bba84b090f56a97af04a5176bb828d2c963",
+    "tests/test_research_transformer_r9_lr6e4_analysis.py": "45534c0898b824a5b83d2716dfecaa1af1bb7c97d16a31648652ae611ac3e330"
+  },
+  "controller_sha256": "146be24bde08af3c90d6e8a54a2f2a167827b3a2063ce01a9c2c1d7f11d553d0",
+  "tests_passed": 42,
+  "test_runs": [
+    {
+      "command": "PYTHONPATH=src python -X utf8 -m pytest -q tests/test_research_transformer_r9.py tests/test_research_transformer_r9_source0.py tests/test_research_transformer_r9_lr6e4.py",
+      "passed": 21,
+      "seconds": 3.82
+    },
+    {
+      "command": "PYTHONPATH=src python -X utf8 -m pytest -q tests/test_research_transformer_r9_lr6e4_analysis.py",
+      "passed": 21,
+      "seconds": 2.33
+    }
+  ],
+  "preflight_failures": [
+    {
+      "stage": "initial_test_collection",
+      "reason": "PYTHONPATH was not set to src; ModuleNotFoundError foodcomp in three modules",
+      "resolution": "Reran with PYTHONPATH=src; all21 tests passed. No model/data/registration change."
+    },
+    {
+      "stage": "controller_draft_tool",
+      "reason": "JavaScript template interpolated PowerShell variable mode; no files written or process launched",
+      "resolution": "Use PowerShell subexpression syntax in controller text."
+    }
+  ],
+  "registered_bindings_verified": 38,
+  "frozen_manifest_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "analysis_ready": false,
+  "fit_ready": false,
+  "candidate_outcomes_inspected": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}
