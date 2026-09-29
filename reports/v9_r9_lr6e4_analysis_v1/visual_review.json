@@ -1,0 +1,11 @@
+{
+  "status": "actual_six_panel_visual_review_complete",
+  "figure_sha256": "bfeaab0f7fdf8ddf5c09be3be4a8ce81dd71e117e2886fccb2b430b1e709ce5a",
+  "all_six_panels_viewed": true,
+  "labels_and_legends_readable": true,
+  "observations": "All six panels were visually inspected. Both models select epoch 60. The 6e-4 model has higher primary, legacy-log and positive errors early and late, with flattening late improvements that do not prove global convergence. Its last-ten-epoch clipping fraction is lower, 0.306816 versus 0.350883; the first-ten fraction is also lower, and mean pre-clipping gradient norms show no visible explosion. These observations do not support a simple explanation based on more frequent clipping. Recorded duration is 9025.391 seconds, about 2.51 hours, below the estimate. Machine load across runs was uncontrolled, so this does not demonstrate that a larger learning rate accelerates computation.",
+  "causal_limit": "No universal convergence or clipping mechanism inferred.",
+  "training_performed": false,
+  "data_modified": false,
+  "complete_test_opened": false
+}

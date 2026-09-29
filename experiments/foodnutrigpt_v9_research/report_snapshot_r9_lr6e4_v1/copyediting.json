@@ -1,0 +1,17 @@
+{
+  "status": "targeted_bilingual_copyedit_complete",
+  "previous_document_hashes": {
+    "REPORT_ZH.md": "3a3ec8547de162212f0336d4a44d533d1b41963ab5800851b4a58492e562f541",
+    "REPORT_EN.md": "c7785ddc7c3a6f5ce7d181b60f7e5ea143724885fe6668fc5615f3d4cceacf03"
+  },
+  "previous_receipt_sha256": "8eaf473439e2888de97d374643d89faf986cfbf28a74cd61d54129977dc0298f",
+  "document_hashes": {
+    "REPORT_ZH.md": "9618bd70389cd6a883087e3948c10aca78ae38a46cd17438fcca566c5fe509d5",
+    "REPORT_EN.md": "6f7d5fd6077b8f8adad254e04a68fd819f4cd1270a829e5e9bf9473e0b216d2e"
+  },
+  "version_readme_sha256": "387b6c8dbbc5eed872a9e63f6269b962f6d33b4a032b8c148124296c3b0eb825",
+  "scope": "Actual bilingual Section1 and14 prose read; added matching entry commands and English-only task captions. Historical Sections2\u201313 and numerical tables retained.",
+  "checker_sha256": "4b44fc3c2587c7d82c5e25e4676f171e82678cc83c5c933eb146b2b2db22d5bd",
+  "report_complete": false,
+  "goal_achieved": false
+}
