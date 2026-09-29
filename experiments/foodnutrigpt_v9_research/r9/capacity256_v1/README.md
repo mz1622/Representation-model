@@ -23,7 +23,7 @@ $env:PYTHONPATH=(Join-Path (Get-Location) 'src')
 .venv/Scripts/python.exe -X utf8 scripts/audit_foodnutrigpt_r9_capacity256.py --run output/v9_r9_methods/tf256_mae_lr3e4_60 --output-dir reports/v9_r9_capacity256_lr3e4_60_audit_v1
 ```
 
-前三项已完成；正式训练和审计结果待完成。产物目录拒绝覆盖。正式运行启动时保存代码提交、时间、实际进程身份和心跳工具回执。
+前三项已完成；正式训练已于2026-09-29北京时间10:04启动，代码提交 `f19d545c33272906b334db3ed63351f69707892e`，训练及审计结果仍待完成。产物目录拒绝覆盖。[启动回执](launch.json)保存实际进程身份和心跳工具回执；267分钟定时回访已启用，预计北京时间14:32左右检查。这个时间是估算，不是完成承诺。
 
 ## 4. 已有结果与失败记录
 
