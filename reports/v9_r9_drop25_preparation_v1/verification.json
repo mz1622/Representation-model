@@ -1,0 +1,45 @@
+{
+  "status": "prepared_verified",
+  "created_utc": "2026-09-29T16:53:43.208605+00:00",
+  "plan_sha256": "8178366b843f08299719081e6836c7484fb0d89a5f8611a20722b5085b9df6f6",
+  "functional_sha256": "dfcf4b4e0299aa8ede3f863163bc0c5d491495f2c90c66a03fbae8546c9d97f1",
+  "prepared_code_hashes": {
+    "scripts/train_foodnutrigpt_v9_r9_drop25.py": "11ffdd6a05cc67fc68e2eb4fe14412d8307f020e08835a2640d405331aae6698",
+    "src/foodcomp/research_transformer_r9_drop25.py": "cffd05b4bcb97fa56d3f87bbbc88968407ca755b2256acf9e3c42c286a5c919f",
+    "scripts/verify_foodnutrigpt_r9_drop25_functional.py": "576f3dd6a0d167dada6af246fae05db6a64357c88f9e61072e4db1d16bee3690",
+    "scripts/audit_foodnutrigpt_r9_drop25.py": "4715a1dc557003d5c51a3dd89b61647eb173668020367c3590be6775408d1d06",
+    "scripts/audit_foodnutrigpt_r9_completed_utf8.py": "74c592ed3e7691bb63e238c4242ee811493a900af19c6bc2096e74066df005cb",
+    "scripts/compare_foodnutrigpt_research_predictions.py": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+    "scripts/compare_foodnutrigpt_research_retrieval.py": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+    "scripts/diagnose_foodnutrigpt_research_gap.py": "1990bf9fe0ad6d682366edb91bee3adcdcd6624d5e5a58683c2466ca24f87d2c",
+    "scripts/analyze_foodnutrigpt_r9_drop25.py": "f1c6c6727eab7d6765940ced822207ca11efc9c5f437cf0b27152a550843e91f",
+    "scripts/diagnose_foodnutrigpt_r9_drop25_fit.py": "0177d28fa6f92cbb81090ef79985d50283f34290aa5b7d38fa7a03e705d602a5",
+    "tests/test_research_transformer_r9_drop25.py": "ddf60a9f22cd2af6d76f7f8facf2e02db2a862d1fed0b479f49522797a5c6c40",
+    "tests/test_research_transformer_r9_drop25_analysis.py": "84cf64c88be22bb48b6cb65c5883e2a050d28ce4ed0dbd33a1db4a422712452f"
+  },
+  "controller_sha256": "4bd27860cd85ab2e025c27ccb1b51f3375fc007a199c84462e93eb1209f9ee69",
+  "tests_passed": 33,
+  "test_runs": [
+    {
+      "command": "PYTHONPATH=src python -X utf8 -m pytest -q tests/test_research_transformer_r9.py tests/test_research_transformer_r9_drop25.py tests/test_research_transformer_r9_drop25_analysis.py",
+      "passed": 33,
+      "seconds": 2.92
+    }
+  ],
+  "production_default_backend_in_fresh_process": {
+    "deterministic_algorithms": false,
+    "CUBLAS_WORKSPACE_CONFIG": null,
+    "flash_sdp": true,
+    "memory_efficient_sdp": true,
+    "math_sdp": true
+  },
+  "dropout_sites_verified": 14,
+  "registered_bindings_verified": 41,
+  "frozen_manifest_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "analysis_ready": false,
+  "candidate_outcomes_inspected": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

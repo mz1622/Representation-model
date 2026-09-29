@@ -1,0 +1,69 @@
+{
+  "status": "registered",
+  "purpose": "r9_single_factor_dropout_contrast",
+  "candidate": "tf192_mae_drop25_lr3e4_60",
+  "seed": 20260922,
+  "candidate_index": 9,
+  "max_candidates": 12,
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "prior_decision": "experiments/foodnutrigpt_v9_research/r9/lr2e4_v1/decision.json",
+  "prior_review": "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/review_verification.json",
+  "changes": {
+    "dropout": 0.25
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "experiments/foodnutrigpt_v9_research/r9/drop25_v1/PLAN.md": "50c04ec6e5d567fbe508ef48278ad238390de7faeb995091e3371408e4359b1a",
+    "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/lr2e4_v1/decision.json": "f516badd66e4885419bb40de38032919554d5f532979f55a5e1f1931c574999e",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/review_verification.json": "8272bc260ab9c50081bdaba4293bee0bb7b39b75ec4496d009ffdd886cc8488a",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/REPORT_ZH.md": "4b0ecd9af123435a5707c30c058cc1af9857fd16c335e61562c5ca1457b9402e",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/REPORT_EN.md": "24dd7e26ebced370ad0b043b5ad579198997d6401b3910bdcdcbd8a008318b7c",
+    "reports/v9_r9_lr2e4_analysis_v1/summary.json": "8bff3d61a167dd59273238dba9548589fb9919dd78c18074e58879e81ac4aee3",
+    "reports/v9_r9_lr2e4_fit_v1/summary.json": "019f5b62198f988d96dabb5919c732fedc581bebb940b1871d124b14cda05db9",
+    "reports/v9_r9_lr2e4_support_fit_v1/summary.json": "d17eaed17304a50497811f7678f9dc0cd4732dadcde315fd6fa4cfc370fb5c53",
+    "reports/v9_r9_lr2e4_support_fit_v1/axis_support_fit.csv": "b3807ab234c54f7110a98c18c696daadf50c6c2660f329cb71f3ef51c411c308",
+    "src/foodcomp/research_transformer_r9_drop25.py": "cffd05b4bcb97fa56d3f87bbbc88968407ca755b2256acf9e3c42c286a5c919f",
+    "scripts/train_foodnutrigpt_v9_r9_drop25.py": "11ffdd6a05cc67fc68e2eb4fe14412d8307f020e08835a2640d405331aae6698",
+    "scripts/verify_foodnutrigpt_r9_drop25_functional.py": "576f3dd6a0d167dada6af246fae05db6a64357c88f9e61072e4db1d16bee3690",
+    "scripts/audit_foodnutrigpt_r9_drop25.py": "4715a1dc557003d5c51a3dd89b61647eb173668020367c3590be6775408d1d06",
+    "tests/test_research_transformer_r9_drop25.py": "ddf60a9f22cd2af6d76f7f8facf2e02db2a862d1fed0b479f49522797a5c6c40",
+    "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+    "output/v9_r9_methods/tf192_mae_lr6e4_60/run_manifest.json": "40dcc23e931c7d1ad2dfd3b7266289525f7ef3c3c7f1d58309df865a9bdcbce6",
+    "output/v9_r9_methods/tf192_mae_lr2e4_60/run_manifest.json": "ac472472e3862db4dbd27664d8bff213cda190ec4748e654e3cfbbd72a6976f2"
+  },
+  "runtime_basis": [
+    {
+      "run": "output/v9_r9/tf192_mae_lr3e4_60",
+      "elapsed_seconds": 12254.358999999997,
+      "manifest_sha256": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8"
+    },
+    {
+      "run": "output/v9_r9_methods/tf192_mae_source0_lr3e4_60",
+      "elapsed_seconds": 10516.217999999993,
+      "manifest_sha256": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226"
+    },
+    {
+      "run": "output/v9_r9_methods/tf192_mae_lr6e4_60",
+      "elapsed_seconds": 9025.391,
+      "manifest_sha256": "40dcc23e931c7d1ad2dfd3b7266289525f7ef3c3c7f1d58309df865a9bdcbce6"
+    },
+    {
+      "run": "output/v9_r9_methods/tf192_mae_lr2e4_60",
+      "elapsed_seconds": 9020.75,
+      "manifest_sha256": "ac472472e3862db4dbd27664d8bff213cda190ec4748e654e3cfbbd72a6976f2"
+    }
+  ],
+  "runtime_estimator": "median(four_same_size_completed60epoch_wall_seconds)*1.15",
+  "estimated_training_seconds": 11236.425174999995,
+  "followup_postprocess_allowance_minutes": 10,
+  "followup_delay_minutes": 198,
+  "created_utc": "2026-09-29T16:52:14.325866+00:00",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "confirmation_seeds_require_separate_registration": true
+}
