@@ -1,0 +1,60 @@
+{
+  "status": "registered",
+  "purpose": "r9_capacity_group_256_8_1024_contrast",
+  "candidate": "tf256_mae_lr3e4_60",
+  "seed": 20260922,
+  "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+  "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+  "prior_decision": "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json",
+  "prior_review": "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json",
+  "changes": {
+    "d_model": 256,
+    "n_heads": 8,
+    "feedforward_dim": 1024
+  },
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "input_hashes": {
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/PLAN.md": "e8be913637e539c34dce6d4739c59ed60d5d20d269f28a062f216e1614f62d47",
+    "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json": "da152142ae4f1585be0f9b2b4ed529468a848712161bc9073f6475e1eb0fc7bc",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json": "2afd3d3d1483505512bd1df2fb22e4b6713af2cfcb77de1e60ef744ec5397e0f",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171",
+    "reports/v9_r9_source0_analysis_v1/summary.json": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+    "reports/v9_r9_source0_fit_v1/summary.json": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+    "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+    "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+    "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+    "scripts/verify_foodnutrigpt_r9_capacity256_functional.py": "f370a0ef439ff19c6cb44ac7ea9baf3c4cfe1b458291ebe2c8a25a7e21db298a",
+    "scripts/estimate_foodnutrigpt_r9_capacity256_runtime.py": "cd576c024fbaa2d78a25f82de77f95b955eb99524e53f21537b746cede12684f",
+    "scripts/audit_foodnutrigpt_r9_capacity256.py": "ad7b1750549877d0dabe691f0d840958e91a8637fef2b974a0e0ca5046d7a288",
+    "tests/test_research_transformer_r9_capacity256.py": "c06f8d1aeccf8b895f15936bce2ba1b0216e07ffb24a9032a912e49baf88cd68"
+  },
+  "candidate_index": 6,
+  "max_candidates": 12,
+  "screening_decision": "All required versus same-seed MAE: primary point improvement; paired improvement interval lower>0; legacy point regression<=2percent. Separate registration and all3 fixed seeds required for accepted improvement.",
+  "same_seed_parent_initialization_exact": false,
+  "causal_scope": "PDF capacity combination changes width,head count,feedforward width,parameter count and constructor/dropout random consumption. Not an isolated width effect.",
+  "runtime_estimation": {
+    "training_only": true,
+    "warmup_steps": 8,
+    "timed_steps": 96,
+    "repeats_each_width": 2,
+    "order": [
+      "parent",
+      "capacity256",
+      "capacity256",
+      "parent"
+    ],
+    "safety_factor": 1.1,
+    "postprocess_allowance_minutes": 10,
+    "reference_run": "output/v9_r9_methods/tf192_mae_source0_lr3e4_60"
+  },
+  "followup_automation_id": "nutrition",
+  "created_utc": "2026-09-29T02:01:01.538578+00:00",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

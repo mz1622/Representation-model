@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "plan_sha256": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+  "implementation_hashes": {
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+    "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+    "scripts/verify_foodnutrigpt_r9_capacity256_functional.py": "f370a0ef439ff19c6cb44ac7ea9baf3c4cfe1b458291ebe2c8a25a7e21db298a"
+  },
+  "initial_state_sha256": "6c0443083d8752e5fca82e5dfeb648c93bf03fb48d2ac6e0443243421f41c7bb",
+  "parameter_count": 2696626,
+  "trainable_parameter_count": 2648409,
+  "parent_initialization_reproduced_exact": true,
+  "new_initialization_matches_explicit_reference_exact": true,
+  "reference_constructor_rng_exact": true,
+  "only_capacity_configuration_triplet_changed": true,
+  "same_seed_parent_initialization_exact": false,
+  "inner_training_loop_ast_unchanged": true,
+  "hidden_label_target_positive_and_source_forward_exact": true,
+  "unobserved_axis_queries_and8_train_names187_axes_finite": true,
+  "initial_and_learned_public_loader_reload_exact": true,
+  "source_calibration_table_learned_nonzero": true,
+  "source_not_in_learned_base_forward": true,
+  "small_batch_overfit": {
+    "before": 0.1560383141040802,
+    "after": 0.05718730390071869,
+    "steps": 50
+  },
+  "functional_checkpoint_sha256": "af8ec4d6af2b245ea46d14e79712848fe44b60896c9b54a5cf3f6fa2acac0c14",
+  "learned_checkpoint_sha256": "fe551e7cb00907dd16315da1c966ee57a5171a3198dbb648dfd425fda74f5b11",
+  "current_candidate_validation_evaluated": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Training-row implementation and learnability checks only. Same seed does not match initial weights, constructor RNG or dropout streams across widths. Formal training constructs a fresh model and restores its own smoke weights/RNG."
+}
