@@ -1,0 +1,15 @@
+{
+  "status": "complete_registered_drop25_method_audit",
+  "config_sha256": "8178366b843f08299719081e6836c7484fb0d89a5f8611a20722b5085b9df6f6",
+  "manifest_sha256": "d7b059936aaeaf2f773eb748bfcdbf301ed237819e409e8bcdce25fe79eee06f",
+  "full_replay_sha256": "f0ce9b54e850b48d4f9232983be302bc64768c8e48af6fd88fe0bae5cc587235",
+  "script_sha256": "4715a1dc557003d5c51a3dd89b61647eb173668020367c3590be6775408d1d06",
+  "same_parent_initial_state_and_parameter_count": true,
+  "same_all60_orders_and_exposures": true,
+  "both_saved_checkpoint_dropout_configs_verified": true,
+  "all60_learning_rates_exactly_match_parent": true,
+  "sole_numerical_recipe_change": "dropout.15_to.25",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

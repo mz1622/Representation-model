@@ -1,0 +1,38 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_drop25_analysis_v1/summary.json": "488db13056b3a5574d2b1db0d81980bdc3958603b379e11e5acc4881faeda33f",
+    "reports/v9_r9_drop25_fit_v1/summary.json": "b7939b310194ac196f07299838c06390bee62f4e1872bb876a27b72cf05c6e11",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/review_verification.json": "8272bc260ab9c50081bdaba4293bee0bb7b39b75ec4496d009ffdd886cc8488a",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/REPORT_ZH.md": "4b0ecd9af123435a5707c30c058cc1af9857fd16c335e61562c5ca1457b9402e",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr2e4_v1/REPORT_EN.md": "24dd7e26ebced370ad0b043b5ad579198997d6401b3910bdcdcbd8a008318b7c",
+    "experiments/foodnutrigpt_v9_research/r9/drop25_v1/PLAN.md": "50c04ec6e5d567fbe508ef48278ad238390de7faeb995091e3371408e4359b1a",
+    "experiments/foodnutrigpt_v9_research/r9/drop25_v1/config.json": "8178366b843f08299719081e6836c7484fb0d89a5f8611a20722b5085b9df6f6",
+    "scripts/report_foodnutrigpt_r9_drop25.py": "1729310ab887eef218257ec4830ae15db662e36f05285765fb4fd30c23c36761",
+    "reports/v9_r9_drop25_functional_v1/verification.json": "dfcf4b4e0299aa8ede3f863163bc0c5d491495f2c90c66a03fbae8546c9d97f1",
+    "experiments/foodnutrigpt_v9_research/r9/drop25_v1/launch.json": "eb0f35876b1a45a9973aed9ba4c087c80513adf300e131fefd176ef47acf7d0e",
+    "reports/v9_r9_drop25_preparation_v1/verification.json": "98e4ba83f3d126367bbb6f86435357a2cce74d6e563077f5c26d687487cf29a8",
+    "reports/v9_r9_drop25_axis_changes_v1/summary.json": "14b1e86551f195fe1d203f1898d86c4dce70d3ea37deeecb4e13ece077730044",
+    "reports/v9_r9_drop25_cases_v1/summary.json": "ff07fdf68065292df708fcbe424feca9d452eaf60121b6522ebfaaa09ab07da0"
+  },
+  "local_links_checked": 244,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "4305d65c66cc144e2d21d5855f37dd20141ebbe6603bff6492fefc53fe1e0d6e",
+    "REPORT_EN.md": "aae5a12108f0fdf4574e04764fbbddb2c9a960553ad1f0dab34ef70ec4c895cb"
+  }
+}

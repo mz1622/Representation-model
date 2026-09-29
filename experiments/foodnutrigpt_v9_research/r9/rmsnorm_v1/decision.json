@@ -1,0 +1,19 @@
+{
+  "status": "screen_complete_fixed_rmsnorm_recipe_rejected",
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "retained_parent": "output/v9_r9/tf192_mae_lr3e4_60",
+  "seed_expansion_authorized": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scientific_confirmation": false,
+  "report_complete": true,
+  "analysis_sha256": "ee31f9a13977b5b292b2c9a9f81b0c0cf75653876b71fc034bfc2f820097a251",
+  "fit_sha256": "1f2f721bc247d4569cece0939ad5681d462921cf888859c5c24927ce0c8440c6",
+  "next_question": "Separately registered SwiGLU FFN against original LayerNorm parent; no prohibited hyperparameter search.",
+  "reviewed_utc": "2026-09-29T23:54:36.535590+00:00"
+}

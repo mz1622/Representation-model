@@ -1,0 +1,15 @@
+{
+  "status": "complete_registered_rmsnorm_method_audit",
+  "config_sha256": "c207798fd903b429cb7eeb5e787a69d354333244b89a747cf8cbe6457519eba4",
+  "manifest_sha256": "1143c7f86aeb280c394a93f7ab7d7ece7fcc920300fd4cc6f8c70d4a240964b9",
+  "full_replay_sha256": "435adb05499f68a5d4712a44f4302ce8d65092bb34825b18b1212d6eaa68c861",
+  "script_sha256": "20de5f51bf89edaddca2b82bb1ad8a28842602a26b9e1f84d9f719589697aef6",
+  "shared_parent_initial_tensors_verified_in_preflight": true,
+  "same_all60_orders_and_exposures": true,
+  "both_saved_checkpoint_architecture_configs_verified": true,
+  "all60_learning_rates_exactly_match_parent": true,
+  "sole_numerical_recipe_change": "seven_encoder_layernorms_to_rmsnorm",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

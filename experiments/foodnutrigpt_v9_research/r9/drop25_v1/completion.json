@@ -1,0 +1,32 @@
+{
+  "status": "training_evaluation_and_review_complete",
+  "controller_state": "complete",
+  "completed_commands": [
+    "scripts/train_foodnutrigpt_v9_r9_drop25.py --candidate tf192_mae_drop25_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60",
+    "scripts/audit_foodnutrigpt_r9_drop25.py --run output/v9_r9_methods/tf192_mae_drop25_lr3e4_60 --output-dir reports/v9_r9_drop25_60_audit_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r9/tf192_mae_lr3e4_60/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_drop25_vs_mae_parent_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r9/tf192_mae_lr3e4_60/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_drop25_vs_mae_parent_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r9/tf192_mae_lr3e4_60/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/retrieval --output-dir reports/v9_r9_drop25_vs_mae_parent_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/rf400leaf1half_name32/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_drop25_vs_rf32_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/rf400leaf1half_name32/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_drop25_vs_rf32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r8/rf400leaf1half_name32/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/retrieval --output-dir reports/v9_r9_drop25_vs_rf32_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/xgb800d10_name32/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_drop25_vs_xgb32_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/xgb800d10_name32/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_drop25_vs_xgb32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r8/xgb800d10_name32/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/retrieval --output-dir reports/v9_r9_drop25_vs_xgb32_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r7/exact_name_knn32/nutrition_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_drop25_vs_knn32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r7/exact_name_knn32 --candidate-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/retrieval --output-dir reports/v9_r9_drop25_vs_knn32_retrieval_v1",
+    "scripts/diagnose_foodnutrigpt_research_gap.py --neural-dir output/v9_r9_methods/tf192_mae_drop25_lr3e4_60 --tree-dir output/v9_r8/rf400leaf1half_name32 --tree-prediction-file completion_predictions.parquet --local-case-dir data/local/research_diagnostics/v9_r9_drop25_rf32_gap_v1 --output-dir reports/v9_r9_drop25_rf32_gap_v1",
+    "scripts/analyze_foodnutrigpt_r9_drop25.py --output-dir reports/v9_r9_drop25_analysis_v1",
+    "scripts/diagnose_foodnutrigpt_r9_drop25_fit.py --output-dir reports/v9_r9_drop25_fit_v1 --local-dir data/local/research_diagnostics/v9_r9_drop25_fit_v1"
+  ],
+  "command_prefix": ".venv/Scripts/python.exe -X utf8",
+  "launch_utc": "2026-09-29T16:55:21.1431392Z",
+  "controller_final_updated_utc": "2026-09-29T19:35:34.6129121Z",
+  "review_verification_sha256": "8ae73904f62313631b9ac2af52aa35ffcd8bd1751660fdec60c1e3fcf230e1c9",
+  "report_complete": true,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "scope": "Completed fixed recipe rejected; no additional seeds or hyperparameter rescue."
+}

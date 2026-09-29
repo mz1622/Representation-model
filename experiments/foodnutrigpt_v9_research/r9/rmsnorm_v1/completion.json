@@ -1,0 +1,69 @@
+{
+  "status": "training_evaluation_and_review_complete",
+  "controller_state": "complete",
+  "completed_commands": [
+    "scripts/train_foodnutrigpt_v9_r9_rmsnorm.py --candidate tf192_mae_rmsnorm_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60",
+    "scripts/audit_foodnutrigpt_r9_rmsnorm.py --run output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60 --output-dir reports/v9_r9_rmsnorm_60_audit_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r9/tf192_mae_lr3e4_60/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_rmsnorm_vs_mae_parent_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r9/tf192_mae_lr3e4_60/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_rmsnorm_vs_mae_parent_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r9/tf192_mae_lr3e4_60/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/retrieval --output-dir reports/v9_r9_rmsnorm_vs_mae_parent_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/rf400leaf1half_name32/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_rmsnorm_vs_rf32_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/rf400leaf1half_name32/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_rmsnorm_vs_rf32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r8/rf400leaf1half_name32/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/retrieval --output-dir reports/v9_r9_rmsnorm_vs_rf32_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/xgb800d10_name32/completion_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/completion_predictions.parquet --task completion --output-dir reports/v9_r9_rmsnorm_vs_xgb32_completion_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r8/xgb800d10_name32/name_only_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_rmsnorm_vs_xgb32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r8/xgb800d10_name32/retrieval --candidate-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/retrieval --output-dir reports/v9_r9_rmsnorm_vs_xgb32_retrieval_v1",
+    "scripts/compare_foodnutrigpt_research_predictions.py --baseline output/v9_r7/exact_name_knn32/nutrition_predictions.parquet --candidate output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/name_only_predictions.parquet --task name_only --output-dir reports/v9_r9_rmsnorm_vs_knn32_name_only_v1",
+    "scripts/compare_foodnutrigpt_research_retrieval.py --baseline-dir output/v9_r7/exact_name_knn32 --candidate-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/retrieval --output-dir reports/v9_r9_rmsnorm_vs_knn32_retrieval_v1",
+    "scripts/diagnose_foodnutrigpt_research_gap.py --neural-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60 --tree-dir output/v9_r8/rf400leaf1half_name32 --tree-prediction-file completion_predictions.parquet --local-case-dir data/local/research_diagnostics/v9_r9_rmsnorm_rf32_gap_v1 --output-dir reports/v9_r9_rmsnorm_rf32_gap_v1",
+    "scripts/analyze_foodnutrigpt_r9_rmsnorm.py --output-dir reports/v9_r9_rmsnorm_analysis_v1",
+    "scripts/diagnose_foodnutrigpt_r9_rmsnorm_fit.py --output-dir reports/v9_r9_rmsnorm_fit_v1 --local-dir data/local/research_diagnostics/v9_r9_rmsnorm_fit_v1"
+  ],
+  "command_prefix": ".venv/Scripts/python.exe -X utf8",
+  "launch_utc": "2026-09-29T20:11:33.1984912Z",
+  "controller_final_updated_utc": "2026-09-29T23:31:44.3175872Z",
+  "review_verification_sha256": "b48c321bc8335ef7af1a33f869f2cdc7efdfe47cdf1b1245a4cfc51f4eb14ee3",
+  "report_complete": true,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "scope": "Completed fixed recipe rejected; no additional seeds or hyperparameter rescue.",
+  "scheduled_followup": {
+    "recorded_utc": "2026-09-29T23:55:35.914936+00:00",
+    "automation_id": "nutrition",
+    "mode": "delete",
+    "delete_status": "deleted",
+    "tool_response": [
+      "Deleted automation in the app.",
+      {
+        "automationId": "nutrition",
+        "mode": "delete",
+        "deleteStatus": "deleted",
+        "snapshot": {
+          "kind": "heartbeat",
+          "name": "Nutrition实验完成后续处理",
+          "rrule": "FREQ=MINUTELY;INTERVAL=205"
+        }
+      }
+    ],
+    "reason": "Current training and both version reports complete; no next structural run registered or launched."
+  },
+  "process_observation": {
+    "recorded_utc": "2026-09-29T23:55:35.914936+00:00",
+    "heartbeat_trigger_utc": "2026-09-29T23:37:11.165Z",
+    "observation_source": "Actual process query at the beginning of this heartbeat, before report preparation.",
+    "registered_process_ids_absent": [
+      1256,
+      16704,
+      9344
+    ],
+    "matching_rmsnorm_python_processes": [],
+    "controller_state": "complete",
+    "queued_commands_completed": 16,
+    "process_checks_this_followup": 1,
+    "new_process_query_by_this_script": false,
+    "completed_utc_from_controller": "2026-09-29T23:31:44.3175872Z",
+    "scope": "Absent processes alone are not success evidence; all queued artifacts, audits and report verification were checked."
+  }
+}

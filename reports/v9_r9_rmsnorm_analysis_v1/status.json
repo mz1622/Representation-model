@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "summary_sha256": "ee31f9a13977b5b292b2c9a9f81b0c0cf75653876b71fc034bfc2f820097a251",
+  "elapsed_seconds": 1.4220000000059372
+}

@@ -1,0 +1,94 @@
+{
+  "status": "complete_learned_layernorm_execution_bridge",
+  "primary_bridge_minus_original": 5.322211708430613e-06,
+  "maximum_cell_scaled_prediction_absolute_difference": 0.0340318501931951,
+  "mean_cell_scaled_prediction_absolute_difference": 0.000115876420702048,
+  "baseline_scores": {
+    "complete_test_opened": false,
+    "profile_axis_jobs": 323809,
+    "candidate_axis_cells": 268837,
+    "nutrition": {
+      "axes": 142,
+      "scaled_log_mae": 0.18355327847469688,
+      "log_mae": 0.054362319923894606,
+      "log_mse": 0.03603355672852335,
+      "raw_mae": 0.330240460832641,
+      "positive_scaled_log_mae": 0.30277267666689867,
+      "zero_scaled_log_mae": 0.09203905513249852,
+      "log_rmse_root_mean_axis_mse": 0.1898250687567987
+    },
+    "food_metabolome": {
+      "axes": 45,
+      "scaled_log_mae": 0.5980220428612179,
+      "log_mae": 0.03587222522357715,
+      "log_mse": 0.022335943219397913,
+      "raw_mae": 0.06484595878358246,
+      "positive_scaled_log_mae": 0.8109576712144156,
+      "zero_scaled_log_mae": 0.2150257527499769,
+      "log_rmse_root_mean_axis_mse": 0.14945214357578787
+    },
+    "all": {
+      "axes": 187,
+      "scaled_log_mae": 0.2832917511880308,
+      "log_mae": 0.04991283189440645,
+      "log_mse": 0.03273733957392098,
+      "raw_mae": 0.2663754737085361,
+      "positive_scaled_log_mae": 0.42506318337619414,
+      "zero_scaled_log_mae": 0.1145987452280123,
+      "log_rmse_root_mean_axis_mse": 0.18093462790168435
+    }
+  },
+  "bridge_scores": {
+    "complete_test_opened": false,
+    "profile_axis_jobs": 323809,
+    "candidate_axis_cells": 268837,
+    "nutrition": {
+      "axes": 142,
+      "scaled_log_mae": 0.1835586006864053,
+      "log_mae": 0.054366333543743754,
+      "log_mse": 0.036036811734739625,
+      "raw_mae": 0.3302517715144445,
+      "positive_scaled_log_mae": 0.30278921945330545,
+      "zero_scaled_log_mae": 0.09202315622233985,
+      "log_rmse_root_mean_axis_mse": 0.18983364226274443
+    },
+    "food_metabolome": {
+      "axes": 45,
+      "scaled_log_mae": 0.5980295818065502,
+      "log_mae": 0.03587663930788241,
+      "log_mse": 0.022338660536354915,
+      "raw_mae": 0.06485254642178741,
+      "positive_scaled_log_mae": 0.8109802937916628,
+      "zero_scaled_log_mae": 0.21488457932222899,
+      "log_rmse_root_mean_axis_mse": 0.14946123422598556
+    },
+    "all": {
+      "axes": 187,
+      "scaled_log_mae": 0.28329760683831184,
+      "log_mae": 0.049916941882707615,
+      "log_mse": 0.03274046518967378,
+      "raw_mae": 0.2663856478290458,
+      "positive_scaled_log_mae": 0.42508118921387267,
+      "zero_scaled_log_mae": 0.11455986696847335,
+      "log_rmse_root_mean_axis_mse": 0.18094326511277997
+    }
+  },
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr3e4_60/best_model.pt": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+    "output/v9_r9/tf192_mae_lr3e4_60/completion_predictions.parquet": "fa0d17cf270746ca4891f79cea382965ea0c11821ef611aae7f87f6d47d10658",
+    "output/v9_r9/tf192_mae_lr3e4_60/metrics.json": "350689b9aae0e234b0504315964692aab834b43f4852f323b3251d1dc902d7e7",
+    "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+    "scripts/diagnose_foodnutrigpt_r9_rmsnorm_bridge.py": "381fac9de21a3c5f3dfb5b67b686ffa852b6a49c2d084349910b1827b51336cf"
+  },
+  "prediction_sha256": "c6c1edf9316367e454b5497ca60b1155fa0725533a8226d866c9f8cfc7a43970",
+  "prediction_path": "data/local/research_diagnostics/v9_r9_rmsnorm_bridge_v1/parent_explicit_layernorm_completion_predictions.parquet",
+  "learned_weights_unchanged": true,
+  "formal_global_backend_unchanged": true,
+  "elapsed_seconds": 9.843999999997322,
+  "training_performed": false,
+  "model_selection_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Post-hoc evaluation-only bridge on the existing selected parent; isolates fused versus explicit LayerNorm execution with identical learned weights. Does not isolate individual RMSNorm ingredients, training trajectories, or seed variation."
+}

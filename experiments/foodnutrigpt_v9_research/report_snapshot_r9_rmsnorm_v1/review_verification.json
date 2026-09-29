@@ -1,0 +1,52 @@
+{
+  "status": "reviewed_complete_rmsnorm_stage_report",
+  "reviewed_utc": "2026-09-29T23:54:36.535590+00:00",
+  "actual_bilingual_proofreading_complete": true,
+  "report_complete": true,
+  "document_checks": {
+    "ZH": {
+      "common_tables_exact": 10,
+      "cross_family_table_exact": true,
+      "local_links_resolve": 136,
+      "history_preserved": true,
+      "new_section_subsections": 8,
+      "sha256": "41f37aa39dda81a7154bfafb2f57a02082eadf68c4844f55864985d6663198d0"
+    },
+    "EN": {
+      "common_tables_exact": 10,
+      "cross_family_table_exact": true,
+      "local_links_resolve": 136,
+      "history_preserved": true,
+      "new_section_subsections": 8,
+      "sha256": "c1d8eae3409512109c0442dcf676ee4a2e87d5423ecd69da56e15e2b2a8919f8"
+    }
+  },
+  "version_readme_sha256": "07cd52a65f49a982f32760cb82d4b72dab7810e96cf9a441657c98d5d10cafcd",
+  "decision_sha256": "a376506eac5daa4ddd899877269215322b3dc51b5c4beb25a4ee5453e21f04b8",
+  "visual_review_sha256": "3866969a83ffba9b358e26323a4569152a918502e3ff222f25309c68c54389f4",
+  "input_hashes": {
+    "reports/v9_r9_rmsnorm_analysis_v1/summary.json": "ee31f9a13977b5b292b2c9a9f81b0c0cf75653876b71fc034bfc2f820097a251",
+    "reports/v9_r9_rmsnorm_fit_v1/summary.json": "1f2f721bc247d4569cece0939ad5681d462921cf888859c5c24927ce0c8440c6",
+    "reports/v9_r9_rmsnorm_axis_changes_v1/summary.json": "713f88caefc92be1a0298e1bd2e2985fa9597fcba2241004f9025ce0b2e224fe",
+    "reports/v9_r9_rmsnorm_cases_v1/summary.json": "0dbb77bbe934b6ca14594f054bd9423eb4cd2ea85c490a976054c02ac45949fc",
+    "output/v9_r8/mlp512_name32/metrics.json": "6e200ca95698fda4dc17e464824a6cd63553e0fcd233689a1d7c71fd1127d6c0",
+    "reports/v9_final_neural_summary_v1/summary.json": "1527030ca405ce1c3c2d37c57f9bc804563d12eb561b0c894abc3208c4e02fc6",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238"
+  },
+  "cross_family_comparison_hashes": {
+    "output/v9_r8/mlp512_name32/metrics.json": "6e200ca95698fda4dc17e464824a6cd63553e0fcd233689a1d7c71fd1127d6c0",
+    "reports/v9_final_neural_summary_v1/summary.json": "1527030ca405ce1c3c2d37c57f9bc804563d12eb561b0c894abc3208c4e02fc6",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "reports/v9_r9_rmsnorm_analysis_v1/summary.json": "ee31f9a13977b5b292b2c9a9f81b0c0cf75653876b71fc034bfc2f820097a251"
+  },
+  "source_improved": 8,
+  "source_worsened": 16,
+  "baseline_refit": false,
+  "data_modified": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "seed_expansion_authorized": false,
+  "scientific_scope": "Fixed-seed local recipe rejection. No population-of-seeds, external-generalization or foundation-model claim.",
+  "closing_script_sha256": "0f63263cd4c01bf802b481bae99f2e2bf88c13fe8883b35f4e441131b750ad64",
+  "learned_layernorm_bridge_sha256": "fef1e399edfd7fe7631728ab854629323e99e0b3b67a029dd86596a036af1010"
+}

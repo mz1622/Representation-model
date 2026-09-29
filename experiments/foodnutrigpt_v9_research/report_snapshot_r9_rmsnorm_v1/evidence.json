@@ -1,0 +1,24 @@
+{
+  "status": "reviewed_complete_rmsnorm_stage_report",
+  "report_complete": true,
+  "manual_proofreading_complete": true,
+  "goal_achieved": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "document_hashes": {
+    "REPORT_ZH.md": "41f37aa39dda81a7154bfafb2f57a02082eadf68c4844f55864985d6663198d0",
+    "REPORT_EN.md": "c1d8eae3409512109c0442dcf676ee4a2e87d5423ecd69da56e15e2b2a8919f8"
+  },
+  "input_hashes": {
+    "reports/v9_r9_rmsnorm_analysis_v1/summary.json": "ee31f9a13977b5b292b2c9a9f81b0c0cf75653876b71fc034bfc2f820097a251",
+    "reports/v9_r9_rmsnorm_fit_v1/summary.json": "1f2f721bc247d4569cece0939ad5681d462921cf888859c5c24927ce0c8440c6",
+    "reports/v9_r9_rmsnorm_axis_changes_v1/summary.json": "713f88caefc92be1a0298e1bd2e2985fa9597fcba2241004f9025ce0b2e224fe",
+    "reports/v9_r9_rmsnorm_cases_v1/summary.json": "0dbb77bbe934b6ca14594f054bd9423eb4cd2ea85c490a976054c02ac45949fc",
+    "output/v9_r8/mlp512_name32/metrics.json": "6e200ca95698fda4dc17e464824a6cd63553e0fcd233689a1d7c71fd1127d6c0",
+    "reports/v9_final_neural_summary_v1/summary.json": "1527030ca405ce1c3c2d37c57f9bc804563d12eb561b0c894abc3208c4e02fc6",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238"
+  },
+  "script_sha256": "c0486941c073e660f67f6eed65e928e48ba96e8dad0248cb93b3eaa9f66dd1a1",
+  "review_verification_sha256": "b48c321bc8335ef7af1a33f869f2cdc7efdfe47cdf1b1245a4cfc51f4eb14ee3"
+}

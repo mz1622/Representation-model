@@ -1,0 +1,20 @@
+{
+  "status": "actually_inspected_six_curve_panels",
+  "review_recorded_utc": "2026-09-29T23:54:36.535590+00:00",
+  "figure_sha256": "23efe610ded4257c6656e10e5928333267c6f025d1797cf7580d59cea2c269ba",
+  "panels": [
+    "validation_primary",
+    "validation_legacy",
+    "positive_error",
+    "zero_error",
+    "gradient_clipping_fraction",
+    "mean_preclip_gradient_norm"
+  ],
+  "observations": "Primary, legacy and positive errors persistently higher; late zero error, clipping and preclip gradients higher. No numerical divergence.",
+  "all_142_axes_read": true,
+  "all_source_family_support_partitions_read": true,
+  "all_40_fixed_extreme_cases_read": true,
+  "all_7_sparse_train_validation_axes_read": true,
+  "case_numeric_profiles_published": false,
+  "scope": "Human-visible image and table inspection during this heartbeat; not inferred merely from renderer success."
+}

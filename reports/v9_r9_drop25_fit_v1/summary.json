@@ -1,0 +1,174 @@
+{
+  "status": "complete",
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "source_free_training_fit": {
+    "mae": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 1828536,
+      "candidate_axis_cells": 1513053,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.1349370786529251,
+        "log_mae": 0.04034532574305789,
+        "log_mse": 0.022307157709264155,
+        "raw_mae": 0.26133001127904515,
+        "positive_scaled_log_mae": 0.25014911141364776,
+        "zero_scaled_log_mae": 0.05425002469778514,
+        "log_rmse_root_mean_axis_mse": 0.1493558090911236
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.12667718855600202,
+        "log_mae": 0.009640051714695286,
+        "log_mse": 0.003243622634385962,
+        "raw_mae": 0.029640059262827197,
+        "positive_scaled_log_mae": 0.24155367217962653,
+        "zero_scaled_log_mae": 0.02698413019271433,
+        "log_rmse_root_mean_axis_mse": 0.05695281059250686
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.13294940456543022,
+        "log_mae": 0.03295635605708828,
+        "log_mse": 0.017719676006753362,
+        "raw_mae": 0.20557574475107826,
+        "positive_scaled_log_mae": 0.24808069020759993,
+        "zero_scaled_log_mae": 0.048224412652465624,
+        "log_rmse_root_mean_axis_mse": 0.13311527337895288
+      }
+    },
+    "drop25": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 1828536,
+      "candidate_axis_cells": 1513053,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.1624342515914349,
+        "log_mae": 0.049363890159934865,
+        "log_mse": 0.03143690952951657,
+        "raw_mae": 0.32147856516345236,
+        "positive_scaled_log_mae": 0.28522829864691124,
+        "zero_scaled_log_mae": 0.07035725078975147,
+        "log_rmse_root_mean_axis_mse": 0.17730456714229492
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.20036614225005656,
+        "log_mae": 0.01285473803658063,
+        "log_mse": 0.0038999653242499156,
+        "raw_mae": 0.03616911753404583,
+        "positive_scaled_log_mae": 0.3400900305454601,
+        "zero_scaled_log_mae": 0.043830711982689466,
+        "log_rmse_root_mean_axis_mse": 0.062449702355174726
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.17156224666971284,
+        "log_mae": 0.04057826531741647,
+        "log_mse": 0.024810372153917636,
+        "raw_mae": 0.2528212114558411,
+        "positive_scaled_log_mae": 0.2984303196920166,
+        "zero_scaled_log_mae": 0.0644950322688538,
+        "log_rmse_root_mean_axis_mse": 0.1575130856593116
+      }
+    }
+  },
+  "source_free_validation": {
+    "mae": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.18355327847469688,
+        "log_mae": 0.054362319923894606,
+        "log_mse": 0.03603355672852335,
+        "raw_mae": 0.330240460832641,
+        "positive_scaled_log_mae": 0.30277267666689867,
+        "zero_scaled_log_mae": 0.09203905513249852,
+        "log_rmse_root_mean_axis_mse": 0.1898250687567987
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.5980220428612179,
+        "log_mae": 0.03587222522357715,
+        "log_mse": 0.022335943219397913,
+        "raw_mae": 0.06484595878358246,
+        "positive_scaled_log_mae": 0.8109576712144156,
+        "zero_scaled_log_mae": 0.2150257527499769,
+        "log_rmse_root_mean_axis_mse": 0.14945214357578787
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.2832917511880308,
+        "log_mae": 0.04991283189440645,
+        "log_mse": 0.03273733957392098,
+        "raw_mae": 0.2663754737085361,
+        "positive_scaled_log_mae": 0.42506318337619414,
+        "zero_scaled_log_mae": 0.1145987452280123,
+        "log_rmse_root_mean_axis_mse": 0.18093462790168435
+      }
+    },
+    "drop25": {
+      "complete_test_opened": false,
+      "profile_axis_jobs": 323809,
+      "candidate_axis_cells": 268837,
+      "nutrition": {
+        "axes": 142,
+        "scaled_log_mae": 0.2068466598112852,
+        "log_mae": 0.0644296623676188,
+        "log_mse": 0.05022409145973365,
+        "raw_mae": 0.3992317405443594,
+        "positive_scaled_log_mae": 0.333198306963566,
+        "zero_scaled_log_mae": 0.10100911872063341,
+        "log_rmse_root_mean_axis_mse": 0.2241073212988225
+      },
+      "food_metabolome": {
+        "axes": 45,
+        "scaled_log_mae": 0.6094216327151847,
+        "log_mae": 0.03778621133792491,
+        "log_mse": 0.024014559907634493,
+        "raw_mae": 0.08052196869251674,
+        "positive_scaled_log_mae": 0.8380815530227739,
+        "zero_scaled_log_mae": 0.18902025510101234,
+        "log_rmse_root_mean_axis_mse": 0.15496631862322371
+      },
+      "all": {
+        "axes": 187,
+        "scaled_log_mae": 0.3037229901892289,
+        "log_mae": 0.05801813671876197,
+        "log_mse": 0.04391698493650123,
+        "raw_mae": 0.32253687566022615,
+        "positive_scaled_log_mae": 0.4546942752665839,
+        "zero_scaled_log_mae": 0.11715317332295144,
+        "log_rmse_root_mean_axis_mse": 0.20956379681734447
+      }
+    }
+  },
+  "training_primary_drop25_minus_mae": 0.027497172938509812,
+  "validation_primary_drop25_minus_mae": 0.023293381336588315,
+  "training_job_count": 1828536,
+  "training_query_panel_sha256": "39c80945daa7405dd2e8b741e799051820313d50e3fc550aa4bec7a995abbd84",
+  "existing_mae_predictions_rescored_exact": true,
+  "new_drop25_predictions_disk_reloaded_exact": true,
+  "prediction_path": "data\\local\\research_diagnostics\\v9_r9_drop25_fit_v1\\drop25_training_predictions.parquet",
+  "prediction_sha256": "f42213c44c13849d6607d4de0807d0133e03a4d847ad3214ae15482910069598",
+  "input_hashes": {
+    "reports/v9_r9_drop25_analysis_v1/summary.json": "488db13056b3a5574d2b1db0d81980bdc3958603b379e11e5acc4881faeda33f",
+    "reports/v9_r9_first_group_fit_v1/summary.json": "515d993d2e497ab9f89dbe52f2fdb077121ffc3533229ce6d1b263468118dbfc",
+    "data/local/research_diagnostics/v9_r9_first_group_fit_v1/tf192_mae_lr3e4_60/completion_predictions.parquet": "32744bae77379daa54a23e65299c09e1d7507907ed06d6472ba81d5f8528af8c",
+    "output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/best_model.pt": "ea41588d48a1810ee94544c45332abe9273c7b9de61e594d36edbb07e9d71f90",
+    "output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/run_manifest.json": "d7b059936aaeaf2f773eb748bfcdbf301ed237819e409e8bcdce25fe79eee06f",
+    "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3"
+  },
+  "script_sha256": "0177d28fa6f92cbb81090ef79985d50283f34290aa5b7d38fa7a03e705d602a5",
+  "device": "cuda",
+  "elapsed_seconds": 51.68699999999808,
+  "training_performed": false,
+  "optimization_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "scope": "Complete training-family source-free inference. Only an in-memory job table is replaced; data files and validation jobs remain unchanged. Reuses/rescores audited-parent training predictions without refitting. Train and validation have different foods/support, and checkpoints were selected on validation. Fit differences alone do not prove overfitting or uniquely separate capacity, objective, calibration or optimization mechanisms."
+}

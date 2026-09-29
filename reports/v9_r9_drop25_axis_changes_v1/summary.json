@@ -1,0 +1,24 @@
+{
+  "status": "complete_aggregate_axis_contrast",
+  "axis_count": 142,
+  "primary_drop25_minus_mae": 0.023293381336588394,
+  "axes_point_better_than_mae": 13,
+  "axes_unadjusted_interval_supports_improvement": 3,
+  "axes_unadjusted_interval_supports_regression": 107,
+  "sparse_validation_axes_below30": 9,
+  "drop25_axes_better_than_rf": 42,
+  "amino_acid_axes_drop25_worse_than_mae": 20,
+  "input_hashes": {
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_signed_contributions.csv": "2a131a5d5de9769f6a64b15528aeda1bf075a96045c79b629fce394a3a5bb876",
+    "reports/v9_r9_drop25_rf32_gap_v1/axis_signed_contributions.csv": "56653e14bf022cfcb012fda3efa20f9b07a8a7549bc63c8b250b77d246164099",
+    "reports/v9_r9_drop25_vs_mae_parent_completion_v1/axis_paired_intervals.csv": "7a62c556fc28521f7f33e17c157e21f619afbd0c1410873e1b085f8eb65c5f32",
+    "reports/v9_r9_drop25_analysis_v1/summary.json": "488db13056b3a5574d2b1db0d81980bdc3958603b379e11e5acc4881faeda33f",
+    "scripts/review_foodnutrigpt_r9_drop25_axes.py": "5cdf6bdd89f2c5ad8dde59312e60f2944f8515b816f223cf58233018f7f1a66a"
+  },
+  "training_performed": false,
+  "model_forward_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Subtraction of existing complete same-panel contributions and existing food-group intervals. Exploratory axis inspection without multiplicity correction or new selection. Axis/source differences cannot establish a unique mechanism."
+}
