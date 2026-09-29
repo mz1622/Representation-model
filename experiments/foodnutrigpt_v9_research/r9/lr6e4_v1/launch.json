@@ -1,0 +1,80 @@
+{
+  "status": "verified_launched_with_scheduled_followup",
+  "verified_utc": "2026-09-29T08:51:32.624045+00:00",
+  "code_commit": "43165c07755b4e91af3b69e479ed7b3568efd119",
+  "candidate": "tf192_mae_lr6e4_60",
+  "seed": 20260922,
+  "current_run": "output/v9_r9_methods/tf192_mae_lr6e4_60",
+  "plan_sha256": "cf4e17db414000b590dacd5b5c4f3d95937b0b2c640575a6052a079d0b8338f1",
+  "functional_sha256": "bace29b60a6d62aa2d619b5d323fd4415c80f535a0560a54cfca47b2158e5ec7",
+  "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "initialization_and_registered_recipe_match_parent_except_learning_rate": true,
+  "actual_processes": [
+    {
+      "ProcessId": 7700,
+      "ParentProcessId": 25456,
+      "Name": "pwsh.exe",
+      "CreationUTC": "2026-09-29T08:50:52.1056860Z",
+      "role": "controller"
+    },
+    {
+      "ProcessId": 9568,
+      "ParentProcessId": 7700,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T08:50:52.7004980Z",
+      "role": "venv_launcher"
+    },
+    {
+      "ProcessId": 22932,
+      "ParentProcessId": 9568,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T08:50:52.7127650Z",
+      "role": "actual_trainer"
+    }
+  ],
+  "controller_state_file": "work/r9-lr6e4-v1-status.json",
+  "controller_script": "work/run-r9-lr6e4-v1.ps1",
+  "controller_sha256": "146BE24BDE08AF3C90D6E8A54A2F2A167827B3A2063CE01A9C2C1D7F11D553D0",
+  "launch_utc": "2026-09-29T08:50:52.6565770Z",
+  "estimated_training_seconds": 13479.794899999997,
+  "followup_delay_minutes": 235,
+  "estimated_followup_due_utc": "2026-09-29T12:46:16.196000+00:00",
+  "automation_id": "nutrition",
+  "automation_status": "ACTIVE",
+  "automation_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+      }
+    ],
+    "isError": false
+  },
+  "per_epoch_observer_created": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "report_complete": false,
+  "queued_work": [
+    "train60",
+    "independent_three_task_replay",
+    "eleven_fixed_reference_comparisons",
+    "gap_decomposition",
+    "analysis_and_figures",
+    "full_training_fit"
+  ],
+  "remaining_after_queue": [
+    "actual_visual_axis_and_case_review",
+    "eight_section_version_decision",
+    "complete_new_Chinese_and_English_report_snapshot"
+  ],
+  "pretraining_launch_failure_record": "reports/v9_r9_lr6e4_launch_failure_v1/record.json",
+  "powershell_executable": "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+}

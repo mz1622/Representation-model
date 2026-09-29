@@ -1,0 +1,25 @@
+{
+  "status": "controller_failed_before_training_started",
+  "verified_utc": "2026-09-29T08:50:52.036624+00:00",
+  "candidate": "tf192_mae_lr6e4_60",
+  "controller_pid": 26592,
+  "controller_creation_utc": "2026-09-29T08:48:09.4343050Z",
+  "launch_utc": "2026-09-29T08:48:09.4481479Z",
+  "executable": "powershell.exe",
+  "cause": "Child Windows PowerShell could not resolve Get-FileHash at controller line23 before status/output initialization.",
+  "controller_process_confirmed_absent": true,
+  "no_other_nutrition_trainer_found": true,
+  "output_directory_created": false,
+  "optimizer_steps": 0,
+  "log_sha256": {
+    "r9-lr6e4-v1-controller.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "r9-lr6e4-v1-controller-errors.log": "1096b9c724925760e2487a8f094fbb7b9349a8f1c3968172dfd5bd24c36aea2d"
+  },
+  "recovery": "Launch the unchanged registered controller using the verified current PowerShell7.6.5 executable; preserve old stdout/stderr and write new process stdout/stderr to attempt2 filenames.",
+  "new_hyperparameter_candidate": false,
+  "method_registration_changed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false
+}
