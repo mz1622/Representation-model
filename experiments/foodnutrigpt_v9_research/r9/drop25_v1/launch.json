@@ -1,0 +1,90 @@
+{
+  "status": "verified_launched_with_scheduled_followup",
+  "verified_utc": "2026-09-29T16:55:56.166072+00:00",
+  "code_commit": "f387172b1c9c6e507e3844d229df51e3bd1ca20b",
+  "candidate": "tf192_mae_drop25_lr3e4_60",
+  "seed": 20260922,
+  "current_run": "output/v9_r9_methods/tf192_mae_drop25_lr3e4_60",
+  "plan_sha256": "8178366b843f08299719081e6836c7484fb0d89a5f8611a20722b5085b9df6f6",
+  "functional_sha256": "dfcf4b4e0299aa8ede3f863163bc0c5d491495f2c90c66a03fbae8546c9d97f1",
+  "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+  "parameter_count": 1548594,
+  "trainable_parameter_count": 1515929,
+  "initialization_and_registered_recipe_match_parent_except_dropout": true,
+  "actual_processes": [
+    {
+      "ProcessId": 10720,
+      "ParentProcessId": 10164,
+      "Name": "pwsh.exe",
+      "CreationUTC": "2026-09-29T16:55:20.4972690Z",
+      "role": "controller"
+    },
+    {
+      "ProcessId": 23172,
+      "ParentProcessId": 10720,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T16:55:21.1905460Z",
+      "role": "venv_launcher"
+    },
+    {
+      "ProcessId": 7568,
+      "ParentProcessId": 23172,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T16:55:21.2029090Z",
+      "role": "actual_trainer"
+    }
+  ],
+  "controller_state_file": "work/r9-drop25-v1-status.json",
+  "controller_script": "work/run-r9-drop25-v1.ps1",
+  "controller_sha256": "4BD27860CD85AB2E025C27CCB1B51F3375FC007A199C84462E93EB1209F9EE69",
+  "launch_utc": "2026-09-29T16:55:21.1431392Z",
+  "estimated_training_seconds": 11236.425174999995,
+  "followup_delay_minutes": 198,
+  "estimated_followup_due_utc": "2026-09-29T20:13:21.327000+00:00",
+  "automation_id": "nutrition",
+  "automation_status": "ACTIVE",
+  "automation_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+      }
+    ],
+    "isError": false
+  },
+  "per_epoch_observer_created": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "goal_achieved": false,
+  "report_complete": false,
+  "queued_work": [
+    "train60",
+    "independent_three_task_replay",
+    "eleven_fixed_reference_comparisons",
+    "gap_decomposition",
+    "analysis_and_figures",
+    "full_training_fit"
+  ],
+  "remaining_after_queue": [
+    "actual_visual_axis_and_case_review",
+    "eight_section_version_decision",
+    "complete_new_Chinese_and_English_report_snapshot"
+  ],
+  "process_identity_check": {
+    "source": "previously captured startup snapshot, not a new liveness poll",
+    "snapshot_file": "work/r9-drop25-startup-processes.json",
+    "snapshot_sha256": "3118ac1d2de15a0376decf4001daaa03cf1205b4c633abf74ca1af55ae307b3f",
+    "controller_cim_utc": "2026-09-29T16:55:20.4972690Z",
+    "controller_get_process_utc": "2026-09-29T16:55:20.4972697Z",
+    "comparison_precision": "microsecond; CIM drops sub-microsecond digits",
+    "same_pid_and_parent_chain_verified": true,
+    "timestamp_precision_handling": "Common timestamp precision comparison was applied from startup; no receipt-induced restart."
+  },
+  "default_formal_backend_unchanged": true,
+  "powershell_executable": "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+}
