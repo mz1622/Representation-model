@@ -1,0 +1,90 @@
+{
+  "status": "verified_launched_with_scheduled_followup",
+  "code_commit": "641d1795de2bcf16de74be60c6bf7ecb932098ef",
+  "candidate": "tf192_mae_rmsnorm_lr3e4_60",
+  "current_run": "output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60",
+  "plan": "experiments/foodnutrigpt_v9_research/r9/rmsnorm_v1/config_v2.json",
+  "plan_sha256": "c207798fd903b429cb7eeb5e787a69d354333244b89a747cf8cbe6457519eba4",
+  "functional_sha256": "ec879ed5302a263a245a8526c11810e1199aae0373b79443faaf6346e3bc3c12",
+  "launch_utc": "2026-09-29T20:11:33.1984912Z",
+  "actual_processes_at_startup": [
+    {
+      "ProcessId": 1256,
+      "ParentProcessId": 8784,
+      "Name": "pwsh.exe",
+      "CreationUTC": "2026-09-29T20:11:32.6086440Z",
+      "CommandLine": "\"C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\work\\run-r9-rmsnorm-v1.ps1",
+      "role": "controller"
+    },
+    {
+      "ProcessId": 16704,
+      "ParentProcessId": 1256,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T20:11:33.2445620Z",
+      "CommandLine": "\"C:\\Users\\Admin\\Documents\\Codex\\2026-09-27\\fan\\outputs\\Representation-model\\.venv\\Scripts\\python.exe\" -X utf8 scripts/train_foodnutrigpt_v9_r9_rmsnorm.py --candidate tf192_mae_rmsnorm_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60",
+      "role": "venv_launcher"
+    },
+    {
+      "ProcessId": 9344,
+      "ParentProcessId": 16704,
+      "Name": "python.exe",
+      "CreationUTC": "2026-09-29T20:11:33.2568490Z",
+      "CommandLine": "\"C:\\Users\\Admin\\miniconda3\\envs\\llava\\python.exe\" -X utf8 scripts/train_foodnutrigpt_v9_r9_rmsnorm.py --candidate tf192_mae_rmsnorm_lr3e4_60 --output-dir output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60",
+      "role": "trainer"
+    }
+  ],
+  "process_identity_precision": "microsecond; compare common CIM/Get-Process precision",
+  "status_file": "work/r9-rmsnorm-v1-status.json",
+  "controller_script": "work/run-r9-rmsnorm-v1.ps1",
+  "controller_sha256": "75CBA3B35B2B4B584D42D93B4E439CC904B5CC3E48398DFAA996E6D287F81932",
+  "per_epoch_observer_created": false,
+  "estimated_training_seconds": 11391.55385387159,
+  "followup_delay_minutes": 205,
+  "estimated_followup_due_utc": "2026-09-29T23:37:00.954000+00:00",
+  "estimated_followup_due_beijing": "2026-09-30T07:37:00.954000+08:00",
+  "automation_id": "nutrition",
+  "automation_status": "ACTIVE",
+  "automation_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+      }
+    ],
+    "isError": false
+  },
+  "tests_passed": 30,
+  "shared_initial_tensors_verified": true,
+  "parameter_count": 1547250,
+  "trainable_parameter_count": 1514585,
+  "queued_work": [
+    "train60",
+    "independent_full_replay",
+    "eleven_fixed_reference_comparisons",
+    "rf_gap_diagnosis",
+    "analysis_and_curves",
+    "full_training_fit"
+  ],
+  "remaining_after_queue": [
+    "actual_visual_axis_source_case_review",
+    "eight_section_README",
+    "Chinese_and_English_reports",
+    "prior_dropout_report_closure"
+  ],
+  "prohibited_searches": [
+    "seed",
+    "dropout",
+    "learning_rate",
+    "MAE_to_MSE",
+    "dimensions"
+  ],
+  "seed_expansion_authorized": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "report_complete": false
+}
