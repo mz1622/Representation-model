@@ -1,0 +1,32 @@
+{
+  "status": "verified_missing_original_processes_saved_epoch48",
+  "first_verified_missing_utc": "2026-09-29T06:50:46Z",
+  "previous_verified_live_utc": "2026-09-29T02:20:08Z",
+  "original_process_ids_absent": [
+    33716,
+    29716,
+    30668
+  ],
+  "all_other_nutrition_trainers_absent_at_inspection": true,
+  "terminal_session": 98954,
+  "terminal_tool_result": "Unknown process id 98954",
+  "last_manifest_save_utc": "2026-09-29T05:06:16.911544+00:00",
+  "last_complete_epoch": 48,
+  "planned_epochs": 60,
+  "cause": "Unknown; no terminal exception recorded in captured training log.",
+  "status_file_is_stale_not_liveness": true,
+  "source_file_hashes": {
+    "output/v9_r9_methods/tf256_mae_lr3e4_60/run_manifest.json": "ddb11e95828c017df7fa3be2e20b88ba8eac27441248efa4a951f576d3a012a6",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60/history.csv": "8096c97501b1c23e74d577b1a2afc62624186046c029e30e7082e135de833526",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60/latest_training_state.pt": "892632bab45d91a70a6764afcf936cd86e8b020984355f16885760bee3152fce",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60/best_model.pt": "089b35aa024d576ba26f073fe6ef5c2d5dffa91d700c78bfc2d38689112aa316",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60/best_through_epoch_020.pt": "c7410478b42be7b5a806d6b3c78b3c2b5af01586edcb39f1411cde9df28c3291"
+  },
+  "training_log_sha256": "7ac69e860601db95f1db7f7f0f25f3c5ee36d752afa00a6b402d51a6e92047ab",
+  "created_utc": "2026-09-29T07:00:22.391169+00:00",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "partial_validation_read_for_recovery": true,
+  "partial_result_used_for_selection": false
+}
