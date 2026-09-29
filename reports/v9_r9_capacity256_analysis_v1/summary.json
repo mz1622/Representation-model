@@ -1,0 +1,2208 @@
+{
+  "status": "complete_registered_capacity256_analysis",
+  "records": {
+    "mae": {
+      "run": "output/v9_r9/tf192_mae_lr3e4_60",
+      "manifest": {
+        "status": "complete",
+        "version": "V9-R9",
+        "kind": "transformer_direct",
+        "candidate": "tf192_mae_lr3e4_60",
+        "spec": {
+          "version": "V9-R9",
+          "goal": "Transformer improvement over frozen RF on unchanged research data",
+          "data_version": "foodnutrigpt_v9_r0_v1",
+          "view": "quarantined",
+          "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+          "active_name_dimensions": 32,
+          "name_input_slots": 128,
+          "seed": 20260922,
+          "confirmation_seeds": [
+            20260922,
+            20260923,
+            20260924
+          ],
+          "supervised_axes": 187,
+          "primary_axes": 142,
+          "batch_size": 64,
+          "epochs": 60,
+          "schedule_epochs": 60,
+          "weight_decay": 0.0001,
+          "gradient_clip": 1.0,
+          "source_weight": 1.0,
+          "source_residual_l2": 0.0001,
+          "objective": "mae",
+          "dropout": 0.15,
+          "axis_residual_rank": 16,
+          "stages": 1,
+          "d_model": 192,
+          "n_layers": 3,
+          "n_heads": 6,
+          "feedforward_dim": 768,
+          "max_candidates_this_round": 12,
+          "rf_reference": "output/v9_r8/rf400leaf1half_name32",
+          "xgb_reference": "output/v9_r8/xgb800d10_name32",
+          "additional_tree_training_allowed": false,
+          "data_changes_allowed": false,
+          "test_opened": false,
+          "require_three_neural_seeds_for_acceptance": true,
+          "minimum_primary_gain": 0.0,
+          "paired_interval_must_support_gain": true,
+          "maximum_legacy_relative_regression": 0.02,
+          "name": "tf192_mae_lr3e4_60",
+          "learning_rate": 0.0003
+        },
+        "seed": 20260922,
+        "code_hashes": {
+          "src/foodcomp/research_completion_input.py": "1ed574a26694362ccd1dea8aecb30f54e23cdd615dce6d910eb56225e7c46f19",
+          "src/foodcomp/research_tree_prediction.py": "a2501be10400a6bef4077d248eccfefbb2428c26e54329e051bcec702ff25cfe",
+          "scripts/train_foodnutrigpt_v9_r1.py": "4e07e8cf3ecfab94deeb6bc082c00058986292814878331a7a9391570ee7501c",
+          "scripts/train_foodnutrigpt_v9_r8_completion.py": "24512db696ed317f6d1ebe71213d98604d4171f2ffd2ef567233c097c91c5147",
+          "scripts/run_foodnutrigpt_v9_r8_trees.py": "0df631acc577f3549d6ae084bd6a238376c915f305efd11cba8ba23d74bd9550",
+          "src/foodcomp/research_r0.py": "17d2e0223af54a27ce17605ce46acc6b05be8b921cfadab65a9944904daea3c1",
+          "src/foodcomp/research_r1.py": "295d8c540818bb2f1f896570efcea3200b22b5877d437289915e04ff616056af",
+          "src/foodcomp/research_neural.py": "a359e639cfb3e58be2ea321a346a6f62124d9a87035e4fbde7bf3569a1796546",
+          "src/foodcomp/research_name_projection.py": "765795f59db8f647a8ed01b65b4ec9c0d2a51c5ef1b414e8a77854139d885e59",
+          "src/foodcomp/research_inference.py": "ceba19ae5365b070dbfcfbdcc4ecaa4d35cad66ebdf900dcb634093cb3e807e4",
+          "src/foodcomp/research_auxiliary.py": "fcb4fc2799ae0325f91b69e7390ec5abde27de68976778fa513048a71eabba44",
+          "src/foodcomp/research_text.py": "34942904494d8494b681250b8448494f4564bd5b5e18ee07ee6de23f74526d0c",
+          "src/foodcomp/research_profile_retrieval.py": "8e6d4cd5301e539b7bc2bdb8d1d8f4bb9e6c520b3982c7efa635f571e5675d40",
+          "src/foodcomp/research_alignment.py": "9f270402e652af7fd0776a9c22ac7d76c51ae27b7950f68a5b433e33edf19e01",
+          "scripts/train_global_foodnutrigpt_v8_single_stage.py": "76d7071ace9ea62ecc90614fe8b59977683bbf875b788383d90fb27e95d962e5",
+          "scripts/train_global_foodnutrigpt_v9_source_calibrated.py": "9788a004063220a213ba8e52b5ee2191f0f95fa8862804850cd9de235d3a3d7d",
+          "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e",
+          "scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py": "2d16dd16f05c6e93a519de424c4ccb1117e82a290a099596f86ad9c5d6de06b7",
+          "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+          "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31"
+        },
+        "code_commit": "ca403e61a1495924bbe8c1f13da3138fb5d91dc5",
+        "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+        "functional_sha256": "d1294bd63101256c9e2f9fae961abbf3e5b379650f6bb668592bd218d3605019",
+        "config_sha256": "e7b148c37f34cc86c1a0fd51a02a464ef8b797b449fbd69e131ef0a3a621ede7",
+        "data_hash": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "panel_hash": "3e8714b9d0033372c1eefe96e7536b440c90d2151cb434d3219d45251025549a",
+        "name_cache_hash": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+        "initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+        "parameter_count": 1548594,
+        "trainable_parameter_count": 1515929,
+        "training_tasks": 337048,
+        "observed_target_cells": 1828536,
+        "environment": {
+          "python": "3.10.19",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "numpy": "2.1.3",
+          "pandas": "2.2.3",
+          "torch": "2.7.1+cu128",
+          "sklearn": "1.5.2",
+          "xgboost": "2.1.3",
+          "gpu": "NVIDIA GeForce RTX 5070 Ti"
+        },
+        "complete_test_opened": false,
+        "baseline_refit": false,
+        "data_modified": false,
+        "scientific_confirmation": false,
+        "overfit": {
+          "before": 0.4455949068069458,
+          "after": 0.07919060438871384,
+          "steps": 50,
+          "weights_and_rng_restored": true
+        },
+        "epoch_completed": 60,
+        "best_primary": 0.18355327847469688,
+        "elapsed_seconds": 12254.358999999997,
+        "best_epoch": 60,
+        "checkpoint_sha256": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+        "both_complete_prediction_tables_reloaded_exact": true,
+        "saved_matrix_retrieval_reloaded_exact": true
+      },
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.18355327847469688,
+            "log_mae": 0.054362319923894606,
+            "log_mse": 0.03603355672852335,
+            "raw_mae": 0.330240460832641,
+            "positive_scaled_log_mae": 0.30277267666689867,
+            "zero_scaled_log_mae": 0.09203905513249852,
+            "log_rmse_root_mean_axis_mse": 0.1898250687567987
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.5980220428612179,
+            "log_mae": 0.03587222522357715,
+            "log_mse": 0.022335943219397913,
+            "raw_mae": 0.06484595878358246,
+            "positive_scaled_log_mae": 0.8109576712144156,
+            "zero_scaled_log_mae": 0.2150257527499769,
+            "log_rmse_root_mean_axis_mse": 0.14945214357578787
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.2832917511880308,
+            "log_mae": 0.04991283189440645,
+            "log_mse": 0.03273733957392098,
+            "raw_mae": 0.2663754737085361,
+            "positive_scaled_log_mae": 0.42506318337619414,
+            "zero_scaled_log_mae": 0.1145987452280123,
+            "log_rmse_root_mean_axis_mse": 0.18093462790168435
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.42641131035686697,
+            "log_mae": 0.1541900437436112,
+            "log_mse": 0.17496083659417425,
+            "raw_mae": 0.9778876179299684,
+            "positive_scaled_log_mae": 0.5522157036936451,
+            "zero_scaled_log_mae": 0.38518276759303793,
+            "log_rmse_root_mean_axis_mse": 0.41828320142479336
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.7497155064723775,
+            "log_mae": 0.04983308558108432,
+            "log_mse": 0.028504111958362825,
+            "raw_mae": 0.08656052284671976,
+            "positive_scaled_log_mae": 0.9155483117873001,
+            "zero_scaled_log_mae": 0.4852551653273209,
+            "log_rmse_root_mean_axis_mse": 0.16883160829170238
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.5042117853579257,
+            "log_mae": 0.1290774067526288,
+            "log_mse": 0.13971723975667952,
+            "raw_mae": 0.7633971405035183,
+            "positive_scaled_log_mae": 0.6396486842509417,
+            "zero_scaled_log_mae": 0.403539242917078,
+            "log_rmse_root_mean_axis_mse": 0.3737876934259333
+          }
+        }
+      },
+      "retrieval": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.0033814617461426825,
+            "recall_at_1": 0.0004645401052957572,
+            "recall_at_5": 0.0034517910601837517,
+            "recall_at_10": 0.006780995148136678
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.0057203712205179435,
+            "recall_at_1": 0.0010225669957686884,
+            "recall_at_5": 0.006002753710793203,
+            "recall_at_10": 0.010603465645778763
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+        "checkpoint_sha256": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "method": "R9_transformer_name_predicted_profiles",
+        "complete_test_opened": false
+      },
+      "first10_clip_fraction": 0.40131004366812234,
+      "last10_clip_fraction": 0.3508828555154737,
+      "first_training_objective": 0.451627724296201,
+      "last_training_objective": 0.1513732955019246
+    },
+    "capacity256": {
+      "run": "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1",
+      "manifest": {
+        "status": "complete",
+        "version": "V9-R9",
+        "kind": "transformer_direct",
+        "candidate": "tf256_mae_lr3e4_60",
+        "spec": {
+          "version": "V9-R9",
+          "goal": "Transformer improvement over frozen RF on unchanged research data",
+          "data_version": "foodnutrigpt_v9_r0_v1",
+          "view": "quarantined",
+          "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+          "active_name_dimensions": 32,
+          "name_input_slots": 128,
+          "seed": 20260922,
+          "confirmation_seeds": [
+            20260922,
+            20260923,
+            20260924
+          ],
+          "supervised_axes": 187,
+          "primary_axes": 142,
+          "batch_size": 64,
+          "epochs": 60,
+          "schedule_epochs": 60,
+          "weight_decay": 0.0001,
+          "gradient_clip": 1.0,
+          "source_weight": 1.0,
+          "source_residual_l2": 0.0001,
+          "objective": "mae",
+          "dropout": 0.15,
+          "axis_residual_rank": 16,
+          "stages": 1,
+          "d_model": 256,
+          "n_layers": 3,
+          "n_heads": 8,
+          "feedforward_dim": 1024,
+          "max_candidates_this_round": 12,
+          "rf_reference": "output/v9_r8/rf400leaf1half_name32",
+          "xgb_reference": "output/v9_r8/xgb800d10_name32",
+          "additional_tree_training_allowed": false,
+          "data_changes_allowed": false,
+          "test_opened": false,
+          "require_three_neural_seeds_for_acceptance": true,
+          "minimum_primary_gain": 0.0,
+          "paired_interval_must_support_gain": true,
+          "maximum_legacy_relative_regression": 0.02,
+          "name": "tf256_mae_lr3e4_60",
+          "learning_rate": 0.0003
+        },
+        "seed": 20260922,
+        "code_hashes": {
+          "src/foodcomp/research_completion_input.py": "1ed574a26694362ccd1dea8aecb30f54e23cdd615dce6d910eb56225e7c46f19",
+          "src/foodcomp/research_tree_prediction.py": "a2501be10400a6bef4077d248eccfefbb2428c26e54329e051bcec702ff25cfe",
+          "scripts/train_foodnutrigpt_v9_r1.py": "4e07e8cf3ecfab94deeb6bc082c00058986292814878331a7a9391570ee7501c",
+          "scripts/train_foodnutrigpt_v9_r8_completion.py": "24512db696ed317f6d1ebe71213d98604d4171f2ffd2ef567233c097c91c5147",
+          "scripts/run_foodnutrigpt_v9_r8_trees.py": "0df631acc577f3549d6ae084bd6a238376c915f305efd11cba8ba23d74bd9550",
+          "src/foodcomp/research_r0.py": "17d2e0223af54a27ce17605ce46acc6b05be8b921cfadab65a9944904daea3c1",
+          "src/foodcomp/research_r1.py": "295d8c540818bb2f1f896570efcea3200b22b5877d437289915e04ff616056af",
+          "src/foodcomp/research_neural.py": "a359e639cfb3e58be2ea321a346a6f62124d9a87035e4fbde7bf3569a1796546",
+          "src/foodcomp/research_name_projection.py": "765795f59db8f647a8ed01b65b4ec9c0d2a51c5ef1b414e8a77854139d885e59",
+          "src/foodcomp/research_inference.py": "ceba19ae5365b070dbfcfbdcc4ecaa4d35cad66ebdf900dcb634093cb3e807e4",
+          "src/foodcomp/research_auxiliary.py": "fcb4fc2799ae0325f91b69e7390ec5abde27de68976778fa513048a71eabba44",
+          "src/foodcomp/research_text.py": "34942904494d8494b681250b8448494f4564bd5b5e18ee07ee6de23f74526d0c",
+          "src/foodcomp/research_profile_retrieval.py": "8e6d4cd5301e539b7bc2bdb8d1d8f4bb9e6c520b3982c7efa635f571e5675d40",
+          "src/foodcomp/research_alignment.py": "9f270402e652af7fd0776a9c22ac7d76c51ae27b7950f68a5b433e33edf19e01",
+          "scripts/train_global_foodnutrigpt_v8_single_stage.py": "76d7071ace9ea62ecc90614fe8b59977683bbf875b788383d90fb27e95d962e5",
+          "scripts/train_global_foodnutrigpt_v9_source_calibrated.py": "9788a004063220a213ba8e52b5ee2191f0f95fa8862804850cd9de235d3a3d7d",
+          "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e",
+          "scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py": "2d16dd16f05c6e93a519de424c4ccb1117e82a290a099596f86ad9c5d6de06b7",
+          "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+          "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+          "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+          "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+          "src/foodcomp/research_transformer_r9_capacity256_recovery.py": "a998d039385311635403999e19fa7ffc922cc5d7764595ede0a9a8d73243a7c9",
+          "scripts/resume_foodnutrigpt_v9_r9_capacity256.py": "5e432988359a270de48045ef308be40972dbc1d83ccd03c15a2f96222f266a04"
+        },
+        "code_commit": "f19d545c33272906b334db3ed63351f69707892e",
+        "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+        "functional_sha256": "da66409ecaf4445d9b70893b06cf3b9804d2bf0c9d17ea2048179378732c692f",
+        "config_sha256": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+        "data_hash": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "panel_hash": "3e8714b9d0033372c1eefe96e7536b440c90d2151cb434d3219d45251025549a",
+        "name_cache_hash": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+        "initial_state_sha256": "6c0443083d8752e5fca82e5dfeb648c93bf03fb48d2ac6e0443243421f41c7bb",
+        "parameter_count": 2696626,
+        "trainable_parameter_count": 2648409,
+        "training_tasks": 337048,
+        "observed_target_cells": 1828536,
+        "environment": {
+          "python": "3.10.19",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "numpy": "2.1.3",
+          "pandas": "2.2.3",
+          "torch": "2.7.1+cu128",
+          "sklearn": "1.5.2",
+          "xgboost": "2.1.3",
+          "gpu": "NVIDIA GeForce RTX 5070 Ti"
+        },
+        "complete_test_opened": false,
+        "baseline_refit": false,
+        "data_modified": false,
+        "scientific_confirmation": false,
+        "method_plan": {
+          "status": "registered",
+          "purpose": "r9_capacity_group_256_8_1024_contrast",
+          "candidate": "tf256_mae_lr3e4_60",
+          "seed": 20260922,
+          "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+          "parent_audit": "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json",
+          "prior_decision": "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json",
+          "prior_review": "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json",
+          "changes": {
+            "d_model": 256,
+            "n_heads": 8,
+            "feedforward_dim": 1024
+          },
+          "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+          "input_hashes": {
+            "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/PLAN.md": "e8be913637e539c34dce6d4739c59ed60d5d20d269f28a062f216e1614f62d47",
+            "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+            "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+            "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+            "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json": "da152142ae4f1585be0f9b2b4ed529468a848712161bc9073f6475e1eb0fc7bc",
+            "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json": "2afd3d3d1483505512bd1df2fb22e4b6713af2cfcb77de1e60ef744ec5397e0f",
+            "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+            "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171",
+            "reports/v9_r9_source0_analysis_v1/summary.json": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+            "reports/v9_r9_source0_fit_v1/summary.json": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+            "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+            "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+            "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+            "scripts/verify_foodnutrigpt_r9_capacity256_functional.py": "f370a0ef439ff19c6cb44ac7ea9baf3c4cfe1b458291ebe2c8a25a7e21db298a",
+            "scripts/estimate_foodnutrigpt_r9_capacity256_runtime.py": "cd576c024fbaa2d78a25f82de77f95b955eb99524e53f21537b746cede12684f",
+            "scripts/audit_foodnutrigpt_r9_capacity256.py": "ad7b1750549877d0dabe691f0d840958e91a8637fef2b974a0e0ca5046d7a288",
+            "tests/test_research_transformer_r9_capacity256.py": "c06f8d1aeccf8b895f15936bce2ba1b0216e07ffb24a9032a912e49baf88cd68"
+          },
+          "candidate_index": 6,
+          "max_candidates": 12,
+          "screening_decision": "All required versus same-seed MAE: primary point improvement; paired improvement interval lower>0; legacy point regression<=2percent. Separate registration and all3 fixed seeds required for accepted improvement.",
+          "same_seed_parent_initialization_exact": false,
+          "causal_scope": "PDF capacity combination changes width,head count,feedforward width,parameter count and constructor/dropout random consumption. Not an isolated width effect.",
+          "runtime_estimation": {
+            "training_only": true,
+            "warmup_steps": 8,
+            "timed_steps": 96,
+            "repeats_each_width": 2,
+            "order": [
+              "parent",
+              "capacity256",
+              "capacity256",
+              "parent"
+            ],
+            "safety_factor": 1.1,
+            "postprocess_allowance_minutes": 10,
+            "reference_run": "output/v9_r9_methods/tf192_mae_source0_lr3e4_60"
+          },
+          "followup_automation_id": "nutrition",
+          "created_utc": "2026-09-29T02:01:01.538578+00:00",
+          "data_modified": false,
+          "baseline_refit": false,
+          "complete_test_opened": false
+        },
+        "method_evidence_hashes": {
+          "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/PLAN.md": "e8be913637e539c34dce6d4739c59ed60d5d20d269f28a062f216e1614f62d47",
+          "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+          "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+          "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+          "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json": "da152142ae4f1585be0f9b2b4ed529468a848712161bc9073f6475e1eb0fc7bc",
+          "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json": "2afd3d3d1483505512bd1df2fb22e4b6713af2cfcb77de1e60ef744ec5397e0f",
+          "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+          "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171",
+          "reports/v9_r9_source0_analysis_v1/summary.json": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+          "reports/v9_r9_source0_fit_v1/summary.json": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+          "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+          "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+          "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+          "scripts/verify_foodnutrigpt_r9_capacity256_functional.py": "f370a0ef439ff19c6cb44ac7ea9baf3c4cfe1b458291ebe2c8a25a7e21db298a",
+          "scripts/estimate_foodnutrigpt_r9_capacity256_runtime.py": "cd576c024fbaa2d78a25f82de77f95b955eb99524e53f21537b746cede12684f",
+          "scripts/audit_foodnutrigpt_r9_capacity256.py": "ad7b1750549877d0dabe691f0d840958e91a8637fef2b974a0e0ca5046d7a288",
+          "tests/test_research_transformer_r9_capacity256.py": "c06f8d1aeccf8b895f15936bce2ba1b0216e07ffb24a9032a912e49baf88cd68",
+          "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/config.json": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+          "src/foodcomp/research_completion_input.py": "1ed574a26694362ccd1dea8aecb30f54e23cdd615dce6d910eb56225e7c46f19",
+          "src/foodcomp/research_tree_prediction.py": "a2501be10400a6bef4077d248eccfefbb2428c26e54329e051bcec702ff25cfe",
+          "scripts/train_foodnutrigpt_v9_r1.py": "4e07e8cf3ecfab94deeb6bc082c00058986292814878331a7a9391570ee7501c",
+          "scripts/train_foodnutrigpt_v9_r8_completion.py": "24512db696ed317f6d1ebe71213d98604d4171f2ffd2ef567233c097c91c5147",
+          "scripts/run_foodnutrigpt_v9_r8_trees.py": "0df631acc577f3549d6ae084bd6a238376c915f305efd11cba8ba23d74bd9550",
+          "src/foodcomp/research_r0.py": "17d2e0223af54a27ce17605ce46acc6b05be8b921cfadab65a9944904daea3c1",
+          "src/foodcomp/research_r1.py": "295d8c540818bb2f1f896570efcea3200b22b5877d437289915e04ff616056af",
+          "src/foodcomp/research_neural.py": "a359e639cfb3e58be2ea321a346a6f62124d9a87035e4fbde7bf3569a1796546",
+          "src/foodcomp/research_name_projection.py": "765795f59db8f647a8ed01b65b4ec9c0d2a51c5ef1b414e8a77854139d885e59",
+          "src/foodcomp/research_inference.py": "ceba19ae5365b070dbfcfbdcc4ecaa4d35cad66ebdf900dcb634093cb3e807e4",
+          "src/foodcomp/research_auxiliary.py": "fcb4fc2799ae0325f91b69e7390ec5abde27de68976778fa513048a71eabba44",
+          "src/foodcomp/research_text.py": "34942904494d8494b681250b8448494f4564bd5b5e18ee07ee6de23f74526d0c",
+          "src/foodcomp/research_profile_retrieval.py": "8e6d4cd5301e539b7bc2bdb8d1d8f4bb9e6c520b3982c7efa635f571e5675d40",
+          "src/foodcomp/research_alignment.py": "9f270402e652af7fd0776a9c22ac7d76c51ae27b7950f68a5b433e33edf19e01",
+          "scripts/train_global_foodnutrigpt_v8_single_stage.py": "76d7071ace9ea62ecc90614fe8b59977683bbf875b788383d90fb27e95d962e5",
+          "scripts/train_global_foodnutrigpt_v9_source_calibrated.py": "9788a004063220a213ba8e52b5ee2191f0f95fa8862804850cd9de235d3a3d7d",
+          "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e",
+          "scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py": "2d16dd16f05c6e93a519de424c4ccb1117e82a290a099596f86ad9c5d6de06b7",
+          "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+          "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+          "reports/v9_r9_capacity256_functional_v1/verification.json": "da66409ecaf4445d9b70893b06cf3b9804d2bf0c9d17ea2048179378732c692f"
+        },
+        "numerical_recipe_changes": [
+          "d_model",
+          "n_heads",
+          "feedforward_dim"
+        ],
+        "parent_run": "output/v9_r9/tf192_mae_lr3e4_60",
+        "same_seed_parent_initialization_exact": false,
+        "parent_initial_state_sha256": "eedddcd2b1ef26824401f65ad7fe72fa3dc003a2d12298bd7a596d92f6a0b3fe",
+        "initialization_control": "Same seed; differing capacity changes shapes, parameters and constructor RNG use",
+        "overfit": {
+          "before": 0.404342383146286,
+          "after": 0.07059439271688461,
+          "steps": 50,
+          "weights_and_rng_restored": true
+        },
+        "epoch_completed": 60,
+        "best_primary": 0.201520176087654,
+        "elapsed_seconds": 13419.828999999972,
+        "recovery_config_sha256": "c2580749ad52cc9d4c86ba60c93c57b4ee10bd13549eb0df3b7436a61560ca53",
+        "recovery_input_hashes": {
+          "output/v9_r9_methods/tf256_mae_lr3e4_60/run_manifest.json": "ddb11e95828c017df7fa3be2e20b88ba8eac27441248efa4a951f576d3a012a6",
+          "output/v9_r9_methods/tf256_mae_lr3e4_60/history.csv": "8096c97501b1c23e74d577b1a2afc62624186046c029e30e7082e135de833526",
+          "output/v9_r9_methods/tf256_mae_lr3e4_60/latest_training_state.pt": "892632bab45d91a70a6764afcf936cd86e8b020984355f16885760bee3152fce",
+          "output/v9_r9_methods/tf256_mae_lr3e4_60/best_model.pt": "089b35aa024d576ba26f073fe6ef5c2d5dffa91d700c78bfc2d38689112aa316",
+          "output/v9_r9_methods/tf256_mae_lr3e4_60/best_through_epoch_020.pt": "c7410478b42be7b5a806d6b3c78b3c2b5af01586edcb39f1411cde9df28c3291",
+          "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/recovery1/PLAN.md": "ba8cb485190c3175e5544291a2b76377d20aa48500ea0bbda58f4e929e41c466",
+          "reports/v9_r9_capacity256_interruption_v1/record.json": "234e6aa0e3addbad3d91092e0289ea860414c99e3139313c931263ae6bc80fbc",
+          "reports/v9_r9_freeze_v1/manifest.json": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+          "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/config.json": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+          "reports/v9_r9_capacity256_functional_v1/verification.json": "da66409ecaf4445d9b70893b06cf3b9804d2bf0c9d17ea2048179378732c692f",
+          "src/foodcomp/research_transformer_r9_capacity256_recovery.py": "a998d039385311635403999e19fa7ffc922cc5d7764595ede0a9a8d73243a7c9",
+          "scripts/resume_foodnutrigpt_v9_r9_capacity256.py": "5e432988359a270de48045ef308be40972dbc1d83ccd03c15a2f96222f266a04",
+          "scripts/verify_foodnutrigpt_r9_capacity256_recovery.py": "b8750f739cc39c801f4d5bca1d834bbcdeb14e26964d2b1119ac69505ae9fc36",
+          "tests/test_research_transformer_r9_capacity256_recovery.py": "b3cba76b852e22239dc227d1f7d7349ec7f17731306672c0633215891f26e0a9",
+          "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/recovery1/config.json": "c2580749ad52cc9d4c86ba60c93c57b4ee10bd13549eb0df3b7436a61560ca53",
+          "reports/v9_r9_capacity256_recovery_functional_v1/verification.json": "94e2d2ff9b60894f0847c1bd0e0efd87dbbd09993efcc91044a5e810894ee3eb"
+        },
+        "original_run": "output/v9_r9_methods/tf256_mae_lr3e4_60",
+        "original_manifest_sha256": "ddb11e95828c017df7fa3be2e20b88ba8eac27441248efa4a951f576d3a012a6",
+        "original_completed_epochs": 48,
+        "resumed_first_epoch": 49,
+        "resume_count": 1,
+        "recovery_code_commit": "3aa6c8bca7e490e9a93f8dd99120866b3d648352",
+        "recovery_script_sha256": "5e432988359a270de48045ef308be40972dbc1d83ccd03c15a2f96222f266a04",
+        "recovery_started_utc": "2026-09-29T07:06:16.427620+00:00",
+        "original_saved_elapsed_seconds": 10908.640999999974,
+        "elapsed_seconds_scope": "Saved original elapsed plus resumed segment. Unsaved partial work and downtime excluded.",
+        "interruption_cause": "Unknown: original PIDs and session missing; no terminal error in log.",
+        "numerical_recipe_changed_by_recovery": false,
+        "recovery_model_optimizer_scheduler_and_rng_loaded_exact": true,
+        "recovery_segment_elapsed_seconds": 2511.187999999999,
+        "recovery_finished_utc": "2026-09-29T07:48:07.518157+00:00",
+        "best_epoch": 59,
+        "checkpoint_sha256": "5017bca4ea3a0fbdeac3de0241667003b3a447536d56edbd6f245ee3a97eb229",
+        "both_complete_prediction_tables_reloaded_exact": true,
+        "saved_matrix_retrieval_reloaded_exact": true
+      },
+      "metrics": {
+        "completion": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.201520176087654,
+            "log_mae": 0.06220215770925772,
+            "log_mse": 0.04836977900298603,
+            "raw_mae": 0.37879708514187665,
+            "positive_scaled_log_mae": 0.32889007961025063,
+            "zero_scaled_log_mae": 0.09497140437332609,
+            "log_rmse_root_mean_axis_mse": 0.21993130519093007
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.6367163137969778,
+            "log_mae": 0.042841592254522144,
+            "log_mse": 0.026203491982134064,
+            "raw_mae": 0.0785551715058225,
+            "positive_scaled_log_mae": 0.8483652082792732,
+            "zero_scaled_log_mae": 0.23342210425529122,
+            "log_rmse_root_mean_axis_mse": 0.1618749269718262
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.3062465193866891,
+            "log_mae": 0.05754319810785076,
+            "log_mse": 0.04303564576267407,
+            "raw_mae": 0.3065463572615428,
+            "positive_scaled_log_mae": 0.4538974635145609,
+            "zero_scaled_log_mae": 0.12036768660019544,
+            "log_rmse_root_mean_axis_mse": 0.20745034529417894
+          }
+        },
+        "name_only": {
+          "complete_test_opened": false,
+          "profile_axis_jobs": 323809,
+          "candidate_axis_cells": 268837,
+          "nutrition": {
+            "axes": 142,
+            "scaled_log_mae": 0.4328892271380505,
+            "log_mae": 0.14710764234678023,
+            "log_mse": 0.15267993764413917,
+            "raw_mae": 0.8537212438369387,
+            "positive_scaled_log_mae": 0.5434517344363939,
+            "zero_scaled_log_mae": 0.44658702417463053,
+            "log_rmse_root_mean_axis_mse": 0.39074280242141274
+          },
+          "food_metabolome": {
+            "axes": 45,
+            "scaled_log_mae": 0.8364580641903583,
+            "log_mae": 0.05683143027294284,
+            "log_mse": 0.0347706863794347,
+            "raw_mae": 0.10485749724228083,
+            "positive_scaled_log_mae": 0.9498466949203599,
+            "zero_scaled_log_mae": 0.5886370379023609,
+            "log_rmse_root_mean_axis_mse": 0.18646899575917358
+          },
+          "all": {
+            "axes": 187,
+            "scaled_log_mae": 0.5300047226853974,
+            "log_mae": 0.12538342018997442,
+            "log_mse": 0.12430605364995895,
+            "raw_mae": 0.6735133903783312,
+            "positive_scaled_log_mae": 0.6412473131624821,
+            "zero_scaled_log_mae": 0.47264353556847466,
+            "log_rmse_root_mean_axis_mse": 0.3525706363978131
+          }
+        }
+      },
+      "retrieval": {
+        "metrics": [
+          {
+            "visible_fraction": 0.3,
+            "mrr": 0.003038752250387634,
+            "recall_at_1": 0.0006968101579436358,
+            "recall_at_5": 0.0025678744709404355,
+            "recall_at_10": 0.004516362134819862
+          },
+          {
+            "visible_fraction": 1.0,
+            "mrr": 0.005147980233845218,
+            "recall_at_1": 0.0010343206393982134,
+            "recall_at_5": 0.004098663442810129,
+            "recall_at_10": 0.00850963798777621
+          }
+        ],
+        "candidate_count": 49913,
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "name_cache_sha256": "db361b9bcd3aa4d9b37c31a01ee08140c29976989b0e78b3ae6e8be3dfa6c12a",
+        "checkpoint_sha256": "5017bca4ea3a0fbdeac3de0241667003b3a447536d56edbd6f245ee3a97eb229",
+        "scoring": "source equal within exact-name candidate, candidate macro; at least 3 observed nutrition axes",
+        "correct_answers": "exact original name only; no confirmed alias map available; not semantic identity accuracy",
+        "method": "R9_transformer_name_predicted_profiles",
+        "complete_test_opened": false
+      },
+      "first10_clip_fraction": 0.4091323333966205,
+      "last10_clip_fraction": 0.3669071577748244,
+      "first_training_objective": 0.4462039627362751,
+      "last_training_objective": 0.17837432133393438
+    }
+  },
+  "comparisons": {
+    "mae_parent": {
+      "completion": {
+        "task": "completion",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.18355327847469688,
+              "log_mae": 0.054362319923894606,
+              "log_mse": 0.03603355672852335,
+              "raw_mae": 0.330240460832641,
+              "positive_scaled_log_mae": 0.30277267666689867,
+              "zero_scaled_log_mae": 0.09203905513249852,
+              "log_rmse_root_mean_axis_mse": 0.1898250687567987
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.5980220428612179,
+              "log_mae": 0.03587222522357715,
+              "log_mse": 0.022335943219397913,
+              "raw_mae": 0.06484595878358246,
+              "positive_scaled_log_mae": 0.8109576712144156,
+              "zero_scaled_log_mae": 0.2150257527499769,
+              "log_rmse_root_mean_axis_mse": 0.14945214357578787
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.2832917511880308,
+              "log_mae": 0.04991283189440645,
+              "log_mse": 0.03273733957392098,
+              "raw_mae": 0.2663754737085361,
+              "positive_scaled_log_mae": 0.42506318337619414,
+              "zero_scaled_log_mae": 0.1145987452280123,
+              "log_rmse_root_mean_axis_mse": 0.18093462790168435
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.201520176087654,
+              "log_mae": 0.06220215770925772,
+              "log_mse": 0.04836977900298603,
+              "raw_mae": 0.37879708514187665,
+              "positive_scaled_log_mae": 0.32889007961025063,
+              "zero_scaled_log_mae": 0.09497140437332609,
+              "log_rmse_root_mean_axis_mse": 0.21993130519093007
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.6367163137969778,
+              "log_mae": 0.042841592254522144,
+              "log_mse": 0.026203491982134064,
+              "raw_mae": 0.0785551715058225,
+              "positive_scaled_log_mae": 0.8483652082792732,
+              "zero_scaled_log_mae": 0.23342210425529122,
+              "log_rmse_root_mean_axis_mse": 0.1618749269718262
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.3062465193866891,
+              "log_mae": 0.05754319810785076,
+              "log_mse": 0.04303564576267407,
+              "raw_mae": 0.3065463572615428,
+              "positive_scaled_log_mae": 0.4538974635145609,
+              "zero_scaled_log_mae": 0.12036768660019544,
+              "log_rmse_root_mean_axis_mse": 0.20745034529417894
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.18355327847469688,
+            "candidate": 0.201520176087654,
+            "relative_improvement": -0.09788382840262844,
+            "relative_improvement_95_interval": [
+              -0.12942590549767294,
+              -0.06495415062147344
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.01198363255821976,
+              0.02388381731872508
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.054362319923894606,
+            "candidate": 0.06220215770925772,
+            "relative_improvement": -0.14421455516134385,
+            "relative_improvement_95_interval": [
+              -0.19747409040931255,
+              -0.09709882733011112
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.005049819398826391,
+              0.011292245211340752
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": 0.018292469947467773,
+          "zero_delta_contribution": -0.0003255723345106251
+        },
+        "baseline_path": "output\\v9_r9\\tf192_mae_lr3e4_60\\completion_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\completion_predictions.parquet",
+        "baseline_sha256": "fa0d17cf270746ca4891f79cea382965ea0c11821ef611aae7f87f6d47d10658",
+        "candidate_sha256": "5b16873b177c389c374c7f299679e5cde77ee1bfe918850f5c378c967717537f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "name_only": {
+        "task": "name_only",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.42641131035686697,
+              "log_mae": 0.1541900437436112,
+              "log_mse": 0.17496083659417425,
+              "raw_mae": 0.9778876179299684,
+              "positive_scaled_log_mae": 0.5522157036936451,
+              "zero_scaled_log_mae": 0.38518276759303793,
+              "log_rmse_root_mean_axis_mse": 0.41828320142479336
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.7497155064723775,
+              "log_mae": 0.04983308558108432,
+              "log_mse": 0.028504111958362825,
+              "raw_mae": 0.08656052284671976,
+              "positive_scaled_log_mae": 0.9155483117873001,
+              "zero_scaled_log_mae": 0.4852551653273209,
+              "log_rmse_root_mean_axis_mse": 0.16883160829170238
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.5042117853579257,
+              "log_mae": 0.1290774067526288,
+              "log_mse": 0.13971723975667952,
+              "raw_mae": 0.7633971405035183,
+              "positive_scaled_log_mae": 0.6396486842509417,
+              "zero_scaled_log_mae": 0.403539242917078,
+              "log_rmse_root_mean_axis_mse": 0.3737876934259333
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.4328892271380505,
+              "log_mae": 0.14710764234678023,
+              "log_mse": 0.15267993764413917,
+              "raw_mae": 0.8537212438369387,
+              "positive_scaled_log_mae": 0.5434517344363939,
+              "zero_scaled_log_mae": 0.44658702417463053,
+              "log_rmse_root_mean_axis_mse": 0.39074280242141274
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8364580641903583,
+              "log_mae": 0.05683143027294284,
+              "log_mse": 0.0347706863794347,
+              "raw_mae": 0.10485749724228083,
+              "positive_scaled_log_mae": 0.9498466949203599,
+              "zero_scaled_log_mae": 0.5886370379023609,
+              "log_rmse_root_mean_axis_mse": 0.18646899575917358
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.5300047226853974,
+              "log_mae": 0.12538342018997442,
+              "log_mse": 0.12430605364995895,
+              "raw_mae": 0.6735133903783312,
+              "positive_scaled_log_mae": 0.6412473131624821,
+              "zero_scaled_log_mae": 0.47264353556847466,
+              "log_rmse_root_mean_axis_mse": 0.3525706363978131
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.42641131035686697,
+            "candidate": 0.4328892271380505,
+            "relative_improvement": -0.015191709562680566,
+            "relative_improvement_95_interval": [
+              -0.04296305467495539,
+              0.01363567389485393
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.005916385827233824,
+              0.018223629349942864
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.1541900437436112,
+            "candidate": 0.14710764234678023,
+            "relative_improvement": 0.045932935907377126,
+            "relative_improvement_95_interval": [
+              -0.0003011850816865489,
+              0.09076375372033114
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.014612800662664821,
+              4.5459276433903586e-05
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": -0.002077969087108173,
+          "zero_delta_contribution": 0.00855588586829183
+        },
+        "baseline_path": "output\\v9_r9\\tf192_mae_lr3e4_60\\name_only_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\name_only_predictions.parquet",
+        "baseline_sha256": "b038e25b3105cb2a9f07d2d18ad10f7aefeaaa7b66913bb96813611579f58da8",
+        "candidate_sha256": "25b30b63ad722d24409b43b8dc34ea4bb1b3cdfe562a3e870759c59585e97b32",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "retrieval": {
+        "comparisons": {
+          "0.3": {
+            "mrr": {
+              "baseline": 0.0033814617461426833,
+              "candidate": 0.003038752250387634,
+              "candidate_minus_baseline": -0.00034270949575504895,
+              "difference_95_interval": [
+                -0.0013630781445822609,
+                0.0006420749086889524
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0004645401052957572,
+              "candidate": 0.0006968101579436358,
+              "candidate_minus_baseline": 0.0002322700526478786,
+              "difference_95_interval": [
+                -0.0005419634561783834,
+                0.0010839269123567668
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.0034517910601837517,
+              "candidate": 0.0025678744709404355,
+              "candidate_minus_baseline": -0.0008839165892433159,
+              "difference_95_interval": [
+                -0.002794176473624445,
+                0.0008389142665427893
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.006780995148136679,
+              "candidate": 0.004516362134819861,
+              "candidate_minus_baseline": -0.0022646330133168162,
+              "difference_95_interval": [
+                -0.004607011974811603,
+                0.0002259794053886649
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          },
+          "1.0": {
+            "mrr": {
+              "baseline": 0.0057203712205179435,
+              "candidate": 0.0051479802338452165,
+              "candidate_minus_baseline": -0.0005723909866727254,
+              "difference_95_interval": [
+                -0.001915355113672208,
+                0.0006021553845030256
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0010225669957686884,
+              "candidate": 0.0010343206393982134,
+              "candidate_minus_baseline": 1.1753643629525142e-05,
+              "difference_95_interval": [
+                -0.0009875999059708509,
+                0.0010584156088387395
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.006002753710793203,
+              "candidate": 0.004098663442810129,
+              "candidate_minus_baseline": -0.0019040902679830747,
+              "difference_95_interval": [
+                -0.004172753374974813,
+                0.0001481798643293704
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.010603465645778763,
+              "candidate": 0.00850963798777621,
+              "candidate_minus_baseline": -0.002093827658002552,
+              "difference_95_interval": [
+                -0.005216099133588555,
+                0.000661755322721471
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          }
+        },
+        "hashes": {
+          "baseline": {
+            "ranks": "0210192fd9bc1fe29ea9cd29126c6587b2489f847a9a258dc9a92cbb38bc0408",
+            "metrics": "b94a31ebc27cff87bd50dd52eb6769d06b9723ef81a94372e816a9858a9949dd"
+          },
+          "candidate": {
+            "ranks": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+            "metrics": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe"
+          }
+        },
+        "baseline": "output\\v9_r9\\tf192_mae_lr3e4_60\\retrieval",
+        "candidate": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\retrieval",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "code_sha256": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Compare models only within the same visibility fraction. Fractions have different eligible query populations and are not a controlled visibility effect. Exact-name relevance only; no confirmed alias map."
+      }
+    },
+    "rf32": {
+      "completion": {
+        "task": "completion",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.18903093786773026,
+              "log_mae": 0.05627006176979684,
+              "log_mse": 0.03253087678269585,
+              "raw_mae": 0.32121895772892234,
+              "positive_scaled_log_mae": 0.24808596532353497,
+              "zero_scaled_log_mae": 0.16864525209083037,
+              "log_rmse_root_mean_axis_mse": 0.18036318023004544
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.6741957098906614,
+              "log_mae": 0.03645243686377518,
+              "log_mse": 0.020334445894453865,
+              "raw_mae": 0.06598601873341091,
+              "positive_scaled_log_mae": 0.7740174077748058,
+              "zero_scaled_log_mae": 0.5905083882968994,
+              "log_rmse_root_mean_axis_mse": 0.1425988986439021
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.3057818188358153,
+              "log_mae": 0.051501114599898576,
+              "log_mse": 0.02959590678285153,
+              "raw_mae": 0.2597992665267939,
+              "positive_scaled_log_mae": 0.374647007624643,
+              "zero_scaled_log_mae": 0.24602843092152943,
+              "log_rmse_root_mean_axis_mse": 0.1720346092588684
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.201520176087654,
+              "log_mae": 0.06220215770925772,
+              "log_mse": 0.04836977900298603,
+              "raw_mae": 0.37879708514187665,
+              "positive_scaled_log_mae": 0.32889007961025063,
+              "zero_scaled_log_mae": 0.09497140437332609,
+              "log_rmse_root_mean_axis_mse": 0.21993130519093007
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.6367163137969778,
+              "log_mae": 0.042841592254522144,
+              "log_mse": 0.026203491982134064,
+              "raw_mae": 0.0785551715058225,
+              "positive_scaled_log_mae": 0.8483652082792732,
+              "zero_scaled_log_mae": 0.23342210425529122,
+              "log_rmse_root_mean_axis_mse": 0.1618749269718262
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.3062465193866891,
+              "log_mae": 0.05754319810785076,
+              "log_mse": 0.04303564576267407,
+              "raw_mae": 0.3065463572615428,
+              "positive_scaled_log_mae": 0.4538974635145609,
+              "zero_scaled_log_mae": 0.12036768660019544,
+              "log_rmse_root_mean_axis_mse": 0.20745034529417894
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.18903093786773026,
+            "candidate": 0.201520176087654,
+            "relative_improvement": -0.0660698103749704,
+            "relative_improvement_95_interval": [
+              -0.09954788987801619,
+              -0.03281494873978745
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.006330709035067597,
+              0.018861862885539052
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.05627006176979684,
+            "candidate": 0.06220215770925772,
+            "relative_improvement": -0.1054218842646617,
+            "relative_improvement_95_interval": [
+              -0.1575443700213607,
+              -0.059454670257466195
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.0032444430154830012,
+              0.00913593656101613
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": 0.03532845952651561,
+          "zero_delta_contribution": -0.022839221306591856
+        },
+        "baseline_path": "output\\v9_r8\\rf400leaf1half_name32\\completion_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\completion_predictions.parquet",
+        "baseline_sha256": "20cc533ae4903ef6924efb3dfafa5e2385e6413b0fc4cded01dc004a4720461b",
+        "candidate_sha256": "5b16873b177c389c374c7f299679e5cde77ee1bfe918850f5c378c967717537f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "name_only": {
+        "task": "name_only",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.6595176645194242,
+              "log_mae": 0.2138239776797923,
+              "log_mse": 0.21824604496191236,
+              "raw_mae": 1.1349403447297957,
+              "positive_scaled_log_mae": 0.6955649880886453,
+              "zero_scaled_log_mae": 0.7307415845387772,
+              "log_rmse_root_mean_axis_mse": 0.46716811209875225
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8892396667222152,
+              "log_mae": 0.048476077284775716,
+              "log_mse": 0.02590032112390925,
+              "raw_mae": 0.0826386395170068,
+              "positive_scaled_log_mae": 0.9582501878385833,
+              "zero_scaled_log_mae": 0.760860249760542,
+              "log_rmse_root_mean_axis_mse": 0.1609357670746601
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.7147983602366735,
+              "log_mae": 0.17403437598045676,
+              "log_mse": 0.17195964082977258,
+              "raw_mae": 0.8817126616571993,
+              "positive_scaled_log_mae": 0.7587780040712506,
+              "zero_scaled_log_mae": 0.7362663101120003,
+              "log_rmse_root_mean_axis_mse": 0.4146801669115278
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.4328892271380505,
+              "log_mae": 0.14710764234678023,
+              "log_mse": 0.15267993764413917,
+              "raw_mae": 0.8537212438369387,
+              "positive_scaled_log_mae": 0.5434517344363939,
+              "zero_scaled_log_mae": 0.44658702417463053,
+              "log_rmse_root_mean_axis_mse": 0.39074280242141274
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8364580641903583,
+              "log_mae": 0.05683143027294284,
+              "log_mse": 0.0347706863794347,
+              "raw_mae": 0.10485749724228083,
+              "positive_scaled_log_mae": 0.9498466949203599,
+              "zero_scaled_log_mae": 0.5886370379023609,
+              "log_rmse_root_mean_axis_mse": 0.18646899575917358
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.5300047226853974,
+              "log_mae": 0.12538342018997442,
+              "log_mse": 0.12430605364995895,
+              "raw_mae": 0.6735133903783312,
+              "positive_scaled_log_mae": 0.6412473131624821,
+              "zero_scaled_log_mae": 0.47264353556847466,
+              "log_rmse_root_mean_axis_mse": 0.3525706363978131
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.6595176645194242,
+            "candidate": 0.4328892271380505,
+            "relative_improvement": 0.34362754718103383,
+            "relative_improvement_95_interval": [
+              0.3211792329825489,
+              0.36719105034809396
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.2447959622878613,
+              -0.21000569209848702
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.2138239776797923,
+            "candidate": 0.14710764234678023,
+            "relative_improvement": 0.3120152195135092,
+            "relative_improvement_95_interval": [
+              0.27159454241058656,
+              0.3452947781050676
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.07427748744491879,
+              -0.057844440734395694
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": -0.12860836722937208,
+          "zero_delta_contribution": -0.09802007015200151
+        },
+        "baseline_path": "output\\v9_r8\\rf400leaf1half_name32\\name_only_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\name_only_predictions.parquet",
+        "baseline_sha256": "dbf9320f153dbb769555bc73d0efd34683dbfe5d6cc31c3073e830ceae47b442",
+        "candidate_sha256": "25b30b63ad722d24409b43b8dc34ea4bb1b3cdfe562a3e870759c59585e97b32",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "retrieval": {
+        "comparisons": {
+          "0.3": {
+            "mrr": {
+              "baseline": 0.0014765006085797694,
+              "candidate": 0.003038752250387634,
+              "candidate_minus_baseline": 0.0015622516418078646,
+              "difference_95_interval": [
+                0.0006925126040852477,
+                0.0024745059527279917
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0003096934035305048,
+              "candidate": 0.0006968101579436358,
+              "candidate_minus_baseline": 0.000387116754413131,
+              "difference_95_interval": [
+                -0.0003096934035305048,
+                0.001161350263239393
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.0012387736141220192,
+              "candidate": 0.0025678744709404355,
+              "candidate_minus_baseline": 0.0013291008568184163,
+              "difference_95_interval": [
+                -7.774594817797046e-05,
+                0.0026588469082275204
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.001987199339320739,
+              "candidate": 0.004516362134819861,
+              "candidate_minus_baseline": 0.0025291627954991225,
+              "difference_95_interval": [
+                0.0008381077733044286,
+                0.004336675441313099
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          },
+          "1.0": {
+            "mrr": {
+              "baseline": 0.002527706181449982,
+              "candidate": 0.0051479802338452165,
+              "candidate_minus_baseline": 0.0026202740523952363,
+              "difference_95_interval": [
+                0.0016810628161816957,
+                0.003617029417459953
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0001763046544428773,
+              "candidate": 0.0010343206393982134,
+              "candidate_minus_baseline": 0.0008580159849553361,
+              "difference_95_interval": [
+                0.000164257169722614,
+                0.0016810648801128347
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.0015659211498421652,
+              "candidate": 0.004098663442810129,
+              "candidate_minus_baseline": 0.0025327422929679625,
+              "difference_95_interval": [
+                0.0008015397273154678,
+                0.0041939099335079584
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.004457317482705353,
+              "candidate": 0.00850963798777621,
+              "candidate_minus_baseline": 0.004052320505070857,
+              "difference_95_interval": [
+                0.0015265716300624623,
+                0.0065343961985358315
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          }
+        },
+        "hashes": {
+          "baseline": {
+            "ranks": "40f1ce485aed110e2b09cdef5e5b7567553819f6dd581b67cc6fa8abd9794e19",
+            "metrics": "721bd6a5fa18be681874a78d160d70649e839e0c9223094d27ac2fa89a4593f5"
+          },
+          "candidate": {
+            "ranks": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+            "metrics": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe"
+          }
+        },
+        "baseline": "output\\v9_r8\\rf400leaf1half_name32\\retrieval",
+        "candidate": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\retrieval",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "code_sha256": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Compare models only within the same visibility fraction. Fractions have different eligible query populations and are not a controlled visibility effect. Exact-name relevance only; no confirmed alias map."
+      }
+    },
+    "xgb32": {
+      "completion": {
+        "task": "completion",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.17448679598858194,
+              "log_mae": 0.05259285880257651,
+              "log_mse": 0.03184822971765499,
+              "raw_mae": 0.2985750667734946,
+              "positive_scaled_log_mae": 0.23031014685456247,
+              "zero_scaled_log_mae": 0.1465882516008185,
+              "log_rmse_root_mean_axis_mse": 0.17846072317923345
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.6742731558741516,
+              "log_mae": 0.037618341843321135,
+              "log_mse": 0.01992605438763975,
+              "raw_mae": 0.06671812687378108,
+              "positive_scaled_log_mae": 0.7708773770639519,
+              "zero_scaled_log_mae": 0.6242931439254573,
+              "log_rmse_root_mean_axis_mse": 0.14115967691816153
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.2947562408808313,
+              "log_mae": 0.048989365416659436,
+              "log_mse": 0.028979257044656672,
+              "raw_mae": 0.2427806159954887,
+              "positive_scaled_log_mae": 0.36039317016698236,
+              "zero_scaled_log_mae": 0.23421459279646237,
+              "log_rmse_root_mean_axis_mse": 0.17023294935075486
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.201520176087654,
+              "log_mae": 0.06220215770925772,
+              "log_mse": 0.04836977900298603,
+              "raw_mae": 0.37879708514187665,
+              "positive_scaled_log_mae": 0.32889007961025063,
+              "zero_scaled_log_mae": 0.09497140437332609,
+              "log_rmse_root_mean_axis_mse": 0.21993130519093007
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.6367163137969778,
+              "log_mae": 0.042841592254522144,
+              "log_mse": 0.026203491982134064,
+              "raw_mae": 0.0785551715058225,
+              "positive_scaled_log_mae": 0.8483652082792732,
+              "zero_scaled_log_mae": 0.23342210425529122,
+              "log_rmse_root_mean_axis_mse": 0.1618749269718262
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.3062465193866891,
+              "log_mae": 0.05754319810785076,
+              "log_mse": 0.04303564576267407,
+              "raw_mae": 0.3065463572615428,
+              "positive_scaled_log_mae": 0.4538974635145609,
+              "zero_scaled_log_mae": 0.12036768660019544,
+              "log_rmse_root_mean_axis_mse": 0.20745034529417894
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.17448679598858194,
+            "candidate": 0.201520176087654,
+            "relative_improvement": -0.15493080691814098,
+            "relative_improvement_95_interval": [
+              -0.1887632574744706,
+              -0.1187664974056554
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.02103964615863495,
+              0.03324163485016888
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.05259285880257651,
+            "candidate": 0.06220215770925772,
+            "relative_improvement": -0.18271109662915785,
+            "relative_improvement_95_interval": [
+              -0.25113878264407763,
+              -0.11043023608016038
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.00601858174118666,
+              0.013265453563060825
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": 0.044120742853360755,
+          "zero_delta_contribution": -0.017087362754288665
+        },
+        "baseline_path": "output\\v9_r8\\xgb800d10_name32\\completion_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\completion_predictions.parquet",
+        "baseline_sha256": "24ed9ccc27797314e2e95f2b9f0c58ef21e0f410562d0c44350312faf99b1ee7",
+        "candidate_sha256": "5b16873b177c389c374c7f299679e5cde77ee1bfe918850f5c378c967717537f",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "name_only": {
+        "task": "name_only",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.656147504703501,
+              "log_mae": 0.21371924251789032,
+              "log_mse": 0.22784861096969813,
+              "raw_mae": 1.173380660210836,
+              "positive_scaled_log_mae": 0.693837533473415,
+              "zero_scaled_log_mae": 0.7183897251663349,
+              "log_rmse_root_mean_axis_mse": 0.47733490441167
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8515446560890014,
+              "log_mae": 0.04734936090604431,
+              "log_mse": 0.024287006225065196,
+              "raw_mae": 0.0807821081385967,
+              "positive_scaled_log_mae": 0.9197095002548549,
+              "zero_scaled_log_mae": 0.7744981188335315,
+              "log_rmse_root_mean_axis_mse": 0.15584288955568423
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.7031682095823648,
+              "log_mae": 0.17368370950969209,
+              "log_mse": 0.1788631980632356,
+              "raw_mae": 0.9104558749528106,
+              "positive_scaled_log_mae": 0.7481917500785744,
+              "zero_scaled_log_mae": 0.7286817973774775,
+              "log_rmse_root_mean_axis_mse": 0.4229222127805959
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.4328892271380505,
+              "log_mae": 0.14710764234678023,
+              "log_mse": 0.15267993764413917,
+              "raw_mae": 0.8537212438369387,
+              "positive_scaled_log_mae": 0.5434517344363939,
+              "zero_scaled_log_mae": 0.44658702417463053,
+              "log_rmse_root_mean_axis_mse": 0.39074280242141274
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8364580641903583,
+              "log_mae": 0.05683143027294284,
+              "log_mse": 0.0347706863794347,
+              "raw_mae": 0.10485749724228083,
+              "positive_scaled_log_mae": 0.9498466949203599,
+              "zero_scaled_log_mae": 0.5886370379023609,
+              "log_rmse_root_mean_axis_mse": 0.18646899575917358
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.5300047226853974,
+              "log_mae": 0.12538342018997442,
+              "log_mse": 0.12430605364995895,
+              "raw_mae": 0.6735133903783312,
+              "positive_scaled_log_mae": 0.6412473131624821,
+              "zero_scaled_log_mae": 0.47264353556847466,
+              "log_rmse_root_mean_axis_mse": 0.3525706363978131
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.656147504703501,
+            "candidate": 0.4328892271380505,
+            "relative_improvement": 0.34025623196774346,
+            "relative_improvement_95_interval": [
+              0.3171717852009432,
+              0.3643325959873342
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.24092346370797751,
+              -0.20639024506603693
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.21371924251789032,
+            "candidate": 0.14710764234678023,
+            "relative_improvement": 0.31167806598198133,
+            "relative_improvement_95_interval": [
+              0.27217757420382077,
+              0.3442760172961808
+            ],
+            "candidate_minus_baseline_95_interval": [
+              -0.07413418341347842,
+              -0.057624807836276146
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": -0.1268488843926696,
+          "zero_delta_contribution": -0.0964093931727809
+        },
+        "baseline_path": "output\\v9_r8\\xgb800d10_name32\\name_only_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\name_only_predictions.parquet",
+        "baseline_sha256": "b35a343380637ca45d78bdea37aee8b729be304f9c5106cb58a08b0e55c8ef5b",
+        "candidate_sha256": "25b30b63ad722d24409b43b8dc34ea4bb1b3cdfe562a3e870759c59585e97b32",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "retrieval": {
+        "comparisons": {
+          "0.3": {
+            "mrr": {
+              "baseline": 0.001558927286344856,
+              "candidate": 0.003038752250387634,
+              "candidate_minus_baseline": 0.0014798249640427781,
+              "difference_95_interval": [
+                0.0006628151086091172,
+                0.002366563054438433
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0003096934035305048,
+              "candidate": 0.0006968101579436358,
+              "candidate_minus_baseline": 0.000387116754413131,
+              "difference_95_interval": [
+                -0.0003096934035305048,
+                0.001161350263239393
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.0014710436667698978,
+              "candidate": 0.0025678744709404355,
+              "candidate_minus_baseline": 0.0010968308041705377,
+              "difference_95_interval": [
+                -0.0004258284298544441,
+                0.0025178718901620713
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.0018194487457417158,
+              "candidate": 0.004516362134819861,
+              "candidate_minus_baseline": 0.0026969133890781456,
+              "difference_95_interval": [
+                0.0008129451842675751,
+                0.004645723650252916
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          },
+          "1.0": {
+            "mrr": {
+              "baseline": 0.0034174356387993913,
+              "candidate": 0.0051479802338452165,
+              "candidate_minus_baseline": 0.001730544595045827,
+              "difference_95_interval": [
+                0.0006490160958880133,
+                0.002888306382989999
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.0004231311706629055,
+              "candidate": 0.0010343206393982134,
+              "candidate_minus_baseline": 0.0006111894687353079,
+              "difference_95_interval": [
+                -0.00016455101081335214,
+                0.0015279736718382699
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.002468265162200282,
+              "candidate": 0.004098663442810129,
+              "candidate_minus_baseline": 0.0016303982806098463,
+              "difference_95_interval": [
+                -0.0001564493921687153,
+                0.0034992276177043453
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.006274766606219357,
+              "candidate": 0.00850963798777621,
+              "candidate_minus_baseline": 0.002234871381556854,
+              "difference_95_interval": [
+                -0.0005460826784874739,
+                0.005069472429310227
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          }
+        },
+        "hashes": {
+          "baseline": {
+            "ranks": "65e6fd77fcb448bb1841073b9803543121f9712054cc5d9b235551a926c7df39",
+            "metrics": "c101bdcaf7d47aedeaf4c445ebece3306118fa507570f55094c9b54d2006d8a4"
+          },
+          "candidate": {
+            "ranks": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+            "metrics": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe"
+          }
+        },
+        "baseline": "output\\v9_r8\\xgb800d10_name32\\retrieval",
+        "candidate": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\retrieval",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "code_sha256": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Compare models only within the same visibility fraction. Fractions have different eligible query populations and are not a controlled visibility effect. Exact-name relevance only; no confirmed alias map."
+      }
+    },
+    "knn32": {
+      "name_only": {
+        "task": "name_only",
+        "scores": {
+          "baseline": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.26225993622384663,
+              "log_mae": 0.08908805509299526,
+              "log_mse": 0.0681757013730448,
+              "raw_mae": 0.5027824548575578,
+              "positive_scaled_log_mae": 0.3381071284698304,
+              "zero_scaled_log_mae": 0.2465783786429552,
+              "log_rmse_root_mean_axis_mse": 0.26110477087377165
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.7024500879122328,
+              "log_mae": 0.04082336538172365,
+              "log_mse": 0.021816078574561307,
+              "raw_mae": 0.07193906057899584,
+              "positive_scaled_log_mae": 0.7943389626571851,
+              "zero_scaled_log_mae": 0.6119737611831139,
+              "log_rmse_root_mean_axis_mse": 0.14770266949030172
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.3681880475927096,
+              "log_mae": 0.07747355756889246,
+              "log_mse": 0.05701964241084287,
+              "raw_mae": 0.3991035631862461,
+              "positive_scaled_log_mae": 0.44789553776625257,
+              "zero_scaled_log_mae": 0.31360356715623877,
+              "log_rmse_root_mean_axis_mse": 0.23878786068567823
+            }
+          },
+          "candidate": {
+            "complete_test_opened": false,
+            "profile_axis_jobs": 323809,
+            "candidate_axis_cells": 268837,
+            "nutrition": {
+              "axes": 142,
+              "scaled_log_mae": 0.4328892271380505,
+              "log_mae": 0.14710764234678023,
+              "log_mse": 0.15267993764413917,
+              "raw_mae": 0.8537212438369387,
+              "positive_scaled_log_mae": 0.5434517344363939,
+              "zero_scaled_log_mae": 0.44658702417463053,
+              "log_rmse_root_mean_axis_mse": 0.39074280242141274
+            },
+            "food_metabolome": {
+              "axes": 45,
+              "scaled_log_mae": 0.8364580641903583,
+              "log_mae": 0.05683143027294284,
+              "log_mse": 0.0347706863794347,
+              "raw_mae": 0.10485749724228083,
+              "positive_scaled_log_mae": 0.9498466949203599,
+              "zero_scaled_log_mae": 0.5886370379023609,
+              "log_rmse_root_mean_axis_mse": 0.18646899575917358
+            },
+            "all": {
+              "axes": 187,
+              "scaled_log_mae": 0.5300047226853974,
+              "log_mae": 0.12538342018997442,
+              "log_mse": 0.12430605364995895,
+              "raw_mae": 0.6735133903783312,
+              "positive_scaled_log_mae": 0.6412473131624821,
+              "zero_scaled_log_mae": 0.47264353556847466,
+              "log_rmse_root_mean_axis_mse": 0.3525706363978131
+            }
+          }
+        },
+        "paired_intervals": {
+          "scaled_log_mae": {
+            "metric": "scaled_log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.26225993622384663,
+            "candidate": 0.4328892271380505,
+            "relative_improvement": -0.6506113490722683,
+            "relative_improvement_95_interval": [
+              -0.7055415424495124,
+              -0.5977876581337287
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.1596529733345815,
+              0.18179551577545927
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          },
+          "log_mae": {
+            "metric": "log_mae",
+            "group_count": 7344,
+            "repeats": 1000,
+            "seed": 20260922,
+            "valid_resamples": 1000,
+            "resamples_without_all_axis_support": 0,
+            "baseline": 0.08908805509299526,
+            "candidate": 0.14710764234678023,
+            "relative_improvement": -0.6512611280291254,
+            "relative_improvement_95_interval": [
+              -0.7621046777705901,
+              -0.5493406662624528
+            ],
+            "candidate_minus_baseline_95_interval": [
+              0.051758625747476576,
+              0.06529542899948039
+            ],
+            "scope": "validation group sampling uncertainty conditional on fitted models; excludes training seed variation and label validity"
+          }
+        },
+        "primary_change_decomposition": {
+          "positive_delta_contribution": 0.1341493034361713,
+          "zero_delta_contribution": 0.03647998747803263
+        },
+        "baseline_path": "output\\v9_r7\\exact_name_knn32\\nutrition_predictions.parquet",
+        "candidate_path": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\name_only_predictions.parquet",
+        "baseline_sha256": "af41ba8ad7e6fc46d5b9e17813c7c385985bad3c59b17e7079421778497aef06",
+        "candidate_sha256": "25b30b63ad722d24409b43b8dc34ea4bb1b3cdfe562a3e870759c59585e97b32",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "code_sha256": "b62e1d896173af58edce064614f9bedab7652fce13d118bbef52258120d56bbc",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Same frozen validation labels and weights. Intervals condition on selected models; seed variation and selection uncertainty are not included. Source-specific averages have different axis coverage."
+      },
+      "retrieval": {
+        "comparisons": {
+          "0.3": {
+            "mrr": {
+              "baseline": 0.034512396586601414,
+              "candidate": 0.003038752250387634,
+              "candidate_minus_baseline": -0.03147364433621378,
+              "difference_95_interval": [
+                -0.034027049809895356,
+                -0.02917889378348905
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.005148652833694642,
+              "candidate": 0.0006968101579436358,
+              "candidate_minus_baseline": -0.004451842675751006,
+              "difference_95_interval": [
+                -0.0063229069887478055,
+                -0.0028001445235883143
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.05479594645745157,
+              "candidate": 0.0025678744709404355,
+              "candidate_minus_baseline": -0.05222807198651113,
+              "difference_95_interval": [
+                -0.05759830614913458,
+                -0.04713348645951619
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.09672241147930213,
+              "candidate": 0.004516362134819861,
+              "candidate_minus_baseline": -0.0922060493444823,
+              "difference_95_interval": [
+                -0.09888884587591618,
+                -0.08546221740476928
+              ],
+              "group_count": 6458,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          },
+          "1.0": {
+            "mrr": {
+              "baseline": 0.06887887468372954,
+              "candidate": 0.0051479802338452165,
+              "candidate_minus_baseline": -0.06373089444988433,
+              "difference_95_interval": [
+                -0.06726114149727319,
+                -0.060597626210095366
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_1": {
+              "baseline": 0.013005126827411735,
+              "candidate": 0.0010343206393982134,
+              "candidate_minus_baseline": -0.011970806188013522,
+              "difference_95_interval": [
+                -0.014633398258221953,
+                -0.009506430922157298
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_5": {
+              "baseline": 0.1175731524391609,
+              "candidate": 0.004098663442810129,
+              "candidate_minus_baseline": -0.11347448899635076,
+              "difference_95_interval": [
+                -0.12115530760964471,
+                -0.10653469283811316
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            },
+            "recall_at_10": {
+              "baseline": 0.19357154051089173,
+              "candidate": 0.00850963798777621,
+              "candidate_minus_baseline": -0.1850619025231155,
+              "difference_95_interval": [
+                -0.19455364418922247,
+                -0.176731079432243
+              ],
+              "group_count": 7090,
+              "repeats": 1000,
+              "seed": 20260922,
+              "higher_is_better": true,
+              "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+            }
+          }
+        },
+        "hashes": {
+          "baseline": {
+            "ranks": "6e7474b34879e4fc9be443f7928c697b9db9e84444b57f0280743fd4aa5870cd",
+            "metrics": "6277890fc61064fb7a77da99b586855ff3655a9f039eb2b47a683d949b8d93d3"
+          },
+          "candidate": {
+            "ranks": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+            "metrics": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe"
+          }
+        },
+        "baseline": "output\\v9_r7\\exact_name_knn32",
+        "candidate": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\retrieval",
+        "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+        "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+        "query_profiles": {
+          "0.3": 8610,
+          "1.0": 10479
+        },
+        "code_sha256": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+        "complete_test_opened": false,
+        "confirmation": false,
+        "scope": "Compare models only within the same visibility fraction. Fractions have different eligible query populations and are not a controlled visibility effect. Exact-name relevance only; no confirmed alias map."
+      }
+    }
+  },
+  "capacity_group_controls_verified": true,
+  "same_seed_parent_initialization_exact": false,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "fixed_denominator_capacity256_minus_mae": {
+    "positive_under": 0.01619420115232069,
+    "positive_over": 0.0020982687951471082,
+    "explicit_zero": -0.0003255723345106029
+  },
+  "eligible_for_separately_registered_seed_confirmation": false,
+  "seed_confirmation_performed": false,
+  "scientific_confirmation": false,
+  "visual_review_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "input_hashes": {
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/config.json": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+    "reports/v9_r9_capacity256_functional_v1/verification.json": "da66409ecaf4445d9b70893b06cf3b9804d2bf0c9d17ea2048179378732c692f",
+    "reports/v9_r9_capacity256_lr3e4_60_audit_v1/method_verification.json": "a15d6116f0b29153c4d8cc8054102d9c9f43c63d968cfaea79dabfb4bfc1cd4b",
+    "output/v9_r9/tf192_mae_lr3e4_60/run_manifest.json": "a091f5a5f4ba65449c3038d94f5bbe37d309bba0325d9baf14d5aede3feb25a8",
+    "reports/v9_r9_tf192_mae_lr3e4_60_audit_v1/verification.json": "767b75d2241db5a3834bf7db734369aa8564f1fa4ba128ea02511694fb724197",
+    "output/v9_r9/tf192_mae_lr3e4_60/history.csv": "78028e33bcd99cc3fbf1fe7effcd3c542089b6b438a90ec921244d564371606f",
+    "output/v9_r9/tf192_mae_lr3e4_60/metrics.json": "350689b9aae0e234b0504315964692aab834b43f4852f323b3251d1dc902d7e7",
+    "output/v9_r9/tf192_mae_lr3e4_60/retrieval/metrics.json": "b94a31ebc27cff87bd50dd52eb6769d06b9723ef81a94372e816a9858a9949dd",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/run_manifest.json": "a0ce6fd5c2694bf6791fe1fd18386d334cf2a587da11010d5b3f1bc4ba996fa5",
+    "reports/v9_r9_capacity256_lr3e4_60_audit_v1/verification.json": "d81601c44343b8585d7f1d7c42f9003726311ffbed03211eca89b70e538a2ae6",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/history.csv": "14bc251011b7a94ddc242867e622179f04b332c8be522bf680686f470900ecd9",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/metrics.json": "5fbaefb5e62ef9b1b32c067afb6e6d73af659881f921504858168b5724ad3d5b",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/retrieval/metrics.json": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe",
+    "reports/v9_r9_capacity256_vs_mae_parent_completion_v1/summary.json": "bf99bc508b096d42939f5cda4d0847cf992d2d16391a5a4f5bd4dfdaf110437d",
+    "reports/v9_r9_capacity256_vs_mae_parent_name_only_v1/summary.json": "bfb042c3d0d78c1c72da12b6fa57efa734c7966ca7c4efa9f053adec6d4b8367",
+    "reports/v9_r9_capacity256_vs_mae_parent_retrieval_v1/summary.json": "c1197bf708a998f2bd96124870a0feb7b5a30a88a91958bd58a5b054ab61f576",
+    "reports/v9_r9_capacity256_vs_rf32_completion_v1/summary.json": "9b586bb9ae844200a73eb249926019ac5242bd2d0143f9b74751245ebb3a1541",
+    "reports/v9_r9_capacity256_vs_rf32_name_only_v1/summary.json": "1bc8d478ed64592731d2fabd1188edf2acade0f15527ef841de51b66e2dd029c",
+    "reports/v9_r9_capacity256_vs_rf32_retrieval_v1/summary.json": "66820021007a51a39259cbd9fe8df89b94822322c7326cd6d044360943b36de1",
+    "reports/v9_r9_capacity256_vs_xgb32_completion_v1/summary.json": "ae80bbcb71e4541e8efcd2b409c146c127cc754e1a5b91101f977eab158c7909",
+    "reports/v9_r9_capacity256_vs_xgb32_name_only_v1/summary.json": "b505e350b89aba404595920927b2b0a8ae248f62e014bd2b34b690e4fecc5357",
+    "reports/v9_r9_capacity256_vs_xgb32_retrieval_v1/summary.json": "6a0f85f4eac21f53c4d52c9c83c9065a22b5c87dd91042862689854674e55765",
+    "reports/v9_r9_capacity256_vs_knn32_name_only_v1/summary.json": "a4936bae4baaf75dd0fafde636989e2c91a51d94206c0f87f7d15472786bd609",
+    "reports/v9_r9_capacity256_vs_knn32_retrieval_v1/summary.json": "cb7ad38fdbb7c6854c7ee6953b51715bbb94bff7df6f14e9e9f95316c50baa08",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/summary.json": "cdc1004d0c74e0b607045f79fa117e0a874c12b39fb458c5cb0947a7a0dbb61b",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/axis_signed_contributions.csv": "2a131a5d5de9769f6a64b15528aeda1bf075a96045c79b629fce394a3a5bb876",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/gap_decomposition.csv": "540ad535623647910071a9dd1f8b68884499c09bfed06c8d08eb4a29a89ad665",
+    "reports/v9_r9_tf192_lr3e4_rf32_gap_v1/fixed_denominator_partitions.csv": "550496ea8feb7b84630a4053554476e16121ef844634840af8c406a16c040996",
+    "reports/v9_r9_capacity256_rf32_gap_v1/summary.json": "c6243b836bb9d88beed94e43a229658c60a928df37db7a48ac4faf8e951a52ed",
+    "reports/v9_r9_capacity256_rf32_gap_v1/axis_signed_contributions.csv": "25c5db75eb07551c6474a4a72ccd62ee9fd4203ca7b355f9722338d208b27ec0",
+    "reports/v9_r9_capacity256_rf32_gap_v1/gap_decomposition.csv": "8c02e142cfb5f70c80c62adb5110340f89943b43ebf3b3838fc412998566412d",
+    "reports/v9_r9_capacity256_rf32_gap_v1/fixed_denominator_partitions.csv": "ca88339f9df3a126f2f14c6683c84dc6fb7e08b805f43c687ff2ed43581d98e6",
+    "reports/v9_r9_capacity256_lr3e4_60_audit_v1/recovery_verification.json": "48355e0ec28afb822bb7bea906d9245002a473265b6df515ff913803b0037d98",
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/recovery1/config.json": "c2580749ad52cc9d4c86ba60c93c57b4ee10bd13549eb0df3b7436a61560ca53",
+    "scripts/analyze_foodnutrigpt_r9_capacity256_recovery.py": "11769ca174ee6b07ef75e4cbc79ea4b6d829b15dac3072b79dea5ea91382f074",
+    "scripts/audit_foodnutrigpt_r9_capacity256_recovery.py": "008387187554c50bd1a80227b3e5c2154415361d8a3ff24ea8a0f0c6ec331d35",
+    "scripts/diagnose_foodnutrigpt_r9_capacity256_recovery_fit.py": "70917e829f82be89bc067f069c0f79b533fde9f9a185214cbb98208644e3be1b",
+    "scripts/review_foodnutrigpt_r9_capacity256_recovery_cases.py": "f48191d3f048d4273a5ee15b1732ee9977104a2f8aeb376c38fe07627713b3b8",
+    "scripts/report_foodnutrigpt_r9_capacity256_recovery.py": "c2b8d3765d7d516c6057544bf13cdf413c21e6e5e2e6d6fd8ef4342675e92278",
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/PLAN.md": "e8be913637e539c34dce6d4739c59ed60d5d20d269f28a062f216e1614f62d47",
+    "experiments/foodnutrigpt_v9_research/r9/PLAN.md": "b958d5f7c0c26092afe6088126874f74c03811f5c5b4a3f9c59575cb61d52b52",
+    "experiments/foodnutrigpt_v9_research/r9/source0_v1/decision.json": "da152142ae4f1585be0f9b2b4ed529468a848712161bc9073f6475e1eb0fc7bc",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json": "2afd3d3d1483505512bd1df2fb22e4b6713af2cfcb77de1e60ef744ec5397e0f",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171",
+    "reports/v9_r9_source0_analysis_v1/summary.json": "f0b95a81b941ef4e7848b90a17eefbd2aefff29a517950ab740be9f45dede965",
+    "reports/v9_r9_source0_fit_v1/summary.json": "3de2291ce081dcf608f6c0635ce646b59235de0bc8bf064e523e006b4b359649",
+    "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/run_manifest.json": "60403d9b24ac3dc5ff7e0c685354e6afea414bfd54b7df41a8f50df4cd305226",
+    "src/foodcomp/research_transformer_r9_capacity256.py": "bb484a14ac70ba57458779d7e219cde252da047466a3d9f731cae2001d9272bf",
+    "scripts/train_foodnutrigpt_v9_r9_capacity256.py": "23ece150251b29ffc9bcbaa5b1d48b3a6b5fbf33bd127ec3f5cf4cc0aeb2a295",
+    "scripts/verify_foodnutrigpt_r9_capacity256_functional.py": "f370a0ef439ff19c6cb44ac7ea9baf3c4cfe1b458291ebe2c8a25a7e21db298a",
+    "scripts/estimate_foodnutrigpt_r9_capacity256_runtime.py": "cd576c024fbaa2d78a25f82de77f95b955eb99524e53f21537b746cede12684f",
+    "scripts/audit_foodnutrigpt_r9_capacity256.py": "ad7b1750549877d0dabe691f0d840958e91a8637fef2b974a0e0ca5046d7a288",
+    "tests/test_research_transformer_r9_capacity256.py": "c06f8d1aeccf8b895f15936bce2ba1b0216e07ffb24a9032a912e49baf88cd68",
+    "src/foodcomp/research_completion_input.py": "1ed574a26694362ccd1dea8aecb30f54e23cdd615dce6d910eb56225e7c46f19",
+    "src/foodcomp/research_tree_prediction.py": "a2501be10400a6bef4077d248eccfefbb2428c26e54329e051bcec702ff25cfe",
+    "scripts/train_foodnutrigpt_v9_r1.py": "4e07e8cf3ecfab94deeb6bc082c00058986292814878331a7a9391570ee7501c",
+    "scripts/train_foodnutrigpt_v9_r8_completion.py": "24512db696ed317f6d1ebe71213d98604d4171f2ffd2ef567233c097c91c5147",
+    "scripts/run_foodnutrigpt_v9_r8_trees.py": "0df631acc577f3549d6ae084bd6a238376c915f305efd11cba8ba23d74bd9550",
+    "src/foodcomp/research_r0.py": "17d2e0223af54a27ce17605ce46acc6b05be8b921cfadab65a9944904daea3c1",
+    "src/foodcomp/research_r1.py": "295d8c540818bb2f1f896570efcea3200b22b5877d437289915e04ff616056af",
+    "src/foodcomp/research_neural.py": "a359e639cfb3e58be2ea321a346a6f62124d9a87035e4fbde7bf3569a1796546",
+    "src/foodcomp/research_name_projection.py": "765795f59db8f647a8ed01b65b4ec9c0d2a51c5ef1b414e8a77854139d885e59",
+    "src/foodcomp/research_inference.py": "ceba19ae5365b070dbfcfbdcc4ecaa4d35cad66ebdf900dcb634093cb3e807e4",
+    "src/foodcomp/research_auxiliary.py": "fcb4fc2799ae0325f91b69e7390ec5abde27de68976778fa513048a71eabba44",
+    "src/foodcomp/research_text.py": "34942904494d8494b681250b8448494f4564bd5b5e18ee07ee6de23f74526d0c",
+    "src/foodcomp/research_profile_retrieval.py": "8e6d4cd5301e539b7bc2bdb8d1d8f4bb9e6c520b3982c7efa635f571e5675d40",
+    "src/foodcomp/research_alignment.py": "9f270402e652af7fd0776a9c22ac7d76c51ae27b7950f68a5b433e33edf19e01",
+    "scripts/train_global_foodnutrigpt_v8_single_stage.py": "76d7071ace9ea62ecc90614fe8b59977683bbf875b788383d90fb27e95d962e5",
+    "scripts/train_global_foodnutrigpt_v9_source_calibrated.py": "9788a004063220a213ba8e52b5ee2191f0f95fa8862804850cd9de235d3a3d7d",
+    "scripts/evaluate_foodnutrigpt_name_neighbors.py": "06847a3e250ea10a6c20ed027f3187112eaf554baba0a6c82ec8fd33dbf0647e",
+    "scripts/evaluate_foodnutrigpt_v9_r0_retrieval.py": "2d16dd16f05c6e93a519de424c4ccb1117e82a290a099596f86ad9c5d6de06b7",
+    "src/foodcomp/research_transformer_r9.py": "7a95d97029d724e97b58fdb7a1211adeb9b473c243b1bd1fe33f7e5e153d5aa1",
+    "scripts/train_foodnutrigpt_v9_r9_transformer.py": "13006e9b64d7fe7e00249c5fadca66eaaea3f3e1d18644dd68caac6a67c1bd31",
+    "output/v9_r9/tf192_mae_lr3e4_60/best_model.pt": "bf96ea0abf4f68ab77d24adf4e043ffc01472d85ff067e7d8b7b26a5e4fb8c44",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/best_model.pt": "5017bca4ea3a0fbdeac3de0241667003b3a447536d56edbd6f245ee3a97eb229",
+    "output/v9_r9/tf192_mae_lr3e4_60/completion_predictions.parquet": "fa0d17cf270746ca4891f79cea382965ea0c11821ef611aae7f87f6d47d10658",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/completion_predictions.parquet": "5b16873b177c389c374c7f299679e5cde77ee1bfe918850f5c378c967717537f",
+    "output/v9_r9/tf192_mae_lr3e4_60/name_only_predictions.parquet": "b038e25b3105cb2a9f07d2d18ad10f7aefeaaa7b66913bb96813611579f58da8",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/name_only_predictions.parquet": "25b30b63ad722d24409b43b8dc34ea4bb1b3cdfe562a3e870759c59585e97b32",
+    "output/v9_r9/tf192_mae_lr3e4_60/retrieval/ranks.parquet": "0210192fd9bc1fe29ea9cd29126c6587b2489f847a9a258dc9a92cbb38bc0408",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/retrieval/ranks.parquet": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+    "output/v9_r8/rf400leaf1half_name32/completion_predictions.parquet": "20cc533ae4903ef6924efb3dfafa5e2385e6413b0fc4cded01dc004a4720461b",
+    "output/v9_r8/rf400leaf1half_name32/name_only_predictions.parquet": "dbf9320f153dbb769555bc73d0efd34683dbfe5d6cc31c3073e830ceae47b442",
+    "output/v9_r8/rf400leaf1half_name32/retrieval/ranks.parquet": "40f1ce485aed110e2b09cdef5e5b7567553819f6dd581b67cc6fa8abd9794e19",
+    "output/v9_r8/rf400leaf1half_name32/retrieval/metrics.json": "721bd6a5fa18be681874a78d160d70649e839e0c9223094d27ac2fa89a4593f5",
+    "output/v9_r8/xgb800d10_name32/completion_predictions.parquet": "24ed9ccc27797314e2e95f2b9f0c58ef21e0f410562d0c44350312faf99b1ee7",
+    "output/v9_r8/xgb800d10_name32/name_only_predictions.parquet": "b35a343380637ca45d78bdea37aee8b729be304f9c5106cb58a08b0e55c8ef5b",
+    "output/v9_r8/xgb800d10_name32/retrieval/ranks.parquet": "65e6fd77fcb448bb1841073b9803543121f9712054cc5d9b235551a926c7df39",
+    "output/v9_r8/xgb800d10_name32/retrieval/metrics.json": "c101bdcaf7d47aedeaf4c445ebece3306118fa507570f55094c9b54d2006d8a4",
+    "output/v9_r7/exact_name_knn32/nutrition_predictions.parquet": "af41ba8ad7e6fc46d5b9e17813c7c385985bad3c59b17e7079421778497aef06",
+    "output/v9_r7/exact_name_knn32/ranks.parquet": "6e7474b34879e4fc9be443f7928c697b9db9e84444b57f0280743fd4aa5870cd",
+    "output/v9_r7/exact_name_knn32/metrics.json": "6277890fc61064fb7a77da99b586855ff3655a9f039eb2b47a683d949b8d93d3"
+  },
+  "script_sha256": "f17da76833877da6dc4563c906021762ea36e40ca1657be4374effc6a183a17a",
+  "figure_hashes": {
+    "learning_curves.png": "a3e38febf1172fe19fa53a2002ca0a01482365b1828a2d1049e9c364145936b7",
+    "learning_curves.svg": "2b827681afcc47c75d9271b56e6845432e9daf6787153f2ff88822914fb73aae"
+  },
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Single-seed PDF capacity group changes width, head count, feedforward width, parameter count and initialization/random consumption together. Data, MAE, source weight and training schedule remain fixed. Same integer seed does not imply matching weights, constructor RNG or dropout streams across capacities. This is not an isolated width effect or a unique biological mechanism. Production CUDA remains nondeterministic as in the parent. Food-group intervals condition on selected checkpoints, not seed-population, label-validity, repeated selection or transfer uncertainty. Screening cannot accept a final model."
+}

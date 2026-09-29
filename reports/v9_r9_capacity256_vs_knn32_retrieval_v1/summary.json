@@ -1,0 +1,142 @@
+{
+  "comparisons": {
+    "0.3": {
+      "mrr": {
+        "baseline": 0.034512396586601414,
+        "candidate": 0.003038752250387634,
+        "candidate_minus_baseline": -0.03147364433621378,
+        "difference_95_interval": [
+          -0.034027049809895356,
+          -0.02917889378348905
+        ],
+        "group_count": 6458,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_1": {
+        "baseline": 0.005148652833694642,
+        "candidate": 0.0006968101579436358,
+        "candidate_minus_baseline": -0.004451842675751006,
+        "difference_95_interval": [
+          -0.0063229069887478055,
+          -0.0028001445235883143
+        ],
+        "group_count": 6458,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_5": {
+        "baseline": 0.05479594645745157,
+        "candidate": 0.0025678744709404355,
+        "candidate_minus_baseline": -0.05222807198651113,
+        "difference_95_interval": [
+          -0.05759830614913458,
+          -0.04713348645951619
+        ],
+        "group_count": 6458,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_10": {
+        "baseline": 0.09672241147930213,
+        "candidate": 0.004516362134819861,
+        "candidate_minus_baseline": -0.0922060493444823,
+        "difference_95_interval": [
+          -0.09888884587591618,
+          -0.08546221740476928
+        ],
+        "group_count": 6458,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      }
+    },
+    "1.0": {
+      "mrr": {
+        "baseline": 0.06887887468372954,
+        "candidate": 0.0051479802338452165,
+        "candidate_minus_baseline": -0.06373089444988433,
+        "difference_95_interval": [
+          -0.06726114149727319,
+          -0.060597626210095366
+        ],
+        "group_count": 7090,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_1": {
+        "baseline": 0.013005126827411735,
+        "candidate": 0.0010343206393982134,
+        "candidate_minus_baseline": -0.011970806188013522,
+        "difference_95_interval": [
+          -0.014633398258221953,
+          -0.009506430922157298
+        ],
+        "group_count": 7090,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_5": {
+        "baseline": 0.1175731524391609,
+        "candidate": 0.004098663442810129,
+        "candidate_minus_baseline": -0.11347448899635076,
+        "difference_95_interval": [
+          -0.12115530760964471,
+          -0.10653469283811316
+        ],
+        "group_count": 7090,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      },
+      "recall_at_10": {
+        "baseline": 0.19357154051089173,
+        "candidate": 0.00850963798777621,
+        "candidate_minus_baseline": -0.1850619025231155,
+        "difference_95_interval": [
+          -0.19455364418922247,
+          -0.176731079432243
+        ],
+        "group_count": 7090,
+        "repeats": 1000,
+        "seed": 20260922,
+        "higher_is_better": true,
+        "scope": "paired food-group uncertainty conditional on fixed trained models, candidate names and exact-name relevance; excludes seeds, aliases and selection uncertainty"
+      }
+    }
+  },
+  "hashes": {
+    "baseline": {
+      "ranks": "6e7474b34879e4fc9be443f7928c697b9db9e84444b57f0280743fd4aa5870cd",
+      "metrics": "6277890fc61064fb7a77da99b586855ff3655a9f039eb2b47a683d949b8d93d3"
+    },
+    "candidate": {
+      "ranks": "7dc14bd5cfaccfca60c0514a749af035851a5e35fcc572b8067dd8489596f8a4",
+      "metrics": "042b23c84a33aad9a1a05e74486fdae37ee13f0f3d301e8c63421932798c73fe"
+    }
+  },
+  "baseline": "output\\v9_r7\\exact_name_knn32",
+  "candidate": "output\\v9_r9_methods\\tf256_mae_lr3e4_60_recovery1\\retrieval",
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "candidate_sha256": "e5f4910d9eebe3feb0f9ed0395420596ff7e2b2bbee5f41cb9df5d71d91df87f",
+  "query_profiles": {
+    "0.3": 8610,
+    "1.0": 10479
+  },
+  "code_sha256": "8cd5451d4f44bbd1bb8a365015c9dbc40cd0dcb08e42bc5ca6461c845251a9ae",
+  "complete_test_opened": false,
+  "confirmation": false,
+  "scope": "Compare models only within the same visibility fraction. Fractions have different eligible query populations and are not a controlled visibility effect. Exact-name relevance only; no confirmed alias map."
+}

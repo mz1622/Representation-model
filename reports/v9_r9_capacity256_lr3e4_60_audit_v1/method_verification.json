@@ -1,0 +1,19 @@
+{
+  "status": "complete_registered_capacity256_method_audit",
+  "config_sha256": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+  "manifest_sha256": "a0ce6fd5c2694bf6791fe1fd18386d334cf2a587da11010d5b3f1bc4ba996fa5",
+  "full_replay_sha256": "d81601c44343b8585d7f1d7c42f9003726311ffbed03211eca89b70e538a2ae6",
+  "script_sha256": "ad7b1750549877d0dabe691f0d840958e91a8637fef2b974a0e0ca5046d7a288",
+  "initial_capacity_fingerprint_reconstructed_exact": true,
+  "parameter_counts_match_preflight": true,
+  "same_all60_orders_exposures_and_learning_rates": true,
+  "sole_intervention_group": [
+    "d_model192_to256",
+    "n_heads6_to8",
+    "feedforward768_to1024"
+  ],
+  "same_seed_parent_initialization_exact": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

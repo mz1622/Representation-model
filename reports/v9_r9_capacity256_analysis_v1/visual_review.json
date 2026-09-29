@@ -1,0 +1,15 @@
+{
+  "status": "actual_visual_review_complete",
+  "figure_sha256": "a3e38febf1172fe19fa53a2002ca0a01482365b1828a2d1049e9c364145936b7",
+  "all_six_panels_viewed": true,
+  "capacity_selected_epoch": 59,
+  "control_selected_epoch": 60,
+  "observations": [
+    "Primary, legacy-log and positive validation curves decline and flatten late; the larger model remains worse.",
+    "Conditional zero error is also higher at the selected checkpoint but differs from the fixed-denominator zero contribution.",
+    "Late clipping fraction is higher for capacity256; gradient norms fluctuate without visible divergence.",
+    "All legends, labels, fixed RF/XGB lines and selected-epoch markers are visible.",
+    "The original48-epoch prefix and recovery are independently documented; visual smoothness does not prove an uninterrupted counterfactual."
+  ],
+  "scope": "Actual six-panel PNG inspection plus exact machine evidence; no global-convergence or GPU counterfactual claim."
+}

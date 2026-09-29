@@ -1,0 +1,35 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_capacity256_analysis_v1/summary.json": "4833a15595a5abb682ab4b54d90f963018d23c7c595de8482bbfb4e2e37f8bb9",
+    "reports/v9_r9_capacity256_fit_v1/summary.json": "628e4771044160b9f5413220e583b4847ea91a820f60193bd57d701e170e1202",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/review_verification.json": "2afd3d3d1483505512bd1df2fb22e4b6713af2cfcb77de1e60ef744ec5397e0f",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_ZH.md": "9b5fc24fde7c1a76b2edcec88e6abeddb72966fba096367884b0d9458ace9723",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_source0_v1/REPORT_EN.md": "0d14658fce3dec1f2fbfd8b4e7ce3afc593f6d3f5aca1b1d840d26615947b171",
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/PLAN.md": "e8be913637e539c34dce6d4739c59ed60d5d20d269f28a062f216e1614f62d47",
+    "experiments/foodnutrigpt_v9_research/r9/capacity256_v1/config.json": "da41444ffd447f70de2a74303591f29708499028f607a620a72d1058052f5100",
+    "scripts/report_foodnutrigpt_r9_capacity256.py": "4d156418ca7105504c3c2370f083a26da9ab2f35c17bf4d93c90486609be2b1a",
+    "reports/v9_r9_capacity256_functional_v1/verification.json": "da66409ecaf4445d9b70893b06cf3b9804d2bf0c9d17ea2048179378732c692f",
+    "reports/v9_r9_capacity256_runtime_v1/summary.json": "b38416782cc48b5c46a18f537cd8921ae97d25d4067e1cd68df0335ca63a18da"
+  },
+  "local_links_checked": 152,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "9b0405c6b23d5c84ccba5a609df37db45bdff95822c2eb639057f268daa7bf40",
+    "REPORT_EN.md": "04ff4b8b62551befe3eeab0e97ab31af8af01a4f77604b8ebf3b1e14775b78ca"
+  }
+}
