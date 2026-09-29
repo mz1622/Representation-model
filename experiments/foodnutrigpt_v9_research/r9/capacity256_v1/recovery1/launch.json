@@ -1,0 +1,73 @@
+{
+  "status": "launched_verified_saved_epoch48_recovery",
+  "verified_utc": "2026-09-29T07:06:38Z",
+  "run": "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1",
+  "original_run": "output/v9_r9_methods/tf256_mae_lr3e4_60",
+  "code_commit": "3aa6c8bca7e490e9a93f8dd99120866b3d648352",
+  "controller_script": "work/run-r9-capacity256-recovery1.ps1",
+  "controller_status": "work/r9-capacity256-recovery1-status.json",
+  "terminal_session": null,
+  "launch_type": "hidden_detached_process",
+  "launch_utc": "2026-09-29T07:06:12.21123Z",
+  "actual_processes": [
+    {
+      "ProcessId": 6960,
+      "ParentProcessId": 13580,
+      "CreationUTC": "2026-09-29T07:06:11.5342810Z",
+      "role": "recovery_controller"
+    },
+    {
+      "ProcessId": 24940,
+      "ParentProcessId": 6960,
+      "CreationUTC": "2026-09-29T07:06:12.3996320Z",
+      "role": "venv_launcher"
+    },
+    {
+      "ProcessId": 24872,
+      "ParentProcessId": 24940,
+      "CreationUTC": "2026-09-29T07:06:12.4130850Z",
+      "role": "actual_recovery_trainer"
+    }
+  ],
+  "recovery_model_optimizer_scheduler_and_rng_loaded_exact": true,
+  "original_completed_epochs": 48,
+  "resumed_first_epoch": 49,
+  "planned_final_epoch": 60,
+  "estimated_remaining_training_seconds": 3799.683000000048,
+  "followup": {
+    "id": "nutrition",
+    "status": "ACTIVE",
+    "delay_minutes": 74,
+    "estimated_due_utc": "2026-09-29T08:20:21.511Z",
+    "tool_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Updated automation in the app."
+        },
+        {
+          "type": "text",
+          "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"ACTIVE\"}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "numerical_recipe_changed": false,
+  "original_files_unchanged": true,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "postprocessing_queued": [
+    "recovery_and_original_independent_audits",
+    "11_fixed_comparisons",
+    "rf_gap",
+    "capacity_analysis",
+    "full_training_fit",
+    "axis_and_case_checks",
+    "bilingual_evidence_drafts"
+  ],
+  "manual_interpretation_and_visual_review_queued": false,
+  "report_complete": false,
+  "goal_achieved": false
+}
