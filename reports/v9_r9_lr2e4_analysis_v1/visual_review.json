@@ -1,0 +1,11 @@
+{
+  "status": "actual_six_panel_visual_review_complete",
+  "figure_sha256": "a9c290028cf84788a5332abb276586775aa0fb7593b8b48d1814bc6f360caa8b",
+  "all_six_panels_viewed": true,
+  "labels_and_legends_readable": true,
+  "observations": "All six panels were inspected. The 2e-4 model has some early primary-error advantages, alternates with the control later and finishes slightly worse. Late legacy-log error is also higher, while positive and zero curves are close. It selects epoch 59 versus epoch 60 for the control; late flattening does not prove optimality. Its last-ten clipping fraction is higher, 0.407196 versus 0.350883, as is its first-ten fraction, 0.431289 versus 0.401310. Mean pre-clipping gradients are larger without visible divergence. These trajectory differences do not identify clipping as the cause of failure. Training took 9020.750 seconds, about 2.51 hours; uncontrolled machine load prevents an algorithmic speed claim.",
+  "causal_limit": "No universal convergence or clipping mechanism inferred.",
+  "training_performed": false,
+  "data_modified": false,
+  "complete_test_opened": false
+}

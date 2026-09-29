@@ -1,0 +1,16 @@
+{
+  "status": "actual_interpretation_added_final_proofreading_required",
+  "original_draft_hashes": {
+    "REPORT_ZH.md": "af7c3f22ddde807d73385a3bccff2afe10ea8c1118efe754c081747c840d226c",
+    "REPORT_EN.md": "237d99518f99845c3f6d624137ff49f4bc64370b959aa1d32689a0bc2586769f"
+  },
+  "document_hashes": {
+    "REPORT_ZH.md": "72426817277eb7b377e2c472a4343453d0d7f5a62def6e442016f1b299ef82fa",
+    "REPORT_EN.md": "81a755182ea49a752a9e935212df99a33e567c3d7d9f301e3c115b791dfb4297"
+  },
+  "decision_sha256": "f516badd66e4885419bb40de38032919554d5f532979f55a5e1f1931c574999e",
+  "visual_review_sha256": "dda1701dcace0a1f28cb3b86ac62d27474100157edb0e055576c9abaa03dbf03",
+  "script_sha256": "53f09c777a4327518f1845b501cd31ec6b2c3faedd5d19898fcfc99af44b1ca4",
+  "report_complete": false,
+  "goal_achieved": false
+}

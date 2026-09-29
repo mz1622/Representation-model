@@ -1,0 +1,14 @@
+{
+  "status": "complete_registered_lr2e4_method_audit",
+  "config_sha256": "7f419e2612305c9db991e601c943682636d3eeca22227045519de58b7ad18852",
+  "manifest_sha256": "ac472472e3862db4dbd27664d8bff213cda190ec4748e654e3cfbbd72a6976f2",
+  "full_replay_sha256": "2311cc8b4d9f587247cc8ffa83d1c3074be78d47803c4c26c2e22b601852a042",
+  "script_sha256": "2c24ef304e4004a660a83473cc4511a04663ffc084130cc82d1e908fd6d4addd",
+  "same_parent_initial_state_and_parameter_count": true,
+  "same_all60_orders_and_exposures": true,
+  "all60_learning_rates_two_thirds_parent_within_float_tolerance": true,
+  "sole_numerical_recipe_change": "learning_rate3e-4_to2e-4",
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

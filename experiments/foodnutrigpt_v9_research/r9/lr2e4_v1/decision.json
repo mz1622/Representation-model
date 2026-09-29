@@ -1,0 +1,23 @@
+{
+  "status": "screen_complete_fixed_lr2e4_recipe_rejected",
+  "candidate": "tf192_mae_lr2e4_60",
+  "run": "output/v9_r9_methods/tf192_mae_lr2e4_60",
+  "gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "decision": "reject_this_fixed_learning_rate_recipe_as_completion_upgrade",
+  "retained_control": "output/v9_r9/tf192_mae_lr3e4_60",
+  "additional_seeds_to_launch": [],
+  "analysis_sha256": "8bff3d61a167dd59273238dba9548589fb9919dd78c18074e58879e81ac4aee3",
+  "fit_sha256": "019f5b62198f988d96dabb5919c732fedc581bebb940b1871d124b14cda05db9",
+  "reason": "All three same-seed gates fail. Completion and legacy point regressions have intervals crossing zero; name-only primary regression is interval-supported. Aggregate training fit improves but low-support axes are mixed.",
+  "next_question": "Separately register dropout .15 to .25 on retained learning-rate3e-4 control, holding other settings fixed; test regularization without assuming sparse-axis underfitting.",
+  "next_candidate_registered_or_launched": false,
+  "scientific_confirmation": false,
+  "goal_achieved": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false
+}

@@ -1,0 +1,41 @@
+{
+  "status": "complete_execution_and_actual_bilingual_review",
+  "created_utc": "2026-09-29T16:46:28.333926+00:00",
+  "candidate": "tf192_mae_lr2e4_60",
+  "completed_epoch_count": 60,
+  "checkpoint_sha256": "3a01a1ffd948622814474ed902c2b68ef37a3815b890bc313282a9f564e1e07d",
+  "elapsed_training_seconds": 9020.75,
+  "controller_completed_utc": "2026-09-29T15:37:14.8411732Z",
+  "all16_queued_commands_completed": true,
+  "original_process_ids_absent_at_scheduled_check": [
+    9252,
+    17416,
+    15800
+  ],
+  "scheduled_completion_check_utc": "2026-09-29T16:37:12.5282676Z",
+  "controller_status_sha256": "abf77e30c63a08a5b4ca4580835880a1cae92f1b21ae89123b71abfb3c2c82dd",
+  "completion_process_snapshot_sha256": "8cf14078cc9d52d28bc50945a62cb4d6a08d7b91c55e158fc1d3e0b21d127605",
+  "run_manifest_sha256": "ac472472e3862db4dbd27664d8bff213cda190ec4748e654e3cfbbd72a6976f2",
+  "review_sha256": "8272bc260ab9c50081bdaba4293bee0bb7b39b75ec4496d009ffdd886cc8488a",
+  "freeze_sha256": "1ec58002d76beb329004db77ef512622f57b40e142725799918d20027b5fddf3",
+  "automation_id": "nutrition",
+  "automation_status": "PAUSED",
+  "automation_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Updated automation in the app."
+      },
+      {
+        "type": "text",
+        "text": "{\"automationId\":\"nutrition\",\"mode\":\"update\",\"status\":\"PAUSED\"}"
+      }
+    ],
+    "isError": false
+  },
+  "complete_test_opened": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "goal_achieved": false,
+  "next_candidate_registered_or_launched": false
+}

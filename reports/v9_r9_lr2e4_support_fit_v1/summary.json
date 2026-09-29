@@ -1,0 +1,121 @@
+{
+  "status": "complete_aggregate_support_fit_diagnosis",
+  "input_hashes": {
+    "reports/v9_r9_lr2e4_fit_v1/summary.json": "019f5b62198f988d96dabb5919c732fedc581bebb940b1871d124b14cda05db9",
+    "reports/v9_r9_lr2e4_fit_v1/per_axis_fit.csv": "e264ef445d37adc14cbc9219153f6f0476562dd6b7f4931061b8ade70358ca03",
+    "reports/v9_r9_lr2e4_axis_changes_v1/axis_changes.csv": "d03076acb37a957f1c8b1e56d57a88317b21ce30a8ce98ed507918e7408893f2",
+    "scripts/diagnose_foodnutrigpt_r9_lr2e4_support_fit.py": "61c889f4ea70ab5ef4405f6a8d3f3d8f2aff178f76a08b8991890f24bf7c434b"
+  },
+  "support_bins": [
+    {
+      "support_bin": "100to999",
+      "axes": 20,
+      "training_delta_contribution": -6.67407831309561e-05,
+      "validation_delta_contribution": 8.650422328346525e-05,
+      "training_axes_improved": 11,
+      "validation_axes_improved": 9
+    },
+    {
+      "support_bin": "at_least1000",
+      "axes": 115,
+      "training_delta_contribution": -0.004053676278691972,
+      "validation_delta_contribution": -0.002620443937637455,
+      "training_axes_improved": 100,
+      "validation_axes_improved": 80
+    },
+    {
+      "support_bin": "below100",
+      "axes": 7,
+      "training_delta_contribution": 0.00047086990621205517,
+      "validation_delta_contribution": 0.004935160758846887,
+      "training_axes_improved": 2,
+      "validation_axes_improved": 2
+    }
+  ],
+  "sparse_axes": [
+    {
+      "canonical_name": "Cellulose",
+      "training_candidates": 69,
+      "validation_groups": 15,
+      "mae_train": 0.07406257439024151,
+      "lr2e4_train": 0.057993372813544886,
+      "mae_validation": 0.482925232840749,
+      "lr2e4_validation": 0.5444060069387614,
+      "train_delta": -0.016069201576696626,
+      "validation_delta": 0.06148077409801239
+    },
+    {
+      "canonical_name": "Isomeric linoleic acids (18:2)",
+      "training_candidates": 44,
+      "validation_groups": 15,
+      "mae_train": 0.09477875460072505,
+      "lr2e4_train": 0.09078391645681888,
+      "mae_validation": 0.5497325059955523,
+      "lr2e4_validation": 0.5845070451879129,
+      "train_delta": -0.003994838143906165,
+      "validation_delta": 0.03477453919236051
+    },
+    {
+      "canonical_name": "Isomeric linolenic acids (18:3)",
+      "training_candidates": 68,
+      "validation_groups": 17,
+      "mae_train": 0.11238233225917436,
+      "lr2e4_train": 0.1271443683943788,
+      "mae_validation": 0.7461911201442286,
+      "lr2e4_validation": 0.8918446213065254,
+      "train_delta": 0.014762036135204423,
+      "validation_delta": 0.1456535011622968
+    },
+    {
+      "canonical_name": "Lignin",
+      "training_candidates": 59,
+      "validation_groups": 17,
+      "mae_train": 0.046065596687832104,
+      "lr2e4_train": 0.04837174655021012,
+      "mae_validation": 0.3588432666693044,
+      "lr2e4_validation": 0.677017729136478,
+      "train_delta": 0.0023061498623780166,
+      "validation_delta": 0.31817446246717357
+    },
+    {
+      "canonical_name": "Menaquinone-4",
+      "training_candidates": 94,
+      "validation_groups": 10,
+      "mae_train": 0.04270960185302457,
+      "lr2e4_train": 0.044841573206309646,
+      "mae_validation": 0.1539333882033489,
+      "lr2e4_validation": 0.33464843075782,
+      "train_delta": 0.002131971353285078,
+      "validation_delta": 0.18071504255447113
+    },
+    {
+      "canonical_name": "Sorbitol",
+      "training_candidates": 76,
+      "validation_groups": 14,
+      "mae_train": 0.040096140356323494,
+      "lr2e4_train": 0.09944182084803845,
+      "mae_validation": 0.1127562773444029,
+      "lr2e4_validation": 0.0755923307692853,
+      "train_delta": 0.05934568049171495,
+      "validation_delta": -0.037163946575117596
+    },
+    {
+      "canonical_name": "Sulfur",
+      "training_candidates": 93,
+      "validation_groups": 20,
+      "mae_train": 0.029650375823092226,
+      "lr2e4_train": 0.03803210438322438,
+      "mae_validation": 0.4011222491624673,
+      "lr2e4_validation": 0.3982807040195285,
+      "train_delta": 0.008381728560132154,
+      "validation_delta": -0.0028415451429388283
+    }
+  ],
+  "training_performed": false,
+  "model_forward_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Exploratory aggregation of existing selected-checkpoint metrics. Training and validation foods/support differ. Low training errors and large validation gaps do not prove overfitting, scarcity as a unique cause, or that additional sampling or regularization will help.",
+  "axis_output_sha256": "b3807ab234c54f7110a98c18c696daadf50c6c2660f329cb71f3ef51c411c308"
+}

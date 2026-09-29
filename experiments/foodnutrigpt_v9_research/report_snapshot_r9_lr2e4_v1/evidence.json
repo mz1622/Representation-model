@@ -1,0 +1,39 @@
+{
+  "status": "generated_bilingual_draft_review_required",
+  "input_hashes": {
+    "reports/v9_r9_lr2e4_analysis_v1/summary.json": "8bff3d61a167dd59273238dba9548589fb9919dd78c18074e58879e81ac4aee3",
+    "reports/v9_r9_lr2e4_fit_v1/summary.json": "019f5b62198f988d96dabb5919c732fedc581bebb940b1871d124b14cda05db9",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr6e4_v1/review_verification.json": "e3b5ae2fef74c502d1c26f3b756966fd9efc77bfec7921275fe0d79eb27c1c07",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr6e4_v1/REPORT_ZH.md": "9618bd70389cd6a883087e3948c10aca78ae38a46cd17438fcca566c5fe509d5",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_lr6e4_v1/REPORT_EN.md": "6f7d5fd6077b8f8adad254e04a68fd819f4cd1270a829e5e9bf9473e0b216d2e",
+    "experiments/foodnutrigpt_v9_research/r9/lr2e4_v1/PLAN.md": "0b4d990c7d607e233c201899832bf15ff095ccf16663d6a2af2ccae5cbc48511",
+    "experiments/foodnutrigpt_v9_research/r9/lr2e4_v1/config.json": "7f419e2612305c9db991e601c943682636d3eeca22227045519de58b7ad18852",
+    "scripts/report_foodnutrigpt_r9_lr2e4.py": "7157c3b7b787d33adbbb7934d9bee6cf9fe7c3da30fea0957f11911a72d1dd33",
+    "reports/v9_r9_lr2e4_functional_v1/verification.json": "b7ee8b44b942cf483b10e002d1b06f0446f685ca872863d4a619c9e22552fb46",
+    "experiments/foodnutrigpt_v9_research/r9/lr2e4_v1/launch.json": "ace4db92925d44aae05354e9e681870aa13be0a168d316819a84a14592146480",
+    "reports/v9_r9_lr2e4_functional_failure_v1/record.json": "0adb7887e9e2357ba30869d5a43374b17a81e4a1d3b53e1a12946b2cddd864a0",
+    "reports/v9_r9_lr2e4_preparation_v1/verification.json": "548b869dae53a27ffefd7f10074c06416c17b83fc445b61394efcb94f59d6a79",
+    "reports/v9_r9_lr2e4_axis_changes_v1/summary.json": "6e8c3b41b87fe94ccd5a1c1696e9e33b56ab21e79ba57b18d14ac6db91289eb4",
+    "reports/v9_r9_lr2e4_cases_v1/summary.json": "2874a79d6633fde1f247a7a0ceda3ba396dc271c018802f61acbf763c7029b8c"
+  },
+  "local_links_checked": 214,
+  "screening_gates": {
+    "primary_point_improves_over_same_seed_mae": false,
+    "paired_interval_supports_improvement": false,
+    "legacy_regression_at_most_2percent_vs_mae": false
+  },
+  "manual_proofreading_complete": false,
+  "visual_review_complete": false,
+  "version_decision_complete": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "training_performed": false,
+  "data_modified": false,
+  "baseline_refit": false,
+  "complete_test_opened": false,
+  "scope": "Aggregate-only report draft; prior reviewed history retained. All newly added tables identical across languages. No claim of visual/manual review or final model acceptance.",
+  "document_hashes": {
+    "REPORT_ZH.md": "af7c3f22ddde807d73385a3bccff2afe10ea8c1118efe754c081747c840d226c",
+    "REPORT_EN.md": "237d99518f99845c3f6d624137ff49f4bc64370b959aa1d32689a0bc2586769f"
+  }
+}

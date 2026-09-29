@@ -1,0 +1,17 @@
+{
+  "status": "targeted_bilingual_copyedit_complete",
+  "previous_document_hashes": {
+    "REPORT_ZH.md": "72426817277eb7b377e2c472a4343453d0d7f5a62def6e442016f1b299ef82fa",
+    "REPORT_EN.md": "81a755182ea49a752a9e935212df99a33e567c3d7d9f301e3c115b791dfb4297"
+  },
+  "previous_receipt_sha256": "df50eff6f5538aa77b2664e6fc993afa5c8df83b64cf76dd347383007a2de1e6",
+  "document_hashes": {
+    "REPORT_ZH.md": "4b0ecd9af123435a5707c30c058cc1af9857fd16c335e61562c5ca1457b9402e",
+    "REPORT_EN.md": "24dd7e26ebced370ad0b043b5ad579198997d6401b3910bdcdcbd8a008318b7c"
+  },
+  "version_readme_sha256": "8f3bf9ba81ec06efc63e635dcc6113cadd66a734b5c88eb054284ce82f4cadc7",
+  "scope": "Actual bilingual Section1 and15 prose read; added matching entry commands and English-only task captions; corrected the new support-diagnosis relative link. Historical Sections2\u201314 and numerical tables retained.",
+  "checker_sha256": "27e6ce8ac18569300e6db1474a7e4a30b57377d9a4205fbcadcd1ee6b47f3169",
+  "report_complete": false,
+  "goal_achieved": false
+}
