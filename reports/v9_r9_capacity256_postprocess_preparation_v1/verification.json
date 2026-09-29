@@ -1,0 +1,145 @@
+{
+  "status": "complete_outcome_blind_postprocessing_preparation",
+  "created_utc": "2026-09-29T02:18:11.477983+00:00",
+  "script_sha256": "2a14cb38cd77183e16424bf895d1861afce9f925925008b04479fe8da5555638",
+  "prepared_code_hashes": {
+    "scripts/analyze_foodnutrigpt_r9_capacity256.py": "f17da76833877da6dc4563c906021762ea36e40ca1657be4374effc6a183a17a",
+    "scripts/diagnose_foodnutrigpt_r9_capacity256_fit.py": "546695fe42488c66452dfcc7eacbf6daa886b6b67ff29c67ad18d49cc6c59b14",
+    "scripts/review_foodnutrigpt_r9_capacity256_axes.py": "ead68033208187efe9d45a7c82153a7ece77f58876b63b5978773730a842394c",
+    "scripts/review_foodnutrigpt_r9_capacity256_cases.py": "8536b658365fb887442d9a679fdf1f39febda8c822f9b5526581b659bf852dea",
+    "scripts/report_foodnutrigpt_r9_capacity256.py": "4d156418ca7105504c3c2370f083a26da9ab2f35c17bf4d93c90486609be2b1a",
+    "tests/test_research_transformer_r9_capacity256_analysis.py": "12acb1e51043227d7799b60a0307411758b05340206b1b6f8eaf860c77e90504"
+  },
+  "registered_input_count_verified": 17,
+  "frozen_input_count_verified": 67,
+  "check_only_results": {
+    "scripts/analyze_foodnutrigpt_r9_capacity256.py": {
+      "ready": false,
+      "pending": [
+        {
+          "path": "reports/v9_r9_capacity256_lr3e4_60_audit_v1/method_verification.json",
+          "reason": "absent"
+        },
+        {
+          "path": "output/v9_r9_methods/tf256_mae_lr3e4_60/run_manifest.json",
+          "reason": "running"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_lr3e4_60_audit_v1/verification.json",
+          "reason": "absent"
+        },
+        {
+          "path": "output/v9_r9_methods/tf256_mae_lr3e4_60/metrics.json",
+          "reason": "absent"
+        },
+        {
+          "path": "output/v9_r9_methods/tf256_mae_lr3e4_60/retrieval/metrics.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_mae_parent_completion_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_mae_parent_name_only_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_mae_parent_retrieval_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_rf32_completion_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_rf32_name_only_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_rf32_retrieval_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_xgb32_completion_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_xgb32_name_only_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_xgb32_retrieval_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_knn32_name_only_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_vs_knn32_retrieval_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_rf32_gap_v1/summary.json",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_rf32_gap_v1/axis_signed_contributions.csv",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_rf32_gap_v1/gap_decomposition.csv",
+          "reason": "absent"
+        },
+        {
+          "path": "reports/v9_r9_capacity256_rf32_gap_v1/fixed_denominator_partitions.csv",
+          "reason": "absent"
+        }
+      ],
+      "output_written": false,
+      "training_performed": false
+    },
+    "scripts/diagnose_foodnutrigpt_r9_capacity256_fit.py": {
+      "ready": false,
+      "pending": [
+        "reports\\v9_r9_capacity256_analysis_v1\\summary.json",
+        "output\\v9_r9_methods\\tf256_mae_lr3e4_60\\run_manifest.json"
+      ],
+      "training_performed": false,
+      "output_written": false,
+      "model_forward_performed": false
+    },
+    "scripts/report_foodnutrigpt_r9_capacity256.py": {
+      "ready": false,
+      "pending": [
+        "reports\\v9_r9_capacity256_analysis_v1\\summary.json",
+        "reports\\v9_r9_capacity256_analysis_v1\\status.json",
+        "reports\\v9_r9_capacity256_fit_v1\\summary.json",
+        "reports\\v9_r9_capacity256_fit_v1\\status.json"
+      ],
+      "output_written": false,
+      "training_performed": false
+    }
+  },
+  "prior_bilingual_hashes_verified": true,
+  "prior_bilingual_links_rebased_without_writing": true,
+  "synthetic_test_execution": {
+    "command": ".venv/Scripts/python.exe -X utf8 -m pytest -q tests/test_research_transformer_r9_capacity256_analysis.py",
+    "observed_exit_code": 0,
+    "observed_stdout": "32 passed in 2.66s",
+    "scope": "Recorded from actual completed tool execution, not a candidate performance test."
+  },
+  "all_six_modules_compiled": true,
+  "current_candidate_validation_metrics_read": false,
+  "candidate_history_read": false,
+  "candidate_model_loaded": false,
+  "training_performed": false,
+  "baseline_refit": false,
+  "data_modified": false,
+  "complete_test_opened": false,
+  "report_generated": false,
+  "report_complete": false,
+  "goal_achieved": false,
+  "scope": "Checks only completed preregistration/preflight/prior-stage evidence and readiness flags. No candidate curves, validation scores or predictions inspected. Actual postprocessing and review remain required after controller completion."
+}
