@@ -29,7 +29,6 @@
 \begin{document}
 {\LARGE\bfseries\color{ink}Nutrition Representation Learning}\par
 {\large Data, training methods, controlled iterations and current results}\par
-\textit{A four-page research report covering R0--R9 and the completed RMSNorm experiment.}
 
 \sub{Scope and principal finding.}
 The aim is a reusable food representation supporting nutrient completion, prediction from food names alone, and nutrition-to-name retrieval. Current evidence supports an auditable research model, not an established foundation model. The retained LayerNorm Transformer has three-seed completion MAE $0.189184\pm0.006925$, versus $0.189031$ for frozen RF and $0.174487$ for XGBoost. Replacing encoder LayerNorm with RMSNorm did not justify an upgrade. A tree-model victory is not required for this study: the immediate objective is a reproducible, empirically examined training design.

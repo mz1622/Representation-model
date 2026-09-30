@@ -1,10 +1,10 @@
 {
   "status": "complete_four_page_english_latex_report",
-  "verified_utc": "2026-09-30T01:38:44.479056+00:00",
-  "source_sha256": "bc2ed744a871d172caa5f2520b0e283ab573c30b28f48582e2d92b4d187b0463",
-  "pdf_sha256": "2ad8e6509710e070c665cdadbbc3ab8dd5ed2961faf5405412cf074a9421f4da",
+  "verified_utc": "2026-09-30T01:46:40.220406+00:00",
+  "source_sha256": "5f478439ba4c72ff6f907e2956c41a0b070278e6e2bc2bf70ca353957ad23b08",
+  "pdf_sha256": "eac502055b4e852039db3381cb75b4c8c0262a485cc97dd2c6ce80042e4d4539",
   "pdf_path": "output/pdf/nutrition_research_v1/nutrition_research_report_en.pdf",
-  "compile_log_sha256": "fda80d43ff8e9880fe6bb6cd3e3e46fda5fc3b3c37b47d8e1638bfa06d508614",
+  "compile_log_sha256": "043aab7a483d7aec38433b08811119d3e862ab658f7a8923aa2ddba69bb55cfe",
   "pages": 4,
   "page_checks": [
     {
@@ -13,10 +13,10 @@
         595.28,
         841.89
       ],
-      "text_characters": 3896,
+      "text_characters": 3815,
       "all_glyphs_within_page": true,
       "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
-      "reviewed_png_sha256": "d6096ac28954379e701e7c0e7998c8c013c12eb3f5ad602cd27601b06bf7aa68"
+      "reviewed_png_sha256": "166a9777f38a3917fea65d359495eae113bdc2ada03dde5e41569d8e9843a630"
     },
     {
       "page": 2,
@@ -27,7 +27,7 @@
       "text_characters": 3983,
       "all_glyphs_within_page": true,
       "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
-      "reviewed_png_sha256": "c42df049f570623a329ceb17a88ddaa58bf2ee8c4114b40636094e4522e50d93"
+      "reviewed_png_sha256": "0e32a92895198ad6dd6878ea7ef1b1ebadb893d4591aec940865f1dd38a75856"
     },
     {
       "page": 3,
@@ -38,7 +38,7 @@
       "text_characters": 4378,
       "all_glyphs_within_page": true,
       "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
-      "reviewed_png_sha256": "e9112fa4011abbad8ec96785ec07320edeaaca874ac4c1322ebd5687b1cfce0e"
+      "reviewed_png_sha256": "ddf5071dbb0b374130a8e5ddba9f446269934df842f2abf0df7d667cd4ec996d"
     },
     {
       "page": 4,
@@ -49,7 +49,7 @@
       "text_characters": 4581,
       "all_glyphs_within_page": true,
       "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
-      "reviewed_png_sha256": "f67949e46dccb5f8ccb6fc531ef4d2e4da5b5d7dcb15124829f104f8fc135543"
+      "reviewed_png_sha256": "f64fb2866267713e405f8233e13fca1158eb0aa0ea26c502980aeac712971e04"
     }
   ],
   "all_pdf_fonts_embedded": true,
