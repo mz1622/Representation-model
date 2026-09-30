@@ -1,0 +1,99 @@
+{
+  "status": "complete_four_page_english_latex_report",
+  "verified_utc": "2026-09-30T01:38:44.479056+00:00",
+  "source_sha256": "bc2ed744a871d172caa5f2520b0e283ab573c30b28f48582e2d92b4d187b0463",
+  "pdf_sha256": "2ad8e6509710e070c665cdadbbc3ab8dd5ed2961faf5405412cf074a9421f4da",
+  "pdf_path": "output/pdf/nutrition_research_v1/nutrition_research_report_en.pdf",
+  "compile_log_sha256": "fda80d43ff8e9880fe6bb6cd3e3e46fda5fc3b3c37b47d8e1638bfa06d508614",
+  "pages": 4,
+  "page_checks": [
+    {
+      "page": 1,
+      "a4_size_pt": [
+        595.28,
+        841.89
+      ],
+      "text_characters": 3896,
+      "all_glyphs_within_page": true,
+      "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
+      "reviewed_png_sha256": "d6096ac28954379e701e7c0e7998c8c013c12eb3f5ad602cd27601b06bf7aa68"
+    },
+    {
+      "page": 2,
+      "a4_size_pt": [
+        595.28,
+        841.89
+      ],
+      "text_characters": 3983,
+      "all_glyphs_within_page": true,
+      "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
+      "reviewed_png_sha256": "c42df049f570623a329ceb17a88ddaa58bf2ee8c4114b40636094e4522e50d93"
+    },
+    {
+      "page": 3,
+      "a4_size_pt": [
+        595.28,
+        841.89
+      ],
+      "text_characters": 4378,
+      "all_glyphs_within_page": true,
+      "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
+      "reviewed_png_sha256": "e9112fa4011abbad8ec96785ec07320edeaaca874ac4c1322ebd5687b1cfce0e"
+    },
+    {
+      "page": 4,
+      "a4_size_pt": [
+        595.28,
+        841.89
+      ],
+      "text_characters": 4581,
+      "all_glyphs_within_page": true,
+      "actual_visual_review": "Pass: legible typography, intact tables, no overlap or clipping.",
+      "reviewed_png_sha256": "f67949e46dccb5f8ccb6fc531ef4d2e4da5b5d7dcb15124829f104f8fc135543"
+    }
+  ],
+  "all_pdf_fonts_embedded": true,
+  "exact_six_decimal_metric_values_checked": 63,
+  "input_hashes": {
+    "output/v9_r9/tf192_mae_lr1e4_60/metrics.json": "47e7879cc6df9246fa43979f3553885511fd7621706f9da86970b92a81878fbd",
+    "output/v9_r9/tf192_mae_lr3e4_60/metrics.json": "350689b9aae0e234b0504315964692aab834b43f4852f323b3251d1dc902d7e7",
+    "output/v9_r9_methods/tf192_mae_axisvalue_lr3e4_60/metrics.json": "98ef6d7a83856ea5740ddc3114df20ccf414d9ecee897a50b51cb5e6287dcd7d",
+    "output/v9_r9_methods/tf192_mae_drop25_lr3e4_60/metrics.json": "8ee2f53866a5fb271441c0e9390ad0e5029791d30ceb11faa5ee72675f2d98be",
+    "output/v9_r9_methods/tf192_mae_lr2e4_60/metrics.json": "b0596a76e6a44c0ff71f35f58fcc85c7bc50b4c5c298f44d922d3081d8b23663",
+    "output/v9_r9_methods/tf192_mae_lr6e4_60/metrics.json": "0356a25d602efb620e10065b0df890a7b309ca7f05a0047f82c8b2567edc879c",
+    "output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/metrics.json": "b726a2318c303a2a142d829ef23ce19e3e5cc2d3c03d67c5fd9dac6c200a1e0e",
+    "output/v9_r9_methods/tf192_mae_source0_lr3e4_60/metrics.json": "667a4b9b47b52b46df1550b9cd57ffcd4699e75ec020701f92a82a358a568d95",
+    "output/v9_r9_methods/tf192_mse_lr3e4_60/metrics.json": "9338f233bf7c04462681c31eef374c157545323345b0bc84103cd9e32ef9c745",
+    "output/v9_r9_methods/tf256_mae_lr3e4_60_recovery1/metrics.json": "5fbaefb5e62ef9b1b32c067afb6e6d73af659881f921504858168b5724ad3d5b",
+    "output/v9_r8/mlp512_name32/metrics.json": "6e200ca95698fda4dc17e464824a6cd63553e0fcd233689a1d7c71fd1127d6c0",
+    "output/v9_r8/rf400leaf1half_name32/metrics.json": "f20acd17b1616677455c658c25dd9206c26777e69a507373b56f885722157f32",
+    "output/v9_r8/xgb800d10_name32/metrics.json": "f70d7a53540f5ed6eff1986618beef05ec477fb28fd10a465541b8d1b5ce7b7a",
+    "reports/v9_final_neural_summary_v1/summary.json": "1527030ca405ce1c3c2d37c57f9bc804563d12eb561b0c894abc3208c4e02fc6",
+    "reports/v9_r9_three_seed_confirmation_v1/summary.json": "185bbba6ae1ef725532690cb4c31560b2d4762e64a006411c8e46aae1a74a238",
+    "output/v9_r8/retrieval_mlp512_name32/metrics.json": "67200377c89c480f3a85e0cae3a9e8f27cd6872ac77da5b12d1a783479688ec0",
+    "output/v9_r9/tf192_mae_lr3e4_60/retrieval/metrics.json": "b94a31ebc27cff87bd50dd52eb6769d06b9723ef81a94372e816a9858a9949dd",
+    "output/v9_r9_methods/tf192_mae_rmsnorm_lr3e4_60/retrieval/metrics.json": "356c16c93d6c06551e3787f4b3fdf118deafddc00bdf344cbd0772987c35ed8b",
+    "output/v9_r8/rf400leaf1half_name32/retrieval/metrics.json": "721bd6a5fa18be681874a78d160d70649e839e0c9223094d27ac2fa89a4593f5",
+    "output/v9_r8/xgb800d10_name32/retrieval/metrics.json": "c101bdcaf7d47aedeaf4c445ebece3306118fa507570f55094c9b54d2006d8a4",
+    "output/v9_r7/exact_name_knn32/metrics.json": "6277890fc61064fb7a77da99b586855ff3655a9f039eb2b47a683d949b8d93d3",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_rmsnorm_v1/review_verification.json": "b48c321bc8335ef7af1a33f869f2cdc7efdfe47cdf1b1245a4cfc51f4eb14ee3",
+    "experiments/foodnutrigpt_v9_research/report_snapshot_r9_rmsnorm_v1/REPORT_EN.md": "c1d8eae3409512109c0442dcf676ee4a2e87d5423ecd69da56e15e2b2a8919f8"
+  },
+  "native_compiler": {
+    "status": "platform_environment_failure",
+    "diagnostic": "Unable to find standard directories for platform"
+  },
+  "fallback_compiler": {
+    "status": "success",
+    "name": "Tectonic 0.17.0 (XeTeX)",
+    "portable_archive_sha256": "f61ce51f0b0ade1015b7de7ef368541c5424e9756ecbd0d7af97d6d48030845f",
+    "command": "tectonic --keep-logs --outdir output/pdf/nutrition_research_v1 experiments/foodnutrigpt_v9_research/latex_report_v1/nutrition_research_report_en.tex",
+    "overfull_boxes": 0,
+    "nonfatal_console_diagnostic": "Fontconfig default config unavailable; final PDF uses embedded TeX fonts, verified in PDF resources."
+  },
+  "data_modified": false,
+  "training_performed": false,
+  "complete_test_opened": false,
+  "evidence_commit": "1d00fc1",
+  "scope": "Four-page summary, with complete machine evidence and failures retained in the linked full research report."
+}

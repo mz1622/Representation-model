@@ -1,0 +1,183 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=17mm,top=16mm,bottom=17mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,xcolor,microtype}
+\usepackage{enumitem,fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\definecolor{ink}{HTML}{16324F}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\emergencystretch}{1em}
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.12}
+\setlist[itemize]{leftmargin=14pt,itemsep=1pt,topsep=2pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\color{ink}Nutrition representation research}
+\fancyhead[R]{\small Evidence through 30 September 2026}
+\fancyfoot[L]{\footnotesize Internal validation; complete test remains closed}
+\fancyfoot[R]{\footnotesize\thepage}
+\setlength{\headheight}{13pt}
+\setlength{\headsep}{7mm}
+\newcommand{\sect}[1]{\vspace{3pt}{\large\bfseries\color{ink}#1}\par\vspace{2pt}}
+\newcommand{\sub}[1]{\textbf{#1}\enspace}
+\newcommand{\mae}{\operatorname{MAE}}
+\newcommand{\smalltable}{\fontsize{8.7}{10.4}\selectfont}
+\hypersetup{pdftitle={Nutrition Representation Learning: Data, Methods, Iterations and Results},pdfauthor={Representation-model research project}}
+\begin{document}
+{\LARGE\bfseries\color{ink}Nutrition Representation Learning}\par
+{\large Data, training methods, controlled iterations and current results}\par
+\textit{A four-page research report covering R0--R9 and the completed RMSNorm experiment.}
+
+\sub{Scope and principal finding.}
+The aim is a reusable food representation supporting nutrient completion, prediction from food names alone, and nutrition-to-name retrieval. Current evidence supports an auditable research model, not an established foundation model. The retained LayerNorm Transformer has three-seed completion MAE $0.189184\pm0.006925$, versus $0.189031$ for frozen RF and $0.174487$ for XGBoost. Replacing encoder LayerNorm with RMSNorm did not justify an upgrade. A tree-model victory is not required for this study: the immediate objective is a reproducible, empirically examined training design.
+
+\sect{1. Data preparation and evaluation protocol}
+\sub{Provenance and split.}
+The input is the supplied \nolinkurl{foodnutrigpt_v8_source_native_baseline.tar.gz}, used with the \href{https://github.com/mz1622/Representation-model}{Representation-model repository}. Its immutable V8 payload contains 76,915 source-native profiles, 2,259,178 observations and 25 source labels. Sources comprise AFCD, AnFooD, Bangladesh FCT, BioFoodComp, BLS, CIQUAL, CNF, CoFID, EFSA EU FCDB, FNDDS, FooDB, Frida, Lesotho FCT, MEXT Japan, Norway, PhyFoodComp, five SMILING country tables, Swiss FCDB, USDA SR Legacy, WAFCT and held-out USDA Foundation. Database labels do not imply independent measurements or fully verified upstream releases.
+
+\begin{center}\small
+\begin{tabular}{lrr}\toprule
+Quarantined research view & Training & Validation\\\midrule
+Source-native profiles / exact-name groups & 64,700 / 42,282 & 11,175 / 7,409\\
+Sources represented & 24 & 24\\
+Observed supervised cells (187 axes) & 1,828,536 & 323,809\\
+Nutrition cells (142 axes) & 1,795,133 & 317,616\\
+Explicit-zero nutrition cells & 388,743 & 69,271\\\bottomrule
+\end{tabular}
+\end{center}
+\sub{Cleaning and labels.}
+Values are supplied in g/100\,g; fresh-weight, edible-portion and chemical-form provenance is not completely resolved. Repeated observations within a source-native profile and axis are reduced by the \emph{raw-unit median}; sources are never automatically pooled. FooDB records with within-cell $10^3$/$10^6$ discrepancies motivated quarantine of 64 cells (53 training, 11 validation; 145 original observations), without speculative relabeling. The Goose fat/Cholesterol discrepancy remains unresolved. The inclusive sensitivity view and original records are retained. Missing labels never enter supervision; explicit zeros do. Exact-name candidate groups stay in one partition, but are not certified food-identity clusters. The historical 659-profile complete test is closed.
+
+\sub{Train-only transformations and masks.}
+For axis $a$, $z=t_a(y)=\log(1+y/s_a)$, with $s_a$ a positive-training-value weighted median balancing candidate groups, sources and profiles. Of 252 axes, 142 nutrition and 45 metabolome axes receive supervision; 65 are context-only. Frozen \texttt{all-MiniLM-L6-v2} encodes \emph{original food name only}: masked mean pooling, L2 normalization, then training-fitted non-whitened PCA. Its 384-dimensional embedding is reduced to 32 active components in 128 slots (96 zero slots); the historical MLP128 uses all 128 components. No source, group or processing metadata enters the encoder. Each epoch covers 337,048 profile--family tasks across 19 families, hiding all related forms and exposing every observed target once. Hidden values use zero plus a visibility mask; this is not zero-label imputation.
+
+\sub{Scoring.}
+Within each group--source--axis, labels and predictions are separately median-aggregated. Errors are averaged equally across sources, then groups, then the 142 nutrition axes. This scaled-log MAE was frozen before comparison. Legacy $\log(1+y)$ MAE, raw-unit MAE, positive/zero errors and 45/187-axis scores are secondary. All methods share labels, masks, context and weights. Intervals use 1,000 paired resamples of 7,344 food groups, not independent cells. They exclude seed-population uncertainty and repeated-validation selection bias.
+
+\newpage
+\sect{2. Model architectures and training details}
+\sub{Shared neural objective.}
+Let $w_{ia}=1/[n_{g,a}^{\rm sources}n_{g,a,s}^{\rm profiles}]$, $W_a=\sum_{i\in\mathcal O_a}w_{ia}$, and $\mathcal O_a$ contain observed training labels. Direct regression minimizes
+\[
+ L_{\rm base}=\frac{1}{187}\sum_a\frac{\sum_{i\in\mathcal O_a}w_{ia}\lvert\hat z_{ia}-t_a(y_{ia})\rvert}{W_a}.
+\]
+Minibatches retain global axis denominators and multiply their weighted sums by $N_{\rm tasks}/(187B)$. Training averages profile-level errors; it is not identical to median-based validation scoring. All direct models return $\hat y=s_a\operatorname{expm1}(\max(\hat z,0))$; training uses unclipped $\hat z$.
+
+\sub{MLP reference.}
+The 632 inputs concatenate 128 name slots, 252 transformed values and 252 visibility indicators. Architecture:
+\[
+632\!\to\!512\;[\mathrm{GELU,LayerNorm}]\!\to\!512\;[\mathrm{GELU}]\!\to\!252,
+\]
+with 717,052 trainable parameters. It uses the shared MAE objective, no source residual, presence multiplier, extra name-only head or contrastive loss. AdamW: learning rate $10^{-3}$, weight decay $10^{-4}$, batch 256, norm clipping 1, 60 epochs, cosine schedule ending at $10^{-5}$. MLP32/128 share architecture; only active PCA input differs.
+
+\sub{Retained Transformer.}
+The fixed 254-token sequence contains CLS, one name token and all 252 axis tokens, without truncation or positional/source/type embeddings. Name input passes through LayerNorm and a $128\to192\to192$ GELU projection. Visible values pass through a $1\to192\to192$ GELU MLP and are added to axis embeddings; missing/hidden values use a learned mask vector. Three bidirectional pre-norm encoder layers use width 192, six heads, FFN width 768, GELU, dropout 0.15 and final LayerNorm. A shared head (LayerNorm, $192\to96\to1$, GELU/dropout), rank-16 axis residual and axis bias predict $\hat z$. The inherited presence head is frozen and unused in predictions/loss, while its call is retained for RNG matching. Total/trainable parameters are 1,548,594/1,515,929.
+
+Training-only source calibration adds $b_{sa}=R_{sa}-\operatorname{mean}_{s'}R_{s'a}$ to $\hat z$. Source never enters attention; inference uses $\hat z$ alone. The calibrated loss has the same weighting as $L_{\rm base}$:
+\[
+ L=\frac{L_{\rm base}+\lambda L_{\rm calibrated}}{1+\lambda}
+   +\rho\operatorname{mean}(R_{\rm train}^{2}),\qquad \lambda=1,\quad\rho=10^{-4}.
+\]
+AdamW uses learning rate $3\times10^{-4}$, weight decay $10^{-4}$, batch 64 and norm clipping 1. Single-stage training runs 60 FP32 epochs; cosine $T_{\max}=60$, minimum LR $3\times10^{-6}$. Task order uses seed+epoch. Every epoch evaluates the fixed panel; the earliest strict minimum of nutrition MAE selects one checkpoint for all tasks. No extra name-only mixture is used. Historical repetitions use seeds 20260922/23/24; the new structure uses only 20260922.
+
+\sub{RF and XGBoost.}
+Each fits 187 separate axis regressors on \emph{all} eligible training profiles (largest axis: 58,958 rows; no 5,000-row cap), using the same 632 inputs and family hiding. Targets are scaled-log values; per-axis $w_{ia}$ is divided by its mean for \texttt{sample\_weight}. RF (scikit-learn 1.5.2): 400 bootstrap trees, squared-error splits, unlimited depth, minimum leaf 1, feature fraction 0.5. XGBoost 2.1.3: 800 \texttt{hist} trees, squared-error objective, depth 10, LR 0.03, minimum child weight 5, row/column subsampling 0.8, L2 penalty 1, no early stopping. Both use four threads and seed $20260922+a$. These frozen PCA32 references are not exhaustively tuned optima. Six tree configurations completed; one RF run stopped at 123/187 axes and another never started.
+
+\sub{Name KNN and reverse-name retrieval.}
+KNN independently selects up to ten training neighbors with an observed label per axis, by Euclidean distance $d$ in PCA name space (KDTree), and averages transformed labels with weights $w/(d+10^{-3})$. It is a name-only reference. For retrieval, each method predicts nutrition from 49,913 candidate names; queries contain nutrition only, never the food name. Candidates use no measured nutrition. Rank by mean squared transformed distance over visible axes; require at least three observations. Full/30\%-visible panels contain 10,479/8,610 queries and have different eligible populations. Report exact-name Recall@1/5/10 and MRR; no confirmed alias map or contrastive retrieval head is used.
+
+\newpage
+\sect{3. Iteration history and reasons for the retained design}
+\sub{R0--R8: establish the task before changing architecture.}
+The original V8 Transformer used source tokens and hurdle prediction. Early V9 removed source from the encoder and used training-only offsets; its hurdle objective combined positive/zero BCE with positive-amount SmoothL1. Later direct regression removed the presence multiplier. Protocol changes prevent treating the following history as a single causal learning curve.
+
+{\smalltable
+\begin{tabularx}{\linewidth}{@{}lYY@{}}\toprule
+Version & Intervention and observed evidence & Decision / attribution limit\\\midrule
+R0 & Common aggregation, scales, masks, name-only cache and quarantine. & Establish comparable labels; unresolved units remain.\\
+R1 & Exhaustive family tasks; fixed-schedule MLP 8$\to$20 epochs: .246757$\to$.222459; hurdle amount weights 1/2/3 and source ablation. & Longer training helped this protocol; larger amount weights helped the early V9 branch.\\
+R2 & MLP SmoothL1$\to$MAE: .222459$\to$.209484; width 256$\to$512: .202428; 60-epoch branch: .184491. & Retain MAE/512/60 and LayerNorm; zero-value gains did not imply better positive predictions.\\
+R3--R4 & Name-only mixtures, separate heads, query residuals, consistency and metabolome reweighting; three numerical failures in R4. & No sufficient completion benefit; reject additions and preserve failures.\\
+R5 & Separate name--nutrition alignment specialist: full R@10 .298199, but 30\% R@10 .002252. & Specialist results are not abilities of the completion model.\\
+R6 & Extra fixed30\% / mixed30--90\% deletion: completion .197232 / .210462 vs .184491. & Reject on the fixed completion panel.\\
+R7--R8 & Common PCA32/128; MLP name-only improved 18.909\%, completion gain .931\% had interval crossing zero. & Retain historical MLP128; freeze trees at scope change (10/12 R8 entries complete).\\\bottomrule
+\end{tabularx}}
+
+\sub{R9: common PCA32 Transformer controls.}
+Ten completed candidates are shown below (seed 20260922; 60 epochs). All later interventions are against the retained $3\times10^{-4}$ LayerNorm parent, not cumulatively stacked. The capacity row jointly changes width/heads/FFN and is not a single-component ablation. Historical parameter searches ended before the RMSNorm structural round.
+
+\begin{center}\smalltable
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Recipe or intervention & Selected epoch & Completion MAE & Legacy log-MAE & Name-only MAE\\\midrule
+Initial control: LR $10^{-4}$ & 60 & .194543 & .058632 & .414298\\
+Retained parent: LR $3\times10^{-4}$ & 60 & .183553 & .054362 & .426411\\
+MAE $\to$ MSE & 56 & .193006 & .060136 & .457182\\
+Axis-by-value residual & 60 & .187792 & .056027 & .419489\\
+Source calibration off & 58 & .187741 & .056708 & .444413\\
+Capacity 256 / 8 heads / FF1024 & 59 & .201520 & .062202 & .432889\\
+LR $6\times10^{-4}$ & 60 & .233616 & .072736 & .415257\\
+LR $2\times10^{-4}$ & 59 & .185954 & .056103 & .440569\\
+Dropout .15 $\to$ .25 & 57 & .206847 & .064430 & .465236\\
+RMSNorm (R9-A1) & 55 & .187225 & .057580 & .421303\\\bottomrule
+\end{tabular}
+\end{center}
+The nested 20/60-epoch parent comparison improved .213405$\to$.183553 under one 60-epoch schedule; it combines extra optimization with extra checkpoint-selection opportunities. The higher initial LR outperformed $10^{-4}$ in the matched historical contrast. Axis-by-value added a zero-initialized per-axis vector times its visible value. Source removal kept loss-scale normalization controlled. None of these later recipes justified replacing the parent. Batch size, clipping and weight decay are reproducible engineering choices, not established optima.
+
+\sub{RMSNorm structural test.}
+Motivated by RMSNorm and its use in LLaMA [1,2], replace seven encoder norms (two per layer plus final norm) by
+$\mathrm{RMSNorm}(x)=\gamma x/\sqrt{\operatorname{mean}(x^2)+10^{-5}}$.
+Text-projection LayerNorm remains. Removing the seven biases reduces parameters by 1,344; shared initial tensors, constructor RNG, task orders and all other settings match the parent. The candidate completed 60 epochs and selected epoch 55. No seed, dropout, LR, loss or dimensionality search was added to rescue it.
+
+\sub{Failure preservation and functional evidence.}
+Small-batch overfitting precedes formal training; weights/RNG are restored afterward. Hidden-label/source isolation, arbitrary unobserved queries, save/reload equality and nonfinite checks passed. RMSNorm's initial fused/explicit LayerNorm bridge failed tolerance; the revised diagnostic compares identical unfused paths exactly and restores the default backend before training. A post-hoc bridge with the parent's learned weights changes primary MAE by only $+0.000005322$ (maximum cell-level difference .034032); this limits an evaluation-kernel explanation, but does not isolate training-trajectory effects. Original failures and recovery records remain in the evidence archive.
+
+\newpage
+\sect{4. Final comparisons, diagnosis and research decision}
+All results below are internal validation. Errors are 142-axis macro MAE (lower is better); retrieval rates are fractions, not percentages. Each row uses one checkpoint for all tasks. ``$\pm$'' denotes historical three-seed sample SD, not a confidence interval; rows without it are fixed fits or single-seed runs.
+
+\begin{center}\smalltable
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Model / evidence scope & Completion & Legacy log & Name-only & R@10 full / 30\%\\\midrule
+MLP32, seed 22 & .186021 & .058695 & .609183 & .002539 / .000650\\
+MLP128, 3 seeds & .183435$\pm$.001222 & .059259$\pm$.000718 & .484042$\pm$.010458 & .003182 / .002232\\
+Transformer parent, seed 22 & .183553 & .054362 & .426411 & .010603 / .006781\\
+Transformer parent, 3 seeds & .189184$\pm$.006925 & .057454$\pm$.003301 & .429095$\pm$.021087 & .009726 / .004755\\
+Transformer RMSNorm, seed 22 & .187225 & .057580 & .421303 & .007099 / .003368\\
+Frozen RF32 & .189031 & .056270 & .659518 & .004457 / .001987\\
+Frozen XGBoost32 & .174487 & .052593 & .656148 & .006275 / .001819\\
+Name KNN32 & --- & --- & .262260 & .193572 / .096722\\\bottomrule
+\end{tabular}
+\end{center}
+MLP128 uses richer name input and a different training recipe, so its advantage is not attributable solely to architecture. Three-seed R@10 SDs (full/30\%) are .000271/.000454 for MLP128 and .000800/.001789 for the Transformer. The Transformer improves name-only prediction and retrieval over the reported MLP references, but name KNN is substantially stronger. Its three-seed completion mean is close to RF and above XGBoost; stable superiority to RF is not established.
+
+\sub{RMSNorm uncertainty and secondary checks.}
+Relative improvement is $1-E_{\rm candidate}/E_{\rm reference}$, so negative values indicate regression.
+\begin{center}\smalltable
+\begin{tabular}{@{}lrr@{}}\toprule
+RMSNorm contrast & Point improvement & Paired 95\% interval\\\midrule
+Completion vs parent & $-2.000\%$ & [$-4.458\%$, $+0.181\%$]\\
+Legacy log-MAE vs parent & $-5.919\%$ & [$-10.925\%$, $-1.438\%$]\\
+Name-only vs parent & $+1.198\%$ & [$-1.400\%$, $+3.691\%$]\\
+Completion vs RF32 & $+0.956\%$ & [$-1.578\%$, $+3.478\%$]\\
+Completion vs XGBoost32 & $-7.300\%$ & [$-10.588\%$, $-3.974\%$]\\\bottomrule
+\end{tabular}
+\end{center}
+RMSNorm worsens all eight retrieval point estimates; seven difference intervals have upper bounds below zero and full R@1's upper bound equals zero. Completion positive/zero MAE is .306402/.089347 versus the parent's .302773/.092039. Raw-unit MAE is .351747 versus .330240; metabolome45/all187 errors are .599615/.286463 versus .598022/.283292.
+
+\sub{Observed mechanism, not a unique causal explanation.}
+The primary increase $+.003671223$ decomposes on a common denominator into positive underprediction $+.005743362$, positive overprediction $-.001941824$ and explicit zero $-.000130315$. Training error also increases (.134937$\to$.140616). Only 42/142 axes improve by point estimate; unadjusted intervals support 2 improvements and 22 regressions. Sixteen of 24 source contributions worsen. Lower late gradient clipping did not improve completion. Forty fixed extreme cases were inspected; severe cholesterol underprediction preserves a label-scale concern without proving label errors. These observations reject the fixed RMSNorm replacement, but do not isolate centering, scale, bias removal or optimization compatibility. The prior dropout candidate likewise failed, with completion error increasing 12.690\%.
+
+\sub{Decision and limits.}
+Retain the original LayerNorm Transformer as the structural control; retain MLP, RF, XGBoost and KNN as separate references. Name-only improvement from RMSNorm is inconclusive and does not compensate for its other regressions. Planned next: a separately registered SwiGLU FFN contrast against the LayerNorm parent, with fixed existing settings and explicit disclosure of added parameters; it has not started. No further seed/dropout/LR/loss/width search is authorized. Unresolved units, near-duplicates and source lineage, exact-name retrieval relevance, and repeated validation limit conclusions. Unseen-source and few-shot transfer remain untested; foundation-model capability is unproven.
+
+\sub{Reproducibility and cost.}
+Evidence commit \texttt{1d00fc1}; RMSNorm training commit \texttt{641d1795}; data SHA256 prefix \texttt{48aa0b22a816cc17}. Python 3.10.19, PyTorch 2.7.1+cu128, RTX 5070 Ti 16\,GB. Parent/RMSNorm training took 3.40/3.30\,h; RF/XGBoost elapsed times were 1.61/.47\,h (not controlled speed comparisons). RMSNorm passed 30 preflight tests and independent replay of both 323,809-row prediction sets and all retrieval ranks. Full hashes, configurations, source/axis metrics, curves and failures are in \texttt{report\_snapshot\_r9\_rmsnorm\_v1/REPORT\_EN.md} and linked version records. Predictions/checkpoints remain local; no test results or new training were used to prepare this report.
+
+{\footnotesize
+[1] B. Zhang and R. Sennrich. \href{https://arxiv.org/abs/1910.07467}{Root Mean Square Layer Normalization}. NeurIPS, 2019.\quad
+[2] H. Touvron et al. \href{https://arxiv.org/abs/2302.13971}{LLaMA: Open and Efficient Foundation Language Models}. 2023.
+}
+\end{document}
