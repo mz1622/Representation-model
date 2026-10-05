@@ -4,7 +4,7 @@
 
 按当前“先不使用蒸馏，只训练一个模型”的约束，推荐版本更新为 **v16 ReGLU＋按 axis 对学习的 attention bias**：营养 142 轴 `0.231242`、食品代谢物 45 轴 `0.598959`、全部 187 轴 `0.319730`。相对父模型 v7 ReGLU，三项汇总指标分别改善 `0.002883 / 0.000379 / 0.002280`，187 个轴中有 138 个改善。
 
-本轮还测试了 QK-Norm（v15）和 Talking-Heads（v17）：前者与 v7 基本持平，后者明显退化，因此没有与 v16 叠加。v16 没有使用教师、软目标、food name、source ID 或多模型预测；最终和训练中的模型数都为 1。完整测试集保持关闭。v12 蒸馏和 v11 ensemble 只保留为历史实验。
+本轮还测试了 QK-Norm（v15）和 Talking-Heads（v17）：前者与 v7 基本持平，后者明显退化，因此没有与 v16 叠加。随后按指定容量运行 v18：把 v16 改为3层、192维、6 heads、dropout 0.15；正式选中的第18轮 checkpoint 全轴为 `0.322537`，未超过 v16。v16/v18 均没有使用教师、软目标、food name、source ID 或多模型预测。完整测试集保持关闭。v12 蒸馏和 v11 ensemble 只保留为历史实验。
 
 ## 补全接口
 
@@ -58,6 +58,7 @@
 | v15 | ReGLU＋QK-Norm attention | 348,085；1 个模型 | 0.233167 | 0.602714 | 0.322096 | 与 v7 持平，不叠加 |
 | **v16** | **ReGLU＋按 axis 对学习的 attention bias** | **860,149；1 个模型** | **0.231242** | **0.598959** | **0.319730** | **当前最佳无蒸馏单模型** |
 | v17 | ReGLU＋Talking-Heads attention | 348,141；1 个模型 | 0.239960 | 0.624023 | 0.332382 | 淘汰：两组轴均退化 |
+| v18 | v16 扩为3层/192维/6头/dropout 0.15 | 2,057,125；1 个模型 | 0.224705 | 0.631250 | 0.322537 | 营养改善、代谢物退化；不替代 v16 |
 
 ### 为什么 ReGLU 有效
 
@@ -107,6 +108,14 @@ SwiGLU: left × SiLU(gate) = left × gate × sigmoid(gate)
 
 v16 的代价是参数量从 348,077 增至 860,149，正式训练耗时从约 747 秒增至约 1,620 秒。它距离 `0.31` 目标仍有 `0.009730`，而且目前只有一个种子，因此应视为新的结构候选，而不是已经确认的稳定提升。
 
+### v16 容量复验（v18）
+
+v18 只把 v16 的 `n_layers / d_model / n_heads / dropout` 从 `2 / 128 / 4 / 0.10` 改成 `3 / 192 / 6 / 0.15`；ReGLU 的 `feedforward_dim=256`、axis-pair bias、batch 128、学习率 `3e-4`、20轮和所有数据/损失设置保持不变。参数量增至 2,057,125，运行耗时约 3,676 秒。
+
+既定营养选点规则选中第18轮：营养 `0.224705`、代谢物 `0.631250`、全轴 `0.322537`。相对 v16，营养改善 `0.006537`，代谢物恶化 `0.032291`，全轴恶化 `0.002807`；112/187轴改善、74轴退化、1轴相同。代谢物退化主要由少数离群轴驱动，例如 oxalic acid 增加 `0.559576`、tyramine 增加 `0.266624`、glycitein 增加 `0.243116`。
+
+训练历史另记录第20轮营养 `0.225631`、全轴 `0.309882`；由宏平均恒等式得到当轮代谢物约 `0.575741`。这低于0.31，但脚本依照预先固定的营养选点规则在训练结束后恢复第18轮，且没有保存第20轮权重或逐轴预测。因此 `0.309882` 只能作为轨迹观察，不能作为已保存、可复现推理的模型结果。当前可部署选择仍是 v16。
+
 ## 负结果解释
 
 1. **PLE 改善营养、损害代谢物。**逐轴分段数值嵌入增加了 24 万参数，在稀疏代谢物任务上泛化更差；不与后续结构叠加。
@@ -117,6 +126,7 @@ v16 的代价是参数量从 348,077 增至 860,149，正式训练耗时从约 7
 6. **每轴输出头加重负迁移。**零初始化的 axis-specific residual 没有改善；代谢物误差升至 0.637489，说明当前共享 decoder 的跨轴统计共享是有用约束。
 7. **QK-Norm 只改变了注意力标度。**归一化 Q/K 后，营养略好但代谢物略差，全轴与 v7 持平；不继续组合。
 8. **Talking-Heads 引入了有害的 head 混合。**即使从标准 attention 的恒等函数开始，正式结果仍在两组轴上退化；不继续组合。
+9. **扩大 v16 容量改善营养但放大代谢物尾部误差。**正式 checkpoint 的营养明显改善，但少数代谢物轴退化使187轴均值差于 v16；固定营养选点和全轴目标之间也出现可观察的不一致。
 
 ## 三个传统 baseline 的技术细节
 
@@ -138,6 +148,7 @@ RF 和 XGBoost 的全轴结果仍优于当前 v16，主要来自营养轴；v16 
 - v13 SwiGLU 只有 seed `20261005`；因为同种子、同参数量实验已经明确差于 ReGLU，本轮不追加种子复验。
 - v15、v16、v17 均只有 seed `20261005`。v16 的提升较小，必须在独立种子上复验后才能判断稳定性。
 - v16 的 axis-pair bias 新增 512,072 个参数，正式训练约为 v7 的 2.17 倍耗时；收益需要与这部分成本一并评价。
+- v18 只有 seed `20261005`；正式第18轮 checkpoint 可独立加载，但第20轮只保留历史聚合指标，没有 checkpoint 和逐轴预测，不能用于部署或逐轴结论。
 - 本轮没有重新设计成分家族；所有实验沿用既定 family mask。
 
 ## 复现
@@ -155,6 +166,7 @@ RF 和 XGBoost 的全轴结果仍优于当前 v16，主要来自营养轴；v16 
 - `scripts/run_foodnutrigpt_no_foodname_v15.py`：QK-Norm attention
 - `scripts/run_foodnutrigpt_no_foodname_v16.py`：按 axis 对学习 attention bias
 - `scripts/run_foodnutrigpt_no_foodname_v17.py`：Talking-Heads attention
+- `scripts/run_foodnutrigpt_no_foodname_v18.py`：v16 的3层/192维/6头容量复验
 
 最终 ensemble：
 
@@ -186,5 +198,13 @@ SwiGLU 单模型：
 ```powershell
 .venv\Scripts\python.exe scripts/run_foodnutrigpt_no_foodname_v16.py `
   --output-dir output/no_foodname_v16_axis_pair_bias_20ep_20261005 `
+  --epochs 20 --device cuda
+```
+
+v18 容量复验：
+
+```powershell
+.venv\Scripts\python.exe scripts/run_foodnutrigpt_no_foodname_v18.py `
+  --output-dir output/no_foodname_v18_v16_capacity192_20ep_20261006 `
   --epochs 20 --device cuda
 ```
