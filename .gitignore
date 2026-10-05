@@ -92,3 +92,5 @@ experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*
 # Composition-only, no-food-name first implementation and its reviewable report.
 !experiments/foodnutrigpt_v9_research/no_foodname_v1/
 !experiments/foodnutrigpt_v9_research/no_foodname_v1/*.md
+!experiments/foodnutrigpt_v9_research/no_foodname_v2/
+!experiments/foodnutrigpt_v9_research/no_foodname_v2/*.md
