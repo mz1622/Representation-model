@@ -2,9 +2,9 @@
 
 ## 结论
 
-按最终“只部署一个模型”的约束，当前推荐版本改为 **v12 单学生蒸馏模型**。它在训练阶段读取三个 v3 和一个 ReGLU 教师的平均软目标，但导出的 checkpoint 只有一个 ReGLU masked-axis Transformer，推理不加载教师、不平均多个模型。冻结内部验证集上，营养 142 轴为 **0.228699**、食品代谢物 45 轴为 **0.572968**、全部 187 轴为 **0.311545**。
+按当前“先不使用蒸馏，只训练一个模型”的约束，推荐版本仍是 **v7 ReGLU masked-axis Transformer**：营养 142 轴 `0.234125`、食品代谢物 45 轴 `0.599338`、全部 187 轴 `0.322010`。新测试的 v13 SwiGLU 只把 ReGLU 的 ReLU gate 换成 SiLU/Swish gate，参数量同为 348,077，但全轴为 `0.328893`，没有改善。
 
-v12 相比原最佳单模型 v7 的全轴 `0.322010` 改善 `0.010466`，相对改善约 **3.25%**；参数量仍为 **348,077**。它还没有跨过 0.31，距离原四模型 v11 ensemble 的 `0.307088` 为 `0.004456`。因此现有证据支持“多教师知识可以压入一个模型并保留大部分收益”，但不支持声称单模型已经完全复现 ensemble。完整测试集保持关闭。
+v12 蒸馏和 v11 ensemble 保留为历史实验，不作为当前方案。v13 没有使用教师、软目标或多模型预测；`food_name_model_input=false`，最终和训练中的模型数都为 1。完整测试集保持关闭。
 
 ## 补全接口
 
@@ -53,7 +53,8 @@ v12 相比原最佳单模型 v7 的全轴 `0.322010` 改善 `0.010466`，相对�
 | v4-G | ReGLU＋每轴 decoder residual | 380,585 | 0.238775 | 0.637489 | 0.334722 | 代谢物过拟合 |
 | 3×v3 等权 | 三个 masked-axis seed | 3 个成员 | 0.225859 | 0.574525 | 0.309762 | 已略低于目标 |
 | v4-H / v11 | 3×v3＋1×ReGLU，scaled-log 等权 | 4 个成员 | 0.223433 | 0.571067 | 0.307088 | 训练教师；不作为最终部署方式 |
-| **v12** | **四教师稠密软目标蒸馏至一个 ReGLU student** | **348,077；1 个模型** | **0.228699** | **0.572968** | **0.311545** | **当前单模型推荐版本** |
+| v12 | 四教师稠密软目标蒸馏至一个 ReGLU student | 348,077；1 个模型 | 0.228699 | 0.572968 | 0.311545 | 暂停：当前不采用蒸馏 |
+| v13 | ReGLU gate 改为 SwiGLU/SiLU | 348,077；1 个模型 | 0.236900 | 0.619182 | 0.328893 | 淘汰：差于 ReGLU 和普通 GELU |
 
 ### 为什么 ReGLU 有效
 
@@ -79,6 +80,19 @@ v12 把 v11 从“推理规则”改成“训练监督”。对 337,048 个训�
 ```
 
 两个损失都按轴总支持量归一化，避免 60,536 个 mineral task 压过只有 35 个 task 的 lignan 家族。训练 20 轮，按既定营养指标选中第 18 轮。学生对教师的训练 MAE 从第 1 轮 `0.244778` 降到第 20 轮 `0.082184`；验证全轴结果从 v7 的 `0.322010` 降到 `0.311545`。导出文件不含任何教师 state dict，已通过只加载学生 checkpoint 的独立推理检查。
+
+### SwiGLU 单模型结果
+
+SwiGLU 保持 v7 的输入、masked target axis token、attention、decoder、hidden width、优化器和 20 轮预算不变。FFN 唯一变化为：
+
+```text
+ReGLU: left × ReLU(gate)
+SwiGLU: left × SiLU(gate) = left × gate × sigmoid(gate)
+```
+
+二者的 gated hidden width 都是 171，总参数均为 348,077。SwiGLU 按既定营养选点规则选择第 18 轮，营养 `0.236900`、代谢物 `0.619182`、全轴 `0.328893`。相对 ReGLU，全轴恶化 `0.006883`；相对普通 GELU v3 也恶化 `0.002679`。
+
+逐轴看，SwiGLU 在 119/187 个轴上改善，中位变化为 `-0.002221`，但少数轴产生严重离群退化。例如 isomeric linolenic acids (18:3) 增加 `0.894792`、benzoic acid 增加 `0.511245`、oxalic acid 增加 `0.412453`。由于正式指标是逐轴宏平均，这些稀疏轴的不稳定性超过了多数轴的小收益。当前不保留 SwiGLU。
 
 ## 负结果解释
 
@@ -106,6 +120,7 @@ RF 和 XGBoost 的全轴结果仍优于 v12，主要来自营养轴；v12 的代
 - 三个 v3 成员来自独立 seed，ReGLU 只有 seed `20261005`；ensemble 没有第二组四成员重复。
 - v12 目前只有 seed `20261005`，尚未做独立种子复验；它距离 0.31 仍有 0.001545，不能写成已经达标。
 - 蒸馏降低推理成本，但训练阶段仍需要四个教师 checkpoint 和约 73 MB 的软目标缓存。正式发布只需保存学生 checkpoint、轴映射和训练尺度。
+- v13 SwiGLU 只有 seed `20261005`；因为同种子、同参数量实验已经明确差于 ReGLU，本轮不追加种子复验。
 - 本轮没有重新设计成分家族；所有实验沿用既定 family mask。
 
 ## 复现
@@ -119,6 +134,7 @@ RF 和 XGBoost 的全轴结果仍优于 v12，主要来自营养轴；v12 的代
 - `scripts/run_foodnutrigpt_no_foodname_v8.py`：missing-aware tokens
 - `scripts/run_foodnutrigpt_no_foodname_v9.py`：MVC auxiliary
 - `scripts/run_foodnutrigpt_no_foodname_v10.py`：axis-specific residual
+- `scripts/run_foodnutrigpt_no_foodname_v13.py`：SwiGLU 单模型
 
 最终 ensemble：
 
@@ -136,3 +152,11 @@ RF 和 XGBoost 的全轴结果仍优于 v12，主要来自营养轴；v12 的代
 ```
 
 v12 输出另含 `transformer.pt`、逐轮 `history.csv` 和训练专用 `teacher_targets.npy`。部署只需要单个 `transformer.pt` 及数据预处理元数据。逐版本因果说明和失败理由见同目录 `ITERATIONS_ZH.md`。
+
+SwiGLU 单模型：
+
+```powershell
+.venv\Scripts\python.exe scripts/run_foodnutrigpt_no_foodname_v13.py `
+  --output-dir output/no_foodname_v13_swiglu_20ep_20261005 `
+  --epochs 20 --device cuda
+```
