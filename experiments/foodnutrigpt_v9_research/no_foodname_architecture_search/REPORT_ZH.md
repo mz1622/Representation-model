@@ -2,9 +2,9 @@
 
 ## 结论
 
-冻结内部验证集上，**全部 187 轴 scaled log MAE < 0.31 的目标已经达到**。最终 v11 是四个无 food name Transformer 的固定等权 ensemble：三个独立种子的 v3 masked-axis 模型，加一个 ReGLU gated-FFN 模型。预测在训练目标空间 `z=log1p(raw/s_axis)` 中平均，营养 142 轴为 **0.223433**、食品代谢物 45 轴为 **0.571067**、全部 187 轴为 **0.307088**。
+按最终“只部署一个模型”的约束，当前推荐版本改为 **v12 单学生蒸馏模型**。它在训练阶段读取三个 v3 和一个 ReGLU 教师的平均软目标，但导出的 checkpoint 只有一个 ReGLU masked-axis Transformer，推理不加载教师、不平均多个模型。冻结内部验证集上，营养 142 轴为 **0.228699**、食品代谢物 45 轴为 **0.572968**、全部 187 轴为 **0.311545**。
 
-需要区分单模型和 ensemble：最佳单模型是 ReGLU v4-D/v7，全轴为 **0.322010**，没有单独跨过 0.31；达标来自四个 Transformer 的方差降低。ensemble 没有使用 RF、XGBoost、KNN、food name、食物 ID或来源 ID，没有按轴选择模型，也没有搜索连续融合权重。完整测试集保持关闭。
+v12 相比原最佳单模型 v7 的全轴 `0.322010` 改善 `0.010466`，相对改善约 **3.25%**；参数量仍为 **348,077**。它还没有跨过 0.31，距离原四模型 v11 ensemble 的 `0.307088` 为 `0.004456`。因此现有证据支持“多教师知识可以压入一个模型并保留大部分收益”，但不支持声称单模型已经完全复现 ensemble。完整测试集保持关闭。
 
 ## 补全接口
 
@@ -52,7 +52,8 @@
 | v4-F | ReGLU＋scGPT MVC 辅助 | 380,973 | 0.236566 | 0.623069 | 0.329575 | context 辅助干扰主任务 |
 | v4-G | ReGLU＋每轴 decoder residual | 380,585 | 0.238775 | 0.637489 | 0.334722 | 代谢物过拟合 |
 | 3×v3 等权 | 三个 masked-axis seed | 3 个成员 | 0.225859 | 0.574525 | 0.309762 | 已略低于目标 |
-| **v4-H / v11** | **3×v3＋1×ReGLU，scaled-log 等权** | **4 个成员** | **0.223433** | **0.571067** | **0.307088** | **最终达标** |
+| v4-H / v11 | 3×v3＋1×ReGLU，scaled-log 等权 | 4 个成员 | 0.223433 | 0.571067 | 0.307088 | 训练教师；不作为最终部署方式 |
+| **v12** | **四教师稠密软目标蒸馏至一个 ReGLU student** | **348,077；1 个模型** | **0.228699** | **0.572968** | **0.311545** | **当前单模型推荐版本** |
 
 ### 为什么 ReGLU 有效
 
@@ -65,6 +66,19 @@ v3 block 的普通 FFN 是 `Linear(128,256) → GELU → Linear(256,128)`。ReGL
 四个成员的单次误差并不相同，尤其代谢物轴存在较强随机波动。直接在 `z` 空间平均相当于对非负原值做尺度一致的几何型融合，能抵消各模型方向不同的误差。三个 v3 seed 的等权平均已经把单模型均值 0.326706 降到 0.309762；加入结构不同的 ReGLU 后进一步降到 0.307088。
 
 采用等权是为了保持规则简单且可复现。四个权重在运行前固定为 0.25，没有用验证集拟合 stacking 模型。近期表格深度学习也发现 parameter-efficient ensemble 可显著改善稳定性；本轮只使用已有独立训练模型的普通 deep ensemble，不改各成员训练配置。[TabM 论文](https://openreview.net/pdf?id=Sd4wYYOhmY)提供了相关公开证据。
+
+### 如何把多个教师压成一个模型
+
+v12 把 v11 从“推理规则”改成“训练监督”。对 337,048 个训练 row-family task，四个冻结教师分别输出该家族全部目标 axis token 的 scaled-log 预测，再在 `z=log1p(raw/s_axis)` 空间等权平均。这样即使某一训练记录只观测到家族内少数目标轴，学生仍能在固定的全部目标 query 上得到稠密软目标。软目标只为训练 partition 生成；验证标签没有进入蒸馏。
+
+学生从随机初始化训练，结构完全沿用 v7：同一个 ReGLU Transformer、同一个目标 axis token 标量 decoder。每个 batch 的损失为：
+
+```text
+0.5 × 真实观测标签的逐轴宏平均 MAE
++ 0.5 × 教师稠密软目标的逐轴宏平均 MAE
+```
+
+两个损失都按轴总支持量归一化，避免 60,536 个 mineral task 压过只有 35 个 task 的 lignan 家族。训练 20 轮，按既定营养指标选中第 18 轮。学生对教师的训练 MAE 从第 1 轮 `0.244778` 降到第 20 轮 `0.082184`；验证全轴结果从 v7 的 `0.322010` 降到 `0.311545`。导出文件不含任何教师 state dict，已通过只加载学生 checkpoint 的独立推理检查。
 
 ## 负结果解释
 
@@ -83,14 +97,15 @@ v3 block 的普通 FFN 是 `Linear(128,256) → GELU → Linear(256,128)`。ReGL
 - **XGBoost**：每轴 300 棵深度 6 的 histogram tree；learning rate 0.05，`min_child_weight=5`，row/column subsample 都为 0.8，L2 regularization 1。结果为 `0.190612 / 0.633525 / 0.297195`。
 - **KNN**：每轴在有该目标标签的训练 profile 中找 16 个欧氏近邻；邻居贡献为 `训练权重/(distance+1e-3)`，对 scaled-log 目标加权平均。结果为 `0.239212 / 0.677675 / 0.344725`。
 
-RF 和 XGBoost 的全轴结果仍优于 v11，主要来自营养轴；Transformer ensemble 在代谢物轴更好。v11 是满足 0.31 的纯 Transformer 方案，但不是冻结验证上的总冠军。
+RF 和 XGBoost 的全轴结果仍优于 v12，主要来自营养轴；v12 的代谢物误差 `0.572968` 则优于 RF、XGBoost 和 KNN。v12 全轴优于 KNN，但与 RF 相差 `0.024704`、与 XGBoost 相差 `0.014350`。
 
 ## 完整性与限制
 
-- v11 四个成员均记录 `food_name_model_input=false`、`source_model_input=false`、`complete_test_opened=false`，并共享同一数据清单哈希。
-- ensemble 只在已有冻结内部验证集验证，尚无独立 external validation；0.307088 不能外推为外部数据性能。
+- v12 学生和四个教师均记录 `food_name_model_input=false`、`source_model_input=false`、`complete_test_opened=false`，并共享同一数据清单哈希。
+- v12 只在已有冻结内部验证集验证，尚无独立 external validation；0.311545 不能外推为外部数据性能。
 - 三个 v3 成员来自独立 seed，ReGLU 只有 seed `20261005`；ensemble 没有第二组四成员重复。
-- 0.31 目标只比结果高 0.002912，裕量有限。正式外部验证前应锁定四个 checkpoint、轴映射、训练尺度和等权规则，不能再依据外部标签调整成员或权重。
+- v12 目前只有 seed `20261005`，尚未做独立种子复验；它距离 0.31 仍有 0.001545，不能写成已经达标。
+- 蒸馏降低推理成本，但训练阶段仍需要四个教师 checkpoint 和约 73 MB 的软目标缓存。正式发布只需保存学生 checkpoint、轴映射和训练尺度。
 - 本轮没有重新设计成分家族；所有实验沿用既定 family mask。
 
 ## 复现
@@ -112,4 +127,12 @@ RF 和 XGBoost 的全轴结果仍优于 v11，主要来自营养轴；Transforme
   --output-dir output/no_foodname_v11_equal_log_ensemble_20261005
 ```
 
-输出包含 `manifest.json`、`metrics.json`、`axis_metrics.csv` 和 `validation_predictions.parquet`。逐版本因果说明和失败理由见同目录 `ITERATIONS_ZH.md`。
+当前单模型蒸馏版本：
+
+```powershell
+.venv\Scripts\python.exe scripts/run_foodnutrigpt_no_foodname_v12.py `
+  --output-dir output/no_foodname_v12_distilled_student_20ep_20261005 `
+  --epochs 20 --device cuda
+```
+
+v12 输出另含 `transformer.pt`、逐轮 `history.csv` 和训练专用 `teacher_targets.npy`。部署只需要单个 `transformer.pt` 及数据预处理元数据。逐版本因果说明和失败理由见同目录 `ITERATIONS_ZH.md`。
