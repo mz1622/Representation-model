@@ -1,0 +1,57 @@
+{
+  "baseline": {
+    "version": "no_foodname_v18_v16_capacity192",
+    "best_epoch": 20,
+    "parameter_count": 2057125,
+    "all187_scaled_log_mae": 0.3098820820617187,
+    "elapsed_seconds": 2846.1089999999967
+  },
+  "candidates": [
+    {
+      "version": "no_foodname_v34_target_query_residual",
+      "best_epoch": 18,
+      "parameter_count": 2168293,
+      "all187_scaled_log_mae": 0.3156222584460979,
+      "delta_from_v18": 0.0057401763843792,
+      "training_seconds": 2906.9530000000086,
+      "mechanism_diagnostics": {
+        "target_query_residual_rms": 0.058978959918022156
+      }
+    },
+    {
+      "version": "no_foodname_v35_disentangled_axis_content",
+      "best_epoch": 16,
+      "parameter_count": 2278309,
+      "all187_scaled_log_mae": 0.31972901056863823,
+      "delta_from_v18": 0.0098469285069195,
+      "training_seconds": 3213.0320000000065,
+      "mechanism_diagnostics": {
+        "axis_cross_projection_rms": 1.0049196481704712,
+        "fixed_batch_layer_cross_logit_rms": [
+          2.653822183609009,
+          2.1751744747161865,
+          2.329318046569824
+        ],
+        "fixed_batch_mean_cross_logit_rms": 2.3861049016316733
+      }
+    },
+    {
+      "version": "no_foodname_v36_relation_value",
+      "best_epoch": 18,
+      "parameter_count": 2348581,
+      "all187_scaled_log_mae": 0.31220320262914,
+      "delta_from_v18": 0.0023211205674213,
+      "training_seconds": 4515.625,
+      "mechanism_diagnostics": {
+        "relation_value_effective_rms": 0.08833765238523483,
+        "relation_query_rms": 0.14374563097953796,
+        "relation_value_rms": 0.0862141102552414
+      }
+    }
+  ],
+  "selection_metric": "all187 macro-axis scaled_log_mae",
+  "selected_version": "no_foodname_v18_v16_capacity192",
+  "seed": 20261005,
+  "epochs": 20,
+  "complete_test_opened": false
+}
