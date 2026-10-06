@@ -71,20 +71,20 @@ def train_model(data, config, axes, train_rows, validation_rows, device):
             model, data, axes, device, config.batch_size, validation_rows)
         metrics, _ = score_subset(
             data, prediction, axes, validation_rows=validation_rows)
-        primary = metrics["nutrition"]["scaled_log_mae"]
-        if primary is None:
-            primary = metrics["all"]["scaled_log_mae"]
+        primary = metrics["all"]["scaled_log_mae"]
         history.append({
             "epoch": epoch,
             "train_loss": loss_sum / len(tasks),
             "validation_primary": primary,
-            "validation_all": metrics["all"]["scaled_log_mae"],
+            "validation_nutrition": metrics["nutrition"]["scaled_log_mae"],
+            "validation_all": primary,
             "epoch_seconds": time.monotonic() - epoch_start,
         })
         print(
             f"gated_ffn epoch {epoch}/{config.epochs}: "
             f"train={history[-1]['train_loss']:.6f} "
-            f"nutrition={primary:.6f} all={history[-1]['validation_all']:.6f} "
+            f"nutrition={history[-1]['validation_nutrition']:.6f} "
+            f"all187={history[-1]['validation_all']:.6f} "
             f"seconds={history[-1]['epoch_seconds']:.1f}",
             flush=True,
         )
@@ -188,7 +188,7 @@ def main():
         "context_token_role": "sample representation only",
         "ffn_activation": "ReGLU",
         "gated_hidden_rule": "round(feedforward_dim * 2 / 3)",
-        "selection_metric": "nutrition scaled_log_mae",
+        "selection_metric": "all187 macro-axis scaled_log_mae",
         "pilot_subset": bool(
             args.max_train_profiles or args.max_validation_profiles or args.axes),
     }

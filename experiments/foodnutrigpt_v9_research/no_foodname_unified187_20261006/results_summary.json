@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "date": "2026-10-06",
+  "primary_metric": "all187 macro-axis scaled_log_mae",
+  "selection_metric": "all187 macro-axis scaled_log_mae",
+  "axis_count": 187,
+  "train_profiles": 64700,
+  "validation_profiles": 11175,
+  "validation_jobs": 323809,
+  "seed": 20261005,
+  "neural_epochs": 20,
+  "complete_test_opened": false,
+  "results": {
+    "rf": {"scaled_log_mae": 0.286840571925993, "raw_mae": 0.249068840775884},
+    "xgboost": {"scaled_log_mae": 0.297195136206698, "raw_mae": 0.259063918195332},
+    "knn": {"scaled_log_mae": 0.344724794494574, "raw_mae": 0.374410155549524},
+    "v3": {"best_epoch": 16, "scaled_log_mae": 0.324064183284122, "raw_mae": 0.380241410344643},
+    "v7": {"best_epoch": 16, "scaled_log_mae": 0.329948124801187, "raw_mae": 0.357902060832676},
+    "v16": {"best_epoch": 18, "scaled_log_mae": 0.319730160495422, "raw_mae": 0.351083766178818},
+    "v18": {"best_epoch": 20, "scaled_log_mae": 0.309882082061719, "raw_mae": 0.355484017889834}
+  },
+  "output_directories": {
+    "baselines": "output/no_foodname_unified187_baselines_20261006",
+    "v3": "output/no_foodname_v3_unified187_20ep_20261006",
+    "v7": "output/no_foodname_v7_unified187_20ep_20261006",
+    "v16": "output/no_foodname_v16_unified187_20ep_retry1_20261006",
+    "v18": "output/no_foodname_v18_unified187_20ep_20261006"
+  }
+}

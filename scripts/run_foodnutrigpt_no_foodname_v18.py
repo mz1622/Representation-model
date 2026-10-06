@@ -77,9 +77,7 @@ def train_model(data, config, axes, train_rows, validation_rows, device):
         metrics, _ = score_subset(
             data, prediction, axes, validation_rows=validation_rows
         )
-        primary = metrics["nutrition"]["scaled_log_mae"]
-        if primary is None:
-            primary = metrics["all"]["scaled_log_mae"]
+        primary = metrics["all"]["scaled_log_mae"]
         bias_rms = float(np.mean([
             block.attention.pair_bias.detach().square().mean().sqrt().item()
             for block in model.blocks
@@ -88,14 +86,15 @@ def train_model(data, config, axes, train_rows, validation_rows, device):
             "epoch": epoch,
             "train_loss": loss_sum / len(tasks),
             "validation_primary": primary,
-            "validation_all": metrics["all"]["scaled_log_mae"],
+            "validation_nutrition": metrics["nutrition"]["scaled_log_mae"],
+            "validation_all": primary,
             "pair_bias_rms": bias_rms,
             "epoch_seconds": time.monotonic() - epoch_start,
         })
         print(
             f"axis_pair_bias epoch {epoch}/{config.epochs}: "
             f"train={history[-1]['train_loss']:.6f} "
-            f"nutrition={primary:.6f} "
+            f"nutrition={history[-1]['validation_nutrition']:.6f} "
             f"all={history[-1]['validation_all']:.6f} "
             f"bias_rms={bias_rms:.5f} "
             f"seconds={history[-1]['epoch_seconds']:.1f}",
@@ -223,7 +222,7 @@ def main():
         "teacher_models": 0,
         "distillation": False,
         "deployed_model_count": 1,
-        "selection_metric": "nutrition scaled_log_mae",
+        "selection_metric": "all187 macro-axis scaled_log_mae",
         "pilot_subset": bool(
             args.max_train_profiles or args.max_validation_profiles or args.axes
         ),

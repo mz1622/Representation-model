@@ -110,17 +110,17 @@ def train_model(data, config, axes, train_rows, validation_rows, device):
             model, data, axes, device, config.batch_size, validation_rows)
         metrics, _ = score_subset(data, prediction, axes,
                                   validation_rows=validation_rows)
-        primary = metrics["nutrition"]["scaled_log_mae"]
-        if primary is None:
-            primary = metrics["all"]["scaled_log_mae"]
+        primary = metrics["all"]["scaled_log_mae"]
         history.append({
             "epoch": epoch,
             "train_loss": loss_sum / len(tasks),
             "validation_primary": primary,
+            "validation_nutrition": metrics["nutrition"]["scaled_log_mae"],
+            "validation_all": primary,
             "epoch_seconds": time.monotonic() - epoch_start,
         })
         print(f"masked_axis epoch {epoch}/{config.epochs}: "
-              f"train={history[-1]['train_loss']:.6f} validation={primary:.6f} "
+              f"train={history[-1]['train_loss']:.6f} all187={primary:.6f} "
               f"seconds={history[-1]['epoch_seconds']:.1f}", flush=True)
         if primary < best_score:
             best_score, best_epoch = primary, epoch
@@ -205,6 +205,7 @@ def main():
         "food_token_prediction_role": "sample representation only; no direct all-axis head",
         "target_token_policy": "all supervised axes in the existing task family, independent of row label availability",
         "decoder": "shared Linear-LeakyReLU-Linear-LeakyReLU-Linear scalar head",
+        "selection_metric": "all187 macro-axis scaled_log_mae",
         "pilot_subset": bool(args.max_train_profiles or args.max_validation_profiles or args.axes),
         "baseline_reference": "output/no_foodname_full_control_20261005",
     }
