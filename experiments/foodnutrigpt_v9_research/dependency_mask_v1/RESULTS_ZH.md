@@ -98,6 +98,19 @@ CCE 阶段的最佳值比 V5 阶段最佳值低 0.000563，即 0.25%。这只能
 
 ## 6. 解释与限制
 
+### 6.1 Taiwan TFDA zero-shot 一致性检查
+
+台湾数据的 analyte 先映射到冻结的 canonical `axis_index`，随后直接调用同一依赖注册表；外部文件中的旧 `mask_family` 列完全不读取。模型、normalizer、checkpoint 和关系表均未使用台湾数据训练或选择。
+
+| Panel | Profiles | Axes | Jobs | Scaled-log MAE | Scaled-log RMSE | Raw MAE |
+|---|---:|---:|---:|---:|---:|---:|
+| Strict all | 2,212 | 80 | 128,470 | 0.192219 | 0.370330 | 0.325320 |
+| Name-novel | 1,789 | 80 | 107,482 | 0.195055 | 0.374783 | 0.339726 |
+
+这些是新 checkpoint 在新 mask 协议下的 zero-shot 数值。它们不能与旧 Taiwan family-mask 结果做纯模型效果归因，因为训练 mask 和外部推理 mask 同时改变了。
+
+### 6.2 限制
+
 新协议比旧 family mask 明显更窄，所以本轮绝对数值与旧 broad-family 结果属于不同任务定义，不能把下降全部解释为模型进步。新协议的价值在于：只阻止有明确数值依赖的直接泄漏，不再因为“同属营养、维生素或脂肪酸类别”而大量删除可能合法的上下文。
 
 本轮仍是单 seed。Complete test 中每轴支持量为 5 到 566，稀疏轴的不确定性仍较大。模型权重、原始数据和逐样本预测没有提交到 Git；仓库只保存关系审计、聚合指标、阶段摘要和本报告。

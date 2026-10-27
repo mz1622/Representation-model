@@ -7,6 +7,7 @@
   "baseline_run_manifest_sha256": "42ec94e1eeac68bbaa1129af5a9727eecb83095ce423ab2b5acaf45c7894976e",
   "neural_training_manifest_sha256": "d00ba5f506a83d245b1b200660a01babafacfab9d46b991fc7f60e6edaaeb621",
   "neural_evaluation_manifest_sha256": "ecc716cfd857282c7b950a00aaa2926f0f0bc3bd02af272dc5eb010299774cc6",
+  "taiwan_zero_shot_manifest_sha256": "4ceea8eed7a70b23926a36f64e919a09f7eecefdf3bb64b32ed4e4b3fb644e6e",
   "selected_checkpoint_sha256": "0413e39661f2b1bab0fb194c9df8b32ce4e5534b26f2b248dfedd1e23762ec42",
   "selected_checkpoint": {
     "stage": "cce",
@@ -29,6 +30,7 @@
     "benchmark_metrics.csv",
     "training_stage_summary.csv",
     "axis_group_metrics.csv",
+    "taiwan_zero_shot_metrics.csv",
     "RESULTS_ZH.md"
   ]
 }
