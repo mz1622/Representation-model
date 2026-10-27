@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "created_utc": "2026-10-27T16:25:07.533689+00:00",
+  "scope": "dependency-mask v1; UMAP, Taiwan zero/few-shot, sparse completion, sensitivity",
+  "raw_data_included": false,
+  "model_weights_included": false,
+  "row_level_predictions_included": false,
+  "pdf_outputs": {
+    "food_foundation_evidence_dependency_mask_zh.pdf": {
+      "pages": 8,
+      "sha256": "cee08d5fd28ab9c4e6ec6a5d997d872410346fa90fbeab42ff7ec48dccf46ddf"
+    },
+    "food_foundation_evidence_dependency_mask_en.pdf": {
+      "pages": 9,
+      "sha256": "7684f334f75cab604267cf144359377fd94cdae5b552f32ba775cdbe77fc68a8"
+    }
+  },
+  "source_hashes": {
+    "policy_manifest": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2",
+    "representation_manifest": "3c332171d2f2f9e795d890c4c878fa48897fca0869234da47f4e40a3bc20aa28",
+    "taiwan_zero_shot_manifest": "d76986e65673dbda795f1410a5616cbf806aa3b18884085ce7dd23eab349c6b9",
+    "taiwan_fewshot_manifest": "20691aec8521ad83924a3d5c53a53b9b3dbb7b4f98c378bd667436e591c90215",
+    "sparse_manifest": "5546f48b582147e6d325bf2e8c36f8a1666c7ede8958a2d2e12a90d580b1be7a",
+    "sensitivity_manifest": "3fe63a22fe8f1d4e5bd02a4e4e558fc57de03e73dd261053eb35549a046140b2"
+  }
+}
