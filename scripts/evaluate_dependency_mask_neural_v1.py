@@ -69,6 +69,15 @@ def main():
         "checkpoint_sha256": digest(args.checkpoint),
         "checkpoint_epoch": checkpoint["completed_epoch"],
         "checkpoint_selection": "lowest validation macro scaled-log MAE within CCE stage",
+        "code_sha256": {
+            "scripts/evaluate_dependency_mask_neural_v1.py": digest(Path(__file__)),
+            "src/foodcomp/dependency_mask_v1.py": digest(
+                ROOT / "src/foodcomp/dependency_mask_v1.py"
+            ),
+            "src/foodcomp/research_dependency_mask_v1.py": digest(
+                ROOT / "src/foodcomp/research_dependency_mask_v1.py"
+            ),
+        },
         "config": asdict(config), "complete_test": panel,
         "food_name_model_input": False, "source_model_input": False,
         "family_label_model_input": False,

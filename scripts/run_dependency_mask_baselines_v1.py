@@ -66,6 +66,15 @@ def main():
         "frozen_split_sha256": digest(args.split_path),
         "mask_policy_version": MASK_VERSION,
         "mask_policy_manifest_sha256": digest(args.policy_manifest),
+        "code_sha256": {
+            "scripts/run_dependency_mask_baselines_v1.py": digest(Path(__file__)),
+            "src/foodcomp/dependency_mask_v1.py": digest(
+                ROOT / "src/foodcomp/dependency_mask_v1.py"
+            ),
+            "src/foodcomp/research_dependency_mask_v1.py": digest(
+                ROOT / "src/foodcomp/research_dependency_mask_v1.py"
+            ),
+        },
         "food_name_model_input": False, "source_model_input": False,
         "family_label_model_input": False,
         "legacy_mask_family_used_for_masking": False,

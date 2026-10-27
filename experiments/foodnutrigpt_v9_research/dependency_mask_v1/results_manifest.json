@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "protocol_version": "infoods_explicit_dependency_mask_v1",
+  "benchmark_version": "dependency_mask_v1_v4_v5_cce",
+  "data_manifest_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "policy_manifest_sha256": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2",
+  "baseline_run_manifest_sha256": "42ec94e1eeac68bbaa1129af5a9727eecb83095ce423ab2b5acaf45c7894976e",
+  "neural_training_manifest_sha256": "d00ba5f506a83d245b1b200660a01babafacfab9d46b991fc7f60e6edaaeb621",
+  "neural_evaluation_manifest_sha256": "ecc716cfd857282c7b950a00aaa2926f0f0bc3bd02af272dc5eb010299774cc6",
+  "selected_checkpoint_sha256": "0413e39661f2b1bab0fb194c9df8b32ce4e5534b26f2b248dfedd1e23762ec42",
+  "selected_checkpoint": {
+    "stage": "cce",
+    "epoch": 17,
+    "selection_partition": "validation",
+    "selection_metric": "macro_scaled_log_mae"
+  },
+  "model_parameters": 2057125,
+  "food_name_model_input": false,
+  "source_model_input": false,
+  "family_label_model_input": false,
+  "legacy_mask_family_used_for_masking": false,
+  "raw_data_committed": false,
+  "model_checkpoints_committed": false,
+  "predictions_committed": false,
+  "committed_artifacts": [
+    "accepted_edges.csv",
+    "target_mask_policy.csv",
+    "rejected_candidates.csv",
+    "benchmark_metrics.csv",
+    "training_stage_summary.csv",
+    "axis_group_metrics.csv",
+    "RESULTS_ZH.md"
+  ]
+}

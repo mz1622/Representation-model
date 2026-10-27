@@ -1,0 +1,4 @@
+stage,parent,epochs_completed,tasks_per_epoch,learning_rate,best_epoch,best_validation_macro_scaled_log_mae,final_validation_macro_scaled_log_mae,elapsed_seconds
+V4,random initialization,20,337048,0.0003,17,0.2412598499665001,0.2423851752302148,1403.296
+V5,V4 final epoch 20,20,337048,0.0001,14,0.2239054988126196,0.2300585531787616,2272.203
+V5+CCE,V5 final epoch 20,20,337048,0.0001,17,0.2233424002408631,0.2263854173973610,3226.547
