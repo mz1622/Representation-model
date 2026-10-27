@@ -1,49 +1,26 @@
-# 显式依赖 mask 下的食物组成基础模型证据
+# 显式依赖 mask 下的食物组成基础模型证据：修订分析
 
-**版本：** 2026-10-28
+**版本：** 2026-10-28 r2
 
 **主模型：** V5+CCE（dependency-mask v1）
 
-**范围：** 新 mask 训练审计、UMAP 表征、台湾 TFDA 零样本与少样本、少观测补全、全验证集敏感性
+**范围：** mask 训练审计、food/database UMAP、台湾 zero/few-shot、少观测补全、INFOODS 组件组 sensitivity、dependency 暴露消融
 
 ## 摘要
 
-这份报告重做了 commit `5eb7aeb` 的证据链，但所有补全任务都使用新的显式依赖 mask。这个 mask **同时影响训练和预测**：训练集中每一个 profile-target 样本先隐藏目标轴，以及依赖图中与它相连的祖先和后代；验证、complete test、台湾 zero-shot/few-shot、少观测与 sensitivity 使用同一个规则。新 V4、V5、V5+CCE 均从头按此规则训练，绝不是只在推理时替换 mask。
+当前 dependency mask **同时影响训练和预测**。训练中的每个 profile-target 任务先隐藏目标轴及其有向祖先和后代；validation、complete test、台湾外部验证和以下分析复用同一 policy。V4、V5、V5+CCE 均在这个 mask 下从头训练。
+
+本次按要求修订四部分：UMAP 只保留 food category 与 database source；台湾 few-shot 只比较冻结 V5+CCE 与台湾少样本 RF/XGBoost；少 observation 只比较 V5+CCE、RF、XGBoost、KNN；sensitivity 增加 FAO/INFOODS 组件组矩阵和 dependency-family 推理暴露消融。
 
 主要结果：
 
-- 新 mask 只登记 FAO/INFOODS 定义可支持的 37 条有向关系，涉及 44 个轴。187 个监督轴中有 144 个是 singleton；平均每个目标隐藏 1.465 个轴，而旧语义 family 平均会隐藏 27.717 个轴。兄弟成分仍可见。
-- complete test 上，V5+CCE 的 macro scaled-log MAE 为 **0.3016**，在本轮四个正式方法中最低。
-- 台湾 strict zero-shot 上，V5+CCE 为 **0.1922**，相对 XGBoost、RF、KNN 分别降低 **17.3%、18.9%、32.3%**。
-- 在相同架构、目标和优化器下，预训练初始化在 8/32/128-shot 的台湾适配中分别比随机初始化降低 **52.0%、45.7%、25.1%**。
-- UMAP 和定量检查显示，V5+CCE 的食品类别结构强于同一训练链中的 V4/V5，但原始数值加缺失标记仍更强；来源和观测覆盖是明显混杂因素。
-- sensitivity 显示模型对 ±10% 单输入扰动平滑；删除一个可见正值后的退化需要与 RF 的干净误差一起解释。prediction shift、error delta、perturbed error 不能混为同一结论。
+- 台湾固定测试集上，冻结 V5+CCE 为 **0.2000**。RF 的 8/32/128-shot 为 **0.4551/0.3266/0.2430**；XGBoost 为 **0.5287/0.3262/0.2369**。冻结模型在三个样本量都更好。
+- +10% 单输入扰动中，INFOODS 同组 input-target 的平均 shift 是 **0.00550**，跨组是 **0.00179**；删除输入时分别是 **0.08410** 与 **0.02230**。
+- dependency 暴露消融没有证明严格父子/包含轴在当前模型中比普通轴影响更强。暴露全部通常隐藏值后，SLMAE 从 **0.1541** 变为 **0.1628**；依赖轴扰动的 shift 也整体低于 matched control。这是重要的负结果。
 
-旧 family-mask 与新 dependency-mask 定义了不同难度的任务，因此本报告只在新 mask 内比较模型；数值不能直接用来宣称模型本身比旧报告提高了多少。
+## 1. 共同设置与 mask
 
-## 1. 共同设定与新 mask
-
-### 1.1 mask 的依据和作用位置
-
-唯一分类依据是 [FAO/INFOODS component identifiers (tagnames)](https://www.fao.org/infoods/infoods/standards-guidelines/food-component-identifiers-tagnames/en/) 对显式总量、分量、子总量和结构成员的定义。规则是：对目标轴隐藏 `target + all directed ancestors + all directed descendants`。没有被登记的轴独立预测；兄弟轴不因为同属一个宽泛营养类别而被隐藏。`mask_family` 列不再参与训练或评价。
-
-实现审计：
-
-- 37 条有向边，44 个登记轴；
-- 144 个 singleton target，43 个 dependency-connected target；
-- mask size 最小 1、最大 15、平均 1.465；
-- 234 个 sibling-visibility 检查通过；
-- food name、source、food family label、profile ID 均不是模型输入。
-
-训练时共有 337,048 个 profile-target 任务/epoch。每个任务先由目标轴调用同一个 `DependencyMaskPolicy` 构造可见 context，再进入 V4/V5/CCE 的训练 batch。推理也调用同一对象，因此不存在“训练仍用旧 family、预测才换新 mask”的情况。
-
-### 1.2 模型与指标
-
-V5+CCE 保持 3 层、hidden 192、6 heads、ReGLU 256、有序 axis-pair bias。V5 使用两次共享参数前向：第一遍产生 `[FOOD]`，第二遍以 `detach(h_food)` 作为 prompt；CCE 在第一遍 `[FOOD]` 的两个 dropout view 上增加对比损失。正式预测来自第二遍目标 token。
-
-每个轴使用原训练集正值中位数 `s_a`：`z = log(1 + y/s_a)`。先在轴内计算 MAE/RMSE，再对评价轴等权平均。scaled-log MAE 是主要指标，raw MAE 保留原含量尺度。
-
-### 1.3 新 mask 的 complete-test 基准
+mask 图只登记 FAO/INFOODS tagname 定义能够明确支持的 totals、components、subtotals 和 structural members。37 条有向边覆盖 44 个轴；187 个监督轴中 144 个是 singleton。目标 mask 为 `目标 + 全部有向祖先 + 全部有向后代`，siblings 仍可见，旧 `mask_family` 不参与训练或评估。
 
 | Method | SLMAE | SLRMSE | Raw MAE |
 |---|---|---|---|
@@ -52,33 +29,53 @@ V5+CCE 保持 3 层、hidden 192、6 heads、ReGLU 256、有序 axis-pair bias�
 | RF | 0.3322 | 0.4841 | 0.2838 |
 | KNN | 0.4047 | 0.5937 | 0.4729 |
 
-V5+CCE 的主要指标最好；XGBoost 的 raw MAE 和 scaled-log RMSE 更低。这说明 Transformer 更均衡地改善不同量级轴上的典型误差，而树模型对原单位误差或较大对数误差仍有优势。
+## 2. UMAP：food category 与 database
 
-## 2. UMAP 与表征结构
+UMAP 使用 4,000 个 validation profile 的 V5+CCE 第一遍 `[FOOD]` 表征；类别和 database 只用于着色，不进入模型。图中不再展示 observation count 或单个 nutrient 梯度。
 
-对 75,875 个 train+validation profile 输入全部已观测数值，并使用空 target query，提取第一遍 `[FOOD]`。空 query 本身不触发某个目标的 mask；它检验的是**由新 mask 训练得到的 encoder** 的全 profile 表征。UMAP 只用于二维展示，不参与训练、选 checkpoint 或性能评价。
+![Food category 与 database UMAP](figures/umap_food_category_database.png)
 
-![新版 V5+CCE UMAP](figures/umap_v5_cce.png)
+| Representation | Macro purity@10 | Macro-F1 | Balanced acc. |
+|---|---|---|---|
+| Values+mask | 0.7563 | 0.8614 | 0.8598 |
+| V4 | 0.6424 | 0.7296 | 0.7505 |
+| V5 | 0.6767 | 0.7592 | 0.7814 |
+| V5+CCE | 0.6973 | 0.7895 | 0.8096 |
 
-| Representation | Macro purity@10 | Macro-F1 | Balanced acc. | Cosine silhouette |
-|---|---|---|---|---|
-| Nutrients_mask | 0.756 | 0.861 | 0.860 | 0.091 |
-| PCA50 | 0.725 | 0.723 | 0.740 | 0.113 |
-| V4 | 0.642 | 0.730 | 0.751 | -0.012 |
-| V5 | 0.677 | 0.759 | 0.781 | 0.009 |
-| V5+CCE | 0.697 | 0.790 | 0.810 | 0.083 |
+database code 对应如下：
 
-V5+CCE 的 macro purity@10 为 0.697，高于 V4 的 0.642；linear macro-F1 为 0.790。但 raw nutrients+mask 仍达到 0.861 macro-F1，说明 FOOD embedding 没有普遍超过原始组成表示。
+| Code | Source key | Database | UMAP n |
+|---|---|---|---|
+| D01 | afcd | Australian Food Composition Database | 107 |
+| D02 | anfood_2_0 | FAO/INFOODS AnFooD 2.0 | 22 |
+| D03 | bangladesh_fct_2013 | Bangladesh Food Composition Table 2013 | 15 |
+| D04 | biofoodcomp_4_0 | FAO/INFOODS BioFoodComp 4.0 | 51 |
+| D05 | bls_4_0 | German Nutrient Database BLS 4.0 | 405 |
+| D06 | ciqual | ANSES-Ciqual | 194 |
+| D07 | cnf | Canadian Nutrient File | 326 |
+| D08 | cofid | UK CoFID | 141 |
+| D09 | efsa_eu_fcdb_2013 | EFSA EU Food Composition Database | 830 |
+| D10 | fndds | USDA FNDDS | 273 |
+| D11 | foodb | FooDB | 622 |
+| D12 | frida | Frida FoodData, Denmark | 79 |
+| D13 | lesotho_fct_2006 | Lesotho Food Composition Table 2006 | 12 |
+| D14 | mext_japan_2023 | Japan MEXT Food Composition Tables | 133 |
+| D15 | norway | Norwegian Food Composition Database | 87 |
+| D16 | phyfoodcomp_1_0 | FAO/INFOODS/IZiNCG PhyFoodComp 1.0 | 112 |
+| D17 | smiling_cambodia_2013 | SMILING Cambodia FCT 2013 | 6 |
+| D18 | smiling_indonesia_2013 | SMILING Indonesia FCT 2013 | 6 |
+| D19 | smiling_laos_2013 | SMILING Laos FCT 2013 | 6 |
+| D20 | smiling_thailand_2013 | SMILING Thailand FCT 2013 | 7 |
+| D21 | smiling_vietnam_2013 | SMILING Vietnam FCT 2013 | 11 |
+| D22 | swiss_fcdb_7_1 | Swiss Food Composition Database 7.1 | 73 |
+| D23 | usda_sr_legacy | USDA Standard Reference Legacy | 431 |
+| D24 | wafct_2019 | FAO/INFOODS West Africa FCT 2019 | 51 |
 
-missingness-only 的类别 macro-F1 为 0.597，来源 balanced accuracy 为 0.971。图中的来源簇和观测轴数量梯度因此是实质混杂，而不能全部解释为食品生物学类别。
+缺失模式本身对 source 的 balanced accuracy 仍达到约 0.971，因此 database 分离包含明显的 coverage/missingness 混杂，不能单独作为语义表征证据。
 
-三个 UMAP seed 相对首个 seed 的 10 邻域平均重合为 0.779。随机隐藏 10%、30%、50% 已观测输入后，V5+CCE 与完整输入的平均 cosine similarity 分别为 0.981、0.933、0.857。UMAP 适合做表征审计，不单独构成 foundation-model 优势证据。
+## 3. 台湾 zero-shot
 
-![表征类别定量](figures/representation_category_metrics.png)
-
-## 3. 台湾 TFDA zero-shot
-
-台湾数据没有参与训练、调参、checkpoint 选择或 `s_a` 估计。strict panel 含 2,212 个食品、128,470 个 food-axis 任务和 80 个轴；name-novel panel 含 1,789 个食品。所有方法都先应用新 dependency mask。RF/XGBoost/KNN 只在原训练集拟合。
+台湾数据不参与训练、尺度估计、调参或 checkpoint 选择。strict panel 含 2,212 个 food、128,470 个 food-axis job 和 80 个轴。
 
 ![台湾 zero-shot](figures/taiwan_zero_shot.png)
 
@@ -89,97 +86,122 @@ missingness-only 的类别 macro-F1 为 0.597，来源 balanced accuracy 为 0.9
 | RF | 0.2370 | 0.3729 | 0.3332 |
 | KNN | 0.2838 | 0.4519 | 0.4968 |
 
-V5+CCE 在 strict panel 的 scaled-log MAE 最低。2,000 次台湾 profile 配对 bootstrap 中，V5+CCE 相对每个 baseline 的差值区间均由 `tables/taiwan_zero_shot_paired_bootstrap.csv` 给出。name-novel panel 得到相同排序。raw MAE 与 scaled-log 指标仍可能给出不同最优模型，应按各自定义解释。
+V5+CCE 的主要 scaled-log MAE 为 **0.1922**，仍优于三个 source-trained baseline；raw MAE 最优仍可能是 XGBoost。
 
-## 4. 台湾 TFDA few-shot
+## 4. 台湾 few-shot：冻结模型与树模型少样本拟合
 
-只使用 name-novel 食品。固定 400 个食品作为测试集，其余 1,389 个组成适配池；每个 seed 内 8 subset 32 subset 128。比较预训练 V5+CCE 与完全相同架构的随机初始化，均训练 20 epochs、AdamW、lr `1e-4`、batch 128；固定最后一轮，不使用测试集选模型。
+固定 400 个 name-novel food 为测试集，1,389 个为 adaptation pool。8-shot 子集先按缺失模式做 axis coverage 集合覆盖，再随机填满；不查看数值或测试误差。子集保持 `8 ⊂ 32 ⊂ 128`，三个 seed 使用相同协议。V5+CCE 完全冻结；RF/XGBoost 对每个轴只用相应台湾 adaptation profiles 拟合正式配置。这里没有 scratch Transformer，也没有 Transformer fine-tuning。
 
 ![台湾 few-shot](figures/taiwan_fewshot_curve.png)
 
-| Init. | Shots | SLMAE mean | SLMAE SD | Raw MAE mean |
-|---|---|---|---|---|
-| pretrained | 8 | 0.2033 | 0.0026 | 0.3586 |
-| scratch | 8 | 0.4237 | 0.0093 | 1.0460 |
-| pretrained | 32 | 0.1974 | 0.0038 | 0.3561 |
-| scratch | 32 | 0.3634 | 0.0166 | 0.7284 |
-| pretrained | 128 | 0.1829 | 0.0004 | 0.3001 |
-| scratch | 128 | 0.2443 | 0.0034 | 0.4850 |
+| Method | Profiles | SLMAE mean | SD |
+|---|---|---|---|
+| RF | 8 | 0.4551 | 0.0179 |
+| V5+CCE frozen | 8 | 0.2000 | 0.0000 |
+| XGBoost | 8 | 0.5287 | 0.0243 |
+| RF | 32 | 0.3266 | 0.0058 |
+| V5+CCE frozen | 32 | 0.2000 | 0.0000 |
+| XGBoost | 32 | 0.3262 | 0.0074 |
+| RF | 128 | 0.2430 | 0.0017 |
+| V5+CCE frozen | 128 | 0.2000 | 0.0000 |
+| XGBoost | 128 | 0.2369 | 0.0010 |
 
-固定测试集的冻结 zero-shot SLMAE 是 0.2000。8-shot 平均为 0.2033，略差于 zero-shot；32-shot 为 0.1974，小幅改善；128-shot 为 0.1829，改善 8.5%。预训练相对 scratch 的优势在每个样本量和每个 seed 都成立，这是当前最直接的样本效率证据。
+128 个台湾 food 后，XGBoost 已到 0.2369、RF 到 0.2430，但仍未达到冻结 V5+CCE 的 0.2000。这比 pretrained-vs-scratch Transformer 更直接地显示跨数据库预训练的样本效率。
 
 ## 5. 少量可见 observation
 
-从验证集选择支持量最高的 12 个目标，每个目标固定 200 个任务，共 2,400 个任务。每个任务先隐藏目标及其依赖祖先/后代，再随机保留 5、10、20、40 或全部 context；有限预算重复三次。RF/KNN 使用正式 dependency-mask 训练特征，没有额外 mask-mix augmentation。
+固定 12 个高支持目标，每轴 200 个 validation job。先应用 dependency mask，再随机保留 5、10、20、40 或全部 context；有限预算重复三次。只比较四个指定方法。
 
 ![少观测补全](figures/sparse_observation_curve.png)
 
-| Method | Budget | Mean visible | SLMAE |
+| Method | Visible | SLMAE mean | SD |
 |---|---|---|---|
-| KNN | 5 | 5.000 | 0.563 |
-| RF | 5 | 5.000 | 0.492 |
-| V5+CCE | 5 | 5.000 | 0.380 |
-| KNN | 10 | 9.850 | 0.445 |
-| RF | 10 | 9.850 | 0.374 |
-| V5+CCE | 10 | 9.850 | 0.294 |
-| KNN | 20 | 16.728 | 0.345 |
-| RF | 20 | 16.728 | 0.294 |
-| V5+CCE | 20 | 16.728 | 0.243 |
-| KNN | 40 | 27.421 | 0.224 |
-| RF | 40 | 27.421 | 0.189 |
-| V5+CCE | 40 | 27.421 | 0.203 |
-| KNN | all | 34.106 | 0.188 |
-| RF | all | 34.106 | 0.132 |
-| V5+CCE | all | 34.106 | 0.188 |
+| KNN | 5 | 0.5633 | 0.0069 |
+| RF | 5 | 0.4918 | 0.0077 |
+| V5_CCE | 5 | 0.3799 | 0.0078 |
+| XGBoost | 5 | 0.4572 | 0.0043 |
+| KNN | 10 | 0.4453 | 0.0029 |
+| RF | 10 | 0.3738 | 0.0099 |
+| V5_CCE | 10 | 0.2940 | 0.0042 |
+| XGBoost | 10 | 0.3693 | 0.0086 |
+| KNN | 20 | 0.3452 | 0.0025 |
+| RF | 20 | 0.2943 | 0.0021 |
+| V5_CCE | 20 | 0.2427 | 0.0061 |
+| XGBoost | 20 | 0.3035 | 0.0020 |
+| KNN | 40 | 0.2241 | 0.0022 |
+| RF | 40 | 0.1888 | 0.0027 |
+| V5_CCE | 40 | 0.2033 | 0.0018 |
+| XGBoost | 40 | 0.2142 | 0.0005 |
+| KNN | all | 0.1883 | nan |
+| RF | all | 0.1316 | nan |
+| V5_CCE | all | 0.1879 | nan |
+| XGBoost | all | 0.1731 | nan |
 
-V5+CCE 在 10 和 20 个可见成分时分别得到 0.294 和 0.243，优于 RF/KNN；5 个成分时 V5 与 V5+CCE 接近。到 40 个和全部 context 时，RF 分别达到 0.189 和 0.132，优于 Transformer。这表明新任务下的优势集中在 context 真正稀疏的区间，而充分观测时 RF 很强。由于不再隐藏宽泛 nutrition family，“all” 条件可见信息通常多于旧报告，因此不能把两份 sparse 数值直接相减解释为架构提升。
+V5+CCE 在 5/10/20 个可见值时分别为 0.380/0.294/0.243，均优于三个 baseline。40 个和 all 时 RF 最强，XGBoost 次之。这说明 foundation advantage 集中在真正稀疏的 context，而不是充分观测条件。
 
-## 6. 全验证集 sensitivity
+## 6. FAO/INFOODS 组件组 sensitivity
 
-分析覆盖 11,175 个 validation profile、323,809 个真实 target job 和 187 个目标。每个任务先应用 dependency mask，再从可见正值中按固定哈希选择一个输入；所有模型对同一输入作 ×0.001 至 ×1000、±5%/10%/20% 以及 deletion。另对可见零值作 `+0.1*s_a` 探针。这个设计保留全部 target job，但每个 job 只抽一个输入，因此是**全目标覆盖的配对 sampled-input sensitivity**，不是对全部 input-target pair 的穷举。
+### 6.1 分类依据
 
-三个量分别是：prediction shift（预测移动）、error delta（扰动后误差减干净误差）、perturbed error（扰动后的绝对误差）。后两者必须结合 clean error 解读。
+只采用一个来源：[FAO/INFOODS 与 EuroFIR 组件命名 workshop report](https://www.fao.org/fileadmin/templates/food_composition/documents/upload/9IFDCReportfinal.pdf) Annex 1 的组件层级，并用 [INFOODS tagnames](https://www.fao.org/infoods/infoods/standards-guidelines/food-component-identifiers-tagnames/en/)核对名称。Annex 的层级标为 draft proposition，因此只登记氨基酸、脂肪酸、糖、膳食纤维、矿物质、维生素、有机酸七个清楚的大组；其余轴保持未分类。本分析共分类 135/252 个轴，其中 132 个为监督目标。这个分类只用于汇总 sensitivity，不参与 mask 或模型输入。
 
-![局部敏感性](figures/sensitivity_dose_response.png)
+### 6.2 跨组矩阵
 
-| Method | Condition | Prediction shift | Error delta | Perturbed error |
+每个 target job 先应用 dependency mask，再在每个可用 input group 中固定抽一个正值轴。共 58,197 个配对组合。矩阵数值是 target-axis macro 的 normalized-log prediction shift。
+
+![+10% 组件组 sensitivity](figures/group_sensitivity_plus10.png)
+
+![删除一个输入的组件组 sensitivity](figures/group_sensitivity_deletion.png)
+
+| Condition | Relation | Prediction shift | Error delta | Pairs |
 |---|---|---|---|---|
-| V5+CCE | factor_0.9 | 0.00422 | -0.00050 | 0.22163 |
-| V5+CCE | factor_1.1 | 0.00382 | 0.00071 | 0.22284 |
-| V5+CCE | factor_1000 | 0.12913 | 0.06848 | 0.29062 |
-| V5+CCE | deletion | 0.05234 | 0.00882 | 0.23095 |
-| RF | factor_0.9 | 0.00331 | 0.00049 | 0.22867 |
-| RF | factor_1.1 | 0.00311 | 0.00095 | 0.22913 |
-| RF | factor_1000 | 0.09537 | 0.07196 | 0.30014 |
-| RF | deletion | 0.05463 | 0.02830 | 0.25648 |
+| deletion | between_group | 0.0223 | 0.0013 | 45269 |
+| deletion | within_group | 0.0841 | 0.0349 | 12928 |
+| minus_10pct | between_group | 0.0020 | -0.0002 | 45269 |
+| minus_10pct | within_group | 0.0061 | -0.0002 | 12928 |
+| plus_10pct | between_group | 0.0018 | 0.0002 | 45269 |
+| plus_10pct | within_group | 0.0055 | 0.0010 | 12928 |
 
-在 ±10% 下，V5+CCE 的 prediction shift 和 error delta 都很小。deletion 条件下，V5+CCE 的 error delta 为 0.00882，RF 为 0.02830；扰动后误差分别为 0.23095 和 0.25648。这些结果描述模型响应，不能视为真实营养干预或因果效应。
+对角线总体高于非对角线：+10% 时约为跨组的 3.1 倍，deletion 时约为 3.8 倍。糖与膳食纤维的组内响应最强，但膳食纤维部分 cell 支持量很低，必须结合 `tables/infoods_group_sensitivity.csv` 的 jobs/axes 阅读。这些是预测关联，不是营养干预因果效应。
 
-![极端 stress](figures/sensitivity_stress.png)
+## 7. Dependency-family 暴露与扰动消融
 
-×1000 用于发现数值失稳，不代表合理食品。所有结果均为有限值。500 次 profile 配对 bootstrap 的 CCE-RF 区间在 `tables/sensitivity_paired_bootstrap.csv` 中。
+本实验只使用当前 policy 本来会隐藏的 target-specific ancestors/descendants；siblings 本来就可见。共 6,889 个 job、32 个目标和 5 个 dependency components。标准输入依次改为暴露一个、一半、全部已观测依赖亲属。
 
-## 7. 综合判断
+![Dependency 暴露消融](figures/dependency_exposure_ablation.png)
 
-1. **新 mask 确实进入训练。** 任务生成、validation、complete test、台湾和扰动分析共享同一 target-specific policy；checkpoint 也记录 policy hash 和 `legacy_mask_family_used_for_masking=false`。
-2. **外部迁移优势仍成立。** 台湾 zero-shot 中 V5+CCE 的主要指标优于三种 baseline，且 name-novel 子集排序一致。
-3. **预训练提高样本效率。** 相同架构 scratch 对照显著更差；128-shot 还明显优于冻结 zero-shot。
-4. **UMAP 是描述性证据。** CCE 表征比 V4/V5 更有类别结构，但 raw 数值+mask 更强，来源缺失模式明显。
-5. **稳健性取决于条件和指标。** 小幅数值扰动总体平滑；删除与极端倍数下需要分别看预测移动、误差增量和最终误差。
+| Condition | SLMAE | Shift vs masked | Axes | Jobs |
+|---|---|---|---|---|
+| standard_mask | 0.1541 | 0.0000 | 32 | 6889 |
+| expose_one | 0.1612 | 0.0237 | 32 | 6889 |
+| expose_half | 0.1620 | 0.0256 | 32 | 6889 |
+| expose_all | 0.1628 | 0.0290 | 32 | 6889 |
 
-最稳妥的陈述是：
+暴露越多并没有改善准确率，反而使整体误差上升。这符合一个关键事实：模型在训练时从未见过“预测目标同时看到其祖先/后代”的任务，推理时解开 mask 是分布外输入。
 
-> 在只屏蔽 FAO/INFOODS 可明确支持的依赖关系、并让其余轴独立预测后，重新训练的 V5+CCE 仍在台湾外部数据库上表现出清楚的 zero-shot 优势；同架构 few-shot 消融进一步表明预训练显著提高样本效率。表征和 sensitivity 分析支持模型利用了跨轴结构，同时显示数据库缺失模式和输入覆盖仍是重要混杂。
+随后分别扰动一个已暴露依赖轴和一个按 INFOODS 组/normalized value 匹配的非依赖可见 control：
 
-## 8. 局限
+![Dependency 与 matched control 扰动](figures/dependency_perturbation_ablation.png)
 
-1. 新旧 mask 定义不同任务；新 mask 更窄，绝对误差不可直接用于比较架构进步。
-2. 台湾只覆盖 80/187 个监督轴；名称未精确匹配不等于语义上完全未见。
-3. few-shot 只有一个固定测试 split 和三个 seed；scratch 与 pretrained 使用统一超参数，而非分别调到最优。
-4. UMAP 使用空 target query，展示 encoder 的全 profile 状态，不对应某一个具体补全 query。
-5. sensitivity 每个 job 抽一个输入，并非穷举所有 input-target pair；扰动可能破坏真实食品的质量守恒。
-6. 所有神经结果来自一条单 seed 训练链，未估计预训练 seed 间不确定性。
+| Factor | Dependency shift | Control shift | Dependency Δerror | Control Δerror |
+|---|---|---|---|---|
+| 0.9000 | 0.0028 | 0.0046 | -0.0007 | 0.0003 |
+| 1.1000 | 0.0026 | 0.0042 | 0.0007 | 0.0004 |
+| 10.0000 | 0.0548 | 0.0865 | 0.0177 | 0.0400 |
+
+单纯 reveal 一个值时，dependency shift 为 0.02371，control reveal shift 为 0.02991；profile bootstrap 的 dependency-minus-control 95% 区间为 [-0.01124, 0.00091]。三种数值扰动下 dependency shift 也均较小，bootstrap 区间见附件。
+
+因此本消融**不能证明**当前模型在推理时强烈依赖这些父子轴。它反而支持继续 mask：一旦只在推理时开放，误差变差。父子/包含关系的科学依据来自 INFOODS 定义；若要检验“不 mask 会带来多大预测泄漏”，需要重新训练一个 matched no-dependency-mask 模型，不能用这次 inference-only OOD 消融替代。
+
+## 8. 结论与限制
+
+1. 新 mask 确实进入训练与所有预测路径。
+2. 冻结 V5+CCE 在台湾 fixed test 上优于仅用 8–128 个台湾 food 拟合的 RF/XGBoost，支持预训练的外部样本效率。
+3. 少 observation 下 V5+CCE 在 5–20 个可见值最强；40/all 时树模型更强。
+4. FAO/INFOODS 大组矩阵显示组内响应整体大于组间，但这是关联结构。
+5. inference-only dependency 暴露是负结果，不能作为依赖关系已被模型学会的证据。
+6. UMAP 的 database 分离受 missingness 强烈混杂；台湾只覆盖 80/187 个目标；所有神经结果仍来自单一预训练 seed。
 
 ## 9. 复现与附件
 
-报告只包含聚合表、图和哈希；不包含 checkpoint、原始台湾数据或逐条预测。主要附件位于 `tables/` 与 `figures/`。完整本地分析 manifest 记录数据、policy、checkpoint 和代码哈希。
+报告只包含聚合表、图和哈希，不包含 checkpoint、原始数据或逐条预测。完整脚本、manifest、表和图随报告提交。

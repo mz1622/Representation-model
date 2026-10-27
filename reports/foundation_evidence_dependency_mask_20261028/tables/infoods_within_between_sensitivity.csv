@@ -1,0 +1,7 @@
+condition,relation,prediction_shift,error_delta,pairs
+deletion,between_group,0.022299722,0.0013376167,45269
+deletion,within_group,0.08410444,0.0349232,12928
+minus_10pct,between_group,0.001973873,-0.00023909251,45269
+minus_10pct,within_group,0.0060945195,-0.00016303499,12928
+plus_10pct,between_group,0.0017854834,0.00023982461,45269
+plus_10pct,within_group,0.0055033374,0.00096591044,12928

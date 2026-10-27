@@ -1,0 +1,2 @@
+factor,profiles,draws,family_minus_control_shift,ci_low,ci_high,probability_family_greater,comparison
+1.0,2778,2000,-0.0051583217871358,-0.0112414524554697,0.0009073957453735,0.047,reveal dependency relative versus reveal matched unrelated control

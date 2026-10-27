@@ -1,49 +1,26 @@
-# Food-Composition Foundation Evidence under Explicit Dependency Masking
+# Food-Composition Foundation Evidence under Explicit Dependency Masking: Revised Analyses
 
-**Version:** 2026-10-28
+**Version:** 2026-10-28 r2
 
 **Primary model:** V5+CCE (dependency-mask v1)
 
-**Scope:** mask training audit, UMAP, Taiwan TFDA zero/few-shot transfer, sparse completion, and full-validation sensitivity
+**Scope:** mask audit, food/database UMAP, Taiwan zero/few-shot, sparse completion, INFOODS group sensitivity, dependency exposure ablation
 
 ## Executive summary
 
-This report reruns the evidence chain from commit `5eb7aeb` under the explicit dependency mask. The mask affects **both training and inference**. Every training profile-target example hides the target plus its registered ancestors and descendants. Validation, complete test, Taiwan zero/few-shot, sparse completion, and sensitivity use the same rule. V4, V5, and V5+CCE were retrained from scratch under this policy; this is not an inference-only mask substitution.
+The dependency mask affects **both training and inference**. Every training profile-target task hides the target plus its directed ancestors and descendants; validation, complete test, Taiwan transfer, and all analyses use the same policy. V4, V5, and V5+CCE were trained from scratch under this mask.
 
-Main findings:
+This revision keeps only food-category and database-source UMAP views; compares frozen V5+CCE with Taiwan few-shot RF/XGBoost without a scratch Transformer; restricts sparse completion to V5+CCE, RF, XGBoost, and KNN; and adds an FAO/INFOODS component-group sensitivity matrix plus a dependency exposure ablation.
 
-- The registry contains 37 FAO/INFOODS-supported directed relations over 44 axes. Of 187 supervised axes, 144 are singletons. Mean mask size is 1.465, versus 27.717 for the former semantic-family mask. Siblings remain visible.
-- V5+CCE reaches **0.3016** macro scaled-log MAE on complete test, the best primary score among the four formal methods in this round.
-- On strict Taiwan zero-shot evaluation, V5+CCE scores **0.1922**, reducing scaled-log MAE by **17.3%**, **18.9%**, and **32.3%** relative to XGBoost, RF, and KNN.
-- With the same architecture, objective, and optimizer, pretrained initialization reduces Taiwan few-shot error versus scratch by **52.0%**, **45.7%**, and **25.1%** at 8, 32, and 128 shots.
-- UMAP and quantitative probes show stronger food-category structure in V5+CCE than in V4/V5, while raw numerical values plus missingness remain stronger. Source-specific coverage is a material confounder.
-- Responses to single-input ±10% perturbations are smooth. Deletion and stress conclusions depend on clean error, prediction shift, error increase, and final perturbed error; no one quantity is sufficient.
+Key results:
 
-The old family mask and the new dependency mask define tasks of different difficulty. All comparisons in this report are therefore within the new policy; absolute values should not be used to claim architectural improvement over the old report.
+- Frozen V5+CCE scores **0.2000** on the fixed Taiwan test. RF scores **0.4551/0.3266/0.2430** at 8/32/128 shots; XGBoost scores **0.5287/0.3262/0.2369**. The frozen model is better at every budget.
+- For +10% input perturbations, within-group prediction shift is **0.00550** versus **0.00179** between groups; deletion gives **0.08410** versus **0.02230**.
+- The inference-only dependency exposure ablation does **not** show stronger use of strict dependency relatives than ordinary controls. Exposing all normally hidden relatives changes SLMAE from **0.1541** to **0.1628** and therefore worsens accuracy.
 
-## 1. Shared setup and the new mask
+## 1. Shared setup and mask
 
-### 1.1 Authority and where masking is applied
-
-The sole authority is the [FAO/INFOODS component-identifier (tagname) standard](https://www.fao.org/infoods/infoods/standards-guidelines/food-component-identifiers-tagnames/en/) for explicit totals, components, subtotals, and structural members. For target `a`, the hidden set is `a + all directed ancestors + all directed descendants`. Unregistered axes are predicted independently. Sibling components stay visible, and the legacy `mask_family` column is unused.
-
-Audit facts:
-
-- 37 directed edges over 44 registered axes;
-- 144 singleton and 43 dependency-connected targets;
-- mask size 1 to 15, mean 1.465;
-- 234 sibling-visibility checks passed;
-- no food name, source, family label, or profile identifier is a model input.
-
-Training has 337,048 profile-target tasks per epoch. Every task calls the same `DependencyMaskPolicy` before batching. Evaluation uses the identical object. The checkpoint records the policy hash and `legacy_mask_family_used_for_masking=false`.
-
-### 1.2 Model and metrics
-
-V5+CCE uses three layers, hidden size 192, six heads, ReGLU width 256, and ordered axis-pair bias. V5 executes the shared model twice: pass one creates `[FOOD]`, and pass two uses `detach(h_food)` as its prompt. CCE adds a contrastive objective between two dropout views of the first-pass `[FOOD]`. Official predictions come from second-pass target tokens.
-
-For each axis, `z = log(1 + y/s_a)`, where `s_a` is the positive training median. Errors are averaged within axis and then equally across axes. Macro scaled-log MAE is primary; raw MAE retains the original concentration scale.
-
-### 1.3 Complete-test benchmark under the new mask
+The graph contains only totals, components, subtotals, and structural members explicitly supported by FAO/INFOODS tagname definitions. It has 37 directed edges over 44 axes; 144 of 187 supervised targets are singletons. A target mask is `target + all directed ancestors + all directed descendants`; siblings remain visible and the legacy `mask_family` column is unused.
 
 | Method | SLMAE | SLRMSE | Raw MAE |
 |---|---|---|---|
@@ -52,33 +29,53 @@ For each axis, `z = log(1 + y/s_a)`, where `s_a` is the positive training median
 | RF | 0.3322 | 0.4841 | 0.2838 |
 | KNN | 0.4047 | 0.5937 | 0.4729 |
 
-V5+CCE has the best primary metric. XGBoost has lower raw MAE and scaled-log RMSE. The Transformer improves typical, scale-balanced error, while the tree baselines retain advantages for raw units or larger log-space misses.
+## 2. UMAP: food category and database
 
-## 2. UMAP and representation structure
+UMAP uses the first-pass V5+CCE `[FOOD]` representation for 4,000 validation profiles. Category and database labels are used only for colouring. Observation-count and single-nutrient gradient panels have been removed.
 
-The first-pass `[FOOD]` state was extracted for 75,875 train+validation profiles using all observed numerical values and an empty target grid. The empty grid does not invoke one target-specific mask; it audits the full-profile encoder learned under the new training policy. UMAP is descriptive only and was not used for training or checkpoint selection.
+![Food-category and database UMAP](figures/umap_food_category_database.png)
 
-![New V5+CCE UMAP](figures/umap_v5_cce.png)
+| Representation | Macro purity@10 | Macro-F1 | Balanced acc. |
+|---|---|---|---|
+| Values+mask | 0.7563 | 0.8614 | 0.8598 |
+| V4 | 0.6424 | 0.7296 | 0.7505 |
+| V5 | 0.6767 | 0.7592 | 0.7814 |
+| V5+CCE | 0.6973 | 0.7895 | 0.8096 |
 
-| Representation | Macro purity@10 | Macro-F1 | Balanced acc. | Cosine silhouette |
-|---|---|---|---|---|
-| Nutrients_mask | 0.756 | 0.861 | 0.860 | 0.091 |
-| PCA50 | 0.725 | 0.723 | 0.740 | 0.113 |
-| V4 | 0.642 | 0.730 | 0.751 | -0.012 |
-| V5 | 0.677 | 0.759 | 0.781 | 0.009 |
-| V5+CCE | 0.697 | 0.790 | 0.810 | 0.083 |
+Database codes are listed below.
 
-V5+CCE reaches 0.697 macro purity@10 versus 0.642 for V4, with linear macro-F1 0.790. Raw nutrients plus mask still reach 0.861, so the FOOD embedding is not uniformly more category-informative than its numerical inputs.
+| Code | Source key | Database | UMAP n |
+|---|---|---|---|
+| D01 | afcd | Australian Food Composition Database | 107 |
+| D02 | anfood_2_0 | FAO/INFOODS AnFooD 2.0 | 22 |
+| D03 | bangladesh_fct_2013 | Bangladesh Food Composition Table 2013 | 15 |
+| D04 | biofoodcomp_4_0 | FAO/INFOODS BioFoodComp 4.0 | 51 |
+| D05 | bls_4_0 | German Nutrient Database BLS 4.0 | 405 |
+| D06 | ciqual | ANSES-Ciqual | 194 |
+| D07 | cnf | Canadian Nutrient File | 326 |
+| D08 | cofid | UK CoFID | 141 |
+| D09 | efsa_eu_fcdb_2013 | EFSA EU Food Composition Database | 830 |
+| D10 | fndds | USDA FNDDS | 273 |
+| D11 | foodb | FooDB | 622 |
+| D12 | frida | Frida FoodData, Denmark | 79 |
+| D13 | lesotho_fct_2006 | Lesotho Food Composition Table 2006 | 12 |
+| D14 | mext_japan_2023 | Japan MEXT Food Composition Tables | 133 |
+| D15 | norway | Norwegian Food Composition Database | 87 |
+| D16 | phyfoodcomp_1_0 | FAO/INFOODS/IZiNCG PhyFoodComp 1.0 | 112 |
+| D17 | smiling_cambodia_2013 | SMILING Cambodia FCT 2013 | 6 |
+| D18 | smiling_indonesia_2013 | SMILING Indonesia FCT 2013 | 6 |
+| D19 | smiling_laos_2013 | SMILING Laos FCT 2013 | 6 |
+| D20 | smiling_thailand_2013 | SMILING Thailand FCT 2013 | 7 |
+| D21 | smiling_vietnam_2013 | SMILING Vietnam FCT 2013 | 11 |
+| D22 | swiss_fcdb_7_1 | Swiss Food Composition Database 7.1 | 73 |
+| D23 | usda_sr_legacy | USDA Standard Reference Legacy | 431 |
+| D24 | wafct_2019 | FAO/INFOODS West Africa FCT 2019 | 51 |
 
-Missingness alone reaches 0.597 category macro-F1 and 0.971 source balanced accuracy. Visible source clusters and observation-count gradients are therefore material coverage confounding.
+Missingness alone reaches about 0.971 source balanced accuracy, so database separation is materially confounded by coverage patterns.
 
-Across UMAP seeds, mean ten-neighbour overlap with the first seed is 0.779. After hiding 10%, 30%, and 50% of observed inputs, mean cosine similarity to the full V5+CCE representation is 0.981, 0.933, and 0.857. UMAP supports representation auditing, not a stand-alone foundation-model claim.
+## 3. Taiwan zero-shot
 
-![Representation category metrics](figures/representation_category_metrics.png)
-
-## 3. Taiwan TFDA zero-shot transfer
-
-Taiwan data are excluded from training, tuning, checkpoint selection, and scale estimation. The strict panel contains 2,212 foods, 128,470 food-axis jobs, and 80 axes. The name-novel panel contains 1,789 foods. Every method applies the new dependency mask. RF, XGBoost, and KNN are fit only on the original training partition.
+Taiwan is excluded from training, scale estimation, tuning, and checkpoint selection. The strict panel contains 2,212 foods, 128,470 food-axis jobs, and 80 axes.
 
 ![Taiwan zero-shot](figures/taiwan_zero_shot.png)
 
@@ -89,97 +86,122 @@ Taiwan data are excluded from training, tuning, checkpoint selection, and scale 
 | RF | 0.2370 | 0.3729 | 0.3332 |
 | KNN | 0.2838 | 0.4519 | 0.4968 |
 
-V5+CCE has the lowest strict-panel scaled-log MAE. The 2,000 profile-paired bootstrap intervals against each baseline are in `tables/taiwan_zero_shot_paired_bootstrap.csv`; the name-novel panel preserves the same ranking. Raw and scaled-log metrics can still identify different best models and should be interpreted according to their definitions.
+V5+CCE has the best primary scaled-log MAE, while raw MAE can still favour XGBoost.
 
-## 4. Taiwan TFDA few-shot adaptation
+## 4. Taiwan few-shot: frozen model versus tree fitting
 
-Only name-novel foods are used. A fixed 400-food test set is held out from an adaptation pool of 1,389 foods. Within each seed, 8 subset 32 subset 128. Pretrained V5+CCE is compared with the same architecture from random initialization. Both use 20 epochs, AdamW, learning rate `1e-4`, batch size 128, and the fixed final epoch without test-based selection.
+A fixed 400 name-novel food test is held out from 1,389 adaptation foods. The 8-shot subset first uses missingness-only set coverage so every test axis has at least one label, then fills randomly; subsets are nested through 32 and 128. V5+CCE remains frozen. RF and XGBoost use their formal configurations and are fit per axis only on the selected Taiwan profiles. There is no scratch Transformer and no Transformer fine-tuning.
 
 ![Taiwan few-shot](figures/taiwan_fewshot_curve.png)
 
-| Init. | Shots | SLMAE mean | SLMAE SD | Raw MAE mean |
-|---|---|---|---|---|
-| pretrained | 8 | 0.2033 | 0.0026 | 0.3586 |
-| scratch | 8 | 0.4237 | 0.0093 | 1.0460 |
-| pretrained | 32 | 0.1974 | 0.0038 | 0.3561 |
-| scratch | 32 | 0.3634 | 0.0166 | 0.7284 |
-| pretrained | 128 | 0.1829 | 0.0004 | 0.3001 |
-| scratch | 128 | 0.2443 | 0.0034 | 0.4850 |
+| Method | Profiles | SLMAE mean | SD |
+|---|---|---|---|
+| RF | 8 | 0.4551 | 0.0179 |
+| V5+CCE frozen | 8 | 0.2000 | 0.0000 |
+| XGBoost | 8 | 0.5287 | 0.0243 |
+| RF | 32 | 0.3266 | 0.0058 |
+| V5+CCE frozen | 32 | 0.2000 | 0.0000 |
+| XGBoost | 32 | 0.3262 | 0.0074 |
+| RF | 128 | 0.2430 | 0.0017 |
+| V5+CCE frozen | 128 | 0.2000 | 0.0000 |
+| XGBoost | 128 | 0.2369 | 0.0010 |
 
-Frozen zero-shot scaled-log MAE on the fixed test set is 0.2000. The pretrained branch scores 0.2033, 0.1974, and 0.1829. Eight-shot adaptation is slightly worse than zero-shot; 32-shot is a small gain; 128-shot improves by 8.5%. Pretraining beats scratch for every shot and seed, providing the most direct sample-efficiency evidence.
+Even at 128 Taiwan foods, XGBoost reaches 0.2369 and RF 0.2430, compared with 0.2000 for frozen V5+CCE. This directly demonstrates external sample efficiency from pretraining.
 
 ## 5. Completion with few visible observations
 
-The experiment selects the 12 most supported validation targets and 200 jobs per target. Each job first hides its target and dependency ancestors/descendants, then keeps 5, 10, 20, 40, or all remaining context values. Finite budgets use three repeats. RF/KNN use their standard dependency-mask training features without extra mask-mix augmentation.
+The panel fixes 12 high-support targets and 200 validation jobs per target. Dependency masking is applied first, followed by random retention of 5, 10, 20, 40, or all context values. Only the four requested methods are retained.
 
-![Sparse observation completion](figures/sparse_observation_curve.png)
+![Sparse completion](figures/sparse_observation_curve.png)
 
-| Method | Budget | Mean visible | SLMAE |
+| Method | Visible | SLMAE mean | SD |
 |---|---|---|---|
-| KNN | 5 | 5.000 | 0.563 |
-| RF | 5 | 5.000 | 0.492 |
-| V5+CCE | 5 | 5.000 | 0.380 |
-| KNN | 10 | 9.850 | 0.445 |
-| RF | 10 | 9.850 | 0.374 |
-| V5+CCE | 10 | 9.850 | 0.294 |
-| KNN | 20 | 16.728 | 0.345 |
-| RF | 20 | 16.728 | 0.294 |
-| V5+CCE | 20 | 16.728 | 0.243 |
-| KNN | 40 | 27.421 | 0.224 |
-| RF | 40 | 27.421 | 0.189 |
-| V5+CCE | 40 | 27.421 | 0.203 |
-| KNN | all | 34.106 | 0.188 |
-| RF | all | 34.106 | 0.132 |
-| V5+CCE | all | 34.106 | 0.188 |
+| KNN | 5 | 0.5633 | 0.0069 |
+| RF | 5 | 0.4918 | 0.0077 |
+| V5_CCE | 5 | 0.3799 | 0.0078 |
+| XGBoost | 5 | 0.4572 | 0.0043 |
+| KNN | 10 | 0.4453 | 0.0029 |
+| RF | 10 | 0.3738 | 0.0099 |
+| V5_CCE | 10 | 0.2940 | 0.0042 |
+| XGBoost | 10 | 0.3693 | 0.0086 |
+| KNN | 20 | 0.3452 | 0.0025 |
+| RF | 20 | 0.2943 | 0.0021 |
+| V5_CCE | 20 | 0.2427 | 0.0061 |
+| XGBoost | 20 | 0.3035 | 0.0020 |
+| KNN | 40 | 0.2241 | 0.0022 |
+| RF | 40 | 0.1888 | 0.0027 |
+| V5_CCE | 40 | 0.2033 | 0.0018 |
+| XGBoost | 40 | 0.2142 | 0.0005 |
+| KNN | all | 0.1883 | nan |
+| RF | all | 0.1316 | nan |
+| V5_CCE | all | 0.1879 | nan |
+| XGBoost | all | 0.1731 | nan |
 
-V5+CCE scores 0.294 and 0.243 with 10 and 20 visible components and outperforms RF/KNN there; V5 and V5+CCE are close at five components. With 40 and all context values, RF scores 0.189 and 0.132 and becomes the strongest method. The Transformer advantage is therefore concentrated in genuinely sparse context, while RF is strong when context is well observed. The all-context condition exposes more information than the former broad-family task, so the two reports' sparse scores are not direct architecture comparisons.
+V5+CCE leads at 5, 10, and 20 visible values. RF leads at 40 and all, with XGBoost second. The foundation-model advantage is concentrated in genuinely sparse context.
 
-## 6. Full-validation sensitivity
+## 6. FAO/INFOODS component-group sensitivity
 
-The audit covers 11,175 validation profiles, 323,809 observed target jobs, and all 187 targets. After dependency masking, one visible positive input is selected deterministically for each eligible job. All models receive the same selected input under factors 0.001 to 1000, ±5%/10%/20%, and deletion. A separate visible-zero probe sets one selected zero to `0.1*s_a`. This provides full target-job coverage with paired sampled inputs; it is not an exhaustive enumeration of every input-target pair.
+### 6.1 Classification authority
 
-Prediction shift, error delta, and perturbed error are reported separately. Error delta is perturbed minus clean error; perturbed error includes both baseline accuracy and additional degradation.
+One source is used: the [FAO/INFOODS and EuroFIR component nomenclature workshop report](https://www.fao.org/fileadmin/templates/food_composition/documents/upload/9IFDCReportfinal.pdf), Annex 1, with names checked against [INFOODS tagnames](https://www.fao.org/infoods/infoods/standards-guidelines/food-component-identifiers-tagnames/en/). The Annex hierarchy is labelled a draft proposition, so only seven clear groups are registered: amino acids, fatty acids, sugars, dietary fibre, minerals, vitamins, and organic acids. Unlisted axes remain unclassified. The mapping covers 135/252 axes and 132 supervised targets. It is used only for sensitivity aggregation and never for masking or model input.
 
-![Local sensitivity](figures/sensitivity_dose_response.png)
+### 6.2 Cross-group matrix
 
-| Method | Condition | Prediction shift | Error delta | Perturbed error |
+After dependency masking, one positive visible input is selected from every available input group for each target job. The audit contains 58,197 input-target pairs.
+
+![+10% group sensitivity](figures/group_sensitivity_plus10.png)
+
+![Single-input deletion group sensitivity](figures/group_sensitivity_deletion.png)
+
+| Condition | Relation | Prediction shift | Error delta | Pairs |
 |---|---|---|---|---|
-| V5+CCE | factor_0.9 | 0.00422 | -0.00050 | 0.22163 |
-| V5+CCE | factor_1.1 | 0.00382 | 0.00071 | 0.22284 |
-| V5+CCE | factor_1000 | 0.12913 | 0.06848 | 0.29062 |
-| V5+CCE | deletion | 0.05234 | 0.00882 | 0.23095 |
-| RF | factor_0.9 | 0.00331 | 0.00049 | 0.22867 |
-| RF | factor_1.1 | 0.00311 | 0.00095 | 0.22913 |
-| RF | factor_1000 | 0.09537 | 0.07196 | 0.30014 |
-| RF | deletion | 0.05463 | 0.02830 | 0.25648 |
+| deletion | between_group | 0.0223 | 0.0013 | 45269 |
+| deletion | within_group | 0.0841 | 0.0349 | 12928 |
+| minus_10pct | between_group | 0.0020 | -0.0002 | 45269 |
+| minus_10pct | within_group | 0.0061 | -0.0002 | 12928 |
+| plus_10pct | between_group | 0.0018 | 0.0002 | 45269 |
+| plus_10pct | within_group | 0.0055 | 0.0010 | 12928 |
 
-Under ±10% perturbations, V5+CCE prediction shifts and error increases are small. Under deletion, its error delta is 0.00882 versus 0.02830 for RF; perturbed errors are 0.23095 and 0.25648. These are model-response diagnostics, not nutritional interventions or causal effects.
+The diagonal is about 3.1 times the off-diagonal mean for +10% and 3.8 times for deletion. Sugars and dietary fibre have the strongest diagonal responses, although fibre cells have low support. These are predictive associations, not causal nutritional interventions.
 
-![Stress response](figures/sensitivity_stress.png)
+## 7. Dependency-family exposure and perturbation ablation
 
-Factor 1000 is a numerical stress condition rather than a plausible food. All outputs remain finite. Five hundred profile-paired bootstrap intervals for CCE-minus-RF are provided in `tables/sensitivity_paired_bootstrap.csv`.
+This experiment uses only target-specific ancestors/descendants that the current policy normally hides; siblings are already visible. It covers 6,889 jobs, 32 targets, and 5 dependency components.
 
-## 7. Integrated assessment
+![Dependency exposure ablation](figures/dependency_exposure_ablation.png)
 
-1. **The new mask is part of training.** Task generation and every evaluation path share one target-specific policy.
-2. **External transfer remains strong.** V5+CCE leads the three baselines on Taiwan scaled-log MAE, including the name-novel subset.
-3. **Pretraining improves sample efficiency.** Same-architecture scratch is consistently worse, and 128-shot adaptation clearly beats frozen zero-shot.
-4. **UMAP evidence is descriptive.** CCE strengthens category structure, while raw inputs remain stronger and source missingness is highly predictive.
-5. **Robustness depends on condition and metric.** Local responses are smooth; deletion and extreme multipliers require separate examination of movement, degradation, and final error.
+| Condition | SLMAE | Shift vs masked | Axes | Jobs |
+|---|---|---|---|---|
+| standard_mask | 0.1541 | 0.0000 | 32 | 6889 |
+| expose_one | 0.1612 | 0.0237 | 32 | 6889 |
+| expose_half | 0.1620 | 0.0256 | 32 | 6889 |
+| expose_all | 0.1628 | 0.0290 | 32 | 6889 |
 
-A defensible summary is:
+Exposing more dependency values does not improve accuracy. It is an out-of-distribution inference condition because training never allowed a target to see these relatives.
 
-> After restricting masking to explicit FAO/INFOODS-supported dependencies and predicting all other axes independently, the retrained V5+CCE still shows clear zero-shot transfer to the Taiwan database. Same-architecture few-shot ablation further shows that pretraining materially improves sample efficiency. Representation and sensitivity audits confirm meaningful cross-axis use while identifying database missingness and context coverage as important confounders.
+One exposed dependency value and a matched unrelated visible control are then perturbed separately.
 
-## 8. Limitations
+![Dependency versus matched-control perturbation](figures/dependency_perturbation_ablation.png)
 
-1. The old and new masks define different tasks. The narrower new task has lower absolute difficulty, so cross-report score changes are not architectural gains.
-2. Taiwan covers 80 of 187 supervised axes. Exact name novelty does not prove semantic novelty.
-3. Few-shot evaluation uses one fixed test split and three seeds. Shared hyperparameters control the comparison but are not separately optimal.
-4. UMAP uses an empty query grid and describes the encoder's full-profile state rather than a specific completion query.
-5. Sensitivity samples one input per job rather than every input-target pair, and perturbations may violate food chemistry or mass balance.
-6. Neural results come from one pretrained seed, so pretraining-seed uncertainty is unmeasured.
+| Factor | Dependency shift | Control shift | Dependency Δerror | Control Δerror |
+|---|---|---|---|---|
+| 0.9000 | 0.0028 | 0.0046 | -0.0007 | 0.0003 |
+| 1.1000 | 0.0026 | 0.0042 | 0.0007 | 0.0004 |
+| 10.0000 | 0.0548 | 0.0865 | 0.0177 | 0.0400 |
+
+Revealing one dependency value shifts prediction by 0.02371, versus 0.02991 for the control. The profile-bootstrap 95% interval for dependency minus control is [-0.01124, 0.00091]. Dependency perturbation shifts are also lower overall at all three factors.
+
+This ablation therefore does **not** establish that the trained model strongly uses these strict parent-child relations when they are exposed only at inference. It supports retaining the mask because inference-only unmasking worsens error. The scientific relation itself comes from INFOODS definitions. Quantifying leakage from omitting the mask would require a separately trained matched no-dependency-mask model.
+
+## 8. Conclusions and limitations
+
+1. The new mask is part of training and every evaluation path.
+2. Frozen V5+CCE beats RF/XGBoost fit on 8–128 labelled Taiwan foods, supporting external sample efficiency.
+3. V5+CCE leads sparse completion at 5–20 visible values; trees lead with richer context.
+4. Broad INFOODS groups show stronger within-group than between-group response, but this is associative.
+5. Inference-only strict-dependency exposure is a negative result and cannot prove learned dependency use.
+6. UMAP database separation is strongly confounded by missingness; Taiwan covers 80/187 targets; neural evidence uses one pretrained seed.
 
 ## 9. Reproducibility and attachments
 
-The report package contains only aggregate tables, figures, and hashes. It excludes checkpoints, raw Taiwan data, and row-level predictions. Analysis manifests record data, policy, checkpoint, and code hashes.
+The package contains aggregate tables, figures, hashes, and scripts. It excludes checkpoints, raw data, and row-level predictions.

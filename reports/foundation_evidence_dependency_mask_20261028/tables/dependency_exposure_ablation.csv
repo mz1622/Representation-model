@@ -1,0 +1,25 @@
+condition,component,absolute_error,prediction_shift_vs_masked,target_axes,jobs
+standard_mask,ALL,0.1540825808751435,0.0,32,6889
+standard_mask,"Fatty acids, total saturated",0.0898154059790511,0.0,15,3608
+standard_mask,"Fatty acids, total trans",0.1431339686686794,0.0,3,750
+standard_mask,Phytosterols,0.1120768464045665,0.0,4,31
+standard_mask,"Sugars, total",0.2516437673542116,0.0,7,1750
+standard_mask,Vitamin D (D2 + D3),0.3147319450716798,0.0,3,750
+expose_one,ALL,0.1611632014670301,0.023706194,32,6889
+expose_one,"Fatty acids, total saturated",0.0913783352378135,0.010951868,15,3608
+expose_one,"Fatty acids, total trans",0.1402156589825948,0.015407746,3,750
+expose_one,Phytosterols,0.1121678016955099,0.008756793,4,31
+expose_one,"Sugars, total",0.2660455513591213,0.04916843,7,1750
+expose_one,Vitamin D (D2 + D3),0.3516367917113627,0.056296915,3,750
+expose_half,ALL,0.1620367999522838,0.02555789,32,6889
+expose_half,"Fatty acids, total saturated",0.0922804239628836,0.012855189,15,3608
+expose_half,"Fatty acids, total trans",0.1415778061859309,0.0154121285,3,750
+expose_half,Phytosterols,0.111856031219109,0.008794896,4,31
+expose_half,"Sugars, total",0.2679588284710688,0.0537558,7,1750
+expose_half,Vitamin D (D2 + D3),0.351033965432706,0.055772703,3,750
+expose_all,ALL,0.1628472760244164,0.028964557,32,6889
+expose_all,"Fatty acids, total saturated",0.0935660940761988,0.0149788875,15,3608
+expose_all,"Fatty acids, total trans",0.1405168033490578,0.019073306,3,750
+expose_all,Phytosterols,0.1099271122241459,0.014542981,4,31
+expose_all,"Sugars, total",0.2702878806308976,0.059688203,7,1750
+expose_all,Vitamin D (D2 + D3),0.3514491327594344,0.056324434,3,750
