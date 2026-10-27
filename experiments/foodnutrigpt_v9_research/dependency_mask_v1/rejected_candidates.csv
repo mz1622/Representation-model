@@ -1,0 +1,10 @@
+candidate_parent,candidate_child_or_group,rejection_reason
+semantic nutrient classes,vitamins/minerals/amino acids/bioactives,A taxonomy class does not imply an algebraic or direct measurement dependency.
+"Fat, total",fatty-acid totals or individual fatty acids,Conversion from fatty acids to total fat depends on analytical basis and factors; source tags are not preserved in this research view.
+"Fatty acids, total mono/polyunsaturated",individual unsaturated fatty acids,The registry contains overlapping unspecified and isomer-specific axes; without source tagnames an exact inclusion relation cannot be guaranteed.
+unspecified fatty-acid isomer,cis/trans or named isomers,INFOODS states that unspecified positional/geometric entries may be mixtures; they are not defined as exact sums of the listed isomers.
+"Folate, total","Folate, food / Folic acid",INFOODS distinguishes analytical folate expressions and dietary folate equivalents; the canonical name alone does not establish the equation used by each source.
+"Choline, total",Choline,The unqualified Choline axis lacks an analysis tag proving whether it is free choline or another total expression.
+Niacin,Nicotinic acid,Niacin may include nicotinamide and/or equivalents; the available name does not establish an exact parent-child value relation.
+Available carbohydrate,Sugars / starch,Available carbohydrate is method- and expression-dependent; the view does not retain the required INFOODS expression tag.
+"Protein, total",individual amino acids,Protein is commonly calculated from nitrogen and is not the direct sum of the reported free/total amino-acid axes.

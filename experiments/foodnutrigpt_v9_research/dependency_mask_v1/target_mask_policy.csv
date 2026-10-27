@@ -1,0 +1,188 @@
+target_axis,target_name,mask_size,mask_axes,mask_names,singleton
+2,Acetic acid,1,2,Acetic acid,True
+7,Apigenin,1,7,Apigenin,True
+9,Benzoic acid,1,9,Benzoic acid,True
+11,Cadaverine,1,11,Cadaverine,True
+12,Caffeic acid,1,12,Caffeic acid,True
+13,Caffeine,1,13,Caffeine,True
+15,Catechin,1,15,Catechin,True
+16,Choline,1,16,Choline,True
+18,Citric acid,1,18,Citric acid,True
+21,Cyanidin,1,21,Cyanidin,True
+22,Daidzein,1,22,Daidzein,True
+24,Delphinidin,1,24,Delphinidin,True
+25,Ellagic acid,1,25,Ellagic acid,True
+26,Epigallocatechin,1,26,Epigallocatechin,True
+28,Ferulic acid,1,28,Ferulic acid,True
+33,Gallic acid,1,33,Gallic acid,True
+35,Genistein,1,35,Genistein,True
+43,Glycitein,1,43,Glycitein,True
+47,Histamine,1,47,Histamine,True
+50,Isorhamnetin,1,50,Isorhamnetin,True
+51,Kaempferol,1,51,Kaempferol,True
+52,Lactic acid,1,52,Lactic acid,True
+53,Lariciresinol,1,53,Lariciresinol,True
+54,Lutein,2,54;181,Lutein; Lutein + zeaxanthin,False
+55,Luteolin,1,55,Luteolin,True
+56,Malic acid,1,56,Malic acid,True
+58,Matairesinol,1,58,Matairesinol,True
+61,Myricetin,1,61,Myricetin,True
+62,Naringenin,1,62,Naringenin,True
+65,Oxalic acid,1,65,Oxalic acid,True
+66,Pelargonidin,1,66,Pelargonidin,True
+67,Peonidin,1,67,Peonidin,True
+72,Pinoresinol,1,72,Pinoresinol,True
+77,Putrescine,1,77,Putrescine,True
+79,Quercetin,1,79,Quercetin,True
+82,Rosmarinic acid,1,82,Rosmarinic acid,True
+83,Secoisolariciresinol,1,83,Secoisolariciresinol,True
+88,Spermine,1,88,Spermine,True
+90,Syringic acid,1,90,Syringic acid,True
+91,Tartaric acid,1,91,Tartaric acid,True
+92,Taurine,1,92,Taurine,True
+93,Theobromine,1,93,Theobromine,True
+96,Tyramine,1,96,Tyramine,True
+98,Vanillic acid,1,98,Vanillic acid,True
+103,p-Coumaric acid,1,103,p-Coumaric acid,True
+104,Alanine,1,104,Alanine,True
+105,Arachidonic acid (20:4n-6),1,105,Arachidonic acid (20:4n-6),True
+106,Arginine,1,106,Arginine,True
+107,Ascorbic acid (vitamin C),1,107,Ascorbic acid (vitamin C),True
+108,Ash,1,108,Ash,True
+109,Aspartic acid,1,109,Aspartic acid,True
+110,Available carbohydrate,1,110,Available carbohydrate,True
+111,Beta-sitosterol,2,111;204,Beta-sitosterol; Phytosterols,False
+112,Betaine,1,112,Betaine,True
+113,Biotin,1,113,Biotin,True
+114,Butyric acid (4:0),2,114;151,"Butyric acid (4:0); Fatty acids, total saturated",False
+115,Calcium,1,115,Calcium,True
+116,Campesterol,2,116;204,Campesterol; Phytosterols,False
+117,"Carotene, alpha",1,117,"Carotene, alpha",True
+118,"Carotene, beta",1,118,"Carotene, beta",True
+119,Cellulose,3,119;131;172,"Cellulose; Dietary fibre, total; Insoluble dietary fibers",False
+120,Chloride,1,120,Chloride,True
+121,Cholecalciferol (vitamin D3),2,121;237,Cholecalciferol (vitamin D3); Vitamin D (D2 + D3),False
+122,Cholesterol,1,122,Cholesterol,True
+123,"Choline, total",1,123,"Choline, total",True
+124,Chromium,1,124,Chromium,True
+125,Cobalamin (vitamin B12),1,125,Cobalamin (vitamin B12),True
+126,Conjugated linoleic acids (18:2 CLA isomers),1,126,Conjugated linoleic acids (18:2 CLA isomers),True
+127,Copper,1,127,Copper,True
+128,"Cryptoxanthin, beta",1,128,"Cryptoxanthin, beta",True
+129,Cystine,1,129,Cystine,True
+130,Decanoic acid (10:0),2,130;151,"Decanoic acid (10:0); Fatty acids, total saturated",False
+131,"Dietary fibre, total",4,119;131;172;179,"Cellulose; Dietary fibre, total; Insoluble dietary fibers; Lignin",False
+132,Docosahexaenoic acid (DHA; 22:6n-3),1,132,Docosahexaenoic acid (DHA; 22:6n-3),True
+133,Docosanoic acid (22:0),2,133;151,"Docosanoic acid (22:0); Fatty acids, total saturated",False
+134,Docosapentaenoic acid (DPA; 22:5n-3),1,134,Docosapentaenoic acid (DPA; 22:5n-3),True
+135,Docosatetraenoic acid (22:4; isomer unspecified),1,135,Docosatetraenoic acid (22:4; isomer unspecified),True
+136,Docosenoic acid (22:1; cis/trans unspecified),1,136,Docosenoic acid (22:1; cis/trans unspecified),True
+137,Dodecanoic acid (12:0),2,137;151,"Dodecanoic acid (12:0); Fatty acids, total saturated",False
+138,Eicosanoic acid (20:0),2,138;151,"Eicosanoic acid (20:0); Fatty acids, total saturated",False
+139,Eicosapentaenoic acid (EPA; 20:5n-3),1,139,Eicosapentaenoic acid (EPA; 20:5n-3),True
+140,Eicosatetraenoic acid (20:4; isomer unspecified),1,140,Eicosatetraenoic acid (20:4; isomer unspecified),True
+141,Eicosatrienoic acid (20:3; isomer unspecified),1,141,Eicosatrienoic acid (20:3; isomer unspecified),True
+142,Eicosatrienoic acid (20:3n-3),1,142,Eicosatrienoic acid (20:3n-3),True
+143,Eicosatrienoic acid (20:3n-6),1,143,Eicosatrienoic acid (20:3n-6),True
+144,Eicosenoic acid (20:1; isomer unspecified),1,144,Eicosenoic acid (20:1; isomer unspecified),True
+147,Ethanol,1,147,Ethanol,True
+148,"Fat, total",1,148,"Fat, total",True
+149,"Fatty acids, total monounsaturated",1,149,"Fatty acids, total monounsaturated",True
+150,"Fatty acids, total polyunsaturated",1,150,"Fatty acids, total polyunsaturated",True
+151,"Fatty acids, total saturated",15,114;130;133;137;138;151;165;167;169;194;198;200;220;221;232,"Butyric acid (4:0); Decanoic acid (10:0); Docosanoic acid (22:0); Dodecanoic acid (12:0); Eicosanoic acid (20:0); Fatty acids, total saturated; Heptadecanoic acid (17:0); Hexadecanoic acid (16:0); Hexanoic acid (6:0); Octadecanoic acid (18:0); Octanoic acid (8:0); Pentadecanoic acid (15:0); Tetracosanoic acid (24:0); Tetradecanoic acid (14:0); Tridecanoic acid (13:0)",False
+152,"Fatty acids, total trans",8,152;153;154;247;248;249;250;251,"Fatty acids, total trans; Fatty acids, total trans-monoenoic; Fatty acids, total trans-polyenoic; trans,trans-Linoleic acid (18:2 trans,trans); trans-Docosenoic acid (22:1 trans); trans-Hexadecenoic acid (16:1 trans); trans-Linoleic acid (18:2; isomer unspecified); trans-Octadecenoic acid (18:1 trans)",False
+153,"Fatty acids, total trans-monoenoic",5,152;153;248;249;251,"Fatty acids, total trans; Fatty acids, total trans-monoenoic; trans-Docosenoic acid (22:1 trans); trans-Hexadecenoic acid (16:1 trans); trans-Octadecenoic acid (18:1 trans)",False
+154,"Fatty acids, total trans-polyenoic",4,152;154;247;250,"Fatty acids, total trans; Fatty acids, total trans-polyenoic; trans,trans-Linoleic acid (18:2 trans,trans); trans-Linoleic acid (18:2; isomer unspecified)",False
+155,"Folate, food",1,155,"Folate, food",True
+156,"Folate, total",1,156,"Folate, total",True
+157,Folic acid,1,157,Folic acid,True
+158,Fructose,2,158;218,"Fructose; Sugars, total",False
+159,Galactose,2,159;218,"Galactose; Sugars, total",False
+160,Glucose,2,160;218,"Glucose; Sugars, total",False
+161,Glutamic acid,1,161,Glutamic acid,True
+162,Glycine,1,162,Glycine,True
+165,Heptadecanoic acid (17:0),2,151;165,"Fatty acids, total saturated; Heptadecanoic acid (17:0)",False
+166,Heptadecenoic acid (17:1; isomer unspecified),1,166,Heptadecenoic acid (17:1; isomer unspecified),True
+167,Hexadecanoic acid (16:0),2,151;167,"Fatty acids, total saturated; Hexadecanoic acid (16:0)",False
+168,Hexadecenoic acid (16:1; cis/trans unspecified),1,168,Hexadecenoic acid (16:1; cis/trans unspecified),True
+169,Hexanoic acid (6:0),2,151;169,"Fatty acids, total saturated; Hexanoic acid (6:0)",False
+170,Histidine,1,170,Histidine,True
+171,Hydroxyproline,1,171,Hydroxyproline,True
+172,Insoluble dietary fibers,4,119;131;172;179,"Cellulose; Dietary fibre, total; Insoluble dietary fibers; Lignin",False
+173,Iron,1,173,Iron,True
+174,Isoleucine,1,174,Isoleucine,True
+175,Isomeric linoleic acids (18:2),1,175,Isomeric linoleic acids (18:2),True
+176,Isomeric linolenic acids (18:3),1,176,Isomeric linolenic acids (18:3),True
+177,Lactose,2,177;218,"Lactose; Sugars, total",False
+178,Leucine,1,178,Leucine,True
+179,Lignin,3,131;172;179,"Dietary fibre, total; Insoluble dietary fibers; Lignin",False
+180,Linoleic acid (18:2n-6),1,180,Linoleic acid (18:2n-6),True
+181,Lutein + zeaxanthin,3,54;100;181,Lutein; Zeaxanthin; Lutein + zeaxanthin,False
+182,Lycopene,1,182,Lycopene,True
+183,Lysine,1,183,Lysine,True
+184,Magnesium,1,184,Magnesium,True
+185,Maltose,2,185;218,"Maltose; Sugars, total",False
+186,Manganese,1,186,Manganese,True
+188,Menaquinone-4,1,188,Menaquinone-4,True
+189,Methionine,1,189,Methionine,True
+190,Molybdenum,1,190,Molybdenum,True
+191,Niacin,1,191,Niacin,True
+192,Nicotinic acid,1,192,Nicotinic acid,True
+193,Octadecadienoic acid (18:2; isomer unspecified),1,193,Octadecadienoic acid (18:2; isomer unspecified),True
+194,Octadecanoic acid (18:0),2,151;194,"Fatty acids, total saturated; Octadecanoic acid (18:0)",False
+195,Octadecatetraenoic acid (18:4; isomer unspecified),1,195,Octadecatetraenoic acid (18:4; isomer unspecified),True
+196,Octadecatrienoic acid (18:3; isomer unspecified),1,196,Octadecatrienoic acid (18:3; isomer unspecified),True
+197,Octadecenoic acid (18:1; cis/trans unspecified),1,197,Octadecenoic acid (18:1; cis/trans unspecified),True
+198,Octanoic acid (8:0),2,151;198,"Fatty acids, total saturated; Octanoic acid (8:0)",False
+199,Pantothenic acid (vitamin B5),1,199,Pantothenic acid (vitamin B5),True
+200,Pentadecanoic acid (15:0),2,151;200,"Fatty acids, total saturated; Pentadecanoic acid (15:0)",False
+201,Pentadecenoic acid (15:1; isomer unspecified),1,201,Pentadecenoic acid (15:1; isomer unspecified),True
+202,Phenylalanine,1,202,Phenylalanine,True
+203,Phosphorus,1,203,Phosphorus,True
+204,Phytosterols,4,111;116;204;216,Beta-sitosterol; Campesterol; Phytosterols; Stigmasterol,False
+205,Potassium,1,205,Potassium,True
+206,Proline,1,206,Proline,True
+207,"Protein, total",1,207,"Protein, total",True
+208,Retinol,1,208,Retinol,True
+209,Riboflavin (vitamin B2),1,209,Riboflavin (vitamin B2),True
+210,"Selenium, Se",1,210,"Selenium, Se",True
+211,Serine,1,211,Serine,True
+212,Sodium,1,212,Sodium,True
+213,Sorbitol,1,213,Sorbitol,True
+214,Starch,1,214,Starch,True
+215,Stearidonic acid,1,215,Stearidonic acid,True
+216,Stigmasterol,2,204;216,Phytosterols; Stigmasterol,False
+217,Sucrose,2,217;218,"Sucrose; Sugars, total",False
+218,"Sugars, total",7,158;159;160;177;185;217;218,"Fructose; Galactose; Glucose; Lactose; Maltose; Sucrose; Sugars, total",False
+219,Sulfur,1,219,Sulfur,True
+220,Tetracosanoic acid (24:0),2,151;220,"Fatty acids, total saturated; Tetracosanoic acid (24:0)",False
+221,Tetradecanoic acid (14:0),2,151;221,"Fatty acids, total saturated; Tetradecanoic acid (14:0)",False
+222,Tetradecenoic acid (14:1; isomer unspecified),1,222,Tetradecenoic acid (14:1; isomer unspecified),True
+223,Thiamin (vitamin B1),1,223,Thiamin (vitamin B1),True
+224,Threonine,1,224,Threonine,True
+225,"Tocopherol, beta",1,225,"Tocopherol, beta",True
+226,"Tocopherol, delta",1,226,"Tocopherol, delta",True
+227,"Tocopherol, gamma",1,227,"Tocopherol, gamma",True
+228,"Tocotrienol, alpha",1,228,"Tocotrienol, alpha",True
+229,"Tocotrienol, beta",1,229,"Tocotrienol, beta",True
+230,"Tocotrienol, delta",1,230,"Tocotrienol, delta",True
+231,"Tocotrienol, gamma",1,231,"Tocotrienol, gamma",True
+232,Tridecanoic acid (13:0),2,151;232,"Fatty acids, total saturated; Tridecanoic acid (13:0)",False
+233,Tryptophan,1,233,Tryptophan,True
+234,Tyrosine,1,234,Tyrosine,True
+235,Valine,1,235,Valine,True
+236,Vitamin B6 - Pyridoxin,1,236,Vitamin B6 - Pyridoxin,True
+237,Vitamin D (D2 + D3),3,121;237;238,Cholecalciferol (vitamin D3); Vitamin D (D2 + D3); Vitamin D2 (ergocalciferol),False
+238,Vitamin D2 (ergocalciferol),2,237;238,Vitamin D (D2 + D3); Vitamin D2 (ergocalciferol),False
+239,Water,1,239,Water,True
+241,Zinc,1,241,Zinc,True
+242,"cis,cis-Eicosadienoic acid (20:2n-6)",1,242,"cis,cis-Eicosadienoic acid (20:2n-6)",True
+243,cis-Docosenoic acid (22:1 cis),1,243,cis-Docosenoic acid (22:1 cis),True
+244,cis-Hexadecenoic acid (16:1 cis),1,244,cis-Hexadecenoic acid (16:1 cis),True
+245,cis-Octadecenoic acid (18:1 cis),1,245,cis-Octadecenoic acid (18:1 cis),True
+246,cis-Tetracosenoic acid (24:1 cis),1,246,cis-Tetracosenoic acid (24:1 cis),True
+247,"trans,trans-Linoleic acid (18:2 trans,trans)",3,152;154;247,"Fatty acids, total trans; Fatty acids, total trans-polyenoic; trans,trans-Linoleic acid (18:2 trans,trans)",False
+248,trans-Docosenoic acid (22:1 trans),3,152;153;248,"Fatty acids, total trans; Fatty acids, total trans-monoenoic; trans-Docosenoic acid (22:1 trans)",False
+249,trans-Hexadecenoic acid (16:1 trans),3,152;153;249,"Fatty acids, total trans; Fatty acids, total trans-monoenoic; trans-Hexadecenoic acid (16:1 trans)",False
+250,trans-Linoleic acid (18:2; isomer unspecified),3,152;154;250,"Fatty acids, total trans; Fatty acids, total trans-polyenoic; trans-Linoleic acid (18:2; isomer unspecified)",False
+251,trans-Octadecenoic acid (18:1 trans),3,152;153;251,"Fatty acids, total trans; Fatty acids, total trans-monoenoic; trans-Octadecenoic acid (18:1 trans)",False

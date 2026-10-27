@@ -94,3 +94,7 @@ experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*
 !experiments/foodnutrigpt_v9_research/no_foodname_v1/*.md
 !experiments/foodnutrigpt_v9_research/no_foodname_v2/
 !experiments/foodnutrigpt_v9_research/no_foodname_v2/*.md
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.md
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.json
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.csv

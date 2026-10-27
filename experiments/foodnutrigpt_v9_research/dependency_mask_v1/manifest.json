@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "version": "infoods_explicit_dependency_mask_v1",
+  "created_utc": "2026-10-27T07:03:47.921129+00:00",
+  "data_manifest_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "authority": "FAO/INFOODS component identifiers (tagnames), version 4.0: https://www.fao.org/infoods/infoods/standards-guidelines/food-component-identifiers-tagnames/en/",
+  "accepted_directed_edges": 37,
+  "registered_axes": 44,
+  "supervised_targets": 187,
+  "singleton_targets": 144,
+  "non_singleton_targets": 43,
+  "minimum_mask_size": 1,
+  "maximum_mask_size": 15,
+  "mean_mask_size": 1.46524064171123,
+  "legacy_mean_family_size": 27.71657754010695,
+  "sibling_visibility_checks": 234,
+  "rejected_candidate_groups": 9,
+  "category_used_as_model_input": false,
+  "legacy_mask_family_used_for_masking": false,
+  "policy_rule": "target + all directed ancestors + all directed descendants; siblings remain visible; unregistered axes are singleton",
+  "training_results_used_to_define_edges": false,
+  "artifact_sha256": {
+    "accepted_edges.csv": "ca28886089b75a7893ead85990d085f875d4eeae61e8407cc5fe5d6d22dab397",
+    "target_mask_policy.csv": "4a2b812aaced820a6bfd898b2dcdce70b3906b8da03ae7b6d04869da6c15905b",
+    "rejected_candidates.csv": "0fc7fabb233b21a846ca6174c26e3ccc5ff2aa079c1d8485ed6d9fe11d9461e7"
+  }
+}
