@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "version": "taiwan_dependency_mask_fewshot_finetune_v3_release",
+  "created_utc": "2026-10-28T02:59:30.482240+00:00",
+  "scope": "aggregate Taiwan V5+CCE fine-tuning results aligned to RF/XGBoost v2 subsets",
+  "english_report_generated": false,
+  "chinese_report_generated": false,
+  "model_checkpoint_included": false,
+  "row_level_predictions_included": false,
+  "raw_data_included": false,
+  "artifacts": {
+    "manifest.json": "a352c48323b5dd4ff4959daa9a5a2aad1b43a50566bd2fd598c3c38bf1bfa44a",
+    "finetune_runs.csv": "2cef25789f53384baed6655451400b809320b2006dff711fe8b4ffd83fd14787",
+    "finetune_summary.csv": "afcb7cb31578fb5de9a048d2a95775a09365794c6c254745476434dee01d5803",
+    "comparison_summary.csv": "1867837e96cf7481848b8c55546bd070ca90f21e975d3bd4840e0304f41947bb",
+    "training_history.csv": "3bcb48d3aeae9328afbfdf70a68eaf99631497caa21a8d827a7d266f5ad69a86",
+    "axis_metrics.csv": "f0a6f26cea415132fe71851b0dd4b5e4111f3c9ec01dcaacfac51b1718c1c8f2"
+  }
+}
