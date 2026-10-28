@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "version": "taiwan_pretrained_tree_continuation_v1_release",
+  "created_utc": "2026-10-28T03:27:06.917080+00:00",
+  "scope": "aggregate source-pretrained RF/XGBoost frozen and 20-tree/round Taiwan continuation",
+  "report_generated": false,
+  "model_checkpoint_included": false,
+  "row_level_predictions_included": false,
+  "raw_data_included": false,
+  "artifacts": {
+    "manifest.json": "3498721c9327defbc8716f79b76b80f5ce83690c433cce2fc4e94fa4f89c90ac",
+    "source_frozen_metrics.csv": "acdd99e4bdb5369bd2508eb1ad16aa8542b54c0feb03f5dbc4e15d23d341ec8e",
+    "continued_runs.csv": "b0f836837db3e79162750fe1440710b2944a051a85208d4eae3c666b399cb904",
+    "continued_summary.csv": "79010ed805f7aabb569f904926cda54e3232414e3d83dd25d58eae0d1ad8d938",
+    "comparison_all_methods.csv": "14c9a8e3ff667206c78fff54ed16e5062b7b583e1d4abc2ed7eb483e2fc026b3",
+    "axis_metrics.csv": "6b30302008747f2def2ee943cbbb1818b55e9b726c73c9b922e172a0570e33cd",
+    "source_refit_support.csv": "ad44459d65d746dd443c8d65a98be50c88bff8cab9dfcdac88c1802cf6a47651"
+  }
+}
