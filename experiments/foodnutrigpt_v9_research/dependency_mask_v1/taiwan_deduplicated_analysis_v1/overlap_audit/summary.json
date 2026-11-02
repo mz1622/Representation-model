@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "version": "taiwan_corpus_overlap_v1",
+  "created_utc": "2026-11-02T16:46:28.077822+00:00",
+  "strict_panel_foods": 2212,
+  "old_exact_train_overlap_foods": 423,
+  "expanded_train_overlap_foods": 940,
+  "expanded_any_project_overlap_foods": 1055,
+  "unresolved_no_informative_english_alias_foods": 463,
+  "external_clean_foods": 696,
+  "external_clean_identity_groups": 575,
+  "policy": {
+    "reference_scope": "all 75,875 project train+validation source-native profiles",
+    "exclude": "any exact normalized alias or informative core-token containment match; also exclude foods lacking an informative English alias",
+    "interpretation": "conservative lexical exclusion candidate, not proof of biological sample identity",
+    "fewshot_split": "keep identity_group_key intact across adaptation and test"
+  },
+  "input_hashes": {
+    "profiles.csv.gz": "c8c7d79dcea8fcdca4daa03ec2c37cb43713d31a8cbe85801d0349ab3b660660",
+    "foods.parquet": "91862d67da901e280efbed5b98ba48295d5f68cfd7d636a8144fd37b66559ee3",
+    "mapped_values.parquet": "e2e1bd09b43e4e3a18ddf4a234917c4f603facf194b874806c80bd3085b9bab8",
+    "axis_coverage.csv": "99562c1138092e73c104be0c0b64a8d02bdc732770717f0ca2e9e733de990d30"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "status": "complete",
+  "version": "taiwan_deduplicated_zero_shot_v1",
+  "created_utc": "2026-11-02T16:48:05.197227+00:00",
+  "deduplication_scope": "all project train+validation source-native profiles",
+  "deduplicated_profiles": 696,
+  "deduplicated_jobs": 41927,
+  "fixed_test_profiles": 400,
+  "fixed_test_jobs": 24115,
+  "adaptation_pool_profiles": 296,
+  "test_axes": 80,
+  "split_seed": 20261026,
+  "group_aware_split": true,
+  "taiwan_training_rows_for_zero_shot": 0,
+  "bootstrap_draws": 2000,
+  "bootstrap_unit": "Taiwan profile",
+  "data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "overlap_ledger_sha256": "136a837db2e9a5cf5de01286dc5fa5e9307f4645d85d35dd04214dbe75d2e5fb",
+  "policy_manifest_sha256": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2",
+  "checkpoint_sha256": "0413e39661f2b1bab0fb194c9df8b32ce4e5534b26f2b248dfedd1e23762ec42",
+  "prediction_hashes": {
+    "V5_CCE": "7180a4b7fd1a17c4380d716085cc5ca9379d06adc6c5dbaf4302fdf9547002fb",
+    "KNN": "b496179706eace65f2990d84b3b7d6366ffe500478b47b674ddbf05600025c99",
+    "RF": "b10c0fc610557d00b605cb2a920256b649a6774f00b83636fbebbf633024153b",
+    "XGBoost": "c8b8b76d9413d4aa6eddac9743fd8783e9c68cefb7285b6ba444f471443b7ca2"
+  },
+  "metrics": [
+    {
+      "panel": "deduplicated_all",
+      "method": "V5_CCE",
+      "axes": 80,
+      "jobs": 41927,
+      "macro_scaled_log_mae": 0.19088547424601307,
+      "macro_scaled_log_rmse": 0.36663296848198346,
+      "macro_raw_mae": 0.3050512420848094
+    },
+    {
+      "panel": "deduplicated_all",
+      "method": "KNN",
+      "axes": 80,
+      "jobs": 41927,
+      "macro_scaled_log_mae": 0.2802658658612687,
+      "macro_scaled_log_rmse": 0.44100372793070736,
+      "macro_raw_mae": 0.45662361001405943
+    },
+    {
+      "panel": "deduplicated_all",
+      "method": "RF",
+      "axes": 80,
+      "jobs": 41927,
+      "macro_scaled_log_mae": 0.23599731652387096,
+      "macro_scaled_log_rmse": 0.36677283213426104,
+      "macro_raw_mae": 0.3058260694072685
+    },
+    {
+      "panel": "deduplicated_all",
+      "method": "XGBoost",
+      "axes": 80,
+      "jobs": 41927,
+      "macro_scaled_log_mae": 0.23256410273680306,
+      "macro_scaled_log_rmse": 0.36822659892866366,
+      "macro_raw_mae": 0.28535690157775273
+    },
+    {
+      "panel": "fixed_test",
+      "method": "V5_CCE",
+      "axes": 80,
+      "jobs": 24115,
+      "macro_scaled_log_mae": 0.18688120813693546,
+      "macro_scaled_log_rmse": 0.3547739256577914,
+      "macro_raw_mae": 0.29749681020846114
+    },
+    {
+      "panel": "fixed_test",
+      "method": "KNN",
+      "axes": 80,
+      "jobs": 24115,
+      "macro_scaled_log_mae": 0.27714618840530936,
+      "macro_scaled_log_rmse": 0.4327952466342362,
+      "macro_raw_mae": 0.4396963659816427
+    },
+    {
+      "panel": "fixed_test",
+      "method": "RF",
+      "axes": 80,
+      "jobs": 24115,
+      "macro_scaled_log_mae": 0.2355560439985847,
+      "macro_scaled_log_rmse": 0.36413323605168235,
+      "macro_raw_mae": 0.29487725127714287
+    },
+    {
+      "panel": "fixed_test",
+      "method": "XGBoost",
+      "axes": 80,
+      "jobs": 24115,
+      "macro_scaled_log_mae": 0.2310620530197524,
+      "macro_scaled_log_rmse": 0.3648640598065834,
+      "macro_raw_mae": 0.27399066865598476
+    }
+  ]
+}
