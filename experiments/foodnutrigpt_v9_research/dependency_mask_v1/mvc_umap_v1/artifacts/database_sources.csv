@@ -1,0 +1,25 @@
+source_key,source_name,profiles
+afcd,Australian Food Composition Database,1561
+anfood_2_0,FAO/INFOODS AnFooD 2.0,673
+bangladesh_fct_2013,Bangladesh Food Composition Table 2013,494
+biofoodcomp_4_0,FAO/INFOODS BioFoodComp 4.0,1099
+bls_4_0,German Nutrient Database BLS 4.0,7140
+ciqual,ANSES-Ciqual,3466
+cnf,Canadian Nutrient File,5966
+cofid,UK CoFID,2837
+efsa_eu_fcdb_2013,EFSA EU Food Composition Database,16945
+fndds,USDA FNDDS,5402
+foodb,FooDB,11247
+frida,"Frida FoodData, Denmark",1355
+lesotho_fct_2006,Lesotho Food Composition Table 2006,290
+mext_japan_2023,Japan MEXT Food Composition Tables,2538
+norway,Norwegian Food Composition Database,2095
+phyfoodcomp_1_0,FAO/INFOODS/IZiNCG PhyFoodComp 1.0,2186
+smiling_cambodia_2013,SMILING Cambodia FCT 2013,89
+smiling_indonesia_2013,SMILING Indonesia FCT 2013,108
+smiling_laos_2013,SMILING Laos FCT 2013,140
+smiling_thailand_2013,SMILING Thailand FCT 2013,139
+smiling_vietnam_2013,SMILING Vietnam FCT 2013,162
+swiss_fcdb_7_1,Swiss Food Composition Database 7.1,1246
+usda_sr_legacy,USDA Standard Reference Legacy,7672
+wafct_2019,FAO/INFOODS West Africa FCT 2019,1025

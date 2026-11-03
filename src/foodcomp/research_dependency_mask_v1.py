@@ -224,6 +224,47 @@ class FoodPromptCceTransformer(AxisPairBiasMaskedAxisTransformer):
         )[1]
 
 
+class MvcInnerProductDecoder(torch.nn.Module):
+    """scGPT-style bilinear decoder from FOOD state and raw axis identity."""
+
+    def __init__(self, d_model: int):
+        super().__init__()
+        self.axis_to_query = torch.nn.Linear(d_model, d_model)
+        self.query_activation = torch.nn.Sigmoid()
+        self.query_projection = torch.nn.Linear(d_model, d_model, bias=False)
+
+    def forward(self, food, axis_embedding):
+        if food.ndim != 2 or axis_embedding.ndim != 3:
+            raise ValueError("MVC expects FOOD [batch, hidden] and axes [batch, targets, hidden]")
+        if food.shape[0] != axis_embedding.shape[0] or food.shape[1] != axis_embedding.shape[2]:
+            raise ValueError("MVC FOOD and axis embeddings are not aligned")
+        query = self.query_activation(self.axis_to_query(axis_embedding))
+        return torch.bmm(self.query_projection(query), food.unsqueeze(2)).squeeze(2)
+
+
+class FoodPromptMvcTransformer(FoodPromptCceTransformer):
+    """V5 core plus a training-only MVC bottleneck on first-pass FOOD."""
+
+    def __init__(self, axis_count: int, config: Config):
+        super().__init__(axis_count, config)
+        self.mvc_decoder = MvcInnerProductDecoder(config.d_model)
+
+    def mvc_from_food(self, food, target_axis, target_padding):
+        prediction = self.mvc_decoder(food, self.axis_embedding(target_axis))
+        return prediction.masked_fill(target_padding, 0.0)
+
+    def forward_prompt_mvc_details(
+        self, axis, value, padding, target_axis, target_padding
+    ):
+        first, second, food, second_food, first_hidden, second_hidden = (
+            self.forward_prompt_details(
+                axis, value, padding, target_axis, target_padding
+            )
+        )
+        mvc = self.mvc_from_food(food, target_axis, target_padding)
+        return first, second, mvc, food, second_food, first_hidden, second_hidden
+
+
 def multi_positive_cce_loss(first, second, profile_index, temperature=0.5):
     if first.shape != second.shape or first.ndim != 2 or len(first) < 2:
         raise ValueError("CCE views must be aligned [batch, hidden] with batch >= 2")
@@ -342,6 +383,7 @@ def predict_transformer(model, data, policy, jobs, device, batch_size, two_pass)
 __all__ = [
     "dependency_tasks", "visible_context", "dense_features", "masked_axis_batch",
     "fit_predict_baseline", "score_profile_axis_macro", "FoodPromptCceTransformer",
+    "MvcInnerProductDecoder", "FoodPromptMvcTransformer",
     "multi_positive_cce_loss", "axis_balanced_loss", "predict_transformer",
     "attach_complete_test",
 ]

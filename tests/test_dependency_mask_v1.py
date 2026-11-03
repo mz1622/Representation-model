@@ -8,7 +8,8 @@ import torch
 from foodcomp.dependency_mask_analysis_v1 import extract_food_embeddings
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, EdgeSpec
 from foodcomp.research_dependency_mask_v1 import (
-    FoodPromptCceTransformer, dense_features, visible_context,
+    FoodPromptCceTransformer, FoodPromptMvcTransformer,
+    dense_features, visible_context,
 )
 from foodcomp.research_no_foodname_v1 import Config
 
@@ -135,3 +136,39 @@ def test_extract_food_embeddings_selects_requested_forward_pass():
         extract_food_embeddings(
             model, data, np.asarray([0, 1]), torch.device("cpu"), forward_pass=3
         )
+
+
+def test_mvc_branch_preserves_v5_predictions_and_uses_food_bottleneck():
+    torch.manual_seed(13)
+    config = Config(
+        d_model=24, n_heads=4, n_layers=2, feedforward_dim=32,
+        dropout=0.0, batch_size=2, epochs=1,
+    )
+    parent = FoodPromptCceTransformer(5, config).eval()
+    mvc = FoodPromptMvcTransformer(5, config).eval()
+    incompatible = mvc.load_state_dict(parent.state_dict(), strict=False)
+    assert not incompatible.unexpected_keys
+    assert set(incompatible.missing_keys) == {
+        "mvc_decoder.axis_to_query.weight",
+        "mvc_decoder.axis_to_query.bias",
+        "mvc_decoder.query_projection.weight",
+    }
+    axis = torch.tensor([[0, 2, 4], [1, 3, 0]])
+    value = torch.tensor([[0.2, 0.4, 0.7], [0.1, 0.3, 0.0]])
+    padding = torch.tensor([[False, False, False], [False, False, True]])
+    target = torch.tensor([[1], [4]])
+    target_padding = torch.zeros((2, 1), dtype=torch.bool)
+    with torch.no_grad():
+        parent_output = parent(axis, value, padding, target, target_padding)
+        details = mvc.forward_prompt_mvc_details(
+            axis, value, padding, target, target_padding
+        )
+    torch.testing.assert_close(parent_output, details[1], atol=0, rtol=0)
+    assert details[2].shape == target.shape
+    clone = FoodPromptMvcTransformer(5, config).eval()
+    clone.load_state_dict(mvc.state_dict(), strict=True)
+    with torch.no_grad():
+        reloaded = clone.forward_prompt_mvc_details(
+            axis, value, padding, target, target_padding
+        )
+    torch.testing.assert_close(details[2], reloaded[2], atol=0, rtol=0)

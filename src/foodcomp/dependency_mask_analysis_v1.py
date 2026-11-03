@@ -15,7 +15,9 @@ import pandas as pd
 import torch
 
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, VERSION as MASK_VERSION
-from foodcomp.research_dependency_mask_v1 import FoodPromptCceTransformer
+from foodcomp.research_dependency_mask_v1 import (
+    FoodPromptCceTransformer, FoodPromptMvcTransformer,
+)
 from foodcomp.research_no_foodname_v1 import Config
 from foodcomp.research_r0 import digest
 
@@ -26,7 +28,7 @@ def load_dependency_model(
     policy_manifest: Path,
     device: torch.device,
 ):
-    """Load one V4/V5/CCE checkpoint and enforce its frozen input policy."""
+    """Load one V4/V5/CCE/MVC checkpoint and enforce its frozen input policy."""
     checkpoint_path = Path(checkpoint_path)
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
     if checkpoint.get("mask_policy_version") != MASK_VERSION:
@@ -41,7 +43,12 @@ def load_dependency_model(
     if checkpoint.get("legacy_mask_family_used_for_masking") is not False:
         raise ValueError("checkpoint used the legacy family mask")
     config = Config(**checkpoint["config"])
-    model = FoodPromptCceTransformer(len(data.axes), config)
+    model_class = (
+        FoodPromptMvcTransformer
+        if checkpoint.get("stage") == "mvc"
+        else FoodPromptCceTransformer
+    )
+    model = model_class(len(data.axes), config)
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     return model.to(device).eval(), checkpoint, config
 

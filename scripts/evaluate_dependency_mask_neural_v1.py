@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate a validation-selected dependency-mask V5+CCE checkpoint."""
+"""Evaluate a validation-selected dependency-mask V5+CCE or V5+MVC checkpoint."""
 from __future__ import annotations
 
 import argparse
@@ -15,12 +15,13 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, VERSION as MASK_VERSION  # noqa: E402
+from foodcomp.dependency_mask_analysis_v1 import load_dependency_model  # noqa: E402
+from foodcomp.dependency_mask_v1 import DependencyMaskPolicy  # noqa: E402
 from foodcomp.research_dependency_mask_v1 import (  # noqa: E402
-    FoodPromptCceTransformer, attach_complete_test, predict_transformer,
+    attach_complete_test, predict_transformer,
     score_profile_axis_macro,
 )
-from foodcomp.research_no_foodname_v1 import Config, numeric_only_training_view  # noqa: E402
+from foodcomp.research_no_foodname_v1 import numeric_only_training_view  # noqa: E402
 from foodcomp.research_r0 import ResearchData, digest, write_json  # noqa: E402
 
 
@@ -42,33 +43,24 @@ def main():
         "cuda" if args.device == "auto" and torch.cuda.is_available()
         else "cpu" if args.device == "auto" else args.device
     )
-    checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=False)
-    if checkpoint.get("stage") != "cce":
-        raise ValueError("official checkpoint must be a CCE-stage checkpoint")
-    if checkpoint.get("mask_policy_version") != MASK_VERSION:
-        raise ValueError("checkpoint uses a different mask policy")
-    if checkpoint.get("mask_policy_sha256") != digest(args.policy_manifest):
-        raise ValueError("checkpoint policy hash mismatch")
-    if checkpoint.get("data_sha256") != digest(args.data_dir / "manifest.json"):
-        raise ValueError("checkpoint data hash mismatch")
-    if any(checkpoint.get(key) is not False for key in (
-        "food_name_model_input", "source_model_input", "family_label_model_input"
-    )):
-        raise ValueError("checkpoint violates input policy")
     data = numeric_only_training_view(ResearchData(args.data_dir, "quarantined"))
+    model, checkpoint, config = load_dependency_model(
+        args.checkpoint, data, args.policy_manifest, device
+    )
+    if checkpoint.get("stage") not in {"cce", "mvc"}:
+        raise ValueError("official checkpoint must be a CCE- or MVC-stage checkpoint")
     validation_jobs = data.jobs[["profile_index", "axis_index", "target"]].copy()
     _, test_jobs, panel = attach_complete_test(data, args.frozen_data_dir, args.split_path)
     policy = DependencyMaskPolicy(data.axes)
-    config = Config(**checkpoint["config"])
-    model = FoodPromptCceTransformer(len(data.axes), config)
-    model.load_state_dict(checkpoint["state_dict"], strict=True)
-    model.to(device).eval()
     manifest = {
         "status": "running", "version": "dependency_mask_v1_neural_evaluation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "checkpoint_sha256": digest(args.checkpoint),
+        "checkpoint_stage": checkpoint["stage"],
         "checkpoint_epoch": checkpoint["completed_epoch"],
-        "checkpoint_selection": "lowest validation macro scaled-log MAE within CCE stage",
+        "checkpoint_selection": (
+            f"lowest validation macro scaled-log MAE within {checkpoint['stage'].upper()} stage"
+        ),
         "code_sha256": {
             "scripts/evaluate_dependency_mask_neural_v1.py": digest(Path(__file__)),
             "src/foodcomp/dependency_mask_v1.py": digest(

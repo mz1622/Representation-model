@@ -1,0 +1,47 @@
+{
+  "schema_version": "dependency_mask_mvc_full_umap_v1",
+  "created_at_utc": "2026-11-03T23:31:48.793119+00:00",
+  "profiles": 75875,
+  "train_profiles": 64700,
+  "validation_profiles": 11175,
+  "labelled_profiles": 47752,
+  "target_query_tokens": 0,
+  "representation": "first-forward FOOD state",
+  "scgpt_alignment": {
+    "reference": "official examples/finetune_integration.py",
+    "l2_normalized_embedding": true,
+    "n_neighbors": 15,
+    "min_dist": 0.3,
+    "frameon": false,
+    "food_category_analogue": "celltype",
+    "database_source_analogue": "batch",
+    "implementation_note": "umap-learn is called directly on the L2-normalized embedding; this reproduces the scGPT example settings without adding Scanpy"
+  },
+  "inputs": {
+    "data_manifest": {
+      "filename": "manifest.json",
+      "sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923"
+    },
+    "policy_manifest": {
+      "filename": "manifest.json",
+      "sha256": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2"
+    },
+    "mvc_checkpoint": {
+      "filename": "mvc_best_validation.pt",
+      "sha256": "9d3a859f08c7909cef236734e4c75c5ed20adc7ca1ae3ffb75f03169426f15cb"
+    },
+    "cce_embedding": {
+      "filename": "embedding_V5_CCE.npy",
+      "sha256": "9cc530cc4370a34fa303cc79243895c9a39b59b3693ad618a98047e91e3afbd2"
+    }
+  },
+  "embedding_sha256": {
+    "V5_CCE": "fbccaaed2940a19a562b799c937be78fa8cfd0da31a46427fd35f571b9cb8ca1",
+    "V5_MVC": "b1d3a9160abd6080f379ffee49df09d8c8a14729df4b94ff0e2fcfb49b853fee"
+  },
+  "checkpoint_epoch": 19,
+  "food_name_model_input": false,
+  "source_model_input": false,
+  "profile_level_coordinates_committed": false,
+  "embeddings_committed": false
+}
