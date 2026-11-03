@@ -1,0 +1,43 @@
+{
+  "schema_version": "second_forward_food_umap_v1",
+  "created_at_utc": "2026-11-03T22:20:58.110070+00:00",
+  "device": "cuda",
+  "profiles": 4000,
+  "target_query_tokens": 0,
+  "first_representation": "forward_details(...)[1]",
+  "second_representation": "forward_prompt_details(...)[3]",
+  "second_prompt": "detached first-forward FOOD state",
+  "umap": {
+    "n_neighbors": 15,
+    "min_dist": 0.15,
+    "metric": "cosine",
+    "random_state": 20261027
+  },
+  "inputs": {
+    "data_manifest": {
+      "filename": "manifest.json",
+      "sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923"
+    },
+    "policy_manifest": {
+      "filename": "manifest.json",
+      "sha256": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2"
+    },
+    "checkpoint": {
+      "filename": "cce_best_validation.pt",
+      "sha256": "0413e39661f2b1bab0fb194c9df8b32ce4e5534b26f2b248dfedd1e23762ec42"
+    },
+    "first_coordinates": {
+      "filename": "umap_v5_cce.csv",
+      "sha256": "2c01d388d0c59ea82d745c5ae344670ea030bf4528a934b7781248533176d179"
+    },
+    "first_embedding": {
+      "filename": "embedding_V5_CCE.npy",
+      "sha256": "9cc530cc4370a34fa303cc79243895c9a39b59b3693ad618a98047e91e3afbd2"
+    }
+  },
+  "derived_second_embedding_sha256": "b19a9f1dfcc38366785242889526158df8741b653eccd97c913df70afc58e6f2",
+  "checkpoint_stage": "cce",
+  "checkpoint_epoch": 17,
+  "food_name_model_input": false,
+  "source_model_input": false
+}

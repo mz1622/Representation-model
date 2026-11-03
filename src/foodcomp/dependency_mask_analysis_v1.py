@@ -126,8 +126,12 @@ def extract_food_embeddings(
     device: torch.device,
     batch_size: int = 128,
     visible_override: np.ndarray | None = None,
+    *,
+    forward_pass: int = 1,
 ):
-    """Extract the first-pass FOOD state with an empty target query grid."""
+    """Extract a first- or second-pass FOOD state with no target query tokens."""
+    if forward_pass not in (1, 2):
+        raise ValueError("forward_pass must be 1 or 2")
     model.eval()
     rows = np.asarray(rows, dtype=np.int64)
     pieces = []
@@ -150,7 +154,12 @@ def extract_food_embeddings(
         tensors = tuple(torch.from_numpy(x).to(device) for x in (axis, value, padding))
         target = torch.empty((len(batch_rows), 0), dtype=torch.long, device=device)
         target_padding = torch.empty((len(batch_rows), 0), dtype=torch.bool, device=device)
-        food = model.forward_details(*tensors, target, target_padding)[1]
+        if forward_pass == 1:
+            food = model.forward_details(*tensors, target, target_padding)[1]
+        else:
+            food = model.forward_prompt_details(
+                *tensors, target, target_padding
+            )[3]
         pieces.append(food.detach().cpu().numpy())
     result = np.concatenate(pieces).astype(np.float32)
     if not np.isfinite(result).all():

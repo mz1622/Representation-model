@@ -1,0 +1,15 @@
+{
+  "profiles": 4000,
+  "cosine_similarity_mean": 0.9490768909454346,
+  "cosine_similarity_median": 0.9649947881698608,
+  "cosine_similarity_q05": 0.8365781903266907,
+  "cosine_similarity_q95": 0.9913523197174072,
+  "l2_distance_mean": 3.8447935581207275,
+  "l2_distance_median": 3.5229806900024414,
+  "l2_distance_q05": 1.7847667932510376,
+  "l2_distance_q95": 7.449198246002197,
+  "norm_ratio_mean": 1.0168968439102173,
+  "norm_ratio_median": 1.0157599449157715,
+  "norm_ratio_q05": 1.0003129243850708,
+  "norm_ratio_q95": 1.0360230207443237
+}

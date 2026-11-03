@@ -2,8 +2,10 @@ from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
+import pytest
 import torch
 
+from foodcomp.dependency_mask_analysis_v1 import extract_food_embeddings
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, EdgeSpec
 from foodcomp.research_dependency_mask_v1 import (
     FoodPromptCceTransformer, dense_features, visible_context,
@@ -102,3 +104,34 @@ def test_transformer_order_padding_and_checkpoint_roundtrip():
     with torch.no_grad():
         reloaded = clone(axis, value, padding, target, target_padding)
     torch.testing.assert_close(reference, reloaded, atol=0, rtol=0)
+
+
+def test_extract_food_embeddings_selects_requested_forward_pass():
+    torch.manual_seed(11)
+    config = Config(
+        d_model=24, n_heads=4, n_layers=2, feedforward_dim=32,
+        dropout=0.0, batch_size=2, epochs=1,
+    )
+    model = FoodPromptCceTransformer(5, config).eval()
+    data = SimpleNamespace(
+        observed=np.asarray([
+            [True, False, True, False, True],
+            [False, True, False, True, False],
+        ]),
+        values=np.asarray([
+            [0.2, 0.0, 0.4, 0.0, 0.7],
+            [0.0, 0.1, 0.0, 0.3, 0.0],
+        ], dtype=np.float32),
+    )
+    first = extract_food_embeddings(
+        model, data, np.asarray([0, 1]), torch.device("cpu"), forward_pass=1
+    )
+    second = extract_food_embeddings(
+        model, data, np.asarray([0, 1]), torch.device("cpu"), forward_pass=2
+    )
+    assert first.shape == second.shape == (2, 24)
+    assert not np.allclose(first, second)
+    with pytest.raises(ValueError, match="forward_pass"):
+        extract_food_embeddings(
+            model, data, np.asarray([0, 1]), torch.device("cpu"), forward_pass=3
+        )
