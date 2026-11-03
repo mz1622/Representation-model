@@ -1,0 +1,218 @@
+source_key,label_provenance,foodex2_level1,profiles
+afcd,source_code_crosswalk,Alcoholic beverages,24
+afcd,source_code_crosswalk,Animal and vegetable fats and oils,30
+afcd,source_code_crosswalk,Composite dishes,6
+afcd,source_code_crosswalk,Eggs and egg products,11
+afcd,source_code_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",119
+afcd,source_code_crosswalk,Food products for young population,1
+afcd,source_code_crosswalk,Fruit and fruit products,138
+afcd,source_code_crosswalk,Grains and grain-based products,273
+afcd,source_code_crosswalk,"Legumes, nuts, oilseeds and spices",68
+afcd,source_code_crosswalk,Meat and meat products,355
+afcd,source_code_crosswalk,Milk and dairy products,56
+afcd,source_code_crosswalk,"Products for non-standard diets, food imitates and food supplements or fortifying agents",3
+afcd,source_code_crosswalk,"Seasoning, sauces and condiments",39
+afcd,source_code_crosswalk,"Sugar, confectionery and water-based sweet desserts",56
+afcd,source_code_crosswalk,Vegetables and vegetable products,245
+afcd,unlabelled,,137
+anfood_2_0,exact_name_unanimous_transfer,Grains and grain-based products,1
+anfood_2_0,exact_name_unanimous_transfer,"Legumes, nuts, oilseeds and spices",2
+anfood_2_0,unlabelled,,670
+bangladesh_fct_2013,unlabelled,,494
+biofoodcomp_4_0,unlabelled,,1099
+bls_4_0,exact_name_unanimous_transfer,Alcoholic beverages,4
+bls_4_0,exact_name_unanimous_transfer,Animal and vegetable fats and oils,10
+bls_4_0,exact_name_unanimous_transfer,"Coffee, cocoa, tea and infusions",1
+bls_4_0,exact_name_unanimous_transfer,Composite dishes,7
+bls_4_0,exact_name_unanimous_transfer,Fruit and fruit products,3
+bls_4_0,exact_name_unanimous_transfer,Grains and grain-based products,22
+bls_4_0,exact_name_unanimous_transfer,"Legumes, nuts, oilseeds and spices",13
+bls_4_0,exact_name_unanimous_transfer,Meat and meat products,2
+bls_4_0,exact_name_unanimous_transfer,Milk and dairy products,3
+bls_4_0,exact_name_unanimous_transfer,"Seasoning, sauces and condiments",5
+bls_4_0,exact_name_unanimous_transfer,"Sugar, confectionery and water-based sweet desserts",11
+bls_4_0,exact_name_unanimous_transfer,Vegetables and vegetable products,5
+bls_4_0,exact_name_unanimous_transfer,Water and water-based beverages,1
+bls_4_0,unlabelled,,7053
+ciqual,native_group_crosswalk,Animal and vegetable fats and oils,72
+ciqual,native_group_crosswalk,Composite dishes,407
+ciqual,native_group_crosswalk,Food products for young population,39
+ciqual,native_group_crosswalk,Milk and dairy products,356
+ciqual,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",361
+ciqual,unlabelled,,2231
+cnf,native_group_crosswalk,Animal and vegetable fats and oils,134
+cnf,native_group_crosswalk,Composite dishes,215
+cnf,native_group_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",324
+cnf,native_group_crosswalk,Food products for young population,99
+cnf,native_group_crosswalk,Grains and grain-based products,936
+cnf,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",422
+cnf,native_group_crosswalk,Meat and meat products,1308
+cnf,native_group_crosswalk,"Seasoning, sauces and condiments",278
+cnf,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",326
+cnf,native_group_crosswalk,Vegetables and vegetable products,771
+cnf,unlabelled,,1153
+cofid,source_code_crosswalk,Animal and vegetable fats and oils,33
+cofid,source_code_crosswalk,Eggs and egg products,33
+cofid,source_code_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",285
+cofid,source_code_crosswalk,Fruit and fruit products,225
+cofid,source_code_crosswalk,Grains and grain-based products,377
+cofid,source_code_crosswalk,"Legumes, nuts, oilseeds and spices",110
+cofid,source_code_crosswalk,Meat and meat products,645
+cofid,source_code_crosswalk,Milk and dairy products,186
+cofid,source_code_crosswalk,"Seasoning, sauces and condiments",130
+cofid,source_code_crosswalk,"Sugar, confectionery and water-based sweet desserts",75
+cofid,source_code_crosswalk,Vegetables and vegetable products,664
+cofid,unlabelled,,74
+efsa_eu_fcdb_2013,native_foodex2_level1,"Additives, flavours, baking and processing aids",83
+efsa_eu_fcdb_2013,native_foodex2_level1,Alcoholic beverages,256
+efsa_eu_fcdb_2013,native_foodex2_level1,Animal and vegetable fats and oils,400
+efsa_eu_fcdb_2013,native_foodex2_level1,"Coffee, cocoa, tea and infusions",337
+efsa_eu_fcdb_2013,native_foodex2_level1,Composite dishes,888
+efsa_eu_fcdb_2013,native_foodex2_level1,Eggs and egg products,126
+efsa_eu_fcdb_2013,native_foodex2_level1,"Fish, seafood, amphibians, reptiles and invertebrates",2558
+efsa_eu_fcdb_2013,native_foodex2_level1,Food products for young population,101
+efsa_eu_fcdb_2013,native_foodex2_level1,Fruit and fruit products,1191
+efsa_eu_fcdb_2013,native_foodex2_level1,Fruit and vegetable juices and nectars,382
+efsa_eu_fcdb_2013,native_foodex2_level1,Grains and grain-based products,1791
+efsa_eu_fcdb_2013,native_foodex2_level1,Human milk,7
+efsa_eu_fcdb_2013,native_foodex2_level1,"Legumes, nuts, oilseeds and spices",946
+efsa_eu_fcdb_2013,native_foodex2_level1,Meat and meat products,2516
+efsa_eu_fcdb_2013,native_foodex2_level1,Milk and dairy products,1443
+efsa_eu_fcdb_2013,native_foodex2_level1,"Products for non-standard diets, food imitates and food supplements or fortifying agents",126
+efsa_eu_fcdb_2013,native_foodex2_level1,"Seasoning, sauces and condiments",469
+efsa_eu_fcdb_2013,native_foodex2_level1,"Starchy roots or tubers and products thereof, sugar plants",311
+efsa_eu_fcdb_2013,native_foodex2_level1,"Sugar, confectionery and water-based sweet desserts",425
+efsa_eu_fcdb_2013,native_foodex2_level1,Vegetables and vegetable products,2304
+efsa_eu_fcdb_2013,native_foodex2_level1,Water and water-based beverages,285
+fndds,exact_name_unanimous_transfer,Alcoholic beverages,4
+fndds,exact_name_unanimous_transfer,Animal and vegetable fats and oils,7
+fndds,exact_name_unanimous_transfer,Composite dishes,8
+fndds,exact_name_unanimous_transfer,"Fish, seafood, amphibians, reptiles and invertebrates",5
+fndds,exact_name_unanimous_transfer,Fruit and fruit products,29
+fndds,exact_name_unanimous_transfer,Fruit and vegetable juices and nectars,1
+fndds,exact_name_unanimous_transfer,Grains and grain-based products,54
+fndds,exact_name_unanimous_transfer,"Legumes, nuts, oilseeds and spices",11
+fndds,exact_name_unanimous_transfer,Meat and meat products,3
+fndds,exact_name_unanimous_transfer,Milk and dairy products,31
+fndds,exact_name_unanimous_transfer,"Products for non-standard diets, food imitates and food supplements or fortifying agents",1
+fndds,exact_name_unanimous_transfer,"Seasoning, sauces and condiments",10
+fndds,exact_name_unanimous_transfer,"Sugar, confectionery and water-based sweet desserts",7
+fndds,exact_name_unanimous_transfer,Vegetables and vegetable products,27
+fndds,unlabelled,,5204
+foodb,exact_name_unanimous_transfer,Meat and meat products,3
+foodb,native_group_crosswalk,Animal and vegetable fats and oils,139
+foodb,native_group_crosswalk,Composite dishes,1482
+foodb,native_group_crosswalk,Eggs and egg products,61
+foodb,native_group_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",576
+foodb,native_group_crosswalk,Food products for young population,544
+foodb,native_group_crosswalk,Fruit and fruit products,1022
+foodb,native_group_crosswalk,Grains and grain-based products,1670
+foodb,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",1286
+foodb,native_group_crosswalk,Milk and dairy products,528
+foodb,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",601
+foodb,native_group_crosswalk,Vegetables and vegetable products,1101
+foodb,unlabelled,,2234
+frida,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",16
+frida,unlabelled,,1339
+lesotho_fct_2006,source_code_crosswalk,Alcoholic beverages,2
+lesotho_fct_2006,source_code_crosswalk,Animal and vegetable fats and oils,4
+lesotho_fct_2006,source_code_crosswalk,"Coffee, cocoa, tea and infusions",7
+lesotho_fct_2006,source_code_crosswalk,Eggs and egg products,9
+lesotho_fct_2006,source_code_crosswalk,Food products for young population,5
+lesotho_fct_2006,source_code_crosswalk,Grains and grain-based products,54
+lesotho_fct_2006,source_code_crosswalk,"Legumes, nuts, oilseeds and spices",8
+lesotho_fct_2006,source_code_crosswalk,Milk and dairy products,22
+lesotho_fct_2006,source_code_crosswalk,"Seasoning, sauces and condiments",4
+lesotho_fct_2006,source_code_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",6
+lesotho_fct_2006,source_code_crosswalk,"Sugar, confectionery and water-based sweet desserts",9
+lesotho_fct_2006,source_code_crosswalk,Vegetables and vegetable products,69
+lesotho_fct_2006,unlabelled,,91
+mext_japan_2023,source_code_crosswalk,Animal and vegetable fats and oils,34
+mext_japan_2023,source_code_crosswalk,Composite dishes,55
+mext_japan_2023,source_code_crosswalk,Eggs and egg products,23
+mext_japan_2023,source_code_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",471
+mext_japan_2023,source_code_crosswalk,Fruit and fruit products,185
+mext_japan_2023,source_code_crosswalk,Grains and grain-based products,208
+mext_japan_2023,source_code_crosswalk,"Legumes, nuts, oilseeds and spices",159
+mext_japan_2023,source_code_crosswalk,Meat and meat products,317
+mext_japan_2023,source_code_crosswalk,Milk and dairy products,59
+mext_japan_2023,source_code_crosswalk,"Seasoning, sauces and condiments",148
+mext_japan_2023,source_code_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",70
+mext_japan_2023,source_code_crosswalk,"Sugar, confectionery and water-based sweet desserts",218
+mext_japan_2023,source_code_crosswalk,Vegetables and vegetable products,527
+mext_japan_2023,unlabelled,,64
+norway,native_group_crosswalk,Fruit and fruit products,50
+norway,native_group_crosswalk,Grains and grain-based products,29
+norway,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",55
+norway,native_group_crosswalk,Vegetables and vegetable products,49
+norway,unlabelled,,1912
+phyfoodcomp_1_0,source_code_crosswalk,Animal and vegetable fats and oils,2
+phyfoodcomp_1_0,source_code_crosswalk,Composite dishes,61
+phyfoodcomp_1_0,source_code_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",9
+phyfoodcomp_1_0,source_code_crosswalk,Food products for young population,108
+phyfoodcomp_1_0,source_code_crosswalk,Fruit and fruit products,128
+phyfoodcomp_1_0,source_code_crosswalk,Grains and grain-based products,789
+phyfoodcomp_1_0,source_code_crosswalk,"Legumes, nuts, oilseeds and spices",566
+phyfoodcomp_1_0,source_code_crosswalk,Meat and meat products,1
+phyfoodcomp_1_0,source_code_crosswalk,Milk and dairy products,2
+phyfoodcomp_1_0,source_code_crosswalk,"Products for non-standard diets, food imitates and food supplements or fortifying agents",9
+phyfoodcomp_1_0,source_code_crosswalk,"Seasoning, sauces and condiments",84
+phyfoodcomp_1_0,source_code_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",109
+phyfoodcomp_1_0,source_code_crosswalk,"Sugar, confectionery and water-based sweet desserts",17
+phyfoodcomp_1_0,source_code_crosswalk,Vegetables and vegetable products,288
+phyfoodcomp_1_0,unlabelled,,13
+smiling_cambodia_2013,exact_name_unanimous_transfer,Eggs and egg products,1
+smiling_cambodia_2013,exact_name_unanimous_transfer,Fruit and fruit products,1
+smiling_cambodia_2013,exact_name_unanimous_transfer,Vegetables and vegetable products,1
+smiling_cambodia_2013,unlabelled,,86
+smiling_indonesia_2013,native_group_crosswalk,Animal and vegetable fats and oils,6
+smiling_indonesia_2013,native_group_crosswalk,Composite dishes,5
+smiling_indonesia_2013,native_group_crosswalk,Fruit and fruit products,15
+smiling_indonesia_2013,native_group_crosswalk,Grains and grain-based products,9
+smiling_indonesia_2013,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",17
+smiling_indonesia_2013,native_group_crosswalk,Milk and dairy products,2
+smiling_indonesia_2013,native_group_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",5
+smiling_indonesia_2013,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",1
+smiling_indonesia_2013,native_group_crosswalk,Vegetables and vegetable products,16
+smiling_indonesia_2013,unlabelled,,32
+smiling_laos_2013,native_group_crosswalk,Animal and vegetable fats and oils,1
+smiling_laos_2013,native_group_crosswalk,Composite dishes,12
+smiling_laos_2013,native_group_crosswalk,Fruit and fruit products,7
+smiling_laos_2013,native_group_crosswalk,Grains and grain-based products,16
+smiling_laos_2013,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",3
+smiling_laos_2013,native_group_crosswalk,Milk and dairy products,6
+smiling_laos_2013,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",3
+smiling_laos_2013,native_group_crosswalk,Vegetables and vegetable products,31
+smiling_laos_2013,unlabelled,,61
+smiling_thailand_2013,native_group_crosswalk,Animal and vegetable fats and oils,5
+smiling_thailand_2013,native_group_crosswalk,Eggs and egg products,2
+smiling_thailand_2013,native_group_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",12
+smiling_thailand_2013,native_group_crosswalk,Fruit and fruit products,8
+smiling_thailand_2013,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",3
+smiling_thailand_2013,native_group_crosswalk,Meat and meat products,16
+smiling_thailand_2013,native_group_crosswalk,Milk and dairy products,12
+smiling_thailand_2013,native_group_crosswalk,"Seasoning, sauces and condiments",24
+smiling_thailand_2013,native_group_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",1
+smiling_thailand_2013,native_group_crosswalk,Vegetables and vegetable products,27
+smiling_thailand_2013,unlabelled,,29
+smiling_vietnam_2013,native_group_crosswalk,Animal and vegetable fats and oils,3
+smiling_vietnam_2013,native_group_crosswalk,Fruit and fruit products,12
+smiling_vietnam_2013,native_group_crosswalk,Grains and grain-based products,18
+smiling_vietnam_2013,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",11
+smiling_vietnam_2013,native_group_crosswalk,Milk and dairy products,6
+smiling_vietnam_2013,native_group_crosswalk,"Starchy roots or tubers and products thereof, sugar plants",4
+smiling_vietnam_2013,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",5
+smiling_vietnam_2013,native_group_crosswalk,Vegetables and vegetable products,40
+smiling_vietnam_2013,unlabelled,,63
+swiss_fcdb_7_1,unlabelled,,1246
+usda_sr_legacy,native_group_crosswalk,Animal and vegetable fats and oils,210
+usda_sr_legacy,native_group_crosswalk,"Fish, seafood, amphibians, reptiles and invertebrates",262
+usda_sr_legacy,native_group_crosswalk,Food products for young population,345
+usda_sr_legacy,native_group_crosswalk,Grains and grain-based products,892
+usda_sr_legacy,native_group_crosswalk,"Legumes, nuts, oilseeds and spices",480
+usda_sr_legacy,native_group_crosswalk,Meat and meat products,2279
+usda_sr_legacy,native_group_crosswalk,"Seasoning, sauces and condiments",252
+usda_sr_legacy,native_group_crosswalk,"Sugar, confectionery and water-based sweet desserts",356
+usda_sr_legacy,native_group_crosswalk,Vegetables and vegetable products,783
+usda_sr_legacy,unlabelled,,1813
+wafct_2019,unlabelled,,1025

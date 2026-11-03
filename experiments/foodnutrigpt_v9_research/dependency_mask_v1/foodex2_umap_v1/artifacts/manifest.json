@@ -1,0 +1,43 @@
+{
+  "schema_version": "foodex2_umap_v1",
+  "created_at_utc": "2026-11-03T22:00:17.327676+00:00",
+  "coordinates": {
+    "filename": "umap_v5_cce.csv",
+    "sha256": "2c01d388d0c59ea82d745c5ae344670ea030bf4528a934b7781248533176d179"
+  },
+  "profiles": {
+    "filename": "profiles.csv.gz",
+    "sha256": "c8c7d79dcea8fcdca4daa03ec2c37cb43713d31a8cbe85801d0349ab3b660660"
+  },
+  "embedding": {
+    "filename": "embedding_V5_CCE.npy",
+    "sha256": "9cc530cc4370a34fa303cc79243895c9a39b59b3693ad618a98047e91e3afbd2"
+  },
+  "umap_points": 4000,
+  "labelled_umap_points": 2515,
+  "labelled_umap_fraction": 0.62875,
+  "corpus_profiles": 75875,
+  "labelled_corpus_profiles": 47752,
+  "labelled_corpus_fraction": 0.6293509060955519,
+  "policy": {
+    "taxonomy": "EFSA FoodEx2 Exposure Hierarchy level 1",
+    "geometry": "frozen existing V5+CCE UMAP coordinates",
+    "allowed_label_evidence": [
+      "native FoodEx2 level-1 category",
+      "source-published category code/name crosswalk",
+      "unanimous exact-name-group transfer"
+    ],
+    "forbidden_label_evidence": [
+      "food name",
+      "nutrient values",
+      "model embeddings",
+      "UMAP coordinates",
+      "cluster position"
+    ],
+    "unresolved_policy": "retain as Unlabelled"
+  },
+  "references": [
+    "https://www.efsa.europa.eu/en/press/news/150504",
+    "https://www.efsa.europa.eu/sites/default/files/2024-12/dietex-userguide.pdf"
+  ]
+}

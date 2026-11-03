@@ -1,0 +1,43 @@
+partition,foodex2_level1,display_category,profiles
+train,,Unlabelled,24062
+train,"Additives, flavours, baking and processing aids",Additives/processing aids,83
+train,Alcoholic beverages,Alcoholic beverages,249
+train,Animal and vegetable fats and oils,Fats/oils,899
+train,"Coffee, cocoa, tea and infusions",Coffee/cocoa/tea,309
+train,Composite dishes,Composite dishes,2680
+train,Eggs and egg products,Eggs,216
+train,"Fish, seafood, amphibians, reptiles and invertebrates",Fish/seafood,4034
+train,Food products for young population,Young-population foods,1050
+train,Fruit and fruit products,Fruit,2561
+train,Fruit and vegetable juices and nectars,Fruit/vegetable juices,329
+train,Grains and grain-based products,Grains,6016
+train,Human milk,Human milk,7
+train,"Legumes, nuts, oilseeds and spices",Legumes/nuts/spices,3571
+train,Meat and meat products,Meat,6377
+train,Milk and dairy products,Milk/dairy,2339
+train,"Products for non-standard diets, food imitates and food supplements or fortifying agents",Special-diet products,117
+train,"Seasoning, sauces and condiments",Seasonings/sauces,1203
+train,"Starchy roots or tubers and products thereof, sugar plants",Starchy roots/tubers,383
+train,"Sugar, confectionery and water-based sweet desserts",Sugar/confectionery,2043
+train,Vegetables and vegetable products,Vegetables,5914
+train,Water and water-based beverages,Water,258
+validation,,Unlabelled,4061
+validation,Alcoholic beverages,Alcoholic beverages,41
+validation,Animal and vegetable fats and oils,Fats/oils,191
+validation,"Coffee, cocoa, tea and infusions",Coffee/cocoa/tea,36
+validation,Composite dishes,Composite dishes,466
+validation,Eggs and egg products,Eggs,50
+validation,"Fish, seafood, amphibians, reptiles and invertebrates",Fish/seafood,587
+validation,Food products for young population,Young-population foods,192
+validation,Fruit and fruit products,Fruit,453
+validation,Fruit and vegetable juices and nectars,Fruit/vegetable juices,54
+validation,Grains and grain-based products,Grains,1123
+validation,"Legumes, nuts, oilseeds and spices",Legumes/nuts/spices,605
+validation,Meat and meat products,Meat,1068
+validation,Milk and dairy products,Milk/dairy,373
+validation,"Products for non-standard diets, food imitates and food supplements or fortifying agents",Special-diet products,22
+validation,"Seasoning, sauces and condiments",Seasonings/sauces,240
+validation,"Starchy roots or tubers and products thereof, sugar plants",Starchy roots/tubers,123
+validation,"Sugar, confectionery and water-based sweet desserts",Sugar/confectionery,428
+validation,Vegetables and vegetable products,Vegetables,1034
+validation,Water and water-based beverages,Water,28
