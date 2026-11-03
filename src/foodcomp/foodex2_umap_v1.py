@@ -67,6 +67,31 @@ DISPLAY_NAMES = {
 }
 
 
+MACRO_CATEGORY = {
+    GRAINS: "Cereal & starchy staples",
+    STARCHY: "Cereal & starchy staples",
+    VEGETABLES: "Plant produce, legumes & nuts",
+    LEGUMES: "Plant produce, legumes & nuts",
+    FRUIT: "Fruit & juices",
+    JUICES: "Fruit & juices",
+    MEAT: "Meat, fish & eggs",
+    FISH: "Meat, fish & eggs",
+    EGGS: "Meat, fish & eggs",
+    DAIRY: "Dairy & milk",
+    HUMAN_MILK: "Dairy & milk",
+    SUGAR: "Sugars & fats",
+    FATS: "Sugars & fats",
+    COFFEE_TEA: "Beverages",
+    ALCOHOL: "Beverages",
+    WATER: "Beverages",
+    COMPOSITE: "Prepared & special-purpose foods",
+    SEASONING: "Prepared & special-purpose foods",
+    SPECIAL: "Prepared & special-purpose foods",
+    YOUNG: "Prepared & special-purpose foods",
+    ADDITIVES: "Prepared & special-purpose foods",
+}
+
+
 MEXT = {
     "1": GRAINS, "2": STARCHY, "3": SUGAR, "4": LEGUMES,
     "5": LEGUMES, "6": VEGETABLES, "7": FRUIT, "8": VEGETABLES,
@@ -249,4 +274,5 @@ def assign_foodex2_labels(profiles: pd.DataFrame) -> pd.DataFrame:
     result.loc[accepted, "foodex2_level1"] = group_id[accepted].map(unanimous)
     result.loc[accepted, "label_provenance"] = "exact_name_unanimous_transfer"
     result["display_category"] = result["foodex2_level1"].map(DISPLAY_NAMES).fillna("Unlabelled")
+    result["macro_category"] = result["foodex2_level1"].map(MACRO_CATEGORY).fillna("Unlabelled")
     return result

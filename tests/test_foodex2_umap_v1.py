@@ -1,9 +1,14 @@
 import pandas as pd
 
 from foodcomp.foodex2_umap_v1 import (
-    FISH, GRAINS, LEGUMES, MEAT, VEGETABLES,
+    FISH, FOODEX2_LEVEL1, GRAINS, LEGUMES, MACRO_CATEGORY, MEAT, VEGETABLES,
     assign_foodex2_labels, direct_foodex2_label,
 )
+
+
+def test_all_foodex2_level1_categories_have_one_macro_category():
+    assert set(MACRO_CATEGORY) == set(FOODEX2_LEVEL1)
+    assert len(set(MACRO_CATEGORY.values())) == 8
 
 
 def test_source_code_crosswalks_are_conservative():
