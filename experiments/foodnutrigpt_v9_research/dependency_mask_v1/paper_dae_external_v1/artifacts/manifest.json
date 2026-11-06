@@ -1,0 +1,159 @@
+{
+  "status": "complete",
+  "version": "gjorshoska_2022_paper_dae_external_v1",
+  "created_utc": "2026-11-06T21:43:52.037602+00:00",
+  "training_device": "cpu",
+  "text_encoding_device": "cuda",
+  "seed": 20261005,
+  "paper_data_sha256": "c6863de38fb326cb774096b08e4e6a4d9fafd775085b9693a2e8b122c19ace6b",
+  "current_data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "paper_training_rows": 10484,
+  "paper_holdout_rows": 2621,
+  "paper_nutrients": 198,
+  "strict_common_supervised_axes": 127,
+  "validation_jobs": 300380,
+  "complete_test_jobs": 18430,
+  "complete_test_original_panel": {
+    "profiles": 659,
+    "jobs": 19690,
+    "axes": 187,
+    "minimum_axis_support": 5,
+    "maximum_axis_support": 566,
+    "quarantined_cells": 0
+  },
+  "training": {
+    "epochs": 200,
+    "batch_size": 1,
+    "optimizer": "SGD",
+    "learning_rate": 0.01,
+    "loss": "full-vector MSE",
+    "input_dropout": 0.2,
+    "checkpoint": "fixed final epoch; current validation never used for selection"
+  },
+  "models": {
+    "Paper DAE (no name)": {
+      "input": "198 nutrient values",
+      "food_name_model_input": false,
+      "paper_holdout": {
+        "masked_cells": 103814,
+        "nutrients": 198,
+        "rmse_sum": 5.1566201518289745,
+        "macro_rmse": 0.026043536120348355
+      }
+    },
+    "Paper-data DAE + FoodText": {
+      "input": "198 nutrient values + 50 PCA components of frozen MiniLM food-name embedding",
+      "food_name_model_input": true,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "pca_fit": "paper food names only",
+      "note": "adapted transfer variant; replaces the public notebook PCA contaminated by fdc_id",
+      "paper_holdout": {
+        "masked_cells": 103814,
+        "nutrients": 198,
+        "rmse_sum": 5.372681424487382,
+        "macro_rmse": 0.027134754669128194
+      }
+    }
+  },
+  "results": {
+    "Paper DAE (no name)": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.5469199497396791,
+        "macro_scaled_log_rmse": 0.7948064653089267,
+        "macro_raw_mae": 1.059076439678397
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.6169336352033234,
+        "macro_scaled_log_rmse": 0.8774431868834182,
+        "macro_raw_mae": 1.2903083152793444
+      }
+    },
+    "Paper-data DAE + FoodText": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.5523837125742008,
+        "macro_scaled_log_rmse": 0.8101231124511499,
+        "macro_raw_mae": 1.0903658608070004
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.6190052642572618,
+        "macro_scaled_log_rmse": 0.901362036862662,
+        "macro_raw_mae": 1.3142422851342728
+      }
+    },
+    "KNN": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.19356990505046004,
+        "macro_scaled_log_rmse": 0.3480566133454106,
+        "macro_raw_mae": 0.3754166144657853
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.31988479014510035,
+        "macro_scaled_log_rmse": 0.4908722718553911,
+        "macro_raw_mae": 0.5817868109630819
+      }
+    },
+    "RF": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.12841927843935788,
+        "macro_scaled_log_rmse": 0.2509915961081273,
+        "macro_raw_mae": 0.20630004933078835
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.21715827239717272,
+        "macro_scaled_log_rmse": 0.34618995517530604,
+        "macro_raw_mae": 0.33142156175344667
+      }
+    },
+    "XGBoost": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.1365140473092307,
+        "macro_scaled_log_rmse": 0.2536380726564946,
+        "macro_raw_mae": 0.21836480144820303
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.2149571232002222,
+        "macro_scaled_log_rmse": 0.3429256893872408,
+        "macro_raw_mae": 0.31298956209564277
+      }
+    },
+    "V5+CCE": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.13745241248456946,
+        "macro_scaled_log_rmse": 0.29314965024151823,
+        "macro_raw_mae": 0.2702599237062178
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.1963713369718738,
+        "macro_scaled_log_rmse": 0.3532431718974505,
+        "macro_raw_mae": 0.3720268535414737
+      }
+    }
+  },
+  "elapsed_seconds": 2492.5929999999935,
+  "text_pca_explained_variance": 0.8476676940917969,
+  "paper_holdout_metric": "sum and macro mean of per-nutrient RMSE on masked cells in the paper training split's MinMax-scaled [0,1] space"
+}

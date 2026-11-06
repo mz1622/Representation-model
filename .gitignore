@@ -98,3 +98,10 @@ experiments/foodnutrigpt_v9_research/baseline_confirmation_v1/*
 !experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.md
 !experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.json
 !experiments/foodnutrigpt_v9_research/dependency_mask_v1/*.csv
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/
+experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/*
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/*.md
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/artifacts/
+experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/artifacts/*
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/artifacts/*.csv
+!experiments/foodnutrigpt_v9_research/dependency_mask_v1/paper_dae_external_v1/artifacts/*.json
