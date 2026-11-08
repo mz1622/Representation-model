@@ -1,0 +1,199 @@
+paper_column,paper_nutrient_id,paper_name,paper_unit,candidate_canonical_name,mapping_basis,status,axis_index,loss_eligible,grams_to_paper
+0,1002,Nitrogen,G,Nitrogen,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+1,1003,Protein,G,"Protein, total",reviewed_exact_alias,accepted_exact_identity,207.0,True,1.0
+2,1004,Total lipid (fat),G,"Fat, total",reviewed_exact_alias,accepted_exact_identity,148.0,True,1.0
+3,1005,"Carbohydrate, by difference",G,"Carbohydrate, by difference",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+4,1007,Ash,G,Ash,exact_canonical_name,accepted_exact_identity,108.0,True,1.0
+5,1008,Energy,KCAL,Energy,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+6,1009,Starch,G,Starch,exact_canonical_name,accepted_exact_identity,214.0,True,1.0
+7,1010,Sucrose,G,Sucrose,exact_canonical_name,accepted_exact_identity,217.0,True,1.0
+8,1011,Glucose (dextrose),G,Glucose,reviewed_exact_alias,accepted_exact_identity,160.0,True,1.0
+9,1012,Fructose,G,Fructose,exact_canonical_name,accepted_exact_identity,158.0,True,1.0
+10,1013,Lactose,G,Lactose,exact_canonical_name,accepted_exact_identity,177.0,True,1.0
+11,1014,Maltose,G,Maltose,exact_canonical_name,accepted_exact_identity,185.0,True,1.0
+12,1024,Specific Gravity,SP_GR,Specific Gravity,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+13,1032,Citric acid,MG,Citric acid,exact_canonical_name,accepted_exact_identity,18.0,True,1000.0
+14,1039,Malic acid,MG,Malic acid,exact_canonical_name,accepted_exact_identity,56.0,True,1000.0
+15,1050,"Carbohydrate, by summation",G,"Carbohydrate, by summation",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+16,1051,Water,G,Water,exact_canonical_name,accepted_exact_identity,239.0,True,1.0
+17,1062,Energy,KJ,Energy,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+18,1063,"Sugars, Total NLEA",G,"Sugars, total",reviewed_exact_alias,accepted_exact_identity,218.0,True,1.0
+19,1075,Galactose,G,Galactose,exact_canonical_name,accepted_exact_identity,159.0,True,1.0
+20,1079,"Fiber, total dietary",G,"Dietary fibre, total",reviewed_exact_alias,accepted_exact_identity,131.0,True,1.0
+21,1082,"Fiber, soluble",G,"Fiber, soluble",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+22,1084,"Fiber, insoluble",G,Insoluble dietary fibers,reviewed_exact_alias,accepted_exact_identity,172.0,True,1.0
+23,1085,Total fat (NLEA),G,Total fat (NLEA),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+24,1087,"Calcium, Ca",MG,Calcium,reviewed_exact_alias,accepted_exact_identity,115.0,True,1000.0
+25,1089,"Iron, Fe",MG,Iron,reviewed_exact_alias,accepted_exact_identity,173.0,True,1000.0
+26,1090,"Magnesium, Mg",MG,Magnesium,reviewed_exact_alias,accepted_exact_identity,184.0,True,1000.0
+27,1091,"Phosphorus, P",MG,Phosphorus,reviewed_exact_alias,accepted_exact_identity,203.0,True,1000.0
+28,1092,"Potassium, K",MG,Potassium,reviewed_exact_alias,accepted_exact_identity,205.0,True,1000.0
+29,1093,"Sodium, Na",MG,Sodium,reviewed_exact_alias,accepted_exact_identity,212.0,True,1000.0
+30,1094,"Sulfur, S",MG,Sulfur,reviewed_exact_alias,accepted_exact_identity,219.0,True,1000.0
+31,1095,"Zinc, Zn",MG,Zinc,reviewed_exact_alias,accepted_exact_identity,241.0,True,1000.0
+32,1097,"Cobalt, Co",UG,"Cobalt, Co",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+33,1098,"Copper, Cu",MG,Copper,reviewed_exact_alias,accepted_exact_identity,127.0,True,1000.0
+34,1100,"Iodine, I",UG,"Iodine, I",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+35,1101,"Manganese, Mn",MG,Manganese,reviewed_exact_alias,accepted_exact_identity,186.0,True,1000.0
+36,1102,"Molybdenum, Mo",UG,Molybdenum,reviewed_exact_alias,accepted_exact_identity,190.0,True,1000000.0
+37,1103,"Selenium, Se",UG,"Selenium, Se",exact_canonical_name,accepted_exact_identity,210.0,True,1000000.0
+38,1105,Retinol,UG,Retinol,exact_canonical_name,accepted_exact_identity,208.0,True,1000000.0
+39,1106,"Vitamin A, RAE",UG,"Vitamin A, RAE",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+40,1107,"Carotene, beta",UG,"Carotene, beta",exact_canonical_name,accepted_exact_identity,118.0,True,1000000.0
+41,1108,"Carotene, alpha",UG,"Carotene, alpha",exact_canonical_name,accepted_exact_identity,117.0,True,1000000.0
+42,1109,Vitamin E (alpha-tocopherol),MG,Vitamin E (alpha-tocopherol),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+43,1110,"Vitamin D (D2 + D3), International Units",IU,"Vitamin D (D2 + D3), International Units",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+44,1111,Vitamin D2 (ergocalciferol),UG,Vitamin D2 (ergocalciferol),exact_canonical_name,accepted_exact_identity,238.0,True,1000000.0
+45,1112,Vitamin D3 (cholecalciferol),UG,Cholecalciferol (vitamin D3),reviewed_exact_alias,accepted_exact_identity,121.0,True,1000000.0
+46,1113,25-hydroxycholecalciferol,UG,25-hydroxycholecalciferol,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+47,1114,Vitamin D (D2 + D3),UG,Vitamin D (D2 + D3),exact_canonical_name,accepted_exact_identity,237.0,True,1000000.0
+48,1116,Phytoene,UG,Phytoene,exact_canonical_name,accepted_exact_identity,70.0,False,1000000.0
+49,1117,Phytofluene,UG,Phytofluene,exact_canonical_name,accepted_exact_identity,71.0,False,1000000.0
+50,1119,Zeaxanthin,UG,Zeaxanthin,exact_canonical_name,accepted_exact_identity,100.0,False,1000000.0
+51,1120,"Cryptoxanthin, beta",UG,"Cryptoxanthin, beta",exact_canonical_name,accepted_exact_identity,128.0,True,1000000.0
+52,1121,Lutein,UG,Lutein,exact_canonical_name,accepted_exact_identity,54.0,True,1000000.0
+53,1122,Lycopene,UG,Lycopene,exact_canonical_name,accepted_exact_identity,182.0,True,1000000.0
+54,1123,Lutein + zeaxanthin,UG,Lutein + zeaxanthin,exact_canonical_name,accepted_exact_identity,181.0,True,1000000.0
+55,1125,"Tocopherol, beta",MG,"Tocopherol, beta",exact_canonical_name,accepted_exact_identity,225.0,True,1000.0
+56,1126,"Tocopherol, gamma",MG,"Tocopherol, gamma",exact_canonical_name,accepted_exact_identity,227.0,True,1000.0
+57,1127,"Tocopherol, delta",MG,"Tocopherol, delta",exact_canonical_name,accepted_exact_identity,226.0,True,1000.0
+58,1128,"Tocotrienol, alpha",MG,"Tocotrienol, alpha",exact_canonical_name,accepted_exact_identity,228.0,True,1000.0
+59,1129,"Tocotrienol, beta",MG,"Tocotrienol, beta",exact_canonical_name,accepted_exact_identity,229.0,True,1000.0
+60,1130,"Tocotrienol, gamma",MG,"Tocotrienol, gamma",exact_canonical_name,accepted_exact_identity,231.0,True,1000.0
+61,1131,"Tocotrienol, delta",MG,"Tocotrienol, delta",exact_canonical_name,accepted_exact_identity,230.0,True,1000.0
+62,1137,"Boron, B",UG,"Boron, B",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+63,1146,"Nickel, Ni",UG,"Nickel, Ni",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+64,1159,cis-beta-Carotene,UG,cis-beta-Carotene,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+65,1160,cis-Lycopene,UG,cis-Lycopene,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+66,1161,cis-Lutein/Zeaxanthin,UG,cis-Lutein/Zeaxanthin,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+67,1162,"Vitamin C, total ascorbic acid",MG,Ascorbic acid (vitamin C),reviewed_exact_alias,accepted_exact_identity,107.0,True,1000.0
+68,1165,Thiamin,MG,Thiamin (vitamin B1),reviewed_exact_alias,accepted_exact_identity,223.0,True,1000.0
+69,1166,Riboflavin,MG,Riboflavin (vitamin B2),reviewed_exact_alias,accepted_exact_identity,209.0,True,1000.0
+70,1167,Niacin,MG,Niacin,exact_canonical_name,accepted_exact_identity,191.0,True,1000.0
+71,1170,Pantothenic acid,MG,Pantothenic acid (vitamin B5),reviewed_exact_alias,accepted_exact_identity,199.0,True,1000.0
+72,1175,Vitamin B-6,MG,Vitamin B6 - Pyridoxin,reviewed_exact_alias,accepted_exact_identity,236.0,True,1000.0
+73,1176,Biotin,UG,Biotin,exact_canonical_name,accepted_exact_identity,113.0,True,1000000.0
+74,1177,"Folate, total",UG,"Folate, total",exact_canonical_name,accepted_exact_identity,156.0,True,1000000.0
+75,1178,Vitamin B-12,UG,Cobalamin (vitamin B12),reviewed_exact_alias,accepted_exact_identity,125.0,True,1000000.0
+76,1180,"Choline, total",MG,"Choline, total",exact_canonical_name,accepted_exact_identity,123.0,True,1000.0
+77,1183,Vitamin K (Menaquinone-4),UG,Menaquinone-4,reviewed_exact_alias,accepted_exact_identity,188.0,True,1000000.0
+78,1184,Vitamin K (Dihydrophylloquinone),UG,Vitamin K (Dihydrophylloquinone),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+79,1185,Vitamin K (phylloquinone),UG,Vitamin K (phylloquinone),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+80,1188,5-methyl tetrahydrofolate (5-MTHF),UG,5-methyl tetrahydrofolate (5-MTHF),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+81,1191,10-Formyl folic acid (10HCOFA),UG,10-Formyl folic acid (10HCOFA),exact_canonical_name,no_strict_current_axis_equivalent,,False,
+82,1192,5-Formyltetrahydrofolic acid (5-HCOH4,UG,5-Formyltetrahydrofolic acid (5-HCOH4,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+83,1194,"Choline, free",MG,"Choline, free",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+84,1195,"Choline, from phosphocholine",MG,"Choline, from phosphocholine",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+85,1196,"Choline, from phosphotidyl choline",MG,"Choline, from phosphotidyl choline",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+86,1197,"Choline, from glycerophosphocholine",MG,"Choline, from glycerophosphocholine",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+87,1198,Betaine,MG,Betaine,exact_canonical_name,accepted_exact_identity,112.0,True,1000.0
+88,1199,"Choline, from sphingomyelin",MG,"Choline, from sphingomyelin",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+89,1210,Tryptophan,G,Tryptophan,exact_canonical_name,accepted_exact_identity,233.0,True,1.0
+90,1211,Threonine,G,Threonine,exact_canonical_name,accepted_exact_identity,224.0,True,1.0
+91,1212,Isoleucine,G,Isoleucine,exact_canonical_name,accepted_exact_identity,174.0,True,1.0
+92,1213,Leucine,G,Leucine,exact_canonical_name,accepted_exact_identity,178.0,True,1.0
+93,1214,Lysine,G,Lysine,exact_canonical_name,accepted_exact_identity,183.0,True,1.0
+94,1215,Methionine,G,Methionine,exact_canonical_name,accepted_exact_identity,189.0,True,1.0
+95,1216,Cystine,G,Cystine,exact_canonical_name,accepted_exact_identity,129.0,True,1.0
+96,1217,Phenylalanine,G,Phenylalanine,exact_canonical_name,accepted_exact_identity,202.0,True,1.0
+97,1218,Tyrosine,G,Tyrosine,exact_canonical_name,accepted_exact_identity,234.0,True,1.0
+98,1219,Valine,G,Valine,exact_canonical_name,accepted_exact_identity,235.0,True,1.0
+99,1220,Arginine,G,Arginine,exact_canonical_name,accepted_exact_identity,106.0,True,1.0
+100,1221,Histidine,G,Histidine,exact_canonical_name,accepted_exact_identity,170.0,True,1.0
+101,1222,Alanine,G,Alanine,exact_canonical_name,accepted_exact_identity,104.0,True,1.0
+102,1223,Aspartic acid,G,Aspartic acid,exact_canonical_name,accepted_exact_identity,109.0,True,1.0
+103,1224,Glutamic acid,G,Glutamic acid,exact_canonical_name,accepted_exact_identity,161.0,True,1.0
+104,1225,Glycine,G,Glycine,exact_canonical_name,accepted_exact_identity,162.0,True,1.0
+105,1226,Proline,G,Proline,exact_canonical_name,accepted_exact_identity,206.0,True,1.0
+106,1227,Serine,G,Serine,exact_canonical_name,accepted_exact_identity,211.0,True,1.0
+107,1228,Hydroxyproline,G,Hydroxyproline,exact_canonical_name,accepted_exact_identity,171.0,True,1.0
+108,1232,Cysteine,G,Cysteine,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+109,1253,Cholesterol,MG,Cholesterol,exact_canonical_name,accepted_exact_identity,122.0,True,1000.0
+110,1257,"Fatty acids, total trans",G,"Fatty acids, total trans",exact_canonical_name,accepted_exact_identity,152.0,True,1.0
+111,1258,"Fatty acids, total saturated",G,"Fatty acids, total saturated",exact_canonical_name,accepted_exact_identity,151.0,True,1.0
+112,1259,4:0,G,Butyric acid (4:0),panel_chain_notation,accepted_exact_identity,114.0,True,1.0
+113,1260,6:0,G,Hexanoic acid (6:0),panel_chain_notation,accepted_exact_identity,169.0,True,1.0
+114,1261,8:0,G,Octanoic acid (8:0),panel_chain_notation,accepted_exact_identity,198.0,True,1.0
+115,1262,10:0,G,Decanoic acid (10:0),panel_chain_notation,accepted_exact_identity,130.0,True,1.0
+116,1263,12:0,G,Dodecanoic acid (12:0),panel_chain_notation,accepted_exact_identity,137.0,True,1.0
+117,1264,14:0,G,Tetradecanoic acid (14:0),panel_chain_notation,accepted_exact_identity,221.0,True,1.0
+118,1265,16:0,G,Hexadecanoic acid (16:0),panel_chain_notation,accepted_exact_identity,167.0,True,1.0
+119,1266,18:0,G,Octadecanoic acid (18:0),panel_chain_notation,accepted_exact_identity,194.0,True,1.0
+120,1267,20:0,G,Eicosanoic acid (20:0),panel_chain_notation,accepted_exact_identity,138.0,True,1.0
+121,1268,18:1,G,Octadecenoic acid (18:1; cis/trans unspecified),reviewed_exact_alias,accepted_exact_identity,197.0,True,1.0
+122,1269,18:2,G,Octadecadienoic acid (18:2; isomer unspecified),reviewed_exact_alias,accepted_exact_identity,193.0,True,1.0
+123,1270,18:3,G,Octadecatrienoic acid (18:3; isomer unspecified),reviewed_exact_alias,accepted_exact_identity,196.0,True,1.0
+124,1271,20:4,G,Eicosatetraenoic acid (20:4; isomer unspecified),reviewed_exact_alias,accepted_exact_identity,140.0,True,1.0
+125,1272,22:6 n-3 (DHA),G,Docosahexaenoic acid (DHA; 22:6n-3),panel_exact_synonym,accepted_exact_identity,132.0,True,1.0
+126,1273,22:0,G,Docosanoic acid (22:0),panel_chain_notation,accepted_exact_identity,133.0,True,1.0
+127,1276,18:4,G,Octadecatetraenoic acid (18:4; isomer unspecified),panel_chain_notation,accepted_exact_identity,195.0,True,1.0
+128,1277,20:1,G,Eicosenoic acid (20:1; isomer unspecified),panel_exact_synonym,accepted_exact_identity,144.0,True,1.0
+129,1278,20:5 n-3 (EPA),G,Eicosapentaenoic acid (EPA; 20:5n-3),panel_exact_synonym,accepted_exact_identity,139.0,True,1.0
+130,1279,22:1,G,Docosenoic acid (22:1; cis/trans unspecified),reviewed_exact_alias,accepted_exact_identity,136.0,True,1.0
+131,1280,22:5 n-3 (DPA),G,Docosapentaenoic acid (DPA; 22:5n-3),panel_exact_synonym,accepted_exact_identity,134.0,True,1.0
+132,1281,14:1 t,G,14:1 t,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+133,1285,Stigmasterol,MG,Stigmasterol,exact_canonical_name,accepted_exact_identity,216.0,True,1000.0
+134,1286,Campesterol,MG,Campesterol,exact_canonical_name,accepted_exact_identity,116.0,True,1000.0
+135,1287,Brassicasterol,MG,Brassicasterol,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+136,1288,Beta-sitosterol,MG,Beta-sitosterol,exact_canonical_name,accepted_exact_identity,111.0,True,1000.0
+137,1289,Campestanol,MG,Campestanol,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+138,1292,"Fatty acids, total monounsaturated",G,"Fatty acids, total monounsaturated",exact_canonical_name,accepted_exact_identity,149.0,True,1.0
+139,1293,"Fatty acids, total polyunsaturated",G,"Fatty acids, total polyunsaturated",exact_canonical_name,accepted_exact_identity,150.0,True,1.0
+140,1294,Beta-sitostanol,MG,Beta-sitostanol,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+141,1296,Delta-5-avenasterol,MG,Delta-5-avenasterol,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+142,1298,"Phytosterols, other",MG,"Phytosterols, other",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+143,1299,15:0,G,Pentadecanoic acid (15:0),panel_chain_notation,accepted_exact_identity,200.0,True,1.0
+144,1300,17:0,G,Heptadecanoic acid (17:0),panel_chain_notation,accepted_exact_identity,165.0,True,1.0
+145,1301,24:0,G,Tetracosanoic acid (24:0),panel_chain_notation,accepted_exact_identity,220.0,True,1.0
+146,1303,16:1 t,G,trans-Hexadecenoic acid (16:1 trans),panel_chain_notation,accepted_exact_identity,249.0,True,1.0
+147,1304,18:1 t,G,trans-Octadecenoic acid (18:1 trans),panel_chain_notation,accepted_exact_identity,251.0,True,1.0
+148,1305,22:1 t,G,trans-Docosenoic acid (22:1 trans),panel_chain_notation,accepted_exact_identity,248.0,True,1.0
+149,1306,18:2 t not further defined,G,trans-Linoleic acid (18:2; isomer unspecified),panel_chain_notation,accepted_exact_identity,250.0,True,1.0
+150,1311,18:2 CLAs,G,Conjugated linoleic acids (18:2 CLA isomers),panel_chain_notation,accepted_exact_identity,126.0,True,1.0
+151,1312,24:1 c,G,cis-Tetracosenoic acid (24:1 cis),panel_chain_notation,accepted_exact_identity,246.0,True,1.0
+152,1313,"20:2 n-6 c,c",G,"cis,cis-Eicosadienoic acid (20:2n-6)",panel_chain_notation,accepted_exact_identity,242.0,True,1.0
+153,1314,16:1 c,G,cis-Hexadecenoic acid (16:1 cis),panel_chain_notation,accepted_exact_identity,244.0,True,1.0
+154,1315,18:1 c,G,cis-Octadecenoic acid (18:1 cis),panel_chain_notation,accepted_exact_identity,245.0,True,1.0
+155,1316,"18:2 n-6 c,c",G,Linoleic acid (18:2n-6),panel_exact_synonym,accepted_exact_identity,180.0,True,1.0
+156,1317,22:1 c,G,cis-Docosenoic acid (22:1 cis),panel_chain_notation,accepted_exact_identity,243.0,True,1.0
+157,1321,"18:3 n-6 c,c,c",G,Gamma-linolenic acid (18:3n-6),panel_chain_notation,no_strict_current_axis_equivalent,,False,
+158,1323,17:1,G,Heptadecenoic acid (17:1; isomer unspecified),panel_exact_synonym,accepted_exact_identity,166.0,True,1.0
+159,1325,20:3,G,Eicosatrienoic acid (20:3; isomer unspecified),reviewed_exact_alias,accepted_exact_identity,141.0,True,1.0
+160,1329,"Fatty acids, total trans-monoenoic",G,"Fatty acids, total trans-monoenoic",exact_canonical_name,accepted_exact_identity,153.0,True,1.0
+161,1330,"Fatty acids, total trans-dienoic",G,"Fatty acids, total trans-dienoic",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+162,1331,"Fatty acids, total trans-polyenoic",G,"Fatty acids, total trans-polyenoic",exact_canonical_name,accepted_exact_identity,154.0,True,1.0
+163,1333,15:1,G,Pentadecenoic acid (15:1; isomer unspecified),panel_exact_synonym,accepted_exact_identity,201.0,True,1.0
+164,1334,22:2,G,22:2,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+165,1335,11:0,G,11:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+166,1404,"18:3 n-3 c,c,c (ALA)",G,"18:3 n-3 c,c,c (ALA)",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+167,1405,20:3 n-3,G,Eicosatrienoic acid (20:3n-3),panel_chain_notation,accepted_exact_identity,142.0,True,1.0
+168,1406,20:3 n-6,G,Eicosatrienoic acid (20:3n-6),panel_chain_notation,accepted_exact_identity,143.0,True,1.0
+169,1409,18:3i,G,Isomeric linolenic acids (18:3),panel_chain_notation,accepted_exact_identity,176.0,True,1.0
+170,1411,22:4,G,Docosatetraenoic acid (22:4; isomer unspecified),panel_chain_notation,accepted_exact_identity,135.0,True,1.0
+171,1414,20:3 n-9,G,20:3 n-9,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+172,2003,5:0,G,5:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+173,2004,7:0,G,7:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+174,2005,9:0,G,9:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+175,2006,21:0,G,21:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+176,2007,23:0,G,23:0,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+177,2008,12:1,G,12:1,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+178,2009,14:1 c,G,14:1 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+179,2010,17:1 c,G,17:1 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+180,2012,20:1 c,G,20:1 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+181,2013,20:1 t,G,20:1 t,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+182,2014,22:1 n-9,G,22:1 n-9,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+183,2015,22:1 n-11,G,22:1 n-11,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+184,2016,18:2 c,G,18:2 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+185,2018,18:3 c,G,18:3 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+186,2019,18:3 t,G,18:3 t,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+187,2020,20:3 c,G,20:3 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+188,2021,22:3,G,22:3,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+189,2022,20:4 c,G,20:4 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+190,2023,20:5 c,G,20:5 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+191,2024,22:5 c,G,22:5 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+192,2025,22:6 c,G,22:6 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+193,2026,20:2 c,G,20:2 c,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+194,2028,trans-beta-Carotene,UG,trans-beta-Carotene,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+195,2029,trans-Lycopene,UG,trans-Lycopene,exact_canonical_name,no_strict_current_axis_equivalent,,False,
+196,2032,"Cryptoxanthin, alpha",UG,"Cryptoxanthin, alpha",exact_canonical_name,no_strict_current_axis_equivalent,,False,
+197,2033,Total dietary fiber (AOAC 2011.25),G,Total dietary fiber (AOAC 2011.25),exact_canonical_name,no_strict_current_axis_equivalent,,False,

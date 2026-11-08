@@ -1,0 +1,98 @@
+{
+  "status": "complete",
+  "version": "gjorshoska_2022_paper_tree_external_v1",
+  "created_utc": "2026-11-08T17:06:15.256763+00:00",
+  "seed": 20261005,
+  "methods": [
+    "rf",
+    "xgb"
+  ],
+  "paper_data_sha256": "c6863de38fb326cb774096b08e4e6a4d9fafd775085b9693a2e8b122c19ace6b",
+  "current_data_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+  "paper_training_rows": 10484,
+  "paper_holdout_rows_unused": 2621,
+  "strict_common_axes_total": 130,
+  "strict_common_supervised_axes": 127,
+  "validation_jobs": 300380,
+  "complete_test_jobs": 18430,
+  "complete_test_original_panel": {
+    "profiles": 659,
+    "jobs": 19690,
+    "axes": 187,
+    "minimum_axis_support": 5,
+    "maximum_axis_support": 566,
+    "quarantined_cells": 0
+  },
+  "training": {
+    "labels": "paper average-value dataset only",
+    "normalization": "per-axis positive median of paper training rows",
+    "masking": "current dependency-closure mask applied to paper inputs",
+    "feature_schema": "252 normalized axis values + 252 visibility flags",
+    "unmapped_current_axes": "always hidden",
+    "current_training_labels_used": false,
+    "current_validation_used_for_selection": false,
+    "current_metric_scale_used_for_scoring_only": true,
+    "model_checkpoints_saved": false
+  },
+  "hyperparameters": {
+    "RF": {
+      "trees": 200,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "criterion": "squared_error",
+      "bootstrap": true
+    },
+    "XGBoost": {
+      "trees": 300,
+      "max_depth": 6,
+      "learning_rate": 0.05,
+      "min_child_weight": 5,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 1.0,
+      "tree_method": "hist"
+    },
+    "n_jobs": 4,
+    "axis_seed": "20261005 + current axis index"
+  },
+  "results": {
+    "Paper-data RF": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.39422812925976186,
+        "macro_scaled_log_rmse": 0.6421956685330055,
+        "macro_raw_mae": 0.8309091915304964
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.3975458639982301,
+        "macro_scaled_log_rmse": 0.6464793533911666,
+        "macro_raw_mae": 0.8115681838623822
+      }
+    },
+    "Paper-data XGBoost": {
+      "validation": {
+        "axes": 127,
+        "jobs": 300380,
+        "macro_scaled_log_mae": 0.40517075250211104,
+        "macro_scaled_log_rmse": 0.662874634949057,
+        "macro_raw_mae": 0.8780308112560147
+      },
+      "complete_test": {
+        "axes": 127,
+        "jobs": 18430,
+        "macro_scaled_log_mae": 0.3998661420123261,
+        "macro_scaled_log_rmse": 0.6636248317484541,
+        "macro_raw_mae": 0.8178786238034386
+      }
+    }
+  },
+  "progress": {
+    "rf": 127,
+    "xgb": 127
+  },
+  "elapsed_seconds": 196.4529999999795,
+  "completed_utc": "2026-11-08T17:09:31.717584+00:00"
+}

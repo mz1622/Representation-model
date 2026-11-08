@@ -1,0 +1,253 @@
+axis_index,canonical_name,mapped_from_paper,paper_positive_scale_g_per_100g
+0,"3,4-Dicaffeoylquinic acid",False,1.0
+1,"3,5-Dihydroxybenzoic acid",False,1.0
+2,Acetic acid,False,1.0
+3,Adenosine,False,1.0
+4,Agmatine,False,1.0
+5,Allicin,False,1.0
+6,Alliin,False,1.0
+7,Apigenin,False,1.0
+8,Baicalein,False,1.0
+9,Benzoic acid,False,1.0
+10,Biochanin A,False,1.0
+11,Cadaverine,False,1.0
+12,Caffeic acid,False,1.0
+13,Caffeine,False,1.0
+14,Capsaicin,False,1.0
+15,Catechin,False,1.0
+16,Choline,False,1.0
+17,Chrysin,False,1.0
+18,Citric acid,True,0.32
+19,Coumestrol,False,1.0
+20,Curcumin,False,1.0
+21,Cyanidin,False,1.0
+22,Daidzein,False,1.0
+23,Daidzin,False,1.0
+24,Delphinidin,False,1.0
+25,Ellagic acid,False,1.0
+26,Epigallocatechin,False,1.0
+27,Ethyl gallate,False,1.0
+28,Ferulic acid,False,1.0
+29,Formic acid,False,1.0
+30,Formononetin,False,1.0
+31,Fumaric acid,False,1.0
+32,Galangin,False,1.0
+33,Gallic acid,False,1.0
+34,Gallocatechin,False,1.0
+35,Genistein,False,1.0
+36,Genistin,False,1.0
+37,Gentisic acid,False,1.0
+38,Glucobrassicin,False,1.0
+39,Glucoiberin,False,1.0
+40,Glucoibervirin,False,1.0
+41,Gluconapin,False,1.0
+42,Glutathione,False,1.0
+43,Glycitein,False,1.0
+44,Glycitin,False,1.0
+45,Hesperetin,False,1.0
+46,Hesperidin,False,1.0
+47,Histamine,False,1.0
+48,Hypoxanthine,False,1.0
+49,Inosine,False,1.0
+50,Isorhamnetin,False,1.0
+51,Kaempferol,False,1.0
+52,Lactic acid,False,1.0
+53,Lariciresinol,False,1.0
+54,Lutein,True,2.7e-05
+55,Luteolin,False,1.0
+56,Malic acid,True,0.331
+57,Malvidin,False,1.0
+58,Matairesinol,False,1.0
+59,Methyl gallate,False,1.0
+60,Morin,False,1.0
+61,Myricetin,False,1.0
+62,Naringenin,False,1.0
+63,Naringin,False,1.0
+64,Narirutin,False,1.0
+65,Oxalic acid,False,1.0
+66,Pelargonidin,False,1.0
+67,Peonidin,False,1.0
+68,Petunidin,False,1.0
+69,Phenyllactic acid,False,1.0
+70,Phytoene,True,1.0
+71,Phytofluene,True,1.0
+72,Pinoresinol,False,1.0
+73,Piperine,False,1.0
+74,Progoitrin,False,1.0
+75,Propionic acid,False,1.0
+76,Pterostilbene,False,1.0
+77,Putrescine,False,1.0
+78,Pyruvic acid,False,1.0
+79,Quercetin,False,1.0
+80,Quinic acid,False,1.0
+81,Rhamnetin,False,1.0
+82,Rosmarinic acid,False,1.0
+83,Secoisolariciresinol,False,1.0
+84,Sesamin,False,1.0
+85,Sesamolin,False,1.0
+86,Sinigrin,False,1.0
+87,Spermidine,False,1.0
+88,Spermine,False,1.0
+89,Succinic acid,False,1.0
+90,Syringic acid,False,1.0
+91,Tartaric acid,False,1.0
+92,Taurine,False,1.0
+93,Theobromine,False,1.0
+94,Theophylline,False,1.0
+95,Trigonelline,False,1.0
+96,Tyramine,False,1.0
+97,Uric acid,False,1.0
+98,Vanillic acid,False,1.0
+99,Xanthine,False,1.0
+100,Zeaxanthin,True,0.0002615
+101,[6]-Gingerol,False,1.0
+102,[6]-Shogaol,False,1.0
+103,p-Coumaric acid,False,1.0
+104,Alanine,True,0.28999999165534973
+105,Arachidonic acid (20:4n-6),False,1.0
+106,Arginine,True,0.2800000011920929
+107,Ascorbic acid (vitamin C),True,0.008950000286102294
+108,Ash,True,1.2699999809265137
+109,Aspartic acid,True,0.5550000071525574
+110,Available carbohydrate,False,1.0
+111,Beta-sitosterol,True,0.1375
+112,Betaine,True,0.000699999988079071
+113,Biotin,True,4.960000038146973e-05
+114,Butyric acid (4:0),True,0.009999999776482582
+115,Calcium,True,0.12
+116,Campesterol,True,0.00621999979019165
+117,"Carotene, alpha",True,5e-06
+118,"Carotene, beta",True,5.7e-05
+119,Cellulose,False,1.0
+120,Chloride,False,1.0
+121,Cholecalciferol (vitamin D3),True,1.200000047683716e-06
+122,Cholesterol,True,0.081
+123,"Choline, total",True,0.03894999885559082
+124,Chromium,False,1.0
+125,Cobalamin (vitamin B12),True,9.000000059604644e-07
+126,Conjugated linoleic acids (18:2 CLA isomers),True,0.03099999949336052
+127,Copper,True,0.00014100000262260438
+128,"Cryptoxanthin, beta",True,1.1e-05
+129,Cystine,True,0.04800000041723251
+130,Decanoic acid (10:0),True,0.026000000536441803
+131,"Dietary fibre, total",True,4.099999904632568
+132,Docosahexaenoic acid (DHA; 22:6n-3),True,0.004000000189989805
+133,Docosanoic acid (22:0),True,0.012000000104308128
+134,Docosapentaenoic acid (DPA; 22:5n-3),True,0.013000000268220901
+135,Docosatetraenoic acid (22:4; isomer unspecified),True,0.008999999612569809
+136,Docosenoic acid (22:1; cis/trans unspecified),True,1.0
+137,Dodecanoic acid (12:0),True,0.026000000536441803
+138,Eicosanoic acid (20:0),True,0.03400000184774399
+139,Eicosapentaenoic acid (EPA; 20:5n-3),True,0.004999999888241291
+140,Eicosatetraenoic acid (20:4; isomer unspecified),True,0.041999999433755875
+141,Eicosatrienoic acid (20:3; isomer unspecified),True,1.0
+142,Eicosatrienoic acid (20:3n-3),True,0.003000000026077032
+143,Eicosatrienoic acid (20:3n-6),True,0.02199999988079071
+144,Eicosenoic acid (20:1; isomer unspecified),True,0.035999998450279236
+145,Ergosterol,False,1.0
+146,Erythritol,False,1.0
+147,Ethanol,False,1.0
+148,"Fat, total",True,1.4299999475479126
+149,"Fatty acids, total monounsaturated",True,6.599999904632568
+150,"Fatty acids, total polyunsaturated",True,1.5199999809265137
+151,"Fatty acids, total saturated",True,11.100000381469727
+152,"Fatty acids, total trans",True,0.12999999523162842
+153,"Fatty acids, total trans-monoenoic",True,0.0860000029206276
+154,"Fatty acids, total trans-polyenoic",True,0.0020000000949949026
+155,"Folate, food",False,1.0
+156,"Folate, total",True,2.5e-05
+157,Folic acid,False,1.0
+158,Fructose,True,2.069999933242798
+159,Galactose,True,0.1899999976158142
+160,Glucose,True,1.7100000381469727
+161,Glutamic acid,True,0.9399999976158142
+162,Glycine,True,0.19500000029802322
+163,Glycogen,False,1.0
+164,Heneicosapentaenoic acid (21:5),False,1.0
+165,Heptadecanoic acid (17:0),True,0.057999998331069946
+166,Heptadecenoic acid (17:1; isomer unspecified),True,0.03799999877810478
+167,Hexadecanoic acid (16:0),True,3.799999952316284
+168,Hexadecenoic acid (16:1; cis/trans unspecified),False,1.0
+169,Hexanoic acid (6:0),True,0.3330000042915344
+170,Histidine,True,0.16499999910593033
+171,Hydroxyproline,True,0.20000000298023224
+172,Insoluble dietary fibers,True,1.899999976158142
+173,Iron,True,0.0018400000333786012
+174,Isoleucine,True,0.22850000113248825
+175,Isomeric linoleic acids (18:2),False,1.0
+176,Isomeric linolenic acids (18:3),True,0.003000000026077032
+177,Lactose,True,4.0
+178,Leucine,True,0.5
+179,Lignin,False,1.0
+180,Linoleic acid (18:2n-6),True,0.8149999976158142
+181,Lutein + zeaxanthin,True,0.0001315
+182,Lycopene,True,0.00631
+183,Lysine,True,0.33500000834465027
+184,Magnesium,True,0.02929999923706055
+185,Maltose,True,0.800000011920929
+186,Manganese,True,0.0004449999928474426
+187,Mannitol,False,1.0
+188,Menaquinone-4,True,7.200000047683716e-06
+189,Methionine,True,0.10999999940395355
+190,Molybdenum,True,0.000483
+191,Niacin,True,0.0006499999761581421
+192,Nicotinic acid,False,1.0
+193,Octadecadienoic acid (18:2; isomer unspecified),True,0.11699999868869781
+194,Octadecanoic acid (18:0),True,1.6050000190734863
+195,Octadecatetraenoic acid (18:4; isomer unspecified),True,0.004000000189989805
+196,Octadecatrienoic acid (18:3; isomer unspecified),True,0.020999999716877937
+197,Octadecenoic acid (18:1; cis/trans unspecified),True,0.009999999776482582
+198,Octanoic acid (8:0),True,0.013000000268220901
+199,Pantothenic acid (vitamin B5),True,0.0003619999885559082
+200,Pentadecanoic acid (15:0),True,0.014000000432133675
+201,Pentadecenoic acid (15:1; isomer unspecified),True,0.0020000000949949026
+202,Phenylalanine,True,0.23749999701976776
+203,Phosphorus,True,0.353
+204,Phytosterols,False,1.0
+205,Potassium,True,0.304
+206,Proline,True,0.4350000023841858
+207,"Protein, total",True,23.799999237060547
+208,Retinol,True,8.1e-05
+209,Riboflavin (vitamin B2),True,0.00018500000238418578
+210,"Selenium, Se",True,1.8e-05
+211,Serine,True,0.27250000834465027
+212,Sodium,True,0.3505
+213,Sorbitol,False,1.0
+214,Starch,True,37.54999923706055
+215,Stearidonic acid,False,1.0
+216,Stigmasterol,True,0.0011399999856948854
+217,Sucrose,True,1.6799999475479126
+218,"Sugars, total",True,4.409999847412109
+219,Sulfur,True,0.229
+220,Tetracosanoic acid (24:0),True,0.007000000216066837
+221,Tetradecanoic acid (14:0),True,0.1420000046491623
+222,Tetradecenoic acid (14:1; isomer unspecified),False,1.0
+223,Thiamin (vitamin B1),True,5.60000017285347e-05
+224,Threonine,True,0.2199999988079071
+225,"Tocopherol, beta",True,0.00018000000715255737
+226,"Tocopherol, delta",True,0.0006550000011920928
+227,"Tocopherol, gamma",True,0.0001899999976158142
+228,"Tocotrienol, alpha",True,0.00010000000149011611
+229,"Tocotrienol, beta",True,0.0004300000071525574
+230,"Tocotrienol, delta",True,5.499999970197678e-05
+231,"Tocotrienol, gamma",True,0.00010999999940395356
+232,Tridecanoic acid (13:0),False,1.0
+233,Tryptophan,True,0.05000000074505806
+234,Tyrosine,True,0.18000000715255737
+235,Valine,True,0.2669999897480011
+236,Vitamin B6 - Pyridoxin,True,8.20000022649765e-05
+237,Vitamin D (D2 + D3),True,1.1000000238418578e-06
+238,Vitamin D2 (ergocalciferol),True,1.0
+239,Water,True,70.19999694824219
+240,Xylitol,False,1.0
+241,Zinc,True,0.002619999885559082
+242,"cis,cis-Eicosadienoic acid (20:2n-6)",True,0.007000000216066837
+243,cis-Docosenoic acid (22:1 cis),True,0.0020000000949949026
+244,cis-Hexadecenoic acid (16:1 cis),True,0.2549999952316284
+245,cis-Octadecenoic acid (18:1 cis),True,4.2850000858306885
+246,cis-Tetracosenoic acid (24:1 cis),True,0.0020000000949949026
+247,"trans,trans-Linoleic acid (18:2 trans,trans)",False,1.0
+248,trans-Docosenoic acid (22:1 trans),True,0.0020000000949949026
+249,trans-Hexadecenoic acid (16:1 trans),True,0.013000000268220901
+250,trans-Linoleic acid (18:2; isomer unspecified),True,0.025500000454485416
+251,trans-Octadecenoic acid (18:1 trans),True,0.09200000017881393
