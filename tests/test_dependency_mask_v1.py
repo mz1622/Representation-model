@@ -8,8 +8,8 @@ import torch
 from foodcomp.dependency_mask_analysis_v1 import extract_food_embeddings
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, EdgeSpec
 from foodcomp.research_dependency_mask_v1 import (
-    FoodPromptCceTransformer, FoodPromptMvcTransformer,
-    dense_features, visible_context,
+    FoodPromptCceTransformer, FoodPromptGepcDabTransformer,
+    FoodPromptMvcTransformer, dense_features, gradient_reverse, visible_context,
 )
 from foodcomp.research_no_foodname_v1 import Config
 
@@ -172,3 +172,45 @@ def test_mvc_branch_preserves_v5_predictions_and_uses_food_bottleneck():
             axis, value, padding, target, target_padding
         )
     torch.testing.assert_close(details[2], reloaded[2], atol=0, rtol=0)
+
+
+def test_gepc_dab_branch_preserves_inference_and_reverses_encoder_gradient():
+    value = torch.tensor([[1.0, -2.0]], requires_grad=True)
+    gradient_reverse(value, strength=0.5).sum().backward()
+    torch.testing.assert_close(value.grad, torch.full_like(value, -0.5))
+
+    torch.manual_seed(17)
+    config = Config(
+        d_model=24, n_heads=4, n_layers=2, feedforward_dim=32,
+        dropout=0.0, batch_size=2, epochs=1,
+    )
+    parent = FoodPromptCceTransformer(5, config).eval()
+    model = FoodPromptGepcDabTransformer(5, config, source_count=3).eval()
+    incompatible = model.load_state_dict(parent.state_dict(), strict=False)
+    assert not incompatible.unexpected_keys
+    assert all(
+        key.startswith(("mvc_decoder.", "source_discriminator."))
+        for key in incompatible.missing_keys
+    )
+    axis = torch.tensor([[0, 2, 4], [1, 3, 0]])
+    values = torch.tensor([[0.2, 0.4, 0.7], [0.1, 0.3, 0.0]])
+    padding = torch.tensor([[False, False, False], [False, False, True]])
+    target = torch.tensor([[1], [4]])
+    target_padding = torch.zeros((2, 1), dtype=torch.bool)
+    with torch.no_grad():
+        expected = parent(axis, values, padding, target, target_padding)
+        details = model.forward_prompt_gepc_dab_details(
+            axis, values, padding, target, target_padding
+        )
+    torch.testing.assert_close(expected, details[1], atol=0, rtol=0)
+    assert details[2].shape == target.shape
+    assert details[-1].shape == (2, 3)
+
+
+def test_gepc_dab_requires_multiple_sources():
+    config = Config(
+        d_model=24, n_heads=4, n_layers=1, feedforward_dim=32,
+        dropout=0.0, batch_size=2, epochs=1,
+    )
+    with pytest.raises(ValueError, match="at least two"):
+        FoodPromptGepcDabTransformer(5, config, source_count=1)

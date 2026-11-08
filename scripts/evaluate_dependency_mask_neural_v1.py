@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate a validation-selected dependency-mask V5+CCE or V5+MVC checkpoint."""
+"""Evaluate a validation-selected dependency-mask neural checkpoint."""
 from __future__ import annotations
 
 import argparse
@@ -47,8 +47,8 @@ def main():
     model, checkpoint, config = load_dependency_model(
         args.checkpoint, data, args.policy_manifest, device
     )
-    if checkpoint.get("stage") not in {"cce", "mvc"}:
-        raise ValueError("official checkpoint must be a CCE- or MVC-stage checkpoint")
+    if checkpoint.get("stage") not in {"cce", "mvc", "gepc_dab"}:
+        raise ValueError("unsupported dependency-mask neural checkpoint stage")
     validation_jobs = data.jobs[["profile_index", "axis_index", "target"]].copy()
     _, test_jobs, panel = attach_complete_test(data, args.frozen_data_dir, args.split_path)
     policy = DependencyMaskPolicy(data.axes)

@@ -265,6 +265,55 @@ class FoodPromptMvcTransformer(FoodPromptCceTransformer):
         return first, second, mvc, food, second_food, first_hidden, second_hidden
 
 
+class _GradientReversal(torch.autograd.Function):
+    """Identity in the forward pass and sign-reversed gradient in backward."""
+
+    @staticmethod
+    def forward(ctx, value, strength):
+        ctx.strength = float(strength)
+        return value.view_as(value)
+
+    @staticmethod
+    def backward(ctx, gradient):
+        return -ctx.strength * gradient, None
+
+
+def gradient_reverse(value, strength=1.0):
+    if strength < 0:
+        raise ValueError("gradient-reversal strength must be non-negative")
+    return _GradientReversal.apply(value, strength)
+
+
+class FoodPromptGepcDabTransformer(FoodPromptMvcTransformer):
+    """V5+GEPC with a training-only source discriminator behind gradient reversal."""
+
+    def __init__(self, axis_count: int, config: Config, source_count: int):
+        super().__init__(axis_count, config)
+        if source_count < 2:
+            raise ValueError("DAB requires at least two source classes")
+        self.source_count = int(source_count)
+        self.source_discriminator = torch.nn.Sequential(
+            torch.nn.LayerNorm(config.d_model),
+            torch.nn.Linear(config.d_model, config.d_model),
+            torch.nn.GELU(),
+            torch.nn.Linear(config.d_model, source_count),
+        )
+
+    def source_logits(self, food, reversal_strength=1.0):
+        return self.source_discriminator(
+            gradient_reverse(food, reversal_strength)
+        )
+
+    def forward_prompt_gepc_dab_details(
+        self, axis, value, padding, target_axis, target_padding,
+        reversal_strength=1.0,
+    ):
+        details = self.forward_prompt_mvc_details(
+            axis, value, padding, target_axis, target_padding
+        )
+        return details + (self.source_logits(details[3], reversal_strength),)
+
+
 def multi_positive_cce_loss(first, second, profile_index, temperature=0.5):
     if first.shape != second.shape or first.ndim != 2 or len(first) < 2:
         raise ValueError("CCE views must be aligned [batch, hidden] with batch >= 2")
@@ -384,6 +433,7 @@ __all__ = [
     "dependency_tasks", "visible_context", "dense_features", "masked_axis_batch",
     "fit_predict_baseline", "score_profile_axis_macro", "FoodPromptCceTransformer",
     "MvcInnerProductDecoder", "FoodPromptMvcTransformer",
+    "FoodPromptGepcDabTransformer", "gradient_reverse",
     "multi_positive_cce_loss", "axis_balanced_loss", "predict_transformer",
     "attach_complete_test",
 ]

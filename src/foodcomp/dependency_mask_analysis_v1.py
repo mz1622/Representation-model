@@ -16,7 +16,8 @@ import torch
 
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, VERSION as MASK_VERSION
 from foodcomp.research_dependency_mask_v1 import (
-    FoodPromptCceTransformer, FoodPromptMvcTransformer,
+    FoodPromptCceTransformer, FoodPromptGepcDabTransformer,
+    FoodPromptMvcTransformer,
 )
 from foodcomp.research_no_foodname_v1 import Config
 from foodcomp.research_r0 import digest
@@ -43,12 +44,15 @@ def load_dependency_model(
     if checkpoint.get("legacy_mask_family_used_for_masking") is not False:
         raise ValueError("checkpoint used the legacy family mask")
     config = Config(**checkpoint["config"])
-    model_class = (
-        FoodPromptMvcTransformer
-        if checkpoint.get("stage") == "mvc"
-        else FoodPromptCceTransformer
-    )
-    model = model_class(len(data.axes), config)
+    stage = checkpoint.get("stage")
+    if stage == "gepc_dab":
+        model = FoodPromptGepcDabTransformer(
+            len(data.axes), config, int(checkpoint["source_count"])
+        )
+    elif stage == "mvc":
+        model = FoodPromptMvcTransformer(len(data.axes), config)
+    else:
+        model = FoodPromptCceTransformer(len(data.axes), config)
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     return model.to(device).eval(), checkpoint, config
 

@@ -1,0 +1,51 @@
+{
+  "status": "complete",
+  "version": "dependency_mask_v1_neural_evaluation",
+  "created_utc": "2026-11-08T19:39:24.910177+00:00",
+  "checkpoint_sha256": "e39c0dcda8902646d5dc77df84f1cac9591b7057aead1b859c206ab32bccf655",
+  "checkpoint_stage": "gepc_dab",
+  "checkpoint_epoch": 17,
+  "checkpoint_selection": "lowest validation macro scaled-log MAE within GEPC_DAB stage",
+  "code_sha256": {
+    "scripts/evaluate_dependency_mask_neural_v1.py": "b1bb8040aff1aa40e39033debb27a478164f5382a28934997ecd610b1f4acc95",
+    "src/foodcomp/dependency_mask_v1.py": "f6b9460adb7eefc3b000b0b1b7f4eebbea7eee8f6a8485294e6cf40a355b598d",
+    "src/foodcomp/research_dependency_mask_v1.py": "203a536cdf02a54d9ef00a8a8745604fbf4f9972b99713940b4f47d9fed85c6e"
+  },
+  "config": {
+    "d_model": 192,
+    "n_heads": 6,
+    "n_layers": 3,
+    "feedforward_dim": 256,
+    "dropout": 0.15,
+    "batch_size": 128,
+    "epochs": 20,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "seed": 20261005,
+    "rf_trees": 200,
+    "rf_leaf": 2,
+    "xgb_trees": 300,
+    "xgb_depth": 6,
+    "knn_neighbors": 16,
+    "n_jobs": 4
+  },
+  "complete_test": {
+    "axes": 187,
+    "jobs": 19690,
+    "macro_scaled_log_mae": 0.3037982040102428,
+    "macro_scaled_log_rmse": 0.48922162354957305,
+    "macro_raw_mae": 0.3128657395524596
+  },
+  "food_name_model_input": false,
+  "source_model_input": false,
+  "family_label_model_input": false,
+  "legacy_mask_family_used_for_masking": false,
+  "validation": {
+    "axes": 187,
+    "jobs": 323809,
+    "macro_scaled_log_mae": 0.22320846443254774,
+    "macro_scaled_log_rmse": 0.4276092980598173,
+    "macro_raw_mae": 0.25377510309438744
+  },
+  "elapsed_seconds": 30.46799999999348
+}
