@@ -35,6 +35,7 @@ from foodcomp.dependency_mask_analysis_v1 import (  # noqa: E402
 )
 from foodcomp.research_no_foodname_v1 import numeric_only_training_view  # noqa: E402
 from foodcomp.research_r0 import ResearchData  # noqa: E402
+from plot_dependency_mask_umap_v2 import SOURCE_NAMES  # noqa: E402
 
 
 SEED = 20261109
@@ -115,7 +116,8 @@ def geometry_metrics(values: np.ndarray, labels: np.ndarray, method: str, space:
 
 
 def save_plot(points: pd.DataFrame, output_dir: Path) -> None:
-    count = 3 if "dab_x" in points else 2
+    candidate = "dab" if "dab_x" in points else "ecs" if "ecs_x" in points else None
+    count = 3 if candidate is not None else 2
     fig, axes = plt.subplots(
         1, count, figsize=(20.0, 6.8) if count == 3 else (15.2, 6.8),
         facecolor="white",
@@ -126,6 +128,8 @@ def save_plot(points: pd.DataFrame, output_dir: Path) -> None:
     ]
     if "dab_x" in points:
         methods.append((axes[2], "V5+GEPC+DAB", "dab"))
+    elif "ecs_x" in points:
+        methods.append((axes[2], "V5+GEPC+ECS", "ecs"))
     for number, (axis, method, prefix) in enumerate(methods):
         rng = np.random.default_rng(SEED + number)
         for category in CORE_LEVEL1:
@@ -160,13 +164,82 @@ def save_plot(points: pd.DataFrame, output_dir: Path) -> None:
         ha="center", fontsize=9.5, color="#5A6472",
     )
     fig.tight_layout(rect=(0, 0, 0.82 if len(methods) == 3 else 0.79, 0.90), w_pad=1.5)
-    filename = (
-        "umap_balanced_core_cce_gepc_dab.png"
-        if count == 3 else "umap_balanced_core_cce_vs_gepc.png"
-    )
+    filename = {
+        "dab": "umap_balanced_core_cce_gepc_dab.png",
+        "ecs": "umap_balanced_core_cce_gepc_ecs.png",
+        None: "umap_balanced_core_cce_vs_gepc.png",
+    }[candidate]
     fig.savefig(output_dir / filename,
                 dpi=300, bbox_inches="tight")
     plt.close(fig)
+
+
+def save_source_plot(points: pd.DataFrame, output_dir: Path) -> None:
+    candidate = "dab" if "dab_x" in points else "ecs" if "ecs_x" in points else None
+    count = 3 if candidate is not None else 2
+    fig, axes = plt.subplots(
+        1, count, figsize=(21.0, 7.2) if count == 3 else (16.0, 7.2),
+        facecolor="white",
+    )
+    methods = [
+        (axes[0], "V5+CCE", "cce"),
+        (axes[1], "V5+GEPC", "gepc"),
+    ]
+    if candidate == "dab":
+        methods.append((axes[2], "V5+GEPC+DAB", "dab"))
+    elif candidate == "ecs":
+        methods.append((axes[2], "V5+GEPC+ECS", "ecs"))
+    sources = sorted(points.source_key.unique())
+    cmap = plt.get_cmap("gist_ncar", len(sources))
+    palette = {source: cmap(index) for index, source in enumerate(sources)}
+    for number, (axis, method, prefix) in enumerate(methods):
+        rng = np.random.default_rng(SEED + 100 + number)
+        order = rng.permutation(len(points))
+        axis.scatter(
+            points[f"{prefix}_x"].to_numpy()[order],
+            points[f"{prefix}_y"].to_numpy()[order],
+            s=3.2, alpha=0.66, linewidths=0, rasterized=True,
+            c=points.source_key.map(palette).to_numpy()[order],
+        )
+        axis.set_title(method, fontsize=14, loc="left")
+        axis.set_xlabel("UMAP1", fontsize=10)
+        axis.set_ylabel("UMAP2", fontsize=10)
+        axis.set_xticks([])
+        axis.set_yticks([])
+        for spine in axis.spines.values():
+            spine.set_visible(False)
+    handles = [
+        Line2D([], [], marker="o", linestyle="", markersize=5,
+               color=palette[source],
+               label=(
+                   f"{SOURCE_NAMES.get(source, source)} "
+                   f"({points.source_key.eq(source).sum():,})"
+               ))
+        for source in sources
+    ]
+    fig.legend(handles=handles, frameon=False, fontsize=7.5, ncol=2,
+               loc="center left", bbox_to_anchor=(0.79, 0.50),
+               columnspacing=0.8, handletextpad=0.4)
+    center = 0.40 if count == 2 else 0.41
+    fig.suptitle("Same balanced core UMAP — database source", fontsize=16, x=center)
+    fig.text(
+        center, 0.925,
+        "Coordinates are identical to the food-category view; only point colour changes",
+        ha="center", fontsize=9.5, color="#5A6472",
+    )
+    fig.tight_layout(rect=(0, 0, 0.78, 0.90), w_pad=1.5)
+    filename = {
+        "dab": "umap_balanced_core_source_cce_gepc_dab.png",
+        "ecs": "umap_balanced_core_source_cce_gepc_ecs.png",
+        None: "umap_balanced_core_source_cce_vs_gepc.png",
+    }[candidate]
+    fig.savefig(output_dir / filename, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    pd.DataFrame({
+        "source_key": sources,
+        "source_name": [SOURCE_NAMES.get(source, source) for source in sources],
+        "profiles": [int(points.source_key.eq(source).sum()) for source in sources],
+    }).to_csv(output_dir / "balanced_core_database_sources.csv", index=False)
 
 
 def main() -> None:
@@ -175,10 +248,13 @@ def main() -> None:
     parser.add_argument("--cce-embedding", type=Path, required=True)
     parser.add_argument("--gepc-embedding", type=Path, required=True)
     parser.add_argument("--dab-checkpoint", type=Path)
+    parser.add_argument("--ecs-checkpoint", type=Path)
     parser.add_argument("--policy-manifest", type=Path)
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
+    if args.dab_checkpoint is not None and args.ecs_checkpoint is not None:
+        raise ValueError("provide at most one candidate checkpoint")
     if args.output_dir.exists():
         raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True)
@@ -189,25 +265,36 @@ def main() -> None:
     cce = np.load(args.cce_embedding)
     gepc = np.load(args.gepc_embedding)
     dab = None
-    if args.dab_checkpoint is not None:
+    ecs = None
+    candidate_checkpoint = args.dab_checkpoint or args.ecs_checkpoint
+    if candidate_checkpoint is not None:
         if args.policy_manifest is None:
-            raise ValueError("--policy-manifest is required with --dab-checkpoint")
+            raise ValueError("--policy-manifest is required with a candidate checkpoint")
         device = torch.device(
             "cuda" if args.device == "auto" and torch.cuda.is_available()
             else "cpu" if args.device == "auto" else args.device
         )
         model, checkpoint, _ = load_dependency_model(
-            args.dab_checkpoint, data, args.policy_manifest, device
+            candidate_checkpoint, data, args.policy_manifest, device
         )
-        if checkpoint.get("stage") != "gepc_dab":
-            raise ValueError("DAB checkpoint has the wrong stage")
-        dab = extract_food_embeddings(
+        expected_stage = "gepc_dab" if args.dab_checkpoint is not None else "gepc_ecs"
+        if checkpoint.get("stage") != expected_stage:
+            raise ValueError("candidate checkpoint has the wrong stage")
+        candidate_embedding = extract_food_embeddings(
             model, data, np.arange(len(profiles), dtype=np.int64), device,
             batch_size=256, forward_pass=1,
         )
-        np.save(args.output_dir / "embedding_v5_gepc_dab_all_profiles.npy", dab)
+        if args.dab_checkpoint is not None:
+            dab = candidate_embedding
+            filename = "embedding_v5_gepc_dab_all_profiles.npy"
+        else:
+            ecs = candidate_embedding
+            filename = "embedding_v5_gepc_ecs_all_profiles.npy"
+        np.save(args.output_dir / filename, candidate_embedding)
     expected = (len(profiles), 192)
-    shapes = [cce.shape, gepc.shape] + ([] if dab is None else [dab.shape])
+    shapes = [cce.shape, gepc.shape]
+    shapes += [] if dab is None else [dab.shape]
+    shapes += [] if ecs is None else [ecs.shape]
     if any(shape != expected for shape in shapes):
         raise ValueError(f"embedding shape mismatch: {shapes}, expected {expected}")
 
@@ -224,6 +311,8 @@ def main() -> None:
     gepc_xy = fit_umap(gepc_core)
     dab_core = None if dab is None else dab[selected]
     dab_xy = None if dab_core is None else fit_umap(dab_core)
+    ecs_core = None if ecs is None else ecs[selected]
+    ecs_xy = None if ecs_core is None else fit_umap(ecs_core)
 
     points = pd.DataFrame({
         "profile_index": selected,
@@ -238,8 +327,12 @@ def main() -> None:
     if dab_xy is not None:
         points["dab_x"] = dab_xy[:, 0]
         points["dab_y"] = dab_xy[:, 1]
+    if ecs_xy is not None:
+        points["ecs_x"] = ecs_xy[:, 0]
+        points["ecs_y"] = ecs_xy[:, 1]
     points.to_csv(args.output_dir / "balanced_core_points.csv", index=False)
     save_plot(points, args.output_dir)
+    save_source_plot(points, args.output_dir)
 
     rows = []
     methods = [
@@ -248,6 +341,8 @@ def main() -> None:
     ]
     if dab_core is not None:
         methods.append(("V5+GEPC+DAB", dab_core, dab_xy))
+    if ecs_core is not None:
+        methods.append(("V5+GEPC+ECS", ecs_core, ecs_xy))
     for method, embedding, coordinates in methods:
         rows.append(geometry_metrics(
             normalize(embedding), selected_labels, method, "original_192d_l2"
@@ -289,6 +384,9 @@ def main() -> None:
             "gepc_embedding_sha256": sha256(args.gepc_embedding),
             "dab_checkpoint_sha256": (
                 None if args.dab_checkpoint is None else sha256(args.dab_checkpoint)
+            ),
+            "ecs_checkpoint_sha256": (
+                None if args.ecs_checkpoint is None else sha256(args.ecs_checkpoint)
             ),
         },
         "profile_level_coordinates_committed": False,

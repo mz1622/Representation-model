@@ -1,0 +1,35 @@
+foodex2_level1,label_provenance,profiles
+Animal and vegetable fats and oils,exact_name_unanimous_transfer,17
+Animal and vegetable fats and oils,native_foodex2_level1,365
+Animal and vegetable fats and oils,native_group_crosswalk,521
+Animal and vegetable fats and oils,source_code_crosswalk,97
+"Fish, seafood, amphibians, reptiles and invertebrates",native_foodex2_level1,542
+"Fish, seafood, amphibians, reptiles and invertebrates",native_group_crosswalk,280
+"Fish, seafood, amphibians, reptiles and invertebrates",source_code_crosswalk,178
+Fruit and fruit products,exact_name_unanimous_transfer,13
+Fruit and fruit products,native_foodex2_level1,397
+Fruit and fruit products,native_group_crosswalk,366
+Fruit and fruit products,source_code_crosswalk,224
+Grains and grain-based products,exact_name_unanimous_transfer,14
+Grains and grain-based products,native_foodex2_level1,244
+Grains and grain-based products,native_group_crosswalk,507
+Grains and grain-based products,source_code_crosswalk,235
+"Legumes, nuts, oilseeds and spices",exact_name_unanimous_transfer,7
+"Legumes, nuts, oilseeds and spices",native_foodex2_level1,236
+"Legumes, nuts, oilseeds and spices",native_group_crosswalk,556
+"Legumes, nuts, oilseeds and spices",source_code_crosswalk,201
+Meat and meat products,native_foodex2_level1,352
+Meat and meat products,native_group_crosswalk,466
+Meat and meat products,source_code_crosswalk,182
+Milk and dairy products,exact_name_unanimous_transfer,12
+Milk and dairy products,native_foodex2_level1,531
+Milk and dairy products,native_group_crosswalk,342
+Milk and dairy products,source_code_crosswalk,115
+"Sugar, confectionery and water-based sweet desserts",exact_name_unanimous_transfer,8
+"Sugar, confectionery and water-based sweet desserts",native_foodex2_level1,162
+"Sugar, confectionery and water-based sweet desserts",native_group_crosswalk,674
+"Sugar, confectionery and water-based sweet desserts",source_code_crosswalk,156
+Vegetables and vegetable products,exact_name_unanimous_transfer,8
+Vegetables and vegetable products,native_foodex2_level1,315
+Vegetables and vegetable products,native_group_crosswalk,398
+Vegetables and vegetable products,source_code_crosswalk,279

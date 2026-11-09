@@ -49,7 +49,7 @@ def load_dependency_model(
         model = FoodPromptGepcDabTransformer(
             len(data.axes), config, int(checkpoint["source_count"])
         )
-    elif stage == "mvc":
+    elif stage in {"mvc", "gepc_ecs"}:
         model = FoodPromptMvcTransformer(len(data.axes), config)
     else:
         model = FoodPromptCceTransformer(len(data.axes), config)

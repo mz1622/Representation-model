@@ -9,7 +9,8 @@ from foodcomp.dependency_mask_analysis_v1 import extract_food_embeddings
 from foodcomp.dependency_mask_v1 import DependencyMaskPolicy, EdgeSpec
 from foodcomp.research_dependency_mask_v1 import (
     FoodPromptCceTransformer, FoodPromptGepcDabTransformer,
-    FoodPromptMvcTransformer, dense_features, gradient_reverse, visible_context,
+    FoodPromptMvcTransformer, dense_features, elastic_cell_similarity_loss,
+    gradient_reverse, visible_context,
 )
 from foodcomp.research_no_foodname_v1 import Config
 
@@ -214,3 +215,27 @@ def test_gepc_dab_requires_multiple_sources():
     )
     with pytest.raises(ValueError, match="at least two"):
         FoodPromptGepcDabTransformer(5, config, source_count=1)
+
+
+def test_ecs_matches_scgpt_formula_and_backpropagates():
+    embedding = torch.tensor(
+        [[1.0, 0.0], [0.6, 0.8], [-1.0, 0.0]], requires_grad=True
+    )
+    loss = elastic_cell_similarity_loss(embedding, threshold=0.8)
+    normalized = torch.nn.functional.normalize(embedding, dim=1)
+    similarity = normalized @ normalized.T
+    similarity = similarity.masked_fill(
+        torch.eye(3, dtype=torch.bool), 0.0
+    )
+    expected = (1.0 - (torch.relu(similarity) - 0.8) ** 2).mean()
+    torch.testing.assert_close(loss, expected, rtol=0, atol=0)
+    loss.backward()
+    assert embedding.grad is not None
+    assert torch.isfinite(embedding.grad).all()
+    assert embedding.grad.abs().sum() > 0
+
+
+@pytest.mark.parametrize("threshold", [-0.1, 1.1, float("nan")])
+def test_ecs_rejects_invalid_threshold(threshold):
+    with pytest.raises(ValueError, match="threshold"):
+        elastic_cell_similarity_loss(torch.eye(2), threshold=threshold)

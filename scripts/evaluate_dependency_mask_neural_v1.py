@@ -47,7 +47,7 @@ def main():
     model, checkpoint, config = load_dependency_model(
         args.checkpoint, data, args.policy_manifest, device
     )
-    if checkpoint.get("stage") not in {"cce", "mvc", "gepc_dab"}:
+    if checkpoint.get("stage") not in {"cce", "mvc", "gepc_dab", "gepc_ecs"}:
         raise ValueError("unsupported dependency-mask neural checkpoint stage")
     validation_jobs = data.jobs[["profile_index", "axis_index", "target"]].copy()
     _, test_jobs, panel = attach_complete_test(data, args.frozen_data_dir, args.split_path)

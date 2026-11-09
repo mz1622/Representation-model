@@ -1,0 +1,36 @@
+{
+  "schema_version": "dependency_mask_gepc_core_umap_v1",
+  "created_at_utc": "2026-11-09T01:12:14.199192+00:00",
+  "label_scope": "nine predeclared composition-homogeneous FoodEx2 level-1 categories",
+  "excluded_label_types": "mixed dishes, seasonings/sauces, beverages, juices, special-purpose foods, young-population foods, additives, human milk, eggs, starchy roots, and unlabelled",
+  "selection_uses_embedding_or_coordinates": false,
+  "classes": [
+    "Grains",
+    "Vegetables",
+    "Legumes/nuts/spices",
+    "Fruit",
+    "Meat",
+    "Fish/seafood",
+    "Milk/dairy",
+    "Fats/oils",
+    "Sugar/confectionery"
+  ],
+  "cap_per_class": 1000,
+  "profiles": 9000,
+  "umap": {
+    "l2_normalized": true,
+    "n_neighbors": 15,
+    "min_dist": 0.3,
+    "metric": "euclidean",
+    "seed": 20261109
+  },
+  "inputs": {
+    "data_manifest_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+    "cce_embedding_sha256": "9cc530cc4370a34fa303cc79243895c9a39b59b3693ad618a98047e91e3afbd2",
+    "gepc_embedding_sha256": "abd0d917523b4eb7f7adcad865495f7c5235a102dbc89145a9dbeab1fecd3532",
+    "dab_checkpoint_sha256": null,
+    "ecs_checkpoint_sha256": "a9622b3d2a89372f21bc9ba5d4f6f3630457fcf151cbdf7a42f98bd8aac14960"
+  },
+  "profile_level_coordinates_committed": false,
+  "embeddings_committed": false
+}

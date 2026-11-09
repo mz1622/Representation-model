@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -314,6 +315,30 @@ class FoodPromptGepcDabTransformer(FoodPromptMvcTransformer):
         return details + (self.source_logits(details[3], reversal_strength),)
 
 
+def elastic_cell_similarity_loss(embedding, threshold=0.8):
+    """Return the ECS objective used by scGPT on a batch of FOOD states."""
+    if embedding.ndim != 2:
+        raise ValueError("ECS embeddings must have [batch, hidden] shape")
+    if len(embedding) < 2:
+        raise ValueError("ECS requires at least two batch entries")
+    if not math.isfinite(threshold) or not 0 <= threshold <= 1:
+        raise ValueError("ECS threshold must be finite and within [0, 1]")
+    if not torch.isfinite(embedding).all():
+        raise ValueError("ECS embeddings must be finite")
+    normalized = torch.nn.functional.normalize(embedding, p=2, dim=1)
+    similarity = normalized @ normalized.T
+    diagonal = torch.eye(
+        len(embedding), dtype=torch.bool, device=embedding.device
+    )
+    similarity = torch.nn.functional.relu(
+        similarity.masked_fill(diagonal, 0.0)
+    )
+    loss = torch.mean(1.0 - (similarity - threshold) ** 2)
+    if not torch.isfinite(loss):
+        raise FloatingPointError("nonfinite ECS loss")
+    return loss
+
+
 def multi_positive_cce_loss(first, second, profile_index, temperature=0.5):
     if first.shape != second.shape or first.ndim != 2 or len(first) < 2:
         raise ValueError("CCE views must be aligned [batch, hidden] with batch >= 2")
@@ -434,6 +459,7 @@ __all__ = [
     "fit_predict_baseline", "score_profile_axis_macro", "FoodPromptCceTransformer",
     "MvcInnerProductDecoder", "FoodPromptMvcTransformer",
     "FoodPromptGepcDabTransformer", "gradient_reverse",
+    "elastic_cell_similarity_loss",
     "multi_positive_cce_loss", "axis_balanced_loss", "predict_transformer",
     "attach_complete_test",
 ]
