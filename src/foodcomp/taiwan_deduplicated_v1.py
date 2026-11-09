@@ -13,7 +13,7 @@ from foodcomp.dependency_mask_analysis_v1 import attach_taiwan_panel
 SHOTS = (8, 32, 128)
 SEEDS = (20261027, 20261028, 20261029)
 SPLIT_SEED = 20261026
-TEST_PROFILES = 400
+TEST_PROFILES = 500
 
 
 def row_hash(rows) -> str:
@@ -48,7 +48,7 @@ def attach_clean_panel(data, audit_dir: Path, overlap_ledger: Path):
 
 
 def group_aware_split(clean: pd.DataFrame):
-    """Select exactly 400 test profiles without splitting lexical identity groups."""
+    """Select exactly 500 test profiles without splitting lexical identity groups."""
     groups = (
         clean.groupby("identity_group_key", sort=True).profile_index
         .apply(lambda values: np.sort(values.to_numpy(dtype=np.int64)))

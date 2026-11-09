@@ -147,7 +147,7 @@ def main():
             raise ValueError(f"baseline {key} mismatch")
 
     manifest = {
-        "status": "running", "version": "taiwan_deduplicated_v5_finetune_v1",
+        "status": "running", "version": "taiwan_deduplicated_v5_finetune_v2_500_test_196_adaptation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "shots": list(SHOTS), "seeds": list(SEEDS), "split_seed": SPLIT_SEED,
         "test_profiles": len(test_rows), "test_jobs": len(test_jobs),

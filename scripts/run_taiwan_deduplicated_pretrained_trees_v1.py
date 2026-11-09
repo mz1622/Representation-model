@@ -141,7 +141,7 @@ def main():
         expected[method] = prediction
 
     manifest = {
-        "status": "running", "version": "taiwan_deduplicated_pretrained_trees_v1",
+        "status": "running", "version": "taiwan_deduplicated_pretrained_trees_v2_500_test_196_adaptation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "shots": list(SHOTS), "seeds": list(SEEDS), "split_seed": SPLIT_SEED,
         "test_profiles": len(test_rows), "test_jobs": len(test_jobs),

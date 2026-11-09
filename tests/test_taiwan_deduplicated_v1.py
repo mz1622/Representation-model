@@ -9,7 +9,7 @@ from foodcomp.taiwan_deduplicated_v1 import (
 
 
 def test_group_aware_split_keeps_identity_groups_intact():
-    rows = np.arange(540, dtype=np.int64)
+    rows = np.arange(700, dtype=np.int64)
     keys = [f"pair:{index // 2}" if index < 40 else f"single:{index}" for index in rows]
     clean = pd.DataFrame({"profile_index": rows, "identity_group_key": keys})
     test, adaptation = group_aware_split(clean)

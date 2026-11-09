@@ -106,7 +106,7 @@ def main():
     frozen_metrics = frozen.iloc[0].to_dict()
 
     manifest = {
-        "status": "running", "version": "taiwan_deduplicated_fewshot_baselines_v1",
+        "status": "running", "version": "taiwan_deduplicated_fewshot_baselines_v2_500_test_196_adaptation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "shots": list(SHOTS), "seeds": list(SEEDS), "split_seed": SPLIT_SEED,
         "test_profiles": TEST_PROFILES, "test_jobs": len(test_jobs),

@@ -132,13 +132,15 @@ transfer experiment:
 
 | Method | Taiwan fixed-test zero-shot scaled-log MAE |
 |---|---:|
-| **V5+CCE** | **0.1869** |
-| XGBoost | 0.2311 |
-| RF | 0.2356 |
-| KNN | 0.2771 |
+| **V5+CCE** | **0.1881** |
+| XGBoost | 0.2305 |
+| RF | 0.2349 |
+| KNN | 0.2777 |
 
-Fine-tuning the pretrained V5+CCE model on 8, 32, and 128 Taiwan profiles gives
-0.1859, 0.1805, and 0.1674 respectively.  In the sparse-observation completion
+The official external split now reserves 500 of the 696 cleaned foods for this
+fixed test and uses the remaining 196 only for adaptation.  Fine-tuning the
+pretrained V5+CCE model on 8, 32, and 128 Taiwan profiles gives 0.1880, 0.1819,
+and 0.1694 respectively.  In the sparse-observation completion
 audit, V5+CCE is also best at budgets of 5, 10, and 20 visible axes; tree models
 catch up or pass it when substantially more context is available.
 

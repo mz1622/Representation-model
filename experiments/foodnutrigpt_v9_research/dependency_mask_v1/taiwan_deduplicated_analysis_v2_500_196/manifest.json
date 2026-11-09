@@ -1,0 +1,43 @@
+{
+  "status": "complete",
+  "version": "taiwan_deduplicated_500_test_196_adaptation_summary_v1",
+  "created_utc": "2026-11-09T18:23:43.702634+00:00",
+  "clean_profiles": 696,
+  "fixed_test_profiles": 500,
+  "adaptation_pool_profiles": 196,
+  "fixed_test_jobs": 30267,
+  "test_axes": 80,
+  "shots": [
+    8,
+    32,
+    128
+  ],
+  "seeds": [
+    20261027,
+    20261028,
+    20261029
+  ],
+  "identity_group_aware_split": true,
+  "split_sha256": "5597411c7ad0556710cbfd38093a1c8f3b1d740a2d81cb88ca59722d08c619a7",
+  "inputs": {
+    "zero_shot": {
+      "version": "taiwan_deduplicated_zero_shot_v2_500_test_196_adaptation",
+      "manifest_sha256": "f144cafa02f6d11377b445c36e3c87b6a6178a8e02588a2490dd721a54bbb384"
+    },
+    "taiwan_only": {
+      "version": "taiwan_deduplicated_fewshot_baselines_v2_500_test_196_adaptation",
+      "manifest_sha256": "3905d65d72b0996133554d8eba6358cd4ec75bf6429bc667325532dd0e4bbba7"
+    },
+    "v5_finetune": {
+      "version": "taiwan_deduplicated_v5_finetune_v2_500_test_196_adaptation",
+      "manifest_sha256": "2cd3d4b3421cdf43c22b9a705196c25ff1cb6d58bbfbcb367e1714421d4010e0"
+    },
+    "pretrained_trees": {
+      "version": "taiwan_deduplicated_pretrained_trees_v2_500_test_196_adaptation",
+      "manifest_sha256": "d0c7ef5432de18f2d6ed4bccf1fced9d77e876628418e0180412fb385a32f9f3"
+    }
+  },
+  "raw_data_committed": false,
+  "predictions_committed": false,
+  "model_parameters_committed": false
+}

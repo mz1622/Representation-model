@@ -149,7 +149,7 @@ def main():
     )
     manifest = {
         "status": "complete",
-        "version": "taiwan_deduplicated_zero_shot_v1",
+        "version": "taiwan_deduplicated_zero_shot_v2_500_test_196_adaptation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "deduplication_scope": "all project train+validation source-native profiles",
         "deduplicated_profiles": int(len(clean)),

@@ -1,5 +1,9 @@
 # Taiwan deduplicated zero/few-shot analysis v1
 
+> **Superseded:** the official protocol now uses a fixed 500-food test set and
+> the remaining 196 foods for adaptation.  See
+> [`taiwan_deduplicated_analysis_v2_500_196`](../taiwan_deduplicated_analysis_v2_500_196/README.md).
+
 ## Scope
 
 This analysis replaces the former exact-English-name filter with a conservative

@@ -1,24 +1,23 @@
 analysis,panel_or_shots,method,macro_scaled_log_mae_mean,macro_scaled_log_mae_sd
-zero_shot,deduplicated_all,V5+CCE,0.1908854742,0
-zero_shot,deduplicated_all,XGBoost,0.2325641027,0
-zero_shot,deduplicated_all,RF,0.2359973165,0
-zero_shot,deduplicated_all,KNN,0.2802658659,0
-zero_shot,fixed_test,V5+CCE,0.1868812081,0
-zero_shot,fixed_test,XGBoost,0.2310620530,0
-zero_shot,fixed_test,RF,0.2355560440,0
-zero_shot,fixed_test,KNN,0.2771461884,0
-few_shot,8,V5+CCE finetuned,0.1859416951,0.0023850734
-few_shot,32,V5+CCE finetuned,0.1804853765,0.0005314738
-few_shot,128,V5+CCE finetuned,0.1673946924,0.0040891482
-few_shot,8,XGBoost source continued,0.2311481959,0.0013629819
-few_shot,32,XGBoost source continued,0.2217025365,0.0063653120
-few_shot,128,XGBoost source continued,0.2077748736,0.0027211364
-few_shot,8,RF source continued,0.2421139064,0.0025386504
-few_shot,32,RF source continued,0.2355641447,0.0012927925
-few_shot,128,RF source continued,0.2314509405,0.0007652713
-few_shot,8,XGBoost Taiwan-only,0.4842918796,0.0271190484
-few_shot,32,XGBoost Taiwan-only,0.3055779338,0.0193312282
-few_shot,128,XGBoost Taiwan-only,0.2247428763,0.0108720293
-few_shot,8,RF Taiwan-only,0.4244408240,0.0294689810
-few_shot,32,RF Taiwan-only,0.2967428659,0.0146738623
-few_shot,128,RF Taiwan-only,0.2274004857,0.0113519944
+zero_shot,fixed_500_test,V5+CCE frozen,0.1881261317291719,0.0
+zero_shot,fixed_500_test,KNN,0.2777148978785119,0.0
+zero_shot,fixed_500_test,RF,0.2349406203707368,0.0
+zero_shot,fixed_500_test,XGBoost,0.2304827363292453,0.0
+few_shot,8,RF Taiwan-only,0.4044602325962352,0.0154009881289541
+few_shot,8,RF source continued,0.2402553714629354,0.0023473405215667
+few_shot,8,V5+CCE finetuned,0.1879972425635638,0.0026855414809944
+few_shot,8,V5+CCE frozen,0.1881261317291719,0.0
+few_shot,8,XGBoost Taiwan-only,0.4732105823446638,0.0339498270726637
+few_shot,8,XGBoost source continued,0.2304296954851117,0.0009449926344179
+few_shot,32,RF Taiwan-only,0.2906365303834849,0.0157227033371881
+few_shot,32,RF source continued,0.2340139853734379,0.0010028710646263
+few_shot,32,V5+CCE finetuned,0.181906694939393,0.0044576317515416
+few_shot,32,V5+CCE frozen,0.1881261317291719,0.0
+few_shot,32,XGBoost Taiwan-only,0.2923853385741994,0.0183822960275917
+few_shot,32,XGBoost source continued,0.2218406381059335,0.0028261228336136
+few_shot,128,RF Taiwan-only,0.227539933543974,0.0017568820381925
+few_shot,128,RF source continued,0.2306012066288576,0.0002990192035905
+few_shot,128,V5+CCE finetuned,0.1694233724703514,0.0030230926724806
+few_shot,128,V5+CCE frozen,0.1881261317291719,0.0
+few_shot,128,XGBoost Taiwan-only,0.2265051896354808,0.0014049573375182
+few_shot,128,XGBoost source continued,0.2073232906762891,0.000465762900134
