@@ -1,0 +1,19 @@
+partition,foodex2_level1,profiles
+train,Grains and grain-based products,6016
+train,Vegetables and vegetable products,5914
+train,Meat and meat products,6377
+train,Milk and dairy products,2339
+train,Fruit and fruit products,2561
+train,Animal and vegetable fats and oils,899
+validation,Vegetables and vegetable products,1034
+validation,Meat and meat products,1068
+validation,Animal and vegetable fats and oils,191
+train,"Sugar, confectionery and water-based sweet desserts",2043
+validation,"Sugar, confectionery and water-based sweet desserts",428
+validation,"Legumes, nuts, oilseeds and spices",605
+validation,Grains and grain-based products,1123
+train,"Fish, seafood, amphibians, reptiles and invertebrates",4034
+train,"Legumes, nuts, oilseeds and spices",3571
+validation,Milk and dairy products,373
+validation,Fruit and fruit products,453
+validation,"Fish, seafood, amphibians, reptiles and invertebrates",587

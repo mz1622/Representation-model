@@ -1,0 +1,86 @@
+{
+  "status": "complete",
+  "schema_version": "foundation_representation_evidence_v1",
+  "created_at_utc": "2026-11-09T16:56:16.197706+00:00",
+  "elapsed_seconds": 93.96799999999348,
+  "seed": 20261110,
+  "device_for_second_pass_extraction": "cuda",
+  "profiles": 75875,
+  "core_train_profiles": 33754,
+  "core_validation_profiles": 5862,
+  "balanced_validation_geometry": {
+    "profiles": 1719,
+    "profiles_per_class": 191,
+    "classes": [
+      "Grains",
+      "Vegetables",
+      "Legumes/nuts/spices",
+      "Fruit",
+      "Meat",
+      "Fish/seafood",
+      "Milk/dairy",
+      "Fats/oils",
+      "Sugar/confectionery"
+    ]
+  },
+  "pca": {
+    "fit_partition": "train only",
+    "dimensions": 192,
+    "input": "train-median-imputed normalized values, train-standardized, plus visibility mask",
+    "explained_variance_ratio_sum": 0.9686082601547241
+  },
+  "random_repeats": 20,
+  "random_null_95_interval": {
+    "silhouette_cosine": [
+      -0.007541780732572079,
+      -0.007282524206675589
+    ],
+    "one_vs_rest_silhouette": [
+      -0.0001752586413027125,
+      0.0005280087016318346
+    ]
+  },
+  "random_retrieval_95_interval": {
+    "top1_accuracy": [
+      0.0,
+      0.0021223912274495934
+    ],
+    "top5_accuracy": [
+      0.001582950123806155,
+      0.007260346657233816
+    ],
+    "mean_reciprocal_rank": [
+      0.00446671313080525,
+      0.008114290634972111
+    ]
+  },
+  "inputs": {
+    "data_manifest_sha256": "48aa0b22a816cc175c8d274628a747ca44a90339bda46d33aada7cee9ea9d923",
+    "policy_manifest_sha256": "d4a2573a7223d1af532f4186407d595bd5f67ba08489a1245030d96cca308db2",
+    "cce_first_embedding_sha256": "9cc530cc4370a34fa303cc79243895c9a39b59b3693ad618a98047e91e3afbd2",
+    "gepc_first_embedding_sha256": "abd0d917523b4eb7f7adcad865495f7c5235a102dbc89145a9dbeab1fecd3532",
+    "second_pass_checkpoints": {
+      "V5_CCE_second": {
+        "sha256": "0413e39661f2b1bab0fb194c9df8b32ce4e5534b26f2b248dfedd1e23762ec42",
+        "stage": "cce",
+        "epoch": null
+      },
+      "V5_GEPC_second": {
+        "sha256": "9d3a859f08c7909cef236734e4c75c5ed20adc7ca1ae3ffb75f03169426f15cb",
+        "stage": "mvc",
+        "epoch": null
+      }
+    }
+  },
+  "leakage_controls": {
+    "category_geometry": "validation only",
+    "linear_probe": "fit train; evaluate validation",
+    "pca": "fit train; transform validation",
+    "exact_name_retrieval": "validation only; candidates restricted to a different source",
+    "food_names_model_input": false,
+    "source_ids_model_input": false,
+    "foodex2_labels_model_input": false
+  },
+  "interpretation_guardrail": "Exact-name groups are conservative candidate identities, not confirmed biological merges. Source separation is a nuisance/batch signal and is not positive semantic evidence.",
+  "large_artifacts_committed": false
+}

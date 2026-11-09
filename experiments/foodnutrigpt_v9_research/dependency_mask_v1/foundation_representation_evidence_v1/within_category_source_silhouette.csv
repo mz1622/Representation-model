@@ -1,0 +1,73 @@
+method,condition,profiles,classes,silhouette_cosine
+V5_CCE_first,Animal and vegetable fats and oils,174,5,0.29886284470558167
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,0.38819199800491333
+V5_CCE_first,Fruit and fruit products,435,6,0.40793558955192566
+V5_CCE_first,Grains and grain-based products,1093,8,0.3013523519039154
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",574,7,0.1294446736574173
+V5_CCE_first,Meat and meat products,1062,6,0.24344992637634277
+V5_CCE_first,Milk and dairy products,348,5,0.39889946579933167
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",416,7,0.25828564167022705
+V5_CCE_first,Vegetables and vegetable products,1011,8,0.34571394324302673
+V5_CCE_second,Animal and vegetable fats and oils,174,5,0.2479669451713562
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,0.3216700851917267
+V5_CCE_second,Fruit and fruit products,435,6,0.3813307583332062
+V5_CCE_second,Grains and grain-based products,1093,8,0.2568260133266449
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",574,7,0.08166801184415817
+V5_CCE_second,Meat and meat products,1062,6,0.16859281063079834
+V5_CCE_second,Milk and dairy products,348,5,0.34263136982917786
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",416,7,0.193234384059906
+V5_CCE_second,Vegetables and vegetable products,1011,8,0.31369587779045105
+V5_GEPC_first,Animal and vegetable fats and oils,174,5,0.07279682904481888
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,-0.07814261317253113
+V5_GEPC_first,Fruit and fruit products,435,6,-0.04200563207268715
+V5_GEPC_first,Grains and grain-based products,1093,8,-0.13647636771202087
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",574,7,-0.2899894118309021
+V5_GEPC_first,Meat and meat products,1062,6,0.04881029576063156
+V5_GEPC_first,Milk and dairy products,348,5,-0.01545291393995285
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",416,7,-0.08850722759962082
+V5_GEPC_first,Vegetables and vegetable products,1011,8,-0.052196528762578964
+V5_GEPC_second,Animal and vegetable fats and oils,174,5,0.06787826865911484
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,-0.1373569667339325
+V5_GEPC_second,Fruit and fruit products,435,6,-0.0425473190844059
+V5_GEPC_second,Grains and grain-based products,1093,8,-0.0011945237638428807
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",574,7,0.062360651791095734
+V5_GEPC_second,Meat and meat products,1062,6,-0.07192856818437576
+V5_GEPC_second,Milk and dairy products,348,5,-0.035003941506147385
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",416,7,-0.03195079043507576
+V5_GEPC_second,Vegetables and vegetable products,1011,8,-0.0858408659696579
+Raw_values_mask,Animal and vegetable fats and oils,174,5,0.34070777893066406
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,0.23301801085472107
+Raw_values_mask,Fruit and fruit products,435,6,0.29302525520324707
+Raw_values_mask,Grains and grain-based products,1093,8,0.20698602497577667
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",574,7,0.11813442409038544
+Raw_values_mask,Meat and meat products,1062,6,0.21390655636787415
+Raw_values_mask,Milk and dairy products,348,5,0.22699689865112305
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",416,7,0.15735751390457153
+Raw_values_mask,Vegetables and vegetable products,1011,8,0.21248556673526764
+PCA192,Animal and vegetable fats and oils,174,5,0.3589087426662445
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,0.2249082773923874
+PCA192,Fruit and fruit products,435,6,0.2473176270723343
+PCA192,Grains and grain-based products,1093,8,0.2076098769903183
+PCA192,"Legumes, nuts, oilseeds and spices",574,7,0.12556064128875732
+PCA192,Meat and meat products,1062,6,0.2122109979391098
+PCA192,Milk and dairy products,348,5,0.17434558272361755
+PCA192,"Sugar, confectionery and water-based sweet desserts",416,7,0.15965406596660614
+PCA192,Vegetables and vegetable products,1011,8,0.18562094867229462
+Missingness_only,Animal and vegetable fats and oils,174,5,0.3253806233406067
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,0.5413558483123779
+Missingness_only,Fruit and fruit products,435,6,0.4864872992038727
+Missingness_only,Grains and grain-based products,1093,8,0.37356457114219666
+Missingness_only,"Legumes, nuts, oilseeds and spices",574,7,0.2563684284687042
+Missingness_only,Meat and meat products,1062,6,0.43444886803627014
+Missingness_only,Milk and dairy products,348,5,0.514637291431427
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",416,7,0.27127882838249207
+Missingness_only,Vegetables and vegetable products,1011,8,0.48475292325019836
+Random192,Animal and vegetable fats and oils,174,5,-0.015244807116687298
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",582,7,-0.015635835006833076
+Random192,Fruit and fruit products,435,6,-0.0159167367964983
+Random192,Grains and grain-based products,1093,8,-0.011721506714820862
+Random192,"Legumes, nuts, oilseeds and spices",574,7,-0.014692462980747223
+Random192,Meat and meat products,1062,6,-0.008730540052056313
+Random192,Milk and dairy products,348,5,-0.012486315332353115
+Random192,"Sugar, confectionery and water-based sweet desserts",416,7,-0.013453424908220768
+Random192,Vegetables and vegetable products,1011,8,-0.010842673480510712

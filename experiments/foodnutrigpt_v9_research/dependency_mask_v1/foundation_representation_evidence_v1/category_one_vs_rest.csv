@@ -1,0 +1,1441 @@
+method,category,repeat,positive_profiles,negative_profiles,silhouette_cosine
+V5_CCE_first,Grains and grain-based products,0,191,191,0.036786340177059174
+V5_CCE_first,Grains and grain-based products,1,191,191,0.0344659686088562
+V5_CCE_first,Grains and grain-based products,2,191,191,0.03746316209435463
+V5_CCE_first,Grains and grain-based products,3,191,191,0.04622899368405342
+V5_CCE_first,Grains and grain-based products,4,191,191,0.039496567100286484
+V5_CCE_first,Grains and grain-based products,5,191,191,0.038973093032836914
+V5_CCE_first,Grains and grain-based products,6,191,191,0.0360451303422451
+V5_CCE_first,Grains and grain-based products,7,191,191,0.033804699778556824
+V5_CCE_first,Grains and grain-based products,8,191,191,0.04099647328257561
+V5_CCE_first,Grains and grain-based products,9,191,191,0.03744092956185341
+V5_CCE_first,Grains and grain-based products,10,191,191,0.04075370728969574
+V5_CCE_first,Grains and grain-based products,11,191,191,0.040845710784196854
+V5_CCE_first,Grains and grain-based products,12,191,191,0.03966724872589111
+V5_CCE_first,Grains and grain-based products,13,191,191,0.036596015095710754
+V5_CCE_first,Grains and grain-based products,14,191,191,0.04117006063461304
+V5_CCE_first,Grains and grain-based products,15,191,191,0.04373769462108612
+V5_CCE_first,Grains and grain-based products,16,191,191,0.04380180686712265
+V5_CCE_first,Grains and grain-based products,17,191,191,0.03399835526943207
+V5_CCE_first,Grains and grain-based products,18,191,191,0.04353136941790581
+V5_CCE_first,Grains and grain-based products,19,191,191,0.039334893226623535
+V5_CCE_first,Vegetables and vegetable products,0,191,191,0.06923894584178925
+V5_CCE_first,Vegetables and vegetable products,1,191,191,0.06196871027350426
+V5_CCE_first,Vegetables and vegetable products,2,191,191,0.059597644954919815
+V5_CCE_first,Vegetables and vegetable products,3,191,191,0.07261115312576294
+V5_CCE_first,Vegetables and vegetable products,4,191,191,0.0744791254401207
+V5_CCE_first,Vegetables and vegetable products,5,191,191,0.07183653861284256
+V5_CCE_first,Vegetables and vegetable products,6,191,191,0.06345514953136444
+V5_CCE_first,Vegetables and vegetable products,7,191,191,0.07064863294363022
+V5_CCE_first,Vegetables and vegetable products,8,191,191,0.06606081873178482
+V5_CCE_first,Vegetables and vegetable products,9,191,191,0.06365934014320374
+V5_CCE_first,Vegetables and vegetable products,10,191,191,0.06226836144924164
+V5_CCE_first,Vegetables and vegetable products,11,191,191,0.06468010693788528
+V5_CCE_first,Vegetables and vegetable products,12,191,191,0.060117799788713455
+V5_CCE_first,Vegetables and vegetable products,13,191,191,0.06245271489024162
+V5_CCE_first,Vegetables and vegetable products,14,191,191,0.06119561940431595
+V5_CCE_first,Vegetables and vegetable products,15,191,191,0.06596795469522476
+V5_CCE_first,Vegetables and vegetable products,16,191,191,0.06256414949893951
+V5_CCE_first,Vegetables and vegetable products,17,191,191,0.056548163294792175
+V5_CCE_first,Vegetables and vegetable products,18,191,191,0.07807038724422455
+V5_CCE_first,Vegetables and vegetable products,19,191,191,0.06069580838084221
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",0,191,191,0.03726547956466675
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",1,191,191,0.043367382138967514
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",2,191,191,0.04639601707458496
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",3,191,191,0.05119036138057709
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",4,191,191,0.05801337584853172
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",5,191,191,0.04405008628964424
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",6,191,191,0.04747617989778519
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",7,191,191,0.04420198127627373
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",8,191,191,0.04743937402963638
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",9,191,191,0.04965692386031151
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",10,191,191,0.05425892397761345
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",11,191,191,0.041985172778367996
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",12,191,191,0.04300004243850708
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",13,191,191,0.04031505063176155
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",14,191,191,0.048944711685180664
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",15,191,191,0.04444286227226257
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",16,191,191,0.03700703755021095
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",17,191,191,0.04705285280942917
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",18,191,191,0.04596317932009697
+V5_CCE_first,"Legumes, nuts, oilseeds and spices",19,191,191,0.04419633001089096
+V5_CCE_first,Fruit and fruit products,0,191,191,0.0861193984746933
+V5_CCE_first,Fruit and fruit products,1,191,191,0.07265658676624298
+V5_CCE_first,Fruit and fruit products,2,191,191,0.07391875237226486
+V5_CCE_first,Fruit and fruit products,3,191,191,0.07926484197378159
+V5_CCE_first,Fruit and fruit products,4,191,191,0.06790261715650558
+V5_CCE_first,Fruit and fruit products,5,191,191,0.07112276554107666
+V5_CCE_first,Fruit and fruit products,6,191,191,0.06907441467046738
+V5_CCE_first,Fruit and fruit products,7,191,191,0.06825381517410278
+V5_CCE_first,Fruit and fruit products,8,191,191,0.08068548887968063
+V5_CCE_first,Fruit and fruit products,9,191,191,0.0845591127872467
+V5_CCE_first,Fruit and fruit products,10,191,191,0.0829806700348854
+V5_CCE_first,Fruit and fruit products,11,191,191,0.07365767657756805
+V5_CCE_first,Fruit and fruit products,12,191,191,0.08261431008577347
+V5_CCE_first,Fruit and fruit products,13,191,191,0.07631845027208328
+V5_CCE_first,Fruit and fruit products,14,191,191,0.06934758275747299
+V5_CCE_first,Fruit and fruit products,15,191,191,0.07266196608543396
+V5_CCE_first,Fruit and fruit products,16,191,191,0.08361278474330902
+V5_CCE_first,Fruit and fruit products,17,191,191,0.0705360472202301
+V5_CCE_first,Fruit and fruit products,18,191,191,0.0811479389667511
+V5_CCE_first,Fruit and fruit products,19,191,191,0.07563945651054382
+V5_CCE_first,Meat and meat products,0,191,191,0.14567306637763977
+V5_CCE_first,Meat and meat products,1,191,191,0.14670449495315552
+V5_CCE_first,Meat and meat products,2,191,191,0.15120674669742584
+V5_CCE_first,Meat and meat products,3,191,191,0.1456584483385086
+V5_CCE_first,Meat and meat products,4,191,191,0.147152841091156
+V5_CCE_first,Meat and meat products,5,191,191,0.17546361684799194
+V5_CCE_first,Meat and meat products,6,191,191,0.14185087382793427
+V5_CCE_first,Meat and meat products,7,191,191,0.1514025330543518
+V5_CCE_first,Meat and meat products,8,191,191,0.15283755958080292
+V5_CCE_first,Meat and meat products,9,191,191,0.14499635994434357
+V5_CCE_first,Meat and meat products,10,191,191,0.15907056629657745
+V5_CCE_first,Meat and meat products,11,191,191,0.14455491304397583
+V5_CCE_first,Meat and meat products,12,191,191,0.1531953662633896
+V5_CCE_first,Meat and meat products,13,191,191,0.1476798951625824
+V5_CCE_first,Meat and meat products,14,191,191,0.14530931413173676
+V5_CCE_first,Meat and meat products,15,191,191,0.15423743426799774
+V5_CCE_first,Meat and meat products,16,191,191,0.1493874341249466
+V5_CCE_first,Meat and meat products,17,191,191,0.15697041153907776
+V5_CCE_first,Meat and meat products,18,191,191,0.15197807550430298
+V5_CCE_first,Meat and meat products,19,191,191,0.1490127146244049
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.12547501921653748
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.11857059597969055
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.1226208359003067
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.11974848806858063
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.12233985960483551
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.1254926323890686
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.12318255007266998
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.12188703566789627
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.12373854219913483
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.12748581171035767
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.12345724552869797
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.13273809850215912
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.1140705943107605
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.12342561036348343
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.12396050244569778
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.11193252354860306
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.1260669082403183
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.13382305204868317
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.11565718054771423
+V5_CCE_first,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.11788191646337509
+V5_CCE_first,Milk and dairy products,0,191,191,0.037415605038404465
+V5_CCE_first,Milk and dairy products,1,191,191,0.05587715655565262
+V5_CCE_first,Milk and dairy products,2,191,191,0.05363372340798378
+V5_CCE_first,Milk and dairy products,3,191,191,0.05459326505661011
+V5_CCE_first,Milk and dairy products,4,191,191,0.053128987550735474
+V5_CCE_first,Milk and dairy products,5,191,191,0.052926741540431976
+V5_CCE_first,Milk and dairy products,6,191,191,0.062180664390325546
+V5_CCE_first,Milk and dairy products,7,191,191,0.035114314407110214
+V5_CCE_first,Milk and dairy products,8,191,191,0.039201635867357254
+V5_CCE_first,Milk and dairy products,9,191,191,0.051643021404743195
+V5_CCE_first,Milk and dairy products,10,191,191,0.056372109800577164
+V5_CCE_first,Milk and dairy products,11,191,191,0.047481831163167953
+V5_CCE_first,Milk and dairy products,12,191,191,0.03845779597759247
+V5_CCE_first,Milk and dairy products,13,191,191,0.05155906826257706
+V5_CCE_first,Milk and dairy products,14,191,191,0.03150920569896698
+V5_CCE_first,Milk and dairy products,15,191,191,0.04173732548952103
+V5_CCE_first,Milk and dairy products,16,191,191,0.03478505462408066
+V5_CCE_first,Milk and dairy products,17,191,191,0.05460469424724579
+V5_CCE_first,Milk and dairy products,18,191,191,0.05689265951514244
+V5_CCE_first,Milk and dairy products,19,191,191,0.05371019244194031
+V5_CCE_first,Animal and vegetable fats and oils,0,191,191,0.10415371507406235
+V5_CCE_first,Animal and vegetable fats and oils,1,191,191,0.1192643940448761
+V5_CCE_first,Animal and vegetable fats and oils,2,191,191,0.11641695350408554
+V5_CCE_first,Animal and vegetable fats and oils,3,191,191,0.11094756424427032
+V5_CCE_first,Animal and vegetable fats and oils,4,191,191,0.12654344737529755
+V5_CCE_first,Animal and vegetable fats and oils,5,191,191,0.11323331296443939
+V5_CCE_first,Animal and vegetable fats and oils,6,191,191,0.11287060379981995
+V5_CCE_first,Animal and vegetable fats and oils,7,191,191,0.11714334785938263
+V5_CCE_first,Animal and vegetable fats and oils,8,191,191,0.12522053718566895
+V5_CCE_first,Animal and vegetable fats and oils,9,191,191,0.11024313420057297
+V5_CCE_first,Animal and vegetable fats and oils,10,191,191,0.12059953808784485
+V5_CCE_first,Animal and vegetable fats and oils,11,191,191,0.12230053544044495
+V5_CCE_first,Animal and vegetable fats and oils,12,191,191,0.10556452721357346
+V5_CCE_first,Animal and vegetable fats and oils,13,191,191,0.12646803259849548
+V5_CCE_first,Animal and vegetable fats and oils,14,191,191,0.12160976976156235
+V5_CCE_first,Animal and vegetable fats and oils,15,191,191,0.126699760556221
+V5_CCE_first,Animal and vegetable fats and oils,16,191,191,0.1257154494524002
+V5_CCE_first,Animal and vegetable fats and oils,17,191,191,0.13446010649204254
+V5_CCE_first,Animal and vegetable fats and oils,18,191,191,0.12315543740987778
+V5_CCE_first,Animal and vegetable fats and oils,19,191,191,0.12827804684638977
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.051781732589006424
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.0600152350962162
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.057303521782159805
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.0696207731962204
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.05487127602100372
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.05196873098611832
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.05348041653633118
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.04819221422076225
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.06981439143419266
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.05889562517404556
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.04511934146285057
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.05923357978463173
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.04865746572613716
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.05463271588087082
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.06344989687204361
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.06733731925487518
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.05122871324419975
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.052889954298734665
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.06058628112077713
+V5_CCE_first,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.06366444379091263
+V5_CCE_second,Grains and grain-based products,0,191,191,0.033583223819732666
+V5_CCE_second,Grains and grain-based products,1,191,191,0.03126446530222893
+V5_CCE_second,Grains and grain-based products,2,191,191,0.032594650983810425
+V5_CCE_second,Grains and grain-based products,3,191,191,0.04113587364554405
+V5_CCE_second,Grains and grain-based products,4,191,191,0.03390001505613327
+V5_CCE_second,Grains and grain-based products,5,191,191,0.03552335873246193
+V5_CCE_second,Grains and grain-based products,6,191,191,0.03236539661884308
+V5_CCE_second,Grains and grain-based products,7,191,191,0.032017048448324203
+V5_CCE_second,Grains and grain-based products,8,191,191,0.03876195475459099
+V5_CCE_second,Grains and grain-based products,9,191,191,0.035235196352005005
+V5_CCE_second,Grains and grain-based products,10,191,191,0.035496119409799576
+V5_CCE_second,Grains and grain-based products,11,191,191,0.0356423556804657
+V5_CCE_second,Grains and grain-based products,12,191,191,0.0353001244366169
+V5_CCE_second,Grains and grain-based products,13,191,191,0.03290483355522156
+V5_CCE_second,Grains and grain-based products,14,191,191,0.036914486438035965
+V5_CCE_second,Grains and grain-based products,15,191,191,0.03822437673807144
+V5_CCE_second,Grains and grain-based products,16,191,191,0.038157738745212555
+V5_CCE_second,Grains and grain-based products,17,191,191,0.031059633940458298
+V5_CCE_second,Grains and grain-based products,18,191,191,0.03930608555674553
+V5_CCE_second,Grains and grain-based products,19,191,191,0.037089962512254715
+V5_CCE_second,Vegetables and vegetable products,0,191,191,0.06965643912553787
+V5_CCE_second,Vegetables and vegetable products,1,191,191,0.06385843455791473
+V5_CCE_second,Vegetables and vegetable products,2,191,191,0.06197582185268402
+V5_CCE_second,Vegetables and vegetable products,3,191,191,0.07695547491312027
+V5_CCE_second,Vegetables and vegetable products,4,191,191,0.07632002979516983
+V5_CCE_second,Vegetables and vegetable products,5,191,191,0.07601538300514221
+V5_CCE_second,Vegetables and vegetable products,6,191,191,0.06777457147836685
+V5_CCE_second,Vegetables and vegetable products,7,191,191,0.07347840815782547
+V5_CCE_second,Vegetables and vegetable products,8,191,191,0.06908854842185974
+V5_CCE_second,Vegetables and vegetable products,9,191,191,0.06489723920822144
+V5_CCE_second,Vegetables and vegetable products,10,191,191,0.06429117918014526
+V5_CCE_second,Vegetables and vegetable products,11,191,191,0.06623782217502594
+V5_CCE_second,Vegetables and vegetable products,12,191,191,0.06114991009235382
+V5_CCE_second,Vegetables and vegetable products,13,191,191,0.06305228918790817
+V5_CCE_second,Vegetables and vegetable products,14,191,191,0.0637262836098671
+V5_CCE_second,Vegetables and vegetable products,15,191,191,0.06860437244176865
+V5_CCE_second,Vegetables and vegetable products,16,191,191,0.0664195790886879
+V5_CCE_second,Vegetables and vegetable products,17,191,191,0.05901222676038742
+V5_CCE_second,Vegetables and vegetable products,18,191,191,0.07930191606283188
+V5_CCE_second,Vegetables and vegetable products,19,191,191,0.06452479958534241
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",0,191,191,0.040784914046525955
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",1,191,191,0.048692673444747925
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",2,191,191,0.052975695580244064
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",3,191,191,0.05674091726541519
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",4,191,191,0.059170257300138474
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",5,191,191,0.05158260464668274
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",6,191,191,0.05365430563688278
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",7,191,191,0.05228913575410843
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",8,191,191,0.05244598537683487
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",9,191,191,0.05310000851750374
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",10,191,191,0.056189872324466705
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",11,191,191,0.048861898481845856
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",12,191,191,0.047583844512701035
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",13,191,191,0.044428419321775436
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",14,191,191,0.05459599196910858
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",15,191,191,0.050074681639671326
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",16,191,191,0.041343897581100464
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",17,191,191,0.05403808131814003
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",18,191,191,0.05307147651910782
+V5_CCE_second,"Legumes, nuts, oilseeds and spices",19,191,191,0.048060860484838486
+V5_CCE_second,Fruit and fruit products,0,191,191,0.10160589963197708
+V5_CCE_second,Fruit and fruit products,1,191,191,0.089030921459198
+V5_CCE_second,Fruit and fruit products,2,191,191,0.09000756591558456
+V5_CCE_second,Fruit and fruit products,3,191,191,0.0907636284828186
+V5_CCE_second,Fruit and fruit products,4,191,191,0.08418123424053192
+V5_CCE_second,Fruit and fruit products,5,191,191,0.08624708652496338
+V5_CCE_second,Fruit and fruit products,6,191,191,0.08196564763784409
+V5_CCE_second,Fruit and fruit products,7,191,191,0.08570120483636856
+V5_CCE_second,Fruit and fruit products,8,191,191,0.09438659250736237
+V5_CCE_second,Fruit and fruit products,9,191,191,0.10051868855953217
+V5_CCE_second,Fruit and fruit products,10,191,191,0.10457104444503784
+V5_CCE_second,Fruit and fruit products,11,191,191,0.08747638016939163
+V5_CCE_second,Fruit and fruit products,12,191,191,0.09799975901842117
+V5_CCE_second,Fruit and fruit products,13,191,191,0.08904221653938293
+V5_CCE_second,Fruit and fruit products,14,191,191,0.08811942487955093
+V5_CCE_second,Fruit and fruit products,15,191,191,0.08320524543523788
+V5_CCE_second,Fruit and fruit products,16,191,191,0.10287907719612122
+V5_CCE_second,Fruit and fruit products,17,191,191,0.08696345239877701
+V5_CCE_second,Fruit and fruit products,18,191,191,0.09933231770992279
+V5_CCE_second,Fruit and fruit products,19,191,191,0.08940400183200836
+V5_CCE_second,Meat and meat products,0,191,191,0.141457200050354
+V5_CCE_second,Meat and meat products,1,191,191,0.14159820973873138
+V5_CCE_second,Meat and meat products,2,191,191,0.14883114397525787
+V5_CCE_second,Meat and meat products,3,191,191,0.14082223176956177
+V5_CCE_second,Meat and meat products,4,191,191,0.1435849815607071
+V5_CCE_second,Meat and meat products,5,191,191,0.17838062345981598
+V5_CCE_second,Meat and meat products,6,191,191,0.13831950724124908
+V5_CCE_second,Meat and meat products,7,191,191,0.14889292418956757
+V5_CCE_second,Meat and meat products,8,191,191,0.1500346064567566
+V5_CCE_second,Meat and meat products,9,191,191,0.14337991178035736
+V5_CCE_second,Meat and meat products,10,191,191,0.15784725546836853
+V5_CCE_second,Meat and meat products,11,191,191,0.14012165367603302
+V5_CCE_second,Meat and meat products,12,191,191,0.1535918116569519
+V5_CCE_second,Meat and meat products,13,191,191,0.14280375838279724
+V5_CCE_second,Meat and meat products,14,191,191,0.13960064947605133
+V5_CCE_second,Meat and meat products,15,191,191,0.15524238348007202
+V5_CCE_second,Meat and meat products,16,191,191,0.14676068723201752
+V5_CCE_second,Meat and meat products,17,191,191,0.1565845012664795
+V5_CCE_second,Meat and meat products,18,191,191,0.1499262899160385
+V5_CCE_second,Meat and meat products,19,191,191,0.14361688494682312
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.1302475780248642
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.1268688142299652
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.13129790127277374
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.12184888124465942
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.1324874758720398
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.13220815360546112
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.12939895689487457
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.1291673481464386
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.13197489082813263
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.1362394243478775
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.1292646825313568
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.13708336651325226
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.117367222905159
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.1324179470539093
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.129311665892601
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.120921291410923
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.13908696174621582
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.14404430985450745
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.12111841887235641
+V5_CCE_second,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.125464528799057
+V5_CCE_second,Milk and dairy products,0,191,191,0.03184884414076805
+V5_CCE_second,Milk and dairy products,1,191,191,0.048629675060510635
+V5_CCE_second,Milk and dairy products,2,191,191,0.04723665863275528
+V5_CCE_second,Milk and dairy products,3,191,191,0.046896763145923615
+V5_CCE_second,Milk and dairy products,4,191,191,0.045486558228731155
+V5_CCE_second,Milk and dairy products,5,191,191,0.04465773329138756
+V5_CCE_second,Milk and dairy products,6,191,191,0.05117083713412285
+V5_CCE_second,Milk and dairy products,7,191,191,0.030878497287631035
+V5_CCE_second,Milk and dairy products,8,191,191,0.03304702043533325
+V5_CCE_second,Milk and dairy products,9,191,191,0.04732780158519745
+V5_CCE_second,Milk and dairy products,10,191,191,0.04898842051625252
+V5_CCE_second,Milk and dairy products,11,191,191,0.0400947704911232
+V5_CCE_second,Milk and dairy products,12,191,191,0.03237287700176239
+V5_CCE_second,Milk and dairy products,13,191,191,0.041849520057439804
+V5_CCE_second,Milk and dairy products,14,191,191,0.026263443753123283
+V5_CCE_second,Milk and dairy products,15,191,191,0.03401198238134384
+V5_CCE_second,Milk and dairy products,16,191,191,0.0267785731703043
+V5_CCE_second,Milk and dairy products,17,191,191,0.04562278091907501
+V5_CCE_second,Milk and dairy products,18,191,191,0.049162160605192184
+V5_CCE_second,Milk and dairy products,19,191,191,0.04381995648145676
+V5_CCE_second,Animal and vegetable fats and oils,0,191,191,0.11596512794494629
+V5_CCE_second,Animal and vegetable fats and oils,1,191,191,0.13642224669456482
+V5_CCE_second,Animal and vegetable fats and oils,2,191,191,0.13959553837776184
+V5_CCE_second,Animal and vegetable fats and oils,3,191,191,0.12553846836090088
+V5_CCE_second,Animal and vegetable fats and oils,4,191,191,0.14570018649101257
+V5_CCE_second,Animal and vegetable fats and oils,5,191,191,0.1277543306350708
+V5_CCE_second,Animal and vegetable fats and oils,6,191,191,0.12784487009048462
+V5_CCE_second,Animal and vegetable fats and oils,7,191,191,0.13135938346385956
+V5_CCE_second,Animal and vegetable fats and oils,8,191,191,0.14512759447097778
+V5_CCE_second,Animal and vegetable fats and oils,9,191,191,0.1260981410741806
+V5_CCE_second,Animal and vegetable fats and oils,10,191,191,0.13850514590740204
+V5_CCE_second,Animal and vegetable fats and oils,11,191,191,0.1396491527557373
+V5_CCE_second,Animal and vegetable fats and oils,12,191,191,0.11693956702947617
+V5_CCE_second,Animal and vegetable fats and oils,13,191,191,0.14165574312210083
+V5_CCE_second,Animal and vegetable fats and oils,14,191,191,0.14159704744815826
+V5_CCE_second,Animal and vegetable fats and oils,15,191,191,0.14147734642028809
+V5_CCE_second,Animal and vegetable fats and oils,16,191,191,0.14624731242656708
+V5_CCE_second,Animal and vegetable fats and oils,17,191,191,0.15403494238853455
+V5_CCE_second,Animal and vegetable fats and oils,18,191,191,0.1401931643486023
+V5_CCE_second,Animal and vegetable fats and oils,19,191,191,0.14537200331687927
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.04814307764172554
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.05611120164394379
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.05768055096268654
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.06371736526489258
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.053883761167526245
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.05055021122097969
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.05022374168038368
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.04339563474059105
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.06856496632099152
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.059285227209329605
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.04290752112865448
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.054951634258031845
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.0468883216381073
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.05071954429149628
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.06130068749189377
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.06463807076215744
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.051071710884571075
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.051335409283638
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.05894548445940018
+V5_CCE_second,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.061409156769514084
+V5_GEPC_first,Grains and grain-based products,0,191,191,0.011317577213048935
+V5_GEPC_first,Grains and grain-based products,1,191,191,0.020790869370102882
+V5_GEPC_first,Grains and grain-based products,2,191,191,0.02161305770277977
+V5_GEPC_first,Grains and grain-based products,3,191,191,0.018324200063943863
+V5_GEPC_first,Grains and grain-based products,4,191,191,0.023868508636951447
+V5_GEPC_first,Grains and grain-based products,5,191,191,0.015973804518580437
+V5_GEPC_first,Grains and grain-based products,6,191,191,0.018972966820001602
+V5_GEPC_first,Grains and grain-based products,7,191,191,0.010740634985268116
+V5_GEPC_first,Grains and grain-based products,8,191,191,0.02104960009455681
+V5_GEPC_first,Grains and grain-based products,9,191,191,0.023986315354704857
+V5_GEPC_first,Grains and grain-based products,10,191,191,0.020996788516640663
+V5_GEPC_first,Grains and grain-based products,11,191,191,0.018711060285568237
+V5_GEPC_first,Grains and grain-based products,12,191,191,0.01916475035250187
+V5_GEPC_first,Grains and grain-based products,13,191,191,0.019273055717349052
+V5_GEPC_first,Grains and grain-based products,14,191,191,0.02163889817893505
+V5_GEPC_first,Grains and grain-based products,15,191,191,0.0278818067163229
+V5_GEPC_first,Grains and grain-based products,16,191,191,0.016918275505304337
+V5_GEPC_first,Grains and grain-based products,17,191,191,0.016360796988010406
+V5_GEPC_first,Grains and grain-based products,18,191,191,0.021378355100750923
+V5_GEPC_first,Grains and grain-based products,19,191,191,0.018985921517014503
+V5_GEPC_first,Vegetables and vegetable products,0,191,191,0.05930723994970322
+V5_GEPC_first,Vegetables and vegetable products,1,191,191,0.05681266635656357
+V5_GEPC_first,Vegetables and vegetable products,2,191,191,0.060113176703453064
+V5_GEPC_first,Vegetables and vegetable products,3,191,191,0.06855444610118866
+V5_GEPC_first,Vegetables and vegetable products,4,191,191,0.05900627747178078
+V5_GEPC_first,Vegetables and vegetable products,5,191,191,0.060633644461631775
+V5_GEPC_first,Vegetables and vegetable products,6,191,191,0.05645168945193291
+V5_GEPC_first,Vegetables and vegetable products,7,191,191,0.05649442970752716
+V5_GEPC_first,Vegetables and vegetable products,8,191,191,0.05668140947818756
+V5_GEPC_first,Vegetables and vegetable products,9,191,191,0.053632885217666626
+V5_GEPC_first,Vegetables and vegetable products,10,191,191,0.056614950299263
+V5_GEPC_first,Vegetables and vegetable products,11,191,191,0.05400293320417404
+V5_GEPC_first,Vegetables and vegetable products,12,191,191,0.05114078149199486
+V5_GEPC_first,Vegetables and vegetable products,13,191,191,0.048130735754966736
+V5_GEPC_first,Vegetables and vegetable products,14,191,191,0.056725770235061646
+V5_GEPC_first,Vegetables and vegetable products,15,191,191,0.056289564818143845
+V5_GEPC_first,Vegetables and vegetable products,16,191,191,0.056048378348350525
+V5_GEPC_first,Vegetables and vegetable products,17,191,191,0.0577448308467865
+V5_GEPC_first,Vegetables and vegetable products,18,191,191,0.06277671456336975
+V5_GEPC_first,Vegetables and vegetable products,19,191,191,0.05746373161673546
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",0,191,191,0.04110937565565109
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",1,191,191,0.03869978338479996
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",2,191,191,0.04511186107993126
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",3,191,191,0.04397916421294212
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",4,191,191,0.045403894037008286
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",5,191,191,0.05351067706942558
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",6,191,191,0.04643506184220314
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",7,191,191,0.05018237233161926
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",8,191,191,0.04240518808364868
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",9,191,191,0.040172137320041656
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",10,191,191,0.051522091031074524
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",11,191,191,0.04068929702043533
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",12,191,191,0.04247506707906723
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",13,191,191,0.040757063776254654
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",14,191,191,0.054287444800138474
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",15,191,191,0.04315798729658127
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",16,191,191,0.04024515673518181
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",17,191,191,0.046863704919815063
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",18,191,191,0.04404442384839058
+V5_GEPC_first,"Legumes, nuts, oilseeds and spices",19,191,191,0.04127104952931404
+V5_GEPC_first,Fruit and fruit products,0,191,191,0.12280882894992828
+V5_GEPC_first,Fruit and fruit products,1,191,191,0.10608182102441788
+V5_GEPC_first,Fruit and fruit products,2,191,191,0.11134063452482224
+V5_GEPC_first,Fruit and fruit products,3,191,191,0.11628855019807816
+V5_GEPC_first,Fruit and fruit products,4,191,191,0.1095237135887146
+V5_GEPC_first,Fruit and fruit products,5,191,191,0.10818170011043549
+V5_GEPC_first,Fruit and fruit products,6,191,191,0.0975193977355957
+V5_GEPC_first,Fruit and fruit products,7,191,191,0.12393441796302795
+V5_GEPC_first,Fruit and fruit products,8,191,191,0.11951000243425369
+V5_GEPC_first,Fruit and fruit products,9,191,191,0.12016202509403229
+V5_GEPC_first,Fruit and fruit products,10,191,191,0.11357022076845169
+V5_GEPC_first,Fruit and fruit products,11,191,191,0.11338701099157333
+V5_GEPC_first,Fruit and fruit products,12,191,191,0.12668417394161224
+V5_GEPC_first,Fruit and fruit products,13,191,191,0.10383164882659912
+V5_GEPC_first,Fruit and fruit products,14,191,191,0.11802386492490768
+V5_GEPC_first,Fruit and fruit products,15,191,191,0.1144494041800499
+V5_GEPC_first,Fruit and fruit products,16,191,191,0.1186385229229927
+V5_GEPC_first,Fruit and fruit products,17,191,191,0.11776770651340485
+V5_GEPC_first,Fruit and fruit products,18,191,191,0.10278141498565674
+V5_GEPC_first,Fruit and fruit products,19,191,191,0.11267268657684326
+V5_GEPC_first,Meat and meat products,0,191,191,0.19227969646453857
+V5_GEPC_first,Meat and meat products,1,191,191,0.18227118253707886
+V5_GEPC_first,Meat and meat products,2,191,191,0.1798572987318039
+V5_GEPC_first,Meat and meat products,3,191,191,0.16674330830574036
+V5_GEPC_first,Meat and meat products,4,191,191,0.18442459404468536
+V5_GEPC_first,Meat and meat products,5,191,191,0.21115641295909882
+V5_GEPC_first,Meat and meat products,6,191,191,0.179862841963768
+V5_GEPC_first,Meat and meat products,7,191,191,0.1796109825372696
+V5_GEPC_first,Meat and meat products,8,191,191,0.2107197791337967
+V5_GEPC_first,Meat and meat products,9,191,191,0.17840835452079773
+V5_GEPC_first,Meat and meat products,10,191,191,0.2087743878364563
+V5_GEPC_first,Meat and meat products,11,191,191,0.158173605799675
+V5_GEPC_first,Meat and meat products,12,191,191,0.18396809697151184
+V5_GEPC_first,Meat and meat products,13,191,191,0.15924447774887085
+V5_GEPC_first,Meat and meat products,14,191,191,0.19592873752117157
+V5_GEPC_first,Meat and meat products,15,191,191,0.18334954977035522
+V5_GEPC_first,Meat and meat products,16,191,191,0.16219185292720795
+V5_GEPC_first,Meat and meat products,17,191,191,0.2048051506280899
+V5_GEPC_first,Meat and meat products,18,191,191,0.19372007250785828
+V5_GEPC_first,Meat and meat products,19,191,191,0.17716091871261597
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.11901749670505524
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.09685023874044418
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.1092401072382927
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.09436530619859695
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.10570104420185089
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.10793064534664154
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.10919342935085297
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.10445573925971985
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.11140996962785721
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.09046219289302826
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.10217941552400589
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.10348942130804062
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.08904080837965012
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.09655216336250305
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.10645019263029099
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.09146763384342194
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.10975576192140579
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.11852236092090607
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.09721784293651581
+V5_GEPC_first,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.09376270323991776
+V5_GEPC_first,Milk and dairy products,0,191,191,0.1150587797164917
+V5_GEPC_first,Milk and dairy products,1,191,191,0.11640763282775879
+V5_GEPC_first,Milk and dairy products,2,191,191,0.1264621466398239
+V5_GEPC_first,Milk and dairy products,3,191,191,0.09949100017547607
+V5_GEPC_first,Milk and dairy products,4,191,191,0.10724823921918869
+V5_GEPC_first,Milk and dairy products,5,191,191,0.10821972787380219
+V5_GEPC_first,Milk and dairy products,6,191,191,0.12621279060840607
+V5_GEPC_first,Milk and dairy products,7,191,191,0.08841083198785782
+V5_GEPC_first,Milk and dairy products,8,191,191,0.10161984711885452
+V5_GEPC_first,Milk and dairy products,9,191,191,0.12353198975324631
+V5_GEPC_first,Milk and dairy products,10,191,191,0.12053508311510086
+V5_GEPC_first,Milk and dairy products,11,191,191,0.12516875565052032
+V5_GEPC_first,Milk and dairy products,12,191,191,0.11117849498987198
+V5_GEPC_first,Milk and dairy products,13,191,191,0.12171921879053116
+V5_GEPC_first,Milk and dairy products,14,191,191,0.0864652544260025
+V5_GEPC_first,Milk and dairy products,15,191,191,0.09913541376590729
+V5_GEPC_first,Milk and dairy products,16,191,191,0.09825295209884644
+V5_GEPC_first,Milk and dairy products,17,191,191,0.11129897832870483
+V5_GEPC_first,Milk and dairy products,18,191,191,0.10961426794528961
+V5_GEPC_first,Milk and dairy products,19,191,191,0.11825183779001236
+V5_GEPC_first,Animal and vegetable fats and oils,0,191,191,0.16877980530261993
+V5_GEPC_first,Animal and vegetable fats and oils,1,191,191,0.18271230161190033
+V5_GEPC_first,Animal and vegetable fats and oils,2,191,191,0.18962480127811432
+V5_GEPC_first,Animal and vegetable fats and oils,3,191,191,0.17319734394550323
+V5_GEPC_first,Animal and vegetable fats and oils,4,191,191,0.20050570368766785
+V5_GEPC_first,Animal and vegetable fats and oils,5,191,191,0.1857457160949707
+V5_GEPC_first,Animal and vegetable fats and oils,6,191,191,0.18837827444076538
+V5_GEPC_first,Animal and vegetable fats and oils,7,191,191,0.17701146006584167
+V5_GEPC_first,Animal and vegetable fats and oils,8,191,191,0.20254728198051453
+V5_GEPC_first,Animal and vegetable fats and oils,9,191,191,0.1878751814365387
+V5_GEPC_first,Animal and vegetable fats and oils,10,191,191,0.16921162605285645
+V5_GEPC_first,Animal and vegetable fats and oils,11,191,191,0.18715962767601013
+V5_GEPC_first,Animal and vegetable fats and oils,12,191,191,0.16367025673389435
+V5_GEPC_first,Animal and vegetable fats and oils,13,191,191,0.17678077518939972
+V5_GEPC_first,Animal and vegetable fats and oils,14,191,191,0.20005755126476288
+V5_GEPC_first,Animal and vegetable fats and oils,15,191,191,0.2060292810201645
+V5_GEPC_first,Animal and vegetable fats and oils,16,191,191,0.19591565430164337
+V5_GEPC_first,Animal and vegetable fats and oils,17,191,191,0.19762392342090607
+V5_GEPC_first,Animal and vegetable fats and oils,18,191,191,0.19501996040344238
+V5_GEPC_first,Animal and vegetable fats and oils,19,191,191,0.18918004631996155
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.03220640495419502
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.038368694484233856
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.04128764569759369
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.039521556347608566
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.03502287343144417
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.030675387009978294
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.034684695303440094
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.030428774654865265
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.04990338906645775
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.0356844998896122
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.027005420997738838
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.030733518302440643
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.030582178384065628
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.02959512546658516
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.03766769543290138
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.04325417801737785
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.035269349813461304
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.034660495817661285
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.04057348519563675
+V5_GEPC_first,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.03510254994034767
+V5_GEPC_second,Grains and grain-based products,0,191,191,0.014306852594017982
+V5_GEPC_second,Grains and grain-based products,1,191,191,0.019767027348279953
+V5_GEPC_second,Grains and grain-based products,2,191,191,0.017459480091929436
+V5_GEPC_second,Grains and grain-based products,3,191,191,0.01823030784726143
+V5_GEPC_second,Grains and grain-based products,4,191,191,0.013153809122741222
+V5_GEPC_second,Grains and grain-based products,5,191,191,0.012042486108839512
+V5_GEPC_second,Grains and grain-based products,6,191,191,0.015000972896814346
+V5_GEPC_second,Grains and grain-based products,7,191,191,0.017514094710350037
+V5_GEPC_second,Grains and grain-based products,8,191,191,0.011777019128203392
+V5_GEPC_second,Grains and grain-based products,9,191,191,0.016925057396292686
+V5_GEPC_second,Grains and grain-based products,10,191,191,0.013588945381343365
+V5_GEPC_second,Grains and grain-based products,11,191,191,0.015749963000416756
+V5_GEPC_second,Grains and grain-based products,12,191,191,0.02044217847287655
+V5_GEPC_second,Grains and grain-based products,13,191,191,0.015402899123728275
+V5_GEPC_second,Grains and grain-based products,14,191,191,0.010682398453354836
+V5_GEPC_second,Grains and grain-based products,15,191,191,0.011986744590103626
+V5_GEPC_second,Grains and grain-based products,16,191,191,0.015263712033629417
+V5_GEPC_second,Grains and grain-based products,17,191,191,0.010804601013660431
+V5_GEPC_second,Grains and grain-based products,18,191,191,0.011369001120328903
+V5_GEPC_second,Grains and grain-based products,19,191,191,0.01820335164666176
+V5_GEPC_second,Vegetables and vegetable products,0,191,191,0.08395788818597794
+V5_GEPC_second,Vegetables and vegetable products,1,191,191,0.07445785403251648
+V5_GEPC_second,Vegetables and vegetable products,2,191,191,0.08595281839370728
+V5_GEPC_second,Vegetables and vegetable products,3,191,191,0.08415733277797699
+V5_GEPC_second,Vegetables and vegetable products,4,191,191,0.07496935874223709
+V5_GEPC_second,Vegetables and vegetable products,5,191,191,0.08805765211582184
+V5_GEPC_second,Vegetables and vegetable products,6,191,191,0.0795593336224556
+V5_GEPC_second,Vegetables and vegetable products,7,191,191,0.08368680626153946
+V5_GEPC_second,Vegetables and vegetable products,8,191,191,0.07680895179510117
+V5_GEPC_second,Vegetables and vegetable products,9,191,191,0.07355386763811111
+V5_GEPC_second,Vegetables and vegetable products,10,191,191,0.07852502167224884
+V5_GEPC_second,Vegetables and vegetable products,11,191,191,0.06964996457099915
+V5_GEPC_second,Vegetables and vegetable products,12,191,191,0.08167379349470139
+V5_GEPC_second,Vegetables and vegetable products,13,191,191,0.08346933871507645
+V5_GEPC_second,Vegetables and vegetable products,14,191,191,0.07452522218227386
+V5_GEPC_second,Vegetables and vegetable products,15,191,191,0.07638081163167953
+V5_GEPC_second,Vegetables and vegetable products,16,191,191,0.08679135143756866
+V5_GEPC_second,Vegetables and vegetable products,17,191,191,0.05885406956076622
+V5_GEPC_second,Vegetables and vegetable products,18,191,191,0.08941539376974106
+V5_GEPC_second,Vegetables and vegetable products,19,191,191,0.08490803092718124
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",0,191,191,0.036169640719890594
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",1,191,191,0.03339977189898491
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",2,191,191,0.04121214151382446
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",3,191,191,0.03993728384375572
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",4,191,191,0.03933373838663101
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",5,191,191,0.04749500751495361
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",6,191,191,0.042895425111055374
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",7,191,191,0.04241656884551048
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",8,191,191,0.03681033104658127
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",9,191,191,0.039275746792554855
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",10,191,191,0.03736164793372154
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",11,191,191,0.03807138651609421
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",12,191,191,0.04072338715195656
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",13,191,191,0.030633339658379555
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",14,191,191,0.04353930801153183
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",15,191,191,0.03593777120113373
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",16,191,191,0.03427227959036827
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",17,191,191,0.050063878297805786
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",18,191,191,0.04351980984210968
+V5_GEPC_second,"Legumes, nuts, oilseeds and spices",19,191,191,0.04637698829174042
+V5_GEPC_second,Fruit and fruit products,0,191,191,0.10312464833259583
+V5_GEPC_second,Fruit and fruit products,1,191,191,0.09755534678697586
+V5_GEPC_second,Fruit and fruit products,2,191,191,0.09225548058748245
+V5_GEPC_second,Fruit and fruit products,3,191,191,0.08650266379117966
+V5_GEPC_second,Fruit and fruit products,4,191,191,0.0914490595459938
+V5_GEPC_second,Fruit and fruit products,5,191,191,0.09583806991577148
+V5_GEPC_second,Fruit and fruit products,6,191,191,0.09033742547035217
+V5_GEPC_second,Fruit and fruit products,7,191,191,0.08520040661096573
+V5_GEPC_second,Fruit and fruit products,8,191,191,0.08534572273492813
+V5_GEPC_second,Fruit and fruit products,9,191,191,0.10237839818000793
+V5_GEPC_second,Fruit and fruit products,10,191,191,0.10837668925523758
+V5_GEPC_second,Fruit and fruit products,11,191,191,0.08865532279014587
+V5_GEPC_second,Fruit and fruit products,12,191,191,0.10526668280363083
+V5_GEPC_second,Fruit and fruit products,13,191,191,0.10247335582971573
+V5_GEPC_second,Fruit and fruit products,14,191,191,0.10155928134918213
+V5_GEPC_second,Fruit and fruit products,15,191,191,0.08614704757928848
+V5_GEPC_second,Fruit and fruit products,16,191,191,0.09993062913417816
+V5_GEPC_second,Fruit and fruit products,17,191,191,0.09039586037397385
+V5_GEPC_second,Fruit and fruit products,18,191,191,0.09241996705532074
+V5_GEPC_second,Fruit and fruit products,19,191,191,0.09103493392467499
+V5_GEPC_second,Meat and meat products,0,191,191,0.12429329007863998
+V5_GEPC_second,Meat and meat products,1,191,191,0.11593669652938843
+V5_GEPC_second,Meat and meat products,2,191,191,0.12869206070899963
+V5_GEPC_second,Meat and meat products,3,191,191,0.12859225273132324
+V5_GEPC_second,Meat and meat products,4,191,191,0.11809693276882172
+V5_GEPC_second,Meat and meat products,5,191,191,0.16499702632427216
+V5_GEPC_second,Meat and meat products,6,191,191,0.12100198864936829
+V5_GEPC_second,Meat and meat products,7,191,191,0.11818481236696243
+V5_GEPC_second,Meat and meat products,8,191,191,0.13000458478927612
+V5_GEPC_second,Meat and meat products,9,191,191,0.11960997432470322
+V5_GEPC_second,Meat and meat products,10,191,191,0.13518725335597992
+V5_GEPC_second,Meat and meat products,11,191,191,0.11732810735702515
+V5_GEPC_second,Meat and meat products,12,191,191,0.13150280714035034
+V5_GEPC_second,Meat and meat products,13,191,191,0.1189398318529129
+V5_GEPC_second,Meat and meat products,14,191,191,0.11753992736339569
+V5_GEPC_second,Meat and meat products,15,191,191,0.13330449163913727
+V5_GEPC_second,Meat and meat products,16,191,191,0.13998259603977203
+V5_GEPC_second,Meat and meat products,17,191,191,0.14276866614818573
+V5_GEPC_second,Meat and meat products,18,191,191,0.13645197451114655
+V5_GEPC_second,Meat and meat products,19,191,191,0.12054665386676788
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.06324794888496399
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.0625133216381073
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.06256207078695297
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.05326614901423454
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.05872202664613724
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.06202966347336769
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.06008031219244003
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.05630050227046013
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.06151000037789345
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.05584040656685829
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.06482993811368942
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.05968383327126503
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.05546056479215622
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.054083604365587234
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.05506531149148941
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.05994240939617157
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.06714799255132675
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.07332978397607803
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.05849887803196907
+V5_GEPC_second,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.056795042008161545
+V5_GEPC_second,Milk and dairy products,0,191,191,0.08280833065509796
+V5_GEPC_second,Milk and dairy products,1,191,191,0.085505411028862
+V5_GEPC_second,Milk and dairy products,2,191,191,0.09727852791547775
+V5_GEPC_second,Milk and dairy products,3,191,191,0.07157895714044571
+V5_GEPC_second,Milk and dairy products,4,191,191,0.08641355484724045
+V5_GEPC_second,Milk and dairy products,5,191,191,0.07837172597646713
+V5_GEPC_second,Milk and dairy products,6,191,191,0.08787412941455841
+V5_GEPC_second,Milk and dairy products,7,191,191,0.07372793555259705
+V5_GEPC_second,Milk and dairy products,8,191,191,0.07970505207777023
+V5_GEPC_second,Milk and dairy products,9,191,191,0.09365280717611313
+V5_GEPC_second,Milk and dairy products,10,191,191,0.0782642662525177
+V5_GEPC_second,Milk and dairy products,11,191,191,0.09163134545087814
+V5_GEPC_second,Milk and dairy products,12,191,191,0.091256283223629
+V5_GEPC_second,Milk and dairy products,13,191,191,0.07979974150657654
+V5_GEPC_second,Milk and dairy products,14,191,191,0.07802299410104752
+V5_GEPC_second,Milk and dairy products,15,191,191,0.07937955856323242
+V5_GEPC_second,Milk and dairy products,16,191,191,0.08094730973243713
+V5_GEPC_second,Milk and dairy products,17,191,191,0.07727519422769547
+V5_GEPC_second,Milk and dairy products,18,191,191,0.08184164017438889
+V5_GEPC_second,Milk and dairy products,19,191,191,0.08370037376880646
+V5_GEPC_second,Animal and vegetable fats and oils,0,191,191,0.09931305795907974
+V5_GEPC_second,Animal and vegetable fats and oils,1,191,191,0.12302393466234207
+V5_GEPC_second,Animal and vegetable fats and oils,2,191,191,0.13383400440216064
+V5_GEPC_second,Animal and vegetable fats and oils,3,191,191,0.12959067523479462
+V5_GEPC_second,Animal and vegetable fats and oils,4,191,191,0.1405789703130722
+V5_GEPC_second,Animal and vegetable fats and oils,5,191,191,0.12317018210887909
+V5_GEPC_second,Animal and vegetable fats and oils,6,191,191,0.12362668663263321
+V5_GEPC_second,Animal and vegetable fats and oils,7,191,191,0.11082012951374054
+V5_GEPC_second,Animal and vegetable fats and oils,8,191,191,0.13515453040599823
+V5_GEPC_second,Animal and vegetable fats and oils,9,191,191,0.10842050611972809
+V5_GEPC_second,Animal and vegetable fats and oils,10,191,191,0.11944177746772766
+V5_GEPC_second,Animal and vegetable fats and oils,11,191,191,0.12479039281606674
+V5_GEPC_second,Animal and vegetable fats and oils,12,191,191,0.12097563594579697
+V5_GEPC_second,Animal and vegetable fats and oils,13,191,191,0.12323350459337234
+V5_GEPC_second,Animal and vegetable fats and oils,14,191,191,0.12471083551645279
+V5_GEPC_second,Animal and vegetable fats and oils,15,191,191,0.12175644934177399
+V5_GEPC_second,Animal and vegetable fats and oils,16,191,191,0.12409520894289017
+V5_GEPC_second,Animal and vegetable fats and oils,17,191,191,0.12759718298912048
+V5_GEPC_second,Animal and vegetable fats and oils,18,191,191,0.1310972273349762
+V5_GEPC_second,Animal and vegetable fats and oils,19,191,191,0.1184026300907135
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.015547193586826324
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.014509480446577072
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.014509186148643494
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.016239436343312263
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.009572615846991539
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.01148146204650402
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.014685736037790775
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.01062491163611412
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.01525165792554617
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.01355100329965353
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.011944792233407497
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.012560045346617699
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.014611409977078438
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.01704963482916355
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.013165902346372604
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.009880646131932735
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.012264431454241276
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.01042392197996378
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.024632005020976067
+V5_GEPC_second,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.01781058870255947
+Raw_values_mask,Grains and grain-based products,0,191,191,0.036198630928993225
+Raw_values_mask,Grains and grain-based products,1,191,191,0.03242256119847298
+Raw_values_mask,Grains and grain-based products,2,191,191,0.03418630734086037
+Raw_values_mask,Grains and grain-based products,3,191,191,0.03678760305047035
+Raw_values_mask,Grains and grain-based products,4,191,191,0.03516383841633797
+Raw_values_mask,Grains and grain-based products,5,191,191,0.03328215330839157
+Raw_values_mask,Grains and grain-based products,6,191,191,0.032185353338718414
+Raw_values_mask,Grains and grain-based products,7,191,191,0.037614718079566956
+Raw_values_mask,Grains and grain-based products,8,191,191,0.034106768667697906
+Raw_values_mask,Grains and grain-based products,9,191,191,0.03388717398047447
+Raw_values_mask,Grains and grain-based products,10,191,191,0.03270704299211502
+Raw_values_mask,Grains and grain-based products,11,191,191,0.03526931628584862
+Raw_values_mask,Grains and grain-based products,12,191,191,0.03658987581729889
+Raw_values_mask,Grains and grain-based products,13,191,191,0.03452472761273384
+Raw_values_mask,Grains and grain-based products,14,191,191,0.04143458604812622
+Raw_values_mask,Grains and grain-based products,15,191,191,0.04028554633259773
+Raw_values_mask,Grains and grain-based products,16,191,191,0.035408467054367065
+Raw_values_mask,Grains and grain-based products,17,191,191,0.03178468719124794
+Raw_values_mask,Grains and grain-based products,18,191,191,0.03818174824118614
+Raw_values_mask,Grains and grain-based products,19,191,191,0.033499471843242645
+Raw_values_mask,Vegetables and vegetable products,0,191,191,0.05564703792333603
+Raw_values_mask,Vegetables and vegetable products,1,191,191,0.06129178777337074
+Raw_values_mask,Vegetables and vegetable products,2,191,191,0.05139264464378357
+Raw_values_mask,Vegetables and vegetable products,3,191,191,0.06507593393325806
+Raw_values_mask,Vegetables and vegetable products,4,191,191,0.06327638030052185
+Raw_values_mask,Vegetables and vegetable products,5,191,191,0.06600981205701828
+Raw_values_mask,Vegetables and vegetable products,6,191,191,0.06098151206970215
+Raw_values_mask,Vegetables and vegetable products,7,191,191,0.0649549588561058
+Raw_values_mask,Vegetables and vegetable products,8,191,191,0.05928735062479973
+Raw_values_mask,Vegetables and vegetable products,9,191,191,0.05883404612541199
+Raw_values_mask,Vegetables and vegetable products,10,191,191,0.05954255536198616
+Raw_values_mask,Vegetables and vegetable products,11,191,191,0.05960359051823616
+Raw_values_mask,Vegetables and vegetable products,12,191,191,0.05514143034815788
+Raw_values_mask,Vegetables and vegetable products,13,191,191,0.059429917484521866
+Raw_values_mask,Vegetables and vegetable products,14,191,191,0.057961300015449524
+Raw_values_mask,Vegetables and vegetable products,15,191,191,0.06308475136756897
+Raw_values_mask,Vegetables and vegetable products,16,191,191,0.06201287731528282
+Raw_values_mask,Vegetables and vegetable products,17,191,191,0.0556965135037899
+Raw_values_mask,Vegetables and vegetable products,18,191,191,0.06995684653520584
+Raw_values_mask,Vegetables and vegetable products,19,191,191,0.061831649392843246
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",0,191,191,0.0613541342318058
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",1,191,191,0.05869997292757034
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",2,191,191,0.06231197714805603
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",3,191,191,0.06229512393474579
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",4,191,191,0.07132105529308319
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",5,191,191,0.06555160135030746
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",6,191,191,0.07009609788656235
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",7,191,191,0.05897574499249458
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",8,191,191,0.06343788653612137
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",9,191,191,0.07041671872138977
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",10,191,191,0.06893331557512283
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",11,191,191,0.05685696005821228
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",12,191,191,0.061247095465660095
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",13,191,191,0.05797762796282768
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",14,191,191,0.06597144901752472
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",15,191,191,0.05727172642946243
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",16,191,191,0.05570458993315697
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",17,191,191,0.06383591145277023
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",18,191,191,0.07156457751989365
+Raw_values_mask,"Legumes, nuts, oilseeds and spices",19,191,191,0.06443226337432861
+Raw_values_mask,Fruit and fruit products,0,191,191,0.09139914810657501
+Raw_values_mask,Fruit and fruit products,1,191,191,0.07575751096010208
+Raw_values_mask,Fruit and fruit products,2,191,191,0.0754924789071083
+Raw_values_mask,Fruit and fruit products,3,191,191,0.0853024423122406
+Raw_values_mask,Fruit and fruit products,4,191,191,0.07443159073591232
+Raw_values_mask,Fruit and fruit products,5,191,191,0.08148091286420822
+Raw_values_mask,Fruit and fruit products,6,191,191,0.06866809725761414
+Raw_values_mask,Fruit and fruit products,7,191,191,0.0775812566280365
+Raw_values_mask,Fruit and fruit products,8,191,191,0.08865810185670853
+Raw_values_mask,Fruit and fruit products,9,191,191,0.0949944481253624
+Raw_values_mask,Fruit and fruit products,10,191,191,0.08312574028968811
+Raw_values_mask,Fruit and fruit products,11,191,191,0.07973329722881317
+Raw_values_mask,Fruit and fruit products,12,191,191,0.08788596838712692
+Raw_values_mask,Fruit and fruit products,13,191,191,0.0822644829750061
+Raw_values_mask,Fruit and fruit products,14,191,191,0.07685704529285431
+Raw_values_mask,Fruit and fruit products,15,191,191,0.08131904155015945
+Raw_values_mask,Fruit and fruit products,16,191,191,0.08758658915758133
+Raw_values_mask,Fruit and fruit products,17,191,191,0.08062056452035904
+Raw_values_mask,Fruit and fruit products,18,191,191,0.0845639556646347
+Raw_values_mask,Fruit and fruit products,19,191,191,0.08066261559724808
+Raw_values_mask,Meat and meat products,0,191,191,0.14735834300518036
+Raw_values_mask,Meat and meat products,1,191,191,0.15158528089523315
+Raw_values_mask,Meat and meat products,2,191,191,0.15370915830135345
+Raw_values_mask,Meat and meat products,3,191,191,0.15113237500190735
+Raw_values_mask,Meat and meat products,4,191,191,0.15673978626728058
+Raw_values_mask,Meat and meat products,5,191,191,0.17187882959842682
+Raw_values_mask,Meat and meat products,6,191,191,0.15286695957183838
+Raw_values_mask,Meat and meat products,7,191,191,0.16183815896511078
+Raw_values_mask,Meat and meat products,8,191,191,0.14937078952789307
+Raw_values_mask,Meat and meat products,9,191,191,0.15247352421283722
+Raw_values_mask,Meat and meat products,10,191,191,0.15918152034282684
+Raw_values_mask,Meat and meat products,11,191,191,0.1617586612701416
+Raw_values_mask,Meat and meat products,12,191,191,0.1505325734615326
+Raw_values_mask,Meat and meat products,13,191,191,0.1487588882446289
+Raw_values_mask,Meat and meat products,14,191,191,0.15613560378551483
+Raw_values_mask,Meat and meat products,15,191,191,0.15609924495220184
+Raw_values_mask,Meat and meat products,16,191,191,0.1587463915348053
+Raw_values_mask,Meat and meat products,17,191,191,0.15453451871871948
+Raw_values_mask,Meat and meat products,18,191,191,0.15990221500396729
+Raw_values_mask,Meat and meat products,19,191,191,0.14698439836502075
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.10826516151428223
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.10750474780797958
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.11099407076835632
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.1076151430606842
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.103214792907238
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.10947034507989883
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.11001008003950119
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.10736400634050369
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.10877353698015213
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.1130065843462944
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.10980506241321564
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.10889250040054321
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.10968760401010513
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.11192601174116135
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.1058192029595375
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.10640590637922287
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.10912364721298218
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.11855942010879517
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.10555233061313629
+Raw_values_mask,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.10903391242027283
+Raw_values_mask,Milk and dairy products,0,191,191,0.08350947499275208
+Raw_values_mask,Milk and dairy products,1,191,191,0.08458293974399567
+Raw_values_mask,Milk and dairy products,2,191,191,0.08839325606822968
+Raw_values_mask,Milk and dairy products,3,191,191,0.08821030706167221
+Raw_values_mask,Milk and dairy products,4,191,191,0.08451655507087708
+Raw_values_mask,Milk and dairy products,5,191,191,0.08878608047962189
+Raw_values_mask,Milk and dairy products,6,191,191,0.08916713297367096
+Raw_values_mask,Milk and dairy products,7,191,191,0.08358215540647507
+Raw_values_mask,Milk and dairy products,8,191,191,0.0849442183971405
+Raw_values_mask,Milk and dairy products,9,191,191,0.08870746940374374
+Raw_values_mask,Milk and dairy products,10,191,191,0.09111720323562622
+Raw_values_mask,Milk and dairy products,11,191,191,0.08747062087059021
+Raw_values_mask,Milk and dairy products,12,191,191,0.08388513326644897
+Raw_values_mask,Milk and dairy products,13,191,191,0.08483053743839264
+Raw_values_mask,Milk and dairy products,14,191,191,0.07968226820230484
+Raw_values_mask,Milk and dairy products,15,191,191,0.08726149797439575
+Raw_values_mask,Milk and dairy products,16,191,191,0.08268072456121445
+Raw_values_mask,Milk and dairy products,17,191,191,0.09157773852348328
+Raw_values_mask,Milk and dairy products,18,191,191,0.09131606668233871
+Raw_values_mask,Milk and dairy products,19,191,191,0.09026338905096054
+Raw_values_mask,Animal and vegetable fats and oils,0,191,191,0.08069302886724472
+Raw_values_mask,Animal and vegetable fats and oils,1,191,191,0.0769658088684082
+Raw_values_mask,Animal and vegetable fats and oils,2,191,191,0.08377218246459961
+Raw_values_mask,Animal and vegetable fats and oils,3,191,191,0.08013084530830383
+Raw_values_mask,Animal and vegetable fats and oils,4,191,191,0.09143318980932236
+Raw_values_mask,Animal and vegetable fats and oils,5,191,191,0.08768460154533386
+Raw_values_mask,Animal and vegetable fats and oils,6,191,191,0.0868130698800087
+Raw_values_mask,Animal and vegetable fats and oils,7,191,191,0.09538885205984116
+Raw_values_mask,Animal and vegetable fats and oils,8,191,191,0.08784708380699158
+Raw_values_mask,Animal and vegetable fats and oils,9,191,191,0.08367211371660233
+Raw_values_mask,Animal and vegetable fats and oils,10,191,191,0.08183752745389938
+Raw_values_mask,Animal and vegetable fats and oils,11,191,191,0.08724634349346161
+Raw_values_mask,Animal and vegetable fats and oils,12,191,191,0.08897683769464493
+Raw_values_mask,Animal and vegetable fats and oils,13,191,191,0.08346526324748993
+Raw_values_mask,Animal and vegetable fats and oils,14,191,191,0.08812429755926132
+Raw_values_mask,Animal and vegetable fats and oils,15,191,191,0.08994480967521667
+Raw_values_mask,Animal and vegetable fats and oils,16,191,191,0.09316255897283554
+Raw_values_mask,Animal and vegetable fats and oils,17,191,191,0.09671897441148758
+Raw_values_mask,Animal and vegetable fats and oils,18,191,191,0.08431267738342285
+Raw_values_mask,Animal and vegetable fats and oils,19,191,191,0.0839272141456604
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.04199874401092529
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.04712976515293121
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.04614821448922157
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.05107543244957924
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.043239664286375046
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.04204646125435829
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.0422222875058651
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.04062742367386818
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.050719380378723145
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.04380503296852112
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.0389196015894413
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.04423139616847038
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.04026072472333908
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.04227745160460472
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.0508187934756279
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.04783175140619278
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.03916306793689728
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.04042654484510422
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.04593366011977196
+Raw_values_mask,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.04636826366186142
+PCA192,Grains and grain-based products,0,191,191,0.0358414463698864
+PCA192,Grains and grain-based products,1,191,191,0.032833702862262726
+PCA192,Grains and grain-based products,2,191,191,0.03386219963431358
+PCA192,Grains and grain-based products,3,191,191,0.03763798251748085
+PCA192,Grains and grain-based products,4,191,191,0.03463863208889961
+PCA192,Grains and grain-based products,5,191,191,0.03305943310260773
+PCA192,Grains and grain-based products,6,191,191,0.03150912746787071
+PCA192,Grains and grain-based products,7,191,191,0.036968499422073364
+PCA192,Grains and grain-based products,8,191,191,0.033824991434812546
+PCA192,Grains and grain-based products,9,191,191,0.03346828743815422
+PCA192,Grains and grain-based products,10,191,191,0.03370257094502449
+PCA192,Grains and grain-based products,11,191,191,0.034905560314655304
+PCA192,Grains and grain-based products,12,191,191,0.03689240664243698
+PCA192,Grains and grain-based products,13,191,191,0.03394903615117073
+PCA192,Grains and grain-based products,14,191,191,0.04115157946944237
+PCA192,Grains and grain-based products,15,191,191,0.040347978472709656
+PCA192,Grains and grain-based products,16,191,191,0.0356968492269516
+PCA192,Grains and grain-based products,17,191,191,0.031858108937740326
+PCA192,Grains and grain-based products,18,191,191,0.03814961761236191
+PCA192,Grains and grain-based products,19,191,191,0.03328733518719673
+PCA192,Vegetables and vegetable products,0,191,191,0.05784006789326668
+PCA192,Vegetables and vegetable products,1,191,191,0.06452172994613647
+PCA192,Vegetables and vegetable products,2,191,191,0.05396502837538719
+PCA192,Vegetables and vegetable products,3,191,191,0.06740882992744446
+PCA192,Vegetables and vegetable products,4,191,191,0.06504033505916595
+PCA192,Vegetables and vegetable products,5,191,191,0.06984714418649673
+PCA192,Vegetables and vegetable products,6,191,191,0.0649232417345047
+PCA192,Vegetables and vegetable products,7,191,191,0.06844815611839294
+PCA192,Vegetables and vegetable products,8,191,191,0.062258925288915634
+PCA192,Vegetables and vegetable products,9,191,191,0.06121189147233963
+PCA192,Vegetables and vegetable products,10,191,191,0.062082014977931976
+PCA192,Vegetables and vegetable products,11,191,191,0.06283200532197952
+PCA192,Vegetables and vegetable products,12,191,191,0.05780563876032829
+PCA192,Vegetables and vegetable products,13,191,191,0.06270544230937958
+PCA192,Vegetables and vegetable products,14,191,191,0.06110905483365059
+PCA192,Vegetables and vegetable products,15,191,191,0.06668028235435486
+PCA192,Vegetables and vegetable products,16,191,191,0.065682552754879
+PCA192,Vegetables and vegetable products,17,191,191,0.0580124668776989
+PCA192,Vegetables and vegetable products,18,191,191,0.07230667024850845
+PCA192,Vegetables and vegetable products,19,191,191,0.06455978006124496
+PCA192,"Legumes, nuts, oilseeds and spices",0,191,191,0.06042913720011711
+PCA192,"Legumes, nuts, oilseeds and spices",1,191,191,0.05503257364034653
+PCA192,"Legumes, nuts, oilseeds and spices",2,191,191,0.05892582982778549
+PCA192,"Legumes, nuts, oilseeds and spices",3,191,191,0.058402325958013535
+PCA192,"Legumes, nuts, oilseeds and spices",4,191,191,0.06730378419160843
+PCA192,"Legumes, nuts, oilseeds and spices",5,191,191,0.06293288618326187
+PCA192,"Legumes, nuts, oilseeds and spices",6,191,191,0.06781670451164246
+PCA192,"Legumes, nuts, oilseeds and spices",7,191,191,0.05640960484743118
+PCA192,"Legumes, nuts, oilseeds and spices",8,191,191,0.060302335768938065
+PCA192,"Legumes, nuts, oilseeds and spices",9,191,191,0.06748737394809723
+PCA192,"Legumes, nuts, oilseeds and spices",10,191,191,0.06656980514526367
+PCA192,"Legumes, nuts, oilseeds and spices",11,191,191,0.053066179156303406
+PCA192,"Legumes, nuts, oilseeds and spices",12,191,191,0.05902954563498497
+PCA192,"Legumes, nuts, oilseeds and spices",13,191,191,0.05566749721765518
+PCA192,"Legumes, nuts, oilseeds and spices",14,191,191,0.0643027275800705
+PCA192,"Legumes, nuts, oilseeds and spices",15,191,191,0.055149633437395096
+PCA192,"Legumes, nuts, oilseeds and spices",16,191,191,0.053540464490652084
+PCA192,"Legumes, nuts, oilseeds and spices",17,191,191,0.06061306968331337
+PCA192,"Legumes, nuts, oilseeds and spices",18,191,191,0.06822118908166885
+PCA192,"Legumes, nuts, oilseeds and spices",19,191,191,0.06215604394674301
+PCA192,Fruit and fruit products,0,191,191,0.10410919785499573
+PCA192,Fruit and fruit products,1,191,191,0.08487178385257721
+PCA192,Fruit and fruit products,2,191,191,0.08707170188426971
+PCA192,Fruit and fruit products,3,191,191,0.09923776984214783
+PCA192,Fruit and fruit products,4,191,191,0.0844539999961853
+PCA192,Fruit and fruit products,5,191,191,0.09185788035392761
+PCA192,Fruit and fruit products,6,191,191,0.07905115932226181
+PCA192,Fruit and fruit products,7,191,191,0.0873657613992691
+PCA192,Fruit and fruit products,8,191,191,0.10004118829965591
+PCA192,Fruit and fruit products,9,191,191,0.10918428748846054
+PCA192,Fruit and fruit products,10,191,191,0.09274731576442719
+PCA192,Fruit and fruit products,11,191,191,0.08985273540019989
+PCA192,Fruit and fruit products,12,191,191,0.10043857246637344
+PCA192,Fruit and fruit products,13,191,191,0.09534190595149994
+PCA192,Fruit and fruit products,14,191,191,0.08699637651443481
+PCA192,Fruit and fruit products,15,191,191,0.09354949742555618
+PCA192,Fruit and fruit products,16,191,191,0.09946315735578537
+PCA192,Fruit and fruit products,17,191,191,0.09020405262708664
+PCA192,Fruit and fruit products,18,191,191,0.09493260830640793
+PCA192,Fruit and fruit products,19,191,191,0.09226194769144058
+PCA192,Meat and meat products,0,191,191,0.15886744856834412
+PCA192,Meat and meat products,1,191,191,0.16110192239284515
+PCA192,Meat and meat products,2,191,191,0.16253364086151123
+PCA192,Meat and meat products,3,191,191,0.15894675254821777
+PCA192,Meat and meat products,4,191,191,0.16616404056549072
+PCA192,Meat and meat products,5,191,191,0.18200260400772095
+PCA192,Meat and meat products,6,191,191,0.16239020228385925
+PCA192,Meat and meat products,7,191,191,0.1731090396642685
+PCA192,Meat and meat products,8,191,191,0.15926580131053925
+PCA192,Meat and meat products,9,191,191,0.16077420115470886
+PCA192,Meat and meat products,10,191,191,0.17019149661064148
+PCA192,Meat and meat products,11,191,191,0.17401674389839172
+PCA192,Meat and meat products,12,191,191,0.1591167449951172
+PCA192,Meat and meat products,13,191,191,0.15829060971736908
+PCA192,Meat and meat products,14,191,191,0.16606943309307098
+PCA192,Meat and meat products,15,191,191,0.1673470288515091
+PCA192,Meat and meat products,16,191,191,0.16961964964866638
+PCA192,Meat and meat products,17,191,191,0.16288764774799347
+PCA192,Meat and meat products,18,191,191,0.17128659784793854
+PCA192,Meat and meat products,19,191,191,0.15485529601573944
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.11323711276054382
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.11150844395160675
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.11569267511367798
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.11212064325809479
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.10855642706155777
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.1141326054930687
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.11428944021463394
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.11275188624858856
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.11348482966423035
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.11746678501367569
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.11569444835186005
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.11282290518283844
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.11576025187969208
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.11563923209905624
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.11073852330446243
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.11240214854478836
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.11421095579862595
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.12451782822608948
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.11152854561805725
+PCA192,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.11390361189842224
+PCA192,Milk and dairy products,0,191,191,0.09298747777938843
+PCA192,Milk and dairy products,1,191,191,0.09486489742994308
+PCA192,Milk and dairy products,2,191,191,0.09967473149299622
+PCA192,Milk and dairy products,3,191,191,0.09887345135211945
+PCA192,Milk and dairy products,4,191,191,0.09707369655370712
+PCA192,Milk and dairy products,5,191,191,0.09956815093755722
+PCA192,Milk and dairy products,6,191,191,0.10239727050065994
+PCA192,Milk and dairy products,7,191,191,0.09158571809530258
+PCA192,Milk and dairy products,8,191,191,0.09430448710918427
+PCA192,Milk and dairy products,9,191,191,0.09884555637836456
+PCA192,Milk and dairy products,10,191,191,0.10360175371170044
+PCA192,Milk and dairy products,11,191,191,0.0984024927020073
+PCA192,Milk and dairy products,12,191,191,0.09336290508508682
+PCA192,Milk and dairy products,13,191,191,0.09616725891828537
+PCA192,Milk and dairy products,14,191,191,0.08755908906459808
+PCA192,Milk and dairy products,15,191,191,0.09727194160223007
+PCA192,Milk and dairy products,16,191,191,0.09245672076940536
+PCA192,Milk and dairy products,17,191,191,0.10318592190742493
+PCA192,Milk and dairy products,18,191,191,0.10311373323202133
+PCA192,Milk and dairy products,19,191,191,0.10166775435209274
+PCA192,Animal and vegetable fats and oils,0,191,191,0.07785098254680634
+PCA192,Animal and vegetable fats and oils,1,191,191,0.0737357884645462
+PCA192,Animal and vegetable fats and oils,2,191,191,0.08183474093675613
+PCA192,Animal and vegetable fats and oils,3,191,191,0.07840223610401154
+PCA192,Animal and vegetable fats and oils,4,191,191,0.08775283396244049
+PCA192,Animal and vegetable fats and oils,5,191,191,0.08544278889894485
+PCA192,Animal and vegetable fats and oils,6,191,191,0.08479029685258865
+PCA192,Animal and vegetable fats and oils,7,191,191,0.09590961784124374
+PCA192,Animal and vegetable fats and oils,8,191,191,0.08460354059934616
+PCA192,Animal and vegetable fats and oils,9,191,191,0.0823468565940857
+PCA192,Animal and vegetable fats and oils,10,191,191,0.07950228452682495
+PCA192,Animal and vegetable fats and oils,11,191,191,0.08353506773710251
+PCA192,Animal and vegetable fats and oils,12,191,191,0.08671419322490692
+PCA192,Animal and vegetable fats and oils,13,191,191,0.08017785102128983
+PCA192,Animal and vegetable fats and oils,14,191,191,0.08455590903759003
+PCA192,Animal and vegetable fats and oils,15,191,191,0.08742933720350266
+PCA192,Animal and vegetable fats and oils,16,191,191,0.09121904522180557
+PCA192,Animal and vegetable fats and oils,17,191,191,0.09375596046447754
+PCA192,Animal and vegetable fats and oils,18,191,191,0.08172900974750519
+PCA192,Animal and vegetable fats and oils,19,191,191,0.08149515837430954
+PCA192,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.04575482755899429
+PCA192,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.05077138543128967
+PCA192,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.049226611852645874
+PCA192,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.05465632304549217
+PCA192,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.04634147509932518
+PCA192,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.04449470713734627
+PCA192,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.045060064643621445
+PCA192,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.043835919350385666
+PCA192,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.05590483918786049
+PCA192,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.04625822603702545
+PCA192,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.04133249446749687
+PCA192,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.04602489992976189
+PCA192,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.04265592619776726
+PCA192,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.04621146246790886
+PCA192,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.053562045097351074
+PCA192,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.05167849361896515
+PCA192,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.04239552840590477
+PCA192,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.04338187724351883
+PCA192,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.04962347075343132
+PCA192,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.04990672692656517
+Missingness_only,Grains and grain-based products,0,191,191,0.009689252823591232
+Missingness_only,Grains and grain-based products,1,191,191,0.010275531560182571
+Missingness_only,Grains and grain-based products,2,191,191,0.011069472879171371
+Missingness_only,Grains and grain-based products,3,191,191,0.01716560684144497
+Missingness_only,Grains and grain-based products,4,191,191,0.007630918640643358
+Missingness_only,Grains and grain-based products,5,191,191,0.005059557966887951
+Missingness_only,Grains and grain-based products,6,191,191,0.01039797067642212
+Missingness_only,Grains and grain-based products,7,191,191,0.010094650089740753
+Missingness_only,Grains and grain-based products,8,191,191,0.01634432189166546
+Missingness_only,Grains and grain-based products,9,191,191,0.011552796699106693
+Missingness_only,Grains and grain-based products,10,191,191,0.01850525289773941
+Missingness_only,Grains and grain-based products,11,191,191,0.02067967690527439
+Missingness_only,Grains and grain-based products,12,191,191,0.009975932538509369
+Missingness_only,Grains and grain-based products,13,191,191,0.006017604842782021
+Missingness_only,Grains and grain-based products,14,191,191,0.013918668031692505
+Missingness_only,Grains and grain-based products,15,191,191,0.019160617142915726
+Missingness_only,Grains and grain-based products,16,191,191,0.010662647895514965
+Missingness_only,Grains and grain-based products,17,191,191,0.01050586812198162
+Missingness_only,Grains and grain-based products,18,191,191,0.014642001129686832
+Missingness_only,Grains and grain-based products,19,191,191,0.010660295374691486
+Missingness_only,Vegetables and vegetable products,0,191,191,0.017780547961592674
+Missingness_only,Vegetables and vegetable products,1,191,191,0.0127447210252285
+Missingness_only,Vegetables and vegetable products,2,191,191,0.0079214908182621
+Missingness_only,Vegetables and vegetable products,3,191,191,0.01547588687390089
+Missingness_only,Vegetables and vegetable products,4,191,191,0.014270812273025513
+Missingness_only,Vegetables and vegetable products,5,191,191,0.017395004630088806
+Missingness_only,Vegetables and vegetable products,6,191,191,0.00864877738058567
+Missingness_only,Vegetables and vegetable products,7,191,191,0.017310896888375282
+Missingness_only,Vegetables and vegetable products,8,191,191,0.015175769105553627
+Missingness_only,Vegetables and vegetable products,9,191,191,0.011836920864880085
+Missingness_only,Vegetables and vegetable products,10,191,191,0.01187606155872345
+Missingness_only,Vegetables and vegetable products,11,191,191,0.011777258478105068
+Missingness_only,Vegetables and vegetable products,12,191,191,0.013597493059933186
+Missingness_only,Vegetables and vegetable products,13,191,191,0.016475282609462738
+Missingness_only,Vegetables and vegetable products,14,191,191,0.007541194558143616
+Missingness_only,Vegetables and vegetable products,15,191,191,0.015166562050580978
+Missingness_only,Vegetables and vegetable products,16,191,191,0.008907373063266277
+Missingness_only,Vegetables and vegetable products,17,191,191,0.010359779000282288
+Missingness_only,Vegetables and vegetable products,18,191,191,0.01627407781779766
+Missingness_only,Vegetables and vegetable products,19,191,191,0.010359694249927998
+Missingness_only,"Legumes, nuts, oilseeds and spices",0,191,191,0.024578893557190895
+Missingness_only,"Legumes, nuts, oilseeds and spices",1,191,191,0.022031020373106003
+Missingness_only,"Legumes, nuts, oilseeds and spices",2,191,191,0.026045674458146095
+Missingness_only,"Legumes, nuts, oilseeds and spices",3,191,191,0.02658691629767418
+Missingness_only,"Legumes, nuts, oilseeds and spices",4,191,191,0.041929494589567184
+Missingness_only,"Legumes, nuts, oilseeds and spices",5,191,191,0.02801939658820629
+Missingness_only,"Legumes, nuts, oilseeds and spices",6,191,191,0.031051835045218468
+Missingness_only,"Legumes, nuts, oilseeds and spices",7,191,191,0.024371366947889328
+Missingness_only,"Legumes, nuts, oilseeds and spices",8,191,191,0.027658307924866676
+Missingness_only,"Legumes, nuts, oilseeds and spices",9,191,191,0.030760925263166428
+Missingness_only,"Legumes, nuts, oilseeds and spices",10,191,191,0.0396764762699604
+Missingness_only,"Legumes, nuts, oilseeds and spices",11,191,191,0.02524539642035961
+Missingness_only,"Legumes, nuts, oilseeds and spices",12,191,191,0.028100023046135902
+Missingness_only,"Legumes, nuts, oilseeds and spices",13,191,191,0.023806031793355942
+Missingness_only,"Legumes, nuts, oilseeds and spices",14,191,191,0.02747538685798645
+Missingness_only,"Legumes, nuts, oilseeds and spices",15,191,191,0.01866474188864231
+Missingness_only,"Legumes, nuts, oilseeds and spices",16,191,191,0.024256950244307518
+Missingness_only,"Legumes, nuts, oilseeds and spices",17,191,191,0.028317850083112717
+Missingness_only,"Legumes, nuts, oilseeds and spices",18,191,191,0.024892577901482582
+Missingness_only,"Legumes, nuts, oilseeds and spices",19,191,191,0.026642948389053345
+Missingness_only,Fruit and fruit products,0,191,191,0.036796797066926956
+Missingness_only,Fruit and fruit products,1,191,191,0.022176362574100494
+Missingness_only,Fruit and fruit products,2,191,191,0.03471537306904793
+Missingness_only,Fruit and fruit products,3,191,191,0.043675996363162994
+Missingness_only,Fruit and fruit products,4,191,191,0.01858537457883358
+Missingness_only,Fruit and fruit products,5,191,191,0.022066356614232063
+Missingness_only,Fruit and fruit products,6,191,191,0.025946278125047684
+Missingness_only,Fruit and fruit products,7,191,191,0.02465049922466278
+Missingness_only,Fruit and fruit products,8,191,191,0.03089100681245327
+Missingness_only,Fruit and fruit products,9,191,191,0.04382629320025444
+Missingness_only,Fruit and fruit products,10,191,191,0.02415674552321434
+Missingness_only,Fruit and fruit products,11,191,191,0.02617131546139717
+Missingness_only,Fruit and fruit products,12,191,191,0.03180094063282013
+Missingness_only,Fruit and fruit products,13,191,191,0.03394042328000069
+Missingness_only,Fruit and fruit products,14,191,191,0.02153448946774006
+Missingness_only,Fruit and fruit products,15,191,191,0.03773041069507599
+Missingness_only,Fruit and fruit products,16,191,191,0.027936521917581558
+Missingness_only,Fruit and fruit products,17,191,191,0.021380072459578514
+Missingness_only,Fruit and fruit products,18,191,191,0.02735043130815029
+Missingness_only,Fruit and fruit products,19,191,191,0.029540540650486946
+Missingness_only,Meat and meat products,0,191,191,0.06748003512620926
+Missingness_only,Meat and meat products,1,191,191,0.08040826767683029
+Missingness_only,Meat and meat products,2,191,191,0.06846720725297928
+Missingness_only,Meat and meat products,3,191,191,0.071946881711483
+Missingness_only,Meat and meat products,4,191,191,0.07546080648899078
+Missingness_only,Meat and meat products,5,191,191,0.07847689837217331
+Missingness_only,Meat and meat products,6,191,191,0.0758872702717781
+Missingness_only,Meat and meat products,7,191,191,0.07315858453512192
+Missingness_only,Meat and meat products,8,191,191,0.07682955265045166
+Missingness_only,Meat and meat products,9,191,191,0.06615040451288223
+Missingness_only,Meat and meat products,10,191,191,0.06445083767175674
+Missingness_only,Meat and meat products,11,191,191,0.07538994401693344
+Missingness_only,Meat and meat products,12,191,191,0.06934493780136108
+Missingness_only,Meat and meat products,13,191,191,0.0744422897696495
+Missingness_only,Meat and meat products,14,191,191,0.07076103985309601
+Missingness_only,Meat and meat products,15,191,191,0.07337681949138641
+Missingness_only,Meat and meat products,16,191,191,0.0737539753317833
+Missingness_only,Meat and meat products,17,191,191,0.07366430759429932
+Missingness_only,Meat and meat products,18,191,191,0.07456845045089722
+Missingness_only,Meat and meat products,19,191,191,0.07243014872074127
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.01718428172171116
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.01729596219956875
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.008843459188938141
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.01587909646332264
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.018912749364972115
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,0.013910907320678234
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.019572986289858818
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.02009786292910576
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.021359514445066452
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.019759103655815125
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,0.019427943974733353
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.020325515419244766
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.012954441830515862
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,0.021765703335404396
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,0.014689086005091667
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.012921902351081371
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,0.016971329227089882
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.01819068379700184
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,0.016765819862484932
+Missingness_only,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,0.014905580319464207
+Missingness_only,Milk and dairy products,0,191,191,0.028558960184454918
+Missingness_only,Milk and dairy products,1,191,191,0.05473605915904045
+Missingness_only,Milk and dairy products,2,191,191,0.04717550054192543
+Missingness_only,Milk and dairy products,3,191,191,0.05413954704999924
+Missingness_only,Milk and dairy products,4,191,191,0.048483237624168396
+Missingness_only,Milk and dairy products,5,191,191,0.048790812492370605
+Missingness_only,Milk and dairy products,6,191,191,0.057333700358867645
+Missingness_only,Milk and dairy products,7,191,191,0.028740251436829567
+Missingness_only,Milk and dairy products,8,191,191,0.033859267830848694
+Missingness_only,Milk and dairy products,9,191,191,0.044472869485616684
+Missingness_only,Milk and dairy products,10,191,191,0.05272204056382179
+Missingness_only,Milk and dairy products,11,191,191,0.039689015597105026
+Missingness_only,Milk and dairy products,12,191,191,0.033998873084783554
+Missingness_only,Milk and dairy products,13,191,191,0.0492265522480011
+Missingness_only,Milk and dairy products,14,191,191,0.026601601392030716
+Missingness_only,Milk and dairy products,15,191,191,0.03443128243088722
+Missingness_only,Milk and dairy products,16,191,191,0.02796570025384426
+Missingness_only,Milk and dairy products,17,191,191,0.048212096095085144
+Missingness_only,Milk and dairy products,18,191,191,0.05804254114627838
+Missingness_only,Milk and dairy products,19,191,191,0.04693930223584175
+Missingness_only,Animal and vegetable fats and oils,0,191,191,0.01878577470779419
+Missingness_only,Animal and vegetable fats and oils,1,191,191,0.018750827759504318
+Missingness_only,Animal and vegetable fats and oils,2,191,191,0.016091573983430862
+Missingness_only,Animal and vegetable fats and oils,3,191,191,0.01634928397834301
+Missingness_only,Animal and vegetable fats and oils,4,191,191,0.021461565047502518
+Missingness_only,Animal and vegetable fats and oils,5,191,191,0.01853899098932743
+Missingness_only,Animal and vegetable fats and oils,6,191,191,0.0156392939388752
+Missingness_only,Animal and vegetable fats and oils,7,191,191,0.01952102780342102
+Missingness_only,Animal and vegetable fats and oils,8,191,191,0.019712090492248535
+Missingness_only,Animal and vegetable fats and oils,9,191,191,0.014493798837065697
+Missingness_only,Animal and vegetable fats and oils,10,191,191,0.02118268422782421
+Missingness_only,Animal and vegetable fats and oils,11,191,191,0.01619935967028141
+Missingness_only,Animal and vegetable fats and oils,12,191,191,0.01465718261897564
+Missingness_only,Animal and vegetable fats and oils,13,191,191,0.019312841817736626
+Missingness_only,Animal and vegetable fats and oils,14,191,191,0.016923310235142708
+Missingness_only,Animal and vegetable fats and oils,15,191,191,0.01660221442580223
+Missingness_only,Animal and vegetable fats and oils,16,191,191,0.02042572759091854
+Missingness_only,Animal and vegetable fats and oils,17,191,191,0.020511416718363762
+Missingness_only,Animal and vegetable fats and oils,18,191,191,0.01820010505616665
+Missingness_only,Animal and vegetable fats and oils,19,191,191,0.023102985695004463
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",0,191,191,0.032365743070840836
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.03668097406625748
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",2,191,191,0.036620501428842545
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.052733078598976135
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",4,191,191,0.03067931905388832
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",5,191,191,0.02414177544414997
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.029600299894809723
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",7,191,191,0.024754934012889862
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.05516306310892105
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",9,191,191,0.03950534015893936
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.025073310360312462
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",11,191,191,0.034643467515707016
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.027581535279750824
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.02910599485039711
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.04225441440939903
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",15,191,191,0.04842608422040939
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.029093608260154724
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.029718494042754173
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",18,191,191,0.04149484261870384
+Missingness_only,"Sugar, confectionery and water-based sweet desserts",19,191,191,0.040106967091560364
+Random192,Grains and grain-based products,0,191,191,-0.0008460852550342679
+Random192,Grains and grain-based products,1,191,191,-0.00011037083459086716
+Random192,Grains and grain-based products,2,191,191,-0.000295286241453141
+Random192,Grains and grain-based products,3,191,191,-0.0018449333729222417
+Random192,Grains and grain-based products,4,191,191,-0.0001571277971379459
+Random192,Grains and grain-based products,5,191,191,0.00023674765543546528
+Random192,Grains and grain-based products,6,191,191,0.0001567158760735765
+Random192,Grains and grain-based products,7,191,191,0.00030992028769105673
+Random192,Grains and grain-based products,8,191,191,1.0485756320122164e-05
+Random192,Grains and grain-based products,9,191,191,-0.0002764259115792811
+Random192,Grains and grain-based products,10,191,191,0.0001359204761683941
+Random192,Grains and grain-based products,11,191,191,-0.0009575640433467925
+Random192,Grains and grain-based products,12,191,191,0.0003748630406334996
+Random192,Grains and grain-based products,13,191,191,0.00027094746474176645
+Random192,Grains and grain-based products,14,191,191,-0.00034726655576378107
+Random192,Grains and grain-based products,15,191,191,-0.00030292599694803357
+Random192,Grains and grain-based products,16,191,191,0.00046847417252138257
+Random192,Grains and grain-based products,17,191,191,-0.00013890786794945598
+Random192,Grains and grain-based products,18,191,191,0.0009945003548637033
+Random192,Grains and grain-based products,19,191,191,-0.0004898612387478352
+Random192,Vegetables and vegetable products,0,191,191,-0.0007276801043190062
+Random192,Vegetables and vegetable products,1,191,191,0.000500328082125634
+Random192,Vegetables and vegetable products,2,191,191,-9.05213164514862e-05
+Random192,Vegetables and vegetable products,3,191,191,-6.226994446478784e-05
+Random192,Vegetables and vegetable products,4,191,191,-0.0007122334791347384
+Random192,Vegetables and vegetable products,5,191,191,5.5180044000735506e-05
+Random192,Vegetables and vegetable products,6,191,191,0.00031139457132667303
+Random192,Vegetables and vegetable products,7,191,191,-0.0005335320020094514
+Random192,Vegetables and vegetable products,8,191,191,-0.0004951114533469081
+Random192,Vegetables and vegetable products,9,191,191,-0.00010397460573585704
+Random192,Vegetables and vegetable products,10,191,191,-0.00019854490528814495
+Random192,Vegetables and vegetable products,11,191,191,-0.0004855777369812131
+Random192,Vegetables and vegetable products,12,191,191,-0.0007939242059364915
+Random192,Vegetables and vegetable products,13,191,191,-0.000660360383335501
+Random192,Vegetables and vegetable products,14,191,191,0.0008165309554897249
+Random192,Vegetables and vegetable products,15,191,191,-0.0006269161822274327
+Random192,Vegetables and vegetable products,16,191,191,-0.00010859496978810057
+Random192,Vegetables and vegetable products,17,191,191,-5.199783481657505e-05
+Random192,Vegetables and vegetable products,18,191,191,-0.00025180907687172294
+Random192,Vegetables and vegetable products,19,191,191,-4.257502587279305e-05
+Random192,"Legumes, nuts, oilseeds and spices",0,191,191,-0.00032303520129062235
+Random192,"Legumes, nuts, oilseeds and spices",1,191,191,-0.000553272373508662
+Random192,"Legumes, nuts, oilseeds and spices",2,191,191,-6.288963049883023e-06
+Random192,"Legumes, nuts, oilseeds and spices",3,191,191,0.00034860658342950046
+Random192,"Legumes, nuts, oilseeds and spices",4,191,191,0.000571897835470736
+Random192,"Legumes, nuts, oilseeds and spices",5,191,191,-0.0004930769209749997
+Random192,"Legumes, nuts, oilseeds and spices",6,191,191,-0.0002504820586182177
+Random192,"Legumes, nuts, oilseeds and spices",7,191,191,-0.00034070955007337034
+Random192,"Legumes, nuts, oilseeds and spices",8,191,191,0.0006226150435395539
+Random192,"Legumes, nuts, oilseeds and spices",9,191,191,-8.75831174198538e-05
+Random192,"Legumes, nuts, oilseeds and spices",10,191,191,-0.00024523225147277117
+Random192,"Legumes, nuts, oilseeds and spices",11,191,191,-0.0005786576657555997
+Random192,"Legumes, nuts, oilseeds and spices",12,191,191,-0.00014707625086884946
+Random192,"Legumes, nuts, oilseeds and spices",13,191,191,0.001109760138206184
+Random192,"Legumes, nuts, oilseeds and spices",14,191,191,0.00020900518575217575
+Random192,"Legumes, nuts, oilseeds and spices",15,191,191,4.911386713501997e-05
+Random192,"Legumes, nuts, oilseeds and spices",16,191,191,0.001093712286092341
+Random192,"Legumes, nuts, oilseeds and spices",17,191,191,-0.00015864759916439652
+Random192,"Legumes, nuts, oilseeds and spices",18,191,191,0.000234641891438514
+Random192,"Legumes, nuts, oilseeds and spices",19,191,191,-5.780864375992678e-05
+Random192,Fruit and fruit products,0,191,191,-0.0002421169338049367
+Random192,Fruit and fruit products,1,191,191,-0.0003199595957994461
+Random192,Fruit and fruit products,2,191,191,-0.00010371959069743752
+Random192,Fruit and fruit products,3,191,191,-0.00042245618533343077
+Random192,Fruit and fruit products,4,191,191,-0.0010321552399545908
+Random192,Fruit and fruit products,5,191,191,-0.0001238616241607815
+Random192,Fruit and fruit products,6,191,191,-0.0008594490354880691
+Random192,Fruit and fruit products,7,191,191,-0.0003577505995053798
+Random192,Fruit and fruit products,8,191,191,-0.00041071680607274175
+Random192,Fruit and fruit products,9,191,191,-4.934242679155432e-05
+Random192,Fruit and fruit products,10,191,191,-0.00026637365226633847
+Random192,Fruit and fruit products,11,191,191,0.0004016242455691099
+Random192,Fruit and fruit products,12,191,191,0.00023370746930595487
+Random192,Fruit and fruit products,13,191,191,0.00041478313505649567
+Random192,Fruit and fruit products,14,191,191,-0.0005198006983846426
+Random192,Fruit and fruit products,15,191,191,-0.00017331494018435478
+Random192,Fruit and fruit products,16,191,191,-0.0004797487345058471
+Random192,Fruit and fruit products,17,191,191,0.0005040545365773141
+Random192,Fruit and fruit products,18,191,191,-0.00022061953495722264
+Random192,Fruit and fruit products,19,191,191,-0.0006698443321511149
+Random192,Meat and meat products,0,191,191,-0.00041196620441041887
+Random192,Meat and meat products,1,191,191,-0.0007499997154809535
+Random192,Meat and meat products,2,191,191,-0.0003664955438580364
+Random192,Meat and meat products,3,191,191,0.0004128760192543268
+Random192,Meat and meat products,4,191,191,0.000302179396385327
+Random192,Meat and meat products,5,191,191,0.0008346421527676284
+Random192,Meat and meat products,6,191,191,-0.00021368054149206728
+Random192,Meat and meat products,7,191,191,-0.000436379574239254
+Random192,Meat and meat products,8,191,191,-0.0005008853040635586
+Random192,Meat and meat products,9,191,191,-0.0004729812790174037
+Random192,Meat and meat products,10,191,191,-0.0004295884573366493
+Random192,Meat and meat products,11,191,191,-0.0008222197648137808
+Random192,Meat and meat products,12,191,191,-0.00022029847605153918
+Random192,Meat and meat products,13,191,191,-6.935359124327078e-05
+Random192,Meat and meat products,14,191,191,0.00013785931514576077
+Random192,Meat and meat products,15,191,191,0.0009355783695355058
+Random192,Meat and meat products,16,191,191,0.0008493079803884029
+Random192,Meat and meat products,17,191,191,-0.0005965485470369458
+Random192,Meat and meat products,18,191,191,-0.0009815840749070048
+Random192,Meat and meat products,19,191,191,0.0004365387139841914
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",0,191,191,0.0009264880209229887
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",1,191,191,0.0007794872508384287
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",2,191,191,0.000569104275200516
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",3,191,191,0.00046340550761669874
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",4,191,191,0.0005982299917377532
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",5,191,191,-3.040675619558897e-05
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",6,191,191,0.00033666426315903664
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",7,191,191,0.0010242338757961988
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",8,191,191,0.00015748605073895305
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",9,191,191,0.00033346228883601725
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",10,191,191,-0.00031213575857691467
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",11,191,191,0.0008982938015833497
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",12,191,191,0.0007303975871764123
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",13,191,191,-0.0002576307160779834
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",14,191,191,-0.00015410878404509276
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",15,191,191,0.0006215217872522771
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",16,191,191,-0.0008514728979207575
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",17,191,191,0.00041445286478847265
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",18,191,191,-3.3242871722904965e-05
+Random192,"Fish, seafood, amphibians, reptiles and invertebrates",19,191,191,4.4999087549513206e-05
+Random192,Milk and dairy products,0,191,191,-0.00023122376296669245
+Random192,Milk and dairy products,1,191,191,-0.0005944155855104327
+Random192,Milk and dairy products,2,191,191,-3.5681729059433565e-05
+Random192,Milk and dairy products,3,191,191,0.0008710359106771648
+Random192,Milk and dairy products,4,191,191,0.00025257765082642436
+Random192,Milk and dairy products,5,191,191,0.0005328687839210033
+Random192,Milk and dairy products,6,191,191,0.0004580036620609462
+Random192,Milk and dairy products,7,191,191,-0.000508576282300055
+Random192,Milk and dairy products,8,191,191,0.0014004164841026068
+Random192,Milk and dairy products,9,191,191,0.000363866682164371
+Random192,Milk and dairy products,10,191,191,-0.0006126364460214972
+Random192,Milk and dairy products,11,191,191,0.000934170326218009
+Random192,Milk and dairy products,12,191,191,0.0017160758143290877
+Random192,Milk and dairy products,13,191,191,-2.9124392312951386e-05
+Random192,Milk and dairy products,14,191,191,-0.00034295767545700073
+Random192,Milk and dairy products,15,191,191,0.0007121529197320342
+Random192,Milk and dairy products,16,191,191,0.001895603840239346
+Random192,Milk and dairy products,17,191,191,-0.00045998705900274217
+Random192,Milk and dairy products,18,191,191,0.0010792325483635068
+Random192,Milk and dairy products,19,191,191,0.0008622616296634078
+Random192,Animal and vegetable fats and oils,0,191,191,0.0003957846201956272
+Random192,Animal and vegetable fats and oils,1,191,191,-0.0006215383764356375
+Random192,Animal and vegetable fats and oils,2,191,191,-0.00031860856688581407
+Random192,Animal and vegetable fats and oils,3,191,191,-0.0007885792292654514
+Random192,Animal and vegetable fats and oils,4,191,191,0.0002038607926806435
+Random192,Animal and vegetable fats and oils,5,191,191,2.1357249352149665e-05
+Random192,Animal and vegetable fats and oils,6,191,191,0.0003932967665605247
+Random192,Animal and vegetable fats and oils,7,191,191,-0.00012503551261033863
+Random192,Animal and vegetable fats and oils,8,191,191,-0.0003883854951709509
+Random192,Animal and vegetable fats and oils,9,191,191,-0.00028536643367260695
+Random192,Animal and vegetable fats and oils,10,191,191,9.34165800572373e-05
+Random192,Animal and vegetable fats and oils,11,191,191,-0.00015737756621092558
+Random192,Animal and vegetable fats and oils,12,191,191,-0.0005186129710637033
+Random192,Animal and vegetable fats and oils,13,191,191,-0.00034369746572338045
+Random192,Animal and vegetable fats and oils,14,191,191,0.0001333313120994717
+Random192,Animal and vegetable fats and oils,15,191,191,-0.00014809494314249605
+Random192,Animal and vegetable fats and oils,16,191,191,-0.0009585873922333121
+Random192,Animal and vegetable fats and oils,17,191,191,-0.0004192114865873009
+Random192,Animal and vegetable fats and oils,18,191,191,-0.0007132720202207565
+Random192,Animal and vegetable fats and oils,19,191,191,8.346509275725111e-05
+Random192,"Sugar, confectionery and water-based sweet desserts",0,191,191,-0.0005166472983546555
+Random192,"Sugar, confectionery and water-based sweet desserts",1,191,191,0.0007449339609593153
+Random192,"Sugar, confectionery and water-based sweet desserts",2,191,191,-7.85049851401709e-05
+Random192,"Sugar, confectionery and water-based sweet desserts",3,191,191,0.000655437121167779
+Random192,"Sugar, confectionery and water-based sweet desserts",4,191,191,-0.00024073297390714288
+Random192,"Sugar, confectionery and water-based sweet desserts",5,191,191,-0.00012317694199737161
+Random192,"Sugar, confectionery and water-based sweet desserts",6,191,191,0.00010946213296847418
+Random192,"Sugar, confectionery and water-based sweet desserts",7,191,191,-8.304403309011832e-05
+Random192,"Sugar, confectionery and water-based sweet desserts",8,191,191,0.0005441397079266608
+Random192,"Sugar, confectionery and water-based sweet desserts",9,191,191,-0.0007478335755877197
+Random192,"Sugar, confectionery and water-based sweet desserts",10,191,191,0.0004073407908435911
+Random192,"Sugar, confectionery and water-based sweet desserts",11,191,191,-0.00028465455397963524
+Random192,"Sugar, confectionery and water-based sweet desserts",12,191,191,0.0002099647099385038
+Random192,"Sugar, confectionery and water-based sweet desserts",13,191,191,0.0002674934803508222
+Random192,"Sugar, confectionery and water-based sweet desserts",14,191,191,0.0004289285861887038
+Random192,"Sugar, confectionery and water-based sweet desserts",15,191,191,-8.25663810246624e-05
+Random192,"Sugar, confectionery and water-based sweet desserts",16,191,191,0.0004002123314421624
+Random192,"Sugar, confectionery and water-based sweet desserts",17,191,191,0.0001271536311833188
+Random192,"Sugar, confectionery and water-based sweet desserts",18,191,191,-0.0004644601431209594
+Random192,"Sugar, confectionery and water-based sweet desserts",19,191,191,-0.00038930829032324255
